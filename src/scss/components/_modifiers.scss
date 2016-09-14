@@ -1,0 +1,17 @@
+.is-centered-abs{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.has-text-center{
+	text-align: center;
+}
+
+.is-hidden {
+	opacity: 0;
+}
+
+.has-transition {
+	transition: all .2s ease-out;
+}

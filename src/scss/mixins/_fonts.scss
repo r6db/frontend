@@ -1,0 +1,10 @@
+@mixin siege{
+	font-family: "Scout Cond Bd";
+}
+
+@mixin textshadow{
+	text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
+}
+@mixin boxshadow{
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}

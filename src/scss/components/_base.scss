@@ -1,0 +1,37 @@
+
+body{
+    font-family: "Source Sans Pro", sans-serif;
+	position: relative;
+    color: $white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: $black;
+}
+.content{
+    flex: 1 0 500px;
+}
+.footer{
+    flex: 0 0 3.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 .75rem;
+}
+.center{
+    text-align: center;
+    align-self: center;
+}
+.background-image{
+	position: fixed;
+	z-index: -1;
+	min-width: 100vw;
+	min-height: 100vh;
+	width: auto;
+	height: auto;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+    -webkit-filter: blur(10px);
+    opacity: 0.2;
+}

@@ -1,0 +1,21 @@
+@mixin btnvariant($color, $fontcolor:$white){
+	@include boxshadow;
+    border-color: transparent;
+	background: $color;
+	color: $fontcolor;
+		&:hover, &:focus{
+			background: darken($color, 10%);
+		}
+		&.is-outlined{
+			background: none;
+			color: $color;
+			border-color: $color;
+			&:hover, &:focus{
+				background: $color;
+				color: $fontcolor;
+			}
+		}
+	&:disabled {
+		background: desaturate( $color, 40% );
+	}
+}

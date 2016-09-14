@@ -1,0 +1,67 @@
+input{
+	padding: 0.5em 1em;
+	background: white;
+}
+
+label{
+    display: block;
+	color: $gray;
+    font-size: 0.7em;
+    font-weight: normal;
+	height: 1em;
+    margin-bottom: 0.5*$l;
+}
+
+.control{
+	margin-bottom: $l;
+
+	input,
+	select,
+	textarea{
+		padding: 0 $l;
+		border-radius: 0;
+		width: 100%;
+		height: 4*$l;
+		-webkit-appearance: none;
+
+		&:focus{
+			outline: none;
+			border-bottom-color: $gray;
+		}
+		border-bottom: 1px solid $gray-light;
+	}
+	input[disabled],
+	input[readonly]{
+		color: $gray-light;
+	}
+
+	input[type=range] {
+		-webkit-appearance: slider-horizontal;
+	}
+
+	input[type=color] {
+		-webkit-appearance: menulist;
+	}
+
+	&.has-addons{
+		display: flex;
+		flex-direction: row;
+		> *:first-child{
+			border-radius: $borderradius 0 0 $borderradius;
+		}
+		> *:last-child{
+			border-radius: 0 $borderradius $borderradius 0;
+		}
+		input, .button{
+			border: none;
+		}
+	}
+	.button{
+		width: auto;
+		height: 4*$l;
+		border-radius: 0;
+	}
+}
+form label{
+    color: $gray;
+}

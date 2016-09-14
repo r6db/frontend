@@ -1,0 +1,103 @@
+ggs-result{
+    width: 100%;
+}
+.playercard{
+	@include boxshadow;
+    @include clearfix;
+	position: relative;
+	background: rgba(16, 26, 36 , 0.5);
+	overflow: hidden;
+	flex: 1 1 100%;
+	margin: 1%;
+	color: $white;
+	display: flex;
+	flex-direction: row;
+    padding: 15px;
+
+	&.ng-enter{
+		transition: all 200ms ease-out;
+		opacity: 0;
+		transform: translate(0, 100%);
+	}
+	&.ng-enter.ng-enter-active{
+		opacity: 1;
+		transform: none;
+	}
+
+	.card-content{
+		padding: 0 $l*1.5;
+		flex: 1 1 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+	}
+	.card-image{
+		@include boxshadow;
+		background: $black;
+		width: 128px;
+		height: 128px;
+		img{
+            width: 100%;
+			height: auto;
+		}
+	}
+	.player-name {
+		@include siege;
+		font-size: 2rem;
+		a{
+			color: $white;
+		}
+	}
+	.player-firstseen,
+	.player-lastseen,
+    .player-lastactive{
+		transition: all .1s ease-out;
+		color: $gray;
+		font-weight: 500;
+		font-size: 0.8em;
+		line-height: 1.2;
+        margin: $l*0.5 0;
+	}
+	.player-uplaylink{
+		color: $link;
+		margin: 10px 0;
+		display: block;
+		margin-right: 35px;
+		text-decoration: underline;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+    .player-dateblock{
+        height: 100%;
+    }
+	.player-aliases{
+		header{
+			color: $gray;
+			font-weight: 500;
+			font-size: 0.8em;
+			line-height: 1.2;
+		}
+		ul{
+			list-style: none;
+			margin-right: 15px;
+		}
+		li{
+			display: inline-block;
+			margin-right: .5em;
+			&:after{
+				content:","
+			}
+			&:last-child:after{
+				content:""
+			}
+		}
+	}
+	.player-stats{
+		padding: 0.5rem;
+		z-index: 1;
+		font-size: 0.8em;
+		font-weight: bold;
+		color: white;
+	}
+}

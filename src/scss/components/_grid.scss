@@ -1,0 +1,62 @@
+.container{
+	max-width: $screen-yourmom;
+	margin: 0 auto;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.columns{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	&.is-multiline{
+		flex-wrap: wrap;
+		.column {
+			flex-grow: 1;
+		}
+	}
+	&.is-gapless{
+		margin-left: $l;
+		margin-right: $l;
+		>.column{
+			margin: 0;
+		}
+	}
+}
+.column{
+	flex: 1 1 100%;
+	width: inherit;
+	margin: $l;
+}
+
+@for $i from 1 through 12{
+	.column.is-small-#{$i}{
+		flex: 0 1 (($i/12))*100%;
+	}
+	.column.is-small-offset-#{$i}{
+		margin-left: calc( #{$l} + #{(($i/12))*100%});
+	}
+}
+
+@media screen and (min-width: $screen-medium) {
+	@for $i from 1 through 12{
+		.column.is-medium-#{$i}{
+			flex: 0 1 (($i/12))*100%;
+		}
+		.column.is-medium-offset-#{$i}{
+			margin-left: calc( #{$l} + #{(($i/12))*100%});
+		}
+	}
+}
+@media screen and (min-width: $screen-large) {
+	@for $i from 1 through 12{
+		.column.is-large-#{$i}{
+			flex: 0 1 (($i/12))*100%;
+		}
+		.column.is-large-offset-#{$i}{
+			margin-left: calc( #{$l} + #{(($i/12))*100%});
+		}
+	}
+}

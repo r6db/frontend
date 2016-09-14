@@ -1,0 +1,14 @@
+before_script:
+  - node -v
+  - npm -v
+
+build:
+    stage: build
+    script:
+        - npm install
+        - npm run build
+  
+test:
+    stage: test
+    script:
+        - npm run test

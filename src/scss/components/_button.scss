@@ -1,0 +1,66 @@
+.button{
+    @include btnvariant(white, $gray-dark);
+    padding: 0.5em 1em;
+    border: 1px solid $gray;
+    border-radius: $borderradius;
+    cursor: pointer;
+	width: auto;
+    &:focus{
+        outline: none;
+    }
+    &:active{
+        outline: none;
+	    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    &.is-link{
+        border-color: transparent;
+        text-decoration: underline;
+
+        &:hover, &:focus{
+            background: $gray-light;
+        }
+    }
+    &.is-icon{
+        padding: .25em;
+        border: none;
+    }
+    &.is-small{
+        font-size: 0.75em;
+    }
+    &.is-medium{
+        font-size: 1.25em;
+    }
+    &.is-large{
+        font-size: 1.5em;
+    }
+    &.is-block{
+        display: block;
+    }
+    &.has-margin-vertical {
+        margin-left: 2/3*$l;
+        margin-right: 2/3*$l;
+    }
+
+    /* colors */
+    &.is-primary{
+        @include btnvariant($primary);
+    }
+    &.is-accent{
+        @include btnvariant($accent);
+    }
+    &.is-success{
+        @include btnvariant($success);
+    }
+    &.is-warn{
+        @include btnvariant($warn);
+    }
+    &.is-danger{
+        @include btnvariant($danger);
+    }
+    &.is-light{
+        @include btnvariant($gray-light);
+    }
+    &.is-dark{
+        @include btnvariant($gray-dark);
+    }
+}

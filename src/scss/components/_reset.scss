@@ -1,0 +1,51 @@
+*, *:before, *:after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{
+    display: block;
+}
+a{
+	text-decoration: none;
+}
+body{
+    line-height: 1;
+}
+ol, ul{
+    list-style: none;
+}
+blockquote, q{
+    quotes: none;
+    &:before, &:after{
+        content: " ";
+        content: none;
+    }
+}
+hr{
+    width: 10em;
+    border-top: 1px solid white;
+    margin: 1.5em auto;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+th{
+    font-weight: bold;
+    text-align: left;
+}
+
+img{
+    width: 100%;
+    height: auto;
+    border-radius: $borderradius;
+}

@@ -1,0 +1,28 @@
+$primary: #47893b;
+$accent: #ffdb00;
+$link: #2d95cf;
+$black: desaturate(darken($primary, 25%), 50%); //#030502;
+$gray-dark: #2f302f;
+$gray: #8d99ae;
+$gray-light: #eae8de;
+
+$white: #fefefe;
+
+$success: #17bebb;
+$warn: #ffc914;
+$danger: #e4562e;
+
+$screen-medium: 32rem;
+$screen-large: 48rem;
+$screen-yourmom: 64rem;
+
+$borderradius: 1px;
+$borderradius-rel: .4em;
+
+
+$nav-height: 3.5em;
+
+$l: 10px;
+
+
+$sidebar-width: 24*$l;
