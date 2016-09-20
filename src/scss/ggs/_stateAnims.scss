@@ -21,7 +21,7 @@
 	}
 	.search-results{
 		opacity: 1;
-		transform: translate(0, $l);
+		transform: none;
 	}
 }
 
@@ -29,7 +29,7 @@
 	@extend .has-results;
 
 	.detail{
-		transform: translate(0, 0);
+		transform: translate(-800px, 0);
 	}
 	.detail-backdrop{
 		transform: translate(0, 0);

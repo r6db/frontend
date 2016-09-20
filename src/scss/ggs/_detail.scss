@@ -1,7 +1,7 @@
 .detail{
 	display: block;
 	position: absolute;
-	right: 0;
+	right: -800px;
 	top: 0;
 	width: 80vw;
 	max-width: 800px;
@@ -9,7 +9,7 @@
 	box-shadow: 0 0 5px $gray-dark;
 	// anim
 	transition: all $tdur ease-out;
-	transform: translate(100%, 0);
+	will-change: transform;
 	color: $white;
 
 	.player-name{
