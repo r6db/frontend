@@ -2,8 +2,10 @@ const m = require("mithril");
 const Result = require("./Result");
 const Detail = require("./Detail");
 const { getQuerystring, setQuerystring } = require("lib/querystring");
-const { findPlayer } = require("lib/player");
+const { findPlayer, getPlayer } = require("lib/player");
 const { getStats } = require("lib/stats");
+
+const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 const State = Object.freeze({
 	INITIAL: "",
@@ -12,7 +14,20 @@ const State = Object.freeze({
 	DETAIL: "has-detail-open"
 });
 
-
+const init = state => {
+	let query = getQuerystring();
+	// accept legacy urls
+	if(window.location.href.indexOf("/#/player/") !== -1) {
+		let id = window.location.href
+			.split("/#/player/")[1]
+			.split("?")[0]
+			.replace(/\//g,"");
+		query.query = id;		
+	}
+	state.query(query.query || "");
+	state.exact(query.exact === "true" ? true : false);
+	state.onSearch();
+}
 
 
 module.exports = {
@@ -36,10 +51,7 @@ module.exports = {
 		 * simple keylistener to trigger the search on enter keypress
 		 */
 		state.onEnter = e => {
-			if(e.keyCode !== 13) {
-				return;
-			}
-			else {
+			if(e.keyCode === 13) {
 				state.query(e.target.value);
 				state.onSearch(e);
 			}
@@ -68,6 +80,29 @@ module.exports = {
 		 * triggers the search
 		 */
 		state.onSearch = e => {
+			if(idRegex.test(state.query())) {
+				if(state.status() !== State.RESULTS) {
+					state.status(State.SEARCH);
+				}
+				// clear results
+				state.results([]);
+				// update url
+				setQuerystring(state);
+				// trigger the search
+				getPlayer(state.query(), { isExact: state.exact() })
+					.run(res => [res])
+					.run(state.results)
+					.run(res => {
+						if(res.length === 1) {
+							state.focus(state.query());
+							state.detail(res[0]);
+							state.status(State.RESULTS);
+						}
+					})
+					.run(() => state.status(State.RESULTS))
+					.catch(err => console.error(err));
+				return;
+			}
 			if(state.query() === "" || state.query().length < 3) {
 				// reset to initial state
 				state.status(State.INITIAL);
@@ -93,18 +128,12 @@ module.exports = {
 		}
 		window.addEventListener("keyup", e => {
 			if(e.keyCode === 27) {
-				state.detail(null);
-				state.status(State.RESULTS);
+				state.hideFocus();
+				m.redraw();
 			}
-			m.redraw();
 		});
-		let query = getQuerystring();
-		if(query) {
-			state.query(query.query || "");
-			state.exact(query.exact === "true" ? true : false);
-			state.onSearch();
-		}
-
+		window.addEventListener("hashchange", () => init(state));
+		init(state);
 	},
 	view: ({ state }) =>(
 		<div className={`app ${state.status()}`} onkeyup={state.onKeypress}>
@@ -124,7 +153,7 @@ module.exports = {
 								id="exactSearch"
 								checked={state.exact()}
 								onchange={m.withAttr("checked", state.exact)}/>
-							<label htmlFor="exactSearch">exact</label>
+							<label htmlFor="exactSearch">exact name</label>
 						</span>
 					</div>
 					<button className="column is-small-1 button is-dark" onclick={state.onSearch}>Search</button>

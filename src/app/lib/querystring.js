@@ -1,6 +1,6 @@
 // sets the query string from the current state
 const setQuerystring = state => {
-	let current = ("" + window.location.href).replace(/\?.*$/, "");
+	let current = ("" + window.location.href).replace(/[#\?].*$/, "");
 	let query = `?query=${state.query()}&exact=${state.exact()}&focus=${state.focus()}`
 	let url = current + query;
 	history.replaceState(null,  window.title, url);

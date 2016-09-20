@@ -24,5 +24,6 @@ function getPlayer(id)
  	});
  }
 module.exports = {
-	findPlayer
+	findPlayer,
+	getPlayer
 };
