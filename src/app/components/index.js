@@ -4,7 +4,7 @@ const Detail = require("./Detail");
 const { getQuerystring, setQuerystring } = require("lib/querystring");
 const { findPlayer, getPlayer } = require("lib/player");
 const { getStats } = require("lib/stats");
-
+const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 const State = Object.freeze({
@@ -22,8 +22,9 @@ const init = state => {
 			.split("/#/player/")[1]
 			.split("?")[0]
 			.replace(/\//g,"");
-		query.query = id;		
+		query.query = id;
 	}
+	log.trace("init", query);
 	state.query(query.query || "");
 	state.exact(query.exact === "true" ? true : false);
 	state.onSearch();
@@ -44,6 +45,7 @@ module.exports = {
 	hideFocus: () => void 0,	// hides the sidebar (gets replaced in oninit)
 	onKeypress: () => void 0,		// global keylistener (gets replaced in oninit)
 	oninit: vnode => {
+		log.trace("start oninit");
 		let state = vnode.state;
 		getStats().run(state.stats);
 
@@ -52,6 +54,7 @@ module.exports = {
 		 */
 		state.onEnter = e => {
 			if(e.keyCode === 13) {
+				log.trace("onEnter");
 				state.query(e.target.value);
 				state.onSearch(e);
 			}
@@ -60,6 +63,7 @@ module.exports = {
 		 * open the sidebar with a players' details
 		 */
 		state.setFocus = player => e => {
+			log.trace("setFocus", player);
 			state.focus(player.id);
 			state.detail(player);
 			state.status(State.DETAIL);
@@ -71,6 +75,7 @@ module.exports = {
 		 * @return {[type]}   [description]
 		 */
 		state.hideFocus = e => {
+			log.trace("hideFocus");
 			state.focus("");
 			state.detail(null);
 			state.status(State.RESULTS);
@@ -80,7 +85,9 @@ module.exports = {
 		 * triggers the search
 		 */
 		state.onSearch = e => {
+			log.trace("starting onSearch");
 			if(idRegex.test(state.query())) {
+				log.trace("search is id");
 				if(state.status() !== State.RESULTS) {
 					state.status(State.SEARCH);
 				}
@@ -97,6 +104,7 @@ module.exports = {
 							state.focus(state.query());
 							state.detail(res[0]);
 							state.status(State.RESULTS);
+							log.trace("set result of id query");
 						}
 					})
 					.run(() => state.status(State.RESULTS))
@@ -105,6 +113,7 @@ module.exports = {
 			}
 			if(state.query() === "" || state.query().length < 3) {
 				// reset to initial state
+				log.trace("no query. resetting to default");
 				state.status(State.INITIAL);
 				setQuerystring(state);
 				return;
@@ -114,6 +123,7 @@ module.exports = {
 				if(state.status() !== State.RESULTS) {
 					state.status(State.SEARCH);
 				}
+				log.trace("searching by name")
 				// clear results
 				state.results([]);
 				// update url
@@ -122,18 +132,24 @@ module.exports = {
 				findPlayer(state.query(), { isExact: state.exact() })
 					.run(state.results)
 					.run(() => state.status(State.RESULTS))
+					.run(() => log.trace("set result of name query"))
 					.catch(err => console.error(err))
 			}
 
 		}
 		window.addEventListener("keyup", e => {
 			if(e.keyCode === 27) {
-				state.hideFocus();
-				m.redraw();
+				log.trace("attempting to close overlay");
+				if(state.detail()) {
+					state.hideFocus();
+					m.redraw();
+				}
+
 			}
 		});
 		window.addEventListener("hashchange", () => init(state));
 		init(state);
+		log.trace("end oninit")
 	},
 	view: ({ state }) =>(
 		<div className={`app ${state.status()}`} onkeyup={state.onKeypress}>
