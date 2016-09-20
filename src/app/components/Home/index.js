@@ -56,21 +56,25 @@ module.exports = {
 			if(state.query() === "" || state.query().length < 3) {
 				// reset to initial state
 				state.stateClasses("");
+				setQuerystring(state);
 				return;
-			} else if(state.stateClasses() !== "has-results") {
+			} else {
 				// set the "is-searching" class only if we were not in the
 				// "has-results" state
-				state.stateClasses("is-searching");
+				if(state.stateClasses() !== "has-results") {
+					state.stateClasses("is-searching");
+				}
+				// clear results
+				state.results([]);
+				// update url
+				setQuerystring(state);
+				// trigger the search
+				findPlayer(state.query(), { isExact: state.exact() })
+					.run(state.results)
+					.run(() => state.stateClasses("has-results"))
+					.catch(err => console.error(err))
 			}
-			// clear results
-			state.results([]);
-			// update url
-			setQuerystring(state);
-			// trigger the search
-			findPlayer(state.query(), { isExact: state.exact() })
-				.run(state.results)
-				.run(() => state.stateClasses("has-results"))
-				.catch(err => console.error(err))
+
 		}
 
 		let query = getQuerystring();
