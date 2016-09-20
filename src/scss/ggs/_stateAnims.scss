@@ -1,0 +1,54 @@
+.is-searching{
+	.search-background img{
+		filter: blur(3vw) grayscale(1) contrast(0.7) brightness(0.7)
+	}
+}
+.has-results{
+	@extend .is-searching;
+
+	.search-title{
+		opacity: 0;
+		transform: translate(0, -200%);
+	}
+	.search-form{
+		transform: none;
+	}
+	.search-footer{
+		opacity: 0;
+		transform: translate(0, 20vh);
+		display: none;
+		animation: footeranim $tdur;
+	}
+	.search-results{
+		opacity: 1;
+		transform: translate(0, $l);
+	}
+}
+
+.has-detail-open{
+	@extend .has-results;
+
+	.detail{
+		transform: translate(0, 0);
+	}
+	.detail-backdrop{
+		transform: translate(0, 0);
+	}
+}
+
+
+@keyframes footeranim{
+
+	0%{
+		opacity: 1;
+		transform: none;
+	}
+	100%{
+		display: flex;
+		opacity: 0;
+		transform: translate(0, 20vh);
+	}
+	100%{
+		display: none;
+	}
+}

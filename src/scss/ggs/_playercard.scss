@@ -31,6 +31,8 @@
 	}
 	.card-image{
 		@include boxshadow;
+		@include btnreset;
+		cursor: pointer;
 		background: $black;
 		width: 64px;
 		height: 64px;
@@ -44,11 +46,14 @@
 	}
 	.player-name {
 		@include siege;
+		@include btnreset;
+		cursor: pointer;
 		display: block;
 		font-size: 2rem;
 		width: 100%;
 		flex: 0 0 auto;
 		color: $white;
+		text-align: left;
 	}
 	.player-id{
 		font-size: 0.8rem;

@@ -1,5 +1,5 @@
 const m = require("mithril");
-const Profilepic = require("../Profilepic");
+const Profilepic = require("./Profilepic");
 const round = (number, digits) => ((number * digits)  |0 ) / digits;
 
 const getKd = player => player.stats.kills / player.stats.deaths;
@@ -30,12 +30,12 @@ const getStats = player => (
 module.exports = {
 	view: ({attrs}) => (
 		<div className="playercard">
-			<a href="" className="card-image">
+			<button onclick={attrs.onClick} className="card-image">
 				<Profilepic id={attrs.player.id}/>
-			</a>
+			</button>
 			<div className="card-content">
 				<div className="player-identification">
-					<a href=""className="player-name">{attrs.player.name}</a>
+					<button onclick={attrs.onClick} className="player-name">{attrs.player.name}</button>
 					<span className="player-id">{attrs.player.id}</span>
 				</div>
 				{getAliases(attrs.player)}
