@@ -5,7 +5,7 @@ development: > npm start
 prod build: > npm run build
 
 ### landing page
-![landing page](screenshots/landing page.png)
+![landing page](screenshots/landing_page.png)
 
 ### search results
-![find view](screenshots/find view.png)
+![find view](screenshots/find_view.png)
