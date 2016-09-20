@@ -3,11 +3,33 @@ const Result = require("./Result");
 const { findPlayer } = require("lib/player");
 const { getStats } = require("lib/stats");
 
+// sets the query string from the current state
 const setQuerystring = state => {
 	let current = ("" + window.location.href).replace(/\?.*$/, "");
 	let query = `?query=${state.query()}&exact=${state.exact()}`
 	let url = current + query;
 	history.replaceState(null,  window.title, url);
+}
+
+const getQuerystring = () => {
+	let qs = window.location.href.split("?");
+	let current = qs[qs.length - 1].split("&");
+	return current.reduce(function(acc, curr) {
+		let pair = curr.split("=");
+		let key = pair[0];
+		let val = pair[1];
+		if(key.substr(-2) === "[]") {
+			if(Array.isArray(acc[key]) === false ){
+				acc[key] = [val];
+			}
+			else {
+				acc[key].push(val);
+			}
+		} else {
+			acc[key] = val;
+		}
+		return acc;
+	}, {});
 }
 
 module.exports = {
@@ -50,6 +72,14 @@ module.exports = {
 				.run(() => state.stateClasses("has-results"))
 				.catch(err => console.error(err))
 		}
+
+		let query = getQuerystring();
+		if(query) {
+			state.query(query.query || "");
+			state.exact(query.exact === "true" ? true : false);
+			state.onSearch();
+		}
+
 	},
 	view: ({ state }) =>(
 		<div className={"search " + state.stateClasses()}>
@@ -60,11 +90,13 @@ module.exports = {
 			<div className="columns is-gapless search-form">
 				<div className="column is-small-8 search-input">
 					<input type="text"
+						value={state.query()}
 						oninput={m.withAttr("value", state.query)}
 						onkeypress={state.onEnter}/>
 					<span>
 						<input type="checkbox"
 							id="exactSearch"
+							checked={state.exact()}
 							onchange={m.withAttr("checked", state.exact)}/>
 						<label htmlFor="exactSearch">exact</label>
 					</span>
