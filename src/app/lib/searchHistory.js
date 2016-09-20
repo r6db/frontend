@@ -24,5 +24,4 @@ function Searchhistory() {
 	this.load();
 }
 
-app.service("SearchHistory", Searchhistory);
-module.exports = "SearchHistory";
+module.exports = Searchhistory();

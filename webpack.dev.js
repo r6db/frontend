@@ -14,7 +14,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			"app$": path.join(__dirname, "./src/app/app.js"),
-			"services": path.join(__dirname, "./src/app/Services")
+			"lib": path.join(__dirname, "./src/app/lib")
 		}
 	},
 	devtool: "source-map",

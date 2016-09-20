@@ -2,7 +2,8 @@
 	"parserOptions": {
 		"ecmaVersion": 6,
 		"ecmaFeatures": {
-			"experimentalObjectRestSpreat": true
+			"experimentalObjectRestSpreat": true,
+			"jsx": true
 		}
 	}
 }

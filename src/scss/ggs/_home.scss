@@ -1,7 +1,8 @@
-$tdur: 400ms;
+$tdur: 200ms;
 
 .search{
-	position: relative;
+	position: absolute;
+	top: 0;
 	width: 100%;
 	min-height: 100vh;
 }
@@ -10,7 +11,7 @@ $tdur: 400ms;
 	@include textshadow;
 	text-align: center;
 	margin: 0 0 3rem;
-	font-size: 6rem;
+	font-size: 12vh;
 	color: $gray-light;
 	font-variant: small-caps;
 	width: 100%;
@@ -21,14 +22,41 @@ $tdur: 400ms;
 	transform: translate(0, 33vh);
 }
 .search-form.search-form{
-	margin-top: $l;
+	@include siege;
 	width: 95%;
 	max-width: 735px;
-	margin: $l auto 0;
+	margin: $l*2 auto 0;
+	justify-content: center;
 	// anim
 	transform: scale(1.1) translate(0, 43vh);
-	transition: all $tdur ease-out;
-	@include siege;
+	transition: all $tdur ease-in-out;
+}
+.search-input{
+	position: relative;
+	>input{
+		width: 100%;
+		padding: 0 60px 0 $l;
+		font-size: 20px;
+		height: 100%;
+	}
+	span{
+		position: absolute;
+		right: 0;
+		height: 100%;
+		width: 4em;
+		display: inline-flex;
+		flex-direction: row;
+		vertical-align: top;
+		align-items: center;
+		input{
+
+		}
+		label{
+			margin: 0 0 0 .3em;
+			font-size: 1rem;
+			user-select: none;
+		}
+	}
 }
 .search-footer{
 	margin: 3em auto;
@@ -54,13 +82,14 @@ $tdur: 400ms;
 }
 .search-results{
 	width: 900px;
-	margin: 0 auto 10vh;
+	margin: $l auto 10vh;
 	//anim
 	opacity: 1;
-	transition: all $tdur ease-out;
+	transition: all $tdur ease-in-out;
+	transition-delay: 100ms;
 	opacity: 0;
 	transform: translate(0, 60vh);
-	
+
 	*:first-child{
 		margin-top: 0;
 	}
@@ -76,6 +105,8 @@ $tdur: 400ms;
 	img{
 		min-width: 100vw;
 		min-height: 100vh;
+		width: auto;
+		height: auto;
 		position: relative;
 		top: 50vh;
 		left: 50vw;
@@ -92,6 +123,7 @@ $tdur: 400ms;
 	}
 }
 .has-results{
+	@extend .is-searching;
 	.search-title{
 		opacity: 0;
 		transform: translate(0, -200%);

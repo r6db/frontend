@@ -1,9 +1,7 @@
-ggs-result{
-    width: 100%;
-}
 .playercard{
 	@include boxshadow;
-    @include clearfix;
+	@include clearfix;
+		width: 100%;
 	position: relative;
 	background: rgba(16, 26, 36 , 0.5);
 	overflow: hidden;
@@ -12,7 +10,7 @@ ggs-result{
 	color: $white;
 	display: flex;
 	flex-direction: row;
-    padding: 15px;
+	padding: 15px;
 
 	&.ng-enter{
 		transition: all 200ms ease-out;
@@ -27,51 +25,52 @@ ggs-result{
 	.card-content{
 		padding: 0 $l*1.5;
 		flex: 1 1 0;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 	}
 	.card-image{
 		@include boxshadow;
 		background: $black;
-		width: 128px;
-		height: 128px;
+		width: 64px;
+		height: 64px;
 		img{
-            width: 100%;
+			width: 100%;
 			height: auto;
 		}
 	}
+	.player-identification{
+		width: 16rem;
+	}
 	.player-name {
 		@include siege;
+		display: block;
 		font-size: 2rem;
-		a{
-			color: $white;
-		}
+		width: 100%;
+		flex: 0 0 auto;
+		color: $white;
 	}
-	.player-firstseen,
-	.player-lastseen,
-    .player-lastactive{
-		transition: all .1s ease-out;
+	.player-id{
+		font-size: 0.8rem;
 		color: $gray;
-		font-weight: 500;
-		font-size: 0.8em;
-		line-height: 1.2;
-        margin: $l*0.5 0;
 	}
 	.player-uplaylink{
-		color: $link;
+		color: $accent;
 		margin: 10px 0;
 		display: block;
-		margin-right: 35px;
+		margin-right: $l;
 		text-decoration: underline;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		flex: 0 0 auto;
+		text-decoration: none;
 	}
-    .player-dateblock{
-        height: 100%;
-    }
+	.player-dateblock{
+		height: 100%;
+	}
 	.player-aliases{
+		flex: 1 0 auto;
 		header{
 			color: $gray;
 			font-weight: 500;
