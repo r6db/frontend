@@ -33,7 +33,7 @@
 	position: relative;
 	>input{
 		width: 100%;
-		padding: 0 60px 0 $l;
+		padding: 0 9*$l 0 $l;
 		font-size: 20px;
 		height: 100%;
 	}
@@ -41,7 +41,7 @@
 		position: absolute;
 		right: 0;
 		height: 100%;
-		width: 4em;
+		width: 8*$l;
 		display: inline-flex;
 		flex-direction: row;
 		vertical-align: top;
