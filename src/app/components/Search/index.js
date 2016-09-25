@@ -3,6 +3,7 @@ const page = require("page");
 const Result = require("./Result");
 const { getQuerystring } = require("lib/querystring");
 const { findPlayer, getPlayer } = require("lib/player");
+const { appstate, states } = require("lib/appstate");
 const { getStats } = require("lib/stats");
 const exitAnim = require("lib/exitAnim");
 const log = require("lib/log").child(__filename);
@@ -11,21 +12,17 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 const setQuerystring = state => {
 	let q = state.query();
 	let e = state.exact();
-	if(q.length > 3){
-		page(`/search?query=${q}&exact=${e}`);
+	if(q.length){
+		window.history.replaceState(null, document.title, `#!/search?query=${q}&exact=${e}`);
+	} else {
+		window.history.replaceState(null, document.title, `#!/search`);
 	}
+	m.redraw();
 }
-
-const State = Object.freeze({
-	INITIAL: "",
-	SEARCH: "is-searching",
-	RESULTS: "has-results"
-});
 
 const showPlayer = id => e => page("/player/"+id);
 
 module.exports = {
-	status: m.prop(""),				// the current app state (used for css animations)
 	results: m.prop([]),			// the search results
 	query: m.prop(""),				// the current search
 	exact: m.prop(false),			// if the search should go by exact name
@@ -42,8 +39,8 @@ module.exports = {
 		 const runSearch = function(setQs){
 			 return findPlayer(state.query(), { isExact: state.exact() })
 			 .run(state.results)
-			 .run(() => state.status(State.RESULTS))
-			 .run(() => setQs? setQuerystring(state): null)
+			 .run(() => setQs ? setQuerystring(state) : null)
+			 .run(() => appstate(states.RESULT))
 			 .catch(err => console.error(err))
 		 }
 		state.onEnter = e => {
@@ -58,8 +55,8 @@ module.exports = {
 		state.onSearch = e => {
 			// use getPlayer if an id was entered
 			if(idRegex.test(state.query())) {
-				if(state.status() !== State.RESULTS) {
-					state.status(State.SEARCH);
+				if(appstate() !== states.RESULT) {
+					appstate(states.SEARCH)
 				}
 				// clear results
 				state.results([]);
@@ -72,25 +69,24 @@ module.exports = {
 						if(res.length === 1) {
 							state.focus(state.query());
 							state.detail(res[0]);
-							state.status(State.RESULTS);
 						}
 					})
-					.run(() => state.status(State.RESULTS))
 					.run(() => setQuerystring(state))
+					.run(() => appstate(states.RESULT))
 					.catch(err => console.error(err));
 				return;
 			}
 			// reset if no search was entered
 			if(state.query() === "" || state.query().length < 3) {
-				state.status(State.INITIAL);
 				setQuerystring(state);
+				appstate(states.INITIAL);
 				return;
 			} else {
 				// update the search list
 				// set the "is-searching" class only if we were not in the
 				// "has-results" state
-				if(state.status() !== State.RESULTS) {
-					state.status(State.SEARCH);
+				if(appstate() !== states.RESULT) {
+					appstate(states.SEARCH);
 				}
 				log.trace("searching by name")
 				// clear results
@@ -123,10 +119,7 @@ module.exports = {
 		state.results([]);
 	},
 	view: ({ state }) =>(
-		<div className={"search " + state.status()}>
-			<div className="search-background">
-				<img src="/assets/skullrain-skull.jpg" alt=""/>
-			</div>
+		<div className="search">
 			<h1 className="title is-1 search-title">Git Gud Scrub</h1>
 			<div className="search-form">
 				<div className="column is-small-8 search-input">
@@ -145,7 +138,7 @@ module.exports = {
 				<button className="search-submit" onclick={state.onSearch}>Search</button>
 			</div>
 			<div className="colums is-multiline search-results">
-				{state.results().map(player => <Result player={player} onclick={showPlayer(player.id)}/>)}
+				{state.results().map((player, i, total) => <Result player={player} index={i} key={player.id} onclick={showPlayer(player.id)}/>)}
 			</div>
 			<footer className="search-footer is-center">
 				{

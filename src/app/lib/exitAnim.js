@@ -3,6 +3,6 @@ module.exports = function({ dom }, done){
 	dom.insertAdjacentElement("afterend", dupe);
 	done();
 	setTimeout(function() {
-		dupe.parentElement.removeChild(dupe);
-	}, 1000)
+		dupe.remove();
+	}, 300)
 }

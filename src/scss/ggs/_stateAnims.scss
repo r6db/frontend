@@ -1,19 +1,15 @@
-.app{
-	transition: all 300ms ease-out;
-	&.is-search{
-		transform: translate(0,0);
-	}
-	&.is-detail{
-		transform: translate(-100vw, 0);
-	}
+.app-pages{
+	transition: transform 300ms ease-in-out;
 }
 
 .is-searching{
-	.search-background img{
+	transform: translate(0,0);
+
+	.app-background img{
 		filter: blur(3vw) grayscale(1) contrast(0.7) brightness(0.7)
 	}
 }
-.has-results{
+.is-results{
 	@extend .is-searching;
 
 	.search-title{
@@ -32,6 +28,12 @@
 	.search-results{
 		opacity: 1;
 		transform: none;
+	}
+}
+.is-detail{
+	@extend .is-results;
+	.app-pages{
+		transform: translate(-100vw, 0);
 	}
 }
 

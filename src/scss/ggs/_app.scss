@@ -1,4 +1,4 @@
-.app{
+.app-pages{
 	will-change: transform;
 	display: flex;
 	flex-direction: row;
@@ -9,4 +9,26 @@
 	height: 100vh;
 	flex: 0 0 auto;
 	overflow-x: hidden;
+}
+.app-background{
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: #333;
+	img{
+		min-width: 100vw;
+		min-height: 100vh;
+		width: auto;
+		height: auto;
+		position: relative;
+		top: 50vh;
+		left: 50vw;
+		transform: translate(-50%, -50%);
+		will-change: filter;
+		transition: all $tdur ease-out;
+		filter: none;
+	}
 }

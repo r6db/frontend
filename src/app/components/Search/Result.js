@@ -44,7 +44,7 @@ module.exports = {
 	view: ({attrs, state}) => (
 		<div className={"playercard " + state.class()}>
 			<button onclick={attrs.onclick} className="card-image">
-				<Profilepic id={attrs.player.id}/>
+				<Profilepic id={attrs.player.id} delay={attrs.index}/>
 			</button>
 			<div className="card-content">
 				<div className="player-identification">
