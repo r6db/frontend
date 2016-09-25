@@ -3,12 +3,12 @@ body{
 	font-family: "Source Sans Pro", sans-serif;
 	position: relative;
 	color: $white;
-	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	background: $black;
 	width: 100vw;
-	overflow-x: hidden;
+	height: 100vh;
+	overflow: hidden;
 }
 .content{
 	flex: 1 0 500px;
@@ -36,9 +36,4 @@ body{
 	left: 50%;
 	-webkit-filter: blur(10px);
 	opacity: 0.2;
-}
-
-.app{
-	width: 100vw;
-	overflow-x: hidden;
 }

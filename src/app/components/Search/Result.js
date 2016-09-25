@@ -26,16 +26,29 @@ const getStats = player => (
 	</div>)
 	: null
 );
-
 module.exports = {
-	view: ({attrs}) => (
-		<div className="playercard">
-			<button onclick={attrs.onClick} className="card-image">
+	class: m.prop("is-initial"),
+	oncreate: ({ state }) => state.class("is-visible"),
+	onbeforeremove: ({ state, dom }, done) => {
+		setTimeout(function(){
+			//dom.parentElement.removeChild(dom);
+			done();
+		}, 400);
+		dom.style.top = dom.offsetTop + "px";
+		dom.style.width = dom.clientWidth + "px";
+		requestAnimationFrame(function(){
+			dom.classList.add("is-leaving");
+		});
+	},
+	onremove: ({ state }) => state.class("is-initial"),
+	view: ({attrs, state}) => (
+		<div className={"playercard " + state.class()}>
+			<button onclick={attrs.onclick} className="card-image">
 				<Profilepic id={attrs.player.id}/>
 			</button>
 			<div className="card-content">
 				<div className="player-identification">
-					<button onclick={attrs.onClick} className="player-name">{attrs.player.name}</button>
+					<button onclick={attrs.onclick} className="player-name">{attrs.player.name}</button>
 					<span className="player-id">{attrs.player.id}</span>
 				</div>
 				{getAliases(attrs.player)}

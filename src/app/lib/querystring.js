@@ -1,14 +1,11 @@
 // sets the query string from the current state
-const setQuerystring = state => {
-	let current = ("" + window.location.href).replace(/[#\?].*$/, "");
-	let query = `?query=${state.query()}&exact=${state.exact()}&focus=${state.focus()}`
-	let url = current + query;
-	history.replaceState(null,  window.title, url);
-}
 
-const getQuerystring = () => {
-	let qs = window.location.href.split("?");
-	let current = qs[qs.length - 1].split("&");
+const getQuerystring = query => {
+	let qs = query || window.location.hash.split("?")[1];
+	if(!qs){
+		return {};
+	}
+	let current = qs.split("&");
 	return current.reduce(function(acc, curr) {
 		let pair = curr.split("=");
 		let key = pair[0];
@@ -28,6 +25,5 @@ const getQuerystring = () => {
 }
 
 module.exports = {
-	getQuerystring,
-	setQuerystring
+	getQuerystring
 }

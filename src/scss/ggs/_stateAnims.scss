@@ -1,3 +1,13 @@
+.app{
+	transition: all 300ms ease-out;
+	&.is-search{
+		transform: translate(0,0);
+	}
+	&.is-detail{
+		transform: translate(-100vw, 0);
+	}
+}
+
 .is-searching{
 	.search-background img{
 		filter: blur(3vw) grayscale(1) contrast(0.7) brightness(0.7)
@@ -24,18 +34,6 @@
 		transform: none;
 	}
 }
-
-.has-detail-open{
-	@extend .has-results;
-
-	.detail{
-		transform: translate(-800px, 0);
-	}
-	.detail-backdrop{
-		transform: translate(0, 0);
-	}
-}
-
 
 @keyframes footeranim{
 

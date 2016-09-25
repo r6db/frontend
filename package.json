@@ -5,7 +5,6 @@
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.3",
-    "babel-plugin-mjsx": "^4.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-plugin-transform-runtime": "^6.5.2",
@@ -17,17 +16,19 @@
     "gulp-postcss": "^6.1.1",
     "gulp-sass": "^2.2.0",
     "gulp-util": "^3.0.7",
+    "rimraf": "^2.5.4",
     "webpack": "^1.12.14"
   },
   "scripts": {
-    "start": "gulp",
-    "build:dev": "cross-env NODE_ENV=development gulp build",
-    "build": "cross-env NODE_ENV=production gulp build",
+    "start": "rimraf build && gulp",
+    "build:dev": "rimraf build && cross-env NODE_ENV=development gulp build",
+    "build": "rimraf build && cross-env NODE_ENV=production gulp build",
     "test": "exit 0"
   },
   "dependencies": {
     "bluebird": "^3.4.6",
     "lodash": "^4.16.0",
-    "mithril": "github:lhorie/mithril.js#rewrite"
+    "mithril": "github:lhorie/mithril.js#rewrite",
+    "page": "^1.7.1"
   }
 }

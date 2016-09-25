@@ -1,17 +1,9 @@
 .detail{
-	display: block;
-	position: absolute;
-	right: -800px;
-	top: 0;
-	width: 80vw;
-	max-width: 800px;
-	height: 100vh;
-	box-shadow: 0 0 5px $gray-dark;
-	// anim
-	transition: all $tdur ease-out;
-	will-change: transform;
+	width: 100%;
+	height: 100%;
+	background: $gray-dark;
 	color: $white;
-
+	padding: $l*2;
 	.player-name{
 		@include siege;
 		font-size: 4rem;
