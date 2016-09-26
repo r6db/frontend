@@ -6,10 +6,13 @@ var basedir = path.join(__dirname, "src");
 
 module.exports = {
 	context: __dirname,
-	entry: "./src/app/index.js",
+	entry: {
+		app: "./src/app/index.js",
+		worker: "./src/app/worker/index.js"
+	},
 	output: {
 		path: path.join(__dirname, "./build/js"),
-		filename: "app.js"
+		filename: "[name].js"
 	},
 	resolve: {
 		alias: {
