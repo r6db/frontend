@@ -12,3 +12,8 @@ test:
     stage: test
     script:
         - npm run test
+
+deploy:
+    state: deploy
+    script:
+        - return 0
