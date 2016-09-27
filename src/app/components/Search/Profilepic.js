@@ -11,7 +11,7 @@ module.exports = {
 	},
 	oncreate: ({ attrs, dom }) => {
 		if(attrs.id) {
-			let src = `http://uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
+			let src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
 			if(!attrs.delay) {
 				dom.src = src;
 			} else {
