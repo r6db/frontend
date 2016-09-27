@@ -2,9 +2,8 @@ const m = require("mithril");
 const page = require("page");
 const Result = require("./Result");
 const { getQuerystring } = require("lib/querystring");
-const { findPlayer, getPlayer } = require("lib/player");
+const api = require("lib/api");
 const { appstate, states } = require("lib/appstate");
-const { getStats } = require("lib/stats");
 const exitAnim = require("lib/exitAnim");
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
@@ -32,16 +31,19 @@ module.exports = {
 	onbeforeremove: exitAnim,
 	oninit: ({ attrs, state }) => {
 		state.results([]);
-		getStats().run(state.stats);
+		api("getStats").then(state.stats);
 		/**
 		 * simple keylistener to trigger the search on enter keypress
 		 */
 		 const runSearch = function(setQs){
-			 return findPlayer(state.query(), { isExact: state.exact() })
-			 .run(state.results)
-			 .run(() => setQs ? setQuerystring(state) : null)
-			 .run(() => appstate(states.RESULT))
-			 .catch(err => console.error(err))
+			 log.trace("running search");
+			 return api("findPlayer", { name: state.query(), exact: state.exact() })
+				 .then(state.results)
+				 .then(() => setQs ? setQuerystring(state) : null)
+				 .then(() => appstate(states.RESULT))
+				 .then(() => m.redraw())
+				 .then(() => log.trace("search finished"))
+				 .catch(err => console.error(err))
 		 }
 		state.onEnter = e => {
 			if(e.keyCode === 13) {
@@ -55,26 +57,10 @@ module.exports = {
 		state.onSearch = e => {
 			// use getPlayer if an id was entered
 			if(idRegex.test(state.query())) {
-				if(appstate() !== states.RESULT) {
-					appstate(states.SEARCH)
-				}
-				// clear results
-				state.results([]);
-				// update url
-				// trigger the search
-				getPlayer(state.query(), { isExact: state.exact() })
-					.run(res => [res])
-					.run(state.results)
-					.run(res => {
-						if(res.length === 1) {
-							state.focus(state.query());
-							state.detail(res[0]);
-						}
-					})
-					.run(() => setQuerystring(state))
-					.run(() => appstate(states.RESULT))
-					.catch(err => console.error(err));
-				return;
+				log.trace("query is an id. redirecting to details")
+				page("/player/"+state.query());
+				m.redraw();
+				return
 			}
 			// reset if no search was entered
 			if(state.query() === "" || state.query().length < 3) {
@@ -102,14 +88,12 @@ module.exports = {
 			state.query(query.query);
 			state.results([]);
 			runSearch(false)
-			.run(function(){
+			.then(function(){
 				// this is a weird workaround.
 				// if we only have 1 result and reload the page
 				// it won't trigger the animation.
 				// a redraw fixes that
-				requestAnimationFrame(function(){
-					m.redraw();
-				})
+				requestAnimationFrame(m.redraw)
 			})
 		}
 	},

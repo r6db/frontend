@@ -4,7 +4,6 @@ const Search = require("./Search");
 const Detail = require("./Detail");
 const { states, appstate } = require("lib/appstate");
 const { getQuerystring } = require("lib/querystring");
-const { getStats } = require("lib/stats");
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
@@ -12,7 +11,7 @@ const isDetailState = appstate.run(x => [states.DETAIL].indexOf(x) !== -1);
 const isSearchState = appstate.run(x => [states.INITIAL, states.SEARCH, states.RESULT].indexOf(x) !== -1);
 
 const init = ({state}) => {
-	appstate.run(log.trace);
+	appstate.run(state => log.trace("new appstate", state));
 	let query = getQuerystring();
 	// accept legacy urls
 	if(window.location.href.indexOf("/#/player/") !== -1) {

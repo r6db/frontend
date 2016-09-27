@@ -1,16 +1,10 @@
 const m = require("mithril");
-const player = require("lib/player");
 const Searchbar = require("./Searchbar");
-const { getPlayer } = require("lib/player");
+const api = require("lib/api");
 const exitAnim = require("lib/exitAnim");
 const log = require("lib/log").child(__filename);
 module.exports = {
 	player: m.prop(null),
-	runContext: function(ctx, next) {
-		getPlayer(ctx.params.id)
-			.run(res => ctx.player = res)
-			.run(() => next());
-	},
 	onbeforeremove: exitAnim,
 	onremove: ({ state }) => {
 		state.player(null);
@@ -18,8 +12,12 @@ module.exports = {
 	oninit: ({ attrs, state }) => {
 		let ctx = attrs.context();
 		if(ctx.params && ctx.params.id){
-			getPlayer(ctx.params.id)
-				.run(state.player);
+			api("getPlayer", { id: ctx.params.id})
+				.then(function(res) {
+					return res;
+				})
+				.then(state.player)
+				.then(() => m.redraw());
 		} else {
 			log.warn("no id given to <Detail />");
 		}

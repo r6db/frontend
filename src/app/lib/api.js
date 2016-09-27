@@ -65,7 +65,7 @@ function request(method, params = null) {
 			workerEnd: 0,
 			apiEnd: 0
 		}
-		cache[id] = { resolve, reject, timeout };
+		cache[id] = { resolve, reject };
 		worker.postMessage({id, method, params, timing});
 	});
 }
