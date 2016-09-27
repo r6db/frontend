@@ -17,11 +17,20 @@ module.exports = {
 	resolve: {
 		alias: {
 			"app$": path.join(__dirname, "./src/app/app.js"),
-			"services": path.join(__dirname, "./src/app/Services")
-
+			"lib": path.join(__dirname, "./src/app/lib")
 		}
 	},
-	devtool: "cheap-source-map",
+	node: {
+		__filename: true
+	},
+	devtool: "source-map",
+	module: {
+		loaders: [{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			loader: "babel"
+		}]
+	},
 	plugins: [
 		new webpack.DefinePlugin({
 			"process.env": {
@@ -45,12 +54,5 @@ module.exports = {
 				"process.env.NODE_ENV": true
 			}
 		})
-	],
-	module: {
-		loaders: [{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: "babel"
-		}]
-	}
+	]
 };

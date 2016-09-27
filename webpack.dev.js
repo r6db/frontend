@@ -20,7 +20,17 @@ module.exports = {
 			"lib": path.join(__dirname, "./src/app/lib")
 		}
 	},
+	node: {
+		__filename: true
+	},
 	devtool: "source-map",
+	module: {
+		loaders: [{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			loader: "babel"
+		}]
+	},
 	plugins: [
 		new webpack.DefinePlugin({
 			"process.env": {
@@ -33,12 +43,5 @@ module.exports = {
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.AggressiveMergingPlugin(),
-	],
-	module: {
-		loaders: [{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: "babel"
-		}]
-	}
+	]
 };
