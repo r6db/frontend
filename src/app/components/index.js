@@ -12,7 +12,7 @@ const isDetailState = appstate.run(x => [states.DETAIL].indexOf(x) !== -1);
 const isSearchState = appstate.run(x => [states.INITIAL, states.SEARCH, states.RESULT].indexOf(x) !== -1);
 
 const init = ({state}) => {
-	appstate.run(state => console.log(state));
+	appstate.run(log.trace);
 	let query = getQuerystring();
 	// accept legacy urls
 	if(window.location.href.indexOf("/#/player/") !== -1) {

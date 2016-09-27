@@ -9,20 +9,31 @@ let methods = {
 }
 
 self.onmessage = function workerReceive(e) {
-	let { id, method, params } = e.data;
+	let { id, method, params, timing } = e.data;
 	if(methods[method]) {
+		timing.workerStart = Date.now()
 		methods[method](params)
 		.then(function(payload) {
-			self.postMessage({id, method, payload})
+			timing.workerEnd = Date.now();
+			self.postMessage({id, method, payload, timing, params})
 		})
 		.catch(function(error) {
-			if(error instanceof Error) {
-				error = {
-					message: error.message,
-					stack: error.stack
+			if(error.then) {
+				return error.then(function(res) {
+					let error = res.error || res;
+					timing.workerEnd = Date.now();
+					self.postMessage({id, method, error, timing, params});
+				})
+			} else {
+				if(error instanceof Error) {
+					error = {
+						message: error.message,
+						stack: error.stack
+					}
 				}
+				timing.workerEnd = Date.now();
+				self.postMessage({id, method, error, timing, params});
 			}
-			self.postMessage({id, method, error});
 		})
 	}
 }

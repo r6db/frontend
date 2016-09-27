@@ -1,8 +1,13 @@
 const { baseurl } = require("../../constants");
-module.exports.get = id => 
+const checkStatus = require("../status");
+module.exports.get = id =>
 	fetch(`${baseurl}api/player/${id}`)
+	.then(checkStatus)
 	.then(res => res.json());
 
-module.exports.find = ({ name, exact }) => 
+module.exports.find = ({ name, exact }) =>
 	fetch(`${baseurl}api/player/${name}?${exact ? "exact=true" : ""}`)
-	.then(res => res.json());
+	.then(checkStatus)
+	.then(res => res.json())
+	.then(function(players) {
+	});

@@ -83,6 +83,12 @@ function Log(_config) {
 		let entry = Object.assign({}, config);
 		entry.data = msgs.slice(1);
 
+		// clean given data
+		if(entry.data.length === 1) {
+			entry.data = entry.data[0];
+		} else if(entry.data.length === 0) {
+			entry.data = undefined;
+		}
 		if (msgs[0] instanceof Error) {
 			entry.msg = msgs[0].message;
 			entry.data = [msgs[0].stack].concat(entry.data);
@@ -98,7 +104,7 @@ function Log(_config) {
 
 		if (entry.level >= logThreshold) {
 			let timeString = "[" + entry.time.toLocaleTimeString() + "]";
-			let logFormat = `%c%s%c %s %c%s \n%c%s ${entry.data !== undefined?"%o":""}`;
+			let logFormat = `%c%s%c %s %c%s \n%c%s ${entry.data ? "%o" : ""}`;
 			let logCommand = [
 				logFormat,
 				getColor("time"),
@@ -108,9 +114,12 @@ function Log(_config) {
 				getColor("text"),
 				(entry.component || ""),
 				getColor(),
-				entry.msg,
-				entry.data
+				entry.msg
 			];
+			if(entry.data) {
+				logCommand.push(
+				entry.data);
+			}
 			console.log.apply(console, logCommand);
 		}
 	};

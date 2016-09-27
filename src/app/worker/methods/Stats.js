@@ -1,4 +1,6 @@
 const { baseurl } = require("../../constants");
-module.exports.get = () => 
+const checkStatus = require("../status");
+module.exports.get = () =>
 	fetch(`${baseurl}api/stats`)
+	.then(checkStatus)
 	.then(res => res.json());
