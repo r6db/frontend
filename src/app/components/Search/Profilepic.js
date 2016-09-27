@@ -3,7 +3,12 @@ const m = require("mithril");
 const fallback = "/assets/noavatar.png"
 
 module.exports = {
-	onError: e => e.target.src = fallback,
+	onError: e => {
+		e.preventDefault();
+		e.stopPropagation();
+		e.target.src = fallback;
+		return false;
+	},
 	oncreate: ({ attrs, dom }) => {
 		if(attrs.id) {
 			let src = `http://uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
