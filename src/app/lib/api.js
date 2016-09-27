@@ -20,7 +20,15 @@ function uuid() {
 
 	return `${x(8)}-${x(4)}-4${x(3)}-${y()}${x(3)}-${x(12)}`;
 };
-
+function getTiming(timing) {
+	return {
+		duration: timing.apiEnd - timing.apiStart,
+		xhr: timing.filter - timing.workerStart,
+		filter: timing.processing - timing.filter,
+		processing: timing.workerEnd - timing.processing,
+		transport: timing.apiEnd - timing.workerEnd
+	};
+}
 let cache = {};
 
 worker.onmessage = function receive(e) {
@@ -34,11 +42,7 @@ worker.onmessage = function receive(e) {
 				method,
 				params,
 				error,
-				timing: {
-					duration: timing.apiEnd - timing.apiStart,
-					xhr: timing.workerEnd - timing.workerStart,
-					transport: timing.apiEnd - timing.workerEnd
-				}
+				timing: getTiming(timing)
 			});
 			prom.reject(error);
 		} else {
@@ -46,11 +50,7 @@ worker.onmessage = function receive(e) {
 				id,
 				method,
 				params,
-				timing: {
-					duration: timing.apiEnd - timing.apiStart,
-					xhr: timing.workerEnd - timing.workerStart,
-					transport: timing.apiEnd - timing.workerEnd
-				}
+				timing: getTiming(timing)
 			});
 			prom.resolve(payload);
 		}
@@ -68,6 +68,7 @@ function request(method, params = null) {
 		let timing = {
 			apiStart:  Date.now(),
 			workerStart: 0,
+			processing: 0,
 			workerEnd: 0,
 			apiEnd: 0
 		}
