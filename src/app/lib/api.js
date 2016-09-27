@@ -3,16 +3,22 @@ const log = require("lib/log").child(__filename);
 
 /**
  * pseudo uuid v4
- * it uses a fixed y in the
+ * has a fixed format of
  * xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
  * pattern
+ * where x  in [0-9a-z]
+ * and y  in [89ab]
  */
 function uuid() {
-	const r = cnt => Math.random()
+	// make a series of x digits
+	const x = cnt => Math.random()
 		.toString(16)
 		.split(".")[1]
 		.substring(0, cnt || 4);
-	return `${r(8)}-${r(4)}-4${r(3)}-a${r(3)}-${r(12)}`;
+	// make a single y digit
+	const y = () => "89ab"[(Math.random()*10 | 0 )%4];
+
+	return `${x(8)}-${x(4)}-4${x(3)}-${y()}${x(3)}-${x(12)}`;
 };
 
 let cache = {};
