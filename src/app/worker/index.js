@@ -29,7 +29,6 @@ self.onmessage = function workerReceive(e) {
 		.then(tap(() => timing.workerEnd = Date.now()))
 		.then(function(payload) {
 			// respond
-			console.log("payload", payload);
 			self.postMessage({id, method, payload, timing, params})
 		})
 		.catch(function(error) {

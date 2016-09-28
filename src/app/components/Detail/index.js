@@ -8,7 +8,7 @@ module.exports = {
 	onbeforeremove: exitAnim,
 	onremove: ({ state }) => {
 		log.trace("<Detail /> onremove");
-		state.player(null);
+		state.player = null;
 	},
 	oninit: ({ attrs, state }) => {
 		log.trace("<Detail /> oninit");
