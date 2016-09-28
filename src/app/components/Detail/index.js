@@ -7,17 +7,17 @@ module.exports = {
 	player: null,
 	onbeforeremove: exitAnim,
 	onremove: ({ state }) => {
-		log.trace("<Detail /> onremove")
+		log.trace("<Detail /> onremove");
 		state.player(null);
 	},
 	oninit: ({ attrs, state }) => {
 		log.trace("<Detail /> oninit");
 		let ctx = attrs.context();
-		if(ctx.params && ctx.params.id){
+		if(ctx.params && ctx.params.id) {
 			log.trace("getting player data", ctx.params.id);
 			api("getPlayer", { id: ctx.params.id})
 				.then(function(res) {
-					log.trace("got player", ctx.params.id)
+					log.trace("got player", ctx.params.id);
 					return res;
 				})
 				.then(res => state.player = res)

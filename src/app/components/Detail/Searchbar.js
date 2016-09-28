@@ -4,20 +4,20 @@ const page = require("page");
 module.exports = {
 	query: m.prop(""),
 	exact: m.prop(false),
-	oninit: function({ state }){
+	oninit: ({ state }) => {
 		state.onEnter = state.onEnter = e => {
 			if(e.keyCode === 13) {
 				state.query(e.target.value);
 				state.onSearch(e);
 			}
-		}
-		state.onSearch = function(){
+		};
+		state.onSearch = function() {
 			let q = state.query();
 			let e = state.exact();
-			if(q.length > 2){
+			if(q.length > 2) {
 				page(`/search?query=${q}&exact=${e}`);
 			}
-		}
+		};
 	},
 	onremove: ({ state }) => {
 		state.query("");

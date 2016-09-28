@@ -19,17 +19,17 @@ const init = ({state}) => {
 		let id = window.location.href
 			.split("/#/player/")[1]
 			.split("?")[0]
-			.replace(/\//g,"");
+			.replace(/\//g, "");
 		query.query = id;
 	}
-	page("/", function(ctx){
+	page("/", function(ctx) {
 		log.trace("router redirecing / to /search");
 		page.redirect("/search");
-	})
-	page("/search", function(ctx){
+	});
+	page("/search", function(ctx) {
 		log.trace("router switch to search");
 		ctx.query = getQuerystring(ctx.querystring);
-		if(ctx.query.query && ctx.query.query.length >2){
+		if(ctx.query.query && ctx.query.query.length >2) {
 			log.trace("router usable query");
 			appstate(states.SEARCH);
 		} else {
@@ -38,22 +38,22 @@ const init = ({state}) => {
 		state.context(ctx);
 		m.redraw();
 	}),
-	page("/player/:id", function(ctx){
+	page("/player/:id", function(ctx) {
 		log.trace("router switch to detail");
 		ctx.query = getQuerystring(ctx.querystring);
 		appstate(states.DETAIL);
 		state.context(ctx);
 		m.redraw();
-	})
-	page("*", function(ctx){
-		if(ctx.path.slice(0,10) === "/#/player/"){
+	});
+	page("*", function(ctx) {
+		if(ctx.path.slice(0, 10) === "/#/player/") {
 			let id =  ctx.path.slice(11).split(/[\/?#]/)[0];
 			page.redirect("/player/" + id);
 		}
 		log.warn("route not found", ctx);
-	})
+	});
 	page.start({hashbang: true});
-}
+};
 
 
 module.exports = {
@@ -61,7 +61,7 @@ module.exports = {
 	detail: m.prop(null),
 	oninit: init,
 	context: m.prop({}),
-	view: ({ state }) =>(
+	view: ({ state }) => (
 		<div className={"app " + appstate()}>
 			<div className="app-background">
 				<img src="/assets/skullrain-skull.jpg" />
@@ -84,4 +84,4 @@ module.exports = {
 			</div>
 		</div>
 	)
-}
+};

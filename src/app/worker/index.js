@@ -5,11 +5,11 @@ const { methods } = require("./method");
 const maybeMap = (fn, args) => payload => 
 	(typeof fn === "function")
 		? fn(payload, args)
-		: payload
+		: payload;
 
 // load methods
 let requireAll = r => r.keys().map(r);
-requireAll(require.context('./methods'));
+requireAll(require.context("./methods"));
 self.onmessage = function workerReceive(e) {
 	let { id, method, params, timing } = e.data;
 	if(methods[method]) {
@@ -39,22 +39,22 @@ self.onmessage = function workerReceive(e) {
 					let error = res.error || res;
 					timing.workerEnd = Date.now();
 					self.postMessage({id, method, error, timing, params});
-				})
+				});
 			} else {
 				// map to serializable form
 				if(error instanceof Error) {
 					error = {
 						message: error.message,
 						stack: error.stack
-					}
+					};
 				}
 				timing.workerEnd = Date.now();
 				self.postMessage({id, method, error, timing, params});
 			}
-		})
+		});
 	} else {
 		self.postMessage({id, method, timing, params, error: "method not found"})
 	}
-}
+};
 
 

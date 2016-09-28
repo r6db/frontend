@@ -6,10 +6,10 @@ const getKd = player => player.stats.kills / player.stats.deaths;
 const getWl = player => player.stats.matchesWon / player.stats.matchesLost;
 
 const getAliases = player => {
-	let shown = player.aliases.slice(0,2).map(alias => <li>{alias.name}</li>)
+	let shown = player.aliases.slice(0, 2).map(alias => <li>{alias.name}</li>);
 	let rest = player.aliases.slice(2).length > 0
 		? <li>and {player.aliases.slice(2).length} more</li>
-		: null
+		: null;
 	return (
 		<div className="player-aliases">
 			<header>known aliases</header>
@@ -30,13 +30,13 @@ module.exports = {
 	class: m.prop("is-initial"),
 	oncreate: ({ state }) => state.class("is-visible"),
 	onbeforeremove: ({ state, dom }, done) => {
-		setTimeout(function(){
+		setTimeout(function() {
 			//dom.parentElement.removeChild(dom);
 			done();
 		}, 400);
 		dom.style.top = dom.offsetTop + "px";
 		dom.style.width = dom.clientWidth + "px";
-		requestAnimationFrame(function(){
+		requestAnimationFrame(function() {
 			dom.classList.add("is-leaving");
 		});
 	},
@@ -59,4 +59,4 @@ module.exports = {
 		</div>
 	)
 
-}
+};

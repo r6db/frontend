@@ -11,39 +11,39 @@ let logThreshold = DEBUG;
 
 function levelString(level) {
 	switch (level) {
-	case TRACE:
-		return "TRACE";
-	case DEBUG:
-		return "DEBUG";
-	case INFO:
-		return "INFO";
-	case WARN:
-		return "WARN";
-	case ERROR:
-		return "ERROR";
-	default:
-		return "";
+		case TRACE:
+			return "TRACE";
+		case DEBUG:
+			return "DEBUG";
+		case INFO:
+			return "INFO";
+		case WARN:
+			return "WARN";
+		case ERROR:
+			return "ERROR";
+		default:
+			return "";
 	}
 }
 
 function getColor(level) {
 	switch (level) {
-	case TRACE:
-		return "color: #ee8624";
-	case DEBUG:
-		return "color: #58C294";
-	case INFO:
-		return "color: #7BAED6";
-	case WARN:
-		return "color: #ffc83f";
-	case ERROR:
-		return "color: #fa5e5b";
-	case "time":
-		return "";
-	case "text":
-		return "color: #888";
-	default:
-		return "";
+		case TRACE:
+			return "color: #ee8624";
+		case DEBUG:
+			return "color: #58C294";
+		case INFO:
+			return "color: #7BAED6";
+		case WARN:
+			return "color: #ffc83f";
+		case ERROR:
+			return "color: #fa5e5b";
+		case "time":
+			return "";
+		case "text":
+			return "color: #888";
+		default:
+			return "";
 	}
 }
 
@@ -68,13 +68,13 @@ function logToServer(entry) {
 
 function Log(_config) {
 	let baseConfig = _config || {
-	name: "log"
+		name: "log"
 	};
 	let getConfig = function(level) {
 		return Object.assign({}, baseConfig, {
 			time: new Date(),
 			name: baseConfig.name,
-			level: level
+			level
 		});
 	};
 
@@ -99,7 +99,7 @@ function Log(_config) {
 
 		entries.push(entry);
 		if (entry.level >= WARN) {
-					logToServer(entry);
+			logToServer(entry);
 		}
 
 		if (entry.level >= logThreshold) {
@@ -147,21 +147,21 @@ function Log(_config) {
 	this.entries = function() {
 		return entries;
 	};
-	this.level = function(level){
+	this.level = function(level) {
 		if (typeof level === "string") {
 			switch (level) {
-			case "TRACE":
-				return logThreshold = TRACE;
-			case "DEBUG":
-				return logThreshold = DEBUG;
-			case "INFO":
-				return logThreshold = INFO;
-			case "WARN":
-				return logThreshold = WARN;
-			case "ERROR":
-				return logThreshold = ERROR;
-			default:
-				return -1;
+				case "TRACE":
+					return logThreshold = TRACE;
+				case "DEBUG":
+					return logThreshold = DEBUG;
+				case "INFO":
+					return logThreshold = INFO;
+				case "WARN":
+					return logThreshold = WARN;
+				case "ERROR":
+					return logThreshold = ERROR;
+				default:
+					return -1;
 			}
 		}
 		else {

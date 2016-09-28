@@ -64,20 +64,20 @@ worker.onmessage = function receive(e) {
 	else {
 		log.error("API Error", {error: "unhandled response", id, method, params} );
 	}
-}
+};
 
 
 function request(method, params = null) {
 	return new Promise(function(resolve, reject) {
 		let id = uuid();
 		let timing = {
-			apiStart:  Date.now(),
+			apiStart: Date.now(),
 			workerStart: 0,
 			processing: 0,
 			workerEnd: 0,
 			apiEnd: 0
-		}
-		log.debug("API request", {id, method, params})
+		};
+		log.debug("API request", {id, method, params});
 		cache[id] = { resolve, reject };
 		worker.postMessage({id, method, params, timing});
 	});

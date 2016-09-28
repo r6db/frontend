@@ -12,13 +12,13 @@ const setQuerystring = state => {
 	log.trace("setting Querystring");
 	let q = state.query();
 	let e = state.exact();
-	if(q.length){
+	if(q.length) {
 		window.history.replaceState(null, document.title, `#!/search?query=${q}&exact=${e}`);
 	} else {
 		window.history.replaceState(null, document.title, `#!/search`);
 	}
 	m.redraw();
-}
+};
 
 const showPlayer = id => e => page("/player/"+id);
 
@@ -37,36 +37,37 @@ module.exports = {
 		/**
 		 * simple keylistener to trigger the search on enter keypress
 		 */
-		 const runSearch = function(setQs){
-			 log.trace("running search");
-			 return api("findPlayer", { name: state.query(), exact: state.exact() })
-				 .then(state.results)
-				 .then(() => setQs ? setQuerystring(state) : null)
-				 .then(() => appstate(states.RESULT))
-				 .then(() => m.redraw())
-				 .then(() => log.trace("search finished"))
-				 .catch(err => console.error(err))
-		 }
+		const runSearch = function(setQs) {
+			log.trace("running search");
+			return api("findPlayer", { name: state.query(), exact: state.exact() })
+				.then(state.results)
+				.then(() => setQs ? setQuerystring(state) : null)
+				.then(() => appstate(states.RESULT))
+				.then(() => m.redraw())
+				.then(() => log.trace("search finished"))
+				.catch(err => console.error(err));
+		};
+
 		state.onEnter = e => {
 			if(e.keyCode === 13) {
 				state.query(e.target.value);
 				state.onSearch(e);
 			}
-		}
+		};
 		/**
 		 * triggers the search
 		 */
 		state.onSearch = e => {
 			// use getPlayer if an id was entered
 			if(idRegex.test(state.query())) {
-				log.trace("query is an id. redirecting to details")
+				log.trace("query is an id. redirecting to details");
 				page("/player/"+state.query());
 				m.redraw();
-				return
+				return;
 			}
 			// reset if no search was entered
 			if(state.query() === "" || state.query().length < 3) {
-				log.trace("query is empty. transitioning to initial state")
+				log.trace("query is empty. transitioning to initial state");
 				setQuerystring(state);
 				appstate(states.INITIAL);
 				return;
@@ -77,7 +78,7 @@ module.exports = {
 				if(appstate() !== states.RESULT) {
 					appstate(states.SEARCH);
 				}
-				log.trace("searching by name")
+				log.trace("searching by name");
 				// clear results
 				state.results([]);
 				// update url and trigger the search
@@ -86,18 +87,18 @@ module.exports = {
 
 		}
 		let query = attrs.context().query || {};
-		if(query.exact === "true") { state.exact(true)}
+		if(query.exact === "true") { state.exact(true); }
 		if(query.query) {
 			state.query(query.query);
 			state.results([]);
 			runSearch(false)
-			.then(function(){
+			.then(function() {
 				// this is a weird workaround.
 				// if we only have 1 result and reload the page
 				// it won't trigger the animation.
 				// a redraw fixes that
-				requestAnimationFrame(m.redraw)
-			})
+				requestAnimationFrame(m.redraw);
+			});
 		}
 	},
 	onremove: ({ state }) => {
@@ -106,7 +107,7 @@ module.exports = {
 		state.exact(false);
 		state.results([]);
 	},
-	view: ({ state }) =>(
+	view: ({ state }) => (
 		<div className="search">
 			<h1 className="title is-1 search-title">Git Gud Scrub</h1>
 			<div className="search-form">

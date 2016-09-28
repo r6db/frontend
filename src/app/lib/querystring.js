@@ -1,7 +1,7 @@
 // parses the querystring into an object
 const getQuerystring = query => {
 	let qs = query || window.location.hash.split("?")[1];
-	if(!qs){
+	if(!qs) {
 		return {};
 	}
 	let current = qs.split("&");
@@ -10,10 +10,9 @@ const getQuerystring = query => {
 		let key = pair[0];
 		let val = pair[1];
 		if(key.substr(-2) === "[]") {
-			if(Array.isArray(acc[key]) === false ){
+			if(Array.isArray(acc[key]) === false ) {
 				acc[key] = [val];
-			}
-			else {
+			} else {
 				acc[key].push(val);
 			}
 		} else {
@@ -21,8 +20,8 @@ const getQuerystring = query => {
 		}
 		return acc;
 	}, {});
-}
+};
 
 module.exports = {
 	getQuerystring
-}
+};

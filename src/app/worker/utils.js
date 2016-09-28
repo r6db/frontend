@@ -4,14 +4,14 @@ const failEarly = function failEarly(res) {
 	} else {
 		return res;
 	}
-}
+};
 
 const tap = cb => data => {
 	cb(data);
 	return data;
-}
+};
 
 module.exports = {
 	failEarly,
 	tap
-}
+};

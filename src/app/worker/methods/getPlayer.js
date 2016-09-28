@@ -5,7 +5,7 @@ const { register } = require("../method");
 
 const find = ({ id }) => fetch(`${baseurl}api/id/${id}`)
 	.then(failEarly)
-	.then(res => res.json())
+	.then(res => res.json());
 
 register("getPlayer")
 	.acquire(find);

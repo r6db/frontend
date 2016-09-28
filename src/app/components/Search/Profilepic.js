@@ -1,6 +1,6 @@
 const m = require("mithril");
 
-const fallback = "/assets/noavatar.png"
+const fallback = "/assets/noavatar.png";
 
 module.exports = {
 	onError: e => {
@@ -16,7 +16,7 @@ module.exports = {
 				dom.src = src;
 			} else {
 				let delay = ((attrs.delay/10) | 0) * 1000;
-				setTimeout(function(){
+				setTimeout(function() {
 					dom.src = src;
 					m.redraw();
 				}, delay);
@@ -24,4 +24,4 @@ module.exports = {
 		}
 	},
 	view: vnode => m("img", {src: fallback, onerror: vnode.state.onError})
-}
+};
