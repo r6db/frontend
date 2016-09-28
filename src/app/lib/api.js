@@ -18,9 +18,12 @@ function uuid() {
 	// make a single y digit
 	const y = () => "89ab"[(Math.random()*10 | 0 )%4];
 
-	return `${x(8)}-${x(4)}-4${x(3)}-${y()}${x(3)}-${x(12)}`;
+	const created =  `${x(8)}-${x(4)}-4${x(3)}-${y()}${x(3)}-${x(12)}`;
+	log.trace("created uuid", uuid);
+	return created;
 };
 function getTiming(timing) {
+	log.trace("calculated timings");
 	return {
 		duration: timing.apiEnd - timing.apiStart,
 		xhr: timing.filter - timing.workerStart,
@@ -29,6 +32,8 @@ function getTiming(timing) {
 		transport: timing.apiEnd - timing.workerEnd
 	};
 }
+
+// cache of open requests (promise, id);
 let cache = {};
 
 worker.onmessage = function receive(e) {
@@ -72,6 +77,7 @@ function request(method, params = null) {
 			workerEnd: 0,
 			apiEnd: 0
 		}
+		log.debug("API request", {id, method, params})
 		cache[id] = { resolve, reject };
 		worker.postMessage({id, method, params, timing});
 	});

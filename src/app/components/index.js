@@ -15,6 +15,7 @@ const init = ({state}) => {
 	let query = getQuerystring();
 	// accept legacy urls
 	if(window.location.href.indexOf("/#/player/") !== -1) {
+		log.trace("router found legacy url");
 		let id = window.location.href
 			.split("/#/player/")[1]
 			.split("?")[0]
@@ -22,12 +23,14 @@ const init = ({state}) => {
 		query.query = id;
 	}
 	page("/", function(ctx){
+		log.trace("router redirecing / to /search");
 		page.redirect("/search");
 	})
 	page("/search", function(ctx){
-		log.trace("switching to search");
+		log.trace("router switch to search");
 		ctx.query = getQuerystring(ctx.querystring);
 		if(ctx.query.query && ctx.query.query.length >2){
+			log.trace("router usable query");
 			appstate(states.SEARCH);
 		} else {
 			appstate(states.INITIAL);
@@ -36,7 +39,7 @@ const init = ({state}) => {
 		m.redraw();
 	}),
 	page("/player/:id", function(ctx){
-		log.trace("switching to detail");
+		log.trace("router switch to detail");
 		ctx.query = getQuerystring(ctx.querystring);
 		appstate(states.DETAIL);
 		state.context(ctx);
@@ -47,7 +50,7 @@ const init = ({state}) => {
 			let id =  ctx.path.slice(11).split(/[\/?#]/)[0];
 			page.redirect("/player/" + id);
 		}
-		log.trace("route not found");
+		log.warn("route not found", ctx);
 	})
 	page.start({hashbang: true});
 }

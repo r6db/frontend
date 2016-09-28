@@ -1,5 +1,4 @@
-// sets the query string from the current state
-
+// parses the querystring into an object
 const getQuerystring = query => {
 	let qs = query || window.location.hash.split("?")[1];
 	if(!qs){

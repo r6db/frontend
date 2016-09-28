@@ -9,6 +9,7 @@ const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 const setQuerystring = state => {
+	log.trace("setting Querystring");
 	let q = state.query();
 	let e = state.exact();
 	if(q.length){
@@ -30,6 +31,7 @@ module.exports = {
 	onEnter: () => void 0,			// enter keylistener (gets replaced in oninit)
 	onbeforeremove: exitAnim,
 	oninit: ({ attrs, state }) => {
+		log.trace("<Search /> oninit");
 		state.results([]);
 		api("getStats").then(state.stats);
 		/**
@@ -64,6 +66,7 @@ module.exports = {
 			}
 			// reset if no search was entered
 			if(state.query() === "" || state.query().length < 3) {
+				log.trace("query is empty. transitioning to initial state")
 				setQuerystring(state);
 				appstate(states.INITIAL);
 				return;
@@ -98,6 +101,7 @@ module.exports = {
 		}
 	},
 	onremove: ({ state }) => {
+		log.trace("<Search /> onremove");
 		state.query("");
 		state.exact(false);
 		state.results([]);
