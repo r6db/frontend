@@ -13,4 +13,4 @@ test:
 deploy:
     stage: deploy
     script:
-        - exit 0
+        - ssh $TARGET_IP "${SCRIPT_NAME}"
