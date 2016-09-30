@@ -5,8 +5,11 @@
 .is-searching{
 	transform: translate(0,0);
 
-	.app-background img{
-		filter: blur(3vw) grayscale(1) contrast(0.7) brightness(0.7)
+	.app-background .clear{
+		opacity: 0;
+	}
+	.app-background .blur{
+		opacity: 1;
 	}
 }
 .is-results{

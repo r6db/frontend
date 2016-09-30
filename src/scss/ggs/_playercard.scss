@@ -1,6 +1,6 @@
 .playercard{
 	width: 100%;
-	background: rgba(16, 26, 36 , 0.5);
+	background: rgb(16, 26, 36);
 	flex: 1 1 100%;
 	margin: 1%;
 	color: $white;
@@ -10,12 +10,7 @@
 	transform: none;
 	transition: transform $tdur, opacity $tdur,  ease-out;
 	opacity: 1;
-	&.is-initial{
-		opacity: 0;
-		transform: translateY(100px);
-	}
-	&.is-leaving{
-		position: absolute;
+	&.is-hidden{
 		opacity: 0;
 		transform: translateY(100px);
 	}

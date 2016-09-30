@@ -23,12 +23,14 @@
 		min-height: 100vh;
 		width: auto;
 		height: auto;
-		position: relative;
+		position: absolute;
 		top: 50vh;
 		left: 50vw;
 		transform: translate(-50%, -50%);
-		will-change: filter;
+		will-change: opacity;
 		transition: all $tdur ease-out;
-		filter: none;
+	}
+	.blur{
+		opacity: 0;
 	}
 }
