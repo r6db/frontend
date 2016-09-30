@@ -2,7 +2,7 @@
 	font-family: "Scout Cond Bd";
 	src: url("/assets/Siege Font.woff") format("woff");
 	font-weight: normal;
-	font-style: normal
+	font-style: normal;
 }
 
 body{
@@ -40,6 +40,5 @@ body{
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
-	-webkit-filter: blur(10px);
 	opacity: 0.2;
 }
