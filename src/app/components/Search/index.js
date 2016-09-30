@@ -111,7 +111,7 @@ module.exports = {
 	},
 	view: ({ state }) => (
 		<div className="search">
-			<h1 className="title is-1 search-title">Git Gud Scrub</h1>
+			<h1 className="title is-1 search-title">R6DB</h1>
 			<div className="search-form">
 				<div className="column is-small-8 search-input">
 					<input type="text"

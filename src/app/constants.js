@@ -1,5 +1,5 @@
 module.exports = Object.freeze({
 	appname: "ggs",
-	title: "git gud scrub",
+	title: "R6DB",
 	baseurl: "https://gitgudscrub.com/"
 });
