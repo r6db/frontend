@@ -30,6 +30,9 @@ module.exports = {
 	onSearch: () => void 0,			// search function (gets replaced in oninit)
 	onEnter: () => void 0,			// enter keylistener (gets replaced in oninit)
 	onbeforeremove: exitAnim,
+	oncreate: ({dom}) => {
+		dom.querySelector(".search-input input").focus();
+	},
 	oninit: ({ attrs, state }) => {
 		log.trace("<Search /> oninit");
 		state.results([]);
@@ -87,7 +90,7 @@ module.exports = {
 				runSearch(true);
 			}
 
-		}
+		};
 		let query = attrs.context().query || {};
 		if(query.exact === "true") { state.exact(true); }
 		if(query.query) {

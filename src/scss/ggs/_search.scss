@@ -38,6 +38,12 @@
 		padding: 0 9*$l 0 $l;
 		font-size: 20px;
 		height: 100%;
+		border: 1px solid transparent;
+		&:focus{
+			box-shadow: none;
+			outline: none;
+			border-color: $primary;
+		}
 	}
 	span{
 		position: absolute;
