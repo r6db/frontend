@@ -13,4 +13,4 @@ test:
 deploy:
     stage: deploy
     script:
-        - ssh $TARGET_IP "${SCRIPT_NAME}"
+        - ssh -o StrictHostKeyChecking=no $TARGET_IP "${SCRIPT_NAME}"
