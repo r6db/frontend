@@ -4,6 +4,7 @@ const Result = require("./Result");
 const { getQuerystring } = require("lib/querystring");
 const api = require("lib/api");
 const { appstate, states } = require("lib/appstate");
+const { title } = require("../../constants");
 const exitAnim = require("lib/exitAnim");
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
@@ -12,10 +13,16 @@ const setQuerystring = state => {
 	log.trace("setting Querystring");
 	let q = state.query();
 	let e = state.exact();
+	let qs = getQuerystring();
+	if(qs.query === q && qs.exact === e) {
+		log.trace("Querystring already matches");
+		return; 
+	}
 	if(q.length) {
-		window.history.replaceState(null, document.title, `#!/search?query=${q}&exact=${e}`);
+		let newtitle = `q | ${title}`;
+		window.history.pushState(null, newtitle, `#!/search?query=${q}&exact=${e}`);
 	} else {
-		window.history.replaceState(null, document.title, `#!/search`);
+		window.history.pushState(null, title, `#!/search`);
 	}
 	m.redraw();
 };
@@ -29,6 +36,7 @@ module.exports = {
 	stats: m.prop(null),			// db stats
 	onSearch: () => void 0,			// search function (gets replaced in oninit)
 	onEnter: () => void 0,			// enter keylistener (gets replaced in oninit)
+	onHashChange: () => {},
 	onbeforeremove: exitAnim,
 	oncreate: ({dom}) => {
 		dom.querySelector(".search-input input").focus();
@@ -105,12 +113,28 @@ module.exports = {
 				requestAnimationFrame(m.redraw);
 			});
 		}
+		/**
+		 * we listen to the hashchange manually,
+		 * because page doesn't trigger on querystring changed
+		 * and we need to have the correct appstate
+		 */
+		state.onHashChange = e => {
+			log.trace("hash has changed. running search");
+			let qs = getQuerystring();
+			if(qs.query != null) {
+				state.query(qs.query || "");
+				state.exact(qs.exact || false);
+				state.onSearch();
+			}
+		};
+		window.addEventListener("hashchange", state.onHashChange);
 	},
 	onremove: ({ state }) => {
 		log.trace("<Search /> onremove");
 		state.query("");
 		state.exact(false);
 		state.results([]);
+		window.removeEventListener("hashchange", state.onHashChange);
 	},
 	view: ({ state }) => (
 		<div className="search">
