@@ -13,4 +13,4 @@ test:
 deploy:
     stage: deploy
     script:
-        - return 0
+        - exit 0
