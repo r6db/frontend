@@ -10,6 +10,8 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 const isDetailState = appstate.run(x => [states.DETAIL].indexOf(x) !== -1);
 const isSearchState = appstate.run(x => [states.INITIAL, states.SEARCH, states.RESULT].indexOf(x) !== -1);
 
+const optional = (pred, cb) => pred ? cb() : "";
+
 const init = ({state}) => {
 	appstate.run(state => log.trace("new appstate", state));
 	let query = getQuerystring();
@@ -69,18 +71,10 @@ module.exports = {
 			</div>
 			<div className="app-pages">
 				<div className="app-page">
-				{
-					isSearchState()
-						? <Search context={state.context}/>
-						: ""
-				}
+				{optional(isSearchState(), () => <Search context={state.context}/>)}
 				</div>
 				<div className="app-page">
-				{
-					isDetailState()
-						? <Detail context={state.context} onBackdropClick={state.hideFocus}/>
-						: ""
-				}
+				{optional(isDetailState(), () => <Detail context={state.context} onBackdropClick={state.hideFocus}/>)}
 				</div>
 			</div>
 		</div>
