@@ -64,7 +64,8 @@ module.exports = {
 	view: ({ state }) => (
 		<div className={"app " + appstate()}>
 			<div className="app-background">
-				<img src="/assets/skullrain-skull.jpg" />
+				<img class="clear" src="/assets/skullrain-skull.jpg" />
+				<img class="blur" src="/assets/skullrain-skull-blurred.jpg" />
 			</div>
 			<div className="app-pages">
 				<div className="app-page">

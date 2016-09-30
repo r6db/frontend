@@ -33,7 +33,9 @@ module.exports = {
 	oninit: ({ attrs, state }) => {
 		log.trace("<Search /> oninit");
 		state.results([]);
-		api("getStats").then(state.stats);
+		api("getStats")
+			.then(state.stats)
+			.then(() => m.redraw());
 		/**
 		 * simple keylistener to trigger the search on enter keypress
 		 */
@@ -133,7 +135,7 @@ module.exports = {
 				{
 					state.stats()
 					? (<span>
-						{state.stats().usercount} users,
+						{state.stats().usercount} users, 
 						{state.stats().namecount} names
 					</span>)
 					: null
@@ -142,4 +144,4 @@ module.exports = {
 			</footer>
 		</div>
 	)
-}
+};

@@ -19,7 +19,7 @@ function uuid() {
 	const y = () => "89ab"[(Math.random()*10 | 0 )%4];
 
 	const created =  `${x(8)}-${x(4)}-4${x(3)}-${y()}${x(3)}-${x(12)}`;
-	log.trace("created uuid", uuid);
+	log.trace("created uuid", created);
 	return created;
 };
 function getTiming(timing) {
