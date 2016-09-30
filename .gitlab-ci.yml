@@ -13,4 +13,6 @@ test:
 deploy:
     stage: deploy
     script:
+        - echo $TARGET_IP
+        - echo $SCRIPT_NAME
         - ssh $TARGET_IP "${SCRIPT_NAME}"
