@@ -27,20 +27,18 @@ const getStats = player => (
 	: null
 );
 module.exports = {
-	class: m.prop("is-initial"),
+	class: m.prop("is-hidden"),
 	oncreate: ({ state }) => state.class("is-visible"),
 	onbeforeremove: ({ state, dom }, done) => {
 		setTimeout(function() {
 			//dom.parentElement.removeChild(dom);
 			done();
 		}, 400);
-		dom.style.top = dom.offsetTop + "px";
-		dom.style.width = dom.clientWidth + "px";
 		requestAnimationFrame(function() {
-			dom.classList.add("is-leaving");
+			dom.classList.add("is-hidden");
 		});
 	},
-	onremove: ({ state }) => state.class("is-initial"),
+	onremove: ({ state }) => state.class("is-hidden"),
 	view: ({attrs, state}) => (
 		<div className={"playercard " + state.class()}>
 			<button onclick={attrs.onclick} className="card-image">
