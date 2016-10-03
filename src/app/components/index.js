@@ -25,21 +25,20 @@ const init = ({state}) => {
 		query.query = id;
 	}
 	page("/", function(ctx) {
-		log.trace("router redirecing / to /search");
 		page.redirect("/search");
 	});
 	page("/search", function(ctx) {
 		log.trace("router switch to search");
 		ctx.query = getQuerystring(ctx.querystring);
 		if(ctx.query.query && ctx.query.query.length >2) {
-			log.trace("router usable query");
+			log.trace("router usable query", ctx);
 			appstate(states.SEARCH);
 		} else {
 			appstate(states.INITIAL);
 		}
 		state.context(ctx);
 		m.redraw();
-	}),
+	});
 	page("/player/:id", function(ctx) {
 		log.trace("router switch to detail");
 		ctx.query = getQuerystring(ctx.querystring);
@@ -51,6 +50,9 @@ const init = ({state}) => {
 		if(ctx.path.slice(0, 10) === "/#/player/") {
 			let id =  ctx.path.slice(11).split(/[\/?#]/)[0];
 			page.redirect("/player/" + id);
+		} else if(ctx.path.startsWith("//")) {
+			log.trace("trying to redirect path", ctx);
+			page.redirect(ctx.path.substr(1));
 		}
 		log.warn("route not found", ctx);
 	});

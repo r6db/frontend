@@ -41,4 +41,4 @@ module.exports = {
 			<button className="search-submit" onclick={state.onSearch}>Search</button>
 		</div>
 	)
-}
+};

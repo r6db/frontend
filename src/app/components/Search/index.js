@@ -16,7 +16,7 @@ const setQuerystring = state => {
 	let qs = getQuerystring();
 	if(qs.query === q && qs.exact === e) {
 		log.trace("Querystring already matches");
-		return; 
+		return;
 	}
 	if(q.length) {
 		let newtitle = `q | ${title}`;
@@ -81,6 +81,8 @@ module.exports = {
 			// reset if no search was entered
 			if(state.query() === "" || state.query().length < 3) {
 				log.trace("query is empty. transitioning to initial state");
+				state.query("");
+				state.exact(false);
 				setQuerystring(state);
 				appstate(states.INITIAL);
 				return;
@@ -123,7 +125,7 @@ module.exports = {
 			let qs = getQuerystring();
 			if(qs.query != null) {
 				state.query(qs.query || "");
-				state.exact(qs.exact || false);
+				state.exact(qs.exact === "true" || false);
 				state.onSearch();
 			}
 		};
@@ -162,7 +164,7 @@ module.exports = {
 				{
 					state.stats()
 					? (<span>
-						{state.stats().usercount} users, 
+						{state.stats().usercount} users,
 						{state.stats().namecount} names
 					</span>)
 					: null
