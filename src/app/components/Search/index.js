@@ -18,11 +18,10 @@ const setQuerystring = state => {
 		log.trace("Querystring already matches");
 		return;
 	}
-	if(q.length) {
-		let newtitle = `q | ${title}`;
-		window.history.pushState(null, newtitle, `#!/search?query=${q}${e ? "?exact=true": ""}`);
+	if(q.length > 2) {
+		page(`/search?query=${q}${e ? "?exact=true" : ""}`);
 	} else {
-		window.history.pushState(null, title, `#!/search`);
+		page("/");
 	}
 };
 
@@ -53,7 +52,7 @@ module.exports = {
 			log.trace("running search");
 			return api("findPlayer", { name: state.query(), exact: state.exact() })
 				.then(state.results)
-				.then(() => setQs ? setQuerystring(state) : null)
+				// .then(() => setQs ? setQuerystring(state) : null)
 				.then(() => appstate(states.RESULT))
 				.then(() => m.redraw())
 				.then(() => log.trace("search finished"))
@@ -82,7 +81,7 @@ module.exports = {
 				log.trace("query is empty. transitioning to initial state");
 				state.query("");
 				state.exact(false);
-				setQuerystring(state);
+				// setQuerystring(state);
 				appstate(states.INITIAL);
 				return;
 			} else {
