@@ -1,0 +1,30 @@
+.alias{
+	display: flex;
+	flex-direction: row;
+	padding: $l;
+	align-items: center;
+}
+.alias + .alias{
+	margin-top: $l*3;
+	.alias-time:before{
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 0;
+		width: 1px;
+		height: 20px;
+		background: $white;
+		transform: translate(0, -35px);
+	}
+}
+.alias-time{
+	flex: 0 0 200px;
+	position: relative;
+	text-align: center;
+	padding-top: 5px;
+}
+.alias-name{
+	@include siege;
+	font-weight: bold;
+	font-size: 1.7em;
+}
