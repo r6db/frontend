@@ -9,21 +9,6 @@ const exitAnim = require("lib/exitAnim");
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
-const setQuerystring = state => {
-	log.trace("setting Querystring");
-	let q = state.query();
-	let e = state.exact();
-	let qs = getQuerystring();
-	if(qs.query === q && qs.exact === e) {
-		log.trace("Querystring already matches");
-		return;
-	}
-	if(q.length > 2) {
-		page(`/search?query=${q}${e ? "?exact=true" : ""}`);
-	} else {
-		page("/");
-	}
-};
 
 const showPlayer = id => e => page("/player/"+id);
 
@@ -31,7 +16,6 @@ module.exports = {
 	results: m.prop([]),			// the search results
 	query: m.prop(""),				// the current search
 	exact: m.prop(false),			// if the search should go by exact name
-	stats: m.prop(null),			// db stats
 	onSearch: () => void 0,			// search function (gets replaced in oninit)
 	onEnter: () => void 0,			// enter keylistener (gets replaced in oninit)
 	onHashChange: () => {},
@@ -42,17 +26,13 @@ module.exports = {
 	oninit: ({ attrs, state }) => {
 		log.trace("<Search /> oninit");
 		state.results([]);
-		api("getStats")
-			.then(state.stats)
-			.then(() => m.redraw());
 		/**
 		 * simple keylistener to trigger the search on enter keypress
 		 */
-		const runSearch = function(setQs) {
+		const runSearch = function() {
 			log.trace("running search");
 			return api("findPlayer", { name: state.query(), exact: state.exact() })
 				.then(state.results)
-				// .then(() => setQs ? setQuerystring(state) : null)
 				.then(() => appstate(states.RESULT))
 				.then(() => m.redraw())
 				.then(() => log.trace("search finished"))
@@ -81,7 +61,6 @@ module.exports = {
 				log.trace("query is empty. transitioning to initial state");
 				state.query("");
 				state.exact(false);
-				// setQuerystring(state);
 				appstate(states.INITIAL);
 				return;
 			} else {
@@ -95,7 +74,7 @@ module.exports = {
 				// clear results
 				state.results([]);
 				// update url and trigger the search
-				runSearch(true);
+				runSearch();
 			}
 
 		};
@@ -104,7 +83,7 @@ module.exports = {
 		if(query.query) {
 			state.query(query.query);
 			state.results([]);
-			runSearch(false)
+			runSearch()
 			.then(function() {
 				// this is a weird workaround.
 				// if we only have 1 result and reload the page
@@ -158,17 +137,6 @@ module.exports = {
 			<div className="colums is-multiline search-results">
 				{state.results().map((player, i, total) => <Result player={player} index={i} key={player.id} onclick={showPlayer(player.id)}/>)}
 			</div>
-			<footer className="search-footer is-center">
-				{
-					state.stats()
-					? (<span>
-						{state.stats().usercount} users,
-						{state.stats().namecount} names
-					</span>)
-					: null
-				}
-				<a href="mailto:info@gitgudscrub.com">info@gitgudscrub.com</a>
-			</footer>
 		</div>
 	)
 };

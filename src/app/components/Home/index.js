@@ -41,7 +41,7 @@ module.exports = {
 				log.trace("query is an id. redirecting to details");
 				page("/player/"+state.query());
 			}
-			if(state.query().length > 3) {
+			if(state.query().length > 2) {
 				page(`/search?query=${state.query()}${state.exact() ? "?exact=true" : ""}`);
 			}
 		};
