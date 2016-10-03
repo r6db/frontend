@@ -11,6 +11,9 @@
 	.app-background .blur{
 		opacity: 1;
 	}
+	.search-results{
+		display: block;
+	}
 }
 .is-results{
 	@extend .is-searching;

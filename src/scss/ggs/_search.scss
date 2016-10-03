@@ -38,11 +38,11 @@
 		padding: 0 9*$l 0 $l;
 		font-size: 20px;
 		height: 100%;
-		border: 1px solid transparent;
+		background: darken($white, 5%);
 		&:focus{
 			box-shadow: none;
 			outline: none;
-			border-color: $primary;
+			background: $white;
 		}
 	}
 	span{
@@ -100,6 +100,7 @@
 	}
 }
 .search-results{
+	display: none;
 	width: 900px;
 	margin: $l*2 auto 10vh;
 	//anim
