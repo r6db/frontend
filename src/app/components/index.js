@@ -1,5 +1,6 @@
 const m = require("mithril");
 const page = require("page");
+const Home = require("./Home");
 const Search = require("./Search");
 const Detail = require("./Detail");
 const { states, appstate } = require("lib/appstate");
@@ -7,8 +8,9 @@ const { getQuerystring } = require("lib/querystring");
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
+const isInitialState = appstate.run(x => [states.INITIAL].indexOf(x) !== -1);
+const isSearchState = appstate.run(x => [states.SEARCH, states.RESULT].indexOf(x) !== -1);
 const isDetailState = appstate.run(x => [states.DETAIL].indexOf(x) !== -1);
-const isSearchState = appstate.run(x => [states.INITIAL, states.SEARCH, states.RESULT].indexOf(x) !== -1);
 
 const optional = (pred, cb) => pred ? cb() : "";
 
@@ -25,7 +27,9 @@ const init = ({state}) => {
 		query.query = id;
 	}
 	page("/", function(ctx) {
-		page.redirect("/search");
+		appstate(states.INITIAL);
+		state.context(ctx);
+		m.redraw();
 	});
 	page("/search", function(ctx) {
 		log.trace("router switch to search");
@@ -34,7 +38,7 @@ const init = ({state}) => {
 			log.trace("router usable query", ctx);
 			appstate(states.SEARCH);
 		} else {
-			appstate(states.INITIAL);
+			page.redirect("/");
 		}
 		state.context(ctx);
 		m.redraw();
@@ -73,6 +77,7 @@ module.exports = {
 			</div>
 			<div className="app-pages">
 				<div className="app-page">
+				{optional(isInitialState(), () => <Home context={state.context}/>)}
 				{optional(isSearchState(), () => <Search context={state.context}/>)}
 				</div>
 				<div className="app-page">

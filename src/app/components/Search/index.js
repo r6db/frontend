@@ -20,11 +20,10 @@ const setQuerystring = state => {
 	}
 	if(q.length) {
 		let newtitle = `q | ${title}`;
-		window.history.pushState(null, newtitle, `#!/search?query=${q}&exact=${e}`);
+		window.history.pushState(null, newtitle, `#!/search?query=${q}${e ? "?exact=true": ""}`);
 	} else {
 		window.history.pushState(null, title, `#!/search`);
 	}
-	m.redraw();
 };
 
 const showPlayer = id => e => page("/player/"+id);
