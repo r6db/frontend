@@ -92,8 +92,7 @@ function Log(_config) {
 		if (msgs[0] instanceof Error) {
 			entry.msg = msgs[0].message;
 			entry.data = [msgs[0].stack].concat(entry.data);
-		}
-		else {
+		} else {
 			entry.msg = msgs[0];
 		}
 
@@ -163,8 +162,7 @@ function Log(_config) {
 				default:
 					return -1;
 			}
-		}
-		else {
+		} else {
 			logThreshold = parseInt(level) || 0;
 		}
 	};
