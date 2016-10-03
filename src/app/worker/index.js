@@ -2,7 +2,7 @@ require("whatwg-fetch");
 const { tap } = require("./utils");
 const { methods } = require("./method");
 
-const maybeMap = (fn, args) => payload => 
+const maybeMap = (fn, args) => payload =>
 	(typeof fn === "function")
 		? fn(payload, args)
 		: payload;
@@ -29,7 +29,7 @@ self.onmessage = function workerReceive(e) {
 		.then(tap(() => timing.workerEnd = Date.now()))
 		.then(function(payload) {
 			// respond
-			self.postMessage({id, method, payload, timing, params})
+			self.postMessage({id, method, payload, timing, params});
 		})
 		.catch(function(error) {
 			if(error.then) {
@@ -52,8 +52,6 @@ self.onmessage = function workerReceive(e) {
 			}
 		});
 	} else {
-		self.postMessage({id, method, timing, params, error: "method not found"})
+		self.postMessage({id, method, timing, params, error: "method not found"});
 	}
 };
-
-
