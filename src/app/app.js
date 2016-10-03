@@ -12,5 +12,3 @@ window.addEventListener("load", main);
 window.addEventListener("unload", function() {
 	m.render(document.body, App);
 });
-
-window.m = m;
