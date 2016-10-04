@@ -41,12 +41,12 @@ module.exports = {
 	onremove: ({ state }) => state.class("is-hidden"),
 	view: ({attrs, state}) => (
 		<div className={"playercard " + state.class()}>
-			<button onclick={attrs.onclick} className="card-image">
+			<a href={attrs.href} className="card-image">
 				<Profilepic id={attrs.player.id} delay={attrs.index}/>
-			</button>
+			</a>
 			<div className="card-content">
 				<div className="player-identification">
-					<button onclick={attrs.onclick} className="player-name">{attrs.player.name}</button>
+					<a href={attrs.href} className="player-name">{attrs.player.name}</a>
 					<span className="player-id">{attrs.player.id}</span>
 				</div>
 				{getAliases(attrs.player)}

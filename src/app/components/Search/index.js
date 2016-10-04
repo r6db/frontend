@@ -10,7 +10,7 @@ const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 
-const showPlayer = id => e => page("/player/"+id);
+const showPlayer = id => `/player/${id}`;
 
 module.exports = {
 	results: m.prop([]),			// the search results
@@ -135,7 +135,7 @@ module.exports = {
 				<button className="search-submit" onclick={state.onSearch}>Search</button>
 			</div>
 			<div className="colums is-multiline search-results">
-				{state.results().map((player, i, total) => <Result player={player} index={i} key={player.id} onclick={showPlayer(player.id)}/>)}
+				{state.results().map((player, i, total) => <Result player={player} index={i} key={player.id} href={showPlayer(player.id)}/>)}
 			</div>
 		</div>
 	)
