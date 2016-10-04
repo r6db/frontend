@@ -20,10 +20,10 @@
 	transform: translate(0, 33vh);
 }
 .search-form{
+	@include siege;
 	@extend .columns;
 	@extend .is-gapless;
 	margin: 0 auto $l;
-	@include siege;
 	width: 95%;
 	max-width: 735px;
 	justify-content: center;
@@ -54,9 +54,6 @@
 		flex-direction: row;
 		vertical-align: top;
 		align-items: center;
-		input{
-
-		}
 		label{
 			margin: 0 0 0 .3em;
 			font-size: 1rem;
@@ -101,7 +98,7 @@
 }
 .search-results{
 	display: none;
-	width: 900px;
+	max-width: 900px;
 	margin: $l*2 auto 10vh;
 	//anim
 	opacity: 1;
