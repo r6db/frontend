@@ -23,7 +23,7 @@
 	@include siege;
 	@extend .columns;
 	@extend .is-gapless;
-	margin: 0 auto $l;
+	margin: $l auto;
 	width: 95%;
 	max-width: 735px;
 	justify-content: center;

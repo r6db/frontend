@@ -1,5 +1,6 @@
 const m = require("mithril");
 const Searchbar = require("./Searchbar");
+const Profilepic = require("../misc/Profilepic");
 const Loading = require("./Loading");
 const Alias = require("./Alias");
 
@@ -12,16 +13,25 @@ const DetailStates = {
 	STATS: "stats"
 };
 
-const playerView = ({state}) => (
+const playerView = (player) => (
 	<div className="detail-player">
-		<div className="detail-name">{state.player.name}</div>
-		<div className="detail-tabs">
-			<div className="tab" onclick={state.setStatus(DetailStates.ALIASES)}>Aliases</div>
-			<div className="tab" onclick={state.setStatus(DetailStates.STATS)}>Stats</div>
+		<div className="detail-header">
+			<div className="detail-headerimage">
+				<Profilepic id={player.id} delay={0} />
+			</div>
+			<div className="detail-headertext">
+				<div className="detail-name">{player.name}</div>
+				<div className="detail-id">{player.id}</div>
+			</div>
 		</div>
-		<div className="detail-tabcontent">
-			<div className="detail-aliases">
-				{state.player.aliases.map(x => <Alias alias={x} />)}
+		<div className="detail-content">
+			<div className="detail-info">
+				<div className="detail-time">
+
+				</div>
+				<div className="detail-aliases">
+					{player.aliases.map(x => <Alias alias={x} />)}
+				</div>
 			</div>
 			<div className="detail-stats">
 			</div>
@@ -30,7 +40,7 @@ const playerView = ({state}) => (
 );
 
 module.exports = {
-	player: null,
+	player: m.prop(null),
 	state: m.prop(DetailStates.ALIASES),
 	onbeforeremove: exitAnim,
 	onremove: ({ state }) => {
@@ -48,7 +58,7 @@ module.exports = {
 					log.trace("got player", res);
 					return res;
 				})
-				.then(res => state.player = res)
+				.then(state.player)
 				.then(() => m.redraw());
 		} else {
 			log.warn("no id given to <Detail />");
@@ -58,8 +68,8 @@ module.exports = {
 		<div className="detail">
 			<Searchbar />
 		{
-			vnode.state.player
-			? playerView(vnode)
+			vnode.state.player()
+			? playerView(vnode.state.player())
 			: <Loading />
 		}
 		</div>)

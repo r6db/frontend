@@ -1,5 +1,5 @@
 const m = require("mithril");
-const Profilepic = require("./Profilepic");
+const Profilepic = require("../misc/Profilepic");
 const round = (number, digits) => ((number * digits)  |0 ) / digits;
 
 const getKd = player => player.stats.kills / player.stats.deaths;
