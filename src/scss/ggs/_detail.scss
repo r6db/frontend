@@ -93,6 +93,25 @@ $detail-header-height: $detail-image-height + (5*$l);
 	}
 }
 
+.detail-aliases::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 6px 0px #2f302f,
+						inset 0 8px 0px #47893b;
+	height: 2px;
+	background: #2f302f;
+}
+
+.detail-aliases::-webkit-scrollbar{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.detail-aliases::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+	background: #47893b;
+}
+
 .detail-stats{
 	padding: $l*2;
 	display: flex;
