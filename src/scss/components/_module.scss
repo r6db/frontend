@@ -4,6 +4,10 @@
 	margin-bottom: 2*$l;
 	background: rgba(0, 0, 0, 0.1);
 	padding: $l;
+	&.is-wide{
+		max-width: 100%;
+		flex: 1 1 100%;
+	}
 }
 .module-header{
 	@include siege;

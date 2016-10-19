@@ -34,24 +34,29 @@ $detail-header-height: $detail-image-height + (5*$l);
 .detail-headerimage{
 	width: $detail-image-height;
 	height: $detail-image-height;
+	background: rgba(0, 0, 0, 0.4);
 }
 
 .detail-headertext{
-	margin-left: 2*$l;
+	padding: 33px 0 33px 20px;
+	background: rgba(0, 0, 0, 0.4);
+	flex: 1;
 }
 
 .detail-name{
 	font-size: 4rem;
+	text-shadow: 0 0 1px $gray-dark;
 }
 
 .detail-id{
-	color: $gray;
+	color: $accent;
 }
 .detail-content{
 	width: 100%;
 	height: 100%;
 	flex: 1 1 100%;
 	background: $gray-dark;
+	box-shadow: 0 0 5px $gray-dark;
 	>*{
 		max-width: $screen-yourmom;
 		margin: 0 auto;
@@ -106,12 +111,6 @@ $detail-header-height: $detail-image-height + (5*$l);
 		background: $gray;
 	}
 }
-
-.detail-aliases
-
-.detail-aliases
-
-.detail-aliases
 
 .detail-stats{
 	padding: $l*2;

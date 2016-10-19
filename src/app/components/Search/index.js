@@ -28,6 +28,7 @@ module.exports = {
 		state.runSearch = function() {
 			state.results([]);
 			log.trace("running search");
+			store.set("loading", true);
 			return api("findPlayer", { name: search.get("query"), exact: search.get("exact")})
 				.then(state.results)
 				.then(() => store.set("appstate", State.RESULT))
@@ -37,8 +38,12 @@ module.exports = {
 					// it won't trigger the animation. and stay hidden
 					// a redraw fixes that
 					requestAnimationFrame(m.redraw);
+					store.set("loading", false);
 				})
-				.catch(err => console.error(err));
+				.catch(err => {
+					log.error(err);
+					store.set("loading", false);
+				});
 		};
 		state.runSearch();
 		search.on("update", state.runSearch);

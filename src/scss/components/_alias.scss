@@ -33,6 +33,9 @@
 			width: 50%;
 			transform: translate(0, -50%);
 		}
+		&:after{
+			background: $primary;
+		}
 	}
 	&:last-child{
 		&:before{

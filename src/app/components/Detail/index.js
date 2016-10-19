@@ -3,7 +3,6 @@ const moment = require("moment");
 
 const Searchbar = require("../misc/Searchbar");
 const Profilepic = require("../misc/Profilepic");
-const Loading = require("./Loading");
 const Alias = require("./Alias");
 
 const api = require("lib/api");
@@ -129,6 +128,7 @@ module.exports = {
 	oninit: ({ attrs, state }) => {
 		log.trace("<Detail /> oninit");
 		log.trace("getting player data", attrs.store.get("detail"));
+		attrs.store.set("loading", true);
 		api("getPlayer", { id: attrs.store.get("detail")})
 			.then(function(res) {
 				log.trace("got player", res);
@@ -137,19 +137,23 @@ module.exports = {
 			.then(state.player)
 			.then(function() {
 				requestAnimationFrame(m.redraw);
+				attrs.store.set("loading", false);
 			})
-			.catch(err => log.error("<Detail /> could not get player", {
-				id: attrs.store.get("detail"), 
-				err
-			}));
+			.catch(err => {
+				log.error("<Detail /> could not get player", {
+					id: attrs.store.get("detail"), 
+					err
+				});
+				attrs.store.set("loading", false);
+			});
 	},
 	view: ({ attrs, state }) => (
 		<div className="detail">
 			<Searchbar search={attrs.store.select("search")} />
 		{
-			state.player()
-			? playerView(state.player())
-			: <Loading />
+			attrs.store.get("loading")
+			? ""
+			: playerView(state.player())
 		}
 		</div>)
 };

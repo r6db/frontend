@@ -3,6 +3,7 @@ const constants = require("./constants");
 
 const defaultState = {
 	appstate: constants.State.INITIAL,
+	loading: false,
 	detail: null,
 	search: {
 		query: "",

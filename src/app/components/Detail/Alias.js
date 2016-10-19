@@ -1,4 +1,5 @@
 const m = require("mithril");
+const moment = require("moment");
 
 module.exports = {
 	view: ({ attrs }) => (
@@ -6,7 +7,7 @@ module.exports = {
 			<div className="alias-time">
 			{
 				attrs.alias.created_at
-					? attrs.alias.created_at.toDateString()
+					? moment(attrs.alias.created_at).calendar()
 					: "no Date"
 			}
 			</div>

@@ -38,6 +38,12 @@
 }
 .is-detail{
 	@extend .is-results;
+	.app-background .clear{
+		opacity: 1;
+	}
+	.app-background .blur{
+		opacity: 0;
+	}
 	.app-pages{
 		transform: translate(-100vw, 0);
 	}

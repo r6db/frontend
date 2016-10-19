@@ -58,6 +58,8 @@
 			margin: 0 0 0 .3em;
 			font-size: 1rem;
 			user-select: none;
+			letter-spacing: 0;
+			color: darken($gray, 30%);
 		}
 	}
 }

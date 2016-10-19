@@ -2,8 +2,10 @@ const m = require("mithril");
 
 module.exports = {
 	onbeforeremove: ({ dom }, done) => {
-		dom.classList.add("is-leaving");
-		setTimeout(done, 400);
+		setTimeout(function() {
+			dom.classList.add("is-leaving");
+		}, 500);
+		setTimeout(done, 1000);
 	},
 	view: ({ state }) => (
 		<div className="loading">

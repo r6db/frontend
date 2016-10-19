@@ -3,6 +3,7 @@ const page = require("page");
 const Home = require("./Home");
 const Search = require("./Search");
 const Detail = require("./Detail");
+const Loading = require("./misc/Loading");
 
 const store = require("lib/store");
 const { State } = require("lib/constants");
@@ -113,6 +114,11 @@ module.exports = {
 				{optional(isDetailState(), () => <Detail store={store} onBackdropClick={state.hideFocus}/>)}
 				</div>
 			</div>
+			{
+				store.get("loading") 
+				? <Loading />
+				: ""
+			}
 		</div>
 	)
 };
