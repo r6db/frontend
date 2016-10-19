@@ -1,5 +1,6 @@
 const m = require("mithril");
 const page = require("page");
+const log = require("lib/log").child(__filename);
 
 module.exports = {
 	query: m.prop(""),
@@ -20,6 +21,7 @@ module.exports = {
 				page(`/search/${q}${e ? "?exact=true": ""}`);
 			}
 		};
+		log.trace("<Searchbar /> oninit", attrs.search.get());
 		state.query(attrs.search.get("query"));
 		state.exact(attrs.search.get("exact"));
 	},

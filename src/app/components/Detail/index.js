@@ -71,8 +71,8 @@ const getStats = player => (
 		<div className="module-row">
 			<div className="module-label">win ratio</div>
 			<div className="module-value">{
-				(player.stats.matchesWon/
-					(player.stats.matchesWon+player.stats.matchesLost)
+				((player.stats.matchesWon/
+					(player.stats.matchesWon+player.stats.matchesLost))*100
 				).toFixed(2)
 			}%</div>
 		</div>
@@ -136,9 +136,12 @@ module.exports = {
 			})
 			.then(state.player)
 			.then(function() {
-				requestAnimationFrame(m.redraw());
+				requestAnimationFrame(m.redraw);
 			})
-			.catch(err => log.error("<Detail /> could not get played",  attrs.store.get("detail")));
+			.catch(err => log.error("<Detail /> could not get player", {
+				id: attrs.store.get("detail"), 
+				err
+			}));
 	},
 	view: ({ attrs, state }) => (
 		<div className="detail">

@@ -20,9 +20,6 @@ let search = store.select("search");
 module.exports = {
 	results: m.prop([]),			// the search results
 	onbeforeremove: exitAnim,
-	oncreate: ({dom}) => {
-		dom.querySelector(".search-input input").focus();
-	},
 	oninit: ({ attrs, state }) => {
 		log.trace("<Search /> oninit");
 		/**
@@ -31,20 +28,19 @@ module.exports = {
 		state.runSearch = function() {
 			state.results([]);
 			log.trace("running search");
-			return api("findPlayer", { name: search.get("query"), exact: search.get("exact") })
+			return api("findPlayer", { name: search.get("query"), exact: search.get("exact")})
 				.then(state.results)
 				.then(() => store.set("appstate", State.RESULT))
-				.then(() => m.redraw())
 				.then(() => log.trace("search finished"))
 				.then(function() {
 					// this is a weird workaround.
-					// if we only have 1 result and reload the page
-					// it won't trigger the animation.
+					// it won't trigger the animation. and stay hidden
 					// a redraw fixes that
 					requestAnimationFrame(m.redraw);
 				})
 				.catch(err => console.error(err));
 		};
+		state.runSearch();
 		search.on("update", state.runSearch);
 	},
 	onremove: ({ state }) => {

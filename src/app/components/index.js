@@ -38,11 +38,19 @@ const init = ({state}) => {
 	page("/search/:query", function(ctx) {
 		log.trace("router switch to search");
 		let query = getQuerystring(ctx.querystring);
+		let exact = query.exact === "true" ? true : false;
 		if(ctx.params.query && ctx.params.query.length >2) {
-			log.trace("router usable query", ctx);
-			store.set("appstate", State.SEARCH);
-			store.set(["search", "query"], ctx.params.query);
-			store.set(["search", "exact"], query.exact ? true: false);
+			log.trace("search context", ctx);
+			if(store.get("appstate") !== State.RESULT
+			|| store.get(["search", "query"]) !== ctx.params.query
+			|| store.get(["search", "exact"]) !== exact) {
+				store.set("appstate", State.SEARCH);
+				store.set(["search", "query"], "");
+				store.set(["search", "query"], ctx.params.query);
+				store.set(["search", "exact"], exact);
+			} else {
+				log.trace("search is identical. skipping request");
+			}
 			store.set("detail", null);
 		} else {
 			page.redirect("/");
@@ -77,11 +85,11 @@ const init = ({state}) => {
 		log.trace("hash has changed. running page");
 		page(window.location.hash);
 	};
-	window.addEventListener("hashchange", onHashChange);
-	store.on("update", function() {
-		log.trace("state changed, updating");
-		// m.redraw();
-	});
+	// window.addEventListener("hashchange", onHashChange);
+	// store.on("update", function() {
+	// 	log.trace("state changed, updating");
+	// 	m.redraw();
+	// });
 };
 
 
