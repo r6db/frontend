@@ -34,6 +34,11 @@
 			transform: translate(0, -50%);
 		}
 	}
+	&:last-child{
+		&:before{
+			background: linear-gradient(to right,$white,$white 50%, rgba(255, 255, 255, 0) 80%);
+		}
+	}
 }
 .alias-name{
 	font-weight: bold;
