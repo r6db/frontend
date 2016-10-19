@@ -3,19 +3,21 @@ const page = require("page");
 const Home = require("./Home");
 const Search = require("./Search");
 const Detail = require("./Detail");
-const { states, appstate } = require("lib/appstate");
+
+const store = require("lib/store");
+const { State } = require("lib/constants");
+
 const { getQuerystring } = require("lib/querystring");
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
-const isInitialState = appstate.run(x => [states.INITIAL].indexOf(x) !== -1);
-const isSearchState = appstate.run(x => [states.SEARCH, states.RESULT].indexOf(x) !== -1);
-const isDetailState = appstate.run(x => [states.DETAIL].indexOf(x) !== -1);
+const isInitialState = x => [State.INITIAL].indexOf(store.get("appstate")) !== -1;
+const isSearchState = x => [State.SEARCH, State.RESULT].indexOf(store.get("appstate")) !== -1;
+const isDetailState = x => [State.DETAIL].indexOf(store.get("appstate")) !== -1;
 
 const optional = (pred, cb) => pred ? cb() : "";
 
 const init = ({state}) => {
-	appstate.run(state => log.trace("new appstate", state));
 	let query = getQuerystring();
 	// accept legacy urls
 	if(window.location.href.indexOf("/#/player/") !== -1) {
@@ -27,27 +29,31 @@ const init = ({state}) => {
 		query.query = id;
 	}
 	page("/", function(ctx) {
-		appstate(states.INITIAL);
-		state.context(ctx);
+		store.set("appstate", State.INITIAL);
+		store.set(["search", "query"], "");
+		store.set(["search", "exact"], false);
+		store.set("detail", null);
 		m.redraw();
 	});
-	page("/search", function(ctx) {
+	page("/search/:query", function(ctx) {
 		log.trace("router switch to search");
-		ctx.query = getQuerystring(ctx.querystring);
-		if(ctx.query.query && ctx.query.query.length >2) {
+		let query = getQuerystring(ctx.querystring);
+		if(ctx.params.query && ctx.params.query.length >2) {
 			log.trace("router usable query", ctx);
-			appstate(states.SEARCH);
+			store.set("appstate", State.SEARCH);
+			store.set(["search", "query"], ctx.params.query);
+			store.set(["search", "exact"], query.exact ? true: false);
+			store.set("detail", null);
 		} else {
 			page.redirect("/");
 		}
-		state.context(ctx);
 		m.redraw();
 	});
 	page("/player/:id", function(ctx) {
 		log.trace("router switch to detail");
 		ctx.query = getQuerystring(ctx.querystring);
-		appstate(states.DETAIL);
-		state.context(ctx);
+		store.set("appstate", State.DETAIL);
+		store.set("detail", ctx.params.id);
 		m.redraw();
 	});
 	page("*", function(ctx) {
@@ -61,27 +67,42 @@ const init = ({state}) => {
 		log.warn("route not found", ctx);
 	});
 	page.start({hashbang: true});
+
+	/**
+	 * we listen to the hashchange manually,
+	 * because page doesn't trigger on querystring changed
+	 * and we need to have the correct appstate
+	 */
+	let onHashChange = e => {
+		log.trace("hash has changed. running page");
+		page(window.location.hash);
+	};
+	window.addEventListener("hashchange", onHashChange);
+	store.on("update", function() {
+		log.trace("state changed, updating");
+		m.redraw();
+	});
 };
 
 
 module.exports = {
-	status: appstate,
+	status: store.get("appstate"),
 	detail: m.prop(null),
 	oninit: init,
 	context: m.prop({}),
 	view: ({ state }) => (
-		<div className={"app " + appstate()}>
+		<div className={"app " + store.get("appstate")}>
 			<div className="app-background">
 				<img class="clear" src="/assets/skullrain-skull.jpg" />
 				<img class="blur" src="/assets/skullrain-skull-blurred.jpg" />
 			</div>
 			<div className="app-pages">
 				<div className="app-page">
-				{optional(isInitialState(), () => <Home context={state.context}/>)}
-				{optional(isSearchState(), () => <Search context={state.context}/>)}
+				{optional(isInitialState(), () => <Home store={store}/>)}
+				{optional(isSearchState(), () => <Search store={store}/>)}
 				</div>
 				<div className="app-page">
-				{optional(isDetailState(), () => <Detail context={state.context} onBackdropClick={state.hideFocus}/>)}
+				{optional(isDetailState(), () => <Detail store={store} onBackdropClick={state.hideFocus}/>)}
 				</div>
 			</div>
 		</div>

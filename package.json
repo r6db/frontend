@@ -26,7 +26,9 @@
     "test": "exit 0"
   },
   "dependencies": {
+    "baobab": "^2.3.3",
     "bluebird": "^3.4.6",
+    "chokidar": "^1.6.1",
     "lodash": "^4.16.0",
     "mithril": "github:lhorie/mithril.js#rewrite",
     "page": "^1.7.1",

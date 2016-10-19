@@ -1,4 +1,4 @@
-const { baseurl } = require("../../constants");
+const { baseurl } = require("lib/constants");
 const { failEarly, tap } = require("../utils");
 const { register } = require("../method");
 
