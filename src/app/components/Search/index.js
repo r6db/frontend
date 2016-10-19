@@ -28,7 +28,7 @@ module.exports = {
 		/**
 		 * simple keylistener to trigger the search on enter keypress
 		 */
-		const runSearch = function() {
+		state.runSearch = function() {
 			state.results([]);
 			log.trace("running search");
 			return api("findPlayer", { name: search.get("query"), exact: search.get("exact") })
@@ -45,12 +45,12 @@ module.exports = {
 				})
 				.catch(err => console.error(err));
 		};
-		search.on("update", runSearch);
+		search.on("update", state.runSearch);
 	},
 	onremove: ({ state }) => {
 		log.trace("<Search /> onremove");
 		state.results([]);
-		search.off("update", runSearch);
+		search.off("update", state.runSearch);
 	},
 	view: ({ attrs, state }) => (
 		<div className="search">

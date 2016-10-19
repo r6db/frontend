@@ -15,7 +15,7 @@ const isInitialState = x => [State.INITIAL].indexOf(store.get("appstate")) !== -
 const isSearchState = x => [State.SEARCH, State.RESULT].indexOf(store.get("appstate")) !== -1;
 const isDetailState = x => [State.DETAIL].indexOf(store.get("appstate")) !== -1;
 
-const optional = (pred, cb) => pred ? cb() : "";
+const optional = (pred, cb) => pred ? cb() : null;
 
 const init = ({state}) => {
 	let query = getQuerystring();
@@ -80,7 +80,7 @@ const init = ({state}) => {
 	window.addEventListener("hashchange", onHashChange);
 	store.on("update", function() {
 		log.trace("state changed, updating");
-		m.redraw();
+		// m.redraw();
 	});
 };
 

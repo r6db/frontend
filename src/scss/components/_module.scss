@@ -1,0 +1,23 @@
+.module{
+	max-width: 400px;
+	flex: 1 1 50%;
+	margin-bottom: 2*$l;
+}
+.module-header{
+	font-weight: bold;
+    border-bottom: 1px solid $gray;
+    font-size: 1.1em;
+    padding-bottom: 5px;
+}
+.module-row{
+	display: flex;
+	flex-direction: row;
+	padding: $l 0;
+}
+.module-label{
+	flex: 1 1 35%;
+}
+.module-value{
+	flex: 1 1 65%;
+	text-align: right;
+}
