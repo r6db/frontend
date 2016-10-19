@@ -5,6 +5,7 @@ const Searchbar = require("../misc/Searchbar");
 const Profilepic = require("../misc/Profilepic");
 const Alias = require("./Alias");
 
+const { Ranks } = require("lib/constants");
 const api = require("lib/api");
 const exitAnim = require("lib/exitAnim");
 const log = require("lib/log").child(__filename);
@@ -17,17 +18,17 @@ const secToHours = sec => moment.duration(sec || 0, "seconds")
 
 const getPlaytime = player => (
 	<div className="detail-timeplayed module">
-		<header className="module-header">Time played (in actual match)</header>
+		<header className="module-header">Time played</header>
 		<div className="module-row">
-			<div className="module-label">casual</div>
+			<div className="module-label">Casual</div>
 			<div className="module-value">{secToHours(player.lastPlayed.casual)}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">ranked</div>
+			<div className="module-label">Ranked</div>
 			<div className="module-value">{secToHours(player.lastPlayed.ranked)}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">total</div>
+			<div className="module-label">Total</div>
 			<div className="module-value">{secToHours(player.lastPlayed.casual + player.lastPlayed.ranked)}</div>
 		</div>
 	</div>
@@ -37,60 +38,103 @@ const getTimestamps = player => (
 	<div className="detail-timestamps module">
 		<header className="module-header">Timestamps</header>
 		<div className="module-row">
-			<div className="module-label">first added</div>
+			<div className="module-label">First added</div>
 			<div className="module-value">{moment(player.created_at).fromNow()}</div>
 		</div>
 		{
 			player.lastPlayed
 			? (<div className="module-row">
-				<div className="module-label">last played</div>
+				<div className="module-label">Last played</div>
 				<div className="module-value">{moment(player.lastPlayed.last_played).fromNow()}</div>
 			</div>)
 			: ""
 		}
 		<div className="module-row">
-			<div className="module-label">last updated</div>
+			<div className="module-label">Last updated</div>
 			<div className="module-value">{moment(player.aliases[0].updated_at).fromNow()}</div>
 		</div>
 	</div>
 );
 
 
-const getStats = player => (
-	<div className="detail-basestats module">
-		<header className="module-header">Stats</header>
+const getGeneralStats = player => (
+	<div className="detail-generaltats module">
+		<header className="module-header">General Stats</header>
 		<div className="module-row">
-			<div className="module-label">wins</div>
-			<div className="module-value">{player.stats.matchesWon}</div>
+			<div className="module-label">Wins</div>
+			<div className="module-value">{player.stats.general.won}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">losses</div>
-			<div className="module-value">{player.stats.matchesLost}</div>
+			<div className="module-label">Losses</div>
+			<div className="module-value">{player.stats.general.lost}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">win ratio</div>
+			<div className="module-label">Win ratio</div>
 			<div className="module-value">{
-				((player.stats.matchesWon/
-					(player.stats.matchesWon+player.stats.matchesLost))*100
+				((player.stats.general.won/
+					(player.stats.general.won+player.stats.general.lost))*100
 				).toFixed(2)
 			}%</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">kills</div>
-			<div className="module-value">{player.stats.kills}</div>
+			<div className="module-label">Kills</div>
+			<div className="module-value">{player.stats.general.kills}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">deaths</div>
-			<div className="module-value">{player.stats.deaths}</div>
+			<div className="module-label">Deaths</div>
+			<div className="module-value">{player.stats.general.deaths}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">k/d ratio</div>
+			<div className="module-label">K/D ratio</div>
 			<div className="module-value">{
-				(player.stats.kills/player.stats.deaths).toFixed(2)
+				(player.stats.general.kills/player.stats.general.deaths).toFixed(2)
 			}</div>
 		</div>
 	</div>
 );
+
+const getRankedStats = player => {
+	let season = player.rank.apac;
+	if(player.rank.emea.wins + player.rank.emea.losses > season.wins + season.losses) {
+		season = player.rank.emea;
+	}
+	if(player.rank.ncsa.wins + player.rank.ncsa.losses > season.wins + season.losses) {
+		season = player.rank.ncsa;
+	}
+	return (
+		<div className="detail-rankedstats module">
+			<header className="module-header">Ranked Stats</header>
+			<div className="module-row">
+				<div className="module-label">Wins</div>
+				<div className="module-value">{season.wins}</div>
+			</div>
+			<div className="module-row">
+				<div className="module-label">Losses</div>
+				<div className="module-value">{season.losses}</div>
+			</div>
+			<div className="module-row">
+				<div className="module-label">Win ratio</div>
+				<div className="module-value">{
+					((season.wins/
+						(season.wins+season.losses))*100
+					).toFixed(2)
+				}%</div>
+			</div>
+			<div className="module-row">
+				<div className="module-label">MMR</div>
+				<div className="module-value">{season.mmr.toFixed(2)}</div>
+			</div>
+			<div className="module-row">
+				<div className="module-label">Rank</div>
+				<div className={`module-value rank-${season.rank - 1}`}>{Ranks[season.rank - 1]}</div>
+			</div>
+			<div className="module-row">
+				<div className="module-label">Skill</div>
+				<div className="module-value">{season.skill_mean.toFixed(2)} ± {season.skill_stdev.toFixed(2)}</div>
+			</div>
+		</div>
+	);
+};
 
 const playerView = player => (
 	<div className="detail-player">
@@ -112,7 +156,8 @@ const playerView = player => (
 			<div className="detail-stats">
 				{getTimestamps(player)}
 				{optional(player.lastPlayed, () => getPlaytime(player))}
-				{optional(player.stats, () => getStats(player))}
+				{optional(player.stats, () => getGeneralStats(player))}
+				{optional(player.rank, () => getRankedStats(player))}
 			</div>
 		</div>
 	</div>
@@ -140,10 +185,7 @@ module.exports = {
 				attrs.store.set("loading", false);
 			})
 			.catch(err => {
-				log.error("<Detail /> could not get player", {
-					id: attrs.store.get("detail"), 
-					err
-				});
+				log.error(err);
 				attrs.store.set("loading", false);
 			});
 	},

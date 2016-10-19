@@ -2,7 +2,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const webpack = require("webpack");
 const path = require("path");
-var basedir = path.join(__dirname, "src");
+let basedir = path.join(__dirname, "src");
 
 module.exports = {
 	context: __dirname,

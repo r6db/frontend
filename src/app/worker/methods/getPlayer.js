@@ -11,7 +11,7 @@ const fixAlias = alias => {
 };
 
 
-const find = ({ id }) => fetch(`${baseurl}api/id/${id}`)
+const find = ({ id }) => fetch(`${baseurl}api/v2/players/${id}`)
 	.then(failEarly)
 	.then(res => res.json());
 

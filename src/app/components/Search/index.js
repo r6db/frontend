@@ -34,18 +34,21 @@ module.exports = {
 				.then(() => store.set("appstate", State.RESULT))
 				.then(() => log.trace("search finished"))
 				.then(function() {
+					m.redraw();
+					store.set("loading", false);
 					// this is a weird workaround.
 					// it won't trigger the animation. and stay hidden
 					// a redraw fixes that
-					requestAnimationFrame(m.redraw);
-					store.set("loading", false);
+					if(state.results().length === 1) {
+						setTimeout(m.redraw, 30);
+					}
 				})
 				.catch(err => {
 					log.error(err);
 					store.set("loading", false);
 				});
 		};
-		state.runSearch();
+		// state.runSearch();
 		search.on("update", state.runSearch);
 	},
 	onremove: ({ state }) => {

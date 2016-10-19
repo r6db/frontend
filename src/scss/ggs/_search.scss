@@ -101,7 +101,7 @@
 .search-results{
 	display: none;
 	max-width: 900px;
-	margin: $l*2 auto 10vh;
+	margin: $l*2 auto 0;
 	//anim
 	opacity: 1;
 	transition: all $tdur ease-in-out;
