@@ -38,13 +38,14 @@ $detail-header-height: $detail-image-height + (5*$l);
 }
 
 .detail-headertext{
-	padding: 33px 0 33px 20px;
+	padding: (2*$l) 0 (3*$l) (2*$l);
 	background: rgba(0, 0, 0, 0.4);
 	flex: 1;
 }
 
 .detail-name{
 	font-size: 4rem;
+	line-height: 8*$l;
 	text-shadow: 0 0 1px $gray-dark;
 }
 

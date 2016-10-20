@@ -69,7 +69,7 @@ const getGeneralStats = player => (
 			<div className="module-value">{player.stats.general.lost}</div>
 		</div>
 		<div className="module-row">
-			<div className="module-label">Win ratio</div>
+			<div className="module-label">Win rate</div>
 			<div className="module-value">{
 				((player.stats.general.won/
 					(player.stats.general.won+player.stats.general.lost))*100
@@ -113,7 +113,7 @@ const getRankedStats = player => {
 				<div className="module-value">{season.losses}</div>
 			</div>
 			<div className="module-row">
-				<div className="module-label">Win ratio</div>
+				<div className="module-label">Win rate</div>
 				<div className="module-value">{
 					((season.wins/
 						(season.wins+season.losses))*100
@@ -143,7 +143,7 @@ const playerView = player => (
 				<Profilepic id={player.id} delay={0} />
 			</div>
 			<div className="detail-headertext">
-				<div className="detail-name">{player.name}</div>
+				<div className="detail-name">{player.aliases[0].name}</div>
 				<div className="detail-id">{player.id}</div>
 			</div>
 		</div>
@@ -193,7 +193,7 @@ module.exports = {
 		<div className="detail">
 			<Searchbar search={attrs.store.select("search")} />
 		{
-			attrs.store.get("loading")
+			attrs.store.get("loading") || !state.player()
 			? ""
 			: playerView(state.player())
 		}

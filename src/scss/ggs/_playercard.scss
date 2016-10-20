@@ -10,10 +10,16 @@
 	transform: none;
 	transition: transform $tdur, opacity $tdur,  ease-out;
 	opacity: 1;
+
 	&.is-hidden{
 		opacity: 0;
 		transform: translateY(100px);
 	}
+	&.is-empty{
+		text-align: center;
+		justify-content: center;
+	}
+
 	.card-content{
 		padding: 0 $l*1.5;
 		flex: 1 1 0;
@@ -67,6 +73,7 @@
 	.player-aliases{
 		display: none;
 		flex: 1 0 auto;
+		
 		header{
 			color: $gray;
 			font-weight: 500;

@@ -16,8 +16,6 @@ module.exports = {
 			let q = state.query();
 			let e = state.exact();
 			if(q.length > 2) {
-				attrs.search.set("query", q);
-				attrs.search.set("exact", e);
 				page(`/search/${q}${e ? "?exact=true": ""}`);
 			}
 		};

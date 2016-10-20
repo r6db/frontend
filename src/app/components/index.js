@@ -5,6 +5,7 @@ const Search = require("./Search");
 const Detail = require("./Detail");
 const Loading = require("./misc/Loading");
 
+const debounce = require("lodash/debounce");
 const store = require("lib/store");
 const { State } = require("lib/constants");
 
@@ -22,7 +23,7 @@ const init = ({state}) => {
 	let query = getQuerystring();
 	// accept legacy urls
 	if(window.location.href.indexOf("/#/player/") !== -1) {
-		log.trace("router found legacy url");
+		log.debug("router found legacy url");
 		let id = window.location.href
 			.split("/#/player/")[1]
 			.split("?")[0]
@@ -30,6 +31,7 @@ const init = ({state}) => {
 		query.query = id;
 	}
 	page("/", function(ctx) {
+		log.debug("router mount <Home />");
 		store.set("appstate", State.INITIAL);
 		store.set(["search", "query"], "");
 		store.set(["search", "exact"], false);
@@ -37,7 +39,7 @@ const init = ({state}) => {
 		m.redraw();
 	});
 	page("/search/:query", function(ctx) {
-		log.trace("router switch to search");
+		log.debug("router mount <Search />");
 		let query = getQuerystring(ctx.querystring);
 		let exact = query.exact === "true" ? true : false;
 		if(ctx.params.query && ctx.params.query.length >2) {
@@ -51,6 +53,7 @@ const init = ({state}) => {
 				store.set(["search", "exact"], exact);
 			} else {
 				log.trace("search is identical. skipping request");
+				debugger;
 			}
 			store.set("detail", null);
 		} else {
@@ -59,7 +62,7 @@ const init = ({state}) => {
 		m.redraw();
 	});
 	page("/player/:id", function(ctx) {
-		log.trace("router switch to detail");
+		log.debug("router mount <Detail />");
 		ctx.query = getQuerystring(ctx.querystring);
 		store.set("appstate", State.DETAIL);
 		store.set("detail", ctx.params.id);
@@ -87,10 +90,10 @@ const init = ({state}) => {
 		page(window.location.hash);
 	};
 	// window.addEventListener("hashchange", onHashChange);
-	// store.on("update", function() {
-	// 	log.trace("state changed, updating");
-	// 	m.redraw();
-	// });
+	store.on("update", debounce(function() {
+		log.trace("state changed, redrawing");
+		m.redraw();
+	}, 200));
 };
 
 
