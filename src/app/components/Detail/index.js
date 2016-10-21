@@ -101,6 +101,9 @@ const getRankedStats = player => {
 	if(player.rank.ncsa.wins + player.rank.ncsa.losses > season.wins + season.losses) {
 		season = player.rank.ncsa;
 	}
+	if(season.wins + season.losses < 10) {
+		return "";
+	}
 	return (
 		<div className="detail-rankedstats module">
 			<header className="module-header">Ranked Stats</header>
