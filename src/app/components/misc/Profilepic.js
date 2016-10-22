@@ -13,16 +13,12 @@ module.exports = {
 	oncreate: ({ attrs, state, dom }) => {
 		if(attrs.id) {
 			let src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
-			if(!attrs.delay) {
-				attrs.delay = 1000;
-			} else {
-				let delay = ((attrs.delay/9) | 0) * 2000;
-				state.timeout = setTimeout(function() {
-					if(dom && dom.parentNode) {
-						dom.src = src;
-					}
-				}, delay);
-			}
+			let delay = (((attrs.delay || 0)/9) | 0) * 2000;
+			state.timeout = setTimeout(function() {
+				if(dom) {
+					dom.src = src;
+				}
+			}, delay);
 		}
 	},
 	onremove: vnode => {
