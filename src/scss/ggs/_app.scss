@@ -1,7 +1,13 @@
+.app{
+	width: 100vw;
+	overflow: hidden;
+}
 .app-pages{
 	will-change: transform;
 	display: flex;
 	flex-direction: row;
+	height: 100vh;
+	width: 200vw;
 }
 .app-page{
 	position: relative;
@@ -9,6 +15,7 @@
 	height: 100vh;
 	flex: 0 0 auto;
 	overflow-x: hidden;
+	overflow-y: auto;
 }
 .app-background{
 	position: fixed;

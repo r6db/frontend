@@ -114,7 +114,7 @@ module.exports = {
 				{optional(isSearchState(), () => <Search store={store}/>)}
 				</div>
 				<div className="app-page">
-				{optional(isDetailState(), () => <Detail store={store} onBackdropClick={state.hideFocus}/>)}
+					<Detail store={store} onBackdropClick={state.hideFocus}/>
 				</div>
 			</div>
 			{
