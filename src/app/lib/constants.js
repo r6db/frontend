@@ -3,6 +3,7 @@ module.exports = {
 	appid: "r6db-frontend",
 	title: "R6DB",
 	baseurl: "https://r6db.com/",
+	v2Api: "https://r6db.com/api/v2",
 	State: Object.freeze({
 		INITIAL: "is-initial",
 		SEARCH: "is-searching",

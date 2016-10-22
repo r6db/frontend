@@ -1,4 +1,4 @@
-const { baseurl } = require("lib/constants");
+const { v2Api } = require("lib/constants");
 const { failEarly, getHeaders } = require("../utils");
 const { register } = require("../method");
 
@@ -11,7 +11,7 @@ const fixAlias = alias => {
 };
 
 
-const find = ({ id }) => fetch(`${baseurl}api/v2/players/${id}`, { headers: getHeaders()})
+const find = ({ id }) => fetch(`${v2Api}/players/${id}`, { headers: getHeaders()})
 	.then(failEarly)
 	.then(res => res.json());
 
