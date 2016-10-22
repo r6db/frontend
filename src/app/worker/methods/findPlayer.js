@@ -64,7 +64,7 @@ const sortByValue = (query, data) => {
 	return data.sort((a, b) => sorter(b) - sorter(a));
 };
 
-let getUrl = params => `${baseurl}api/player/${params.name}?${params.exact ? "exact=true" : ""}`; 
+let getUrl = params => `${baseurl}api/v2/players?name=${params.name}&exact=${params.exact ? "1" : "0"}`; 
 const find = params => fetch( getUrl(params), { headers: getHeaders() })
 	.then(failEarly)
 	.then(res => res.json());
