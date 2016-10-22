@@ -26,6 +26,7 @@
     "test": "exit 0"
   },
   "dependencies": {
+    "@larsbrix/logger": "^3.0.2",
     "baobab": "^2.3.3",
     "bluebird": "^3.4.6",
     "chokidar": "^1.6.1",

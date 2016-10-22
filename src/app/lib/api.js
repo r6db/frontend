@@ -1,6 +1,6 @@
 const worker = new Worker("/js/worker.js");
 const log = require("lib/log").child(__filename);
-
+const uuid = require("lib/uuid");
 /**
  * pseudo uuid v4
  * has a fixed format of
@@ -9,19 +9,7 @@ const log = require("lib/log").child(__filename);
  * where x  in [0-9a-z]
  * and y  in [89ab]
  */
-function uuid() {
-	// make a series of x digits
-	const x = cnt => Math.random()
-		.toString(16)
-		.split(".")[1]
-		.substring(0, cnt || 4);
-	// make a single y digit
-	const y = () => "89ab"[(Math.random()*10 | 0 )%4];
-
-	const created =  `${x(8)}-${x(4)}-4${x(3)}-${y()}${x(3)}-${x(12)}`;
-	log.trace("created uuid", created);
-	return created;
-};
+;
 function getTiming(timing) {
 	log.trace("calculated timings");
 	return {
