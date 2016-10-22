@@ -1,5 +1,6 @@
 module.exports = {
 	appname: "ggs",
+	appid: "r6db-frontend",
 	title: "R6DB",
 	baseurl: "https://r6db.com/",
 	State: Object.freeze({

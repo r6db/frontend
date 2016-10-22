@@ -166,6 +166,19 @@ const playerView = player => (
 	</div>
 );
 
+const notfoundView = () => (
+	<div className="detail-player is-error">
+		<div className="detail-header">
+			<div className="detail-headertext">
+				<div className="detail-name">RIP</div>
+				<div className="detail-id">
+					Something went really wrong. We're working on it !
+				</div>
+			</div>
+		</div>
+	</div>
+);
+
 module.exports = {
 	player: m.prop(null),
 	onbeforeremove: exitAnim,
@@ -196,9 +209,11 @@ module.exports = {
 		<div className="detail">
 			<Searchbar search={attrs.store.select("search")} />
 		{
-			attrs.store.get("loading") || !state.player()
+			attrs.store.get("loading")
 			? ""
-			: playerView(state.player())
+			: state.player() 
+				? playerView(state.player())
+				: notfoundView()
 		}
 		</div>)
 };

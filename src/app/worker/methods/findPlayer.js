@@ -1,7 +1,6 @@
 const { baseurl } = require("lib/constants");
-const { failEarly } = require("../utils");
+const { failEarly, getHeaders } = require("../utils");
 const memoize = require("lodash/memoize");
-const leven = require("lib/levenshtein");
 const { register } = require("../method");
 
 const timeDiff = time => new Date() - new Date(time);
@@ -66,7 +65,8 @@ const sortByValue = (query, data) => {
 	return data.sort((a, b) => sorter(b) - sorter(a));
 };
 
-const find = params => fetch(`${baseurl}api/player/${params.name}?${params.exact ? "exact=true" : ""}`)
+let getUrl = params => `${baseurl}api/player/${params.name}?${params.exact ? "exact=true" : ""}`; 
+const find = params => fetch( getUrl(params), { headers: getHeaders() })
 	.then(failEarly)
 	.then(res => res.json());
 
