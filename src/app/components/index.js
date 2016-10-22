@@ -78,7 +78,7 @@ const init = ({state}) => {
 		}
 		log.warn("route not found", ctx);
 	});
-	page.start({hashbang: true});
+	page.start();
 
 	/**
 	 * we listen to the hashchange manually,
