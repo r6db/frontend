@@ -1,17 +1,17 @@
 .module{
-	flex: 0 1 48%;
+	width: 100%;
 	margin-bottom: 2*$l;
 	background: rgba(0, 0, 0, 0.1);
 	padding: $l;
+	min-width: 300px;
 
 	@include small {
 		flex: 1 1 100%;
 		max-width: none;
 	}
 
-	@include medium {
-		flex: 0 1 48%;
-		min-width: 300px;
+	@include large {
+		flex: 0 1 49%;
 		max-width: 502px;
 	}
 
