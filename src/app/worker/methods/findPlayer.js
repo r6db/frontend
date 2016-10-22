@@ -56,7 +56,6 @@ const playerValue = query => memoize(player => {
 		.map(aliasValue(query, player.name))
 		.reduce((a, b) => a+b, 0);
 	val = val * (1/player.aliases.length);
-	console.log(`${player.name} value is ${val}`);
 	return val;	
 });
 
