@@ -87,12 +87,12 @@ gulp.task("watch:js", function(done) {
 				errorDetails: true
 			}));
 		}
-	})
+	});
 });
 
 gulp.task("build:css", function() {
 	gulp.src(paths.src + "scss/**/*.scss")
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass().on("error", sass.logError))
 		.pipe(postcss(plugins))
 		.pipe(gulp.dest(paths.dist + "css"));
 });
@@ -107,11 +107,16 @@ gulp.task("move:html", function() {
 		.pipe(gulp.dest(paths.dist));
 });
 
+gulp.task("move:favicons", function() {
+	return gulp.src(paths.src + "favicons/**/*")
+		.pipe(gulp.dest(paths.dist));
+});
+
 gulp.task("setup:watchers", function() {
 	gulp.watch(paths.src + "scss/**/*.scss", ["build:css"]);
 	gulp.watch(paths.src + "*.html", ["move:html"]);
 });
 
 
-gulp.task("default", ["move:html", "move:assets", "build:css", "watch:js", "setup:watchers"]);
-gulp.task("build", ["move:html", "move:assets", "build:js", "build:css"]);
+gulp.task("default", ["move:html", "move:assets", "move:favicons", "build:css", "watch:js", "setup:watchers"]);
+gulp.task("build", ["move:html", "move:assets", "move:favicons", "build:js", "build:css"]);
