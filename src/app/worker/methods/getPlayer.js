@@ -16,6 +16,9 @@ const find = ({ id }) => fetch(`${v2Api}/players/${id}`, { headers: getHeaders()
 	.then(res => res.json());
 
 const process = player => {
+	if(!player.aliases) {
+		throw new Error("player object has no aliases");
+	}
 	player.aliases = player.aliases
 		.map(fixAlias)
 		.sort((a, b) => b.created_at - a.created_at);

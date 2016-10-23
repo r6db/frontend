@@ -1,6 +1,5 @@
 const m = require("mithril");
-const page = require("page");
-const { getQuerystring } = require("lib/querystring");
+const page = require("page");;
 const api = require("lib/api");
 const store = require("lib/store");
 const { title, State } = require("lib/constants");

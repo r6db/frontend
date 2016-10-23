@@ -3,7 +3,6 @@ const page = require("page");
 const debounce = require("lodash/debounce");
 const Result = require("./Result");
 const Searchbar = require("../misc/Searchbar");
-const { getQuerystring } = require("lib/querystring");
 const api = require("lib/api");
 const store = require("lib/store");
 const { title, State } = require("lib/constants");
