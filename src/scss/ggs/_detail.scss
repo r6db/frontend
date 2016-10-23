@@ -45,6 +45,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 
 .detail-name{
 	font-size: 2rem;
+	font-weight: bold;
 	line-height: 6*$l;
 	text-shadow: 0 0 1px $gray-dark;
 	@include medium {

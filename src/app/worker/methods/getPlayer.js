@@ -17,8 +17,8 @@ const find = ({ id }) => fetch(`${v2Api}/players/${id}`, { headers: getHeaders()
 
 const process = player => {
 	player.aliases = player.aliases
-		.sort((a, b) => b.created_at - a.created_at)
-		.map(fixAlias);
+		.map(fixAlias)
+		.sort((a, b) => b.created_at - a.created_at);
 	return player;
 };
 

@@ -32,9 +32,17 @@ module.exports = {
 			store.set("loading", true);
 			return api("findPlayer", { name: search.get("query"), exact: search.get("exact")})
 				.then(state.results)
-				.then(() => store.set("appstate", State.RESULT))
+				.then(() => {
+					if(store.get("appstate") === State.SEARCH) {
+						store.set("appstate", State.RESULT);
+					} else {
+						log.warn("not in search state", store.get("appstate"));
+						throw(new Error("not in search state"));
+					}
+				})
 				.then(() => log.trace("search finished"))
 				.then(function() {
+					log.debug("rendering results", state.results());
 					store.set("loading", false);
 					m.redraw();
 					// this is a weird workaround.

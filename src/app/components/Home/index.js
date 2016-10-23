@@ -41,7 +41,7 @@ module.exports = {
 					</span>)
 					: null
 				}
-				<a href="mailto:info@gitgudscrub.com">info@gitgudscrub.com</a>
+				<a href="mailto:info@r6db.com">info@r6db.com</a>
 			</footer>
 		</div>
 	)

@@ -1,12 +1,31 @@
 @font-face {
 	font-family: "Scout Cond Bd";
-	src: url("/assets/Siege Font.woff") format("woff");
+	src: url("/assets/fonts/siege/Siege Font.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: "Noto Sans";
+	src: url("/assets/fonts/noto/NotoSans-Regular.ttf") format("ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Noto Sans";
+	src: url("/assets/fonts/noto/NotoSans-Bold.ttf") format("ttf");
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Noto Sans";
+	src: url("/assets/fonts/noto/NotoSans-Italic.ttf") format("ttf");
+	font-weight: normal;
+	font-style: italic;
+}
+
 
 body{
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Noto Sans", "Open Sans", sans-serif;
 	position: relative;
 	color: $white;
 	display: flex;

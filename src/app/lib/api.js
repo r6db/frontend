@@ -39,7 +39,7 @@ worker.onmessage = function receive(e) {
 			});
 			prom.reject(error);
 		} else {
-			log.debug(`API response`, {
+			log.trace(`API response`, {
 				id,
 				method,
 				params,
@@ -65,7 +65,7 @@ function request(method, params = null) {
 			workerEnd: 0,
 			apiEnd: 0
 		};
-		log.debug("API request", {id, method, params});
+		log.trace("API request", {id, method, params});
 		cache[id] = { resolve, reject };
 		worker.postMessage({id, method, params, timing});
 	});

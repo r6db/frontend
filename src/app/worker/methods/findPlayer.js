@@ -59,17 +59,34 @@ const playerValue = query => memoize(player => {
 	return val;	
 });
 
-const sortByValue = (query, data) => {
-	let sorter = playerValue(query);
-	return data.sort((a, b) => sorter(b) - sorter(a));
+
+const fixAlias = alias => {
+	// eslint-disable-next-line camelcase
+	alias.created_at = alias.created_at
+		? new Date(alias.created_at)
+		: null;
+	return alias;
 };
+
+let processPlayer = player => {
+	player.aliases = player.aliases
+		.map(fixAlias)
+		.sort((a, b) => b.created_at - a.created_at);
+	return player;
+};
+
 
 let getUrl = params => `${v2Api}/players?name=${params.name}&exact=${params.exact ? "1" : "0"}`; 
 const find = params => fetch( getUrl(params), { headers: getHeaders() })
 	.then(failEarly)
 	.then(res => res.json());
 
-const process = (players, params) => sortByValue(params.name, players);
+const process = (players, params) => {
+	let sorter = playerValue(params.name);
+	return players
+	.map(processPlayer)
+	.sort((a, b) => sorter(b) - sorter(a));
+};
 
 register("findPlayer")
 	.acquire(find)
