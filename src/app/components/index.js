@@ -36,6 +36,8 @@ const init = ({state}) => {
 		store.set(["search", "query"], "");
 		store.set(["search", "exact"], false);
 		store.set("detail", null);
+		ga("set", "page", ctx.path);
+		ga("send", "pageview");
 		m.redraw();
 	});
 	page("/search/:query", function(ctx) {
@@ -53,8 +55,9 @@ const init = ({state}) => {
 				store.set(["search", "exact"], exact);
 			} else {
 				log.trace("search is identical. skipping request");
-				debugger;
 			}
+			ga("set", "page", ctx.path);
+			ga("send", "pageview");
 			store.set("detail", null);
 		} else {
 			page.redirect("/");
@@ -66,6 +69,8 @@ const init = ({state}) => {
 		ctx.query = getQuerystring(ctx.querystring);
 		store.set("appstate", State.DETAIL);
 		store.set("detail", ctx.params.id);
+		ga("set", "page", ctx.path);
+		ga("send", "pageview");
 		m.redraw();
 	});
 	page("*", function(ctx) {
