@@ -10,5 +10,5 @@ module.exports = function({ dom }, done) {
 	done();
 	setTimeout(function() {
 		dupe.remove();
-	}, 300);
+	}, 310);
 };

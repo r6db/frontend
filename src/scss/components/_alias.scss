@@ -49,3 +49,34 @@
 	padding-top: 10px;
 	margin-top: 15px;
 }
+
+.alias.has-overlaps:after{
+	background: $warn; 
+}
+
+.alias-legend{
+	display: flex;
+	margin: $l 0;
+	justify-content: flex-end;
+
+	>div { 
+		display: inline-flex;
+		align-items: center;
+		margin-right: $l
+	}
+	.indicator{
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		border: 2px solid $white;
+		background: $gray-dark;
+		margin-right: 0.5*$l;
+
+		&.is-current{
+			background: $primary;
+		}
+		&.has-overlaps{
+			background: $warn;
+		}
+	}
+}
