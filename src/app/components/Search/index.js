@@ -56,7 +56,7 @@ module.exports = {
 					store.set("loading", false);
 				});
 		}, 500);
-		// state.runSearch();
+		state.runSearch();
 		search.on("update", state.runSearch);
 	},
 	onremove: ({ state }) => {

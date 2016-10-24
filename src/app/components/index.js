@@ -29,12 +29,12 @@ const init = ({state}) => {
 		log.debug("router mount <Home />");
 		state.component = Home;
 		store.set("appstate", State.INITIAL);
+		store.set("loading", false);
 		store.set(["search", "query"], "");
 		store.set(["search", "exact"], false);
 		store.set("detail", null);
 		ga("set", "page", ctx.path);
 		ga("send", "pageview");
-		m.redraw();
 	});
 	page("/search/:query", function(ctx) {
 		log.debug("router mount <Search />");
@@ -59,7 +59,6 @@ const init = ({state}) => {
 		} else {
 			page.redirect("/");
 		}
-		m.redraw();
 	});
 	page("/player/:id", function(ctx) {
 		log.debug("router mount <Detail />");
@@ -68,7 +67,6 @@ const init = ({state}) => {
 		store.set("detail", ctx.params.id);
 		ga("set", "page", ctx.path);
 		ga("send", "pageview");
-		m.redraw();
 	});
 	page("*", function(ctx) {
 		if(ctx.path.startsWith("//")) {
