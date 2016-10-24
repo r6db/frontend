@@ -2,13 +2,6 @@
 	width: 100vw;
 	overflow: hidden;
 }
-.app-pages{
-	will-change: transform;
-	display: flex;
-	flex-direction: row;
-	height: 100vh;
-	width: 200vw;
-}
 .app-page{
 	position: relative;
 	width: 100vw;
@@ -25,6 +18,7 @@
 	width: 100vw;
 	height: 100vh;
 	background: #333;
+	
 	img{
 		min-width: 120vw;
 		min-height: 120vh;

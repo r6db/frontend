@@ -27,6 +27,7 @@ const init = ({state}) => {
 			return;
 		}
 		log.debug("router mount <Home />");
+		state.component = Home;
 		store.set("appstate", State.INITIAL);
 		store.set(["search", "query"], "");
 		store.set(["search", "exact"], false);
@@ -43,6 +44,8 @@ const init = ({state}) => {
 			if(store.get("appstate") !== State.RESULT
 			|| store.get(["search", "query"]) !== ctx.params.query
 			|| store.get(["search", "exact"]) !== exact) {
+
+				state.component = Search;
 				store.set("appstate", State.SEARCH);
 				store.set(["search", "query"], "");
 				store.set(["search", "query"], ctx.params.query);
@@ -60,6 +63,7 @@ const init = ({state}) => {
 	});
 	page("/player/:id", function(ctx) {
 		log.debug("router mount <Detail />");
+		state.component = Detail;
 		store.set("appstate", State.DETAIL);
 		store.set("detail", ctx.params.id);
 		ga("set", "page", ctx.path);
@@ -96,24 +100,16 @@ const init = ({state}) => {
 
 
 module.exports = {
-	status: store.get("appstate"),
-	detail: m.prop(null),
+	component: Home,
 	oninit: init,
-	context: m.prop({}),
 	view: ({ state }) => (
 		<div className={"app " + store.get("appstate")}>
 			<div className="app-background">
-				<img class="clear" src="/assets/skullrain-skull.jpg" />
+				<img class="clear" src="/assets/skullrain-skull-optim.jpg" />
 				<img class="blur" src="/assets/skullrain-skull-blurred.jpg" />
 			</div>
-			<div className="app-pages">
-				<div className="app-page">
-				{optional(isInitialState(), () => <Home store={store}/>)}
-				{optional(isSearchState(), () => <Search store={store}/>)}
-				</div>
-				<div className="app-page">
-					<Detail store={store} onBackdropClick={state.hideFocus}/>
-				</div>
+			<div className="app-page">
+				<state.component store={store} />
 			</div>
 			{
 				store.get("loading") 

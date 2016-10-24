@@ -2,8 +2,10 @@ const m = require("mithril");
 const App = require("./components");
 const log = require("lib/log").child(__filename);
 function main() {
+	let mount = document.querySelector("#mount");
 	log.info("mounting app");
-	m.mount(document.body, App);
+	mount.innerHTML = "";
+	m.mount(mount, App);
 }
 
-window.addEventListener("load", main);
+window.addEventListener("DOMContentLoaded", main);
