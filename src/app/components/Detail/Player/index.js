@@ -149,20 +149,6 @@ const playerView = player => (
 				<div className="detail-aliases">
 					{player.aliases.map(x => <Alias alias={x} />)}
 				</div>
-				<div className="alias-legend">
-					<div>
-						<span className="indicator is-current"></span>
-						<span>current name</span>
-					</div>
-					<div>
-						<span className="indicator"></span>
-						<span>known alias</span>
-					</div>
-					<div>
-						<span className="indicator has-overlaps"></span>
-						<span>can have overlaps</span>
-					</div>
-				</div>
 			</div>
 			<div className="detail-stats">
 				{getTimestamps(player)}
