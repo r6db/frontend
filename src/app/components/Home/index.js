@@ -32,14 +32,10 @@ module.exports = {
 			<h1 className="title is-1 search-title">R6DB</h1>
 			<Searchbar search={attrs.store.select("search")} />
 			<footer className="search-footer is-center">
-				{
-					state.stats()
-					? (<span>
-						{state.stats().usercount} users,
-						{state.stats().namecount} names
-					</span>)
-					: null
-				}
+				{state.stats() ? (
+					<div class="footer-stats">
+						<span>{state.stats().usercount}</span> accounts and <span>{state.stats().namecount}</span> aliases indexed
+					</div>) : null}
 				<a href="mailto:info@r6db.com">info@r6db.com</a>
 			</footer>
 		</div>

@@ -33,7 +33,7 @@
 	@extend .columns;
 	@extend .is-small-8;
 	position: relative;
-	
+
 	>input{
 		width: 100%;
 		padding: 0 9*$l 0 $l;
@@ -81,6 +81,7 @@
 }
 .search-footer{
 	margin: 3em auto;
+	width: 300px;
 	color: $white;
 	flex: 0 0 auto;
 	text-align: center;
@@ -99,6 +100,9 @@
 
 	a{
 		color: $accent;
+	}
+	.footer-stats{
+		padding: 5px;
 	}
 }
 .search-results{
