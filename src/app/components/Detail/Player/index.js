@@ -170,7 +170,6 @@ module.exports = {
 	oninit: ({ attrs, state }) => {
 		log.trace("<Player /> oninit");
 		log.trace("getting player data", attrs.store.get("detail"));
-		attrs.store.set("loading", true);
 		api("getPlayer", { id: attrs.store.get("detail")})
 			.then(function(res) {
 				log.trace("got player", res);
@@ -188,7 +187,7 @@ module.exports = {
 	},
 	view: ({ attrs, state }) => attrs.store.get("loading")
 		? <Placeholder />
-		: state.player() 
+		: state.player()
 			? playerView(state.player())
 			: <NotFound />
 };

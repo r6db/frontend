@@ -28,7 +28,6 @@ module.exports = {
 		state.runSearch = debounce(function() {
 			state.results([]);
 			log.trace("running search");
-			store.set("loading", true);
 			return api("findPlayer", { name: search.get("query"), exact: search.get("exact")})
 				.then(state.results)
 				.then(() => {
@@ -36,7 +35,7 @@ module.exports = {
 						store.set("appstate", State.RESULT);
 					} else {
 						log.warn("not in search state", store.get("appstate"));
-						throw(new Error("not in search state"));
+						return Promise.reject("not in search state");
 					}
 				})
 				.then(() => log.trace("search finished"))
@@ -52,8 +51,13 @@ module.exports = {
 					}
 				})
 				.catch(err => {
-					log.error(err);
-					store.set("loading", false);
+					let state = store.get("appstate");
+					if(err instanceof Error) {
+						log.error(err);
+					}
+					if(state === State.SEARCH || state === State.RESULT) {
+						store.set("loading", false);
+					}
 				});
 		}, 500);
 		state.runSearch();
@@ -70,8 +74,8 @@ module.exports = {
 			<Searchbar search={attrs.store.select("search")} />
 			<div className="colums is-multiline search-results">
 				{
-					state.results().length > 0 
-					? state.results().map((player, i, total) => 
+					state.results().length > 0
+					? state.results().map((player, i, total) =>
 						<Result player={player} index={i} key={player.id} href={showPlayer(player.id)}/>)
 					: <div className="playercard is-empty">
 						we could not find any player matching that name. sorry

@@ -17,6 +17,8 @@ module.exports = {
 			let e = state.exact();
 			if(q.length > 2) {
 				page(`/search/${q}${e ? "?exact=true": ""}`);
+			} else {
+				page("/");
 			}
 		};
 		log.trace("<Searchbar /> oninit", attrs.search.get());

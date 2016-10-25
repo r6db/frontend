@@ -27,12 +27,15 @@ const init = ({state}) => {
 			return;
 		}
 		log.debug("router mount <Home />");
+		store.merge({
+			appstate: State.INITIAL,
+			loading: false,
+			search: {
+				query: "",
+				exact: false
+			}
+		});
 		state.component = Home;
-		store.set("appstate", State.INITIAL);
-		store.set("loading", false);
-		store.set(["search", "query"], "");
-		store.set(["search", "exact"], false);
-		store.set("detail", null);
 		ga("set", "page", ctx.path);
 		ga("send", "pageview");
 	});
@@ -41,15 +44,20 @@ const init = ({state}) => {
 		let exact = ctx.querystring.indexOf("exact=true") !== -1 ? true : false;
 		if(ctx.params.query && ctx.params.query.length >2) {
 			log.trace("search context", ctx);
-			if(store.get("appstate") !== State.RESULT
-			|| store.get(["search", "query"]) !== ctx.params.query
-			|| store.get(["search", "exact"]) !== exact) {
+			let isSameState = (store.get("appstate") !== State.RESULT
+				|| store.get(["search", "query"]) !== ctx.params.query
+				|| store.get(["search", "exact"]) !== exact)
 
+			if(isSameState) {
+				store.merge({
+					appstate: State.SEARCH,
+					loading: true,
+					search: {
+						query: ctx.params.query,
+						exact
+					}
+				});
 				state.component = Search;
-				store.set("appstate", State.SEARCH);
-				store.set(["search", "query"], "");
-				store.set(["search", "query"], ctx.params.query);
-				store.set(["search", "exact"], exact);
 			} else {
 				log.trace("search is identical. skipping request");
 			}
@@ -62,9 +70,12 @@ const init = ({state}) => {
 	});
 	page("/player/:id", function(ctx) {
 		log.debug("router mount <Detail />");
+		store.merge({
+			appstate: State.DETAIL,
+			loading: true,
+			detail: ctx.params.id
+		});
 		state.component = Detail;
-		store.set("appstate", State.DETAIL);
-		store.set("detail", ctx.params.id);
 		ga("set", "page", ctx.path);
 		ga("send", "pageview");
 	});
@@ -110,7 +121,7 @@ module.exports = {
 				<state.component store={store} />
 			</div>
 			{
-				store.get("loading") 
+				store.get("loading")
 				? <Loading />
 				: ""
 			}
