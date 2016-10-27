@@ -16,10 +16,6 @@
 		opacity: 0;
 		transform: translateY(100px);
 	}
-	&.is-empty{
-		text-align: center;
-		justify-content: center;
-	}
 
 	.card-content{
 		padding: 0 $l*1.5;
@@ -53,7 +49,7 @@
 		@include btnreset;
 		cursor: pointer;
 		display: block;
-		font-size: 1.7wrem;
+		font-size: 1.7rem;
 		width: 100%;
 		flex: 0 0 auto;
 		color: $white;
