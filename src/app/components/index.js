@@ -5,16 +5,14 @@ const Search = require("./Search");
 const Detail = require("./Detail");
 const Loading = require("./misc/Loading");
 
+
 const debounce = require("lodash/debounce");
 const store = require("lib/store");
 const { State } = require("lib/constants");
+const setMeta = require("lib/meta");
 
 const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
-
-const isInitialState = x => [State.INITIAL].indexOf(store.get("appstate")) !== -1;
-const isSearchState = x => [State.SEARCH, State.RESULT].indexOf(store.get("appstate")) !== -1;
-const isDetailState = x => [State.DETAIL].indexOf(store.get("appstate")) !== -1;
 
 const optional = (pred, cb) => pred ? cb() : null;
 
@@ -36,6 +34,7 @@ const init = ({state}) => {
 			}
 		});
 		state.component = Home;
+		setMeta(State.INITIAL);
 		ga("set", "page", ctx.path);
 		ga("send", "pageview");
 	});
@@ -61,6 +60,7 @@ const init = ({state}) => {
 			} else {
 				log.trace("search is identical. skipping request");
 			}
+			setMeta(State.SEARCH, ctx.params.query);
 			ga("set", "page", ctx.path);
 			ga("send", "pageview");
 			store.set("detail", null);

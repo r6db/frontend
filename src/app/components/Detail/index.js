@@ -1,7 +1,6 @@
 const m = require("mithril");
 const Searchbar = require("../misc/Searchbar");
 const Player = require("./Player");
-const Placeholder = require("./Placeholder");
 
 const log = require("lib/log").child(__filename);
 

@@ -1,7 +1,7 @@
 module.exports = {
 	appname: "ggs",
 	appid: "r6db-frontend",
-	title: "R6DB",
+	title: "R6DB - Rainbow 6 PC Player database",
 	baseurl: "https://r6db.com/",
 	v2Api: "https://r6db.com/api/v2",
 	State: Object.freeze({
@@ -11,6 +11,7 @@ module.exports = {
 		DETAIL: "is-detail"
 	}),
 	Ranks: [
+		"-",
 		"Copper 1",
 		"Copper 2",
 		"Copper 3",
@@ -30,6 +31,6 @@ module.exports = {
 		"Platinum 1",
 		"Platinum 2",
 		"Platinum 3",
-		"Diamond",
+		"Diamond"
 	]
 };
