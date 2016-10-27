@@ -1,8 +1,7 @@
 .playercard{
+	@extend .card;
 	width: 98%;
-	background: $blue-dark;
 	margin: 1%;
-	color: $white;
 	display: flex;
 	flex-direction: row;
 	padding: $l 0;

@@ -1,21 +1,12 @@
 .card{
     margin-bottom: $l;
-    background: $white;
-    color: $gray-dark;
-    overflow: hidden;
-    padding: $l 2*$l;
+    padding: $l;
+    background: $blue-dark;
+    color: $white;
     position: relative;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 
-    &.has-height{
-        min-height: 10em;
-    }
-}
-.card-actions{
-	position: absolute;
-	top: $l;
-	right: 2*$l;
-	>*{
-		margin-left: .5em;
+	&.is-empty{
+		text-align: center;
+		justify-content: center;
 	}
 }
