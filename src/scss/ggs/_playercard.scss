@@ -51,11 +51,10 @@
 		flex: 0 0 auto;
 	}
 	.player-name {
-		@include siege;
 		@include btnreset;
 		cursor: pointer;
 		display: block;
-		font-size: 2rem;
+		font-size: 1.7wrem;
 		width: 100%;
 		flex: 0 0 auto;
 		color: $white;

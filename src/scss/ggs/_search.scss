@@ -20,7 +20,6 @@
 	transform: translate(0, 33vh);
 }
 .search-form{
-	@include siege;
 	@extend .columns;
 	@extend .is-gapless;
 	margin: $l auto;
@@ -36,7 +35,7 @@
 
 	>input{
 		width: 100%;
-		padding: 0 9*$l 0 $l;
+		padding: 0 12*$l 0 $l;
 		font-size: 20px;
 		height: 100%;
 		background: darken($white, 5%);
@@ -51,17 +50,16 @@
 		position: absolute;
 		right: 0;
 		height: 100%;
-		width: 8*$l;
+		width: 11*$l;
 		display: inline-flex;
 		flex-direction: row;
 		vertical-align: top;
 		align-items: center;
-
 		label{
 			margin: 0 0 0 .3em;
 			font-size: 1rem;
 			user-select: none;
-			letter-spacing: 0;
+			letter-spacing: -1px;
 			color: darken($gray, 30%);
 		}
 	}
