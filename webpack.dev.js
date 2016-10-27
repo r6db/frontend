@@ -1,7 +1,8 @@
 const isProd = process.env.NODE_ENV === "production";
-
 const webpack = require("webpack");
+const HappyPack = require("happypack");
 const path = require("path");
+
 let basedir = path.join(__dirname, "src");
 
 module.exports = {
@@ -16,7 +17,6 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			"app$": path.join(__dirname, "./src/app/app.js"),
 			"lib": path.join(__dirname, "./src/app/lib")
 		}
 	},
@@ -28,7 +28,7 @@ module.exports = {
 		loaders: [{
 			test: /\.js$/,
 			exclude: /node_modules/,
-			loader: "babel"
+			loader: "happypack/loader?id=jsHappy"
 		}]
 	},
 	plugins: [
@@ -43,5 +43,18 @@ module.exports = {
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.AggressiveMergingPlugin(),
+		new HappyPack({
+			id: "jsHappy",
+			cacheContext: {
+				env: process.env.NODE_ENV
+			},
+			verbose: false,
+			loaders: [{
+				path: "babel-loader",
+				query: {
+					cacheDirectory: "./.cache"
+				}
+			}]
+		})
 	]
 };

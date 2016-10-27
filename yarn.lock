@@ -3487,6 +3487,15 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.3.tgz#3da382f670f25ded78d7b3d1792119bca0b7132d"
 
+uglify-js@^2.6.2:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.4.tgz#a295a0de12b6a650c031c40deb0dc40b14568bd2"
+  dependencies:
+    async "~0.2.6"
+    source-map "~0.5.1"
+    uglify-to-browserify "~1.0.0"
+    yargs "~3.10.0"
+
 uglify-js@~2.6.0:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.6.4.tgz#65ea2fb3059c9394692f15fed87c2b36c16b9adf"
@@ -3618,12 +3627,19 @@ watchpack@^0.2.1:
     chokidar "^1.0.0"
     graceful-fs "^4.1.2"
 
-webpack-core@~0.6.0:
+webpack-core@^0.6.8, webpack-core@~0.6.0:
   version "0.6.8"
   resolved "https://registry.yarnpkg.com/webpack-core/-/webpack-core-0.6.8.tgz#edf9135de00a6a3c26dd0f14b208af0aa4af8d0a"
   dependencies:
     source-list-map "~0.1.0"
     source-map "~0.4.1"
+
+webpack-uglify-parallel:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/webpack-uglify-parallel/-/webpack-uglify-parallel-0.1.2.tgz#1afa62f425c96bcc23c556152214ef350b7e0876"
+  dependencies:
+    uglify-js "^2.6.2"
+    webpack-core "^0.6.8"
 
 webpack@^1.12.14:
   version "1.13.2"

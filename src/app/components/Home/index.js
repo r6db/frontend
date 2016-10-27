@@ -21,7 +21,11 @@ module.exports = {
 	oninit: ({ attrs, state }) => {
 		log.trace("<Home /> oninit");
 		api("getStats")
-			.then(state.stats)
+			.then(function(res) {
+				if(res.usercount && res.namecount) {
+					state.stats(res);
+				}
+			})
 			.then(() => m.redraw());
 	},
 	onremove: ({ state }) => {

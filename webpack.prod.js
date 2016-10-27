@@ -1,5 +1,7 @@
 const isProd = process.env.NODE_ENV === "production";
-
+let os = require("os");
+let UglifyJsParallelPlugin = require("webpack-uglify-parallel");
+const HappyPack = require("happypack");
 const webpack = require("webpack");
 const path = require("path");
 let basedir = path.join(__dirname, "src");
@@ -16,7 +18,6 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			"app$": path.join(__dirname, "./src/app/app.js"),
 			"lib": path.join(__dirname, "./src/app/lib")
 		}
 	},
@@ -28,7 +29,7 @@ module.exports = {
 		loaders: [{
 			test: /\.js$/,
 			exclude: /node_modules/,
-			loader: "babel"
+			loader: "happypack/loader?id=jsHappy"
 		}]
 	},
 	plugins: [
@@ -43,7 +44,8 @@ module.exports = {
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.AggressiveMergingPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
+		new UglifyJsParallelPlugin({
+			workers: os.cpus().length,
 			compress: {
 				dead_code: true,
 				drop_debugger: true,
@@ -53,6 +55,19 @@ module.exports = {
 			define: {
 				"process.env.NODE_ENV": true
 			}
+		}),
+		new HappyPack({
+			id: "jsHappy",
+			cacheContext: {
+				env: process.env.NODE_ENV
+			},
+			verbose: false,
+			loaders: [{
+				path: "babel",
+				query: {
+					cacheDirectory: "./.cache"
+				}
+			}]
 		})
 	]
 };
