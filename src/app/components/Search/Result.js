@@ -29,15 +29,6 @@ const getStats = player => (
 module.exports = {
 	class: m.prop("is-hidden"),
 	oncreate: ({ state }) => state.class("is-visible"),
-	onbeforeremove: ({ state, dom }, done) => {
-		setTimeout(function() {
-			//dom.parentElement.removeChild(dom);
-			done();
-		}, 400);
-		requestAnimationFrame(function() {
-			dom.classList.add("is-hidden");
-		});
-	},
 	onremove: ({ state }) => state.class("is-hidden"),
 	view: ({attrs, state}) => (
 		<div className={"playercard " + state.class()}>
