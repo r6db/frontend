@@ -114,8 +114,8 @@ module.exports = {
 	view: ({ state }) => (
 		<div className={"app " + store.get("appstate")}>
 			<div className="app-background">
-				<img class="clear" src="/assets/skullrain-skull-optim.jpg" />
-				<img class="blur" src="/assets/skullrain-skull-blurred.jpg" />
+				<img src="/assets/nippon.jpg" className="clear" />
+				<img src="/assets/nippon-blurred.jpg" className="blur" />
 			</div>
 			<div className="app-page">
 				<state.component store={store} />
