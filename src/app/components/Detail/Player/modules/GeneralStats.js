@@ -2,7 +2,7 @@ const m = require("mithril");
 const getWL = o => ((o.won/(o.won+o.lost))*100).toFixed(2);
 const getKD = o => (o.kills/o.deaths).toFixed(2);
 module.exports = {
-	view: ({ attrs }) => attrs.player.stats
+	view: ({ attrs }) => attrs.player.stats != null
 		? (<div className="detail-generaltats module">
 				<header className="module-header">General Stats</header>
 				<div className="module-row">
