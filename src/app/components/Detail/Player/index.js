@@ -5,7 +5,7 @@ const Profilepic = require("../../misc/Profilepic");
 const Alias = require("./Alias");
 const Placeholder = require("../Placeholder");
 const Playtime = require("./modules/Playtime");
-const Timedata = require("./modules/Timedata"); 
+const Timedata = require("./modules/Timedata");
 const GeneralStats = require("./modules/GeneralStats");
 const RankedStats = require("./modules/RankedStats");
 
@@ -54,7 +54,11 @@ module.exports = {
 						</div>
 						<div className="detail-headertext">
 							<div className="detail-name">{state.player().aliases[0].name}</div>
-							<div className="detail-id">{state.player().id}</div>
+							<a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${state.player().id}/multiplayer`}
+								className="detail-id"
+								title="show on uplay">
+								{state.player().id}
+							</a>
 						</div>
 					</div>
 					<div className="detail-content">
