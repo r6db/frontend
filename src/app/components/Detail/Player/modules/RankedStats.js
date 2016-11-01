@@ -47,7 +47,7 @@ module.exports = {
 				</div>
 				<div className="module-row">
 					<div className="module-label">Rank</div>
-					<div className={`module-value rank-${state.season.rank - 1}`}>{Ranks[state.season.rank - 1]}</div>
+					<div className={`module-value rank-${state.season.rank}`}>{Ranks[state.season.rank]}</div>
 				</div>
 				<div className="module-row">
 					<div className="module-label">Skill</div>
