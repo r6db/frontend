@@ -31,7 +31,7 @@ module.exports = {
 	oncreate: ({ state }) => state.class("is-visible"),
 	onremove: ({ state }) => state.class("is-hidden"),
 	view: ({attrs, state}) => (
-		<div className={"playercard " + state.class()}>
+		<div className={"playercard " + state.class() + " " + (attrs.player.role || '')}>
 			<a href={attrs.href} className="card-image">
 				<Profilepic id={attrs.player.id} delay={attrs.index}/>
 			</a>

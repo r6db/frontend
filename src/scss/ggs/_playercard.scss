@@ -12,6 +12,16 @@
 		padding: $l;
 	}
 
+	&.admin {
+		background: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
+		.player-name {
+			color: #2d547b;
+		}
+		.player-uplaylink {
+			color: $blue-dark;
+		}
+	}
+
 	&.is-hidden{
 		opacity: 0;
 		transform: translateY(100px);
