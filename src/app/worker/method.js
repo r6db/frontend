@@ -1,8 +1,8 @@
-const methods = {
+export const methods = {
 
 };
 
-const Method = function (name) {
+export const Method = function (name) {
     let _acquire;
     let _filter;
     let _process;
@@ -28,15 +28,9 @@ const Method = function (name) {
     };
 };
 
-function register(name) {
+export function register(name) {
     const m = new Method(name);
     methods[name] = m;
     return m;
 }
-
-module.exports = {
-    methods,
-    Method,
-    register
-};
 

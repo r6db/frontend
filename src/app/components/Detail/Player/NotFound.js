@@ -1,6 +1,6 @@
-const m = require("mithril");
+import m from "mithril";
 
-module.exports = {
+export default {
 
     view: () => (
         <div className="detail-player is-error">

@@ -1,6 +1,7 @@
 const worker = new Worker("/js/worker.js");
-const log = require("lib/log").child(__filename);
-const uuid = require("lib/uuid");
+import uuid from "lib/uuid";
+import Log from "lib/log";
+const log = Log.child(__filename);
 /**
  * pseudo uuid v4
  * has a fixed format of
@@ -48,8 +49,7 @@ worker.onmessage = function receive(e) {
             prom.resolve(payload);
         }
         cache[id] = undefined;
-    }
-    else {
+    } else {
         log.error("API Error", { error: "unhandled response", id, method, params });
     }
 };
@@ -71,6 +71,4 @@ function request(method, params = null) {
     });
 }
 
-module.exports = request;
-
-window.api = request;
+export default request;

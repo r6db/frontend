@@ -1,6 +1,6 @@
-const { appid } = require("lib/constants");
+import { appid } from "lib/constants";
 
-const failEarly = function failEarly(res) {
+export const failEarly = function failEarly(res) {
     if (!res.ok) {
         throw res.json();
     } else {
@@ -8,13 +8,12 @@ const failEarly = function failEarly(res) {
     }
 };
 
-const tap = cb => data => {
+export const tap = cb => data => {
     cb(data);
     return data;
 };
 
-
-const getHeaders = headers => {
+export const getHeaders = headers => {
     const h = new Headers();
 
     h.append("X-App-Id", appid);
@@ -27,10 +26,4 @@ const getHeaders = headers => {
     }
 
     return h;
-};
-
-module.exports = {
-    failEarly,
-    tap,
-    getHeaders
 };

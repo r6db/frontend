@@ -1,5 +1,6 @@
-const m = require("mithril");
-const Profilepic = require("../misc/Profilepic");
+import m from "mithril";
+import Profilepic from "../misc/Profilepic";
+
 const round = (number, digits) => ((number * digits) | 0) / digits;
 
 const getKd = player => player.stats.kills / player.stats.deaths;
@@ -26,7 +27,7 @@ const getStats = player => (
         </div>)
         : null
 );
-module.exports = {
+export default {
     class: m.prop("is-hidden"),
     oncreate: ({ state }) => state.class("is-visible"),
     onremove: ({ state }) => state.class("is-hidden"),

@@ -1,18 +1,19 @@
-const m = require("mithril");
-const page = require("page");;
-const api = require("lib/api");
-const store = require("lib/store");
-const { title, State } = require("lib/constants");
+import m from "mithril";
+import page from "page";
+import api from "lib/api";
+import store from "lib/store";
+import { title, State } from "lib/constants";
+import exitAnim from "lib/exitAnim";
+import Searchbar from "../misc/Searchbar";
+import Log from "lib/log";
+const log = Log.child(__filename);
 
-const exitAnim = require("lib/exitAnim");
-const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
-const Searchbar = require("../misc/Searchbar");
 
 
 const showPlayer = id => e => page("/player/" + id);
 
-module.exports = {
+export default {
     stats: m.prop(null),			// db stats
     onbeforeremove: exitAnim,
     oncreate: ({dom}) => {

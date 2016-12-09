@@ -1,7 +1,7 @@
-const m = require("mithril");
-const Loading = require("../misc/Loading");
+import m from "mithril";
+import Loading from "../misc/Loading";
 
-module.exports = {
+export default {
 
     view: () => (
         <div className="detail-player is-placeholder">

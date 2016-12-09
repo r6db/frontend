@@ -1,8 +1,9 @@
-const m = require("mithril");
-const page = require("page");
-const log = require("lib/log").child(__filename);
+import m from "mithril";
+import page from "page";
+import Log from "lib/log";
+const log = Log.child(__filename);
 
-module.exports = {
+export default {
     query: m.prop(""),
     exact: m.prop(false),
     oninit: ({ attrs, state }) => {

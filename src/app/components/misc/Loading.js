@@ -1,6 +1,6 @@
-const m = require("mithril");
+import m from "mithril";
 
-module.exports = {
+export default {
     onbeforeremove: ({ dom }, done) => {
         setTimeout(function () {
             dom.classList.add("is-leaving");

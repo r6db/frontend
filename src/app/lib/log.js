@@ -1,6 +1,6 @@
-const Log = require("@larsbrix/logger");
-const { appid } = require("lib/constants");
-const uuid = require("lib/uuid");
+import Log from "@larsbrix/logger";
+import { appid } from "lib/constants";
+import uuid from "lib/uuid";
 
 const log = new Log({
     threshold: 50
@@ -9,6 +9,5 @@ const log = new Log({
     sessionid: uuid()
 });
 
-window.log = log;
 
-module.exports = log;
+export default log;

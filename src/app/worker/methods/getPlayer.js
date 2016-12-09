@@ -1,6 +1,6 @@
-const { v2Api } = require("lib/constants");
-const { failEarly, getHeaders } = require("../utils");
-const { register } = require("../method");
+import { v2Api } from "lib/constants";
+import { failEarly, getHeaders } from "../utils";
+import { register } from "../method";
 
 const fixAlias = alias => {
     // eslint-disable-next-line camelcase

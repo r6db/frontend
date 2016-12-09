@@ -1,24 +1,25 @@
-const m = require("mithril");
+import m from "mithril";
 
-const NotFound = require("./NotFound");
-const Profilepic = require("../../misc/Profilepic");
-const Alias = require("./Alias");
-const Placeholder = require("../Placeholder");
-const Playtime = require("./modules/Playtime");
-const Timedata = require("./modules/Timedata");
-const GeneralStats = require("./modules/GeneralStats");
-const RankedStats = require("./modules/RankedStats");
+import NotFound from "./NotFound";
+import Profilepic from "../../misc/Profilepic";
+import Alias from "./Alias";
+import Placeholder from "../Placeholder";
+import Playtime from "./modules/Playtime";
+import Timedata from "./modules/Timedata";
+import GeneralStats from "./modules/GeneralStats";
+import RankedStats from "./modules/RankedStats";
 
-const moment = require("moment");
-const { State } = require("lib/constants");
-const setMeta = require("lib/meta");
-const api = require("lib/api");
-const exitAnim = require("lib/exitAnim");
-const log = require("lib/log").child(__filename);
+import moment from "moment";
+import { State } from "lib/constants";
+import setMeta from "lib/meta";
+import api from "lib/api";
+import exitAnim from "lib/exitAnim";
+import Log from "lib/log";
+const log = Log.child(__filename);
 
 const optional = (pred, cb) => pred ? cb() : null;
 
-module.exports = {
+export default {
     player: m.prop(null),
     onbeforeremove: exitAnim,
     onremove: ({ state }) => {

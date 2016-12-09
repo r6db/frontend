@@ -1,5 +1,5 @@
-const Baobab = require("baobab");
-const constants = require("./constants");
+import Baobab from "baobab";
+import * as constants from "./constants";
 
 const defaultState = {
     appstate: constants.State.INITIAL,
@@ -11,10 +11,4 @@ const defaultState = {
     }
 };
 
-const store = new Baobab(window.__INITIALSTATE || defaultState);
-
-if (process.env.NODE_ENV === "development") {
-    window.store = store;
-}
-
-module.exports = store;
+export default new Baobab(self.__INITIALSTATE || defaultState);

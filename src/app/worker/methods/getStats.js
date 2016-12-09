@@ -1,6 +1,6 @@
-const { v2Api } = require("lib/constants");
-const { failEarly, tap, getHeaders } = require("../utils");
-const { register } = require("../method");
+import { v2Api } from "lib/constants";
+import { failEarly, tap, getHeaders } from "../utils";
+import { register } from "../method";
 
 let stats = null;
 

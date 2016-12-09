@@ -4,7 +4,7 @@
  * we use this to keep multiple components visible 
  * for state transitions
  */
-module.exports = function ({ dom }, done) {
+export default function ({ dom }, done) {
     const dupe = dom.cloneNode(true);
     dom.insertAdjacentElement("afterend", dupe);
     done();

@@ -1,7 +1,7 @@
-const m = require("mithril");
-const moment = require("moment");
+import m from "mithril";
+import moment from "moment";
 
-module.exports = {
+export default {
     view: ({ attrs }) => (
         <div className="alias" >
             <div className="alias-time">

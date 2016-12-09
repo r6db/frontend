@@ -1,17 +1,18 @@
-const m = require("mithril");
-const page = require("page");
-const Home = require("./Home");
-const Search = require("./Search");
-const Detail = require("./Detail");
-const Loading = require("./misc/Loading");
+import m from "mithril";
+import page from "page";
+import Home from "./Home";
+import Search from "./Search";
+import Detail from "./Detail";
+import Loading from "./misc/Loading";
 
 
-const debounce = require("lodash/debounce");
-const store = require("lib/store");
-const { State } = require("lib/constants");
-const setMeta = require("lib/meta");
+import debounce from "lodash/debounce";
+import store from "lib/store";
+import { State } from "lib/constants";
+import setMeta from "lib/meta";
 
-const log = require("lib/log").child(__filename);
+import Log from "lib/log";
+const log = Log.child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 const optional = (pred, cb) => pred ? cb() : null;
@@ -108,7 +109,7 @@ const init = ({state}) => {
 };
 
 
-module.exports = {
+export default {
     component: Home,
     oninit: init,
     view({ state }) {

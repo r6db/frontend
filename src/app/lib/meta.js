@@ -24,7 +24,7 @@ const valueMap = {
 };
 
 
-module.exports = function (state, name) {
+export default function (state, name) {
     const mapping = valueMap[state];
     if (mapping) {
         document.title = mapping.title(name);

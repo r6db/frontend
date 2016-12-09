@@ -1,6 +1,8 @@
-const m = require("mithril");
-const App = require("./components");
-const log = require("lib/log").child(__filename);
+import m from "mithril";
+import App from "./components";
+import Log from "lib/log";
+const log = Log.child(__filename);
+
 function main() {
     const mount = document.querySelector("#mount");
     log.info("mounting app");

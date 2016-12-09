@@ -1,10 +1,11 @@
-const m = require("mithril");
-const Searchbar = require("../misc/Searchbar");
-const Player = require("./Player");
+import m from "mithril";
+import Searchbar from "../misc/Searchbar";
+import Player from "./Player";
 
-const log = require("lib/log").child(__filename);
+import Log from "lib/log";
+const log = Log.child(__filename);
 
-module.exports = {
+export default {
     onremove: ({ state }) => {
         log.trace("<Detail /> onremove");
     },

@@ -1,8 +1,8 @@
-const m = require("mithril");
+import m from "mithril";
 
 const fallback = "/assets/noavatar.png";
 
-module.exports = {
+export default {
     timeout: false,
     onError: e => {
         e.preventDefault();

@@ -1,7 +1,7 @@
-const { v2Api } = require("lib/constants");
-const { failEarly, getHeaders } = require("../utils");
-const memoize = require("lodash/memoize");
-const { register } = require("../method");
+import { v2Api } from "lib/constants";
+import { failEarly, getHeaders } from "../utils";
+import memoize from "lodash/memoize";
+import { register } from "../method";
 
 const timeDiff = time => new Date() - new Date(time);
 const asRegex = string => {

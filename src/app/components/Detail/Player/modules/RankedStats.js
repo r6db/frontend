@@ -1,14 +1,14 @@
-const m = require("mithril");
-const { Ranks } = require("lib/constants");
+import m from "mithril";
+import { Ranks } from "lib/constants";
 
 const games = s => s.wins + s.losses;
 
-module.exports = {
+export default {
     season: null,
     oninit({attrs, state}) {
         const player = attrs.player;
         if (player.rank) {
-            let {apac, emea, ncsa} = player.rank;
+            const {apac, emea, ncsa} = player.rank;
 
             let season = apac;
             if (games(emea) > games(season)) {

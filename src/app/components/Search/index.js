@@ -1,14 +1,15 @@
-const m = require("mithril");
-const page = require("page");
-const debounce = require("lodash/debounce");
-const Result = require("./Result");
-const Searchbar = require("../misc/Searchbar");
-const api = require("lib/api");
-const store = require("lib/store");
-const { title, State } = require("lib/constants");
+import m from "mithril";
+import page from "page";
+import debounce from "lodash/debounce";
+import Result from "./Result";
+import Searchbar from "../misc/Searchbar";
+import api from "lib/api";
+import store from "lib/store";
+import { title, State } from "lib/constants";
+import exitAnim from "lib/exitAnim";
+import Log from "lib/log";
+const log = Log.child(__filename);
 
-const exitAnim = require("lib/exitAnim");
-const log = require("lib/log").child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 

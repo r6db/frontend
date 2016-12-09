@@ -1,6 +1,6 @@
-require("whatwg-fetch");
-const { tap } = require("./utils");
-const { methods } = require("./method");
+import "whatwg-fetch";
+import { tap } from "./utils";
+import { methods } from "./method";
 
 const maybeMap = (fn, args) => payload =>
     (typeof fn === "function")
@@ -11,7 +11,7 @@ const maybeMap = (fn, args) => payload =>
 const requireAll = r => r.keys().map(r);
 requireAll(require.context("./methods"));
 self.onmessage = function workerReceive(e)  {
-    let { id, method, params, timing } = e.data;
+    const { id, method, params, timing } = e.data;
     if (methods[method]) {
         timing.workerStart = Date.now();
 

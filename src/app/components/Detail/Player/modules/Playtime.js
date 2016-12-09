@@ -1,10 +1,11 @@
-const m = require("mithril");
-const moment = require("moment");
+import m from "mithril";
+import moment from "moment";
+
 const secToHours = sec => moment.duration(sec || 0, "seconds")
     .asHours()
     .toFixed(2) + " hours";
 
-module.exports = {
+export default {
     view: ({ attrs }) => attrs.player.lastPlayed
         ? (<div className="detail-timeplayed module">
             <header className="module-header">Time played</header>

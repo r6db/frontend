@@ -1,4 +1,4 @@
-module.exports = function uuid() {
+export default function uuid() {
     // make a series of x digits
     const x = cnt => Math.random()
         .toString(16)

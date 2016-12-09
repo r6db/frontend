@@ -1,4 +1,5 @@
-const m = require("mithril");
+import m from "mithril";
+
 const getWL = o => ((o.won / (o.won + o.lost)) * 100).toFixed(2);
 const getKD = o => (o.kills / o.deaths).toFixed(2);
 module.exports = {
