@@ -2,19 +2,19 @@ const Baobab = require("baobab");
 const constants = require("./constants");
 
 const defaultState = {
-	appstate: constants.State.INITIAL,
-	loading: false,
-	detail: null,
-	search: {
-		query: "",
-		exact: false
-	}
+    appstate: constants.State.INITIAL,
+    loading: false,
+    detail: null,
+    search: {
+        query: "",
+        exact: false
+    }
 };
 
-let store = new Baobab(window.__INITIALSTATE || defaultState);
+const store = new Baobab(window.__INITIALSTATE || defaultState);
 
-if(process.env.NODE_ENV === "development") {
-	window.store = store;
+if (process.env.NODE_ENV === "development") {
+    window.store = store;
 }
 
 module.exports = store;

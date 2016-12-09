@@ -2,13 +2,14 @@
 	"parserOptions": {
 		"ecmaVersion": 6,
 		"ecmaFeatures": {
-			"experimentalObjectRestSpreat": true,
+			"experimentalObjectRestSpread": true,
 			"jsx": true
-		}
+		},
+		"sourceType": "module"
 	},
 	"rules": {
 		"semi": [2, "always"],
-		"indent": [2, "tab", {"SwitchCase": 1}],
+		"indent": [2, 4, {"SwitchCase": 1}],
 		"quotes": [2, "double", {"allowTemplateLiterals": true}],
 		"curly": [2, "all"],
 		"eqeqeq": [2, "smart"],
@@ -34,6 +35,8 @@
 		"no-var": [2],
 		"no-useless-rename": [2],
 		"object-shorthand": [1, "always"],
-		"prefer-rest-params": [1]
+		"prefer-rest-params": [1],
+		"prefer-const": [2],
+		"prefer-spread": [2]
 	}
 }

@@ -11,64 +11,64 @@ const uuid = require("lib/uuid");
  */
 ;
 function getTiming(timing) {
-	log.trace("calculated timings");
-	return {
-		duration: timing.apiEnd - timing.apiStart,
-		xhr: timing.filter - timing.workerStart,
-		filter: timing.processing - timing.filter,
-		processing: timing.workerEnd - timing.processing,
-		transport: timing.apiEnd - timing.workerEnd
-	};
+    log.trace("calculated timings");
+    return {
+        duration: timing.apiEnd - timing.apiStart,
+        xhr: timing.filter - timing.workerStart,
+        filter: timing.processing - timing.filter,
+        processing: timing.workerEnd - timing.processing,
+        transport: timing.apiEnd - timing.workerEnd
+    };
 }
 
 // cache of open requests (promise, id);
-let cache = {};
+const cache = {};
 
 worker.onmessage = function receive(e) {
-	let {id, method, params, payload, error, timing} = e.data;
-	timing.apiEnd = Date.now();
-	if(cache[id]) {
-		let prom = cache[id];
-		if(error) {
-			log.error(`API error`, {
-				id,
-				method,
-				params,
-				error,
-				timing: getTiming(timing)
-			});
-			prom.reject(error);
-		} else {
-			log.trace(`API response`, {
-				id,
-				method,
-				params,
-				timing: getTiming(timing)
-			});
-			prom.resolve(payload);
-		}
-		cache[id] = undefined;
-	}
-	else {
-		log.error("API Error", {error: "unhandled response", id, method, params} );
-	}
+    const { id, method, params, payload, error, timing } = e.data;
+    timing.apiEnd = Date.now();
+    if (cache[id]) {
+        const prom = cache[id];
+        if (error) {
+            log.error(`API error`, {
+                id,
+                method,
+                params,
+                error,
+                timing: getTiming(timing)
+            });
+            prom.reject(error);
+        } else {
+            log.trace(`API response`, {
+                id,
+                method,
+                params,
+                timing: getTiming(timing)
+            });
+            prom.resolve(payload);
+        }
+        cache[id] = undefined;
+    }
+    else {
+        log.error("API Error", { error: "unhandled response", id, method, params });
+    }
 };
 
 
 function request(method, params = null) {
-	return new Promise(function(resolve, reject) {
-		let id = uuid();
-		let timing = {
-			apiStart: Date.now(),
-			workerStart: 0,
-			processing: 0,
-			workerEnd: 0,
-			apiEnd: 0
-		};
-		log.trace("API request", {id, method, params});
-		cache[id] = { resolve, reject };
-		worker.postMessage({id, method, params, timing});
-	});
+    return new Promise(function (resolve, reject) {
+        const id = uuid();
+        const timing = {
+            apiStart: Date.now(),
+            workerStart: 0,
+            processing: 0,
+            workerEnd: 0,
+            apiEnd: 0
+        };
+        log.trace("API request", { id, method, params });
+        cache[id] = { resolve, reject };
+        worker.postMessage({ id, method, params, timing });
+    });
 }
 
 module.exports = request;

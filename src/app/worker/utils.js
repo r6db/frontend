@@ -1,36 +1,36 @@
 const { appid } = require("lib/constants");
 
 const failEarly = function failEarly(res) {
-	if(!res.ok) {
-		throw res.json();
-	} else {
-		return res;
-	}
+    if (!res.ok) {
+        throw res.json();
+    } else {
+        return res;
+    }
 };
 
 const tap = cb => data => {
-	cb(data);
-	return data;
+    cb(data);
+    return data;
 };
 
 
 const getHeaders = headers => {
-	let h = new Headers();
-	
-	h.append("X-App-Id", appid);
+    const h = new Headers();
 
-	if(headers) {
-		Object.keys(headers)
-			.map(key => {
-				h.append(key, headers[key]);
-			});
-	}
+    h.append("X-App-Id", appid);
 
-	return h;
+    if (headers) {
+        Object.keys(headers)
+            .map(key => {
+                h.append(key, headers[key]);
+            });
+    }
+
+    return h;
 };
 
 module.exports = {
-	failEarly,
-	tap,
-	getHeaders
+    failEarly,
+    tap,
+    getHeaders
 };
