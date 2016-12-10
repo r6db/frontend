@@ -1,6 +1,9 @@
 import "whatwg-fetch";
 import { tap } from "./utils";
 import { methods } from "./method";
+import Cache from "./cache";
+
+const caches = {};
 
 const maybeMap = (fn, args) => payload =>
     (typeof fn === "function")
@@ -11,9 +14,24 @@ const maybeMap = (fn, args) => payload =>
 const requireAll = r => r.keys().map(r);
 requireAll(require.context("./methods"));
 self.onmessage = function workerReceive(e)  {
+
     const { id, method, params, timing } = e.data;
+    let cache = caches[method];
+    if(!cache) {
+        cache = caches[method] = new Cache(1000*60*5);
+    }
+
     if (methods[method]) {
         timing.workerStart = Date.now();
+
+        const payload = cache.get(JSON.stringify(params));
+        if(payload) {
+            console.log("found item in cache");
+            timing.filter = Date.now();
+            timing.processing = Date.now();
+            timing.workerEnd = Date.now();
+            return self.postMessage({ id, method, payload, timing, params });
+        }
 
         // get method
         const task = methods[method].getTask();
@@ -29,6 +47,7 @@ self.onmessage = function workerReceive(e)  {
             .then(tap(() => timing.workerEnd = Date.now()))
             .then(function (payload) {
                 // respond
+                cache.set(JSON.stringify(params), payload);
                 self.postMessage({ id, method, payload, timing, params });
             })
             .catch(function (error)  {
