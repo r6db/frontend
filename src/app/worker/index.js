@@ -18,7 +18,7 @@ self.onmessage = function workerReceive(e)  {
     const { id, method, params, timing } = e.data;
     let cache = caches[method];
     if(!cache) {
-        cache = caches[method] = new Cache(1000*60*5);
+        cache = caches[method] = new Cache(1000*60*15);
     }
 
     if (methods[method]) {
