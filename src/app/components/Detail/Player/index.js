@@ -48,7 +48,7 @@ export default {
     view: ({ attrs, state }) => attrs.store.get("loading")
         ? <Placeholder />
         : state.player()
-            ? (<div className="detail-player">
+            ? (<div className={`detail-player player-${state.player().id} is-${state.player().role || "user"}`}>
                 <div className="detail-header">
                     <div className="detail-headerimage">
                         <Profilepic id={state.player().id} delay={0} />

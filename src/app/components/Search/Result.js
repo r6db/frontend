@@ -32,7 +32,7 @@ export default {
     oncreate: ({ state }) => state.class("is-visible"),
     onremove: ({ state }) => state.class("is-hidden"),
     view: ({attrs, state}) => (
-        <div className={"playercard " + state.class() + " " + (attrs.player.role || "")}>
+        <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"} ${state.class()}`}>
             <a href={attrs.href} className="card-image">
                 <Profilepic id={attrs.player.id} delay={attrs.index} />
             </a>

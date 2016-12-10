@@ -10,11 +10,11 @@ config.devServer = {
     compress: true,
     inline: true,
     hot: true,
-    // noInfo: true,
+    noInfo: true,
     lazy: false,
     port: 9000,
     historyApiFallback: true,
-    // clientLogLevel: "error",
+    clientLogLevel: "error",
     watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
