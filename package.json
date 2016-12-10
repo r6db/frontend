@@ -2,10 +2,10 @@
   "name": "gitgudscrub-frontend",
   "scripts": {
     "start": "webpack-dev-server --config config/dev.js",
-    "watch": "cross-env NODE_ENV=development webpack --progress --watch --config config/dev.js",
-    "build:dev": "cross-env NODE_ENV=development webpack --config config/dev.js",
-    "build": "cross-env NODE_ENV=production webpack --optimize-minimize --config config/prod.js",
-    "stats": "cross-env NODE_ENV=development webpack --config config/dev.js --json > stats.json",
+    "watch": "webpack --progress --watch --config config/dev.js",
+    "build:dev": "webpack --config config/dev.js",
+    "build": "webpack --optimize-minimize --config config/prod.js",
+    "stats": "webpack --config config/dev.js --json > stats.json",
     "test": "exit 0"
   },
   "dependencies": {

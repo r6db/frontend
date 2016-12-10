@@ -28,6 +28,11 @@ module.exports = {
          */
         state.runSearch = debounce(function () {
             state.results([]);
+            
+            if(search.get("query").length < 3) { 
+                log.trace("not running search because query is too short");
+                return;
+            }
             log.trace("running search");
             return api("findPlayer", { name: search.get("query"), exact: search.get("exact") })
                 .then(state.results)
@@ -61,6 +66,7 @@ module.exports = {
                     }
                 });
         }, 500);
+
         state.runSearch();
         search.on("update", state.runSearch);
     },
