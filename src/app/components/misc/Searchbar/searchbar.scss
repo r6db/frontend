@@ -1,0 +1,54 @@
+@import "styles";
+
+.search-form{
+	@extend .columns;
+	@extend .is-gapless;
+	margin: $l*2 auto;
+	width: 95%;
+	max-width: 735px;
+	justify-content: center;
+	flex: 0 0 auto;
+
+}
+.search-input{
+	@extend .columns;
+	@extend .is-small-8;
+	position: relative;
+
+	>input{
+		width: 100%;
+		padding: 0 12*$l 0 $l;
+		font-size: 20px;
+		height: 100%;
+		background: darken($white, 5%);
+
+		&:focus{
+			box-shadow: none;
+			outline: none;
+			background: $white;
+		}
+	}
+	span{
+		position: absolute;
+		right: 0;
+		height: 100%;
+		width: 11*$l;
+		display: inline-flex;
+		flex-direction: row;
+		vertical-align: top;
+		align-items: center;
+		label{
+			margin: 0 0 0 .3em;
+			font-size: 1rem;
+			user-select: none;
+			letter-spacing: -1px;
+			color: darken($gray, 30%);
+		}
+	}
+}
+.search-submit{
+	@extend .column;
+	@extend .is-small-1;
+	@extend .button;
+	@extend .is-dark;
+}

@@ -4,7 +4,8 @@ import Home from "./Home";
 import Search from "./Search";
 import Detail from "./Detail";
 import Loading from "./misc/Loading";
-
+import Searchbar from "./misc/Searchbar";
+import "./app.scss";
 
 import debounce from "lodash/debounce";
 import store from "lib/store";
@@ -15,13 +16,17 @@ const log = Log.child(__filename);
 
 const optional = (pred, cb) => pred ? cb() : null;
 
+const update = debounce(function() {
+    log.trace("state changed, redrawing");
+    m.redraw();
+});
+
 export default {
     oninit(vnode) {
         initRoutes();
-        store.on("update", function () {
-            log.trace("state changed, redrawing");
-            m.redraw();
-        });
+        store.select("data").on("update", update);
+        store.select("loading").on("update", update);
+        store.select("component").on("update", update);
         
     },
     view({ state }) {
@@ -33,7 +38,8 @@ export default {
                     <img src="/assets/nippon-blurred.jpg" className="blur" />
                 </div>
                 <div className="app-page">
-                    <Component data={data} search={search} />
+                    <Searchbar search={search} selector={store.select("search")} />
+                    <Component data={data} />
                 </div>
                 {optional(loading, () => <Loading /> )}
             </div>

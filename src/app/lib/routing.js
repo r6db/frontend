@@ -58,35 +58,26 @@ export default function initRoutes() {
         const exact = qs === "true" || qs === "1";
 
         if (ctx.params.query && ctx.params.query.length > 2) {
-            log.trace("search context", ctx);
-            const stateChanged = (store.get("appstate") !== State.RESULT
-                || store.get(["search", "query"]) !== ctx.params.query
-                || store.get(["search", "exact"]) !== exact);
-
-            if (stateChanged) {
-                store.merge({
-                    appstate: State.SEARCH,
-                    Component: Search,
-                    loading: true,
-                    search: {
-                        query: ctx.params.query,
-                        exact
-                    }
-                });
-                api("findPlayer", { name: ctx.params.query, exact })
-                    .then(function(res) {
-                        store.merge({
-                            appstate: State.RESULT,
-                            data: res,
-                            loading: false
-                        });
-                    })
-                    .catch(function(err) {
-                        log.warn(err);
+            store.merge({
+                appstate: State.SEARCH,
+                Component: Search,
+                loading: true,
+                search: {
+                    query: ctx.params.query,
+                    exact
+                }
+            });
+            api("findPlayer", { name: ctx.params.query, exact })
+                .then(function(res) {
+                    store.merge({
+                        appstate: State.RESULT,
+                        data: res,
+                        loading: false
                     });
-            } else {
-                log.trace("search is identical. skipping request");
-            }
+                })
+                .catch(function(err) {
+                    log.warn(err);
+                });
         } else {
             page.redirect("/");
         }

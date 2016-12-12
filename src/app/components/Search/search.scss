@@ -1,0 +1,17 @@
+@import "styles";
+
+.search-results{
+	display: none;
+	max-width: 900px;
+	margin: $l*2 auto 0;
+	//anim
+	opacity: 1;
+	transition: all $tdur ease-in-out;
+	transition-delay: 100ms;
+	opacity: 0;
+	transform: translate(0, 60vh);
+
+	*:first-child{
+		margin-top: 0;
+	}
+}

@@ -1,7 +1,13 @@
 .app-pages{
 	transition: transform 300ms ease-in-out;
 }
-
+.is-initial {
+	.search-form{
+		// anim
+		transform: scale(1.1) translate(0, 43vh);
+		transition: all $tdur ease-in-out;
+	}
+}
 .is-searching{
 	transform: translate(0,0);
 
@@ -10,10 +16,6 @@
 	}
 	.app-background .blur{
 		opacity: 1;
-	}
-	.search-title{
-		opacity: 0;
-		transform: translate(0, -200%);
 	}
 	.search-results{
 		display: block;

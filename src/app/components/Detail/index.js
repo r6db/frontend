@@ -1,8 +1,8 @@
 import m from "mithril";
-import Searchbar from "../misc/Searchbar";
 import Player from "./Player";
 import Placeholder from "./Placeholder";
 import NotFound from "./NotFound";
+import "./detail.scss";
 import Log from "lib/log";
 const log = Log.child(__filename);
 
@@ -21,12 +21,7 @@ export default {
             : attrs.data
                 ? <Player {...attrs.data} />
                 : <NotFound />;
-        return (
-            <div className="detail">
-                <Searchbar search={attrs.search} />
-                {Component}
-            </div>
-        );
+        return Component;
     }
 };
  

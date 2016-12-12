@@ -31,3 +31,37 @@
 		outline: none;
 	}
 }
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin textshadow{
+	text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
+}
+@mixin boxshadow{
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+@mixin small {
+	@media screen and (max-width: $screen-medium) {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media screen and (min-width: $screen-medium) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media screen and (min-width: $screen-large) {
+		@content;
+	}
+}

@@ -1,3 +1,5 @@
+@import "styles";
+
 .app{
 	width: 100vw;
 	overflow: hidden;
@@ -9,6 +11,8 @@
 	flex: 0 0 auto;
 	overflow-x: hidden;
 	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
 	backface-visibility: hidden;
 	transform: translateZ(0);
 }

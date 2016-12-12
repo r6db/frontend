@@ -1,5 +1,5 @@
-@import "ggs/vars";
-@import "mixins/mixins";
+@import "vars";
+@import "mixins";
 @import "components/reset";
 
 @import "components/base";
@@ -13,8 +13,4 @@
 @import "components/loading";
 @import "components/module";
 
-@import "ggs/app";
-@import "ggs/search";
-@import "ggs/detail";
-@import "ggs/playercard";
 @import "ggs/stateAnims";

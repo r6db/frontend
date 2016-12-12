@@ -1,6 +1,6 @@
 import m from "mithril";
 import Profilepic from "../misc/Profilepic";
-
+import "./playercard.scss";
 const round = (number, digits) => ((number * digits) | 0) / digits;
 
 const getKd = player => player.stats.kills / player.stats.deaths;
