@@ -4,7 +4,7 @@ const path = require("path");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractCss = new ExtractTextPlugin("/css/[name].css");
+const ExtractCss = new ExtractTextPlugin("css/[name].css");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
@@ -17,7 +17,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../build"),
-        filename: "/js/[name].js",
+        // publicPath: "",
+        filename: "js/[name].js",
         pathinfo: true
     },
     resolve: {
@@ -29,6 +30,7 @@ module.exports = {
     node: {
         __filename: true
     },
+    devtool: "source-map",
     module: {
         rules: [{
             test: /\.jsx?$/,

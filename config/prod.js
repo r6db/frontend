@@ -9,7 +9,6 @@ const mqpacker = require("css-mqpacker");
 
 const config = Object.assign({}, base);
 
-config.devtool = "source-map";
 
 config.plugins.concat([
     new webpack.DefinePlugin({

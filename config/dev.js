@@ -13,6 +13,11 @@ config.devServer = {
     noInfo: true,
     lazy: false,
     port: 9000,
+    proxy: [{
+        path: "/api",
+        target: "http://r6db.com",
+        changeOrigin: true
+    }],
     historyApiFallback: true,
     clientLogLevel: "error",
     watchOptions: {
@@ -37,8 +42,6 @@ config.devServer = {
         chunkOrigins: false
     }
 };
-
-config.devtool = "source-map";
 
 config.plugins.concat([
     new webpack.DefinePlugin({

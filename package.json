@@ -1,7 +1,7 @@
 {
   "name": "gitgudscrub-frontend",
   "scripts": {
-    "start": "webpack-dev-server --config config/dev.js",
+    "start": "webpack-dev-server --progress --hot --inline --config config/dev.js",
     "watch": "webpack --progress --watch --config config/dev.js",
     "build:dev": "webpack --config config/dev.js",
     "build": "webpack --optimize-minimize --config config/prod.js",
