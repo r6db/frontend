@@ -18,10 +18,10 @@ const optional = (pred, cb) => pred ? cb() : null;
 export default {
     oninit(vnode) {
         initRoutes();
-        store.on("update", debounce(function () {
+        store.on("update", function () {
             log.trace("state changed, redrawing");
             m.redraw();
-        }, 0));
+        });
         
     },
     view({ state }) {

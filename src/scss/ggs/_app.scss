@@ -9,6 +9,8 @@
 	flex: 0 0 auto;
 	overflow-x: hidden;
 	overflow-y: auto;
+	backface-visibility: hidden;
+	transform: translateZ(0);
 }
 .app-background{
 	position: fixed;
