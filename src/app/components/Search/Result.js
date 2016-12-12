@@ -28,23 +28,23 @@ const getStats = player => (
         : null
 );
 export default {
-    class: m.prop("is-hidden"),
-    view: ({attrs, state}) => (
-        <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
-            <a href={attrs.href} className="card-image">
-                <Profilepic id={attrs.player.id} delay={attrs.index} />
-            </a>
-            <div className="card-content">
-                <div className="player-identification">
-                    <a href={attrs.href} className="player-name">{attrs.player.aliases[0].name}</a>
-                    <span className="player-id">{attrs.player.id}</span>
-                </div>
-                {getAliases(attrs.player)}
-                <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
-                    › view on uplay
+    view({attrs, state}) { 
+        return (
+            <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
+                <a href={attrs.href} className="card-image">
+                    <Profilepic id={attrs.player.id} delay={attrs.index} />
                 </a>
+                <div className="card-content">
+                    <div className="player-identification">
+                        <a href={attrs.href} className="player-name">{attrs.player.aliases[0].name}</a>
+                        <span className="player-id">{attrs.player.id}</span>
+                    </div>
+                    {getAliases(attrs.player)}
+                    <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
+                        › view on uplay
+                    </a>
+                </div>
             </div>
-        </div>
-    )
-
+        );
+    }
 };

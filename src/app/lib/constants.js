@@ -1,9 +1,9 @@
 export const appname = "ggs";
 export const appid = "r6db-frontend";
-export const title ="R6DB - Rainbow 6 PC Player database";
-export const baseurl ="https://r6db.com/";
-export const v2Api ="/api/v2";
-export const State =Object.freeze({
+export const title = "R6DB - Rainbow 6 PC Player database";
+export const baseurl = "https://r6db.com/";
+export const v2Api = "/api/v2";
+export const State = Object.freeze({
     INITIAL: "is-initial",
     SEARCH: "is-searching",
     RESULT: "is-results",

@@ -22,7 +22,7 @@
 .search-form{
 	@extend .columns;
 	@extend .is-gapless;
-	margin: $l auto;
+	margin: $l*2 auto;
 	width: 95%;
 	max-width: 735px;
 	justify-content: center;

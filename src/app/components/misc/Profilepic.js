@@ -4,13 +4,13 @@ const fallback = "/assets/noavatar.png";
 
 export default {
     timeout: false,
-    onError: e => {
+    onError(e) {
         e.preventDefault();
         e.stopPropagation();
         e.target.src = fallback;
         return false;
     },
-    oncreate: ({ attrs, state, dom }) => {
+    oncreate({ attrs, state, dom }) {
         if (attrs.id) {
             const src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
             const delay = (((attrs.delay || 0) / 9) | 0) * 2000;

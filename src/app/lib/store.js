@@ -3,8 +3,9 @@ import * as constants from "./constants";
 
 const defaultState = {
     appstate: constants.State.INITIAL,
+    Component: null,
+    data: null,
     loading: false,
-    detail: null,
     search: {
         query: "",
         exact: false
