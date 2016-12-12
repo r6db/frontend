@@ -18,7 +18,7 @@ export default {
     view({ attrs, state }) {
         const Component = attrs.loading
             ? <Placeholder />
-            : attrs.data
+            : attrs.data && attrs.data.id
                 ? <Player {...attrs.data} />
                 : <NotFound />;
         return Component;
