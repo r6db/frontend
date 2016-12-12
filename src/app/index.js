@@ -3,6 +3,7 @@
  */
 import "../scss/styles.scss";
 import * as page from "page";
+import store from "lib/store";
 import Log from "lib/log";
 
 import m from "mithril";
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
     window.page = page;
     window.m = m;
+    window.store = store;
     Log.setLevel(50);
     window["GoogleAnalyticsObject"] = window.ga = function() {};
 }
