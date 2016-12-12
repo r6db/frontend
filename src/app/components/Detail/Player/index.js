@@ -13,7 +13,6 @@ import moment from "moment";
 import { State } from "lib/constants";
 import setMeta from "lib/meta";
 import api from "lib/api";
-import exitAnim from "lib/exitAnim";
 import Log from "lib/log";
 const log = Log.child(__filename);
 
@@ -21,7 +20,6 @@ const optional = (pred, cb) => pred ? cb() : null;
 
 export default {
     player: m.prop(null),
-    onbeforeremove: exitAnim,
     onremove: ({ state }) => {
         log.trace("<Player /> onremove");
         state.player(null);

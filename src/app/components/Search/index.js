@@ -6,7 +6,6 @@ import Searchbar from "../misc/Searchbar";
 import api from "lib/api";
 import store from "lib/store";
 import { title, State } from "lib/constants";
-import exitAnim from "lib/exitAnim";
 import Log from "lib/log";
 const log = Log.child(__filename);
 
@@ -20,7 +19,6 @@ const search = store.select("search");
 
 module.exports = {
     results: m.prop([]),			// the search results
-    onbeforeremove: exitAnim,
     oninit: ({ attrs, state }) => {
         log.trace("<Search /> oninit");
         /**
