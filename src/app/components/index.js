@@ -34,8 +34,8 @@ export default {
         return (
             <div className={"app " + appstate}>
                 <div className="app-background">
-                    <img src="/assets/nippon.jpg" className="clear" />
-                    <img src="/assets/nippon-blurred.jpg" className="blur" />
+                    <img src="/assets/background.jpg" className="clear" />
+                    <img src="/assets/background-blurred.jpg" className="blur" />
                 </div>
                 <div className="app-page">
                     <Searchbar search={search} selector={store.select("search")} />
