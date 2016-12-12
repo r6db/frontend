@@ -35,7 +35,12 @@ $detail-header-height: $detail-image-height + (5*$l);
 .detail-headerimage{
 	width: $detail-image-height;
 	height: $detail-image-height;
-	background: rgba(0, 0, 0, 0.4);
+	img{
+		width: 100%;
+		height: 100%;
+		background: url(/assets/noavatar.png) no-repeat;
+		background-size: cover;
+	}
 }
 
 .detail-headertext{

@@ -1,15 +1,8 @@
 import m from "mithril";
 
-const fallback = "/assets/noavatar.png";
-
 export default {
     timeout: false,
-    onError(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.target.src = fallback;
-        return false;
-    },
+    onerror: e => e.target.src = "",
     oncreate({ attrs, state, dom }) {
         if (attrs.id) {
             const src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
@@ -22,8 +15,7 @@ export default {
         }
     },
     onremove: vnode => {
-        vnode.dom.src = fallback;
         clearTimeout(vnode.state.timeout);
     },
-    view: vnode => m("img", { src: fallback, onerror: vnode.state.onError })
+    view: vnode => m("img", { onerror: vnode.state.onerror })
 };
