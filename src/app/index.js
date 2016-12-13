@@ -9,7 +9,9 @@ import Log from "lib/log";
 import m from "mithril";
 
 if (process.env.NODE_ENV === "production") {
+    // set log level
     Log.setLevel(10);
+
     // run google analytics
     (function (i, s, o, g, r, a, m) {
         i["GoogleAnalyticsObject"] = r; i[r] = i[r] || function () {
@@ -19,10 +21,17 @@ if (process.env.NODE_ENV === "production") {
     })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
     ga("create", "UA-86120096-1", "auto");
 } else {
+    // expose libs;
     window.page = page;
     window.m = m;
     window.store = store;
+    
+    // set debug flag
+    store.set("debug", window.location.search.indexOf("debug") !== -1);
+
+    // set log level
     Log.setLevel(50);
+    // shim google analytics
     window["GoogleAnalyticsObject"] = window.ga = function() {};
 }
 

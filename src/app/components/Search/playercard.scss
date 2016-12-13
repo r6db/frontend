@@ -76,7 +76,7 @@
 	}
 	.player-aliases{
 		display: none;
-		flex: 1 0 auto;
+		flex: 1 1 auto;
 		@include large{
 			display: block;
 		}
