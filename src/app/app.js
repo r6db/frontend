@@ -10,4 +10,8 @@ function main() {
     m.mount(mount, App);
 }
 
-window.addEventListener("DOMContentLoaded", main);
+if(document.readyState === "interactive" || document.readyState === "complete") {
+    main();
+} else {
+    window.addEventListener("load", main);
+}

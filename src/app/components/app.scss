@@ -35,9 +35,10 @@
 		left: 50vw;
 		transform: translate(-50%, -50%);
 		will-change: opacity;
-		transition: all $tdur ease-out;
+		transition: opacity $tdur ease-out;
 	}
 	.blur{
 		opacity: 0;
+		filter: grayscale(1) blur(20px);
 	}
 }

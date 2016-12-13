@@ -18,27 +18,19 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/css/app.css">
+	<script async src="/js/app.js"></script>
 </head>
 
 <body>
 	<div id="mount">
-		<div class="app-background">
-			<img src="/assets/background-blurred.jpg" class="blur" />
-		</div>
-		<div class="app-page">
-			<div class="search-form">
-				<div class="column is-small-8 search-input">
-					<input type="text">
-					<span>
-						<input type="checkbox" id="exactSearch">
-						<label for="exactSearch">exact name</label>
-					</span>
-				</div>
-				<button class="search-submit">Search</button>
+		<div class="app is-initial">
+			<div class="app-background" role="presentation">
+				<img src="/assets/bg_prim.svg" class="clear" />
+				<img src="/assets/bg_prim.svg" class="blur" />
 			</div>
+			<div class="app-page"></div>
 		</div>
 	</div>
-	<script src="/js/app.js"></script>
 </body>
 
 </html>

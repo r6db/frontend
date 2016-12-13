@@ -33,9 +33,9 @@ export default {
         const { Component, data, search, loading, appstate } = store.get();
         return (
             <div className={"app " + appstate}>
-                <div className="app-background">
-                    <img src="/assets/background.jpg" className="clear" />
-                    <img src="/assets/background-blurred.jpg" className="blur" />
+                <div className="app-background" role="presentation" >
+                    <img src="/assets/bg_prim.svg" class="clear" />
+                    <img src="/assets/bg_prim.svg" class="blur" />
                 </div>
                 <div className="app-page">
                     <Searchbar search={search} selector={store.select("search")} />
