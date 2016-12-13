@@ -18,6 +18,7 @@ const optional = (pred, cb) => pred ? cb() : null;
 
 const update = debounce(function() {
     log.trace("state changed, redrawing");
+    log.debug("state", store.get());
     m.redraw();
 });
 
@@ -39,7 +40,7 @@ export default {
                 </div>
                 <div className="app-page">
                     <Searchbar search={search} selector={store.select("search")} />
-                    <Component data={data} />
+                    <Component loading={loading} data={data} />
                 </div>
                 {optional(loading, () => <Loading /> )}
             </div>

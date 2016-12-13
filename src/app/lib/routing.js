@@ -31,6 +31,7 @@ export default function initRoutes() {
             appstate: State.INITIAL,
             Component: Home,
             loading: false,
+            data: null,
             search: {
                 query: "",
                 exact: false
@@ -62,6 +63,7 @@ export default function initRoutes() {
                 appstate: State.SEARCH,
                 Component: Search,
                 loading: true,
+                data: null,
                 search: {
                     query: ctx.params.query,
                     exact
@@ -87,7 +89,8 @@ export default function initRoutes() {
         store.merge({
             appstate: State.DETAIL,
             Component: Detail,
-            loading: true
+            loading: true,
+            data: null
         });
         api("getPlayer", { id: ctx.params.id })
             .then(function(res) {
