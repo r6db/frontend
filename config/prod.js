@@ -10,13 +10,12 @@ const mqpacker = require("css-mqpacker");
 const config = Object.assign({}, base);
 
 
-config.plugins.concat([
+config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
         "process.env": {
             "NODE_ENV": JSON.stringify("production")
         }
     }),
-    new webpack.optimize.DedupePlugin(),
     new UglifyJsParallelPlugin({
         workers: os.cpus().length,
         compress: {
@@ -27,7 +26,6 @@ config.plugins.concat([
         }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
 ]);
 
 module.exports = config;

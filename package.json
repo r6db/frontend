@@ -3,8 +3,8 @@
   "scripts": {
     "start": "webpack-dev-server --progress --hot --inline --config config/dev.js",
     "watch": "webpack --progress --watch --config config/dev.js",
-    "build:dev": "webpack --config config/dev.js",
-    "build": "webpack --optimize-minimize --config config/prod.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --config config/dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/prod.js",
     "stats": "webpack --config config/dev.js --json > stats.json",
     "test": "exit 0"
   },
@@ -28,7 +28,7 @@
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-es2015-native-modules": "^6.9.4",
     "copy-webpack-plugin": "^4.0.1",
-    "cross-env": "^2.0.0",
+    "cross-env": "^3.1.3",
     "css-loader": "^0.25.0",
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.7.3",
