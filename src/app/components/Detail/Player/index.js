@@ -39,7 +39,9 @@ export default {
                         <Timedata player={attrs} />
                         <Playtime player={attrs} />
                         <GeneralStats player={attrs} />
-                        <RankedStats player={attrs} />
+                        {attrs.rank && attrs.rank.ncsa ? <RankedStats region="America" stats={attrs.rank.ncsa}/> : null}
+                        {attrs.rank && attrs.rank.emea ? <RankedStats region="Europe" stats={attrs.rank.emea} /> : null}
+                        {attrs.rank && attrs.rank.apac ? <RankedStats region="Asia" stats={attrs.rank.apac} /> : null}
                     </div>
                 </div>
             </div>

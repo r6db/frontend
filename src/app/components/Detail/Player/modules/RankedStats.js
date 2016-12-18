@@ -6,27 +6,16 @@ const games = s => s.wins + s.losses;
 export default {
     season: null,
     oninit({attrs, state}) {
-        const player = attrs.player;
-        if (player.rank) {
-            const {apac, emea, ncsa} = player.rank;
-
-            let season = apac;
-            if (games(emea) > games(season)) {
-                season = emea;
-            }
-            if (games(ncsa) > games(season)) {
-                season = ncsa;
-            }
-            if (games(season) > 10) {
-                state.season = season;
-            }
+        const season = attrs.stats;
+        if (season.rank) {
+            state.season = season;   
         } else {
             state.season = null;
         }
     },
     view: ({ state }) => state.season != null
         ? (<div className="detail-rankedstats module">
-            <header className="module-header">Ranked Stats (season)</header>
+            <header className="module-header">Ranked Stats {attrs.region}(season)</header>
             <div className="module-row">
                 <div className="module-label">Wins</div>
                 <div className="module-value">{state.season.wins}</div>
