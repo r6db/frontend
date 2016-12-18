@@ -86,18 +86,23 @@ export default function initRoutes() {
     });
     page("/player/:id", analyticsMiddleware, function (ctx) {
         log.debug("router mount <Detail />");
+        const id = ctx.params.id;
         store.merge({
             appstate: State.DETAIL,
             Component: Detail,
             loading: true,
             data: null
         });
-        api("getPlayer", { id: ctx.params.id })
-            .then(function(res) {
-                store.merge({
-                    data: res,
-                    loading: false
-                });
+        api("getPlayer", { id })
+            .then(function (res) {
+                if (res.id === id) {
+                    store.merge({
+                        data: res,
+                        loading: false
+                    });
+                } else {
+                    log.info("discarded data from previous route");
+                }
             })
             .catch(function(err) {
                 console.warn(err);
