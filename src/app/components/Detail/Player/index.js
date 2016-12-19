@@ -6,7 +6,7 @@ import Playtime from "./modules/Playtime";
 import Timedata from "./modules/Timedata";
 import GeneralStats from "./modules/GeneralStats";
 import RankedStats from "./modules/RankedStats";
-
+import { getRegionName } from "lib/region";
 
 import Log from "lib/log";
 const log = Log.child(__filename);
@@ -39,9 +39,9 @@ export default {
                         <Timedata player={attrs} />
                         <Playtime player={attrs} />
                         <GeneralStats player={attrs} />
-                        {attrs.rank && attrs.rank.ncsa ? <RankedStats region="America" stats={attrs.rank.ncsa}/> : null}
-                        {attrs.rank && attrs.rank.emea ? <RankedStats region="Europe" stats={attrs.rank.emea} /> : null}
-                        {attrs.rank && attrs.rank.apac ? <RankedStats region="Asia" stats={attrs.rank.apac} /> : null}
+                        {attrs.rank && attrs.rank.ncsa ? <RankedStats region={getRegionName("ncsa")}stats={attrs.rank.ncsa}/> : null}
+                        {attrs.rank && attrs.rank.emea ? <RankedStats region={getRegionName("emea")} stats={attrs.rank.emea} /> : null}
+                        {attrs.rank && attrs.rank.apac ? <RankedStats region={getRegionName("apac")} stats={attrs.rank.apac} /> : null}
                     </div>
                 </div>
             </div>

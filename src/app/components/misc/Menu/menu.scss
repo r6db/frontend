@@ -1,0 +1,35 @@
+@import "styles";
+.menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: $l*5.5;
+    flex: 0 0 auto;
+    .search-form{
+        margin: 0;
+    }
+    padding: ($l) ($l*2);
+}
+.menu-left,
+.menu-center,
+.menu-right{
+    display: flex;
+    width: 25%
+}
+.menu-center{
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+}
+.menu-right{
+    text-align: right;
+    justify-content: flex-end;
+}
+.menu-logo{
+    height: 5*$l;
+    margin: 0 ($l*2);
+    fill: white;
+}
+.menu-link{
+    color: $white;
+}

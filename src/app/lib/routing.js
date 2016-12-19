@@ -11,6 +11,7 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 import Home from "components/Home";
 import Search from "components/Search";
 import Detail from "components/Detail";
+import Leaderboard from "components/Leaderboard";
 
 function analyticsMiddleware(context, next) {
     ga("set", "page", context.path);
@@ -103,6 +104,32 @@ export default function initRoutes() {
                 } else {
                     log.info("discarded data from previous route");
                 }
+            })
+            .catch(function(err) {
+                console.warn(err);
+            });
+    });
+    page("/leaderboard", analyticsMiddleware, function (ctx) {
+        const boards = {
+            skill: "highest_skill_adjusted",
+            mmr: "highest_mmr"
+        };
+        const qs = parse(ctx.querystring);
+        const board = boards[qs.stat] || boards.skill;
+        log.debug("router mount <Leaderboard />");
+        const id = ctx.params.id;
+        store.merge({
+            appstate: State.LEADERBOARD,
+            Component: Leaderboard,
+            loading: true,
+            data: null
+        });
+        api("getLeaderboard", { board })
+            .then(function (res) {
+                store.merge({
+                    data: res,
+                    loading: false
+                });
             })
             .catch(function(err) {
                 console.warn(err);

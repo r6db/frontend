@@ -1,9 +1,4 @@
 import m from "mithril";
-import page from "page";
-import api from "lib/api";
-import store from "lib/store";
-import { title, State } from "lib/constants";
-import Searchbar from "../misc/Searchbar";
 import "./home.scss";
 import Log from "lib/log";
 const log = Log.child(__filename);

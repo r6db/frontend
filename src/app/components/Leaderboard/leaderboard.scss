@@ -1,0 +1,48 @@
+@import "styles";
+
+.leaderboard{
+    background: $gray-dark;
+    pre{
+        padding: 5em 0;
+        max-width: $screen-yourmom;
+        margin: 0 auto;
+    }
+    &-top{
+        margin-bottom: 5em;
+        flex-direction: row;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+.is-pos-1{
+    align-self: flex-start;
+}
+.is-pos-2{
+    align-self: center;
+}
+.is-pos-3{
+    align-self: flex-end;
+}
+.entry{
+    margin: $l;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.entry-place{
+    font-size: 2rem;
+    text-align: right;
+    width: 4em;
+}
+.entry-name{
+    font-size: 1.25rem;
+}
+
+.leaderboard-top .entry{
+    width: 25%;
+    height: auto;
+    flex-direction: column;
+    .entry-place{
+        display: none;
+    }
+}

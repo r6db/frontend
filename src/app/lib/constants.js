@@ -7,7 +7,8 @@ export const State = Object.freeze({
     INITIAL: "is-initial",
     SEARCH: "is-searching",
     RESULT: "is-results",
-    DETAIL: "is-detail"
+    DETAIL: "is-detail",
+    LEADERBOARD: "is-leaderboard"
 });
 export const Ranks = [
     "Unranked",
