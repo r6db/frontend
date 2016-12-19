@@ -1,48 +1,114 @@
 @import "styles";
 
 .leaderboard{
-    background: $gray-dark;
     pre{
         padding: 5em 0;
         max-width: $screen-yourmom;
         margin: 0 auto;
     }
     &-top{
-        margin-bottom: 5em;
+        margin: 3em 0 3em;
         flex-direction: row;
         display: flex;
         justify-content: space-around;
     }
-}
-.is-pos-1{
-    align-self: flex-start;
-}
-.is-pos-2{
-    align-self: center;
-}
-.is-pos-3{
-    align-self: flex-end;
+    &-entries{
+        max-width: 900px;
+        margin: 0 auto;
+        padding: $l;
+    }
 }
 .entry{
-    margin: $l;
+    background: $blue-dark;
+    padding: 0 ($l*2) 0 $l;
+	width: 98%;
+	margin: 1%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .entry-place{
     font-size: 2rem;
-    text-align: right;
-    width: 4em;
+    display: block;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    margin-right: $l;
 }
 .entry-name{
     font-size: 1.25rem;
+    width: 15em;
 }
-
-.leaderboard-top .entry{
+.entry-link{
+    color: $accent;
+}
+.entry-content{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.top-entry{
     width: 25%;
     height: auto;
     flex-direction: column;
+    background: darken($gray-dark, 5%);
+    padding: $l*2 0;
+
+    .entry-place,
+    .entry-name,
+    .entry-region,
+    .entry-link{
+        text-align: center;
+        width: 100%;
+    }
     .entry-place{
-        display: none;
+        font-size: 4em;
+    }
+    .entry-name{
+        padding: ($l*1.5) 0;
+        text-shadow: 0 0 2px $gray-dark;
+        background-size: cover;
+    }
+    .entry-link{
+        padding: ($l*2) 0;
+    }
+    .entry-img{
+        width: 128px;
+        height: 128px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: $l*2;
+        
+        img{
+            opacity: 0.75;
+        }
+        .entry-place{
+            position: absolute;
+            top: 0;
+            width: 128px;
+            height: 128px;
+            line-height: 128px;
+            text-shadow: 0 0 3px $primary;
+            color: white;
+        }
+    }
+    &.is-pos-1{
+        align-self: flex-start;
+        .entry-name{
+            background-image: url(/assets/pattern_diamond.svg);
+        }
+    }
+    &.is-pos-2{
+        align-self: center;
+        .entry-name{
+            background-image: url(/assets/pattern_gold.svg);
+        }
+    }
+    &.is-pos-3{
+        align-self: flex-end;
+        .entry-name{
+            background-image: url(/assets/pattern_bronze.svg);
+        }
     }
 }

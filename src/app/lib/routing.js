@@ -117,7 +117,6 @@ export default function initRoutes() {
         const qs = parse(ctx.querystring);
         const board = boards[qs.stat] || boards.skill;
         log.debug("router mount <Leaderboard />");
-        const id = ctx.params.id;
         store.merge({
             appstate: State.LEADERBOARD,
             Component: Leaderboard,
