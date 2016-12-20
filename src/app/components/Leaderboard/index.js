@@ -15,8 +15,7 @@ export default {
                     <div className="leaderboard-header">
                         <h1 className="leaderboard-title">Top Skilled Players</h1>
                         <p className="leaderboard-description">
-                            We use the he ranked systems 'skill' and an 'uncertainty' variables to calculate a downward adjusted skill rating (aka "you're at least this good" value). <br/>
-                            For more info on the current rank system head you can read <a href="http://rainbow6.ubi.com/siege/en-gb/news/detail.aspx?c=tcm:154-277344-16&ct=tcm:148-76770-32">this blog post by Ubisoft</a>
+                            We use the ranked system's 'skill' and an 'uncertainty' variables to calculate a downward adjusted skill rating (aka "you're at least this good" value). That way we can ensure that players with identical skill but more games will be ranked higher.                          For more info on the current rank system, you can read <a href="http://rainbow6.ubi.com/siege/en-gb/news/detail.aspx?c=tcm:154-277344-16&ct=tcm:148-76770-32">this blog post by Ubisoft</a>.
                         </p>
                     </div>
                     <div className="leaderboard-top">
