@@ -1,9 +1,14 @@
 @import "styles";
 
 .search-title{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 30vh);
 	text-align: center;
-	margin-top: 15vh;
+
 	svg {
+		min-height: 75px;
 		height: 15vh;
 		margin: 0 auto;
 		fill: $white;
