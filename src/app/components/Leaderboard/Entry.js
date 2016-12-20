@@ -3,7 +3,7 @@ import m from "mithril";
 export default {
     view({attrs}) {
         return (
-            <div className={`entry is-pos-${attrs.pos}`}>
+            <div className={`entry bottom-entry is-pos-${attrs.pos}`}>
                 <div className="entry-place">{attrs.pos}</div>
                 <div className="entry-content">
                     <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>

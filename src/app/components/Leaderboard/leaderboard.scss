@@ -174,3 +174,22 @@
         }
     }
 }
+
+.bottom-entry{
+    .entry-link{
+        display: none;
+    }
+    .entry-rating{
+        display: none;
+    }
+    @media screen and (min-width: 570px) {
+        .entry-rating{
+            display: flex;
+        }
+    }
+    @include large{
+        .entry-link{
+            display: block;
+        }
+    }
+}

@@ -11,14 +11,18 @@
         margin: 0;
     }
     padding: ($l) ($l*2);
+
 }
 .menu-left,
-.menu-center,
 .menu-right{
-    display: flex;
-    width: 25%
+    display: none;
+    width: 25%;
+    @include large{
+        display: flex;
+    }
 }
 .menu-center{
+    display: flex;
     flex: 1;
     text-align: center;
     justify-content: center;
