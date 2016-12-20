@@ -5,6 +5,8 @@
     align-items: center;
     height: $l*5.5;
     flex: 0 0 auto;
+    margin-bottom: $l*4;
+
     .search-form{
         margin: 0;
     }
@@ -32,4 +34,7 @@
 }
 .menu-link{
     color: $white;
+    &:focus{
+        outline: none;
+    }
 }

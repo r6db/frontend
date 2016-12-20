@@ -13,8 +13,8 @@ export default {
         };
         state.onSearch = function () {
 
-            const q = state.query.get();
-            const e = state.exact.get();
+            const q = state.query;
+            const e = state.exact;
             if (q.length > 2) {
                 page(`/search/${q}${e ? "?exact=true" : ""}`);
             } else {
@@ -22,22 +22,28 @@ export default {
             }
         };
         log.trace("<Searchbar /> oninit", attrs.search);
-        state.query = attrs.selector.select("query");
-        state.exact = attrs.selector.select("exact");
+        state.query = attrs.selector.get("query");
+        state.exact = attrs.selector.get("exact");
+        state.onQueryChange = e => {
+            state.query =  e.target.value;
+        };
+        state.onExactChange = e => {
+            state.exact =  e.target.checked;
+        };
     },
     view({ state }) {
         return (
             <div className="search-form">
-                <div className="column is-small-8 search-input">
+                <div className="search-input">
                     <input type="text"
-                        value={state.query.get()}
-                        oninput={q => state.query.set(q.target.value)}
+                        value={state.query}
+                        oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
                     <span>
                         <input type="checkbox"
                             id="exactSearch"
-                            checked={state.exact.get()}
-                            onchange={e => state.exact.set(e.target.checked)} />
+                            checked={state.exact}
+                            onchange={state.onExactChange} />
                         <label htmlFor="exactSearch">exact name</label>
                     </span>
                 </div>

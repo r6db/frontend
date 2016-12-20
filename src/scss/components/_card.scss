@@ -4,6 +4,7 @@
     background: $blue-dark;
     color: $white;
     position: relative;
+    box-shadow: 1px 1px 3px black;
 
 	&.is-empty{
 		text-align: center;

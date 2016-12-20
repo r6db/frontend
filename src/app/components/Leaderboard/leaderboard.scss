@@ -1,16 +1,33 @@
 @import "styles";
 
 .leaderboard{
-    pre{
-        padding: 5em 0;
+    color: $white;
+    
+    &-header{
         max-width: $screen-yourmom;
+        padding: 0 1%;
         margin: 0 auto;
     }
+    &-title{
+        font-size: 3em;
+        margin-bottom: $l;
+        text-shadow: 0 0 1px $gray-dark;
+    }
+    &-description{
+        color: $gray-light;
+        line-height: 1.4;
+        text-shadow: 0 0 1px $gray-dark;
+        a{
+            color: $accent;
+        }
+    }
     &-top{
-        margin: 3em 0 3em;
+        margin: 3em auto 3em;
+        max-width: $screen-yourmom;
         flex-direction: row;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
     }
     &-entries{
         max-width: 900px;
@@ -25,6 +42,7 @@
 	margin: 1%;
     display: flex;
     align-items: center;
+    box-shadow: 1px 1px 3px black;
 }
 .entry-place{
     font-size: 2rem;
@@ -33,11 +51,12 @@
     height: 64px;
     line-height: 64px;
     text-align: center;
-    margin-right: $l;
+    margin-right: $l*2;
 }
 .entry-name{
     font-size: 1.25rem;
     width: 15em;
+    color: white;
 }
 .entry-link{
     color: $accent;
@@ -47,12 +66,31 @@
     flex: 1;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+.entry-rating{
+    display: flex;
+    align-items: center;
+}
+.entry-valuelabel{
+    display: inline-block;
+    margin-right: $l*2;
+}
+.entry-value{
+    display: inline-block;
+    font-size: 3em;
+}
+.entry-value{
+    font-weight: bold;
+    font-size:  2em;
 }
 .top-entry{
-    width: 25%;
+    width: 310px;
+    flex: 0 0 auto;
     height: auto;
     flex-direction: column;
     background: darken($gray-dark, 5%);
+    box-shadow: 1px 1px 3px black;
     padding: $l*2 0;
 
     .entry-place,
@@ -64,6 +102,8 @@
     }
     .entry-place{
         font-size: 4em;
+        margin: 0;
+        text-align: center;
     }
     .entry-name{
         padding: ($l*1.5) 0;
@@ -72,6 +112,28 @@
     }
     .entry-link{
         padding: ($l*2) 0;
+    }
+    .entry-rating{
+        position: relative;
+        display: block;
+        width: $l*20;
+        height: $l*20;
+        line-height: $l*20;
+        border-radius: 50%;
+        text-align: center;
+        margin: ($l*2) auto 0;
+        border: 1px solid $white;
+    }
+    .entry-valuelabel{
+        position: absolute;
+        left: 50%;
+        top: $l*5;
+        transform: translate(-50%, 0);
+        margin: 0;
+        line-height: 1em;
+    }
+    .entry-value{
+        font-size: 3em;
     }
     .entry-img{
         width: 128px;
@@ -96,13 +158,13 @@
     &.is-pos-1{
         align-self: flex-start;
         .entry-name{
-            background-image: url(/assets/pattern_diamond.svg);
+            background-image: url(/assets/pattern_gold.svg);
         }
     }
     &.is-pos-2{
         align-self: center;
         .entry-name{
-            background-image: url(/assets/pattern_gold.svg);
+            background-image: url(/assets/pattern_silver.svg);
         }
     }
     &.is-pos-3{

@@ -25,11 +25,12 @@ $detail-header-height: $detail-image-height + (5*$l);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: (3*$l) auto 0;
+	margin: 0 auto;
 	width: 100%;
 	max-width: $screen-yourmom;
 	height: $detail-image-height;
 	flex: 0 0 auto;
+	box-shadow: 1px 1px 3px black;
 }
 
 .detail-headerimage{

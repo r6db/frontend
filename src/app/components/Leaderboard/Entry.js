@@ -6,9 +6,17 @@ export default {
             <div className={`entry is-pos-${attrs.pos}`}>
                 <div className="entry-place">{attrs.pos}</div>
                 <div className="entry-content">
-                    <div className="entry-name">{attrs.name}</div>
-                    <div className="entry-value">{attrs.value}</div>
-                    <a href={`/player/${attrs.id}`} className="entry-link">view Profile</a>
+                    <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>
+
+                    <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`} className="entry-link">
+                        › view on uplay
+                    </a>
+                    <div className="entry-rating">
+                        <span className="entry-valuelabel">skill rating</span>
+                        <div className="entry-value">
+                            {attrs.value}
+                        </div>
+                    </div>
                 </div>
             </div>
         );

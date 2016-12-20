@@ -16,22 +16,9 @@ const get = function ({board, page}) {
     }
 };
 
-const onlyHighest = datum => regions.reduce((acc, curr) => {
-    if (!acc) {
-        return Object.assign({ curr: curr, name: getRegionName(curr) }, datum[curr]);
-    } else {
-        const accSkill = acc.skill_mean - acc.skill_stdev;
-        const currSkill = datum[curr].skill_mean - datum[curr].skill_stdev;
-        if (currSkill > accSkill) {
-            return Object.assign({ region: curr, name: getRegionName(curr) }, datum[curr]);
-        } else {
-            return acc;
-        }
-    }
-}, null);
 
 const process = entries => entries.map(entry => {
-    entry.stats = onlyHighest(entry.stats);
+    entry.value = entry.value.toFixed(2);
     return entry;
 });
 

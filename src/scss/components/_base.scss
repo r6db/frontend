@@ -55,3 +55,9 @@ body{
 	left: 50%;
 	opacity: 0.2;
 }
+
+a, button, input{
+	&:focus{
+		outline: 1px solid $primary;
+	}
+}

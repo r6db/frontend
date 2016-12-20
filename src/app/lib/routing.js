@@ -57,8 +57,7 @@ export default function initRoutes() {
     page("/search/:query", analyticsMiddleware, function (ctx) {
         log.debug("router mount <Search />");
         const qs = parse(ctx.querystring);
-        const exact = qs === "true" || qs === "1";
-
+        const exact = qs.exact === "true" || qs.exact === "1";
         if (ctx.params.query && ctx.params.query.length > 2) {
             store.merge({
                 appstate: State.SEARCH,
