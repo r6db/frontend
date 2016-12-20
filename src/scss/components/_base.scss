@@ -17,6 +17,12 @@
 	font-style: italic;
 }
 
+html{
+	font-size: 0.875em;
+	@include large{
+		font-size: 1em;
+	}
+}
 
 body{
 	font-family: "Noto Sans", "Open Sans", sans-serif;
