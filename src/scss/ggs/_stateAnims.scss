@@ -4,7 +4,7 @@
 .is-initial {
 	.search-form{
 		// anim
-		transform: scale(1.1) translate(0, 43vh);
+		transform: translate(0, 43vh);
 		transition: all $tdur ease-in-out;
 	}
 }
