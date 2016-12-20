@@ -30,7 +30,7 @@ const getStats = player => (
 export default {
     view({attrs, state}) { 
         return (
-            <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
+            <div className={`card playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
                 <a href={attrs.href} className="card-image">
                     <Profilepic id={attrs.player.id} delay={attrs.index} />
                 </a>

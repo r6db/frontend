@@ -1,0 +1,23 @@
+exports[`test can render the searchbar 1`] = `
+Object {
+  "attrs": Object {
+    "selector": Object {
+      "get": [Function],
+      "set": [Function],
+    },
+  },
+  "children": Array [],
+  "dom": undefined,
+  "domSize": undefined,
+  "events": undefined,
+  "instance": undefined,
+  "key": undefined,
+  "skip": false,
+  "state": Object {},
+  "tag": Object {
+    "oninit": [Function],
+    "view": [Function],
+  },
+  "text": undefined,
+}
+`;

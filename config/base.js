@@ -8,6 +8,8 @@ const ExtractCss = new ExtractTextPlugin("css/[name].css");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
+const nano = require("cssnano");
+const cssdedupe = require("postcss-discard-duplicates");
 
 module.exports = {
     context: path.resolve(__dirname, "../"),
@@ -93,7 +95,7 @@ module.exports = {
                     ],
                     sourceMap: true
                 },
-                postcss: [autoprefixer(), mqpacker()]
+                postcss: [autoprefixer(), mqpacker(), cssdedupe(), nano()]
             }
         }),
         ExtractCss

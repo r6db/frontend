@@ -1,8 +1,8 @@
 @import "styles";
 
 .search-form{
-	@extend .columns;
-	@extend .is-gapless;
+
+	width: 100%;
 	margin: $l*2 auto;
 	max-width: 735px;
 	justify-content: center;
@@ -18,14 +18,14 @@
 
 	>input{
 		width: 100%;
-		padding: 0 12*$l 0 $l;
-		font-size: 20px;
+		padding: .5em 12*$l .5em $l;
 		height: 100%;
 		background: darken($white, 5%);
 	}
 	span{
 		position: absolute;
 		right: 0;
+		top: 0;
 		height: 100%;
 		width: 11*$l;
 		display: inline-flex;
@@ -38,6 +38,12 @@
 			user-select: none;
 			letter-spacing: -1px;
 			color: darken($gray, 30%);
+		}
+		input{
+			height: initial;
+			width: initial;
+			padding: 0;
+			line-height: 1;
 		}
 	}
 }
