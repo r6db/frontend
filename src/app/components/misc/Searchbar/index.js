@@ -32,7 +32,6 @@ export default {
         };
     },
     view({ state }) {
-        log.trace("<Searchbar /> view", state);
         return (
             <div className="search-form">
                 <div className="search-input">
