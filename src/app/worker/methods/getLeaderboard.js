@@ -3,7 +3,7 @@ import { failEarly, tap, getHeaders } from "../utils";
 import { register } from "../method";
 
 const get = function ({board, page}) {
-    return fetch(`${v2Api}/leaderboards?stat=${board}&limit=100&page=${page ||  1}`, { headers: getHeaders() })
+    return fetch(`${v2Api}/leaderboards?stat=${board}&limit=100`, { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json());
 };
