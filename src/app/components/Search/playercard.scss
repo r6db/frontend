@@ -113,6 +113,8 @@
 		/* 
 			i was against this 
 			- laxis
+			i went ahead and did it anyway
+			- muppet
 		*/
 		background: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
 		.player-name {
@@ -123,11 +125,19 @@
 		}
 	}
 	&.player-1b50085a-8a20-4ce6-b75f-db6a00e4d718:after {
-			@include large{
-				content: "Frontend Dude";
-				position: absolute;
-				left: $l*2 + 64px;
-				font-size: 0.7em;
-			}
+		@include large {
+			content: "Frontend Dude";
+			position: absolute;
+			left: $l*2 + 64px;
+			font-size: 0.7em;
+		}
+	}
+	&.player-cb2ef9f9-8557-4784-86ff-fb6e70e61f9f:after {
+		@include large {
+			content: "Pronounced \"Remork\"";
+			position: absolute;
+			left: $l*2 + 64px;
+			font-size: 0.7em;
+		}
 	}
 }
