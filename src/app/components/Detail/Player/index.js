@@ -21,12 +21,34 @@ export default {
                         <Profilepic id={attrs.id} delay={0} />
                     </div>
                     <div className="detail-headertext">
-                        <div className="detail-name">{attrs.aliases[0].name}</div>
-                        <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
-                            className="detail-id"
-                            title="show on uplay">
-                            {attrs.id}
-                        </a>
+                        <div className="detail-header-left">
+                            <div className="detail-name">{attrs.aliases[0].name}</div>
+                            <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
+                                className="detail-id"
+                                title="show on uplay">
+                                {attrs.id}
+                            </a>
+                        </div>
+                        <div className="detail-header-right">
+                            <div className="season-ranks">
+                                <div className="season-rank">
+                                    <img src="/assets/ranks/14.svg" class="rank-image" />
+                                    <div className="rank-season">Season 1</div>
+                                </div>
+                                <div className="season-rank">
+                                    <img src="/assets/ranks/17.svg" class="rank-image" />
+                                    <div className="rank-season">Season 2</div>
+                                </div>
+                                <div className="season-rank">
+                                    <img src="/assets/ranks/19.svg" class="rank-image" />
+                                    <div className="rank-season">Season 3</div>
+                                </div>
+                                <div className="season-rank">
+                                    <img src="/assets/ranks/20.svg" class="rank-image" />
+                                    <div className="rank-season">Season 4</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="detail-content">
