@@ -2,7 +2,11 @@ import m from "mithril";
 
 export default {
     timeout: false,
-    onerror: e => e.target.src = "",
+    onerror: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.target.src = "/assets/noavatar.png";
+    },
     oncreate({ attrs, state, dom }) {
         if (attrs.id) {
             const src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
