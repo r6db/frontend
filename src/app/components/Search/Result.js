@@ -9,7 +9,7 @@ const getWl = player => player.stats.matchesWon / player.stats.matchesLost;
 const getAliases = player => {
     const shown = player.aliases.slice(0, 2).map(alias => <li>{alias.name}</li>);
     const rest = player.aliases.length > 2
-        ? <li>and {player.aliases.length - 2}more</li>
+        ? <li>and {player.aliases.length - 2} more</li>
         : null;
     return (
         <div className="player-aliases">
