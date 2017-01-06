@@ -2,6 +2,7 @@ import m from "mithril";
 
 import Profilepic from "../../misc/Profilepic";
 import Alias from "./Alias";
+import Rank from "./Rank";
 import Playtime from "./modules/Playtime";
 import Timedata from "./modules/Timedata";
 import GeneralStats from "./modules/GeneralStats";
@@ -31,22 +32,7 @@ export default {
                         </div>
                         <div className="detail-header-right">
                             <div className="season-ranks">
-                                <div className="season-rank">
-                                    <img src="/assets/ranks/14.svg" class="rank-image" />
-                                    <div className="rank-season">Season 1</div>
-                                </div>
-                                <div className="season-rank">
-                                    <img src="/assets/ranks/17.svg" class="rank-image" />
-                                    <div className="rank-season">Season 2</div>
-                                </div>
-                                <div className="season-rank">
-                                    <img src="/assets/ranks/19.svg" class="rank-image" />
-                                    <div className="rank-season">Season 3</div>
-                                </div>
-                                <div className="season-rank">
-                                    <img src="/assets/ranks/20.svg" class="rank-image" />
-                                    <div className="rank-season">Season 4</div>
-                                </div>
+                                {attrs.pastRanks.map(x => <Rank rank={x} />)}
                             </div>
                         </div>
                     </div>

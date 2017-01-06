@@ -1,4 +1,5 @@
 import m from "mithril";
+import { maxBy, assign } from "lodash";
 import Player from "./Player";
 import Placeholder from "./Placeholder";
 import NotFound from "./Errors/NotFound";
@@ -22,13 +23,19 @@ export default {
             return <Placeholder />;
         } else if (!attrs.data || !attrs.data.id) {
             return <NotFound />;
-        } else if (attrs.data.flags && attrs.data.flags.noPlaytime) { 
+        } else if (attrs.data.flags && attrs.data.flags.noPlaytime) {
             return <NoPlaytime {...attrs.data} />;
-        } else if (attrs.data.flags && attrs.data.flags.noAliases) { 
+        } else if (attrs.data.flags && attrs.data.flags.noAliases) {
             return <NoAliases {...attrs.data} />;
         } else {
-            return <Player {...attrs.data} />;
+            let pastRanks = attrs.data.seasonRanks
+                .concat(attrs.data.rank)
+                .map(x => {
+                    return maxBy([x.ncsa, x.emea, x.apac]
+                        .map(y => ({ rank: y.rank, season: x.season})), 'rank');
+                });
+            const data = assign({}, attrs.data, { pastRanks })
+            return <Player {...data} />;
         }
     }
 };
- 
