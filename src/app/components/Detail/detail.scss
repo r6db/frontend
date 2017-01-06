@@ -45,13 +45,33 @@ $detail-header-height: $detail-image-height + (5*$l);
 	width: 60px;
 }
 
-.detail-header-left {
-	width: 50%;
-	float: left;
+@media (min-width: 1023px) {
+	.detail-header-left {
+		width: 50%;
+		float: left;
+	}
+	.detail-header-right {
+		width: 50%;
+		float: right;
+	}
 }
-.detail-header-right {
-	width: 50%;
-	float: right;
+
+@media (min-width: $screen-medium) and (max-width: 1022px) {
+	.detail-header-left {
+		float: left;
+		width: 60%;
+	}
+	.detail-header-right {
+		float: right;
+		width: 200px;
+		margin-top: -28px;
+	}
+	.rank-image {
+		width: 50px;
+	}
+	.rank-season {
+		font-size: 0.8rem;
+	}
 }
 
 .detail-headerimage{
