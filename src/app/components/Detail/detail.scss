@@ -45,18 +45,18 @@ $detail-header-height: $detail-image-height + (5*$l);
 	width: 60px;
 }
 
-@media (min-width: 1023px) {
+@media (min-width: 1024px) {
 	.detail-header-left {
-		width: 50%;
+		width: calc(100% - 430px);
 		float: left;
 	}
 	.detail-header-right {
-		width: 50%;
+		width: 430px;
 		float: right;
 	}
 }
 
-@media (min-width: $screen-medium) and (max-width: 1022px) {
+@media (min-width: 800px) and (max-width: 1023px) {
 	.detail-header-left {
 		float: left;
 		width: 60%;
@@ -71,6 +71,30 @@ $detail-header-height: $detail-image-height + (5*$l);
 	}
 	.rank-season {
 		font-size: 0.8rem;
+	}
+}
+
+@media (max-width: 799px) {
+	.detail-headerimage {
+		display:none;
+	}
+	.detail-header-right {
+		float: right;
+		width: 180px;
+		margin-top: -95px;
+	}
+	.rank-image {
+		width: 50px;
+	}
+	.rank-season {
+		font-size: 0.6rem;
+		text-align: center;
+	}
+}
+
+@media (min-width: 510px) and (max-width: 799px) {
+	.detail-header-right {
+		margin-top: -117px;
 	}
 }
 
