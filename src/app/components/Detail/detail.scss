@@ -33,58 +33,61 @@ $detail-header-height: $detail-image-height + (5*$l);
 }
 
 .season-ranks {
-	margin-top: 15px;
+	margin-top: 1.5 * $l px;
 }
 
 .season-rank {
 	float: left;
-	margin-right: 40px;
+	margin-right: 4 * $l px;
+	&:last-child {
+		margin: 0;
+	}
 }
 
 .rank-image {
-	width: 60px;
+	width: 6 * $l px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 102.4 * $l px) {
 	.detail-header-left {
-		width: calc(100% - 430px);
+		width: calc(100% - (4.3 * $l)px);
 		float: left;
 	}
 	.detail-header-right {
-		width: 430px;
+		width: 4.3 * $l px;
 		float: right;
 	}
 }
 
-@media (min-width: 800px) and (max-width: 1023px) {
+@media (min-width: 80 * $l px) and (max-width: 102.3 * $l px) {
 	.detail-header-left {
 		float: left;
 		width: 60%;
 	}
 	.detail-header-right {
 		float: right;
-		width: 200px;
-		margin-top: -28px;
+		width: 20 * $l px;
+		margin-top: -2.8 * $l px;
 	}
 	.rank-image {
-		width: 50px;
+		width: 5 * $l px;
 	}
 	.rank-season {
 		font-size: 0.8rem;
 	}
 }
 
-@media (max-width: 799px) {
+@media (max-width: 79.9 * $l px) {
 	.detail-headerimage {
 		display:none;
 	}
 	.detail-header-right {
 		float: right;
-		width: 180px;
-		margin-top: -95px;
+		width: 18 * $l px;
+		margin-top: -9.5 * $l px;
 	}
 	.rank-image {
-		width: 50px;
+		width: 5 * $l px;
 	}
 	.rank-season {
 		font-size: 0.6rem;
@@ -92,9 +95,9 @@ $detail-header-height: $detail-image-height + (5*$l);
 	}
 }
 
-@media (min-width: 510px) and (max-width: 799px) {
+@media (min-width: 51 * $l px) and (max-width: 79.9 * $l px) {
 	.detail-header-right {
-		margin-top: -117px;
+		margin-top: -11.7 * $l px;
 	}
 }
 
