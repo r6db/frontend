@@ -33,3 +33,9 @@ export const Ranks = [
     "Platinum 3",
     "Diamond"
 ];
+export const Leaderboards = {
+    ALL: "highest_skill_adjusted",
+    APAC: "APAC_skill_adjusted",
+    EMEA: "emea_skill_adjusted",
+    NCSA: "ncsa_skill_adjusted",
+};

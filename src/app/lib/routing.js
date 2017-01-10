@@ -2,7 +2,7 @@ import m from "mithril";
 import store from "./store";
 import Log from "lib/log";
 import page from "page";
-import { State } from "lib/constants";
+import { State, Leaderboards } from "lib/constants";
 import { parse } from "querystring";
 import api from "lib/api";
 const log = Log.child(__filename);
@@ -108,13 +108,8 @@ export default function initRoutes() {
                 console.warn(err);
             });
     });
-    page("/leaderboard", analyticsMiddleware, function (ctx) {
-        const boards = {
-            skill: "highest_skill_adjusted",
-            mmr: "highest_mmr"
-        };
-        const qs = parse(ctx.querystring);
-        const board = boards[qs.stat] || boards.skill;
+    page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
+        const board = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         log.debug("router mount <Leaderboard />");
         store.merge({
             appstate: State.LEADERBOARD,
