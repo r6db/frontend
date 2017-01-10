@@ -108,6 +108,9 @@ export default function initRoutes() {
                 console.warn(err);
             });
     });
+    page("/leaderboard/", function () {
+        page.redirect("/leaderboard/ALL");
+    });
     page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
         const board = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         log.debug("router mount <Leaderboard />");
