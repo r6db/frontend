@@ -15,7 +15,7 @@ export default {
                 </div>
                 <div className="menu-center">{children}</div>
                 <div className="menu-right">
-                    <a href="/leaderboard" className="menu-link">Leaderboard</a>
+                    <a href="/leaderboard/ALL" className="menu-link">Leaderboard</a>
                 </div>
             </div>
         );

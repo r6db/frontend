@@ -120,7 +120,10 @@ export default function initRoutes() {
         api("getLeaderboard", { board })
             .then(function (res) {
                 store.merge({
-                    data: res,
+                    data: {
+                        board: ctx.params.board,
+                        entries: res
+                    },
                     loading: false
                 });
             })
