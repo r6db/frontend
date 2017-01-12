@@ -1,4 +1,11 @@
-const worker = new Worker("/js/worker.js");
+let worker;
+if (typeof(Worker) !== "undefined") {
+    worker = new Worker("/js/worker.js");
+} else {
+    const Worker = require("pseudo-worker");
+    worker = new PseudoWorker("/js/worker.js");
+}
+
 import uuid from "lib/uuid";
 import Log from "lib/log";
 const log = Log.child(__filename);

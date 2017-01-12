@@ -24,6 +24,7 @@
     "mithril": "github:lhorie/mithril.js#rewrite",
     "moment": "^2.15.1",
     "page": "^1.7.1",
+    "pseudo-worker": "^1.1.1",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
