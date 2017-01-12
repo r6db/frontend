@@ -1,6 +1,11 @@
 /**
  * this is the app's entry point
  */
+
+// import polyfills
+import "whatwg-fetch";
+
+// import deps
 import "../scss/styles.scss";
 import * as page from "page";
 import store from "lib/store";

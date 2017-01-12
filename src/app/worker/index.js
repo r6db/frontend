@@ -1,4 +1,5 @@
 import "whatwg-fetch";
+
 import { tap } from "./utils";
 import { methods } from "./method";
 import Cache from "./cache";

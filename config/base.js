@@ -1,10 +1,15 @@
 const webpack = require("webpack");
 const HappyPack = require("happypack");
 const path = require("path");
+const util = require("util");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractCss = new ExtractTextPlugin("css/[name].css");
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ResourceHintWebpackPlugin = require("resource-hints-webpack-plugin");
+const StyleExtHtmlWebpackPlugin = require("style-ext-html-webpack-plugin");
+const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
@@ -44,7 +49,7 @@ module.exports = {
         },
         {
             test: /\.scss$/,
-            loader: ExtractCss.extract({
+            loader: ExtractTextPlugin.extract({
                 fallbackLoader: "style-loader",
                 diable: process.env.NODE_ENV === "production",
                 loader: [
@@ -64,7 +69,7 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            Promise: "bluebird"
+            // Promise: "bluebird"
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
@@ -81,9 +86,8 @@ module.exports = {
                 }
             }]
         }),
-        new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/ (de)$/),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb/),
         new CopyWebpackPlugin([
-            { from: "src/*.html", to: "[name].[ext]" },
             { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },
         ]),
@@ -98,6 +102,12 @@ module.exports = {
                 postcss: [autoprefixer(), mqpacker(), cssdedupe(), nano()]
             }
         }),
-        ExtractCss
+        new HtmlWebpackPlugin({
+            inlineSource: ".(css)$",
+            template: "./src/index.ejs",
+            excludeChunks: ["worker"],
+        }),
+        new ExtractTextPlugin("styles.css"),
+        new HtmlWebpackInlineSourcePlugin()
     ]
 };

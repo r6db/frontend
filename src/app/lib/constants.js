@@ -1,4 +1,4 @@
-export const appname = "ggs";
+export const appname = "r6db";
 export const appid = "r6db-frontend";
 export const title = "R6DB - Rainbow 6 PC Player database";
 export const baseurl = "https://r6db.com/";

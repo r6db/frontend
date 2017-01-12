@@ -1,5 +1,4 @@
 import m from "mithril";
-import { maxBy, assign } from "lodash";
 import Player from "./Player";
 import Placeholder from "./Placeholder";
 import NotFound from "./Errors/NotFound";
@@ -8,8 +7,6 @@ import NoAliases from "./Errors/NoAliases";
 import "./detail.scss";
 import Log from "lib/log";
 const log = Log.child(__filename);
-
-const either = (pred, a, b) => pred ? a() : b();
 
 export default {
     onremove({ state }) {
@@ -28,14 +25,7 @@ export default {
         } else if (attrs.data.flags && attrs.data.flags.noAliases) {
             return <NoAliases {...attrs.data} />;
         } else {
-            let pastRanks = attrs.data.seasonRanks
-                .concat(attrs.data.rank)
-                .map(x => {
-                    return maxBy([x.ncsa, x.emea, x.apac]
-                        .map(y => ({ rank: y.rank, season: x.season})), 'rank');
-                });
-            const data = assign({}, attrs.data, { pastRanks })
-            return <Player {...data} />;
+            return <Player {...attrs.data} />;
         }
     }
 };

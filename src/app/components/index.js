@@ -10,7 +10,6 @@ import Menu from "./misc/Menu";
 import "./base.scss";
 import "./app.scss";
 
-import debounce from "lodash/debounce";
 import store from "lib/store";
 import layouts from "lib/layouts";
 import Log from "lib/log";
@@ -20,7 +19,23 @@ const log = Log.child(__filename);
 
 const optional = (pred, cb) => pred ? cb() : null;
 
-const update = debounce(function() {
+const debounce = function (func, wait, immediate) {
+    let timeout;
+    return function () {
+        const context = this;
+        const args = arguments;
+        const later = function () {
+            timeout = null;
+            if (!immediate) { func.apply(context, args); }
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) { func.apply(context, args); }
+    };
+};
+
+const update = debounce(function () {
     log.trace("state changed, redrawing");
     log.debug("state", store.get());
     m.redraw();
@@ -32,7 +47,7 @@ export default {
         store.select("data").on("update", update);
         store.select("loading").on("update", update);
         store.select("component").on("update", update);
-        
+
     },
     view({ state }) {
         const { Component, data, search, loading, appstate } = store.get();
@@ -41,7 +56,7 @@ export default {
         const Search = layout.searchbar
             ? <Searchbar search={search} selector={store.select("search")} />
             : null;
-        
+
         const Menubar = layout.menu
             ? <Menu>{Search}</Menu>
             : Search;
@@ -56,8 +71,8 @@ export default {
                     <Component loading={loading} data={data} />
                 </div>
 
-                {optional(loading, () => <Loading /> )}
+                {optional(loading, () => <Loading />)}
             </div>
         );
-    } 
+    }
 };
