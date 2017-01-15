@@ -32,6 +32,7 @@ export default {
         return (
             <div className={`card playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
                 <a href={attrs.href} className="card-image">
+                    <span className="profile-level">{attrs.player.level}</span>
                     <Profilepic id={attrs.player.id} delay={attrs.index} />
                 </a>
                 <div className="card-content">

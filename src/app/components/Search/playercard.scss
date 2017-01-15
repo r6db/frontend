@@ -104,8 +104,12 @@
 	}
 }
 
-
-
+.profile-level {
+	position: absolute;
+	font-weight: bold;
+	color: white;
+	text-shadow: 2px 2px 2px black;
+}
 
 .playercard {
 	&.player-ccd28cc4-845e-4726-8cf8-e2cac4de82a2,
