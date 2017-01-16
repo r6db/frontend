@@ -1,10 +1,10 @@
 import { v2Api } from "lib/constants";
 import { failEarly, tap, getHeaders } from "../utils";
-import { register } from "../method";
 
 let stats = null;
 
-const get = function () {
+
+export default function () {
     if (stats) {
         return Promise.resolve(stats);
     } else {
@@ -14,5 +14,3 @@ const get = function () {
             .then(tap(res => stats = res));
     }
 };
-register("getStats")
-    .acquire(get);

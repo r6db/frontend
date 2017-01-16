@@ -3,14 +3,13 @@
  */
 
 // import polyfills
-import "whatwg-fetch";
+import "isomorphic-fetch";
 
 // import deps
 import "../scss/styles.scss";
 import * as page from "page";
 import store from "lib/store";
 import Log from "lib/log";
-
 import m from "mithril";
 
 if (process.env.NODE_ENV === "production") {
