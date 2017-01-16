@@ -50,7 +50,7 @@ module.exports = {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract({
                 fallbackLoader: "style-loader",
-                diable: process.env.NODE_ENV === "production",
+                diable: process.env.NODE_ENV !== "production",
                 loader: [
                     "css-loader",
                     {
@@ -107,6 +107,5 @@ module.exports = {
             excludeChunks: ["worker"],
         }),
         new ExtractTextPlugin("styles.css"),
-        new HtmlWebpackInlineSourcePlugin()
     ]
 };
