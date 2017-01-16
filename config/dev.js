@@ -12,7 +12,7 @@ config.devServer = {
     hot: true,
     noInfo: true,
     lazy: false,
-    port: 8080,
+    port: 9000,
     proxy: [{
         path: "/api",
         target: "http://r6db.com",

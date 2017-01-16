@@ -4,7 +4,7 @@ import Log from "lib/log";
 import page from "page";
 import { State, Leaderboards } from "lib/constants";
 import { parse } from "querystring";
-import api from "lib/api";
+import * as api from "lib/api";
 const log = Log.child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
@@ -38,7 +38,7 @@ export default function initRoutes() {
                 exact: false
             }
         });
-        api("getStats")
+        api.getStats()
             .then(function(res) {
                 if(!res.usercount ||  !res.namecount) {
                     store.set("loading", false);
@@ -69,7 +69,7 @@ export default function initRoutes() {
                     exact
                 }
             });
-            api("findPlayer", { name: ctx.params.query, exact })
+            api.findPlayer(ctx.params.query, exact)
                 .then(function(res) {
                     store.merge({
                         appstate: State.RESULT,
@@ -93,7 +93,7 @@ export default function initRoutes() {
             loading: true,
             data: null
         });
-        api("getPlayer", { id })
+        api.getPlayer(id)
             .then(function (res) {
                 if (res.id === id) {
                     store.merge({
@@ -120,7 +120,7 @@ export default function initRoutes() {
             loading: true,
             data: null
         });
-        api("getLeaderboard", { board })
+        api.getLeaderboard(board)
             .then(function (res) {
                 store.merge({
                     data: {

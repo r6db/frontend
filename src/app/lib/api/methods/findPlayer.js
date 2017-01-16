@@ -1,6 +1,5 @@
 import { v2Api } from "lib/constants";
 import { failEarly, getHeaders } from "../utils";
-import { register } from "../method";
 
 
 /*
@@ -103,19 +102,20 @@ const processPlayer = player => {
     return player;
 };
 
-
-const getUrl = params => `${v2Api}/players?name=${params.name}&exact=${params.exact ? "1" : "0"}`;
-const find = params => fetch(getUrl(params), { headers: getHeaders() })
-    .then(failEarly)
-    .then(res => res.json());
-
-const process = (players, params) => {
-    const sorter = playerValue(params.name);
+const parseResponse = (name, exact) => players => {
+    const sorter = playerValue(name);
     return players
         .map(processPlayer)
         .sort((a, b) => sorter(b) - sorter(a));
 };
 
-register("findPlayer")
-    .acquire(find)
-    .process(process);
+const getUrl = (name, exact) => `${v2Api}/players?name=${name}&exact=${exact ? "1" : "0"}`;
+
+export default function (name, exact) {
+    return fetch(getUrl(name, exact), { headers: getHeaders() })
+        .then(failEarly)
+        .then(res => res.json())
+        .then(parseResponse(name, exact));
+}
+
+

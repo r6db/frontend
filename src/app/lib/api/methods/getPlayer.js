@@ -1,6 +1,5 @@
 import { v2Api } from "lib/constants";
 import { failEarly, getHeaders } from "../utils";
-import { register } from "../method";
 
 const fixAlias = alias => {
     // eslint-disable-next-line camelcase
@@ -11,11 +10,11 @@ const fixAlias = alias => {
 };
 
 
-const find = ({ id }) => fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
+const getPlayer = id => fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
     .then(failEarly)
     .then(res => res.json());
 
-const process = player => {
+const handleResponse = player => {
     player.flags = {
         noAliases: false,
         noPlaytime: false,
@@ -53,6 +52,7 @@ const process = player => {
     return player;
 };
 
-register("getPlayer")
-    .acquire(find)
-    .process(process);
+export default function (id) {
+    return getPlayer(id)
+        .then(handleResponse);
+}
