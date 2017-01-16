@@ -9,7 +9,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ResourceHintWebpackPlugin = require("resource-hints-webpack-plugin");
 const StyleExtHtmlWebpackPlugin = require("style-ext-html-webpack-plugin");
-const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
