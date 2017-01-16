@@ -6,6 +6,7 @@ const UglifyJsParallelPlugin = require("webpack-uglify-parallel");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
+const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 const config = Object.assign({}, base);
 
