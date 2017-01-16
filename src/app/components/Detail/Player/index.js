@@ -19,7 +19,7 @@ export default {
             <div className={`detail-player player-${attrs.id} is-${attrs.role || "user"}`}>
                 <div className="detail-header">
                     <div className="detail-headerimage">
-                        <span className="profile-level">{attrs.level}</span>
+                        <span className="detail-level">lvl {attrs.level}</span>
                         <Profilepic id={attrs.id} delay={0} />
                     </div>
                     <div className="detail-headertext">

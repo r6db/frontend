@@ -26,6 +26,7 @@ config.plugins = config.plugins.concat([
         }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new HtmlWebpackInlineSourcePlugin()
 ]);
 
 module.exports = config;
