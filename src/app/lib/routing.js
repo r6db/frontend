@@ -2,9 +2,11 @@ import m from "mithril";
 import store from "./store";
 import Log from "lib/log";
 import page from "page";
-import { State, Leaderboards } from "lib/constants";
+import { State, Leaderboards, LeaderboardLabels } from "lib/constants";
 import { parse } from "querystring";
 import * as api from "lib/api";
+import setMeta from "lib/meta";
+
 const log = Log.child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
@@ -52,7 +54,7 @@ export default function initRoutes() {
             .catch(function(err) {
                 console.warn(err);
             });
-
+        setMeta();
     });
     page("/search/:query", analyticsMiddleware, function (ctx) {
         log.debug("router mount <Search />");
@@ -76,9 +78,14 @@ export default function initRoutes() {
                         data: res,
                         loading: false
                     });
+                    setMeta({
+                        title: `Search for ${ctx.params.query}`,
+                        description: `Find ${ctx.params.query} in the community database for Rainbow Six: Siege (PC)`
+                    });
                 })
                 .catch(function(err) {
                     log.warn(err);
+                    setMeta();
                 });
         } else {
             page.redirect("/");
@@ -100,12 +107,27 @@ export default function initRoutes() {
                         data: res,
                         loading: false
                     });
+                    if (res.flags.noAliases === false) {
+                        setMeta({
+                            title: `${res.aliases[0].name}`,
+                            description: `${res.aliases[0].name} player profile for Rainbow Six: Siege (PC)`,
+                            image: `http://uplay-avatars.s3.amazonaws.com/${res.id}/default_146_146.png`,
+                            type: "profile"
+                        });
+                    } else {
+                        setMeta({
+                            title: `account ${id}`,
+                            description: `${id} account details in the community database for Rainbow Six: Siege (PC)`
+                        });
+                    }
+                    
                 } else {
                     log.info("discarded data from previous route");
                 }
             })
             .catch(function(err) {
                 console.warn(err);
+                setMeta();
             });
     });
     page("/leaderboard/", function () {
@@ -113,6 +135,7 @@ export default function initRoutes() {
     });
     page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
         const board = Leaderboards[ctx.params.board] || Leaderboards.ALL;
+        const boardLabel = LeaderboardLabels[ctx.params.board] || LeaderboardLabels.ALL;
         log.debug("router mount <Leaderboard />");
         store.merge({
             appstate: State.LEADERBOARD,
@@ -129,9 +152,15 @@ export default function initRoutes() {
                     },
                     loading: false
                 });
+                setMeta({
+                    title: `${boardLabel} leaderboard`,
+                    description: `find the top 100 players (${boardLabel}) in our Database`,
+                    type: "website"
+                });
             })
             .catch(function(err) {
                 console.warn(err);
+                setMeta();
             });
     });
     page("*", function (ctx) {

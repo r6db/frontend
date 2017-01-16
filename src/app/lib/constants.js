@@ -39,3 +39,10 @@ export const Leaderboards = {
     EMEA: "emea_skill_adjusted",
     NCSA: "ncsa_skill_adjusted",
 };
+
+export const LeaderboardLabels = {
+    ALL: "Global",
+    APAC: "Asia & pacific area",
+    EMEA: "Europe, Africa & Middle East",
+    NCSA: "north-, middle- and south America"
+};

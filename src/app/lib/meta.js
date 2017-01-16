@@ -23,14 +23,31 @@ const valueMap = {
     [State.DETAIL]: detail
 };
 
-
-export default function (state, name) {
-    const mapping = valueMap[state];
-    if (mapping) {
-        document.title = mapping.title(name);
-        const meta = document.getElementById("meta_desc");
-        if (meta) {
-            meta.content = mapping.description(name);
-        }
+const setMeta = function (desc, content) {
+    const id = `meta_${desc.toLowerCase()}`;
+    let el = document.getElementById(id);
+    const data = content || "";
+    if (!el) {
+        el = document.createElement("meta");
+        el.description = desc;
+        el.id = id;
+        document.head.appendChild(el);
     }
+    el.content = data;
+};
+
+export default function (meta = {}) {
+    const title = meta.title
+        ? `${meta.title} | R6DB`
+        : "R6DB";
+    
+    const description = meta.description
+        ? meta.description
+        : "R6DB is a fan-powered database for Rainbow Six: Siege PC. Search for Players, check Profiles or view the Leaderboard";
+    
+    setMeta("description", description);
+    setMeta("og:title", title);
+    setMeta("og:image", meta.image);
+    setMeta("og:type", meta.type);
+    document.title = title;    
 };
