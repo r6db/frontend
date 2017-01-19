@@ -48,13 +48,13 @@
 }
 
 
-@mixin small {
+@mixin small{
 	@media screen and (max-width: $screen-medium) {
 		@content;
 	}
 }
 
-@mixin medium {
+@mixin medium{
 	@media screen and (min-width: $screen-medium) {
 		@content;
 	}
