@@ -7,6 +7,8 @@ import Loading from "./misc/Loading";
 import Searchbar from "./misc/Searchbar";
 import Menu from "./misc/Menu";
 
+import Icon, { GLYPHS } from "./misc/Icon";
+
 import "./base.scss";
 import "./app.scss";
 
@@ -63,8 +65,8 @@ export default {
         return (
             <div className={"app " + appstate}>
                 <div className="app-background" role="presentation" >
-                    <img src="/assets/bg_prim.svg" class="clear" />
-                    <img src="/assets/bg_prim.svg" class="blur" />
+                    <Icon glyph={GLYPHS.BG} class="clear" />
+                    <Icon glyph={GLYPHS.BG} class="blur" />
                 </div>
                 <div className="app-page">
                     {Menubar}

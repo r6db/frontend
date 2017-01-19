@@ -29,7 +29,8 @@ module.exports = {
     resolve: {
         alias: {
             "components": path.join(__dirname, "../src/app/components"),
-            "lib": path.join(__dirname, "../src/app/lib")
+            "lib": path.join(__dirname, "../src/app/lib"),
+            "assets": path.join(__dirname, "../src/assets")
         }
     },
     node: {
@@ -44,8 +45,7 @@ module.exports = {
             query: {
                 cacheDirectory: "./.cache"
             }
-        },
-        {
+        }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract({
                 fallbackLoader: "style-loader",
@@ -63,6 +63,13 @@ module.exports = {
                     }
                 ],
             })
+        }, {
+            test: /.svg$/,
+            loader: "svg-sprite-loader",
+            query: {
+                name: "[name]",
+                prefixize: true
+            }
         }]
     },
     plugins: [

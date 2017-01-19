@@ -1,10 +1,14 @@
 import m from "mithril";
+import Icon, { GLYPHS } from "../../misc/Icon";
 
 export default {
-    view: ({ attrs }) => (
-        <div className="season-rank">
-            <img src={"/assets/ranks/" + attrs.rank.rank + ".svg"} class="rank-image" />
-            <div className="rank-season">Season { attrs.rank.season }</div>
-        </div>
-    )
+    view({ attrs }) {
+        const glyph = GLYPHS["RANK" + attrs.rank.rank];
+        return (
+            <div className="season-rank">
+                <Icon class="rank-image" glyph={glyph} />
+                <div className="rank-season">Season {attrs.rank.season}</div>
+            </div>
+        );
+    }
 };

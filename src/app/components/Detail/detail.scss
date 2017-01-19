@@ -47,9 +47,10 @@ $detail-header-height: $detail-image-height + (5*$l);
 
 .rank-image {
 	width: 6 * $l;
+	height: 6 * $l;
 }
 
-@media (min-width: 102.4 * $l) {
+@include large {
 	.detail-header-left {
 		width: calc(100% - (43 * $l)px);
 		float: left;
@@ -72,6 +73,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 	}
 	.rank-image {
 		width: 5 * $l;
+		height: 5 * $l;
 	}
 	.rank-season {
 		font-size: 0.8rem;
