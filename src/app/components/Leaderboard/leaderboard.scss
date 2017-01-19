@@ -108,6 +108,10 @@
     background: darken($gray-dark, 5%);
     box-shadow: 1px 1px 3px black;
     padding: $l*2 0;
+    margin: 4% 2%;
+    @include large{
+        margin: 1%;
+    }
 
     .entry-place,
     .entry-name,
