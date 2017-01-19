@@ -2,4 +2,5 @@
 .happypack
 npm-debug.log
 build
+build-server
 node_modules
