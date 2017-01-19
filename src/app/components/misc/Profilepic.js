@@ -1,11 +1,10 @@
 import m from "mithril";
-
 export default {
     timeout: false,
     onerror: e => {
         e.preventDefault();
         e.stopPropagation();
-        e.target.src = "/assets/noavatar.png";
+        e.target.src = "/assets/noavatar.svg";
     },
     oncreate({ attrs, state, dom }) {
         if (attrs.id) {
