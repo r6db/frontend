@@ -4,6 +4,7 @@ export default {
     view({ attrs }) {
         return m("svg.icon", {
             viewBox: attrs.viewBox,
+            preserveAspectRatio: attrs.preserveAspectRatio,
             class: attrs.class,
             fill: attrs.fill,
             stroke: attrs.stroke
