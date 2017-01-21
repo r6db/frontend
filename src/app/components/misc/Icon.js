@@ -3,6 +3,7 @@ import m from "mithril";
 export default {
     view({ attrs }) {
         return m("svg.icon", {
+            viewBox: attrs.viewBox,
             class: attrs.class,
             fill: attrs.fill,
             stroke: attrs.stroke

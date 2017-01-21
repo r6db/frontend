@@ -65,8 +65,8 @@ export default {
         return (
             <div className={"app " + appstate}>
                 <div className="app-background" role="presentation" >
-                    <Icon glyph={GLYPHS.BG} class="clear" />
-                    <Icon glyph={GLYPHS.BG} class="blur" />
+                    <Icon viewBox="0 0 512 288" glyph={GLYPHS.BG} class="clear" />
+                    <Icon viewBox="0 0 512 288" glyph={GLYPHS.BG} class="blur" />
                 </div>
                 <div className="app-page">
                     {Menubar}
