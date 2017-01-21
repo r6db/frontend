@@ -48,7 +48,7 @@ const handleResponse = player => {
     
     player.aliases = player.aliases
         .map(fixAlias)
-        .sort((a, b) => b.created_at - a.created_at);
+        .sort((a, b) => a.created_at - b.created_at);
     return player;
 };
 
