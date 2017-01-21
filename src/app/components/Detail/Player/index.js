@@ -13,10 +13,6 @@ import Log from "lib/log";
 const log = Log.child(__filename);
 
 export default {
-    oncreate({dom}) {
-        const aliases = dom.querySelector(".detail-aliases");
-        aliases.scrollLeft = aliases.scrollWidth;
-    },
     view({ attrs, state }) {
         return (
             <div className={`detail-player player-${attrs.id} is-${attrs.role || "user"}`}>
