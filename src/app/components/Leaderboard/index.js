@@ -51,6 +51,9 @@ export default {
                             <Entry pos={i + 4} {...x} key={x.id} />
                         )}
                     </div>
+                    <a href="/leaderboard/chanka">
+                        <img src="/assets/chanky.png" id="chanky" alt="chanky"/>
+                    </a>
                 </div>)
                 : null
         );

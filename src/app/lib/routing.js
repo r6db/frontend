@@ -14,6 +14,7 @@ import Home from "components/Home";
 import Search from "components/Search";
 import Detail from "components/Detail";
 import Leaderboard from "components/Leaderboard";
+import Chankaboard from "components/Chankaboard";
 
 function analyticsMiddleware(context, next) {
     ga("set", "page", context.path);
@@ -132,6 +133,36 @@ export default function initRoutes() {
     });
     page("/leaderboard/", function () {
         page.redirect("/leaderboard/ALL");
+    });
+    page("/leaderboard/chanka", function () {
+        const board = "operatorpvp_tachanka_turretkill";
+        const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
+        log.debug("router mount <Chankaboard />");
+        store.merge({
+            appstate: State.CHANKABOARD,
+            Component: Chankaboard,
+            loading: true,
+            data: null
+        });
+        api.getLeaderboard(board)
+            .then(function (res) {
+                store.merge({
+                    data: {
+                        board: board,
+                        entries: res
+                    },
+                    loading: false
+                });
+                setMeta({
+                    title: "LMG kills leaderboard",
+                    description: "top 100 Tachanka players in our database",
+                    type: "website"
+                });
+            })
+            .catch(function (err) {
+                console.warn(err);
+                setMeta();
+            });
     });
     page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
         const board = Leaderboards[ctx.params.board] || Leaderboards.ALL;
