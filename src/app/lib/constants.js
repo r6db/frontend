@@ -8,7 +8,8 @@ export const State = Object.freeze({
     SEARCH: "is-searching",
     RESULT: "is-results",
     DETAIL: "is-detail",
-    LEADERBOARD: "is-leaderboard"
+    LEADERBOARD: "is-leaderboard",
+    CHANKABOARD: "is-leaderboard"
 });
 export const Ranks = [
     "Unranked",
@@ -42,7 +43,7 @@ export const Leaderboards = {
 
 export const LeaderboardLabels = {
     ALL: "Global",
-    APAC: "Asia & pacific area",
+    APAC: "Asia & Pacific Area",
     EMEA: "Europe, Africa & Middle East",
-    NCSA: "north-, middle- and south America"
+    NCSA: "North, Central and South America",
 };
