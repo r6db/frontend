@@ -21,6 +21,9 @@ export default {
                     </svg>
                 </h1>
                 <footer className="search-footer is-center">
+                    <p className="search-siteinfo">
+                        Updates now at <a href="https://twitter.com/Rainbow6_DB">Twitter</a>
+                    </p>
                     {attrs.data ? (
                         <div class="footer-stats">
                             <span>{attrs.data.usercount}</span> accounts and <span>{attrs.data.namecount}</span> aliases indexed
