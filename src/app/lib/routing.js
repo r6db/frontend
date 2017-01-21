@@ -109,8 +109,8 @@ export default function initRoutes() {
                     });
                     if (res.flags.noAliases === false) {
                         setMeta({
-                            title: `${res.aliases[0].name}`,
-                            description: `${res.aliases[0].name} player profile for Rainbow Six: Siege (PC)`,
+                            title: `${res.name}`,
+                            description: `${res.name} player profile for Rainbow Six: Siege (PC)`,
                             image: `http://uplay-avatars.s3.amazonaws.com/${res.id}/default_146_146.png`,
                             type: "profile"
                         });

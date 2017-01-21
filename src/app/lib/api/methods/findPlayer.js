@@ -98,7 +98,8 @@ const fixAlias = alias => {
 const processPlayer = player => {
     player.aliases = player.aliases
         .map(fixAlias)
-        .sort((a, b) => b.created_at - a.created_at);
+        .sort((a, b) => a.created_at - b.created_at);
+    player.name = player.aliases[player.aliases.length - 1].name;
     return player;
 };
 

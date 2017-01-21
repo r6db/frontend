@@ -27,7 +27,7 @@ export default {
                     </div>
                     <div className="detail-headertext">
                         <div className="detail-header-left">
-                            <div className="detail-name">{attrs.aliases[0].name}</div>
+                            <div className="detail-name">{attrs.name}</div>
                             <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
                                 className="detail-id"
                                 title="show on uplay">

@@ -37,7 +37,7 @@ export default {
                 </a>
                 <div className="card-content">
                     <div className="player-identification">
-                        <a href={attrs.href} className="player-name">{attrs.player.aliases[0].name}</a>
+                        <a href={attrs.href} className="player-name">{attrs.player.name}</a>
                         <span className="player-id">{attrs.player.id}</span>
                     </div>
                     {getAliases(attrs.player)}
