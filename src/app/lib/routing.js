@@ -134,7 +134,7 @@ export default function initRoutes() {
     page("/leaderboard/", function () {
         page.redirect("/leaderboard/ALL");
     });
-    page("/leaderboard/chanka", function () {
+    page("/leaderboard/chanka", analyticsMiddleware, function () {
         const board = "operatorpvp_tachanka_turretkill";
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
         log.debug("router mount <Chankaboard />");
