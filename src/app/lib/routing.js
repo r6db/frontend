@@ -2,7 +2,7 @@ import m from "mithril";
 import store from "./store";
 import Log from "lib/log";
 import page from "page";
-import { State, Leaderboards, LeaderboardLabels } from "lib/constants";
+import { State, Leaderboards } from "lib/constants";
 import { parse } from "querystring";
 import * as api from "lib/api";
 import setMeta from "lib/meta";
@@ -148,7 +148,7 @@ export default function initRoutes() {
             .then(function (res) {
                 store.merge({
                     data: {
-                        board: board,
+                        board,
                         entries: res
                     },
                     loading: false
@@ -165,8 +165,7 @@ export default function initRoutes() {
             });
     });
     page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
-        const board = Leaderboards[ctx.params.board] || Leaderboards.ALL;
-        const boardLabel = LeaderboardLabels[ctx.params.board] || LeaderboardLabels.ALL;
+        const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         log.debug("router mount <Leaderboard />");
         store.merge({
             appstate: State.LEADERBOARD,
@@ -174,7 +173,7 @@ export default function initRoutes() {
             loading: true,
             data: null
         });
-        api.getLeaderboard(board)
+        api.getLeaderboard(lb.board)
             .then(function (res) {
                 store.merge({
                     data: {
@@ -184,8 +183,8 @@ export default function initRoutes() {
                     loading: false
                 });
                 setMeta({
-                    title: `${boardLabel} leaderboard`,
-                    description: `find the top 100 players (${boardLabel}) in our Database`,
+                    title: `${lb.label} leaderboard`,
+                    description: `find the top 100 players (${lb.label}) in our Database`,
                     type: "website"
                 });
             })

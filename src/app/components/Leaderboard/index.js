@@ -35,10 +35,17 @@ export default {
                                 id="regionselect"
                                 className="leaderboard-regionselect"
                                 onchange={state.onRegionChange}>
-                                <option selected={isSelected("ALL", attrs.data.board)} value="ALL">Global</option>
-                                <option selected={isSelected("APAC", attrs.data.board)} value="APAC">Asia & Pacific</option>
-                                <option selected={isSelected("EMEA", attrs.data.board)} value="EMEA">Europe</option>
-                                <option selected={isSelected("NCSA", attrs.data.board)} value="NCSA">America</option>
+                                {
+                                    Object.keys(Leaderboards)
+                                        .map(l => {
+                                            const lb = Leaderboards[l];
+                                            return (<option
+                                                key={lb.id}
+                                                selected={isSelected(lb.id, attrs.data.board)}
+                                                value={lb.id}>
+                                                {lb.label}</option>);
+                                        })
+                                }
                             </select>
                         </p>
                     </div>

@@ -1,23 +1,10 @@
 exports[`test can render the searchbar 1`] = `
-Object {
-  "attrs": Object {
-    "selector": Object {
-      "get": [Function],
-      "set": [Function],
-    },
-  },
-  "children": Array [],
-  "dom": undefined,
-  "domSize": undefined,
-  "events": undefined,
-  "instance": undefined,
-  "key": undefined,
-  "skip": false,
-  "state": Object {},
-  "tag": Object {
-    "oninit": [Function],
-    "view": [Function],
-  },
-  "text": undefined,
-}
+"<div class=\"search-form\">
+  <div class=\"search-input\">
+    <input type=\"text\"><span><input type=\"checkbox\" id=
+    \"exactSearch\"><label for=\"exactSearch\">exact
+    name</label></span>
+  </div><button class=\"search-submit\">Search</button>
+</div>
+"
 `;

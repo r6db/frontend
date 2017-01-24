@@ -3,6 +3,10 @@ export const appid = "r6db-frontend";
 export const title = "R6DB - Rainbow 6 PC Player database";
 export const baseurl = "https://r6db.com/";
 export const v2Api = "https://r6db.com/api/v2";
+
+/**
+ * @deprecated we don't use this any more.
+ */
 export const State = Object.freeze({
     INITIAL: "is-initial",
     SEARCH: "is-searching",
@@ -11,6 +15,11 @@ export const State = Object.freeze({
     LEADERBOARD: "is-leaderboard",
     CHANKABOARD: "is-leaderboard"
 });
+
+/**
+ * the api returns ranks in a number format
+ * we can use that number as index to get the label
+ */
 export const Ranks = [
     "Unranked",
     "Copper 1",
@@ -34,16 +43,16 @@ export const Ranks = [
     "Platinum 3",
     "Diamond"
 ];
-export const Leaderboards = {
-    ALL: "highest_skill_adjusted",
-    APAC: "apac_skill_adjusted",
-    EMEA: "emea_skill_adjusted",
-    NCSA: "ncsa_skill_adjusted",
-};
 
-export const LeaderboardLabels = {
-    ALL: "Global",
-    APAC: "Asia & Pacific Area",
-    EMEA: "Europe, Africa & Middle East",
-    NCSA: "North, Central and South America",
+/**
+ * define our Leaderboards
+ * id: url parameter we set for the board
+ * board: api endpoint to call
+ * label: you know..
+ */
+export const Leaderboards = {
+    ALL: { id: "ALL", board: "highest_skill_adjusted", label: "Global" },
+    APAC: { id: "APAC", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
+    EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
+    NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };

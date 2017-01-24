@@ -10,4 +10,6 @@
 		"**/.happypack": true,
 		"**/node_modules": true
 	}
+,
+"vsicons.presets.angular": false
 }
