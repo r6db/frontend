@@ -6,14 +6,13 @@ import Detail from "./Detail";
 import Loading from "./misc/Loading";
 import Searchbar from "./misc/Searchbar";
 import Menu from "./misc/Menu";
-
 import Icon, { GLYPHS } from "./misc/Icon";
 
 import "./base.scss";
 import "./app.scss";
 
 import store from "lib/store";
-import layouts from "lib/layouts";
+import { Pageconfig } from "lib/constants";
 import Log from "lib/log";
 import initRoutes from "lib/routing";
 
@@ -52,18 +51,19 @@ export default {
 
     },
     view({ state }) {
-        const { Component, data, search, loading, appstate } = store.get();
-        const layout = layouts[appstate];
+        const { Component, data, search, loading, config } = store.get();
+        // extend default pageconfig
+        const pconf = Object.assign({}, Pageconfig.default, config);
 
-        const Search = layout.searchbar
+        const Search = pconf.searchbar
             ? <Searchbar search={search} selector={store.select("search")} />
             : null;
 
-        const Menubar = layout.menu
+        const Menubar = pconf.menu
             ? <Menu>{Search}</Menu>
             : Search;
         return (
-            <div className={"app " + appstate}>
+            <div className={"app " + pconf.class}>
                 <div className="app-background" role="presentation" >
                     <Icon viewBox="0 0 512 288" preserveAspectRatio="xMidYMid slice" glyph={GLYPHS.BG} class="clear" />
                     <Icon viewBox="0 0 512 288" preserveAspectRatio="xMidYMid slice" glyph={GLYPHS.BG} class="blur" />

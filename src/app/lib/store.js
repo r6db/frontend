@@ -2,7 +2,7 @@ import Baobab from "baobab";
 import * as constants from "./constants";
 
 const defaultState = {
-    appstate: constants.State.INITIAL,
+    appstate: constants.Pageconfig.INITIAL,
     Component: null,
     debug: false,
     data: null,

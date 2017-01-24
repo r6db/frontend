@@ -9,9 +9,6 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 const showPlayer = id => e => page("/player/" + id);
 
 export default {
-    oncreate({dom}) {
-        document.querySelector(".search-input input").focus();
-    },
     view({ attrs, state }) {
         return (
             <div className="search">

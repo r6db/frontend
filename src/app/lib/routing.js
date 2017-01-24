@@ -2,7 +2,7 @@ import m from "mithril";
 import store from "./store";
 import Log from "lib/log";
 import page from "page";
-import { State, Leaderboards } from "lib/constants";
+import { Pageconfig, Leaderboards } from "lib/constants";
 import { parse } from "querystring";
 import * as api from "lib/api";
 import setMeta from "lib/meta";
@@ -32,7 +32,7 @@ export default function initRoutes() {
         }
         log.debug("router mount <Home />");
         store.merge({
-            appstate: State.INITIAL,
+            config: Pageconfig.INITIAL,
             Component: Home,
             loading: false,
             data: null,
@@ -63,7 +63,7 @@ export default function initRoutes() {
         const exact = qs.exact === "true" || qs.exact === "1";
         if (ctx.params.query && ctx.params.query.length > 2) {
             store.merge({
-                appstate: State.SEARCH,
+                config: Pageconfig.SEARCH,
                 Component: Search,
                 loading: true,
                 data: null,
@@ -75,7 +75,7 @@ export default function initRoutes() {
             api.findPlayer(ctx.params.query, exact)
                 .then(function(res) {
                     store.merge({
-                        appstate: State.RESULT,
+                        config: Pageconfig.RESULT,
                         data: res,
                         loading: false
                     });
@@ -96,7 +96,7 @@ export default function initRoutes() {
         log.debug("router mount <Detail />");
         const id = ctx.params.id;
         store.merge({
-            appstate: State.DETAIL,
+            config: Pageconfig.DETAIL,
             Component: Detail,
             loading: true,
             data: null
@@ -139,7 +139,7 @@ export default function initRoutes() {
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
         log.debug("router mount <Chankaboard />");
         store.merge({
-            appstate: State.CHANKABOARD,
+            config: Pageconfig.CHANKABOARD,
             Component: Chankaboard,
             loading: true,
             data: null
@@ -168,7 +168,7 @@ export default function initRoutes() {
         const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         log.debug("router mount <Leaderboard />");
         store.merge({
-            appstate: State.LEADERBOARD,
+            config: Pageconfig.LEADERBOARD,
             Component: Leaderboard,
             loading: true,
             data: null

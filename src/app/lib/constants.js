@@ -1,6 +1,7 @@
 export const appname = "r6db";
 export const appid = "r6db-frontend";
 export const title = "R6DB - Rainbow 6 PC Player database";
+export const description= "R6DB is a fan-powered database for Rainbow Six: Siege PC. Search for Players, check Profiles or view the Leaderboard";
 export const baseurl = "https://r6db.com/";
 export const v2Api = "https://r6db.com/api/v2";
 
@@ -8,13 +9,24 @@ export const v2Api = "https://r6db.com/api/v2";
  * this is used to set a css class on the root component
  * used for animations, page specific css, etc
  */
-export const State = Object.freeze({
-    INITIAL: "is-initial",
-    SEARCH: "is-searching",
-    RESULT: "is-results",
-    DETAIL: "is-detail",
-    LEADERBOARD: "is-leaderboard",
-    CHANKABOARD: "is-leaderboard"
+export const Pageconfig = Object.freeze({
+    default: {
+        id: "",
+        class: "",
+        searchbar: true,
+        menu: true,
+        footer: true
+    },
+    INITIAL: {
+        id: "INITIAL",
+        class: "is-initial",
+        footer: false
+    },
+    SEARCH: { id: "SEARCH", class: "is-searching" },
+    RESULT: { id: "RESULT", class: "is-results" },
+    DETAIL: { id: "DETAIL", class: "is-detail" },
+    LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
+    CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
 });
 
 /**
