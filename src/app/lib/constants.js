@@ -5,7 +5,8 @@ export const baseurl = "https://r6db.com/";
 export const v2Api = "https://r6db.com/api/v2";
 
 /**
- * @deprecated we don't use this any more.
+ * this is used to set a css class on the root component
+ * used for animations, page specific css, etc
  */
 export const State = Object.freeze({
     INITIAL: "is-initial",
