@@ -22,7 +22,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../build"),
-        // publicPath: "",
+        publicPath: "/",
         filename: "js/[name].js",
         pathinfo: true
     },
@@ -109,8 +109,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inlineSource: ".(css)$",
-            template: "./src/index.ejs",
-            excludeChunks: ["*.js"],
+            template: "./src/index.ejs"
         }),
         new ExtractTextPlugin("styles.css"),
     ]
