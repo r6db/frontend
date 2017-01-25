@@ -3,7 +3,7 @@ import m from "mithril";
 export default {
     onbeforeremove({ dom }, done) {
         dom.classList.add("is-leaving");
-        setTimeout(done, 200);
+        setTimeout(done, 60);
     },
     view({ state }) {
         return (
