@@ -110,7 +110,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             inlineSource: ".(css)$",
             template: "./src/index.ejs",
-            excludeChunks: ["worker"],
+            excludeChunks: ["*.js"],
         }),
         new ExtractTextPlugin("styles.css"),
     ]
