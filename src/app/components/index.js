@@ -65,8 +65,8 @@ export default {
         return (
             <div className={"app " + pconf.class}>
                 <div className="app-background" role="presentation" >
-                    <Icon viewBox="0 0 512 288" preserveAspectRatio="xMidYMid slice" glyph={GLYPHS.BG} class="clear" />
-                    <Icon viewBox="0 0 512 288" preserveAspectRatio="xMidYMid slice" glyph={GLYPHS.BG} class="blur" />
+                    <img src="/assets/bg_prim.svg" alt="" class="clear" />
+                    <img src="/assets/bg_prim.svg" alt="" class="blur" />
                 </div>
                 <div className="app-page">
                     {Menubar}
