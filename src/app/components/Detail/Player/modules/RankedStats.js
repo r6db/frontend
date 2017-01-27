@@ -25,10 +25,14 @@ export default {
                 <div className="module-value">{state.season.losses}</div>
             </div>
             <div className="module-row">
+                <div className="module-label">Abandons</div>
+                <div className="module-value">{state.season.abandons}</div>
+            </div>
+            <div className="module-row">
                 <div className="module-label">Win rate</div>
                 <div className="module-value">{
                     ((state.season.wins /
-                        (state.season.wins + state.season.losses)) * 100
+                        (state.season.wins + state.season.losses + state.season.abandons)) * 100
                     ).toFixed(2)
                 }%</div>
             </div>
