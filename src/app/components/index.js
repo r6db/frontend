@@ -59,25 +59,20 @@ export default {
         const Search = pconf.searchbar
             ? <Searchbar search={search} selector={store.select("search")} />
             : null;
-
-        const Menubar = pconf.menu
-            ? <Menu>{Search}</Menu>
-            : Search;
         return (
-            <div className={"app " + pconf.class}>
-                <div className="app-background" role="presentation" >
-                    <img src="/assets/bg_prim.svg" alt="" class="clear" />
-                    <img src="/assets/bg_prim.svg" alt="" class="blur" />
-                </div>
-                <div className="app-page">
-                    {Menubar}
-                    <Component loading={loading} data={data} />
-                </div>
+            <div className="content-wrapper">
                 <Drawer>
-                    <p>hello world</p>
-                </Drawer>    
-
-                {optional(loading, () => <Loading />)}
+                    <Menu />
+                </Drawer>
+                <div className={"app " + pconf.class}>
+                    <div className="app-background">
+                        <img src="/assets/bg_prim.svg" alt="" class="blur" />
+                    </div>
+                    <div className="app-page">
+                        <Component loading={loading} data={data} />
+                    </div>
+                    {optional(loading, () => <Loading />)}
+                </div>
             </div>
         );
     }

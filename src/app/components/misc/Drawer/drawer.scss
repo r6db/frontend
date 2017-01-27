@@ -8,8 +8,15 @@
     height: 0;
     z-index: 1;
 
+    @include openmenu {
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+
     &-background{
         position: fixed;
+        display: block;
         left: 0;
         top: 0;
         width: 100vw;
@@ -18,21 +25,44 @@
         opacity: 0;
         will-change: opacity;
         display: none;
-        transition: opacity 100ms ease-out;
+        transition: all 100ms ease-out;
+
+        @include openmenu {
+            display: none !important;
+        }
+    }
+    &-menubar{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: $menu-height;
     }
     &-burger{
         font-size: 12px;
         display: inline-block;
-        padding: ($l) ($l*1.5);
+        padding: 0 ($l*1.5);
+        line-height: $menu-height;
+        height: $menu-height;
+        @include openmenu {
+            display: none;
+        }
     }
     &-container{
         position: fixed;
-        width: 100%;
         top: 0;
         left: 0;
         height: 100%;
-        transform: translateX(-95vw);
-        transition: 100ms ease-out;
+        padding-right: 3%;
+        transform: translateX(-97%);
+        transition: all 100ms ease-out;
+
+        @include openmenu {
+            transform: none;
+            width: auto;
+            position: relative;
+            padding-right: 0;
+        }
     }
 
     &-menu{

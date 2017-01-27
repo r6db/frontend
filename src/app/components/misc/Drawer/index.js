@@ -16,9 +16,10 @@ export default {
 
         state.onTouchStart = function (e) {
             log.trace("ontouchstart");
+            if (state.isOpen) { return; }
             state.startX = e.touches[0].pageX;
             state.isDragging = true;
-            state.backgroundEl.style.display = "block";
+            state.backgroundEl.style.display = "inherit";
             state.containerEl.classList.add("no-transition");
         };
         state.onTouchMove = function (e) {
@@ -37,6 +38,7 @@ export default {
                     // otherwise display the change
                     const changeX = Math.min(state.currX - state.menuMaxWidth, 0);
                     state.drawerEl.style.transform = state.drawerEl.style.webkitTransform = `translateX(${changeX}px)`;
+                    state.backgroundEl.style.transform = state.backgroundEl.style.webkitTransform = `translateX(${state.currX}px)`;
                     state.backgroundEl.style.opacity = (((state.currX - state.startX) / state.menuMaxWidth) * TARGET_OPACITY).toFixed(2);
                 }
             } else {
@@ -66,6 +68,7 @@ export default {
                     state.isOpen = true;
                     state.containerEl.classList.add("is-open");
                     state.drawerEl.style.transform = state.drawerEl.style.webkitTransform = `translateX(0px)`;
+                    state.backgroundEl.style.transform = state.backgroundEl.style.webkitTransform = `translateX(${state.menuMaxWidth}px)`;
                     state.backgroundEl.style.opacity = TARGET_OPACITY;
                 }
             } else {
@@ -78,42 +81,50 @@ export default {
             state.isDragging = false;
             state.isOpen = false;
             state.startX = 0;
+            state.currX = 0;
             state.containerEl.classList.remove("is-open");
+            state.containerEl.classList.remove("no-transition");
             state.drawerEl.style.transform = "";
             state.backgroundEl.style.display = "none";
+            state.backgroundEl.style.transform = `translateX(0px)`;
         };
         state.onOpenMenu = function (e) {
             log.trace("onopenmenu");
             state.isDragging = false;
             state.isOpen = true;
             state.startX = 0;
+            state.currX = 0;
             state.containerEl.classList.add("is-open");
             state.containerEl.classList.remove("no-transition");
             state.drawerEl.style.transform = "translateX(0px)";
-            state.backgroundEl.style.display = "block";
+            state.backgroundEl.style.transform = `translateX(${state.menuMaxWidth}px)`;
+            state.backgroundEl.style.display = "inherit";
             state.backgroundEl.style.opacity = TARGET_OPACITY;
         };
         state.cancelEvent = function (e) {
             e.preventDefault();
             e.stopPropagation();
             return false;
-        }
+        };
     },
     oncreate({dom, state}) {
         state.containerEl = dom;
         state.backgroundEl = dom.querySelector(".drawer-background");
         state.drawerEl = dom.querySelector(".drawer-container");
+        state.menuEl = dom.querySelector(".drawer-menu");
         state.menuMaxWidth = dom.querySelector(".drawer-menu").clientWidth;
     },
     view({state, children}) {
         return (<div className="drawer">
-            <div className="drawer-burger" onclick={state.onOpenMenu}>MENU</div>    
+            <div className="drawer-menubar">
+                <div className="drawer-burger" onclick={state.onOpenMenu}>MENU</div>
+            </div>    
             <div className="drawer-background" onclick={state.onCloseMenu}></div>
             <div className="drawer-container"
                     ontouchstart={state.onTouchStart}
                     ontouchmove={state.onTouchMove}
                     ontouchend={state.onTouchEnd}>
-                <div className="drawer-menu" ontouchstart={state.cancelEvent}>
+                <div className="drawer-menu">
                     {children}
                 </div>
             </div>

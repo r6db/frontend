@@ -41,21 +41,25 @@ export default function initRoutes() {
                 exact: false
             }
         });
-        api.getStats()
-            .then(function(res) {
-                if(!res.usercount ||  !res.namecount) {
-                    store.set("loading", false);
-                } else {
-                    store.merge({
-                        loading: false,
-                        data: res
-                    });
-                }
-            })
-            .catch(function(err) {
-                console.warn(err);
-            });
         setMeta();
+    });
+    page("/search", analyticsMiddleware, function (ctx) {
+        log.debug("router mount <Search /> no query");
+        store.merge({
+            config: Pageconfig.SEARCH,
+            Component: Search,
+            loading: false,
+            data: [],
+            data: null,
+            search: {
+                query: "",
+                exact: false
+            }
+        });
+        setMeta({
+            title: `Search`,
+            description: `Find players in the community database for Rainbow Six: Siege (PC)`
+        });
     });
     page("/search/:query", analyticsMiddleware, function (ctx) {
         log.debug("router mount <Search />");
