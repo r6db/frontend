@@ -30,7 +30,8 @@ export default {
                             .map(key => {
                                 const header = attrs.headers[key];
                                 return <TabHeader key={"tabheader-" + key}
-                                    header={header}
+                                    header={header.label}
+                                    icon={header.icon}
                                     selected={isSelected(key, state.currentTab)}
                                     onclick={state.onTabSelect(key)} />;
                             })

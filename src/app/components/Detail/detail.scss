@@ -50,6 +50,10 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @include large {
+            font-size: 3rem;
+        }
     }
     /* in idblock: player id with link back to uplay*/
     &-id{

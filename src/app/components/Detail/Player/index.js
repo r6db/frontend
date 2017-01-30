@@ -7,16 +7,12 @@ import Profilepic from "../../misc/Profilepic";
 import Tabs from "./Tabs";
 import Overview from "./Content/Overview";
 
-const log = Log.child(__filename);
-const optional = (cond, a, b) => cond ? a() : (b ? b() : null);
-
 const tabMap = {
-    tab1: "Overview",
-    tab2: "Rank",
-    tab5: "Stats Timeline",
-    tab6: "Rank Timeline",
-    tab3: "Operators",
-    tab4: "Weapons",
+    tab1: { label: "Overview", icon: null },
+    tab2: { label: "Rank", icon: null },
+    tab3: { label: "Stats", icon: null },
+    tab4: { label: "Operators", icon: null },
+    tab5: { label: "Weapons", icon: null },
 };
 
 export default {
