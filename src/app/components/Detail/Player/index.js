@@ -1,28 +1,35 @@
 import m from "mithril";
+import moment from "moment";
+import { DATE_SHORT } from "lib/constants";
+import Log from "lib/log";
 
 import Profilepic from "../../misc/Profilepic";
-import Alias from "./Alias";
-import Rank from "./Rank";
-import Playtime from "./modules/Playtime";
-import Timedata from "./modules/Timedata";
-import GeneralStats from "./modules/GeneralStats";
-import RankedStats from "./modules/RankedStats";
-import { getRegionName } from "lib/region";
+import Tabs from "./Tabs";
+import Overview from "./Content/Overview";
 
-import Log from "lib/log";
 const log = Log.child(__filename);
+const optional = (cond, a, b) => cond ? a() : (b ? b() : null);
+
+const tabMap = {
+    tab1: "Overview",
+    tab2: "Rank",
+    tab5: "Stats Timeline",
+    tab6: "Rank Timeline",
+    tab3: "Operators",
+    tab4: "Weapons",
+};
 
 export default {
     view({ attrs, state }) {
         return (
             <div className={`detail-player player-${attrs.id} is-${attrs.role || "user"}`}>
                 <div className="detail-header">
-                    <div className="detail-headerimage">
-                        <span className="detail-level">lvl {attrs.level}</span>
-                        <Profilepic id={attrs.id} delay={0} />
-                    </div>
-                    <div className="detail-headertext">
-                        <div className="detail-header-left">
+                    <div className="detail-caption">
+                        <div className="detail-image">
+                            <Profilepic id={attrs.id} />
+                            
+                        </div>
+                        <div className="detail-idblock">
                             <div className="detail-name">{attrs.name}</div>
                             <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
                                 className="detail-id"
@@ -30,29 +37,37 @@ export default {
                                 {attrs.id}
                             </a>
                         </div>
-                        <div className="detail-header-right">
-                            <div className="season-ranks">
-                                {attrs.pastRanks.map(x => <Rank rank={x} />)}
-                            </div>
+                    </div>
+                    <div className="detail-timeblock">
+                        <div className="detail-firstseen">
+                            <span className="label">added:</span>
+                            <span className="value">{moment(attrs.created_at).format(DATE_SHORT)}</span>
+                        </div>
+                        <div className="detail-lastseen">
+                            <span className="label">last active:</span>    
+                            <span className="value">{moment(attrs.lastPlayed.last_played).fromNow()}</span>
                         </div>
                     </div>
                 </div>
                 <div className="detail-content">
-                    <div className="detail-info">
-                        <div className="detail-aliases">
-                            {attrs.aliases.map(x => <Alias alias={x} />)}
-                        </div>
-                    </div>
-                    <div className="detail-stats">
-                        <Timedata player={attrs} />
-                        <Playtime player={attrs} />
-                        <GeneralStats player={attrs} />
-                        {attrs.rank && attrs.rank.ncsa ? <RankedStats region={getRegionName("ncsa")}stats={attrs.rank.ncsa}/> : null}
-                        {attrs.rank && attrs.rank.emea ? <RankedStats region={getRegionName("emea")} stats={attrs.rank.emea} /> : null}
-                        {attrs.rank && attrs.rank.apac ? <RankedStats region={getRegionName("apac")} stats={attrs.rank.apac} /> : null}
-                    </div>
+                    <Tabs headers={tabMap}>
+                        <Overview key="tab1" {...attrs}/>
+                        <div key="tab2">tab2content</div>
+                        <div key="tab3">tab3content</div>
+                        <div key="tab4">tab4content</div>
+                    </Tabs>    
                 </div>
             </div>
         );
     }
 };
+
+/*
+
+<a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`} className="detail-id" title="show on uplay">
+    {attrs.id}
+</a>
+
+
+
+ */

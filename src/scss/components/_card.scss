@@ -4,7 +4,7 @@
     background: $white;
     color: $gray-dark;
     position: relative;
-    box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
+    @include boxshadow;
 
 	&.is-empty{
 		text-align: center;

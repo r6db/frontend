@@ -9,12 +9,6 @@ import Log from "lib/log";
 const log = Log.child(__filename);
 
 export default {
-    onremove({ state }) {
-        log.trace("<Detail /> onremove");
-    },
-    oninit({ attrs, state }) {
-        log.trace("<Detail /> oninit");
-    },
     view({ attrs, state }) {
         if (attrs.loading) {
             return <Placeholder />;

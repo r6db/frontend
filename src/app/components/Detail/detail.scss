@@ -1,213 +1,89 @@
 @import "styles";
 
-$searchbar-height: $l*5.4;
-$detail-image-height: 146px;
-$detail-header-height: $detail-image-height + (5*$l);
 .detail{
-	width: 100%;
-	min-height: 100vh;
-	color: $white;
-	display: flex;
-	flex-direction: column;
+    /* header above the stats content*/
+	&-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 2%;
 
-	.search-form{
-		flex: 0 0 auto;
-	}
-}
-.detail-player{
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-}
+        @include large{
+            flex-direction: row;   
+            padding: $l;
+        }
+    }
+    /* the left header block with pic, name and id */
+    &-caption{
+        display: flex;
+        flex-direction: row;
+        height: $detail-imagesmall;
+        flex: 1 0 auto;
 
-.detail-header{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin: 0 auto;
-	width: 100%;
-	max-width: $screen-yourmom;
-	height: $detail-image-height;
-	flex: 0 0 auto;
-	box-shadow: 1px 1px 3px black;
-	background: rgba(0, 0, 0, 0.4);
-}
+        @include large{
+            height: $detail-imagelarge;
+        }
+    }
+    /* in caption: only image */
+    &-image{
+        width: $detail-imagesmall;
+        height: $detail-imagesmall;
+        flex: 0 0 auto;
+        margin-right: 2%;
 
-.season-ranks {
-	margin-top: 1.5 * $l;
-}
+        @include large{
+            width: $detail-imagelarge;
+            height: $detail-imagelarge;
+        }
+    }
+    /* in caption: only name and id*/
+    &-idblock{
+        display: block;
+        flex: 0 1 auto;
+        overflow: hidden;
+        padding: 9px 0;
+    }
+    /* in idblock: player name*/
+    &-name{
+        font-size: 2rem;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /* in idblock: player id with link back to uplay*/
+    &-id{
+        color: $primary;
+        line-height: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    /* block in the top right with time metadata */
+    &-timeblock{
+        margin-top: $l;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
 
-.season-rank {
-	float: left;
-	margin-right: 4 * $l;
-	&:last-child {
-		margin: 0;
-	}
-}
+        @include medium{
+            width: auto;
+            justify-content: flex-start;
+        }
 
-.rank-image {
-	width: 6 * $l;
-	height: 6 * $l;
-}
-
-@include large {
-	.detail-header-left {
-		width: calc(100% - (43 * $l)px);
-		float: left;
-	}
-	.detail-header-right {
-		width: 43 * $l;
-		float: right;
-	}
-}
-
-@media (min-width: 80 * $l) and (max-width: 102.3 * $l) {
-	.detail-header-left {
-		float: left;
-		width: 60%;
-	}
-	.detail-header-right {
-		float: right;
-		width: 20 * $l;
-		margin-top: -2.8 * $l;
-	}
-	.rank-image {
-		width: 5 * $l;
-		height: 5 * $l;
-	}
-	.rank-season {
-		font-size: 0.8rem;
-	}
-}
-
-@media (max-width: 79.9 * $l) {
-	.detail-header-right {
-		display: none;
-	}
-}
-
-.detail-headerimage{
-	width: $detail-image-height;
-	height: $detail-image-height;
-	position: relative;
-	img{
-		width: 100%;
-		height: 100%;
-	}
-}
-.detail-level{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	padding: .5em;
-	font-size: 1.2em;
-	font-weight: bold;
-	color: white;
-	background: rgba(0, 0, 0, 0.5);
-	text-align: center;
-}
-
-.detail-headertext{
-	height: 146px;
-	padding: (2*$l) 0 (3*$l) (2*$l);
-	flex: 1;
-}
-.detail-name{
-	font-size: 2rem;
-	font-weight: bold;
-	line-height: 6*$l;
-	text-shadow: 0 0 1px $gray-dark;
-	@include medium {
-		font-size: 3rem;
-		line-height: 8*$l;
-	}
-}
-
-.detail-id{
-	color: $accent;
-}
-.detail-content{
-	background: $gray-dark;
-	box-shadow: 1px 0 1px $gray-dark;
-	width: 100%;
-	max-width: $screen-yourmom;
-	margin: 0 auto;
-}
-
-.detail-backdrop{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100vw;
-	height: 100vh;
-	background: rgba(0 ,0, 0, 0.3);
-	display: block;
-	transition: all $tdur ease-out;
-	transform: translate(100%, 0);
-	z-index: -1;
-}
-
-.detail-info{
-	padding: $l*2 0;
-	flex: 1 1 auto;
-	overflow: hidden;
-}
-
-.detail-aliases{
-	// height is detail-content height - all the paddings;
-	display: flex;
-	flex-direction: row;
-	overflow: auto;
-	width: auto;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	&:after{
-		content: "";
-		display: block;
-		width: 20px;
-		height: 100%;
-		right: 0;
-		top: 0;
-	}
-}
-
-.detail-stats{
-	padding: 0 $l*2;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-
-}
-
-
-.detailerror{
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-}
-
-.detailerror-title{
-	height: 146px;
-	flex: 0;
-	width: 100%;
-	max-width: $screen-yourmom;
-	margin: 0 auto;
-	padding: (2*$l) 0 (3*$l) (2*$l);
-	background: rgba(0, 0, 0, 0.4);
-	font-size: 3rem;
-	line-height: 106px;
-	font-weight: bold;
-	text-shadow: 0 0 1px $gray-dark;
-}
-.detailerror-content{
-	background: $gray-dark;
-	box-shadow: 0 0 5px $gray-dark;
-	max-width: $screen-yourmom;
-	width: 100%;
-	margin: 0 auto;
-}
-
-.detailerror-message{
-	padding: $l*2;
-	line-height: 1.4;
+        .value{
+            font-weight: bold;
+            margin-left: .5em;
+        }
+    }
+    /* in timeblock */
+    &-firstseen{
+        margin-right: 2*$l;
+        @include medium{
+            margin-right: 0;
+        }
+    }
 }

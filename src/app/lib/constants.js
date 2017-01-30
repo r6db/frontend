@@ -69,3 +69,6 @@ export const Leaderboards = {
     EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
     NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };
+
+
+export const DATE_SHORT = "DD. MMM YYYY";

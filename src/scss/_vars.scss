@@ -23,12 +23,8 @@ $screen-openmenu: 1324px;
 $borderradius: 1px;
 $borderradius-rel: .4em;
 
-
 $nav-height: 3.5em;
 $l: 10px;
-
-
-$sidebar-width: 24*$l;
 
 
 $tdur: 200ms;
@@ -37,3 +33,7 @@ $tdur: 200ms;
 $menu-width: 300px;
 $menu-background: #272727;
 $menu-height: $l*4;
+
+
+$detail-imagesmall: 64px;
+$detail-imagelarge: 128px;

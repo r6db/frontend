@@ -1,0 +1,36 @@
+@import "styles";
+
+.tabs{
+    width: 100%;
+    padding-top: $l;    
+
+    /* container for tab buttons */
+    .tab-headers{
+        display: flex;
+        justify-content: space-between;
+        overflow-x: auto;
+        background: $white;
+        @include boxshadow;
+    }
+    /* a single clickable tab */
+    .tab-header{
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        transition: border $tdur linear;
+        padding: 1em;
+        margin: 0 $l;
+        flex: 0 0 auto;
+        cursor: pointer;
+
+        &.is-selected{
+            border-color: $primary;
+        }
+    }
+
+    /* container for the active tab content */
+    .tab-content{
+        padding-top: $l;
+        width: 100%;
+        position: relative;
+    }
+}
