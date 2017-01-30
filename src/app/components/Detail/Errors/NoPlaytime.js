@@ -6,8 +6,7 @@ export default {
     view({attrs}) {
         return (
             <DetailError title={attrs.name}>
-                <p>This Profile has not yet played the Game!</p>
-                <p>It will removed from our database soon.</p>
+                <p>Either this Profile is new to us and we haven't gotten the stats yet, or it has no playtime</p>
             </DetailError>
         );
     }
