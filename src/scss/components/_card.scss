@@ -1,10 +1,10 @@
 .card{
     margin-bottom: $l;
     padding: $l;
-    background: $blue-dark;
-    color: $white;
+    background: $white;
+    color: $gray-dark;
     position: relative;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
 
 	&.is-empty{
 		text-align: center;

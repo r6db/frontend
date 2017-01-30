@@ -1,0 +1,21 @@
+exports[`drawer has expected html 1`] = `
+"<div class=\"content-wrapper\">
+  <div class=\"drawer\">
+    <div class=\"drawer-menubar\">
+      <div class=\"drawer-burger\">
+        MENU
+      </div>
+    </div>
+    <div class=\"drawer-background\"></div>
+    <div class=\"drawer-container\">
+      <div class=\"drawer-menu\">
+        testmenu
+      </div>
+    </div>
+  </div>
+  <div class=\"app is-test\">
+    app
+  </div>
+</div>
+"
+`;

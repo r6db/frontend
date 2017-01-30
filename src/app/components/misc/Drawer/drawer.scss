@@ -1,0 +1,77 @@
+@import "styles";
+
+.drawer{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    z-index: 1;
+
+    @include openmenu {
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+
+    &-background{
+        position: fixed;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        will-change: opacity;
+        display: none;
+        transition: all 100ms ease-out;
+
+        @include openmenu {
+            display: none !important;
+        }
+    }
+    &-menubar{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: $menu-height;
+    }
+    &-burger{
+        font-size: 12px;
+        display: inline-block;
+        padding: 0 ($l*1.5);
+        line-height: $menu-height;
+        height: $menu-height;
+        @include openmenu {
+            display: none;
+        }
+    }
+    &-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding-right: 3%;
+        transform: translateX(-97%);
+        transition: all 100ms ease-out;
+
+        @include openmenu {
+            transform: none;
+            width: auto;
+            position: relative;
+            padding-right: 0;
+        }
+    }
+
+    &-menu{
+        width: 300px;
+        height: 100%;
+        background: white;
+    }
+}
+
+.no-transition >*{
+    transition: none !important;
+}

@@ -2,12 +2,21 @@
 
 .app{
 	width: 100vw;
+	flex: 1;
 	overflow: hidden;
+	position: relative;
+}
+.content-wrapper{
+	@include openmenu {
+		display: flex;
+		flex-direction: row;
+	}
 }
 .app-page{
 	position: relative;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
+	padding-top: $menu-height + $l*2;
 	flex: 0 0 auto;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -15,19 +24,22 @@
 	flex-direction: column;
 	backface-visibility: hidden;
 	transform: translateZ(0);
+	
+	@include openmenu{
+		padding-top: 0;
+	}
 }
 .app-background{
-	position: fixed;
+	position: absolute;
 	z-index: -1;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
-	background: #333;
-
+	opacity: 0.7;
 	img{
 		min-height: 100vh;
-		min-width: 100vw;
+		min-width: 100%;
 		height: auto;
 		width: auto;
 		position: absolute;
@@ -38,7 +50,7 @@
 	
 	svg{
 		height: 100vh;
-		width: 100vw;
+		width: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -46,7 +58,6 @@
 		transition: opacity $tdur ease-out;
 	}
 	.blur{
-		opacity: 0;
-		filter: grayscale(0.3) blur(30px)
+		filter: contrast(0.9) grayscale(1) brightness(900%)
 	}
 }

@@ -6,6 +6,7 @@ import Detail from "./Detail";
 import Loading from "./misc/Loading";
 import Searchbar from "./misc/Searchbar";
 import Menu from "./misc/Menu";
+import Drawer from "./misc/Drawer";
 import Icon, { GLYPHS } from "./misc/Icon";
 
 import "./base.scss";
@@ -58,22 +59,20 @@ export default {
         const Search = pconf.searchbar
             ? <Searchbar search={search} selector={store.select("search")} />
             : null;
-
-        const Menubar = pconf.menu
-            ? <Menu>{Search}</Menu>
-            : Search;
         return (
-            <div className={"app " + pconf.class}>
-                <div className="app-background" role="presentation" >
-                    <img src="/assets/bg_prim.svg" alt="" class="clear" />
-                    <img src="/assets/bg_prim.svg" alt="" class="blur" />
+            <div className="content-wrapper">
+                <Drawer>
+                    <Menu />
+                </Drawer>
+                <div className={"app " + pconf.class}>
+                    <div className="app-background">
+                        <img src="/assets/bg_prim.svg" alt="" class="blur" />
+                    </div>
+                    <div className="app-page">
+                        <Component loading={loading} data={data} store={store} search={search} />
+                    </div>
+                    {optional(loading, () => <Loading />)}
                 </div>
-                <div className="app-page">
-                    {Menubar}
-                    <Component loading={loading} data={data} />
-                </div>
-
-                {optional(loading, () => <Loading />)}
             </div>
         );
     }
