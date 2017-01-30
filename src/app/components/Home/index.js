@@ -1,15 +1,17 @@
 import m from "mithril";
 import "./home.scss";
+import Searchbar from "../misc/Searchbar";
 
 export default {
+    oncreate({dom}) {
+        dom.querySelector("input").focus();
+    },
     view({ attrs, state }) {
         return (
             <div className="search">
-                <div className="app-background" role="presentation" >
-                    <img src="/assets/bg_prim.svg" alt="" class="clear" />
-                    <img src="/assets/bg_prim.svg" alt="" class="blur" />
+                <div className="search-input">
+                    <Searchbar search={attrs.search} selector={attrs.store.select("search")} />
                 </div>
-                <div className="search-input">blub</div>
             </div>
         );
     }

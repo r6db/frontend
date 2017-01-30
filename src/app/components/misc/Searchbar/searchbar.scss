@@ -8,7 +8,7 @@
 	justify-content: center;
 	flex: 0 0 auto;
 	display: flex;
-	box-shadow: 0px 2px 3px black;
+	box-shadow: 0 2px 3px rgba(100, 100, 100, 0.3);
 	transition: all $tdur ease-in-out;
 
 }
@@ -20,7 +20,7 @@
 		width: 100%;
 		padding: .5em 12*$l .5em $l;
 		height: 100%;
-		background: darken($white, 5%);
+		background: white;
 	}
 	span{
 		position: absolute;

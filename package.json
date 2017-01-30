@@ -6,15 +6,15 @@
     "build:dev": "cross-env NODE_ENV=development webpack --config config/dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/prod.js",
     "stats": "webpack --config config/dev.js --profile --json > stats.json",
-    "test": "exit 0",
-    "jest": "jest"
+    "test": "jest"
   },
   "jest": {
     "moduleNameMapper": {
       "^lib(.*)$": "<rootDir>/src/app/lib$1",
       "^components(.*)$": "<rootDir>/src/app/components$1",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/testUtil/fileMock.js",
-      "\\.(css|scss)$": "<rootDir>/testUtil/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/testUtil/styleMock.js",
+      "testURL": "https://r6db.com"
     }
   },
   "dependencies": {

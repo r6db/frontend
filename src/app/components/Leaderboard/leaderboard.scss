@@ -1,8 +1,6 @@
 @import "styles";
 
 .leaderboard{
-    color: $white;
-    
     &-header{
         max-width: $screen-yourmom;
         padding: 0 1%;
@@ -10,15 +8,15 @@
     }
     &-title{
         font-size: 3em;
-        margin-bottom: $l;
-        text-shadow: 0 0 1px $gray-dark;
+        margin: $l*2 auto $l;
+        text-shadow: 0 0 1px $white;
     }
     &-description{
-        color: $gray-light;
+        color: $gray-dark;
         line-height: 1.4;
-        text-shadow: 0 0 1px $gray-dark;
+        text-shadow: 0 0 1px $white;
         a{
-            color: $accent;
+            color: $primary;
         }
     }
     &-top{
@@ -40,27 +38,27 @@
 
         &label{
             display: inline;
-            color: $white;
+            color: $black;
             font-size: 1rem;
             margin-right: $l;
         }
         &select{
             background: $gray-dark;
             color: $white;
-            padding: .5em 1em;
+            padding: 0 1em;
             line-height: 1em;
             height: 2em;
         }
     }
 }
 .entry{
-    background: $blue-dark;
+    background: $white;
     padding: 0 ($l*2) 0 $l;
 	width: 98%;
 	margin: 1%;
     display: flex;
     align-items: center;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
 }
 .entry-place{
     font-size: 2rem;
@@ -74,10 +72,10 @@
 .entry-name{
     font-size: 1.25rem;
     width: 15em;
-    color: white;
+    color: $black;
 }
 .entry-link{
-    color: $accent;
+    color: $primary;
 }
 .entry-content{
     display: flex;
@@ -107,9 +105,9 @@
     flex: 0 0 auto;
     height: auto;
     flex-direction: column;
-    background: darken($gray-dark, 5%);
-    box-shadow: 1px 1px 3px black;
-    padding: $l*2 0;
+    background: $white;
+    box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
+    padding: 0;
     margin: 4% 2%;
     @include large{
         margin: 1%;
@@ -129,7 +127,7 @@
     }
     .entry-name{
         padding: ($l*1.5) 0;
-        text-shadow: 0 0 2px $gray-dark;
+        text-shadow: 0 0 0px $white;
         background-size: cover;
     }
     .entry-link{
@@ -143,8 +141,8 @@
         line-height: $l*20;
         border-radius: 50%;
         text-align: center;
-        margin: ($l*2) auto 0;
-        border: 1px solid $white;
+        margin: ($l*2) auto;
+        border: 1px solid $gray-dark;
     }
     .entry-valuelabel{
         position: absolute;
@@ -157,15 +155,18 @@
     .entry-value{
         font-size: 3em;
     }
+    .entry-top{
+        background: $gray-dark;
+        width: 100%;
+    }
     .entry-img{
         width: 128px;
         height: 128px;
         overflow: hidden;
         position: relative;
-        margin-bottom: $l*2;
-        
+        margin: $l*2 auto;
         img{
-            opacity: 0.75;
+            border-radius: 50%;
         }
         .entry-place{
             position: absolute;

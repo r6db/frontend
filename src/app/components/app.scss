@@ -24,16 +24,19 @@
 	flex-direction: column;
 	backface-visibility: hidden;
 	transform: translateZ(0);
+	
+	@include openmenu{
+		padding-top: 0;
+	}
 }
 .app-background{
-	position: fixed;
+	position: absolute;
 	z-index: -1;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	background: #333;
-
+	opacity: 0.7;
 	img{
 		min-height: 100vh;
 		min-width: 100%;
@@ -55,6 +58,6 @@
 		transition: opacity $tdur ease-out;
 	}
 	.blur{
-		filter: grayscale(0.3) blur(30px) brightness(75%);
+		filter: contrast(0.9) grayscale(1) brightness(900%)
 	}
 }

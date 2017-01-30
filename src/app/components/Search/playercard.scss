@@ -62,8 +62,8 @@
 		display: block;
 		font-size: 1.7rem;
 		width: 100%;
+		color: $gray-dark;
 		flex: 0 0 auto;
-		color: $white;
 		text-align: left;
 	}
 	.player-id{
@@ -71,7 +71,7 @@
 		color: $gray;
 	}
 	.player-uplaylink{
-		color: $accent;
+		color: $primary;
 		margin: 10px 0;
 		display: block;
 		margin-right: $l;

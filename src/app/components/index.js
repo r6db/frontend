@@ -69,7 +69,7 @@ export default {
                         <img src="/assets/bg_prim.svg" alt="" class="blur" />
                     </div>
                     <div className="app-page">
-                        <Component loading={loading} data={data} />
+                        <Component loading={loading} data={data} store={store} search={search} />
                     </div>
                     {optional(loading, () => <Loading />)}
                 </div>
