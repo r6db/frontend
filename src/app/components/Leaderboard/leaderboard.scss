@@ -3,8 +3,12 @@
 .leaderboard{
     &-header{
         max-width: $screen-yourmom;
-        padding: 0 1%;
+        padding: 0 2%;
         margin: 0 auto;
+        
+        @include openmenu{
+            padding: 0;
+        }
     }
     &-title{
         font-size: 3em;
@@ -125,11 +129,6 @@
         margin: 0;
         text-align: center;
     }
-    .entry-name{
-        padding: ($l*1.5) 0;
-        text-shadow: 0 0 0px $white;
-        background-size: cover;
-    }
     .entry-link{
         padding: ($l*2) 0;
     }
@@ -158,6 +157,13 @@
     .entry-top{
         background: $gray-dark;
         width: 100%;
+        background-size: cover;
+    }
+    .entry-name{
+        padding: ($l*1.5) 0;
+        font-size: 1.5em;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        display: block;
     }
     .entry-img{
         width: 128px;
@@ -180,19 +186,19 @@
     }
     &.is-pos-1{
         align-self: flex-start;
-        .entry-name{
+        .entry-top{
             background-image: url(/assets/pattern_gold.svg);
         }
     }
     &.is-pos-2{
         align-self: center;
-        .entry-name{
+        .entry-top{
             background-image: url(/assets/pattern_silver.svg);
         }
     }
     &.is-pos-3{
         align-self: flex-end;
-        .entry-name{
+        .entry-top{
             background-image: url(/assets/pattern_bronze.svg);
         }
     }

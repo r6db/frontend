@@ -10,8 +10,8 @@ export default {
                         <Profilepic id={attrs.id} />
                         <div className="entry-place">{attrs.pos}</div>
                     </div>
-                </div>
-                <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>
+                    <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>
+                </div>                
                 <div className="entry-rating">
                     <span className="entry-valuelabel">skill rating</span>
                     <div className="entry-value">
