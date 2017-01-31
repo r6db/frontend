@@ -6,14 +6,14 @@ export default {
     view({attrs}) {
         return (
             <div className="player-overview">
-                <div className="col col-left">
+                <div className="col col-side">
                     <div className="card">{
                         attrs.regionByGameCount
                             .reduce((acc, curr) => { 
                                 const region = attrs.rank[curr];
                                 return region.rank
                                     ? acc.concat(m(CurrentRank, {
-                                        class: "player-currentrank",
+                                        class: "divlayer-currentrank",
                                         key: region.label,
                                         rank: region.rank,
                                         region: region.label
@@ -21,10 +21,16 @@ export default {
                                     : acc;
                             }, [])
                     }</div>
-                    
+                    <div className="card">
+                        aliases here!
+                    </div>  
                 </div>
-                <div className="col col-right">
-                    main col!
+                <div className="col col-main">
+                    <div className="card player-summary"> wide card with stat summary here</div>
+                    <div className="player-stuff">
+                        <div className="card player-timeline">timeline here</div>
+                        <div className="card player-gamemodes"> game modes here?</div>
+                    </div>
                 </div>
             </div>
         );

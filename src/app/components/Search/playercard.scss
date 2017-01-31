@@ -9,6 +9,7 @@
 	transform: none;
 	transition: transform $tdur, opacity $tdur,  ease-out;
 	opacity: 1;
+	
 	@include medium{
 		padding: $l;
 	}
@@ -33,6 +34,7 @@
 		width: 64px;
 		height: 64px;
 		position: relative;
+
 		@include medium{
 			display: block;
 		}
@@ -85,7 +87,8 @@
 	.player-aliases{
 		display: none;
 		flex: 1 1 auto;
-		@include large{
+
+		@include medium{
 			display: block;
 		}
 
@@ -102,6 +105,7 @@
 		li{
 			display: inline-block;
 			margin-right: .5em;
+
 			&:after{
 				content:","
 			}

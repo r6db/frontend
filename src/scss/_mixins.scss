@@ -55,13 +55,13 @@
 }
 
 @mixin medium{
-	@media screen and (min-width: $screen-medium) {
+	@media screen and (min-width: $screen-large) {
 		@content;
 	}
 }
 
 @mixin large {
-	@media screen and (min-width: $screen-large) {
+	@media screen and (min-width: $screen-yourmom) {
 		@content;
 	}
 }
@@ -69,5 +69,12 @@
 @mixin openmenu {
 	@media screen and (min-width: $screen-openmenu) {
 		@content;
+	}
+}
+
+@mixin gridmargins{
+	margin: 1%;
+	@include large {
+		margin: $l;
 	}
 }

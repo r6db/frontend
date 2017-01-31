@@ -49,9 +49,10 @@ export default {
                 <div className="detail-content">
                     <Tabs headers={tabMap}>
                         <Overview key="tab1" {...attrs}/>
-                        <div key="tab2">tab2content</div>
-                        <div key="tab3">tab3content</div>
-                        <div key="tab4">tab4content</div>
+                        <div key="tab2">Rank Stats, Timeline & past Seasons </div>
+                        <div key="tab3">Stats Overview and Timeline</div>
+                        <div key="tab4">Operator Datatable</div>
+                        <div key="tab5">WeaponType Datatable</div>
                     </Tabs>    
                 </div>
             </div>
