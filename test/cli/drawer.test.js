@@ -1,7 +1,7 @@
 import "./setup";
 import m from "mithril";
 import { tidy } from "mithril-tidy";
-import Drawer from "../src/app/components/misc/Drawer";
+import Drawer from "components/misc/Drawer";
 
 const TestComp = {
     view() {
@@ -44,5 +44,7 @@ describe("drawer", function () {
         const bounds = menu.getBoundingClientRect();
         
         expect(drawer.className).toContain("is-open");
+        el.querySelector(".drawer-burger").click();
+
     });
 });

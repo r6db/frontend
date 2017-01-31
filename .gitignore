@@ -1,6 +1,8 @@
 .cache
 .happypack
+node_modules
+yarn-error.log
 npm-debug.log
 build
 build-server
-node_modules
+screenshots

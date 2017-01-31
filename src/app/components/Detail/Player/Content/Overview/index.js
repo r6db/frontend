@@ -7,13 +7,13 @@ export default {
         return (
             <div className="player-overview">
                 <div className="col col-side">
-                    <div className="card">{
+                    <div className="card player-currentranks">{
                         attrs.regionByGameCount
                             .reduce((acc, curr) => { 
                                 const region = attrs.rank[curr];
                                 return region.rank
                                     ? acc.concat(m(CurrentRank, {
-                                        class: "divlayer-currentrank",
+                                        class: "player-currentrank",
                                         key: region.label,
                                         rank: region.rank,
                                         region: region.label

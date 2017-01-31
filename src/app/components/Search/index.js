@@ -11,6 +11,13 @@ const showPlayer = id => `/player/${id}`;
 
 module.exports = {
     view({ attrs, state }) {
+        if (attrs.loading) {
+            return (
+                <div>
+                    <Searchbar search={attrs.search} selector={attrs.store.select("search")} />
+                </div>
+            );
+        }
         return (
             <div>
                 <Searchbar search={attrs.search} selector={attrs.store.select("search")} />

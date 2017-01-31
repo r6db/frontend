@@ -9,7 +9,7 @@
 		"**/.cache": true,
 		"**/.happypack": true,
 		"**/node_modules": true
-	}
-,
-"vsicons.presets.angular": false
+	},
+	"vsicons.presets.angular": false,
+	"eslint.nodePath": "./node_modules"
 }
