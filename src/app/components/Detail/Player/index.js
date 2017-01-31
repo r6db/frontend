@@ -32,6 +32,7 @@ export default {
                                 title="show on uplay">
                                 {attrs.id}
                             </a>
+                            <div className="detail-level">level {attrs.level}</div>
                         </div>
                     </div>
                     <div className="detail-timeblock">
@@ -41,7 +42,7 @@ export default {
                         </div>
                         <div className="detail-lastseen">
                             <span className="label">last active:</span>    
-                            <span className="value">{moment(attrs.lastPlayed.last_played).fromNow()}</span>
+                            <span className="value">{moment(attrs.lastPlayed).fromNow()}</span>
                         </div>
                     </div>
                 </div>

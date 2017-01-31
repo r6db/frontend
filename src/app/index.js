@@ -11,6 +11,7 @@ import page from "page";
 import store from "lib/store";
 import Log from "lib/log";
 import m from "mithril";
+import moment from "moment";
 
 if (process.env.NODE_ENV === "production") {
     // set log level
@@ -29,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
     window.page = page;
     window.m = m;
     window.store = store;
-    
+    window.moment = moment;
     // set debug flag
     store.set("debug", window.location.search.indexOf("debug") !== -1);
 

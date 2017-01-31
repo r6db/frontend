@@ -1,6 +1,6 @@
 import m from "mithril";
 import page from "page";
-import { Leaderboards } from "lib/constants";
+import { Regions } from "lib/constants";
 import "./leaderboard.scss";
 import Log from "lib/log";
 import Entry from "./Entry";
@@ -36,9 +36,9 @@ export default {
                                 className="leaderboard-regionselect"
                                 onchange={state.onRegionChange}>
                                 {
-                                    Object.keys(Leaderboards)
+                                    Object.keys(Regions)
                                         .map(l => {
-                                            const lb = Leaderboards[l];
+                                            const lb = Regions[l];
                                             return (<option
                                                 key={lb.id}
                                                 selected={isSelected(lb.id, attrs.data.board)}

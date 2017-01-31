@@ -1,6 +1,5 @@
 import m from "mithril";
 import page from "page";
-import { Leaderboards } from "lib/constants";
 import "../Leaderboard/leaderboard.scss";
 import Log from "lib/log";
 import Entry from "./Entry";

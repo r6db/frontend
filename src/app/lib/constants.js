@@ -57,17 +57,33 @@ export const Ranks = [
     "Diamond"
 ];
 
+
 /**
- * define our Leaderboards
- * id: url parameter we set for the board
- * board: api endpoint to call
+ * define the possible weapon types
+ */
+export const WeaponTypes = {
+    "assault": { id: "assault", label: "Assault Rifle" },
+    "launcher": { id: "launcher", label: "Launcher" },
+    "lmg": { id: "lmg", label: "Light Machine Gun" },
+    "mp": { id: "mp", label: "Machine Pistol" },
+    "pistol": { id: "pistol", label: "Pistol" },
+    "shotgun": { id: "shotgun", label: "Shotgun" },
+    "smg": { id: "smg", label: "Sub Machine Gun" },
+    "snipet": { id: "sniper", label: "Sniper Rifle" },
+    "B": { id: "B", label: "B (meaning unknown)"}
+};
+
+/**
+ * define our Regions
+ * id: same as ranks region names! also used as url param for the leaderboard
+ * board: api endpoint to for the leaderboard
  * label: you know..
  */
-export const Leaderboards = {
-    ALL: { id: "ALL", board: "highest_skill_adjusted", label: "Global" },
-    APAC: { id: "APAC", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
-    EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
-    NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
+export const Regions = {
+    all: { id: "all", board: "highest_skill_adjusted", label: "Global" },
+    apac: { id: "apac", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
+    emea: { id: "emea", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
+    ncsa: { id: "ncsa", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };
 
 

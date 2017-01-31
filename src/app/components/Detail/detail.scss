@@ -41,7 +41,6 @@
         display: block;
         flex: 0 1 auto;
         overflow: hidden;
-        padding: 9px 0;
     }
     /* in idblock: player name*/
     &-name{
@@ -64,6 +63,15 @@
         text-overflow: ellipsis;
         display: inline-block;
     }
+    /* in idblock: player level */
+    &-level{
+        font-size: 1em;
+
+        @include large {
+            font-size: 2rem;
+        }
+    }
+
     /* block in the top right with time metadata */
     &-timeblock{
         margin-top: $l;

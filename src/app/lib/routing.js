@@ -2,7 +2,7 @@ import m from "mithril";
 import store from "./store";
 import Log from "lib/log";
 import page from "page";
-import { Pageconfig, Leaderboards } from "lib/constants";
+import { Pageconfig, Regions } from "lib/constants";
 import { parse } from "querystring";
 import * as api from "lib/api";
 import setMeta from "lib/meta";
@@ -169,7 +169,7 @@ export default function initRoutes() {
             });
     });
     page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
-        const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
+        const lb = Regions[ctx.params.board] || Regions.ALL;
         log.debug("router mount <Leaderboard />");
         store.merge({
             config: Pageconfig.LEADERBOARD,

@@ -1,0 +1,48 @@
+@import "styles";
+
+.player{
+    &-overview{
+        display: flex;
+        flex-direction: column;
+        padding: 0 1%;
+
+
+        @include large{
+            flex-direction: row;   
+            padding: 0 $l;
+        }
+
+        .col{
+            flex: 1 1 auto;
+            margin: 1%;
+            
+            @include large{ 
+                margin: $l;
+            }
+        }
+        .col-side{
+            min-width: 320px;
+            flex-grow: 0;
+            margin: 1%;
+        }
+    }
+        
+    &-currentrank{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: $l;
+
+        .currentrank-icon{
+            width: 64px;
+            flex: 0 0 auto;
+        }
+        .currentrank-text{
+            margin-left: $l*2;
+            flex: 1;
+        }
+        .currentrank-label{
+            font-size: 1.5em;
+        }
+    }
+}
