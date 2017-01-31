@@ -51,6 +51,7 @@ const getPlayer = id => fetch(`${v2Api}/players/${id}/extended`, { headers: getH
 const handleResponse = res => {
     const player = {
         id: res.id,
+        level: res.level,
         createdAt: res.created_at,
         flags: {
             inactive: false,
