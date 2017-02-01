@@ -136,7 +136,7 @@ export default function initRoutes() {
             });
     });
     page("/leaderboard/", function () {
-        page.redirect("/leaderboard/ALL");
+        page.redirect("/leaderboard/all");
     });
     page("/leaderboard/chanka", analyticsMiddleware, function () {
         const board = "operatorpvp_tachanka_turretkill";

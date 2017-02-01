@@ -7,7 +7,7 @@
         margin: 0 auto;
         
         @include openmenu{
-            padding: 0;
+            padding: 0 1%;
         }
     }
     &-title{
@@ -30,6 +30,10 @@
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+
+        @include large{
+            justify-content: space-between;
+        }
     }
     &-entries{
         max-width: 900px;
@@ -150,6 +154,8 @@
         transform: translate(-50%, 0);
         margin: 0;
         line-height: 1em;
+        font-size: 0.9em;
+        text-transform: uppercase;
     }
     .entry-value{
         font-size: 3em;
@@ -162,7 +168,8 @@
     .entry-name{
         padding: ($l*1.5) 0;
         font-size: 1.5em;
-        text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        color: $white;
+        text-shadow: 0 0 1 black;
         display: block;
     }
     .entry-img{

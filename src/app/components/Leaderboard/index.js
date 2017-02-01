@@ -51,11 +51,11 @@ export default {
                     </div>
                     <div className="leaderboard-top">
                         {attrs.data.entries.slice(0, 3).map((x, i) =>
-                            <TopEntry pos={i + 1} {...x} key={x.id} />)}
+                            <TopEntry pos={i + 1} {...x} key={x.id} measure="skill rating" precision="2" />)}
                     </div>
                     <div className="leaderboard-entries">
                         {attrs.data.entries.slice(3).map((x, i) =>
-                            <Entry pos={i + 4} {...x} key={x.id} />
+                            <Entry pos={i + 4} {...x} key={x.id} measure="skill rating" precision="2" />
                         )}
                     </div>
                     <a href="/leaderboard/chanka">

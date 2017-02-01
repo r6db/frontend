@@ -66,7 +66,7 @@ export default {
                 </Drawer>
                 <div className={"app " + pconf.class}>
                     <div className="app-background">
-                        <img src="/assets/bg_prim.svg" alt="" class="blur" />
+                        <img src="/assets/bg_prim.svg"/>
                     </div>
                     <div className="app-page">
                         <Component loading={loading} data={data} store={store} search={search} />

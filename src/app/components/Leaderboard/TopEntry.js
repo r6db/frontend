@@ -1,6 +1,8 @@
 import m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 
+const getVal = (value, prec) => Number.parseFloat(value).toFixed(prec);
+
 export default {
     view({attrs}) {
         return (
@@ -13,9 +15,9 @@ export default {
                     <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>
                 </div>                
                 <div className="entry-rating">
-                    <span className="entry-valuelabel">skill rating</span>
+                    <span className="entry-valuelabel">{attrs.measure}</span>
                     <div className="entry-value">
-                        {attrs.value}
+                        {getVal(attrs.value, attrs.precision || 2)}
                     </div>
                 </div>
             </div>
