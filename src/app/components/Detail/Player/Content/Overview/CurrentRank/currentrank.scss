@@ -1,0 +1,20 @@
+@import "styles";
+.player-currentrank{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: $l;
+
+    .currentrank-icon{
+        width: 64px;
+        height: 64px;
+        flex: 0 0 auto;
+    }
+    .currentrank-text{
+        margin-left: $l*2;
+        flex: 1;
+    }
+    .currentrank-label{
+        font-size: 1.5em;
+    }
+}

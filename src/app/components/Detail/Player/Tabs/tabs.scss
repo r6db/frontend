@@ -21,6 +21,7 @@
         margin: 0 $l;
         flex: 0 0 auto;
         cursor: pointer;
+        user-select: none;
 
         &.is-selected{
             border-color: $primary;

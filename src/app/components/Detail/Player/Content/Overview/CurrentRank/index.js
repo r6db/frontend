@@ -1,9 +1,10 @@
 import m from "mithril";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { Ranks, Regions } from "lib/constants";
+import "./currentrank.scss";
 
 export default {
-    view({ attrs })  {
+    view({ attrs }) {
         return (
             <div class={"currentrank " + attrs.class}>
                 <Icon class="currentrank-icon" glyph={GLYPHS["RANK" + attrs.rank]} />
@@ -18,4 +19,4 @@ export default {
             </div>
         );
     }
-}
+};
