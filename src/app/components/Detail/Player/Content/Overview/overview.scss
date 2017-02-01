@@ -4,25 +4,22 @@
     &-overview{
         display: flex;
         flex-direction: column;
-        padding: 0 1%;
+        padding: 0 $l;
 
 
         @include large{
             flex-direction: row;   
-            padding: 0 $l;
         }
 
         .col{
             flex: 1 1 auto;
-            @include gridmargins;
         }
         .col-side{
             min-width: 320px;
             flex-grow: 0;
-            margin: 1%;
-            margin-bottom: 0;
+
             @include large{
-                margin: $l;
+                margin: 0 $l 0 0;
             }
         }
     }
@@ -30,39 +27,51 @@
     &-stuff{
         display: flex;
         flex-direction: column;
-        
         @include large{
             flex-direction: row;
         }
     }
 
     &-timeline{
+        @include card;
         flex: 4 1 auto;
         width: 100%;
-        margin: 1%;
-        margin-left: 0;
+        margin: 0;
+        margin-bottom: $l;
+
         order: 2;
 
         @include large {
-            margin: $l;
-            margin-left: 0;
+            margin: $l 0;
+            margin-right: $l;
             order: 1;
             width: auto;
         }
     }
-
     &-gamemodes{
+        @include card;
         flex: 2 1 auto;
         width: 100%;
-        margin: 1%;
-        margin-left: 0;
+        margin: 0;        
+        margin-bottom: $l;
         order: 1;
         
         @include large {
-            margin: $l;
-            margin-right: 0;
+            margin: $l 0;
             order: 2;
             width: auto;
+        }
+    }
+
+    /* stat overview card */
+    &-summary{
+        @include card;
+        padding-left: 0;
+        padding-right: 0;
+
+        @include large {
+            /* remove bottom margin, because it doesn't collapse with the sibling */
+            margin-bottom: 0;
         }
     }
 }

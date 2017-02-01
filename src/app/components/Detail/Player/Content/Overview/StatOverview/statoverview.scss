@@ -1,0 +1,59 @@
+@import "styles";
+
+.statoverview{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1rem;
+    
+    @include large{
+        flex-direction: row;
+        font-size: .75rem;
+    }
+
+}
+
+.stat-section{
+    flex: 1;
+    padding: 0 ($l*0.5);
+    margin-bottom: $l;
+
+    @include large{
+        margin-bottom: 0;
+
+        + .stat-section{
+            border-left: 1px solid $gray;
+            border-right: 1px solid transparent;
+        }
+    }
+
+    &-title{
+        font-size: 0.9em;
+        margin-bottom: $l*0.5;
+    }
+
+    &-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+.stat-column{
+    flex: 1;
+    padding: 0 ($l);
+    
+    table{
+        width: 100%;
+    }
+}
+
+.stat{
+
+    &-label{
+        text-align: left;
+        width: 5em;
+    }
+    &-value{
+        text-align: right;
+    }
+}

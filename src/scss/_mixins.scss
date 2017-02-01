@@ -48,6 +48,17 @@
 }
 
 
+@mixin card{
+    position: relative;
+    margin-bottom: $l;
+    padding: $l;
+    background: $white;
+    color: $gray-dark;
+	
+    @include boxshadow;
+}
+
+
 @mixin small{
 	@media screen and (max-width: $screen-medium) {
 		@content;

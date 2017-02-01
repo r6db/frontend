@@ -105,7 +105,7 @@ const handleResponse = res => {
                     return acc;
                 }, {})
             : {};
-        
+                
         player.regionByGameCount = Object.values(player.rank)
             .sort((a, b) => b.games - a.games)
             .map(x => x.label);
@@ -120,6 +120,7 @@ const handleResponse = res => {
     } else {
         player.flags.noSeasonRanks = true;
     }
+
 
 
     // aliases and naming stuff
@@ -146,6 +147,17 @@ const handleResponse = res => {
         operators: mapOperatorMap(res.stats.operator),
         weapons: mapWeaponMap(res.stats.weapon)
     };
+
+    if(player.stats.matchmaking.ranked) {
+        const {won, lost, kills, deaths} = player.stats.matchmaking.ranked;
+        player.stats.matchmaking.ranked.wlr = won / (won + lost);
+        player.stats.matchmaking.ranked.kdr = kills / (deaths || 1);
+    }
+    if (player.stats.matchmaking.casual) {
+        const {won, lost, kills, deaths} = player.stats.matchmaking.casual;
+        player.stats.matchmaking.casual.wlr = won / (won + lost);
+        player.stats.matchmaking.casual.kdr = kills / (deaths || 1);
+    }
 
 
     return player;

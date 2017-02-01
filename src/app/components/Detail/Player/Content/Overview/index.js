@@ -1,5 +1,7 @@
 import m from "mithril";
 import CurrentRank from "./CurrentRank";
+import StatOverview from "./StatOverview";
+
 import "./overview.scss";
 
 export default {
@@ -7,7 +9,7 @@ export default {
         return (
             <div className="player-overview">
                 <div className="col col-side">
-                    <div className="card player-currentranks">{
+                    <div className="player-currentranks">{
                         attrs.regionByGameCount
                             .reduce((acc, curr) => { 
                                 const region = attrs.rank[curr];
@@ -26,10 +28,10 @@ export default {
                     </div>  
                 </div>
                 <div className="col col-main">
-                    <div className="card player-summary"> wide card with stat summary here</div>
+                    <div className="player-summary"><StatOverview {...attrs}/></div>
                     <div className="player-stuff">
-                        <div className="card player-timeline">timeline here</div>
-                        <div className="card player-gamemodes"> game modes here?</div>
+                        <div className="player-timeline">timeline here</div>
+                        <div className="player-gamemodes"> game modes here?</div>
                     </div>
                 </div>
             </div>
