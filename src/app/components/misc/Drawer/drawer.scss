@@ -37,6 +37,10 @@
         left: 0;
         width: 100vw;
         height: $menu-height;
+        
+        @include openmenu {
+            display: none;
+        }
     }
     &-burger{
         font-size: 12px;
