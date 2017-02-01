@@ -10,11 +10,11 @@ export default {
 
         return (
             <div className="menu">
-                <a href="/" className="menu-top">
+                <div className="menu-top">
                     <Icon class="menu-logo" glyph={GLYPHS.LOGO} fill="white" />
-                </a>
+                </div>
                 <div className="menu-center">
-                    <a href="/search" className="menu-item">Search</a>
+                    <a href="/" className="menu-item">Home</a>
                     <a href="/leaderboard" className="menu-item">Leaderboard</a>
                 </div>
                 <footer className="menu-bottom is-center">

@@ -1,6 +1,7 @@
 import m from "mithril";
 import CurrentRank from "./CurrentRank";
-import StatOverview from "./StatOverview";
+import StatSummary from "./StatSummary";
+import RankedSummary from "./RankedSummary";
 
 import "./overview.scss";
 
@@ -28,7 +29,7 @@ export default {
                     </div>  
                 </div>
                 <div className="col col-main">
-                    <div className="player-summary"><StatOverview {...attrs}/></div>
+                    <div className="player-summary"><StatSummary {...attrs}/></div>
                     <div className="player-stuff">
                         <div className="player-timeline">timeline here</div>
                         <div className="player-gamemodes"> game modes here?</div>

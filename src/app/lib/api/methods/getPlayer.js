@@ -135,6 +135,7 @@ const handleResponse = res => {
 
 
     player.stats = {
+        general: res.stats.general,
         gameModes: {
             bomb: res.stats.bomb,
             secure: res.stats.secure,
@@ -147,7 +148,11 @@ const handleResponse = res => {
         operators: mapOperatorMap(res.stats.operator),
         weapons: mapWeaponMap(res.stats.weapon)
     };
-
+    if(player.stats.general) {
+        const { bulletsFired, bulletsHit, headshot, kills } = player.stats.general;
+        player.stats.general.accuracy = bulletsHit / bulletsFired;
+        player.stats.general.hsr = headshot / kills;
+    }
     if(player.stats.matchmaking.ranked) {
         const {won, lost, kills, deaths} = player.stats.matchmaking.ranked;
         player.stats.matchmaking.ranked.wlr = won / (won + lost);

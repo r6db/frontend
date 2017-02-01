@@ -8,13 +8,13 @@
     
     @include large{
         flex-direction: row;
-        font-size: .75rem;
+        font-size: .8rem;
     }
 
 }
 
 .stat-section{
-    flex: 1;
+    flex: 1 0 auto;
     padding: 0 ($l*0.5);
     margin-bottom: $l;
 
@@ -29,7 +29,7 @@
 
     &-title{
         font-size: 0.9em;
-        margin-bottom: $l*0.5;
+        margin-bottom: $l*0.6;
     }
 
     &-content{
@@ -37,10 +37,14 @@
         flex-direction: row;
         justify-content: space-between;
     }
+
+    .stat-column:first-child{
+        padding-right: $l*2;
+    }
 }
 .stat-column{
     flex: 1;
-    padding: 0 ($l);
+    padding: 0 ($l*0.5);
     
     table{
         width: 100%;
@@ -51,9 +55,24 @@
 
     &-label{
         text-align: left;
-        width: 5em;
+        padding-right: 5px;
+        padding-bottom: 1px;
+        color: lighten($gray-dark, 20%);
     }
     &-value{
         text-align: right;
+        padding-bottom: 1px;
+        color: $black
+    }
+}
+
+.stats-general{
+    @include large{
+        width: 40%;
+    }
+}
+.stats-ranked,.stats-casual{
+    @include large{
+        width: 30%;
     }
 }

@@ -38,8 +38,10 @@
     color: #ddd;
     display: block;
     margin-bottom: $l;
+    padding: $l 2*$l;
+    cursor: pointer;
+
     &:hover{
         color: white;
     }
-    padding: $l 2*$l;
 }

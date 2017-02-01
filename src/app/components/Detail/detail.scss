@@ -41,15 +41,11 @@
         display: block;
         flex: 0 1 auto;
         overflow: hidden;
-
-        @include large{
-            /* vertically align with the timeblock */
-            margin-top: 7px;
-        }
     }
     /* in idblock: player name*/
     &-name{
         font-size: 2rem;
+        line-height: 1.3;
         font-weight: bold;
         white-space: nowrap;
         overflow: hidden;

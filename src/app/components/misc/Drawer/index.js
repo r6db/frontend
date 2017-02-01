@@ -11,30 +11,31 @@ export default {
         state.menuMaxWidth = 0;
         state.startX = 0;
         state.currX = 0;
-        const TARGET_OPACITY = 0.7;
+        const TARGET_OPACITY = 0.8;
         const DRAG_THRESHOLD = 0.30;
 
         state.onTouchStart = function (e) {
-            log.trace("ontouchstart");
             if (state.isOpen) { return; }
             state.startX = e.touches[0].pageX;
             state.isDragging = true;
             state.backgroundEl.style.display = "inherit";
+            state.backgroundEl.style.opacity = "0";
             state.containerEl.classList.add("no-transition");
         };
         state.onTouchMove = function (e) {
             if (!state.isDragging) { return; }
-            log.trace("ontouchmove");
             // check distance and animate difference
             state.currX = e.touches[0].pageX;
             if ((state.currX - state.startX) < state.menuMaxWidth) {
                 // we are not fully opened yet.
                 // animate stuff
                 e.preventDefault();
-                if (state.isOpen && state.currX > state.startX) {
+                if (state.isOpen && state.currX - state.startX > state.menuMaxWidth) {
                     // return early if the user wantds to drag further than max distance
                     return;
                 } else {
+                    state.isOpen = false;
+                    state.containerEl.classList.remove("is-open");
                     // otherwise display the change
                     const changeX = Math.min(state.currX - state.menuMaxWidth, 0);
                     state.drawerEl.style.transform = state.drawerEl.style.webkitTransform = `translateX(${changeX}px)`;
@@ -49,7 +50,6 @@ export default {
             }
         };
         state.onTouchEnd = function (e) {
-            log.trace("ontouchend");
             state.isDragging = false;
             state.containerEl.classList.remove("no-transition");
 
@@ -57,12 +57,10 @@ export default {
             const deltaX = state.currX - state.startX;
             if (Math.abs(deltaX) > (state.menuMaxWidth * DRAG_THRESHOLD)) {
                 if (state.currX < state.startX) {
-                    log.trace("fall close");
                     // we are dragging to close -> close menu
                     state.onCloseMenu();
                     return;
                 } else {
-                    log.trace("fall open");
                     // we dragged more than enough to 'fall open'
                     state.isDragging = false;
                     state.isOpen = true;
@@ -77,7 +75,6 @@ export default {
             // we are open now. stop dragging
         };
         state.onCloseMenu = function(e) {
-            log.trace("onclosemenu");
             state.isDragging = false;
             state.isOpen = false;
             state.startX = 0;
