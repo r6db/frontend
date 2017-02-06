@@ -12,6 +12,22 @@
 	transition: all $tdur ease-in-out;
 	font-size: $font-normal;
 
+	@include small{
+        .search-input{
+            > input{
+                padding: .5em ($l*7) .5em $l;
+            }   
+            span{
+                width: $l*6;
+            }
+            label{
+                text-align: center;
+                line-height: 0.8;
+                height: auto;
+                margin: 0;
+            }
+        }
+    }
 }
 .search-input{
 	flex: 1 1 auto;

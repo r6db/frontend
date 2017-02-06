@@ -14,13 +14,25 @@
         height: auto;
     }
 
+    &.is-open{
+        .drawer-container{
+            transform: none;
+        }
+        .drawer-background{
+            display: block;
+            transform: none;
+            opacity: $menuMaxOpacity;
+        }
+    }
+
     &-background{
         position: fixed;
-        display: block;
         left: 0;
         top: 0;
         width: 100vw;
         height: 100vh;
+        left: $menuMaxWidth;
+        transform: translateX(200%);
         background: rgba(0, 0, 0, 0.3);
         opacity: 0;
         will-change: opacity;

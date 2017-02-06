@@ -19,19 +19,25 @@
 }
 
 .is-initial {
-	.search{
-		margin-top: 40vh;
+	.app{
+		.search{
+			margin-top: 40vh;
+		}
+		.search-form{
+			height: $l*5;
+			width: 96%;
+			margin: 0 auto;
+			background: $white;
+			box-shadow: 0 0 5vh rgba(23, 22, 22, 0.52);
+		}
+		input:focus{
+			outline: none;
+		}
+		.search-submit {
+			padding: .5em 2em;
+		}
 	}
-	.search-form{
-		height: $l*5;
-		background: $white;
-		box-shadow: 0 0 5vh rgba(23, 22, 22, 0.52);
+	@include medium{
+		.drawer .search-form{ display: none; }
 	}
-	input:focus{
-		outline: none;
-	}
-	.search-submit {
-		padding: .5em 2em;
-	}
-	.drawer .search-form{ display: none; }
 }

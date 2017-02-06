@@ -33,7 +33,7 @@ export default {
     },
     view({ attrs, state }) {
         return (
-            <div className={"search-form " + attrs.className}>
+            <div className={"search-form " + (attrs.className || "")}>
                 <div className="search-input">
                     <input type="text"
                         value={state.query}
