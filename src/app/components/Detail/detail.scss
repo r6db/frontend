@@ -44,7 +44,7 @@
     }
     /* in idblock: player name*/
     &-name{
-        font-size: 2rem;
+        font-size: $font-large;
         line-height: 1.3;
         font-weight: bold;
         white-space: nowrap;
@@ -52,7 +52,7 @@
         text-overflow: ellipsis;
 
         @include large {
-            font-size: 3rem;
+            font-size: $font-huge;
         }
     }
     /* in idblock: player id with link back to uplay*/
@@ -66,10 +66,10 @@
     }
     /* in idblock: player level */
     &-level{
-        font-size: 1em;
+        font-size: $font-normal;
 
         @include large {
-            font-size: 2rem;
+            font-size: $font-large;
         }
     }
 
@@ -89,7 +89,7 @@
 
         .value{
             font-weight: bold;
-            margin-left: .5em;
+            margin-left: $font-tiny;
         }
     }
     /* in timeblock */

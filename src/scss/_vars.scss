@@ -1,3 +1,5 @@
+$l: 10px;
+
 $primary: #6e3c87;
 $accent: #ffdb00;
 $iaccent: #e0b669;
@@ -20,16 +22,23 @@ $screen-large: 768px;
 $screen-yourmom: 1024px;
 $screen-openmenu: 1324px;
 
+$font-base: 1rem;
+$font-tiny: 0.5 * $font-base;
+$font-mini: 0.75 * $font-base;
+$font-small: 0.9 * $font-base;
+$font-normal: $font-base;
+$font-big: 1.5 * $font-base;
+$font-large: 2 * $font-base;
+$font-huge: 3 * $font-base;
+
 $borderradius: 1px;
 $borderradius-rel: .4em;
-
-$nav-height: 3.5em;
-$l: 10px;
 
 
 $tdur: 200ms;
 
 
+$nav-height: 3.5em;
 $menu-width: 300px;
 $menu-background: #272727;
 $menu-height: $l*4;

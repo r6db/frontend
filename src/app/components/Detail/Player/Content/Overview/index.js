@@ -1,7 +1,7 @@
 import m from "mithril";
 import CurrentRank from "./CurrentRank";
 import StatSummary from "./StatSummary";
-import RankedSummary from "./RankedSummary";
+import Aliases from "./Aliases";
 
 import "./overview.scss";
 
@@ -25,7 +25,7 @@ export default {
                             }, [])
                     }</div>
                     <div className="card">
-                        aliases here!
+                        <Aliases aliases={attrs.aliases}/>
                     </div>  
                 </div>
                 <div className="col col-main">

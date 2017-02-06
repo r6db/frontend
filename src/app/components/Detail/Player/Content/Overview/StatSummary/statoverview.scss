@@ -4,11 +4,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1rem;
+    font-size: $font-normal;
     
+
     @include large{
         flex-direction: row;
-        font-size: .8rem;
+        font-size: $font-small;
     }
 
 }
@@ -17,9 +18,11 @@
     flex: 1 0 auto;
     padding: 0 ($l*0.5);
     margin-bottom: $l;
+    font-size: $font-normal;
 
     @include large{
         margin-bottom: 0;
+        font-size: $font-mini;
 
         + .stat-section{
             border-left: 1px solid $gray;
@@ -28,8 +31,10 @@
     }
 
     &-title{
-        font-size: 0.9em;
+        font-size: $font-mini;
         margin-bottom: $l*0.6;
+        /* cols have .5 left + 1 from table */
+        padding-left: $l*0.6;
     }
 
     &-content{

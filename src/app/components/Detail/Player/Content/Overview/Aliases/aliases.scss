@@ -1,0 +1,68 @@
+@import "styles";
+
+.aliases{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+
+    @include large{
+        text-align: left;
+        flex-direction: column;
+    }
+}
+
+.alias{
+    flex: 0 0 auto;
+    margin: 0 ($l*2) 0 0;
+    position: relative;
+    padding: ($l*3) 0 0 0;
+
+    @include large{
+        margin: 0 0 ($l * 2) 0;
+        padding: 0 0 0 ($l*3);
+
+        &:before{
+            left: $l*1.5;
+            top: 50%;
+        }
+        &:after{
+            width: 2px;
+            height: 200%;
+            top: 50%;
+            left: $l*1.5;
+        }
+    }
+
+    &:before,
+    &:after{
+        content: "";
+        display: block;
+        position: absolute;
+    }
+    &:before{
+        width: .5em;
+        height: .5em;
+        border-radius: 50%;
+        top: $l*1.5;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $gray;
+    }
+    &:after{
+        width: 200%;
+        height: 2px;
+        top: $l*1.5;
+        left: 50%;
+        background: $gray;
+        transform: translate(-50%, -50%);
+    }
+
+    &-date{
+        font-size: $font-mini;
+    }
+    &-name{
+        margin-top: ($l * 0.5);
+    }
+}
