@@ -8,7 +8,7 @@
     overflow-y: hidden;
     text-align: center;
     padding-bottom: 15px;
-    justify-content: space-around;
+    justify-content:  flex-start;
     max-height: 500px;
 
     @include large{
