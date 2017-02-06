@@ -7,23 +7,14 @@ import "./overview.scss";
 
 export default {
     view({attrs}) {
+        const topRank = attrs.rank[attrs.regionByGameCount[0]];
+
         return (
             <div className="player-overview">
                 <div className="col col-side">
-                    <div className="player-currentranks">{
-                        attrs.regionByGameCount
-                            .reduce((acc, curr) => { 
-                                const region = attrs.rank[curr];
-                                return region.rank
-                                    ? acc.concat(m(CurrentRank, {
-                                        class: "player-currentrank",
-                                        key: region.label,
-                                        rank: region.rank,
-                                        region: region.label
-                                    }))
-                                    : acc;
-                            }, [])
-                    }</div>
+                    <CurrentRank className=""
+                            rank={topRank.rank}
+                            region={topRank.label}/>
                     <div className="card">
                         <Aliases aliases={attrs.aliases}/>
                     </div>  

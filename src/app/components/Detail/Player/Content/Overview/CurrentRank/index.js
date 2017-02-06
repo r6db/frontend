@@ -6,7 +6,7 @@ import "./currentrank.scss";
 export default {
     view({ attrs }) {
         return (
-            <div class={"currentrank " + attrs.class}>
+            <div class="player-currentrank">
                 <Icon class="currentrank-icon" glyph={GLYPHS["RANK" + attrs.rank]} />
                 <div class="currentrank-text">
                     <div class="currentrank-label">{Ranks[attrs.rank]}</div>

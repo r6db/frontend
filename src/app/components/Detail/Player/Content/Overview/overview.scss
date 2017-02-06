@@ -30,11 +30,6 @@
             flex-direction: row;
         }
     }
-    &-currentranks{
-        @include card;
-        /* reset padding, because the children have their own */
-        padding: 0;
-    }
 
     &-timeline{
         @include card;

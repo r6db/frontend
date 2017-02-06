@@ -9,6 +9,7 @@
     text-align: center;
     padding-bottom: 15px;
     justify-content: space-around;
+    max-height: 500px;
 
     @include large{
         overflow-x: hidden;
