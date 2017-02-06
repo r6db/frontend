@@ -13,24 +13,20 @@ module.exports = {
     view({ attrs, state }) {
         if (attrs.loading) {
             return (
-                <div>
-                    <Searchbar search={attrs.search} selector={attrs.store.select("search")} />
+                <div className="colums is-multiline search-results">
                 </div>
             );
         }
         return (
-            <div>
-                <Searchbar search={attrs.search} selector={attrs.store.select("search")} />
-                <div className="colums is-multiline search-results">
-                    {
-                        attrs.data && attrs.data.length > 0
-                            ? attrs.data.map((player, i, total) =>
-                                <Result player={player} index={i} key={player.id} href={showPlayer(player.id)} />)
-                            : <div className="playercard is-empty">
-                                we could not find any player matching that name. sorry
-                        </div>
-                    }
-                </div>
+            <div className="colums is-multiline search-results">
+                {
+                    attrs.data && attrs.data.length > 0
+                        ? attrs.data.map((player, i, total) =>
+                            <Result player={player} index={i} key={player.id} href={showPlayer(player.id)} />)
+                        : <div className="playercard is-empty">
+                            we could not find any player matching that name. sorry
+                    </div>
+                }
             </div>
         );
     }

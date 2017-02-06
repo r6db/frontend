@@ -10,4 +10,13 @@
 		text-align: center;
 		justify-content: center;
 	}
+
+    .card-header{
+        font-weight: 600;
+        font-size: $font-mini;
+        margin-bottom: $l*0.5;
+    }
+    .card-content{
+        position: relative;
+    }
 }

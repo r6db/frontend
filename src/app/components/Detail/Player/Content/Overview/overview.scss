@@ -23,13 +23,17 @@
             }
         }
     }
-
     &-stuff{
         display: flex;
         flex-direction: column;
         @include large{
             flex-direction: row;
         }
+    }
+    &-currentranks{
+        @include card;
+        /* reset padding, because the children have their own */
+        padding: 0;
     }
 
     &-timeline{

@@ -11,3 +11,23 @@
 @import "components/card";
 @import "components/loading";
 @import "components/module";
+
+.menu-topbar{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: $l;
+
+    .search-form{ 
+        display: none;
+        margin: 0; 
+        max-width: $screen-medium;
+        font-size: $font-small;
+        
+        @include medium{
+            display: flex;
+        }
+    }
+}

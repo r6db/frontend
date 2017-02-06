@@ -5,7 +5,21 @@ import "./drawer.scss";
 const log = Log.child(__filename);
 
 export default {
-    oninit({state}) {
+    oninit({attrs, children, state}) {
+
+        /**
+         * check if we have a key to select top content and split children
+         */
+        if (attrs.topContent)  {
+            state.topChildren = children.filter(x => x.key === attrs.topContent);
+            state.menuChildren = children.filter(x => x.key !== attrs.topContent);
+        } else {
+            state.topChildren = [];
+            state.menuChildren = children;
+        }
+        
+
+        // interaction stuff
         state.isDragging = false;
         state.isOpen = false;
         state.menuMaxWidth = 0;
@@ -50,31 +64,34 @@ export default {
             }
         };
         state.onTouchEnd = function (e) {
-            state.isDragging = false;
-            state.containerEl.classList.remove("no-transition");
+            if (state.isDragging) {
+                state.isDragging = false;
+                state.containerEl.classList.remove("no-transition");
 
-            // check which direction to fall to and animate
-            const deltaX = state.currX - state.startX;
-            if (Math.abs(deltaX) > (state.menuMaxWidth * DRAG_THRESHOLD)) {
-                if (state.currX < state.startX) {
-                    // we are dragging to close -> close menu
-                    state.onCloseMenu();
-                    return;
+                // check which direction to fall to and animate
+                const deltaX = state.currX - state.startX;
+                if (Math.abs(deltaX) > (state.menuMaxWidth * DRAG_THRESHOLD)) {
+                    if (state.currX < state.startX) {
+                        // we are dragging to close -> close menu
+                        state.onCloseMenu();
+                        return;
+                    } else {
+                        // we dragged more than enough to 'fall open'
+                        state.isDragging = false;
+                        state.isOpen = true;
+                        state.containerEl.classList.add("is-open");
+                        state.drawerEl.style.transform = state.drawerEl.style.webkitTransform = `translateX(0px)`;
+                        state.backgroundEl.style.transform = state.backgroundEl.style.webkitTransform = `translateX(${state.menuMaxWidth}px)`;
+                        state.backgroundEl.style.opacity = TARGET_OPACITY;
+                    }
                 } else {
-                    // we dragged more than enough to 'fall open'
-                    state.isDragging = false;
-                    state.isOpen = true;
-                    state.containerEl.classList.add("is-open");
-                    state.drawerEl.style.transform = state.drawerEl.style.webkitTransform = `translateX(0px)`;
-                    state.backgroundEl.style.transform = state.backgroundEl.style.webkitTransform = `translateX(${state.menuMaxWidth}px)`;
-                    state.backgroundEl.style.opacity = TARGET_OPACITY;
+                    state.onCloseMenu();
                 }
-            } else {
-                state.onCloseMenu();
-            }
-            // we are open now. stop dragging
+                // we are open now. stop dragging
+            }            
         };
-        state.onCloseMenu = function(e) {
+        state.onCloseMenu = function (e) {
+            console.log("close menu");
             state.isDragging = false;
             state.isOpen = false;
             state.startX = 0;
@@ -86,7 +103,7 @@ export default {
             state.backgroundEl.style.transform = `translateX(0px)`;
         };
         state.onOpenMenu = function (e) {
-            log.trace("onopenmenu");
+            log.trace("menu open");
             state.isDragging = false;
             state.isOpen = true;
             state.startX = 0;
@@ -111,10 +128,13 @@ export default {
         state.menuEl = dom.querySelector(".drawer-menu");
         state.menuMaxWidth = dom.querySelector(".drawer-menu").clientWidth;
     },
-    view({state, children}) {
+    view({state}) {
         return (<div className="drawer">
-            <div className="drawer-menubar">
+            <div className="drawer-topbar">
                 <div className="drawer-burger" onclick={state.onOpenMenu}>MENU</div>
+                <div className="drawer-topcontent">
+                    {state.topChildren}
+                </div>
             </div>    
             <div className="drawer-background" onclick={state.onCloseMenu}></div>
             <div className="drawer-container"
@@ -122,7 +142,7 @@ export default {
                     ontouchmove={state.onTouchMove}
                     ontouchend={state.onTouchEnd}>
                 <div className="drawer-menu">
-                    {children}
+                    {state.menuChildren}
                 </div>
             </div>
         </div>);

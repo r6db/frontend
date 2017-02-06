@@ -31,28 +31,55 @@
             display: none !important;
         }
     }
-    &-menubar{
+    &-topbar{
         position: absolute;
         top: 0;
         left: 0;
         width: 100vw;
         height: $menu-height;
-        
+        background: $gray-dark;
+        display: flex;
+        flex-direction: row;
+
         @include openmenu {
             display: none;
         }
     }
     &-burger{
-        font-size: 12px;
+        font-size: 10px;
+        letter-spacing: 2px;
         display: inline-block;
+        margin: 0 $l;
         padding: 0 ($l*1.5);
         line-height: $menu-height;
         height: $menu-height;
         cursor: pointer;
-        
+        color: $white;
+        position: relative;
+        flex: 0;
+
+        &:before, &:after{
+            content: "";
+            position: absolute;
+            position: absolute;
+            width: 60%;
+            height: 1px;
+            background: $white;
+            left: 20%;
+        }
+        &:before {
+            top: 7px;
+        }
+        &:after {
+            bottom: 7px;
+        }
         @include openmenu {
             display: none;
         }
+    }
+    &-topcontent{
+        flex: 1 1 0;
+        height: 100%;
     }
     &-container{
         position: fixed;
@@ -72,7 +99,7 @@
     }
 
     &-menu{
-        width: 300px;
+        width: 280px;
         height: 100%;
         background: white;
     }

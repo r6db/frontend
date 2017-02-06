@@ -45,3 +45,29 @@
         color: white;
     }
 }
+.menu-search{
+    display: flex;
+    margin: 2%;
+    width: 96%;
+
+    @include small{
+        .search-input{
+            > input{
+                padding: .5em ($l*7) .5em $l;
+            }   
+            span{
+                width: $l*6;
+            }
+            label{
+                text-align: center;
+                line-height: 0.8;
+                height: auto;
+                margin: 0;
+            }
+        }
+    }
+
+    @include medium{
+        display: none;
+    }
+}

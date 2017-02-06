@@ -31,8 +31,9 @@
     }
 
     &-title{
+        font-weight: 600;
         font-size: $font-mini;
-        margin-bottom: $l*0.6;
+        margin-bottom: $l*0.5;
         /* cols have .5 left + 1 from table */
         padding-left: $l*0.6;
     }

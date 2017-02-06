@@ -60,11 +60,16 @@ export default {
             ? <Searchbar search={search} selector={store.select("search")} />
             : null;
         return (
-            <div className="content-wrapper">
-                <Drawer>
-                    <Menu />
+            <div className={"content-wrapper " + pconf.class}>
+                <Drawer topContent="top">
+                    <div className="menu-topbar" key="top">
+                        <Searchbar
+                            search={search}
+                            selector={store.select("search")} />
+                    </div>    
+                    <Menu key="menu" loading={loading} data={data} store={store} search={search}  />
                 </Drawer>
-                <div className={"app " + pconf.class}>
+                <div className="app">
                     <div className="app-background">
                         <img src="/assets/bg_prim.svg"/>
                     </div>

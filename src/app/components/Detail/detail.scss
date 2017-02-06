@@ -6,7 +6,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 0 2%;
+        padding: $l 2%;
 
         @include large{
             flex-direction: row;   
@@ -45,7 +45,7 @@
     /* in idblock: player name*/
     &-name{
         font-size: $font-large;
-        line-height: 1.3;
+        line-height: 1.2;
         font-weight: bold;
         white-space: nowrap;
         overflow: hidden;

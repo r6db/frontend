@@ -31,12 +31,13 @@ export default {
             state.exact =  e.target.checked;
         };
     },
-    view({ state }) {
+    view({ attrs, state }) {
         return (
-            <div className="search-form">
+            <div className={"search-form " + attrs.className}>
                 <div className="search-input">
                     <input type="text"
                         value={state.query}
+                        placeholder="player name"
                         oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
                     <span>

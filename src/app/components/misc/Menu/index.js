@@ -1,6 +1,7 @@
 import m from "mithril";
 import "./menu.scss";
 import Icon, { GLYPHS } from "../Icon";
+import Searchbar from "../Searchbar";
 import page from "page";
 
 const link = href => e => page(href);
@@ -13,6 +14,10 @@ export default {
                 <div className="menu-top">
                     <Icon class="menu-logo" glyph={GLYPHS.LOGO} fill="white" />
                 </div>
+                <Searchbar
+                    className="menu-search"    
+                    search={attrs.search}
+                    selector={attrs.store.select("search")} />
                 <div className="menu-center">
                     <a href="/" className="menu-item">Home</a>
                     <a href="/leaderboard" className="menu-item">Leaderboard</a>
