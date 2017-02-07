@@ -41,7 +41,7 @@ module.exports = {
         rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: "babel-loader",
+            use: [{ loader: "babel-loader" }],
             query: {
                 cacheDirectory: "./.cache"
             }
@@ -65,11 +65,22 @@ module.exports = {
             })
         }, {
             test: /.svg$/,
-            loader: "svg-sprite-loader",
-            query: {
-                name: "[name]",
-                prefixize: true
-            }
+            use: [{
+                loader: "svg-sprite-loader",
+                options: {
+                    name: "[name]",
+                    prefixize: true
+                }
+            }, {
+                loader: "svgo-loader",
+                options: {
+                    plugins: [
+                        { removeTitle: true },
+                        { convertColors: { shorthex: false } },
+                        { convertPathData: true }
+                    ]
+                }
+            }]
         }]
     },
     plugins: [

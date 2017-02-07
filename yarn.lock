@@ -3668,11 +3668,11 @@ lodash.words@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@4.16.4, lodash@^4.2.0, lodash@^4.3.0:
+lodash@4.16.4, lodash@^4.0.0, lodash@^4.2.0, lodash@^4.3.0:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.4.tgz#01ce306b9bad1319f2a5528674f88297aeb70127"
 
-"lodash@4.6.1 || ^4.16.1", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3:
+"lodash@4.6.1 || ^4.16.1", lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -5547,6 +5547,12 @@ svg-sprite-loader@^0.2.0:
     loader-utils "^0.2.11"
     postcss "^5.2.10"
     sniffr "1.1.4"
+
+svgo-loader@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/svgo-loader/-/svgo-loader-1.1.2.tgz#53ec4718523b39dd21195cbe64bc4d973ab98303"
+  dependencies:
+    loader-utils "^0.2.16"
 
 svgo@^0.7.0:
   version "0.7.1"
