@@ -2,10 +2,8 @@ const base = require("./base");
 const webpack = require("webpack");
 const os = require("os");
 const path = require("path");
-const UglifyJsParallelPlugin = require("webpack-uglify-parallel");
 
-const autoprefixer = require("autoprefixer");
-const mqpacker = require("css-mqpacker");
+const UglifyJsParallelPlugin = require("webpack-uglify-parallel");
 const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 const config = Object.assign({}, base);
