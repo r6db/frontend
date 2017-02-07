@@ -71,7 +71,7 @@ export default {
                 </Drawer>
                 <div className="app">
                     <div className="app-background">
-                        <img src="/assets/year2_sp_keyart-128.svg"/>
+                        <img src="/assets/bg_prim.svg"/>
                     </div>
                     <div className="app-page">
                         <Component loading={loading} data={data} store={store} search={search} />

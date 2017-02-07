@@ -21,7 +21,8 @@
 .is-initial {
 	.app{
 		.search{
-			margin-top: 40vh;
+			margin-top: 45vh;
+    		transform: translateY(-50%);
 		}
 		.search-form{
 			height: $l*5;
