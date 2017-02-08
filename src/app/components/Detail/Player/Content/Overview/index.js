@@ -12,17 +12,20 @@ export default {
 
         return (
             <div className="player-overview">
-                <div className="col col-side">
+                <div className="player-left">
                     <CurrentRank className=""
                             rank={topRank.rank}
                             region={topRank.label}/>
                     <Aliases aliases={attrs.aliases}/>
                 </div>
-                <div className="col col-main">
+                <div className="player-main">
                     <div className="player-summary"><StatSummary {...attrs}/></div>
                     <div className="player-stuff">
-                        <Timeline className="player-timeline" {...attrs}/>
-                        <div className="player-gamemodes"> game modes here?</div>
+                        <Timeline className="player-timeline" {...attrs} />
+                        <div className="player-right">
+                            <div className="player-topops">top ops</div>
+                            <div className="player-gamemodes">game modes</div>
+                        </div>
                     </div>
                 </div>
             </div>

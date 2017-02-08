@@ -6,21 +6,19 @@
         flex-direction: column;
         padding: 0 $l;
 
-
         @include large{
             flex-direction: row;   
         }
+    }
+    &-main{
+        flex: 1;
+    }
+    &-left, &-right{
+        min-width: 300px;
+        flex: 0 0 auto;
 
-        .col{
-            flex: 1 1 auto;
-        }
-        .col-side{
-            min-width: 280px;
-            flex-grow: 0;
-
-            @include large{
-                margin: 0 $l 0 0;
-            }
+        @include large{
+            margin: 0 $l 0 0;
         }
     }
     &-stuff{
@@ -47,20 +45,30 @@
             width: auto;
         }
     }
-    &-gamemodes{
-        @include card;
-        flex: 2 1 auto;
-        height: auto;
-        width: 100%;
+    &-right{
+        order: 1;
         margin: 0;        
         margin-bottom: $l;
-        order: 1;
 
         @include medium {
             margin: $l 0;
             order: 2;
             width: auto;
         }
+    }
+    &-topops{
+        @include card;
+
+        @include medium{
+            order: 2;
+        }
+    }
+    &-gamemodes{
+        @include card;
+        flex: 2 1 auto;
+        height: auto;
+        width: 100%;
+        order: 1;
     }
 
     /* stat overview card */

@@ -23,12 +23,12 @@
         }
     }
     &-chartcontainer{
-        flex: 0;
+        flex: 0 0 64px;
         display: none;
         justify-content:center;
         align-items: center;
 
-        @include medium{
+        @include large{
             display: flex;
         }
 
@@ -98,7 +98,7 @@
     }
     &-modes{
         margin-top: - 0.5 * $l;
-        
+
         th{
             padding-bottom: 3px;
         }
