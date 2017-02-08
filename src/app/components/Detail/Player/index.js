@@ -10,9 +10,9 @@ import Overview from "./Content/Overview";
 const tabMap = {
     tab1: { label: "Overview", icon: null },
     tab2: { label: "Rank", icon: null },
-    tab3: { label: "Stats", icon: null },
-    tab4: { label: "Operators", icon: null },
-    tab5: { label: "Weapons", icon: null },
+    // tab3: { label: "Stats", icon: null },
+    // tab4: { label: "Operators", icon: null },
+    // tab5: { label: "Weapons", icon: null },
 };
 
 export default {
@@ -49,7 +49,10 @@ export default {
                 <div className="detail-content">
                     <Tabs headers={tabMap}>
                         <Overview key="tab1" {...attrs}/>
-                        <div key="tab2">Rank Stats, Timeline & past Seasons </div>
+                        <div key="tab2" className="card">
+                            <p>Rank Stats, Timeline & past Seasons </p>
+                            <p>under development</p>
+                        </div>
                         <div key="tab3">Stats Overview and Timeline</div>
                         <div key="tab4">Operator Datatable</div>
                         <div key="tab5">WeaponType Datatable</div>

@@ -1,4 +1,5 @@
-import { v2Api, WeaponTypes } from "lib/constants";
+import moment from "moment";
+import { v2Api, WeaponTypes, OperatorProps, OperatorNames, DATE_SHORT } from "lib/constants";
 import { failEarly, getHeaders } from "../utils";
 
 const fixAlias = alias => {
@@ -10,6 +11,9 @@ const fixAlias = alias => {
 };
 
 const getRankGames = x => x.wins + x.losses + x.abandons;
+const getKdr = obj => obj.kills / (obj.deaths || 1);
+const getWlr = obj => obj.won / (obj.won + obj.lost);
+const getWlrRanked = obj => obj.wins / (obj.wins + obj.abandons + obj.losses);
 
 const mapOperator = op => Object.keys(op)
     .reduce(function (acc, curr) {
@@ -154,16 +158,76 @@ const handleResponse = res => {
         player.stats.general.hsr = headshot / kills;
     }
     if(player.stats.matchmaking.ranked) {
-        const {won, lost, kills, deaths} = player.stats.matchmaking.ranked;
-        player.stats.matchmaking.ranked.wlr = won / (won + lost);
-        player.stats.matchmaking.ranked.kdr = kills / (deaths || 1);
+        player.stats.matchmaking.ranked.wlr = getWlr(player.stats.matchmaking.ranked);
+        player.stats.matchmaking.ranked.kdr = getKdr(player.stats.matchmaking.ranked);
     }
     if (player.stats.matchmaking.casual) {
-        const {won, lost, kills, deaths} = player.stats.matchmaking.casual;
-        player.stats.matchmaking.casual.wlr = won / (won + lost);
-        player.stats.matchmaking.casual.kdr = kills / (deaths || 1);
+        player.stats.matchmaking.casual.wlr = getWlr(player.stats.matchmaking.casual);
+        player.stats.matchmaking.casual.kdr = getKdr(player.stats.matchmaking.casual);
     }
 
+    // timeline stuff
+    if (res.dailyStats) {
+
+        const diffProperty = (prop, a, b) => typeof prop === "function"
+            ? prop(a) - prop(b)
+            : a[prop] - b[prop];
+        
+        // get delta of all useful props
+        const compareOpByName = (originalOps, comparisonOps) => key => {
+            const original = originalOps[key];
+            // its possible that an op didn't exist yesterday, so replace him with an empty shell
+            const comparison = comparisonOps[key] || {};
+            const stub = { name: OperatorNames[key] };
+            
+            return OperatorProps.reduce((acc, curr) => ({
+                ...acc,
+                [curr]: original[curr] - (comparison[curr] || 0)
+            }), stub);
+        };
+        
+        /**
+         * we iterate through all but the last element and compare to the 'next' 
+         */
+        const dailyS = res.dailyStats
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const filteredDailyS = dailyS
+            .filter((x, i, a) => a[i + 1]
+                ? diffProperty("timePlayed", x.general, dailyS[i + 1].general) > 0
+                : true);
+        
+        player.timeline = filteredDailyS.slice(0, -1)
+            .map((current, i) => {
+                // get yesterdays stats
+                const last = filteredDailyS[i + 1];
+                return {
+                    date: moment(current.created_at).format(DATE_SHORT),
+                    timePlayed: diffProperty("timePlayed", current.general, last.general),
+                    won: diffProperty("won", current.general, last.general),
+                    lost: diffProperty("lost", current.general, last.general),
+                    kills: diffProperty("kills", current.general, last.general),
+                    deaths: diffProperty("deaths", current.general, last.general),
+                    kdr: (diffProperty("kills", current.general, last.general) /
+                        diffProperty("deaths", current.general, last.general)),
+                    operator: Object.keys(current.operator)
+                        .map(compareOpByName(current.operator, last.operator))
+                        .filter(x => x.timePlayed)
+                        .sort((a, b) => b.timePlayed - a.timePlayed)
+                        .slice(0, 5),
+                    matchmaking: {
+                        ranked: diffProperty("timePlayed", current.ranked, last.ranked),
+                        casual: diffProperty("timePlayed", current.casual, last.casual)
+                    },
+                    modes: {
+                        bomb: diffProperty("played", current.bomb, last.bomb),
+                        secure: diffProperty("played", current.secure, last.secure),
+                        hostage: diffProperty("played", current.hostage, last.hostage),
+                    }
+                };
+            });
+            // only show the ones where the player played for longer than 15 minutes
+            
+    }
 
     return player;
 };

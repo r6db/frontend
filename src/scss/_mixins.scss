@@ -60,13 +60,13 @@
 
 
 @mixin small{
-	@media screen and (max-width: $screen-medium) {
+	@media screen and (max-width: $screen-large) {
 		@content;
 	}
 }
 
 @mixin medium{
-	@media screen and (min-width: $screen-medium) {
+	@media screen and (min-width: $screen-large) {
 		@content;
 	}
 }

@@ -72,6 +72,40 @@ export const WeaponTypes = {
     "snipet": { id: "sniper", label: "Sniper Rifle" },
     "B": { id: "B", label: "B (meaning unknown)"}
 };
+export const OperatorProps = ["won", "lost", "kills", "deaths", "timePlayed"];
+
+export const OperatorNames = {
+    ash: "Ash",
+    bandit: "Bandit",
+    blackbeard: "Blackbeard",
+    blitz: "Blitz",
+    buck: "Buck",
+    capitao: "Capitão",
+    castle: "Castle",
+    caveira: "Caveira",
+    doc: "Doc",
+    echo: "Echo",
+    frost: "Frost",
+    fize: "Fuze",
+    glaz: "Glaz",
+    hibana: "Hibana",
+    iq: "IQ",
+    jackal: "Jackal",
+    jager: "Jäger",
+    kapkan: "Kapkan",
+    mira: "Mira",
+    montagne: "Montagne",
+    mute: "Mute",
+    pulse: "Pulse",
+    rook: "Rook",
+    sledge: "Sledge",
+    smoke: "Smoke",
+    tachanka: "Tachanka",
+    thatcher: "Thatcher",
+    thermite: "Thermite",
+    twitch: "Twitch",
+    valkyrie: "Valkyrie"
+};
 
 /**
  * define our Regions

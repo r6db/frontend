@@ -1,0 +1,86 @@
+@import "styles";
+
+.playday{
+    @include card;
+    font-size: $font-normal;
+
+    @include large{
+        font-size: $font-small;
+    }
+
+    &-header{
+        margin-bottom: $l;
+    }
+    &-date{
+        margin-right: $l;
+    }
+    &-content{
+        display: flex;
+        flex-direction: column;
+
+        @include medium{
+            flex-direction: row;
+        }
+    }
+    &-chartcontainer{
+        flex: 0;
+        display: none;
+        justify-content:center;
+        align-items: center;
+
+        @include medium{
+            display: flex;
+        }
+    }
+    &-chart{
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 1px solid $gray;
+        flex: 0 0 auto;
+    }
+    &-stats{
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+
+        @include medium {
+            flex-direction: row;
+        }
+
+        table{
+            width: 100%;
+
+            @include medium{
+                padding: 0 $l;
+                width: auto;
+            }
+        }
+        td{
+            min-width: $l*4;
+            padding: 0 0 0 $l;
+            text-align: right;
+            &:first-child{
+                padding-left: 0;
+                text-align: left;
+            }
+        }
+        th{
+            color: $gray;
+            font-size: $font-mini;
+            margin-left: $l*0.25;
+            text-align: right;
+        }
+    }
+    &-time-column{
+        display: none;
+        width: $l*14;
+        border-left: 1px solid $gray;
+
+        @include medium{
+            display: initial;
+        }
+    }
+}

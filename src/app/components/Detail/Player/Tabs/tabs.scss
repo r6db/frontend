@@ -7,7 +7,7 @@
     /* container for tab buttons */
     .tab-headers{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         overflow-x: auto;
         background: $white;
         @include boxshadow;
@@ -16,14 +16,19 @@
     .tab-header{
         border-top: 2px solid transparent;
         border-bottom: 2px solid transparent;
-        transition: border $tdur linear;
+        transition: border, background $tdur linear;
         padding: 1em;
         margin: 0 $l;
         flex: 0 0 auto;
         cursor: pointer;
         user-select: none;
+        display: block;
 
-        &.is-selected{
+        &:active{
+            background: $primary;
+        }
+        &:focus, &.is-selected{
+            outline: none;
             border-color: $primary;
         }
     }

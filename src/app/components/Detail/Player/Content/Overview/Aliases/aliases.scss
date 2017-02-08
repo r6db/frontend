@@ -1,5 +1,10 @@
 @import "styles";
 
+.aliases{
+    @include card;
+    flex: 1;
+}
+
 .aliases .card-content{
     display: flex;
     flex-direction: row;
@@ -8,8 +13,7 @@
     overflow-y: hidden;
     text-align: center;
     padding-bottom: 15px;
-    justify-content:  flex-start;
-    max-height: 500px;
+    max-height: 600px;
 
     @include large{
         overflow-x: hidden;
