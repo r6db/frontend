@@ -1,24 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Ranks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="242.38px" height="242.38px" viewBox="0 0 242.38 242.38" enable-background="new 0 0 242.38 242.38" xml:space="preserve">
-<g>
-	<g>
-		<path fill="#1C1F24" d="M173.84,61.1l-52.36-10.93c-0.54-0.11-1.1-0.11-1.63,0L67.49,61.1c-1.85,0.39-3.18,2.02-3.18,3.92v67.92
-			c0,1.57,0.62,38.84,54.46,67.88c0.59,0.32,1.25,0.48,1.9,0.48s1.31-0.16,1.9-0.48c53.84-29.04,54.46-66.31,54.46-67.88V65.01
-			C177.03,63.12,175.7,61.48,173.84,61.1z"/>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px"
+	 height="500px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<g id="Layer_1" display="none">
+</g>
+<g id="_x5B_HBE_x5D__-_Bg" display="none">
+</g>
+<g id="_x5B_HBE_x5D__-_Struct" display="none">
+	<g id="League_x5F_Bronze" display="inline">
 	</g>
-	<g>
-		<path fill="#333740" d="M120.61,62.26l44.36,9.37v61.31c0,0.07-0.24,7.54-5.64,17.89c-5.17,9.93-16.06,24.23-38.72,37.31
-			c-17.64-10.18-30.8-22.69-38.21-36.35c-5.78-10.65-6.13-18.48-6.15-18.91V71.63L120.61,62.26 M120.61,54.08L68.25,65.14v67.79
-			c0,0,0,36.12,52.36,64.36c52.36-28.24,52.36-64.36,52.36-64.36V65.14L120.61,54.08z"/>
+</g>
+<g id="Bases">
+	<g id="League_x5F_Diamond_x5F_Small">
+		<g id="League_x5F_Diamond">
+		</g>
 	</g>
-	<g>
-			<rect x="59.45" y="109.42" transform="matrix(0.7071 0.7071 -0.7071 0.7071 114.4121 -52.3794)" fill="#333740" width="121.97" height="5"/>
+</g>
+<g id="Compound">
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_1_">
+		<g id="Rank_x5F_Copper_x5F_4_2_">
+		</g>
 	</g>
-	<g>
-			<rect x="117.93" y="50.93" transform="matrix(0.7071 0.7071 -0.7071 0.7071 114.4121 -52.3794)" fill="#333740" width="5" height="121.97"/>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_2_">
+		<g id="Rank_x5F_Copper_x5F_4_3_">
+		</g>
+	</g>
+	<g id="Rank_x5F_Copper_x5F_4_5_">
+		<g id="League_x5F_Copper">
+			<path opacity="0" fill="#7C2B00" d="M250,452.97l173.21-100v-200L250,52.98l-173.21,100v200L250,452.97z"/>
+			<rect y="2.19" opacity="0" fill="none" stroke="#231F20" stroke-miterlimit="10" width="500" height="500"/>
+			<g>
+				
+					<path fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M391.62,152.97c5.5,0,10-4.5,10-10l0-22.81c0-5.5-4.5-10-10-10H108.38c-5.5,0-10,4.5-10,10l0,22.81c0,5.5,4.5,10,10,10H391.62z"
+					/>
+			</g>
+			<polygon fill="none" points="279.66,48.84 249.08,79.42 218.5,48.84 76.79,48.84 76.79,171.5 421.37,171.5 421.37,48.84 			"/>
+			<polygon fill="#231F20" points="115,375.03 250,452.97 385,375.03 385,144.5 115,144.5 			"/>
+			
+				<line fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="176.39" y1="194.63" x2="324.02" y2="342.26"/>
+			
+				<line fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="176.39" y1="95.47" x2="324.02" y2="243.11"/>
+		</g>
+	</g>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_4_">
+		<g id="Rank_x5F_Copper_x5F_4_6_">
+		</g>
+	</g>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_3_">
+		<g id="Rank_x5F_Copper_x5F_4_4_">
+		</g>
+	</g>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small">
+		<g id="Rank_x5F_Copper_x5F_4">
+		</g>
+	</g>
+	<g id="Position_x5F_1_x5F_Small">
+		<g id="Position_x5F_1_1_">
+		</g>
+	</g>
+	<g id="Rank_x5F_Copper_x5F_3">
+	</g>
+	<g id="Rank_x5F_Copper_x5F_2">
+	</g>
+	<g id="Rank_x5F_Copper_x5F_1">
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_4">
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_3">
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_2">
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_1">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_4">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_3">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_2">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_1">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_4">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_3">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_2">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_1">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_4">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_3">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_2">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_1">
+		<g id="Position_x5F_1">
+		</g>
 	</g>
 </g>
 </svg>

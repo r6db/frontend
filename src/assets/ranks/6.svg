@@ -1,77 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Ranks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="242.38px" height="242.38px" viewBox="0 0 242.38 242.38" enable-background="new 0 0 242.38 242.38" xml:space="preserve">
-<g>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px"
+	 height="500px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<symbol  id="League_x5F_Bronze_1_" viewBox="-250.5 -250.36 501 501">
+	<polygon opacity="0" fill="#BC783C" points="173.2,-100.64 0,-200.64 -173.21,-100.64 -173.21,99.36 0,199.36 173.2,99.36 	"/>
 	<g>
-		<polygon fill="#A57D2D" points="157.24,161.94 172.97,161.94 170.65,174.89 122.26,197.35 		"/>
+		<path fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+			M141.83,99.36c5.5,0,10,4.5,10,10l0,22.81c0,5.5-4.5,10-10,10H-141.4c-5.5,0-10-4.5-10-10l0-22.81c0-5.5,4.5-10,10-10H141.83z"/>
 	</g>
+	<polygon opacity="0" fill="none" stroke="#231F20" stroke-miterlimit="10" points="250,-249.86 -250,-249.86 -250,250.14 
+		250,250.14 	"/>
+	<polygon fill="#7F6029" points="-135,-92.59 0,-170.53 135,-92.59 135,107.84 -135,107.84 	"/>
+	<polyline fill="#A57D35" points="122.53,107.84 122.53,70.38 -122.53,70.38 -122.53,108.9 	"/>
+	<polygon fill="#BC783C" points="-122.53,-129.9 0,-200.64 122.53,-129.9 122.53,70.38 -122.53,70.38 	"/>
+	<polygon opacity="0.25" fill="#231F20" points="-122.53,39.7 -135,39.7 -135,50.45 -122.53,50.45 	"/>
+	<polygon opacity="0.25" fill="#231F20" points="135,39.7 122.53,39.7 122.53,50.45 135,50.45 	"/>
+	<polygon fill="#E5AD4A" points="124.4,-128.82 0,-200.64 -124.41,-128.82 0,-204.74 	"/>
+	<path fill="#BC783C" d="M-122.53-129.9l43.44-26.58L-106-129.59V70.38h-16.53V-129.9z M106,70.38v-201.72l-29.52-26.73l46.04,28.16
+		V70.38H106z"/>
 	<g>
-		<path fill="#A57D2D" d="M122.26,201.35c-1.27,0-2.5-0.6-3.27-1.7c-1.11-1.58-0.93-3.74,0.43-5.11l34.99-35.42
-			c0.75-0.76,1.78-1.19,2.85-1.19h15.73c1.18,0,2.31,0.52,3.07,1.43c0.76,0.91,1.08,2.11,0.87,3.27l-2.32,12.95
-			c-0.23,1.28-1.07,2.38-2.25,2.92l-48.4,22.46C123.4,201.23,122.82,201.35,122.26,201.35z M158.91,165.94l-18.23,18.45l26.39-12.25
-			l1.11-6.2H158.91z"/>
+		<g opacity="0.25">
+			<path fill="none" stroke="#231F20" stroke-width="10" stroke-linejoin="round" stroke-miterlimit="10" d="M74.36,56.55
+				c0,0,2.84,0,6.32,0s6.32,4.5,6.32,10l0,22.81c0,5.5-4.5,10-10,10H-76.57c-5.5,0-10-4.5-10-10l0-22.81c0-5.5,2.79-10,6.19-10
+				s6.19,0,6.19,0"/>
+		</g>
+		<g opacity="0.25">
+			
+				<line fill="none" stroke="#231F20" stroke-width="10" stroke-linejoin="round" stroke-miterlimit="10" x1="16.5" y1="142.17" x2="-16.07" y2="142.17"/>
+		</g>
+		
+			<line fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="0" y1="142.17" x2="0" y2="119.36"/>
+		
+			<polygon fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+			0,142.17 -28.6,182.85 0,199.36 28.59,182.85 		"/>
+		<g>
+			<path fill="none" stroke="#C8C8C8" stroke-width="10" stroke-linejoin="round" stroke-miterlimit="10" d="M74.36,76.55
+				c0,0,2.84,0,6.32,0s6.32,4.5,6.32,10l0,22.81c0,5.5-4.5,10-10,10H-76.57c-5.5,0-10-4.5-10-10l0-22.81c0-5.5,2.79-10,6.19-10
+				s6.19,0,6.19,0"/>
+		</g>
 	</g>
+	<path opacity="0.25" fill="#BC783C" d="M-106,69.46v39.44h-16.53V69.4 M122.53,69.4v39.5H106V69.12"/>
+	<polygon opacity="0.5" fill="#BC783C" points="-30.71,-154.88 0,-137.15 30.71,-154.88 30.71,-182.91 0,-200.64 -30.71,-182.91 	
+		"/>
+</symbol>
+<symbol  id="Position_x5F_2" viewBox="-250.5 -250.5 501 501">
+	<polygon opacity="0" fill="none" stroke="#231F20" stroke-miterlimit="10" points="250,-250 -250,-250 -250,250 250,250 	"/>
+	<polygon opacity="0" fill="none" stroke="#FF0000" stroke-width="10" stroke-miterlimit="10" points="-173.21,99.22 0,199.22 
+		173.21,99.22 173.21,-100.78 0,-200.78 -173.21,-100.78 	"/>
+	<polygon opacity="0.25" points="67.5,-131.67 67.5,36.36 0,36.36 -67.5,36.36 -67.5,-131.67 0,-170.64 	"/>
 	<g>
-		<polyline fill="#231F20" points="131.03,190.81 168.97,173.21 170.65,164.07 158.69,164.07 		"/>
+		<polygon points="73.62,-109.75 73.62,107.84 0,107.84 -73.62,107.84 -73.62,-109.75 0,-152.25 		"/>
+		<g>
+			<path fill="#FFFFFF" d="M-32.2-46.28v93.9h17.7v-93.9H-32.2z"/>
+			<path fill="#FFFFFF" d="M14.5-46.28v93.9h17.7v-93.9H14.5z"/>
+		</g>
 	</g>
-	<g>
-		<polygon fill="#231F20" points="132.3,193.53 129.77,188.09 166.3,171.14 167.05,167.07 158.69,167.07 158.69,161.07 
-			174.26,161.07 171.64,175.27 		"/>
+	<polygon fill="#FFFFFF" points="-73.62,-89.75 0,-132.25 73.62,-89.75 73.62,-99.75 0,-142.25 -73.62,-99.75 	"/>
+	<polygon fill="#FFFFFF" points="-73.62,-69.75 0,-112.25 73.62,-69.75 73.62,-79.75 0,-122.25 -73.62,-79.75 	"/>
+</symbol>
+<symbol  id="base" viewBox="-251.5 -251.36 503 503">
+	<polygon fill="none" stroke="#231F20" stroke-width="3" stroke-miterlimit="10" points="250,-249.86 -250,-249.86 -250,250.14 
+		250,250.14 	"/>
+	<line fill="none" stroke="#231F20" stroke-width="3" stroke-miterlimit="10" x1="-250" y1="250.14" x2="250" y2="-249.86"/>
+	<line fill="none" stroke="#231F20" stroke-width="3" stroke-miterlimit="10" x1="250" y1="250.14" x2="-250" y2="-249.86"/>
+	<polygon fill="none" stroke="#FF0000" stroke-width="10" stroke-miterlimit="10" points="-173.21,99.36 0,199.36 173.21,99.36 
+		173.21,-100.64 0,-200.64 -173.21,-100.64 	"/>
+</symbol>
+<g id="Layer_1" display="none">
+</g>
+<g id="_x5B_HBE_x5D__-_Bg" display="none">
+	<rect x="-1381.68" y="-738.05" display="inline" fill="#3A3A3A" width="2615.48" height="4079.18"/>
+</g>
+<g id="_x5B_HBE_x5D__-_Struct" display="none">
+	<g id="League_x5F_Bronze" display="inline">
 	</g>
-	<g>
-		<polygon fill="#A57D2D" points="87.48,161.94 71.75,161.94 74.07,174.89 122.46,197.35 		"/>
+	
+		<use xlink:href="#base"  width="503" height="503" id="XMLID_7_" x="-251.5" y="-251.36" transform="matrix(1 0 0 -1 256.5 252.333)" display="inline" overflow="visible"/>
+</g>
+<g id="Bases">
+	<g id="League_x5F_Diamond_x5F_Small">
+		<g id="League_x5F_Diamond">
+		</g>
 	</g>
-	<g>
-		<path fill="#A57D2D" d="M122.46,201.35c-0.57,0-1.14-0.12-1.68-0.37l-48.4-22.46c-1.18-0.55-2.02-1.64-2.25-2.92l-2.32-12.95
-			c-0.21-1.17,0.11-2.36,0.87-3.27c0.76-0.91,1.88-1.43,3.07-1.43h15.73c1.07,0,2.09,0.43,2.85,1.19l34.99,35.42
-			c1.36,1.38,1.54,3.53,0.43,5.11C124.97,200.75,123.73,201.35,122.46,201.35z M77.64,172.14l26.39,12.25l-18.23-18.45h-9.28
-			L77.64,172.14z"/>
+</g>
+<g id="Compound">
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_1_">
+		<g id="Rank_x5F_Copper_x5F_4_2_">
+		</g>
 	</g>
-	<g>
-		<polyline fill="#231F20" points="113.69,190.81 75.75,173.21 74.07,164.07 86.03,164.07 		"/>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_2_">
+		<g id="Rank_x5F_Copper_x5F_4_3_">
+		</g>
 	</g>
-	<g>
-		<polygon fill="#231F20" points="112.42,193.53 73.08,175.27 70.46,161.07 86.03,161.07 86.03,167.07 77.67,167.07 78.42,171.14 
-			114.95,188.09 		"/>
+	<g id="Rank_x5F_Copper_x5F_4_5_">
+		<g id="League_x5F_Copper">
+		</g>
 	</g>
-	<g>
-		<path fill="#A57D2D" d="M122.36,44.53L70,54.89v6.04v4.21v23v44.79c0,0,0,36.12,52.36,64.36c52.36-28.24,52.36-64.36,52.36-64.36
-			V65.14v-4.21v-6.04L122.36,44.53z"/>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_4_">
+		<g id="Rank_x5F_Copper_x5F_4_6_">
+		</g>
 	</g>
-	<g>
-		<path fill="#A57D2D" d="M122.36,201.29c-0.65,0-1.31-0.16-1.9-0.48C66.62,171.77,66,134.5,66,132.93V54.89
-			c0-1.91,1.35-3.55,3.22-3.92l52.36-10.35c0.51-0.1,1.04-0.1,1.55,0l52.36,10.35c1.87,0.37,3.22,2.01,3.22,3.92v78.04
-			c0,1.57-0.62,38.84-54.46,67.88C123.67,201.13,123.01,201.29,122.36,201.29z M74,58.17v74.76c0.01,1.35,0.89,33.38,48.36,59.8
-			c47.47-26.42,48.35-58.45,48.36-59.82V58.17l-48.36-9.56L74,58.17z"/>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small_3_">
+		<g id="Rank_x5F_Copper_x5F_4_4_">
+		</g>
 	</g>
-	<g>
-		<polygon fill="#231F20" points="174.72,60.93 122.36,50.57 70,60.93 70,54.89 122.36,44.53 174.72,54.89 		"/>
+	<g id="Rank_x5F_Copper_x5F_4_x5F_Small">
+		<g id="Rank_x5F_Copper_x5F_4">
+		</g>
 	</g>
-	<g>
-		<path fill="#231F20" d="M122.3,62.26l44.36,9.37v61.31c0,0.07-0.24,7.54-5.64,17.89c-5.17,9.93-16.06,24.23-38.72,37.31
-			c-17.64-10.18-30.8-22.69-38.21-36.36c-5.78-10.65-6.13-18.48-6.15-18.91V71.63L122.3,62.26 M122.3,54.08L69.94,65.14v67.79
-			c0,0,0,36.12,52.36,64.36c52.36-28.24,52.36-64.36,52.36-64.36V65.14L122.3,54.08z"/>
+	<g id="Position_x5F_1_x5F_Small">
+		<g id="Position_x5F_1_1_">
+		</g>
 	</g>
-	<g>
-		<polygon fill="#231F20" points="89.2,165.38 102.46,113.4 118.49,131.79 148.24,73.13 162.12,76.13 119.77,153.26 106.71,135.83 
-					"/>
+	<g id="Rank_x5F_Copper_x5F_3">
 	</g>
-	<g>
-		<polygon fill="#A57D2D" points="113.02,108.17 98.47,96.94 116.6,96.53 122.5,78.35 128.56,96.45 146.71,96.64 132.25,108.05 
-			137.71,126.23 122.66,115.37 107.7,126.42 		"/>
+	<g id="Rank_x5F_Copper_x5F_2">
 	</g>
-	<g>
-		<path fill="#A57D2D" d="M122.54,86.34l4.22,12.6l12.84,0.13l-10.24,8.07l3.83,12.74l-10.55-7.61l-10.47,7.73l3.72-12.78
-			l-10.3-7.95l12.84-0.29L122.54,86.34z M122.46,70.37l-4.68,14.42l-3.01,9.28l-9.29,0.21L91.35,94.6l11.19,8.64l7.6,5.87
-			l-2.77,9.51l-4.14,14.21l11.91-8.79l7.54-5.57l7.59,5.47l11.96,8.63l-4.25-14.13l-2.85-9.48l7.56-5.97l11.13-8.78l-14.17-0.15
-			l-9.28-0.1l-3.09-9.23L122.46,70.37z"/>
+	<g id="Rank_x5F_Copper_x5F_1">
 	</g>
-	<g>
-		<path fill="#231F20" d="M108.6,125.13l4.99-17.15l-13.7-10.57l17.07-0.39l5.54-17.07l5.69,17l17.09,0.18l-13.62,10.74l5.14,17.08
-			l-14.15-10.21L108.6,125.13z M111.29,101.15l6.91,5.33l-2.44,8.4l6.88-5.08l6.95,5.01l-2.52-8.39l6.85-5.41l-8.6-0.09l-2.75-8.2
-			l-2.67,8.23L111.29,101.15z"/>
+	<g id="Rank_x5F_Bronze_x5F_4">
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_3">
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_2">
+		
+			<use xlink:href="#League_x5F_Bronze_1_"  width="501" height="501" x="-250.5" y="-250.36" transform="matrix(1 0 0 -1 256.5 252.333)" overflow="visible"/>
+		
+			<use xlink:href="#Position_x5F_2"  width="501" height="501" id="XMLID_43_" x="-250.5" y="-250.5" transform="matrix(1 0 0 -1 256.5 251.333)" overflow="visible"/>
+	</g>
+	<g id="Rank_x5F_Bronze_x5F_1">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_4">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_3">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_2">
+	</g>
+	<g id="Rank_x5F_Silver_x5F_1">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_4">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_3">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_2">
+	</g>
+	<g id="Rank_x5F_Gold_x5F_1">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_4">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_3">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_2">
+	</g>
+	<g id="Rank_x5F_Platinum_x5F_1">
+		<g id="Position_x5F_1">
+		</g>
 	</g>
 </g>
 </svg>
