@@ -5,7 +5,7 @@
     font-size: $font-normal;
 
     @include large{
-        font-size: $font-small;
+        font-size: $font-mini;
     }
 
     &-header{
@@ -31,13 +31,22 @@
         @include medium{
             display: flex;
         }
+
+        @include absurd{
+            flex: 1 0 150px;
+        }
     }
     &-chart{
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
+        width: 90%;
+        height: 90%;
         border: 1px solid $gray;
         flex: 0 0 auto;
+        
+        /* hack to get height equal to width */
+        &:before{
+            content: "";
+            left-top: 100%;
+        }
     }
     &-stats{
         display: flex;
@@ -52,10 +61,10 @@
 
         table{
             width: 100%;
+            margin-bottom: $l*0.5;
 
             @include medium{
                 padding: 0 $l;
-                width: auto;
             }
         }
         td{
@@ -68,11 +77,15 @@
             }
         }
         th{
-            color: $gray;
+            color: lighten($gray-dark, 20%);;
             font-size: $font-mini;
             margin-left: $l*0.25;
             text-align: right;
+            padding-bottom: $l*0.5;
         }
+    }
+    &-operator-column{
+        flex: 1;
     }
     &-time-column{
         display: none;
@@ -81,6 +94,13 @@
 
         @include medium{
             display: initial;
+        }
+    }
+    &-modes{
+        margin-top: - 0.5 * $l;
+        
+        th{
+            padding-bottom: 3px;
         }
     }
 }

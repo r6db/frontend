@@ -115,8 +115,8 @@ export const OperatorNames = {
  */
 export const Regions = {
     all: { id: "all", board: "highest_skill_adjusted", label: "Global" },
-    apac: { id: "apac", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
-    emea: { id: "emea", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
+    apac: { id: "apac", board: "apac_skill_adjusted", label: "Asia Pacific"},
+    emea: { id: "emea", board: "emea_skill_adjusted", label: "Europe, Middle East & Africa" },
     ncsa: { id: "ncsa", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };
 

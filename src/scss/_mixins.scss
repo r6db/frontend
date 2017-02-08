@@ -83,6 +83,12 @@
 	}
 }
 
+@mixin absurd {
+	@media screen and (min-width: $screen-absurd) {
+		@content;
+	}
+}
+
 @mixin gridmargins{
 	margin: 1%;
 	@include large {

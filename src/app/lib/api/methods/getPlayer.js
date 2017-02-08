@@ -200,6 +200,22 @@ const handleResponse = res => {
             .map((current, i) => {
                 // get yesterdays stats
                 const last = filteredDailyS[i + 1];
+                const ops = Object.keys(current.operator)
+                    .map(compareOpByName(current.operator, last.operator))
+                    .filter(x => x.timePlayed)
+                    .sort((a, b) => b.timePlayed - a.timePlayed);
+                const mappedOps = ops.slice(0, 5)
+                    .concat(ops.length > 5
+                        ? ops.slice(5)
+                            .reduce((acc, curr, i) => {
+                                OperatorProps.forEach(prop => {
+                                    acc[prop] = acc[prop]
+                                        ? acc[prop] + curr[prop]
+                                        : curr[prop];
+                                });
+                                return acc;
+                            }, { name: "Other" })
+                        : []);
                 return {
                     date: moment(current.created_at).format(DATE_SHORT),
                     timePlayed: diffProperty("timePlayed", current.general, last.general),
@@ -209,11 +225,7 @@ const handleResponse = res => {
                     deaths: diffProperty("deaths", current.general, last.general),
                     kdr: (diffProperty("kills", current.general, last.general) /
                         diffProperty("deaths", current.general, last.general)),
-                    operator: Object.keys(current.operator)
-                        .map(compareOpByName(current.operator, last.operator))
-                        .filter(x => x.timePlayed)
-                        .sort((a, b) => b.timePlayed - a.timePlayed)
-                        .slice(0, 5),
+                    operator: mappedOps,
                     matchmaking: {
                         ranked: diffProperty("timePlayed", current.ranked, last.ranked),
                         casual: diffProperty("timePlayed", current.casual, last.casual)
