@@ -1,0 +1,17 @@
+@import "styles";
+
+.tweet{
+    text-align: left;
+    margin-bottom: $l;
+
+    &-date{
+        font-size: $font-mini;
+        text-align: right;
+        padding-right: $l;
+    }
+    &-text{
+        font-size: $font-small;
+        border-right: 3px solid $accent;
+        padding: $l*0.5;
+    }
+}

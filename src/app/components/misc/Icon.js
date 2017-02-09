@@ -38,4 +38,5 @@ export const GLYPHS = {
     RANK18: require("assets/ranks/18.svg"),
     RANK19: require("assets/ranks/19.svg"),
     RANK20: require("assets/ranks/20.svg"),
+    TWITTER: require("assets/twitter.svg"),
 };

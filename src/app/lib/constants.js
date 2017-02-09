@@ -122,3 +122,4 @@ export const Regions = {
 
 
 export const DATE_SHORT = "DD. MMM YYYY";
+export const DATE_LONG = "DD. MMM YYYY HH:MM";
