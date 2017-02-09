@@ -52,20 +52,23 @@
 		</g>
 	</g>
 </symbol>
-<symbol  id="Position_x5F_2" viewBox="-250.5 -250.5 501 501">
+<symbol  id="Position_x5F_3" viewBox="-250.5 -250.5 501 501">
 	<polygon opacity="0" fill="none" stroke="#231F20" stroke-miterlimit="10" points="250,-250 -250,-250 -250,250 250,250 	"/>
+	<polygon opacity="0.25" points="67.5,-107.55 67.5,37.03 0,37.03 -67.5,37.03 -67.5,-107.55 0,-146.53 	"/>
 	<polygon opacity="0" fill="none" stroke="#FF0000" stroke-width="10" stroke-miterlimit="10" points="-173.21,99.22 0,199.22 
 		173.21,99.22 173.21,-100.78 0,-200.78 -173.21,-100.78 	"/>
-	<polygon opacity="0.25" points="67.5,-131.67 67.5,36.36 0,36.36 -67.5,36.36 -67.5,-131.67 0,-170.64 	"/>
+	<polygon opacity="0" fill="none" stroke="#FF0000" stroke-width="10" stroke-miterlimit="10" points="-142.03,-82.78 0,-0.78 
+		142.03,-82.78 142.03,-82.78 0,-164.78 -142.03,-82.78 	"/>
 	<g>
-		<polygon points="73.62,-109.75 73.62,107.84 0,107.84 -73.62,107.84 -73.62,-109.75 0,-152.25 		"/>
+		<polygon points="73.61,-85.63 73.61,107.84 0,107.84 -73.62,107.84 -73.62,-85.63 0,-128.13 		"/>
 		<g>
-			<path fill="#FFFFFF" d="M-32.2-46.28v93.9h17.7v-93.9H-32.2z"/>
-			<path fill="#FFFFFF" d="M14.5-46.28v93.9h17.7v-93.9H14.5z"/>
+			<path fill="#FFFFFF" d="M-55.91-44.75v93.9h17.7v-93.9H-55.91z"/>
+			<path fill="#FFFFFF" d="M-9.21-44.75v93.9h17.7v-93.9H-9.21z"/>
+			<path fill="#FFFFFF" d="M37.49-44.75v93.9h17.7v-93.9H37.49z"/>
 		</g>
 	</g>
-	<polygon fill="#FFFFFF" points="-73.62,-89.75 0,-132.25 73.62,-89.75 73.62,-99.75 0,-142.25 -73.62,-99.75 	"/>
-	<polygon fill="#FFFFFF" points="-73.62,-69.75 0,-112.25 73.62,-69.75 73.62,-79.75 0,-122.25 -73.62,-79.75 	"/>
+	<polygon fill="none" points="135,99.25 0,99.36 -135,99.25 -135,-122.84 0,-200.78 135,-122.84 	"/>
+	<polygon fill="#FFFFFF" points="-73.62,-65.63 0,-108.13 73.61,-65.63 73.61,-75.63 0,-118.13 -73.62,-75.63 	"/>
 </symbol>
 <symbol  id="base" viewBox="-251.5 -251.36 503 503">
 	<polygon fill="none" stroke="#231F20" stroke-width="3" stroke-miterlimit="10" points="250,-249.86 -250,-249.86 -250,250.14 
@@ -78,13 +81,13 @@
 <g id="Layer_1" display="none">
 </g>
 <g id="_x5B_HBE_x5D__-_Bg" display="none">
-	<rect x="-1381.68" y="-1426.98" display="inline" fill="#3A3A3A" width="2615.48" height="4079.18"/>
+	<rect x="-724.58" y="-1426.98" display="inline" fill="#3A3A3A" width="2615.48" height="4079.18"/>
 </g>
 <g id="_x5B_HBE_x5D__-_Struct" display="none">
 	<g id="League_x5F_Bronze" display="inline">
 	</g>
 	
-		<use xlink:href="#base"  width="503" height="503" id="XMLID_11_" x="-251.5" y="-251.36" transform="matrix(1 0 0 -1 256.5 252.333)" display="inline" overflow="visible"/>
+		<use xlink:href="#base"  width="503" height="503" id="XMLID_10_" x="-251.5" y="-251.36" transform="matrix(1 0 0 -1 256.5 252.334)" display="inline" overflow="visible"/>
 </g>
 <g id="Bases">
 	<g id="League_x5F_Diamond_x5F_Small">
@@ -138,12 +141,12 @@
 	<g id="Rank_x5F_Silver_x5F_4">
 	</g>
 	<g id="Rank_x5F_Silver_x5F_3">
+		
+			<use xlink:href="#League_x5F_Silver"  width="501" height="501" x="-250.5" y="-250.36" transform="matrix(1 0 0 -1 256.5 252.334)" overflow="visible"/>
+		
+			<use xlink:href="#Position_x5F_3"  width="501" height="501" id="XMLID_36_" x="-250.5" y="-250.5" transform="matrix(1 0 0 -1 256.5 252.334)" overflow="visible"/>
 	</g>
 	<g id="Rank_x5F_Silver_x5F_2">
-		
-			<use xlink:href="#League_x5F_Silver"  width="501" height="501" id="XMLID_66_" x="-250.5" y="-250.36" transform="matrix(1 0 0 -1 256.5 252.333)" overflow="visible"/>
-		
-			<use xlink:href="#Position_x5F_2"  width="501" height="501" id="XMLID_57_" x="-250.5" y="-250.5" transform="matrix(1 0 0 -1 256.5 251.333)" overflow="visible"/>
 	</g>
 	<g id="Rank_x5F_Silver_x5F_1">
 	</g>
