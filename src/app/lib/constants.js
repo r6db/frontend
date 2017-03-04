@@ -5,6 +5,11 @@ export const description= "R6DB is a fan-powered database for Rainbow Six: Siege
 export const baseurl = "/";
 export const v2Api = "/api/v2";
 
+export const Platforms = Object.freeze({
+    ps4: "ps4",
+    xbox: "xbox",
+    pc: "uplay"
+});
 
 /**
  * the api returns ranks in a number format

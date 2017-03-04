@@ -1,3 +1,4 @@
+import { Platforms } from "./constants";
 /**
  * this is used to set a css class on the root component
  * used for animations, page specific css, etc
@@ -23,4 +24,16 @@ export const Pageconfig = Object.freeze({
 });
 
 
-export const platform = "uplay";
+// find out which platform we display
+let _platform;
+const _host = window.location.host;
+
+if (_host.match(/^ps4/)) {
+    _platform = Platforms.ps4;
+} else if (_host.match(/^xbox/)) {
+    _platform = Platforms.xbox;
+} else {
+    _platform = Platforms.pc;
+}
+
+export const platform = _platform;
