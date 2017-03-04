@@ -1,11 +1,12 @@
 import m from "mithril";
 import store from "./store";
-import Log from "lib/log";
+import Log from "./log";
 import page from "page";
-import { Pageconfig, Regions } from "lib/constants";
+import { Regions } from "./constants";
+import { Pageconfig } from "./config";
 import { parse } from "querystring";
-import * as api from "lib/api";
-import setMeta from "lib/meta";
+import * as api from "./api";
+import setMeta from "./meta";
 
 const log = Log.child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;

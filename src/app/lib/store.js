@@ -1,9 +1,10 @@
 import Baobab from "baobab";
 import { getTweets } from "./api";
 import * as constants from "./constants";
+import { Pageconfig } from "./config";
 
 const defaultState = {
-    appstate: constants.Pageconfig.INITIAL,
+    appstate: Pageconfig.INITIAL,
     Component: null,
     debug: false,
     data: null,

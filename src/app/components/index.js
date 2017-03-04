@@ -13,7 +13,7 @@ import "./base.scss";
 import "./app.scss";
 
 import store from "lib/store";
-import { Pageconfig } from "lib/constants";
+import { Pageconfig } from "lib/config";
 import Log from "lib/log";
 import initRoutes from "lib/routing";
 
