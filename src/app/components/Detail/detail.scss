@@ -14,6 +14,9 @@ $detail-header-height: $detail-image-height + (5*$l);
 		flex: 0 0 auto;
 	}
 }
+.quiet {
+	color: #666;
+}
 .detail-player{
 	display: flex;
 	flex-direction: column;

@@ -38,11 +38,11 @@ export default {
             </div>
             <div className="module-row">
                 <div className="module-label">MMR</div>
-                <div className="module-value">{state.season.mmr.toFixed(2)}</div>
+                <div className="module-value"><span className="quiet">(Max: {state.season.max_mmr.toFixed(2)})</span> {state.season.mmr.toFixed(2)}</div>
             </div>
             <div className="module-row">
                 <div className="module-label">Rank</div>
-                <div className={`module-value rank-${state.season.rank}`}>{Ranks[state.season.rank]}</div>
+                <div className={`module-value rank-${state.season.rank}`}><span className="quiet">(Max: {Ranks[state.season.max_rank]}) </span>{Ranks[state.season.rank]}</div>
             </div>
             <div className="module-row">
                 <div className="module-label">Skill</div>
