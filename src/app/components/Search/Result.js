@@ -1,6 +1,8 @@
 import m from "mithril";
 import Profilepic from "../misc/Profilepic";
 import "./playercard.scss";
+const isConsole = require("lib/constants").isConsole;
+
 const round = (number, digits) => ((number * digits) | 0) / digits;
 
 const getKd = player => player.stats.kills / player.stats.deaths;
@@ -41,9 +43,9 @@ export default {
                         <span className="player-id">{attrs.player.id}</span>
                     </div>
                     {getAliases(attrs.player)}
-                    <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
+                    { isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
                         › view on uplay
-                    </a>
+                    </a>}
                 </div>
             </div>
         );

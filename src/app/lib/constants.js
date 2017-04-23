@@ -69,3 +69,5 @@ export const Leaderboards = {
     EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
     NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };
+
+export const isConsole = /(xbox|ps4)/.test(window.location.href);

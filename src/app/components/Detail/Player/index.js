@@ -8,9 +8,9 @@ import Timedata from "./modules/Timedata";
 import GeneralStats from "./modules/GeneralStats";
 import RankedStats from "./modules/RankedStats";
 import { getRegionName } from "lib/region";
-
 import Log from "lib/log";
 const log = Log.child(__filename);
+const isConsole = require("lib/constants").isConsole;
 
 export default {
     view({ attrs, state }) {
@@ -24,11 +24,11 @@ export default {
                     <div className="detail-headertext">
                         <div className="detail-header-left">
                             <div className="detail-name">{attrs.name}</div>
-                            <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
+                            { isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
                                 className="detail-id"
                                 title="show on uplay">
                                 {attrs.id}
-                            </a>
+                            </a> }
                         </div>
                         <div className="detail-header-right">
                             <div className="season-ranks">
