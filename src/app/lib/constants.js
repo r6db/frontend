@@ -2,8 +2,8 @@ export const appname = "r6db";
 export const appid = "r6db-frontend";
 export const title = "R6DB - Rainbow 6 PC Player database";
 export const description= "R6DB is a fan-powered database for Rainbow Six: Siege PC. Search for Players, check Profiles or view the Leaderboard";
-export const baseurl = "https://r6db.com/";
-export const v2Api = "https://r6db.com/api/v2";
+export const baseurl = "/";
+export const v2Api = "/api/v2";
 
 /**
  * this is used to set a css class on the root component
