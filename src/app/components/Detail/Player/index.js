@@ -5,7 +5,8 @@ import Alias from "./Alias";
 import Rank from "./Rank";
 import Playtime from "./modules/Playtime";
 import Timedata from "./modules/Timedata";
-import GeneralStats from "./modules/GeneralStats";
+import Casual from "./modules/Casual";
+import General from "./modules/General";
 import RankedStats from "./modules/RankedStats";
 import { getRegionName } from "lib/region";
 import Log from "lib/log";
@@ -46,7 +47,8 @@ export default {
                     <div className="detail-stats">
                         <Timedata player={attrs} />
                         <Playtime player={attrs} />
-                        <GeneralStats player={attrs} />
+                        <General player={attrs} />
+                        <Casual player={attrs} />
                         {attrs.rank && attrs.rank.ncsa ? <RankedStats region={getRegionName("ncsa")}stats={attrs.rank.ncsa}/> : null}
                         {attrs.rank && attrs.rank.emea ? <RankedStats region={getRegionName("emea")} stats={attrs.rank.emea} /> : null}
                         {attrs.rank && attrs.rank.apac ? <RankedStats region={getRegionName("apac")} stats={attrs.rank.apac} /> : null}

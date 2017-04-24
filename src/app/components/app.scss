@@ -34,6 +34,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		filter: contrast(60%) brightness(50%);
 	}
 	
 	svg{
@@ -47,6 +48,6 @@
 	}
 	.blur{
 		opacity: 0;
-		filter: grayscale(0.3) blur(30px)
+		filter: contrast(60%) brightness(50%) blur(30px);
 	}
 }

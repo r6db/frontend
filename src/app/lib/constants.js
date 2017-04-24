@@ -71,3 +71,6 @@ export const Leaderboards = {
 };
 
 export const isConsole = /(xbox|ps4)/.test(window.location.href);
+export const isPS4 = /(ps4)/.test(window.location.href);
+export const isXbox = /(xbox)/.test(window.location.href);
+export const isPC = !isConsole;
