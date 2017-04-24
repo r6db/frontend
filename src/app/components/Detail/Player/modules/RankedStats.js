@@ -16,37 +16,39 @@ export default {
     view: ({ attrs, state }) => state.season != null
         ? (<div className="detail-rankedstats module">
             <header className="module-header">Ranked Stats {attrs.region} (season)</header>
-            <div className="module-row">
-                <div className="module-label">Wins</div>
-                <div className="module-value">{state.season.wins}</div>
-            </div>
-            <div className="module-row">
-                <div className="module-label">Losses</div>
-                <div className="module-value">{state.season.losses}</div>
-            </div>
-            <div className="module-row">
-                <div className="module-label">Abandons</div>
-                <div className="module-value">{state.season.abandons}</div>
-            </div>
-            <div className="module-row">
-                <div className="module-label">Win rate</div>
-                <div className="module-value">{
-                    ((state.season.wins /
-                        (state.season.wins + state.season.losses + state.season.abandons)) * 100
-                    ).toFixed(2)
-                }%</div>
-            </div>
-            <div className="module-row">
-                <div className="module-label">MMR</div>
-                <div className="module-value"><span className="quiet">(Max: {state.season.max_mmr.toFixed(2)})</span> {state.season.mmr.toFixed(2)}</div>
-            </div>
-            <div className="module-row">
-                <div className="module-label">Rank</div>
-                <div className={`module-value rank-${state.season.rank}`}><span className="quiet">(Max: {Ranks[state.season.max_rank]}) </span>{Ranks[state.season.rank]}</div>
-            </div>
-            <div className="module-row">
-                <div className="module-label">Skill</div>
-                <div className="module-value">{state.season.skill_mean.toFixed(2)}± {state.season.skill_stdev.toFixed(2)}</div>
+            <div className="module-content">
+                 <div className="module-row">
+                    <div className="module-label">Wins</div>
+                    <div className="module-value">{state.season.wins}</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Losses</div>
+                    <div className="module-value">{state.season.losses}</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Abandons</div>
+                    <div className="module-value">{state.season.abandons}</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Win rate</div>
+                    <div className="module-value">{
+                        ((state.season.wins /
+                            (state.season.wins + state.season.losses + state.season.abandons)) * 100
+                        ).toFixed(2)
+                    }%</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">MMR</div>
+                    <div className="module-value"><span className="quiet">(Max: {state.season.max_mmr.toFixed(2)})</span> {state.season.mmr.toFixed(2)}</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Rank</div>
+                    <div className={`module-value rank-${state.season.rank}`}><span className="quiet">(Max: {Ranks[state.season.max_rank]}) </span>{Ranks[state.season.rank]}</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Skill</div>
+                    <div className="module-value">{state.season.skill_mean.toFixed(2)}± {state.season.skill_stdev.toFixed(2)}</div>
+                </div>
             </div>
         </div>)
         : ""

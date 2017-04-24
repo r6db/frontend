@@ -1,31 +1,34 @@
 @font-face {
-	font-family: "Noto Sans";
-	src: url("/assets/fonts/noto/NotoSans-Regular.ttf") format("ttf");
+	font-family: "Open Sans";
+	src: url("/assets/fonts/OpenSans/OpenSans-Regular.ttf") format("ttf");
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
-	font-family: "Noto Sans";
-	src: url("/assets/fonts/noto/NotoSans-Bold.ttf") format("ttf");
+	font-family: "Open Sans";
+	src: url("/assets/fonts/OpenSans/OpenSans-Bold.ttf") format("ttf");
 	font-weight: bold;
 	font-style: normal;
 }
 @font-face {
-	font-family: "Noto Sans";
-	src: url("/assets/fonts/noto/NotoSans-Italic.ttf") format("ttf");
-	font-weight: normal;
+	font-family: "Open Sans";
+	src: url("/assets/fonts/OpenSans/OpenSans-Semibold.ttf") format("ttf");
+	font-weight: 600;
 	font-style: italic;
+}
+@font-face{
+	font-family: "Freeroad";
+	src: url("/assets/fonts/Freeroad/Freeroad_Bold.ttf") format("ttf");
+	font-weight: bold;
+	font-style: normal;
 }
 
 html{
-	font-size: 0.875em;
-	@include large{
-		font-size: 1em;
-	}
+	font-size: 14px;
 }
 
 body{
-	font-family: "Noto Sans", "Open Sans", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	position: relative;
 	color: $white;
 	display: flex;

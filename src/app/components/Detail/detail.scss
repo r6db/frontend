@@ -32,8 +32,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 	max-width: $screen-yourmom;
 	height: $detail-image-height;
 	flex: 0 0 auto;
-	box-shadow: 1px 1px 3px black;
-	background: rgba(0, 0, 0, 0.4);
+	background: $trans-med;
 }
 
 .season-ranks {
@@ -114,7 +113,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 	font-size: 1.2em;
 	font-weight: bold;
 	color: white;
-	background: rgba(0, 0, 0, 0.5);
+	background: $trans-med;
 	text-align: center;
 }
 
@@ -144,8 +143,6 @@ $detail-header-height: $detail-image-height + (5*$l);
 	color: $accent;
 }
 .detail-content{
-	background: $gray-dark;
-	box-shadow: 1px 0 1px $gray-dark;
 	width: 100%;
 	max-width: $screen-yourmom;
 	margin: 0 auto;
@@ -168,6 +165,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 	padding: $l*2 0;
 	flex: 1 1 auto;
 	overflow: hidden;
+	background: $trans-med;
 }
 
 .detail-aliases{
@@ -189,7 +187,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 }
 
 .detail-stats{
-	padding: 0 $l*2;
+	padding: $l*2 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -210,7 +208,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 	max-width: $screen-yourmom;
 	margin: 0 auto;
 	padding: (2*$l) 0 (3*$l) (2*$l);
-	background: rgba(0, 0, 0, 0.4);
+	background: $trans-med;
 	font-size: 3rem;
 	line-height: 106px;
 	font-weight: bold;

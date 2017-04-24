@@ -34,7 +34,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		filter: contrast(60%) brightness(50%);
+		filter: contrast(30%) brightness(50%)
 	}
 	
 	svg{
@@ -45,9 +45,5 @@
 		left: 0;
 		will-change: opacity;
 		transition: opacity $tdur ease-out;
-	}
-	.blur{
-		opacity: 0;
-		filter: contrast(60%) brightness(50%) blur(30px);
 	}
 }

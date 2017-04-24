@@ -1,8 +1,9 @@
+@import "styles";
+
 .module{
 	width: 100%;
 	margin-bottom: 2*$l;
-	background: rgba(0, 0, 0, 0.1);
-	padding: $l;
+	background: $trans-med;
 	min-width: 300px;
 
 	@include small {
@@ -22,12 +23,15 @@
 }
 .module-header{
 	font-weight: bold;
-	border-bottom: 1px solid $gray;
-	font-size: 1.4em;
-	padding-bottom: 5px;
+	font-size: 1.2em;
+	padding: 1em;
+	background: $trans-med;
 	.subtle{
 		color: $gray-light;
 	}
+}
+.module-content{
+	padding: ($l) (2*$l);
 }
 .module-row{
 	display: flex;

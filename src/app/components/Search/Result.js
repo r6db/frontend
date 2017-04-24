@@ -32,7 +32,7 @@ const getStats = player => (
 export default {
     view({attrs, state}) { 
         return (
-            <div className={`card playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
+            <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
                 <a href={attrs.href} className="card-image">
                     <span className="player-level">lvl {attrs.player.level}</span>
                     <Profilepic id={attrs.player.id} delay={attrs.index} />
@@ -43,9 +43,12 @@ export default {
                         <span className="player-id">{attrs.player.id}</span>
                     </div>
                     {getAliases(attrs.player)}
-                    { isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
-                        › view on uplay
-                    </a>}
+                    {isConsole
+                        ? null
+                        : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
+                            › view on uplay
+                        </a>
+                    }
                 </div>
             </div>
         );

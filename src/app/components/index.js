@@ -65,8 +65,7 @@ export default {
         return (
             <div className={"app " + pconf.class}>
                 <div className="app-background" role="presentation" >
-                    <img src="/assets/bg_prim.svg" alt="" class="clear" />
-                    <img src="/assets/bg_prim.svg" alt="" class="blur" />
+                    <img src="/assets/bg_prim.svg" />
                 </div>
                 <div className="app-page">
                     {Menubar}

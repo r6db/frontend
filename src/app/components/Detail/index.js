@@ -4,6 +4,7 @@ import Placeholder from "./Placeholder";
 import NotFound from "./Errors/NotFound";
 import NoPlaytime from "./Errors/NoPlaytime";
 import NoAliases from "./Errors/NoAliases";
+import "./module.scss";
 import "./detail.scss";
 import Log from "lib/log";
 const log = Log.child(__filename);
