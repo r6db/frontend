@@ -45,8 +45,8 @@
             margin-right: $l;
         }
         &select{
-            background: $gray-dark;
-            color: $white;
+            background: $white;
+            color: $gray-dark;
             padding: .5em 1em;
             line-height: 1em;
             height: 2em;
@@ -54,13 +54,13 @@
     }
 }
 .entry{
-    background: $gray-dark;
+    background: $trans-med;
     padding: 0 ($l*2) 0 $l;
 	width: 98%;
 	margin: 1%;
     display: flex;
     align-items: center;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 1px 1px 3px $trans-med;
 }
 .entry-place{
     font-size: 2rem;
@@ -107,8 +107,8 @@
     flex: 0 0 auto;
     height: auto;
     flex-direction: column;
-    background: darken($gray-dark, 5%);
-    box-shadow: 1px 1px 3px black;
+    background: $trans-med;
+    box-shadow: 1px 1px 3px $trans-med;
     padding: $l*2 0;
     margin: 4% 2%;
     @include large{
