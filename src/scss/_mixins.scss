@@ -65,3 +65,15 @@
 		@content;
 	}
 }
+
+@mixin openmenu {
+	@media screen and (min-width: $screen-openmenu) {
+		@content;
+	}
+}
+
+@mixin absurd {
+	@media screen and (min-width: $screen-absurd) {
+		@content;
+	}
+}

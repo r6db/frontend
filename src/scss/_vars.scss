@@ -8,27 +8,29 @@ $gray-light: #eae8de;
 $blue-dark: rgb(16, 26, 36);
 $trans-med: rgba(16, 16, 16, 0.5);
 $trans-low: rgba(16, 16, 16, 0.75);
-
 $white: #fefefe;
-
 $success: #17bebb;
 $warn: #ffc914;
 $danger: #e4562e;
 
+$l: 10px;
+
+$nav-height: 3.5em;
+$menu-width: 300px;
+$menu-background: #272727;
+$menu-height: $l*4;
+$menuMaxWidth: 280px;
+$menuMaxOpacity: 0.8;
+
 $screen-medium: 512px;
 $screen-large: 768px;
 $screen-yourmom: 1024px;
+$screen-openmenu: $screen-yourmom + $menuMaxWidth;
+$screen-absurd: 1600px;
+
 
 $borderradius: 1px;
 $borderradius-rel: .4em;
 
-
-$nav-height: 3.5em;
-
-$l: 10px;
-
-
-$sidebar-width: 24*$l;
-
-
 $tdur: 200ms;
+

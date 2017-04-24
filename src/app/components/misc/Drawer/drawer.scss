@@ -1,0 +1,111 @@
+@import "styles";
+
+.drawer{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    z-index: 1;
+
+    @include openmenu {
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+
+    &.is-open{
+        .drawer-container{
+            transform: none;
+        }
+        .drawer-background{
+            display: block;
+            transform: none;
+            opacity: $menuMaxOpacity;
+        }
+    }
+
+    &-background{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        left: $menuMaxWidth;
+        transform: translateX(200%);
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        will-change: opacity;
+        display: none;
+        transition: all 100ms ease-out;
+
+        @include openmenu {
+            display: none !important;
+        }
+    }
+    &-burger{
+        position: absolute;
+        top: $l;
+        l: $l;
+        font-size: 10px;
+        letter-spacing: 2px;
+        display: inline-block;
+        margin: 0 $l;
+        padding: 0 ($l*1.5);
+        line-height: $menu-height;
+        height: $menu-height;
+        cursor: pointer;
+        color: $white;
+        position: relative;
+        flex: 0;
+
+        &:before, &:after{
+            content: "";
+            position: absolute;
+            position: absolute;
+            width: 60%;
+            height: 1px;
+            background: $white;
+            left: 20%;
+        }
+        &:before {
+            top: 7px;
+        }
+        &:after {
+            bottom: 7px;
+        }
+        @include openmenu {
+            display: none;
+        }
+    }
+    &-topcontent{
+        flex: 1 1 0;
+        height: 100%;
+    }
+    &-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding-right: 3%;
+        transform: translateX(-97%);
+        transition: all 100ms ease-out;
+
+        @include openmenu {
+            transform: none;
+            width: auto;
+            position: relative;
+            padding-right: 0;
+        }
+    }
+
+    &-menu{
+        width: 280px;
+        height: 100%;
+        background: white;
+    }
+}
+
+.no-transition >*{
+    transition: none !important;
+}
