@@ -14,7 +14,7 @@ export default {
         return (
             <div className="search">
                 <h1 className="search-title">
-                    <img src="/assets/r6db_logo.svg" alt="R6DB Logo"/>
+                    <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
                 </h1>
                 <Searchbar
                     className="menu-search"    
