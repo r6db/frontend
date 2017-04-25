@@ -40,13 +40,6 @@ export default {
                         placeholder="Who are you looking for?"
                         oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
-                    <span>
-                        <input type="checkbox"
-                            id="exactSearch"
-                            checked={state.exact}
-                            onchange={state.onExactChange} />
-                        <label htmlFor="exactSearch">exact name</label>
-                    </span>
                 </div>
                 <button className="search-submit" onclick={state.onSearch}>Search</button>
             </div>
