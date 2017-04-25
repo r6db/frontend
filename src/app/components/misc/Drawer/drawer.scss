@@ -46,33 +46,29 @@
     &-burger{
         position: absolute;
         top: $l;
-        l: $l;
-        font-size: 10px;
-        letter-spacing: 2px;
-        display: inline-block;
+        width: $nav-height;
+        height: $nav-height;
         margin: 0 $l;
-        padding: 0 ($l*1.5);
-        line-height: $menu-height;
-        height: $menu-height;
         cursor: pointer;
-        color: $white;
         position: relative;
         flex: 0;
 
-        &:before, &:after{
+        span, &:before, &:after{
             content: "";
             position: absolute;
-            position: absolute;
-            width: 60%;
-            height: 1px;
+            width: 100%;
+            height: 3px;
             background: $white;
-            left: 20%;
+        }
+        span{
+            top: 50%;
+            margin-top: -2px;
         }
         &:before {
-            top: 7px;
+            top: 3px;
         }
         &:after {
-            bottom: 7px;
+            bottom: 3px;
         }
         @include openmenu {
             display: none;

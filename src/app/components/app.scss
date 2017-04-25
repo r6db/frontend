@@ -1,12 +1,19 @@
 @import "styles";
 
+.content-wrapper{
+	@include openmenu {
+		display: flex;
+		flex-direction: row;
+	}
+}
 .app{
-	width: 100vw;
+	width: 100%;
 	overflow: hidden;
+	position: relative;
 }
 .app-page{
 	position: relative;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	flex: 0 0 auto;
 	overflow-x: hidden;
@@ -17,11 +24,11 @@
 	transform: translateZ(0);
 }
 .app-background{
-	position: fixed;
+	position: absolute;
 	z-index: -1;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	background: #333;
 

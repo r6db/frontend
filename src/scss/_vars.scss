@@ -6,6 +6,7 @@ $gray-dark: #2f302f;
 $gray: #8d99ae;
 $gray-light: #eae8de;
 $blue-dark: rgb(16, 26, 36);
+$trans-high: rgba(16, 16, 16, 0.25);
 $trans-med: rgba(16, 16, 16, 0.5);
 $trans-low: rgba(16, 16, 16, 0.75);
 $white: #fefefe;
@@ -15,12 +16,13 @@ $danger: #e4562e;
 
 $l: 10px;
 
-$nav-height: 3.5em;
+$nav-height: 32px;
 $menu-width: 300px;
 $menu-background: #272727;
 $menu-height: $l*4;
 $menuMaxWidth: 280px;
 $menuMaxOpacity: 0.8;
+$menu-hover-color: rgba(227, 214, 148, 1);
 
 $screen-medium: 512px;
 $screen-large: 768px;

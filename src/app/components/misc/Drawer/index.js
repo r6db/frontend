@@ -5,8 +5,18 @@ import "./drawer.scss";
 const log = Log.child(__filename);
 
 export default {
-    oninit({attrs, state}) {
-      
+    oninit({ attrs, state }) {
+        const store = attrs.open;
+
+        store.on("update", function (e) { 
+            const isOpen = store.get();
+            if (store.get()) {
+                state.onOpenMenu();
+            } else {
+                state.onCloseMenu();
+            }
+        });
+
         // interaction stuff
         state.isDragging = false;
         state.isOpen = false;
@@ -63,7 +73,7 @@ export default {
                 if (Math.abs(deltaX) > (MENU_MAX_WIDTH * DRAG_THRESHOLD)) {
                     if (state.currX < state.startX) {
                         // we are dragging to close -> close menu
-                        state.onCloseMenu();
+                        store.set(false);
                         return;
                     } else {
                         // we dragged more than enough to 'fall open'
@@ -77,14 +87,13 @@ export default {
                         state.backgroundEl.style.opacity = "";
                     }
                 } else {
-                    state.onCloseMenu();
+                    store.set(false);
                 }
                 // we are open now. stop dragging
             }
             
         };
         state.onCloseMenu = function (e) {
-            console.log("close menu");
             state.isDragging = false;
             state.isOpen = false;
             state.startX = 0;
@@ -98,7 +107,6 @@ export default {
             state.backgroundEl.style.opacity = "";
         };
         state.onOpenMenu = function (e) {
-            log.trace("menu open");
             state.isDragging = false;
             state.isOpen = true;
             state.startX = 0;
@@ -116,6 +124,8 @@ export default {
             e.stopPropagation();
             return false;
         };
+        state.open = () => store.set(true);
+        state.close = () =>  store.set(false);
     },
     oncreate({dom, state}) {
         state.containerEl = dom;
@@ -126,9 +136,9 @@ export default {
     view({state, children}) {
         return (<div className="drawer">
             <div className="drawer-topbar">
-                <div className="drawer-burger" onclick={state.onOpenMenu}>MENU</div>
+                <div className="drawer-burger" onclick={state.open}><span></span></div>
             </div>    
-            <div className="drawer-background" onclick={state.onCloseMenu}></div>
+            <div className="drawer-background" onclick={state.close}></div>
             <div className="drawer-container"
                     ontouchstart={state.onTouchStart}
                     ontouchmove={state.onTouchMove}

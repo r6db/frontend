@@ -6,6 +6,7 @@ const defaultState = {
     Component: null,
     debug: false,
     data: null,
+    menu: false,
     loading: false,
     search: {
         query: "",

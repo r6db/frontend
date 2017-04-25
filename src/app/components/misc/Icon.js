@@ -16,6 +16,8 @@ export default {
 
 export const GLYPHS = {
     LOGO: require("assets/logo.svg"),
+    TWITTER: require("assets/twitter.svg"),
+    EMAIL: require("assets/email.svg"),
     NOAVATAR: require("assets/noavatar.svg"),
     RANK0: require("assets/ranks/0.svg"),
     RANK1: require("assets/ranks/1.svg"),

@@ -1,5 +1,6 @@
 import m from "mithril";
 import "./home.scss";
+import Searchbar from "../misc/Searchbar";
 import { isPS4, isXbox, isPC } from "lib/constants";
 import Log from "lib/log";
 const log = Log.child(__filename);
@@ -16,6 +17,10 @@ export default {
                 <h1 className="search-title">
                     <img src="/assets/r6db_logo.svg" alt="R6DB Logo"/>
                 </h1>
+                <Searchbar
+                    className="menu-search"    
+                    search={attrs.search}
+                    selector={attrs.store.select("search")} />
                 <footer className="search-footer is-center">
                     <div className="search-platforms">
                         {isPC ? <span>PC</span> : <a href="https://r6db.com" className="">PC</a>}

@@ -3,7 +3,7 @@ import "./menu.scss";
 import Icon, { GLYPHS } from "../Icon";
 import Searchbar from "../Searchbar";
 import page from "page";
-import { isPS4, isXbox } from "lib/constants";
+import { isPC, isPS4, isXbox } from "lib/constants";
 
 let platform = "PC";
 if (isPS4) { platform = "PS4"; }
@@ -25,20 +25,23 @@ export default {
                         </svg>
                         <span className="platform">{platform}</span>
                 </div>
-                <Searchbar
-                    className="menu-search"    
-                    search={attrs.search}
-                    selector={attrs.store.select("search")} />
                 <div className="menu-center">
                     <a href="/" className="menu-item">Home</a>
                     <a href="/leaderboard" className="menu-item">Leaderboard</a>
+                    <div className="menu-platforms">
+                        {isPC ? null : <a href="https://r6db.com" className="menu-item">PC</a>}
+                        {isPS4 ? null : <a href="https://ps4.r6db.com" className="menu-item">PS4</a>}
+                        {isXbox ? null : <a href="https://xbox.r6db.com" className="menu-item">XBOX</a>}
+                    </div>
                 </div>
                 <footer className="menu-bottom is-center">    
                     <div className="menu-footer">
                         <a href="https://twitter.com/Rainbow6_DB">
-                            <Icon glyph={GLYPHS.TWITTER} />
+                            <Icon class="menu-twitter" glyph={GLYPHS.TWITTER} />
                         </a>
-                        <a href="mailto:info@r6db.com">info@r6db.com</a>
+                        <a href="mailto:info@r6db.com">
+                            <Icon class="menu-email" glyph={GLYPHS.EMAIL} />
+                        </a>
                     </div>
                 </footer>
             </div>

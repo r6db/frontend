@@ -66,7 +66,7 @@ export default {
             : Search;
         return (
              <div className={"content-wrapper " + pconf.class}>
-                <Drawer> 
+                <Drawer open={store.select("menu")}> 
                     <Menu loading={loading} data={data} store={store} search={search}  />
                 </Drawer>
                 <div className="app">

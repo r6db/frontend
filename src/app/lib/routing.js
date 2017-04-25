@@ -21,9 +21,13 @@ function analyticsMiddleware(context, next) {
     ga("send", "pageview");
     return next();
 }
+function menuMiddleware(context, next) {
+    store.set("menu", false);
+    return next();
+}
 
 export default function initRoutes() {
-    page("/", analyticsMiddleware, function (context) {
+    page("/", analyticsMiddleware, menuMiddleware, function (context) {
         if (context.pathname.slice(0, 10) === "/#/player/") {
             log.trace("got a legacy url");
             const id = context.pathname.slice(11).split(/[\/?#]/)[0];
@@ -57,7 +61,7 @@ export default function initRoutes() {
             });
         setMeta();
     });
-    page("/search/:query", analyticsMiddleware, function (ctx) {
+    page("/search/:query", analyticsMiddleware, menuMiddleware, function (ctx) {
         log.debug("router mount <Search />");
         const qs = parse(ctx.querystring);
         const exact = qs.exact === "true" || qs.exact === "1";
@@ -92,7 +96,7 @@ export default function initRoutes() {
             page.redirect("/");
         }
     });
-    page("/player/:id", analyticsMiddleware, function (ctx) {
+    page("/player/:id", analyticsMiddleware, menuMiddleware, function (ctx) {
         log.debug("router mount <Detail />");
         const id = ctx.params.id;
         store.merge({
@@ -134,7 +138,7 @@ export default function initRoutes() {
     page("/leaderboard/", function () {
         page.redirect("/leaderboard/ALL");
     });
-    page("/leaderboard/chanka", analyticsMiddleware, function () {
+    page("/leaderboard/chanka", analyticsMiddleware, menuMiddleware, function () {
         const board = "operatorpvp_tachanka_turretkill";
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
         log.debug("router mount <Chankaboard />");
@@ -164,7 +168,7 @@ export default function initRoutes() {
                 setMeta();
             });
     });
-    page("/leaderboard/:board", analyticsMiddleware, function (ctx) {
+    page("/leaderboard/:board", analyticsMiddleware, menuMiddleware, function (ctx) {
         const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         log.debug("router mount <Leaderboard />");
         store.merge({

@@ -18,14 +18,14 @@
     }
     &-top{
         flex: 0 0 auto;
-        border-bottom: 1px solid #333;
+        padding: $l 0;
+        border-bottom: 1px solid rgb(64, 64, 64);
         display: flex;
         align-items: center;
         justify-content: center;
     }
     &-center{
         flex: 1;
-        padding: $l 0;
     }
 
     &-bottom{
@@ -43,14 +43,16 @@
     }
 
     &-item{
-        color: #ddd;
+        color: $white;
         display: block;
-        margin-bottom: $l;
-        padding: $l 2*$l;
+        padding: 1em;
+        font-weight: bold;
         cursor: pointer;
+        font-size: 20px;
+        border-bottom: 1px solid rgb(64, 64, 64);
 
         &:hover{
-            color: white;
+            color: $menu-hover-color;
         }
     }
     &-search{
@@ -79,23 +81,30 @@
             display: none;
         }
     }
-
-    &-tweets{
-        border-bottom: 1px solid #333;
-        flex: 1 1 auto;
+    &-platforms{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .menu-item{
+            flex: 1;
+            text-align: center;
+        }
     }
     &-footer{
         padding: $l 0;
         display: flex;
-        justify-content: space-around;
-        align-items: center;
+        align-items: flex-start;
         a{
             height: 2em;
             line-height: 2em;
+            margin: 0 $l;
         }
         .icon {
             width: 2em;
             height: 2em;
+        }
+        .menu-twitter{
+            transform: scale(1.5);
         }
     }
 
