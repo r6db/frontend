@@ -1,7 +1,6 @@
 import m from "mithril";
 import "./home.scss";
 import Searchbar from "../misc/Searchbar";
-import { isPS4, isXbox, isPC } from "lib/constants";
 import Log from "lib/log";
 const log = Log.child(__filename);
 
@@ -21,21 +20,6 @@ export default {
                     className="menu-search"    
                     search={attrs.search}
                     selector={attrs.store.select("search")} />
-                <footer className="search-footer is-center">
-                    <div className="search-platforms">
-                        {isPC ? <span>PC</span> : <a href="https://r6db.com" className="">PC</a>}
-                        {isPS4 ? <span>PS$</span> : <a href="https://ps4.r6db.com" className="">PS4</a>}
-                        {isXbox ? <span>XBOX</span> : <a href="https://xbox.r6db.com" className="">XBOX</a>}
-                    </div>    
-                    <p className="search-siteinfo">
-                        Updates now at <a href="https://twitter.com/Rainbow6_DB">Twitter</a>
-                    </p>
-                    {attrs.data ? (
-                        <div class="footer-stats">
-                            <span>{attrs.data.usercount}</span> accounts and <span>{attrs.data.namecount}</span> aliases indexed
-                        </div>) : null}
-                    <a href="mailto:info@r6db.com">info@r6db.com</a>
-                </footer>
             </div>
         );
     }
