@@ -12,10 +12,7 @@ const showPlayer = id => e => page("/player/" + id);
 export default {
     view({ attrs, state }) {
         return (
-            <div className="search">
-                <h1 className="search-title">
-                    <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
-                </h1>
+            <div className="home">
                 <Searchbar
                     className="menu-search"    
                     search={attrs.search}

@@ -1,54 +1,10 @@
 @import "styles";
 
-.is-initial{
-	.search-title{
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translate(-50%, 30vh);
-		text-align: center;
-
-		svg {
-			min-height: 75px;
-			height: 15vh;
-			margin: 0 auto;
-			fill: $white;
-			stroke: $black;
-			stroke-width: 1px;
-			stroke-opacity: 0.4;
-		}
-	}
+.home{
+	height: 100%;
 	.search-form{
-		transform: translate(0, 43vh);
-		box-shadow: 0 0 3px $trans-med;
-	}
-	.search-footer{
-		margin: 3em auto;
-		width: 300px;
-		color: $white;
-		flex: 0 0 auto;
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-		// anim
-		position: absolute;
-		bottom: 0;
-		transition: all $tdur ease-out;
-
-		a{
-			color: $accent;
-		}
-		.footer-stats{
-			padding: 5px;
-		}
-	}
-	.search-platforms{
-		font-size: 1.25em;
-		margin-bottom: $l;
-		a, span{
-			margin: 0 $l;
-		}
+		position: relative;
+		max-width: 90%;
+		top: 40%;
 	}
 }

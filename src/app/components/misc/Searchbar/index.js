@@ -37,6 +37,7 @@ export default {
                 <div className="search-input">
                     <input type="text"
                         value={state.query}
+                        placeholder="Who are you looking for?"
                         oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
                     <span>

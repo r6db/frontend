@@ -8,19 +8,33 @@
 	justify-content: center;
 	flex: 0 0 auto;
 	display: flex;
-	box-shadow: 0px 2px 3px black;
-	transition: all $tdur ease-in-out;
+	height: 4*$l;
+	box-shadow: 0 0 3px $trans-med;
+	background: $trans-med;
 
+	@include large{
+		height: 8*$l;
+	}
 }
 .search-input{
 	flex: 1 1 auto;
 	position: relative;
 
 	>input{
+		background: none;
+		color: $white;
+		padding: .5em (12*$l) .5em (2*$l);
 		width: 100%;
-		padding: .5em 12*$l .5em $l;
 		height: 100%;
-		background: darken($white, 5%);
+
+		@include large{
+			font-size: 2em;
+		}
+		
+		&:focus{
+			outline: none;
+		}
+
 	}
 	span{
 		position: absolute;
@@ -54,4 +68,8 @@
 	background: $primary;
 	color: $white;
 	cursor: pointer;
+	@include large{
+		flex: 0 0 auto;
+		padding: .5em 3em;
+	}
 }
