@@ -1,4 +1,5 @@
 import m from "mithril";
+import { isConsole } from "lib/constants";
 export default {
     timeout: false,
     onerror: e => {
@@ -7,7 +8,7 @@ export default {
         e.target.src = "/assets/noavatar.svg";
     },
     oncreate({ attrs, state, dom }) {
-        if (attrs.id) {
+        if (attrs.id && !isConsole) {
             const src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
             const delay = (((attrs.delay || 0) / 9) | 0) * 2000;
             state.timeout = setTimeout(function () {
