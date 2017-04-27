@@ -26,6 +26,7 @@ export default {
                             For more info on the current rank system, you can read 
                             <a href="http://rainbow6.ubi.com/siege/en-gb/news/detail.aspx?c=tcm:154-277344-16&ct=tcm:148-76770-32"> this blog post by Ubisoft</a>.
                         </p>
+                        <p>the Leaderboard updates every 24h.</p>
                         <p className="leaderboard-region">
                             <label
                                 className="leaderboard-regionlabel" htmlFor="regionselect">
