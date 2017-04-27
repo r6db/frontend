@@ -45,20 +45,6 @@ export default function initRoutes() {
                 exact: false
             }
         });
-        api.getStats()
-            .then(function(res) {
-                if(!res.usercount ||  !res.namecount) {
-                    store.set("loading", false);
-                } else {
-                    store.merge({
-                        loading: false,
-                        data: res
-                    });
-                }
-            })
-            .catch(function(err) {
-                console.warn(err);
-            });
         setMeta();
     });
     page("/search/:query", analyticsMiddleware, menuMiddleware, function (ctx) {
