@@ -21,5 +21,5 @@ export default {
     onremove: vnode => {
         clearTimeout(vnode.state.timeout);
     },
-    view: vnode => m("img", { onerror: vnode.state.onerror })
+    view: vnode => m("img", { src: "/assets/noavatar.svg", onerror: vnode.state.onerror })
 };
