@@ -10,6 +10,7 @@ const showPlayer = id => `/player/${id}`;
 
 module.exports = {
     view({ attrs, state }) {
+        if (attrs.loading) {  return ""; }
         return (
             <div className="colums is-multiline search-results">
                 {
