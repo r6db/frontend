@@ -6,6 +6,8 @@ const log = Log.child(__filename);
 
 export default {
     oninit({ attrs, state }) {
+        state.query = "";
+        state.exact = false;
         state.onEnter = state.onEnter = e => {
             if (e.keyCode === 13) {
                 state.onSearch();
@@ -22,8 +24,6 @@ export default {
             }
         };
         log.trace("<Searchbar /> oninit", attrs.search);
-        state.query = attrs.selector.get("query");
-        state.exact = attrs.selector.get("exact");
         state.onQueryChange = e => {
             state.query =  e.target.value;
         };

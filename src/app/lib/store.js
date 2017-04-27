@@ -4,6 +4,7 @@ import * as constants from "./constants";
 const defaultState = {
     appstate: constants.Pageconfig.INITIAL,
     Component: null,
+    TopbarComponent: null,
     debug: false,
     data: null,
     menu: false,

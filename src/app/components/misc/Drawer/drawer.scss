@@ -45,13 +45,12 @@
     }
     &-burger{
         position: absolute;
-        top: $l;
+        top: 12px;
         width: 40px;
-        height: 35px;
+        height: 36px;
         margin: 0 $l;
         cursor: pointer;
         position: relative;
-        background: $trans-med;
         flex: 0;
 
         span, &:before, &:after{

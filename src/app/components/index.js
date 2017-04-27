@@ -3,10 +3,11 @@ import page from "page";
 import Home from "./Home";
 import Search from "./Search";
 import Detail from "./Detail";
-import Loading from "./misc/Loading";
-import Searchbar from "./misc/Searchbar";
-import Menu from "./misc/Menu";
-import Drawer from "./misc/Drawer";
+import Loading from "components/misc/Loading";
+import Searchbar from "components/misc/Searchbar";
+import Menu from "components/misc/Menu";
+import Drawer from "components/misc/Drawer";
+import Topbar from "components/misc/Topbar";
 
 import Icon, { GLYPHS } from "./misc/Icon";
 
@@ -61,9 +62,9 @@ export default {
             ? <Searchbar search={search} selector={store.select("search")} />
             : null;
 
-        const Menubar = pconf.menu
-            ? <Menu>{Search}</Menu>
-            : Search;
+        const TopbarComponent = pconf.menu
+            ? <Topbar>{Search}</Topbar>
+            : null;
         return (
              <div className={"content-wrapper " + pconf.class}>
                 <Drawer open={store.select("menu")}> 
@@ -73,8 +74,11 @@ export default {
                     <div className="app-background">
                         <img src="/assets/bg_prim.svg" />
                     </div>
-                    <div className="app-page">
-                        <Component loading={loading} data={data} store={store} search={search} />
+                    <div className="app-content">
+                        {TopbarComponent}
+                        <div className="app-page">
+                            <Component loading={loading} data={data} store={store} search={search} />
+                        </div>
                     </div>
                     {optional(loading, () => <Loading />)}
                 </div>

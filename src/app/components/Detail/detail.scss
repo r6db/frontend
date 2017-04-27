@@ -187,7 +187,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 }
 
 .detail-stats{
-	padding: $l*2 0;
+	padding: $l*2 0 (0.5*$l);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;

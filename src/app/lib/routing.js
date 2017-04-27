@@ -70,7 +70,10 @@ export default function initRoutes() {
                 config: Pageconfig.SEARCH,
                 Component: Search,
                 loading: true,
-                data: null,
+                data: {
+                    query: ctx.params.query,
+                    result: []
+                },
                 search: {
                     query: ctx.params.query,
                     exact
@@ -80,7 +83,10 @@ export default function initRoutes() {
                 .then(function(res) {
                     store.merge({
                         config: Pageconfig.RESULT,
-                        data: res,
+                        data: {
+                            query: ctx.params.query,
+                            result: res
+                        },
                         loading: false
                     });
                     setMeta({

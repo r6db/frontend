@@ -1,6 +1,6 @@
 import m from "mithril";
 
-import Profilepic from "../../misc/Profilepic";
+import Profilepic from "components/misc/Profilepic";
 import Alias from "./Alias";
 import Rank from "./Rank";
 import Playtime from "./modules/Playtime";

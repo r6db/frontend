@@ -10,17 +10,20 @@ const showPlayer = id => `/player/${id}`;
 
 module.exports = {
     view({ attrs, state }) {
-        if (attrs.loading) {  return ""; }
+        const resultList = attrs.data.result ? attrs.data.result : [];
+
+        if (attrs.loading) { return ""; }
         return (
-            <div className="colums is-multiline search-results">
-                {
-                    attrs.data && attrs.data.length > 0
-                        ? attrs.data.map((player, i, total) =>
+            <div className="search">
+                <div className="search-query">Results for {attrs.data.query}: {resultList.length}</div>
+                <div className="colums is-multiline search-results">{
+                    resultList.length > 0
+                        ? resultList.map((player, i, total) =>
                             <Result player={player} index={i} key={player.id} href={showPlayer(player.id)} />)
                         : <div className="playercard is-empty">
                             we could not find any player matching that name. sorry
                     </div>
-                }
+                }</div>
             </div>
         );
     }

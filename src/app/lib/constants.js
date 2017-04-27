@@ -20,7 +20,8 @@ export const Pageconfig = Object.freeze({
     INITIAL: {
         id: "INITIAL",
         class: "is-initial",
-        footer: false
+        footer: false,
+        menu: false
     },
     SEARCH: { id: "SEARCH", class: "is-searching" },
     RESULT: { id: "RESULT", class: "is-results" },

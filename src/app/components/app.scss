@@ -11,17 +11,26 @@
 	overflow: hidden;
 	position: relative;
 }
+.app-content{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
 .app-page{
 	position: relative;
 	width: 100%;
-	height: 100vh;
-	flex: 0 0 auto;
+	flex: 1;
 	overflow-x: hidden;
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	backface-visibility: hidden;
 	transform: translateZ(0);
+
+	>* {
+		margin-top: 2*$l;
+	}
 }
 .app-background{
 	position: absolute;

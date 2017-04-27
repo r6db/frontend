@@ -1,0 +1,29 @@
+@import "styles";
+
+.topbar{
+	display: flex;
+    width: 100%;
+    height: 6*$l;
+    flex: 0 0 auto;
+    background: $trans-med;
+
+    &-menuspacer{
+        width: 60px;
+        flex: 0 0 auto;
+        @include openmenu{
+            display: none;
+        }
+    }
+    &-content {
+        flex: 1;
+        display: flex;
+    }
+    .search-form{
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        background: none;
+        box-shadow: none;
+    }
+}
