@@ -15,7 +15,6 @@ module.exports = {
         if (attrs.loading) { return ""; }
         return (
             <div className="search">
-                <div className="search-query">Results for {attrs.data.query}: {resultList.length}</div>
                 <div className="colums is-multiline search-results">{
                     resultList.length > 0
                         ? resultList.map((player, i, total) =>
