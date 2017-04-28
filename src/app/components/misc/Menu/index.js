@@ -17,7 +17,9 @@ export default {
         return (
             <div className="menu">
                 <div className="menu-top">
-                    <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
+                    <a href="/">
+                        <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
+                    </a>
                     <span className="platform">{platform}</span>
                 </div>
                 <div className="menu-center">
