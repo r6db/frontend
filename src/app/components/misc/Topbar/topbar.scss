@@ -3,7 +3,7 @@
 .topbar{
 	display: flex;
     width: 100%;
-    height: 6*$l;
+    height: $topbar-height;
     flex: 0 0 auto;
     background: $trans-med;
 
@@ -20,10 +20,14 @@
     }
     .search-form{
         margin: 0;
-        height: 100%;
+        height: $topbar-height;
         width: 100%;
         max-width: 100%;
         background: none;
         box-shadow: none;
+        
+        input{
+            height: $topbar-height;
+        }
     }
 }
