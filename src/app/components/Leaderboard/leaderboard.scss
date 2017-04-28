@@ -2,9 +2,10 @@
 
 .leaderboard{
     color: $white;
-    
+    max-width: $screen-yourmom;
+    margin-left: auto;
+    margin-right: auto;
     &-header{
-        max-width: $screen-yourmom;
         padding: 0 1%;
     }
     &-title{
@@ -22,7 +23,6 @@
     }
     &-top{
         margin: 3em auto 3em;
-        max-width: $screen-yourmom;
         flex-direction: row;
         display: flex;
         justify-content: space-around;
