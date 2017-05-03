@@ -1,7 +1,7 @@
 import m from "mithril";
 
-const getWL = o => ((o.won / (o.won + o.lost)) * 100).toFixed(2);
-const getKD = o => (o.kills / o.deaths).toFixed(2);
+const getWL = o => (((o.won / (o.won + o.lost)) * 100) || 0).toFixed(2);
+const getKD = o => ((o.kills / o.deaths) || 0).toFixed(2);
 
 module.exports = {
     view: ({ attrs }) => attrs.player.stats != null
