@@ -77,7 +77,7 @@ export default function initRoutes() {
                     });
                     setMeta({
                         title: `Search for ${ctx.params.query}`,
-                        description: `Find ${ctx.params.query} in the community database for Rainbow Six: Siege (PC)`
+                        description: `Find ${ctx.params.query} in the community database for Rainbow Six: Siege`
                     });
                 })
                 .catch(function(err) {
@@ -107,17 +107,16 @@ export default function initRoutes() {
                     if (res.flags.noAliases === false) {
                         setMeta({
                             title: `${res.name}`,
-                            description: `${res.name} player profile for Rainbow Six: Siege (PC)`,
+                            description: `${res.name} player profile for Rainbow Six: Siege`,
                             image: `http://uplay-avatars.s3.amazonaws.com/${res.id}/default_146_146.png`,
                             type: "profile"
                         });
                     } else {
                         setMeta({
                             title: `account ${id}`,
-                            description: `${id} account details in the community database for Rainbow Six: Siege (PC)`
+                            description: `${id} account details in the community database for Rainbow Six: Siege`
                         });
                     }
-                    
                 } else {
                     log.info("discarded data from previous route");
                 }
