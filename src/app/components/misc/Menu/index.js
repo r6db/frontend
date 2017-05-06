@@ -4,6 +4,7 @@ import Icon, { GLYPHS } from "../Icon";
 import Searchbar from "../Searchbar";
 import page from "page";
 import { isPC, isPS4, isXbox } from "lib/constants";
+import Tweet from "./Tweet";
 
 let platform = "PC";
 if (isPS4) { platform = "PS4"; }
@@ -31,7 +32,11 @@ export default {
                         {isXbox ? null : <a href="https://xbox.r6db.com" className="menu-item">XBOX</a>}
                     </div>
                 </div>
-                <footer className="menu-bottom is-center">    
+                <footer className="menu-bottom is-center">
+                    <div className="menu-tweets">{
+                        attrs.store.get("tweets")
+                            .map(tweet => <Tweet {...tweet} />)
+                    }</div>
                     <div className="menu-footer">
                         <a href="https://twitter.com/Rainbow6_DB">
                             <Icon class="menu-twitter" glyph={GLYPHS.TWITTER} />
