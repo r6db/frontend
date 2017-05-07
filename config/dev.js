@@ -15,7 +15,7 @@ config.devServer = {
     port: 9000,
     proxy: [{
         path: "/api",
-        target: "http://r6db.com",
+        target: "https://r6db.com",
         changeOrigin: true
     }],
     historyApiFallback: true,
