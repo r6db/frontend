@@ -49,6 +49,7 @@ export default {
     oninit(vnode) {
         initRoutes();
         store.select("data").on("update", update);
+        store.select("tweets").on("update", update);
         store.select("loading").on("update", update);
         store.select("component").on("update", update);
 
