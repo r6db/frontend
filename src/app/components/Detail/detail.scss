@@ -227,6 +227,115 @@ $detail-header-height: $detail-image-height + (5*$l);
 	line-height: 1.4;
 }
 
+.operator-icon {
+	height: $operator-size;
+	width: $operator-size;
+	display: inline-block;
+	/* padding: (-$operator-size*2) (-$operator-size*2); */
+	background-image: url(/assets/operators.png);
+	background-size: 512px*$operator-multiplyer 1664px * $operator-multiplyer;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+
+	&.jager {
+		background-position: (-$operator-size*0) (-$operator-size*0);
+	}
+	&.blitz {
+		background-position: (-$operator-size*1) (-$operator-size*0);
+	}
+	&.iq {
+		background-position: (-$operator-size*2) (-$operator-size*0);
+	}
+	&.bandit {
+		background-position: (-$operator-size*3) (-$operator-size*0);
+	}
+
+	&.fuze {
+		background-position: (-$operator-size*0) (-$operator-size*1);
+	}
+	&.kapkan {
+		background-position: (-$operator-size*1) (-$operator-size*1);
+	}
+	&.glaz {
+		background-position: (-$operator-size*2) (-$operator-size*1);
+	}
+	&.tachanka {
+		background-position: (-$operator-size*3) (-$operator-size*1);
+	}
+
+	&.thermite {
+		background-position: (-$operator-size*0) (-$operator-size*2);
+	}
+	&.castle {
+		background-position: (-$operator-size*1) (-$operator-size*2);
+	}
+	&.ash {
+		background-position: (-$operator-size*2) (-$operator-size*2);
+	}
+	&.pulse {
+		background-position: (-$operator-size*3) (-$operator-size*2);
+	}
+
+	&.twitch {
+		background-position: (-$operator-size*0) (-$operator-size*3);
+	}
+	&.montagne {
+		background-position: (-$operator-size*1) (-$operator-size*3);
+	}
+	&.rook {
+		background-position: (-$operator-size*2) (-$operator-size*3);
+	}
+	&.doc {
+		background-position: (-$operator-size*3) (-$operator-size*3);
+	}
+
+	&.sledge {
+		background-position: (-$operator-size*0) (-$operator-size*4);
+	}
+	&.thatcher {
+		background-position: (-$operator-size*1) (-$operator-size*4);
+	}
+	&.mute {
+		background-position: (-$operator-size*2) (-$operator-size*4);
+	}
+	&.smoke {
+		background-position: (-$operator-size*3) (-$operator-size*4);
+	}
+
+	&.valkyrie {
+		background-position: (-$operator-size*0) (-$operator-size*5);
+	}
+	&.blackbeard {
+		background-position: (-$operator-size*1) (-$operator-size*5);
+	}
+	&.frost {
+		background-position: (-$operator-size*2) (-$operator-size*5);
+	}
+	&.buck {
+		background-position: (-$operator-size*3) (-$operator-size*5);
+	}
+
+	&.caveira {
+		background-position: (-$operator-size*0) (-$operator-size*6);
+	}
+	&.capitao {
+		background-position: (-$operator-size*1) (-$operator-size*6);
+	}
+	&.hibana {
+		background-position: (-$operator-size*2) (-$operator-size*6);
+	}
+	&.echo {
+		background-position: (-$operator-size*3) (-$operator-size*6);
+	}
+
+	&.mira {
+		background-position: (-$operator-size*0) (-$operator-size*7);
+	}
+	&.jackal {
+		background-position: (-$operator-size*1) (-$operator-size*7);
+	}
+}
+
 /* booster thats currently first on the leaderboard */
 .detail-player.player-0355860c-0994-47e9-ad73-59cbec6bc829 .detail-name:before,
 .detail-player.player-950c2df7-b7d6-46c0-b25f-a69a15930c00 .detail-name:before {

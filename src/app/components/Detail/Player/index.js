@@ -3,6 +3,7 @@ import m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import Alias from "./Alias";
 import Rank from "./Rank";
+import Operators from "./modules/Operators"
 import Playtime from "./modules/Playtime";
 import Timedata from "./modules/Timedata";
 import Casual from "./modules/Casual";
@@ -45,6 +46,7 @@ export default {
                         </div>
                     </div>
                     <div className="detail-stats">
+                        <Operators player={attrs} />
                         <Timedata player={attrs} />
                         <Playtime player={attrs} />
                         <General player={attrs} />

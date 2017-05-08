@@ -31,6 +31,8 @@ $screen-yourmom: 1024px;
 $screen-openmenu: $screen-yourmom + $menuMaxWidth;
 $screen-absurd: 1600px;
 
+$operator-multiplyer: 0.5;
+$operator-size: 128px * $operator-multiplyer;
 
 $borderradius: 1px;
 $borderradius-rel: .4em;
