@@ -43,7 +43,7 @@ const handleResponse = player => {
     player.pastRanks = player.seasonRanks
             .concat(player.rank)
             .map(x => [x.ncsa, x.emea, x.apac]
-                .map(y => ({ rank: y.rank, season: x.season }))
+                .map(y => ({ rank: y.max_rank, season: x.season }))
                 .sort((a, b) => b.rank - a.rank)[0]);
     
     player.aliases = player.aliases
