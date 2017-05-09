@@ -3,14 +3,18 @@
 .tweet{
     text-align: left;
     margin-bottom: $l;
+    font-size: 0.8rem;
 
+    @include large{
+        font-size: 1rem;
+    }
     &-date{
-        font-size: 0.8rem;
+        font-size: 0.8em;
         text-align: right;
         padding-right: $l;
     }
     &-text{
-        font-size: 1rem;
+        font-size: 1em;
         border-right: 3px solid $accent;
         padding: $l*0.5;
     }
