@@ -77,17 +77,12 @@ export default {
                         return;
                     } else {
                         // we dragged more than enough to 'fall open'
-                        state.isDragging = false;
-                        state.isOpen = true;
-                        state.containerEl.classList.add("is-open");
-                        state.drawerEl.style.transform = "";
-                        state.drawerEl.style.webkitTransform =  "";
-                        state.backgroundEl.style.transform = "";
-                        state.backgroundEl.style.webkitTransform = "";
-                        state.backgroundEl.style.opacity = "";
+                        state.onOpenMenu();
                     }
                 } else {
                     store.set(false);
+                    state.onCloseMenu();
+                    m.redraw();
                 }
                 // we are open now. stop dragging
             }
@@ -136,9 +131,9 @@ export default {
     view({state, children}) {
         return (<div className="drawer">
             <div className="drawer-topbar">
-                <div className="drawer-burger" onclick={state.open}><span></span></div>
+                <div className="drawer-burger" onclick={state.onOpenMenu}><span></span></div>
             </div>    
-            <div className="drawer-background" onclick={state.close}></div>
+            <div className="drawer-background" onclick={state.onCloseMenu}></div>
             <div className="drawer-container"
                     ontouchstart={state.onTouchStart}
                     ontouchmove={state.onTouchMove}
