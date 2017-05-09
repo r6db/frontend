@@ -10,6 +10,12 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 const showPlayer = id => e => page("/player/" + id);
 
 export default {
+    oncreate({ dom }) { 
+        const search = dom.querySelector(".search-input input");
+        if (search && !window.ontouchstart) {
+            search.focus();
+        }
+    },
     view({ attrs, state }) {
         return (
             <div className="home">
