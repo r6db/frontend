@@ -1,5 +1,5 @@
 import m from "mithril";
-import Icon, { GLYPHS } from "../../misc/Icon";
+import Icon, { GLYPHS } from "components/misc/Icon";
 
 export default {
     view({ attrs }) {

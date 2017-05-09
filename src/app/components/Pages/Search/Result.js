@@ -1,5 +1,5 @@
 import m from "mithril";
-import Profilepic from "../misc/Profilepic";
+import Profilepic from "components/misc/Profilepic";
 import "./playercard.scss";
 const isConsole = require("lib/constants").isConsole;
 

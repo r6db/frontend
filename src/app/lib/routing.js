@@ -10,11 +10,11 @@ import setMeta from "lib/meta";
 const log = Log.child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
-import Home from "components/Home";
-import Search from "components/Search";
-import Detail from "components/Detail";
-import Leaderboard from "components/Leaderboard";
-import Chankaboard from "components/Chankaboard";
+import Home from "components/Pages/Home";
+import Search from "components/Pages/Search";
+import Detail from "components/Pages/Detail";
+import Leaderboard from "components/Pages/Leaderboard";
+import Chankaboard from "components/Pages/Chankaboard";
 
 function analyticsMiddleware(context, next) {
     ga("set", "page", context.path);
@@ -119,6 +119,7 @@ export default function initRoutes() {
                     }
                 } else {
                     log.info("discarded data from previous route");
+                    store.set("loading", false);
                 }
             })
             .catch(function(err) {

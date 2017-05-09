@@ -4,13 +4,11 @@ import { failEarly, tap, getHeaders } from "../utils";
 import moment from "moment";
 
 export default function () {
-    store.set("loading", "loading ...");
     return fetch(`${v2Api}/twitter`, { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())
         .then(tweets =>
             tweets.map(tweet => {
-                store.set("loading", "crunching data...");
                 const time = moment(tweet.created_at, "ddd MMM DD HH:mm:ss Z YYYY").format(DATE_LONG);
                 const url = `https://twitter.com/Rainbow6_DB/status/${tweet.id_str}`;
                 const html = (tweet.entities.media || [])

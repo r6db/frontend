@@ -1,6 +1,6 @@
 import m from "mithril";
 import "./home.scss";
-import Searchbar from "../misc/Searchbar";
+import Searchbar from "components/misc/Searchbar";
 import Log from "lib/log";
 const log = Log.child(__filename);
 

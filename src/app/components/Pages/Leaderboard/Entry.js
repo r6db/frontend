@@ -1,5 +1,5 @@
 import m from "mithril";
-var isConsole = require("lib/constants").isConsole;
+import { isConsole } from "lib/constants";
 
 export default {
     view({attrs}) {

@@ -1,5 +1,5 @@
 import m from "mithril";
-import Loading from "../misc/Loading";
+import Loading from "components/misc/Loading";
 
 export default {
     view() {

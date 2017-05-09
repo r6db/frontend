@@ -1,15 +1,15 @@
 import m from "mithril";
 import page from "page";
-import Home from "./Home";
-import Search from "./Search";
-import Detail from "./Detail";
+import Home from "components/Pages/Home";
+import Search from "components/Pages/Search";
+import Detail from "components/Pages/Detail";
 import Loading from "components/misc/Loading";
 import Searchbar from "components/misc/Searchbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
 import Topbar from "components/misc/Topbar";
 
-import Icon, { GLYPHS } from "./misc/Icon";
+import Icon, { GLYPHS } from "components/misc/Icon";
 
 import "./base.scss";
 import "./app.scss";
