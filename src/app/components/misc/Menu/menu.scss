@@ -26,7 +26,7 @@
 
         img{
             width: 80%;
-            
+
             @include large{
                 width: 100%
             }
@@ -115,7 +115,13 @@
             transform: scale(1.5);
         }
     }
-
+    &-tweets{
+        @include small{
+            .tweet:not(:first-child) {
+                display: none;
+            }
+        }
+    }
     .platform{
         margin-left: $l;
         font-size: 2em;

@@ -31,6 +31,7 @@ export default {
                         {isPS4 ? null : <a href="https://ps4.r6db.com" className="menu-item">PS4</a>}
                         {isXbox ? null : <a href="https://xbox.r6db.com" className="menu-item">XBOX</a>}
                     </div>
+                    <a href="https://gitlab.com/gitgudscrub/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
                 </div>
                 <footer className="menu-bottom is-center">
                     <div className="menu-tweets">{
