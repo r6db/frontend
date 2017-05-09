@@ -1,4 +1,5 @@
-$loading-indicatorsize: 30px;
+@import "styles";
+
 .loading{
 	position: absolute;
 	z-index: 10;
@@ -15,12 +16,20 @@ $loading-indicatorsize: 30px;
 }
 .loading-indicator{
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	width: $loading-indicatorsize;
 	height: $loading-indicatorsize;
 	background: $primary;
 	animation: loadingAnim 1.5s infinite ease-in-out;
+}
+.loading-message{
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	color: $white;
+	text-align: center;
 }
 
 @keyframes loadingAnim {

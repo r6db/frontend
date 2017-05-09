@@ -1,4 +1,5 @@
 import { v2Api } from "lib/constants";
+import store from "lib/store";
 import { failEarly, getHeaders } from "../utils";
 
 const fixAlias = alias => {
@@ -10,11 +11,15 @@ const fixAlias = alias => {
 };
 
 
-const getPlayer = id => fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
-    .then(failEarly)
-    .then(res => res.json());
+const getPlayer = id => { 
+    store.set("loading", "getting data ...");
+    return fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
+        .then(failEarly)
+        .then(res => res.json());
+};
 
 const handleResponse = player => {
+    store.set("loading", "crunching data ...");
     player.flags = {
         noAliases: false,
         noPlaytime: false,
@@ -23,8 +28,8 @@ const handleResponse = player => {
 
     // check if player has aliases
     if (!player.aliases) {
+        player.flags.noAliases = true;
         throw new Error("player object has no aliases");
-        player.flaygs.noAliases = true;
     }
 
     // check if has playtime
