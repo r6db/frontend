@@ -17,32 +17,30 @@ export default {
         return (
             <div className={`detail-player player-${attrs.id} is-${attrs.role || "user"}`}>
                 <div className="detail-header">
-                    <div className="detail-headerimage">
-                        <span className="detail-level">lvl {attrs.level}</span>
-                        <Profilepic id={attrs.id} delay={0} />
-                    </div>
-                    <div className="detail-headertext">
-                        <div className="detail-header-left">
-                            <div className="detail-name">{attrs.name}</div>
-                            { isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
-                                className="detail-id"
-                                title="show on uplay">
-                                {attrs.id}
-                            </a> }
-                        </div>
-                        <div className="detail-header-right">
-                            <div className="season-ranks">
-                                {attrs.pastRanks.map(x => <Rank rank={x} />)}
+                    <div className="detail-info">
+                        <div className="detail-identification">
+                            <div className="detail-headerimage">
+                                <span className="detail-level">lvl {attrs.level}</span>
+                                <Profilepic id={attrs.id} delay={0} />
                             </div>
+                            <div className="detail-headertext">
+                                <div className="detail-name">{attrs.name}</div>
+                                { isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
+                                    className="detail-id"
+                                    title="show on uplay">
+                                    {attrs.id}
+                                </a> }
+                            </div>    
                         </div>
+                        <div className="detail-seasonranks">
+                            {attrs.pastRanks.map(x => <Rank rank={x} />)}
+                        </div>
+                    </div>
+                    <div className="detail-aliases">
+                        {attrs.aliases.map(x => <Alias alias={x} />)}
                     </div>
                 </div>
                 <div className="detail-content">
-                    <div className="detail-info">
-                        <div className="detail-aliases">
-                            {attrs.aliases.map(x => <Alias alias={x} />)}
-                        </div>
-                    </div>
                     <div className="detail-stats">
                         <Timedata player={attrs} />
                         <General player={attrs} />

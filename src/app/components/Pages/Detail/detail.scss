@@ -22,87 +22,44 @@ $detail-header-height: $detail-image-height + (5*$l);
 	flex-direction: column;
 	flex: 1;
 }
-
-.detail-header{
+.detail-identification{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+.detail-header{
 	margin: 0 auto;
 	width: 100%;
 	max-width: $screen-yourmom;
-	height: $detail-image-height;
-	flex: 0 0 auto;
 	background: $trans-med;
-}
 
-.season-ranks {
-	margin-top: 1.5 * $l;
-	display: none;
-	padding: 0 $l;
-	flex-direction: row;
+	@include large{
+		flex-direction: row;
+	}
+}
+.detail-info{
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 auto;
+	align-items: flex-start;
 	justify-content: space-between;
 
 	@include large{
-		display: flex;
+		flex-direction: row;
 	}
 }
-
-.season-rank {
-	align-items: center;
-	flex: 0 0 auto;
-	&:last-child {
-		margin: 0;
-	}
-}
-
-.rank-image {
-	width: 6 * $l;
-	height: 6 * $l;
-}
-
-@include large {
-	.detail-header-left {
-		width: calc(100% - #{43 * $l});
-		float: left;
-	}
-	.detail-header-right {
-		width: 43 * $l;
-		float: right;
-	}
-}
-
-@media (min-width: 80 * $l) and (max-width: 102.3 * $l) {
-	.detail-header-left {
-		float: left;
-		width: 60%;
-	}
-	.detail-header-right {
-		float: right;
-		width: 20 * $l;
-		margin-top: -2.8 * $l;
-	}
-	.rank-image {
-		width: 5 * $l;
-		height: 5 * $l;
-	}
-	.rank-season {
-		font-size: 0.8rem;
-	}
-}
-
-@media (max-width: 79.9 * $l) {
-	.detail-header-right {
-		display: none;
-	}
-}
-
 .detail-headerimage{
-	width: $detail-image-height;
-	height: $detail-image-height;
 	position: relative;
+	width: 10*$l;
+	height: 10*$l;
+
 	img{
 		width: 100%;
 		height: 100%;
+	}
+	@include large{
+		width: $detail-image-height;
+		height: $detail-image-height;
 	}
 }
 .detail-level{
@@ -118,26 +75,49 @@ $detail-header-height: $detail-image-height + (5*$l);
 }
 
 .detail-headertext{
-	height: 146px;
-	padding: (2*$l) 0 (3*$l) (2*$l);
+	padding-left: (2*$l);
 	flex: 1;
 }
 .detail-name{
+	width: 100%;
+	padding-bottom: $l;
 	font-size: 2rem;
 	font-weight: bold;
-	width: 100%;
 	overflow: hidden;
-	text-overflow: ellipsis;
 	white-space: nowrap;
-	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 6*$l;
 	text-shadow: 0 0 1px $gray-dark;
+
 	@include medium {
 		font-size: 3rem;
-		line-height: 8*$l;
 	}
 }
+
+.detail-seasonranks {
+	display: flex;
+	padding: 0 $l;
+	flex-direction: row;
+	align-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+	@include large {
+		justify-content: space-between;
+	}
+}
+
+.rank {
+	margin: 0 $l;
+	
+	&-image {
+		width: 6 * $l;
+		height: 6 * $l;
+	}
+	&:last-child {
+		margin: 0;
+	}
+}
+
 
 .detail-id{
 	color: $accent;
@@ -161,12 +141,6 @@ $detail-header-height: $detail-image-height + (5*$l);
 	z-index: -1;
 }
 
-.detail-info{
-	padding: $l*2 0;
-	flex: 1 1 auto;
-	overflow: hidden;
-	background: $trans-med;
-}
 
 .detail-aliases{
 	// height is detail-content height - all the paddings;
@@ -177,7 +151,7 @@ $detail-header-height: $detail-image-height + (5*$l);
 	transform: translateZ(0);
 	backface-visibility: hidden;
 	-webkit-overflow-scrolling: touch;
-	
+
 	&:after{
 		content: "";
 		display: block;

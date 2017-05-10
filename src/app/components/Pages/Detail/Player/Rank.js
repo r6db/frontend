@@ -5,7 +5,7 @@ export default {
     view({ attrs }) {
         const glyph = GLYPHS["RANK" + attrs.rank.rank];
         return (
-            <div className="season-rank">
+            <div className="rank">
                 <Icon class="rank-image" glyph={glyph} />
                 <div className="rank-season">Season {attrs.rank.season}</div>
             </div>
