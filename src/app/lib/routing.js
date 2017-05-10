@@ -25,7 +25,9 @@ function menuMiddleware(context, next) {
 }
 
 export default function initRoutes() {
-    page("/", analyticsMiddleware, menuMiddleware, function (context) {
+    page(analyticsMiddleware);
+    page(menuMiddleware);
+    page("/", function (context) {
         if (context.pathname.slice(0, 10) === "/#/player/") {
             console.debug("got a legacy url");
             const id = context.pathname.slice(11).split(/[\/?#]/)[0];
@@ -45,7 +47,7 @@ export default function initRoutes() {
         });
         setMeta();
     });
-    page("/search/:query", analyticsMiddleware, menuMiddleware, function (ctx) {
+    page("/search/:query", function (ctx) {
         console.debug("router mount <Search />");
         const qs = parse(ctx.querystring);
         const exact = qs.exact === "true" || qs.exact === "1";
@@ -86,7 +88,7 @@ export default function initRoutes() {
             page.redirect("/");
         }
     });
-    page("/player/:id", analyticsMiddleware, menuMiddleware, function (ctx) {
+    page("/player/:id", function (ctx) {
         console.debug("router mount <Detail />");
         const id = ctx.params.id;
         store.merge({
@@ -128,7 +130,7 @@ export default function initRoutes() {
     page("/leaderboard/", function () {
         page.redirect("/leaderboard/ALL");
     });
-    page("/leaderboard/chanka", analyticsMiddleware, menuMiddleware, function () {
+    page("/leaderboard/chanka", function () {
         const board = "operatorpvp_tachanka_turretkill";
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
         console.debug("router mount <Chankaboard />");
@@ -158,7 +160,7 @@ export default function initRoutes() {
                 setMeta();
             });
     });
-    page("/leaderboard/:board", analyticsMiddleware, menuMiddleware, function (ctx) {
+    page("/leaderboard/:board", function (ctx) {
         const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         console.debug("router mount <Leaderboard />");
         store.merge({
