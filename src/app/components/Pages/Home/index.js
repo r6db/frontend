@@ -1,8 +1,6 @@
 import m from "mithril";
 import "./home.scss";
 import Searchbar from "components/misc/Searchbar";
-import Log from "lib/log";
-const log = Log.child(__filename);
 
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 

@@ -9,8 +9,7 @@ import General from "./modules/General";
 import Ranked from "./modules/Ranked";
 import RankedSeason from "./modules/RankedSeason";
 import { getRegionName } from "lib/region";
-import Log from "lib/log";
-const log = Log.child(__filename);
+
 const isConsole = require("lib/constants").isConsole;
 
 export default {

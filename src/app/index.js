@@ -9,12 +9,9 @@ import "isomorphic-fetch";
 import "../scss/styles.scss";
 import * as page from "page";
 import store from "lib/store";
-import Log from "lib/log";
 import m from "mithril";
 
 if (process.env.NODE_ENV === "production") {
-    // set log level
-    Log.setLevel(10);
 
     // run google analytics
     (function (i, s, o, g, r, a, m) {
@@ -30,11 +27,6 @@ if (process.env.NODE_ENV === "production") {
     window.m = m;
     window.store = store;
     
-    // set debug flag
-    store.set("debug", window.location.search.indexOf("debug") !== -1);
-
-    // set log level
-    Log.setLevel(50);
     // shim google analytics
     window["GoogleAnalyticsObject"] = window.ga = function() {};
 }

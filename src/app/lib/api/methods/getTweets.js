@@ -1,7 +1,6 @@
 import { v2Api, DATE_LONG } from "lib/constants";
 import store from "lib/store";
 import { failEarly, tap, getHeaders } from "../utils";
-import moment from "moment";
 
 export default function () {
     return fetch(`${v2Api}/twitter`, { headers: getHeaders() })
@@ -9,7 +8,7 @@ export default function () {
         .then(res => res.json())
         .then(tweets =>
             tweets.map(tweet => {
-                const time = moment(tweet.created_at, "ddd MMM DD HH:mm:ss Z YYYY").format(DATE_LONG);
+                const time = new Date(tweet.created_at).toLocaleString();
                 const url = `https://twitter.com/Rainbow6_DB/status/${tweet.id_str}`;
                 const html = (tweet.entities.media || [])
                     .concat(tweet.entities.urls || [])

@@ -1,8 +1,6 @@
 import m from "mithril";
 import "./searchbar.scss";
 import page from "page";
-import Log from "lib/log";
-const log = Log.child(__filename);
 
 export default {
     oninit({ attrs, state }) {
@@ -23,7 +21,7 @@ export default {
                 page("/");
             }
         };
-        log.trace("<Searchbar /> oninit", attrs.search);
+        console.debug("<Searchbar /> oninit", attrs.search);
         state.onQueryChange = e => {
             state.query =  e.target.value;
         };

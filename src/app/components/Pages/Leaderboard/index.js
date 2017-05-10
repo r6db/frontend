@@ -1,11 +1,9 @@
 import m from "mithril";
 import page from "page";
 import { Leaderboards } from "lib/constants";
-import "./leaderboard.scss";
-import Log from "lib/log";
 import Entry from "./Entry";
 import TopEntry from "./TopEntry";
-const log = Log.child(__filename);
+import "./leaderboard.scss";
 
 const isSelected = (expected, value) => expected === value ? "selected" : undefined;
 

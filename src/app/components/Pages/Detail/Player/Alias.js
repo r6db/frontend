@@ -1,5 +1,4 @@
 import m from "mithril";
-import moment from "moment";
 
 const formatTitle = date => date
     ? (new Date(date)).toLocaleString()
@@ -11,7 +10,7 @@ export default {
             <div className="alias-time" title={formatTitle(attrs.alias.created_at)}>
                 {
                     attrs.alias.created_at
-                        ? moment(attrs.alias.created_at).format("DD. MMM YYYY")
+                        ? (new Date(attrs.alias.created_at)).toLocaleDateString()
                         : "no Date"
                 }
             </div>

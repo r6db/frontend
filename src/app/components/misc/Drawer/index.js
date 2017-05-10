@@ -1,8 +1,5 @@
 import m from "mithril";
-import Log from "lib/log";
 import "./drawer.scss";
-
-const log = Log.child(__filename);
 
 export default {
     oninit({ attrs, state }) {

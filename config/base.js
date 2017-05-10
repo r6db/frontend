@@ -73,9 +73,6 @@ module.exports = {
         }]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            // Promise: "bluebird"
-        }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new HappyPack({
@@ -91,7 +88,6 @@ module.exports = {
                 }
             }]
         }),
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb/),
         new CopyWebpackPlugin([
             { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },

@@ -6,15 +6,13 @@ import NoPlaytime from "./Errors/NoPlaytime";
 import NoAliases from "./Errors/NoAliases";
 import "./module.scss";
 import "./detail.scss";
-import Log from "lib/log";
-const log = Log.child(__filename);
 
 export default {
     onremove({ state }) {
-        log.trace("<Detail /> onremove");
+        console.debug("<Detail /> onremove");
     },
     oninit({ attrs, state }) {
-        log.trace("<Detail /> oninit");
+        console.debug("<Detail /> oninit");
     },
     view({ attrs, state }) {
         if (attrs.loading) {

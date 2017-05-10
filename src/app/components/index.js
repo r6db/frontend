@@ -16,10 +16,8 @@ import "./app.scss";
 
 import store from "lib/store";
 import { Pageconfig } from "lib/constants";
-import Log from "lib/log";
 import initRoutes from "lib/routing";
 
-const log = Log.child(__filename);
 
 const optional = (pred, cb) => pred ? cb() : null;
 
@@ -40,8 +38,8 @@ const debounce = function (func, wait, immediate) {
 };
 
 const update = debounce(function () {
-    log.trace("state changed, redrawing");
-    log.debug("state", store.get());
+    console.debug("state changed, redrawing");
+    console.debug("state", store.get());
     m.redraw();
 });
 

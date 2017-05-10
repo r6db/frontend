@@ -1,13 +1,11 @@
 import m from "mithril";
 import store from "./store";
-import Log from "lib/log";
 import page from "page";
 import { Pageconfig, Leaderboards } from "lib/constants";
 import { parse } from "querystring";
 import * as api from "lib/api";
 import setMeta from "lib/meta";
 
-const log = Log.child(__filename);
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
 import Home from "components/Pages/Home";
@@ -29,12 +27,12 @@ function menuMiddleware(context, next) {
 export default function initRoutes() {
     page("/", analyticsMiddleware, menuMiddleware, function (context) {
         if (context.pathname.slice(0, 10) === "/#/player/") {
-            log.trace("got a legacy url");
+            console.debug("got a legacy url");
             const id = context.pathname.slice(11).split(/[\/?#]/)[0];
             page.redirect("/player/" + id);
             return;
         }
-        log.debug("router mount <Home />");
+        console.debug("router mount <Home />");
         store.merge({
             config: Pageconfig.INITIAL,
             Component: Home,
@@ -48,7 +46,7 @@ export default function initRoutes() {
         setMeta();
     });
     page("/search/:query", analyticsMiddleware, menuMiddleware, function (ctx) {
-        log.debug("router mount <Search />");
+        console.debug("router mount <Search />");
         const qs = parse(ctx.querystring);
         const exact = qs.exact === "true" || qs.exact === "1";
         if (ctx.params.query && ctx.params.query.length > 2) {
@@ -89,7 +87,7 @@ export default function initRoutes() {
         }
     });
     page("/player/:id", analyticsMiddleware, menuMiddleware, function (ctx) {
-        log.debug("router mount <Detail />");
+        console.debug("router mount <Detail />");
         const id = ctx.params.id;
         store.merge({
             config: Pageconfig.DETAIL,
@@ -133,7 +131,7 @@ export default function initRoutes() {
     page("/leaderboard/chanka", analyticsMiddleware, menuMiddleware, function () {
         const board = "operatorpvp_tachanka_turretkill";
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
-        log.debug("router mount <Chankaboard />");
+        console.debug("router mount <Chankaboard />");
         store.merge({
             config: Pageconfig.CHANKABOARD,
             Component: Chankaboard,
@@ -162,7 +160,7 @@ export default function initRoutes() {
     });
     page("/leaderboard/:board", analyticsMiddleware, menuMiddleware, function (ctx) {
         const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
-        log.debug("router mount <Leaderboard />");
+        console.debug("router mount <Leaderboard />");
         store.merge({
             config: Pageconfig.LEADERBOARD,
             Component: Leaderboard,
@@ -191,7 +189,7 @@ export default function initRoutes() {
     });
     page("*", function (ctx) {
         if (ctx.path.startsWith("//")) {
-            log.trace("trying to redirect path", ctx);
+            console.debug("trying to redirect path", ctx);
             page.redirect(ctx.path.substr(1));
         } else {
             log.warn("route not found", ctx);

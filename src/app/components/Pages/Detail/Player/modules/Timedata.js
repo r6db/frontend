@@ -1,9 +1,10 @@
 import m from "mithril";
-import moment from "moment";
 
-const secToHours = sec => moment.duration(sec || 0, "seconds")
-    .asHours()
-    .toFixed(2) + " hours";
+function secToHours(seconds) {
+    const hours = seconds / (60 * 60);
+    return hours.toFixed(2) +  "hours";
+}
+
 
 export default {
     view: ({ attrs }) => (
@@ -13,7 +14,7 @@ export default {
                 <div className="module-row">
                     <div className="module-label">First added</div>
                     <div className="module-value">
-                        {moment(attrs.player.created_at).fromNow()}
+                        {new Date(attrs.player.created_at).toLocaleDateString()}
                     </div>
                 </div>
                 {attrs.player.lastPlayed
@@ -21,7 +22,7 @@ export default {
                         <div className="module-label">Last played</div>
                         <div className="module-value">
                             {attrs.player.lastPlayed.last_played
-                                ? moment(attrs.player.lastPlayed.last_played).fromNow()
+                                ? new Date(attrs.player.lastPlayed.last_played).toLocaleDateString()
                                 : "-"}
                         </div>
                     </div>)

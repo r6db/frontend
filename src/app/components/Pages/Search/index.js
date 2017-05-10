@@ -1,12 +1,8 @@
 import m from "mithril";
 import Result from "./Result";
 import "./search.scss";
-import Log from "lib/log";
-const log = Log.child(__filename);
-
 
 const showPlayer = id => `/player/${id}`;
-
 
 module.exports = {
     view({ attrs, state }) {

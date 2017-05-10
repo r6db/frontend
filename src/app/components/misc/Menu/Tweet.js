@@ -1,6 +1,4 @@
 import m from "mithril";
-import moment from "moment";
-import { DATE_SHORT } from "lib/constants";
 import "./tweet.scss";
 
 export default {
