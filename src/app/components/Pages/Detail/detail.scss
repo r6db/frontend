@@ -75,13 +75,13 @@ $detail-header-height: $detail-image-height + (5*$l);
 }
 
 .detail-headertext{
-	padding-left: (2*$l);
+	padding-left: $l;
 	flex: 1;
 }
 .detail-name{
 	width: 100%;
 	padding-bottom: $l;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	overflow: hidden;
 	white-space: nowrap;
@@ -89,6 +89,9 @@ $detail-header-height: $detail-image-height + (5*$l);
 	text-shadow: 0 0 1px $gray-dark;
 
 	@include medium {
+		font-size: 2rem;
+	}
+	@include large{
 		font-size: 3rem;
 	}
 }
