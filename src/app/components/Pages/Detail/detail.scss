@@ -176,6 +176,8 @@ $detail-header-height: $detail-image-height + (5*$l);
 	width: auto;
 	transform: translateZ(0);
 	backface-visibility: hidden;
+	-webkit-overflow-scrolling: touch;
+	
 	&:after{
 		content: "";
 		display: block;
