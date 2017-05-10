@@ -3,11 +3,11 @@ import m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import Alias from "./Alias";
 import Rank from "./Rank";
-import Playtime from "./modules/Playtime";
 import Timedata from "./modules/Timedata";
 import Casual from "./modules/Casual";
 import General from "./modules/General";
-import RankedStats from "./modules/RankedStats";
+import Ranked from "./modules/Ranked";
+import RankedSeason from "./modules/RankedSeason";
 import { getRegionName } from "lib/region";
 import Log from "lib/log";
 const log = Log.child(__filename);
@@ -46,12 +46,12 @@ export default {
                     </div>
                     <div className="detail-stats">
                         <Timedata player={attrs} />
-                        <Playtime player={attrs} />
                         <General player={attrs} />
                         <Casual player={attrs} />
-                        {attrs.rank && attrs.rank.ncsa ? <RankedStats region={getRegionName("ncsa")}stats={attrs.rank.ncsa}/> : null}
-                        {attrs.rank && attrs.rank.emea ? <RankedStats region={getRegionName("emea")} stats={attrs.rank.emea} /> : null}
-                        {attrs.rank && attrs.rank.apac ? <RankedStats region={getRegionName("apac")} stats={attrs.rank.apac} /> : null}
+                        <Ranked player={attrs} />
+                        {attrs.rank && attrs.rank.ncsa ? <RankedSeason region={getRegionName("ncsa")}stats={attrs.rank.ncsa}/> : null}
+                        {attrs.rank && attrs.rank.emea ? <RankedSeason region={getRegionName("emea")} stats={attrs.rank.emea} /> : null}
+                        {attrs.rank && attrs.rank.apac ? <RankedSeason region={getRegionName("apac")} stats={attrs.rank.apac} /> : null}
                     </div>
                 </div>
             </div>

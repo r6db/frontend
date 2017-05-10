@@ -27,9 +27,21 @@ export default {
                     </div>)
                     : ""}
                 <div className="module-row">
-                    <div className="module-label">Last updated</div>
+                    <div className="module-label">Casual</div>
                     <div className="module-value">
-                        {moment(attrs.player.aliases[0].updated_at).fromNow()}
+                        {secToHours(attrs.player.lastPlayed.casual)}
+                    </div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Ranked</div>
+                    <div className="module-value">
+                        {secToHours(attrs.player.lastPlayed.ranked)}
+                    </div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Total</div>
+                    <div className="module-value">
+                        {secToHours(attrs.player.lastPlayed.casual + attrs.player.lastPlayed.ranked)}
                     </div>
                 </div>
             </div>

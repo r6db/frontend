@@ -15,7 +15,7 @@ export default {
     },
     view: ({ attrs, state }) => state.season != null
         ? (<div className="detail-rankedstats module">
-            <header className="module-header">Ranked Stats {attrs.region} (season)</header>
+            <header className="module-header">Ranked Season ({attrs.region})</header>
             <div className="module-content">
                  <div className="module-row">
                     <div className="module-label">Wins</div>
