@@ -26,7 +26,7 @@ export default {
                 <div className="menu-center">
                     <a href="/" className="menu-item">Home</a>
                     <a href="/leaderboard" className="menu-item">Leaderboard</a>
-                    {isPC ? null : <a href="https://r6db.com" className="menu-item">PC Size</a>}
+                    {isPC ? null : <a href="https://r6db.com" className="menu-item">PC Site</a>}
                     {isPS4 ? null : <a href="https://ps4.r6db.com" className="menu-item">PS4 Site</a>}
                     {isXbox ? null : <a href="https://xbox.r6db.com" className="menu-item">XBOX Site</a>}
                     <div className="menu-platforms">
