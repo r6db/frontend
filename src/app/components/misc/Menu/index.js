@@ -18,17 +18,23 @@ export default {
         return (
             <div className="menu">
                 <div className="menu-top">
-                    <a href="/">
-                        <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
-                    </a>
-                    <span className="platform">{platform}</span>
+                    <div className="menu-logo">
+                        <a href="/">
+                            <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
+                        </a>
+                        <span className="platform">{platform}</span>
+                    </div>
+                    <div className="menu-platforms">
+                        <a href="https://r6db.com"
+                            className={`menu-item ${isPC ? "is-active" : ""}`}>PC</a><a href="https://ps4.r6db.com"
+                            className={`menu-item ${isPS4 ? "is-active" : ""}`}>PS4</a>
+                        <a href="https://xbox.r6db.com"
+                            className={`menu-item ${isXbox ? "is-active" : ""}`}>XBOX</a>
+                    </div>
                 </div>
                 <div className="menu-center">
                     <a href="/" className="menu-item">Home</a>
                     <a href="/leaderboard" className="menu-item">Leaderboard</a>
-                    {isPC ? null : <a href="https://r6db.com" className="menu-item">PC Site</a>}
-                    {isPS4 ? null : <a href="https://ps4.r6db.com" className="menu-item">PS4 Site</a>}
-                    {isXbox ? null : <a href="https://xbox.r6db.com" className="menu-item">XBOX Site</a>}
                     <div className="menu-platforms">
                         
                     </div>

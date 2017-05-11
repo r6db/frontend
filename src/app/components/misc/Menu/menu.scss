@@ -11,15 +11,9 @@
     .is-open &{
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
-
     &-logo{
-        width: 60%;
-        max-height: 20vh;
-    }
-    &-top{
         flex: 0 0 auto;
-        padding: 2*$l;
-        border-bottom: 1px solid lighten($menu-background, 5%);
+        padding: (2*$l) (2*$l) 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -30,6 +24,19 @@
             @include large{
                 width: 100%
             }
+        }
+    }
+    &-platforms{
+        .menu-item{
+            border-right: 1px solid lighten($menu-background, 5%);
+            
+            &:last-child{
+                border-right: none;
+            }
+        }
+        .is-active{
+            color: $accent;
+            border-bottom: 2px solid $accent;
         }
     }
     &-center{
