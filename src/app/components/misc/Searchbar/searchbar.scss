@@ -13,7 +13,7 @@
 	background: $trans-med;
 
 	@include large{
-		height: 7*$l;
+		height: 5*$l;
 	}
 }
 .search-input{
@@ -28,8 +28,8 @@
 		height: 100%;
 
 		@include large{
-			font-size: 20px;
-			height: 7*$l;
+			font-size: 1.25rem;
+			height: 5*$l;
 		}
 		
 		&:focus{
@@ -68,10 +68,10 @@
 	border-radius: 1px;
 	background: $primary;
 	color: $white;
-	cursor: pointer;;
+	cursor: pointer;
+
 	@include large{
 		flex: 0 0 auto;
 		padding: .5em 3em;
-		font-size: 20px
 	}
 }

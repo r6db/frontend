@@ -19,7 +19,7 @@
     &-top{
         flex: 0 0 auto;
         padding: 2*$l;
-        border-bottom: 1px solid rgb(64, 64, 64);
+        border-bottom: 1px solid lighten($menu-background, 5%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -53,14 +53,12 @@
     &-item{
         color: $white;
         display: block;
-        padding: 1em;
-        font-weight: bold;
+        padding: ($l*2) $l;
         cursor: pointer;
-        font-size: 18px;
-        border-bottom: 1px solid rgb(64, 64, 64);
-
+        border-bottom: 1px solid lighten($menu-background, 5%);
+        transition: 100ms linear background;
         &:hover{
-            color: $menu-hover-color;
+            background: lighten($menu-background, 5%);
         }
     }
     &-search{
@@ -99,9 +97,10 @@
         }
     }
     &-footer{
-        padding: $l 0;
         display: flex;
+        padding: $l 0;
         align-items: flex-start;
+        border-top: 1px solid lighten($menu-background, 5%);
         a{
             height: 2em;
             line-height: 2em;
