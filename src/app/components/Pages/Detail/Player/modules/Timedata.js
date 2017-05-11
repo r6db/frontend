@@ -1,10 +1,11 @@
 import m from "mithril";
 
-function secToHours(seconds) {
-    const hours = seconds / (60 * 60);
-    return hours.toFixed(2) +  "hours";
+function formatDuration(seconds) {
+    const rawHours = seconds / (60 * 60);
+    const hours = rawHours | 0;
+    const minutes = ((rawHours % 1) * 60).toFixed(0);
+    return `${hours}h ${minutes}m`;
 }
-
 
 export default {
     view: ({ attrs }) => (
@@ -30,19 +31,19 @@ export default {
                 <div className="module-row">
                     <div className="module-label">Casual</div>
                     <div className="module-value">
-                        {secToHours(attrs.player.lastPlayed.casual)}
+                        {formatDuration(attrs.player.lastPlayed.casual)}
                     </div>
                 </div>
                 <div className="module-row">
                     <div className="module-label">Ranked</div>
                     <div className="module-value">
-                        {secToHours(attrs.player.lastPlayed.ranked)}
+                        {formatDuration(attrs.player.lastPlayed.ranked)}
                     </div>
                 </div>
                 <div className="module-row">
                     <div className="module-label">Total</div>
                     <div className="module-value">
-                        {secToHours(attrs.player.lastPlayed.casual + attrs.player.lastPlayed.ranked)}
+                        {formatDuration(attrs.player.lastPlayed.casual + attrs.player.lastPlayed.ranked)}
                     </div>
                 </div>
             </div>
