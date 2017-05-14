@@ -31,7 +31,7 @@ export default {
                                     {attrs.id}
                                 </a> }
                                 {
-                                    attrs.globalRank === -1 ? '' :
+                                    attrs.globalRank === 0 ? '' :
                                     <div className="detail-global-rank">
                                         Global <span>#{attrs.globalRank}</span>
                                     </div>

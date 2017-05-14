@@ -74,7 +74,7 @@ const handleResponse = data => {
         .map(fixAlias)
         .sort((a, b) => b.created_at - a.created_at);
     player.name = player.aliases[0].name;
-    player.globalRank = globalRank;
+    player.globalRank = globalRank + 1;
     return player;
 };
 
