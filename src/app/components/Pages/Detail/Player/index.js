@@ -30,7 +30,13 @@ export default {
                                     title="show on uplay">
                                     {attrs.id}
                                 </a> }
-                            </div>    
+                                {
+                                    attrs.globalRank === -1 ? '' :
+                                    <div className="detail-global-rank">
+                                        Global <span>#{attrs.globalRank}</span>
+                                    </div>
+                                }
+                            </div>
                         </div>
                         <div className="detail-seasonranks">
                             {attrs.pastRanks.map(x => <Rank rank={x} />)}

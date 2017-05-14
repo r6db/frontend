@@ -13,12 +13,31 @@ const fixAlias = alias => {
 
 const getPlayer = id => { 
     store.set("loading", "getting data ...");
-    return fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
-        .then(failEarly)
-        .then(res => res.json());
+    let promises = [
+        fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
+            .then(failEarly)
+            .then(res => res.json()),
+        fetch(`${v2Api}/players/${id}/placement?stat=highest_skill_adjusted`, { headers: getHeaders() })
+            .then(failEarly)
+            .then(res => res.json())
+            .then(function (placements) {
+                let placement = placements.filter(function (placement) {
+                    return placement.id === id;
+                })[0];
+                if (placement) {
+                    return placement.rank;
+                }
+                return -1;
+            })
+            .catch(x => -1)
+    ];
+    return Promise.all(promises);
 };
 
-const handleResponse = player => {
+const handleResponse = data => {
+    let player = data[0];
+    let globalRank = data[1];
+
     store.set("loading", "crunching data ...");
     player.flags = {
         noAliases: false,
@@ -43,18 +62,19 @@ const handleResponse = player => {
     const noEmea = player.rank.emea.rank === 0;
     const noRank = noNcsa && noApac && noEmea;
     if (!player.rank || noRank) {
-        player.flags.noRanked = true;    
+        player.flags.noRanked = true;
     }
     player.pastRanks = player.seasonRanks
             .concat(player.rank)
             .map(x => [x.ncsa, x.emea, x.apac]
                 .map(y => ({ rank: y.max_rank, season: x.season }))
                 .sort((a, b) => b.rank - a.rank)[0]);
-    
+
     player.aliases = player.aliases
         .map(fixAlias)
         .sort((a, b) => b.created_at - a.created_at);
     player.name = player.aliases[0].name;
+    player.globalRank = globalRank;
     return player;
 };
 

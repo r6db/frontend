@@ -48,6 +48,12 @@ $detail-header-height: $detail-image-height + (5*$l);
 		flex-direction: row;
 	}
 }
+.detail-global-rank {
+	margin-top: 10px;
+	span {
+		font-weight: 800;
+	}
+}
 .detail-headerimage{
 	position: relative;
 	width: 10*$l;
