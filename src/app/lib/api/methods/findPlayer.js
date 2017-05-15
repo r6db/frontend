@@ -30,8 +30,6 @@ function memoize( fn ) {
 }
 
 
-
-const timeDiff = time => new Date() - new Date(time);
 const asRegex = string => {
     const res = string.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")
         .split("")
@@ -53,39 +51,35 @@ const asRegex = string => {
 };
 
 const Values = {
-    EXACT: 50,
-    START: 20,
-    PARTIAL: 10,
-    REGEX: 5,
-    CURRENT_MODIFIER: 2,
-    LOSS_PER_SECOND: (1 / 86400) * 0.001 // 86400 is the amount of seconds in a day. we lose 0.1% value per day
+    EXACT: 100,
+    START: 40,
+    PARTIAL: 20,
+    REGEX: 10,
+    CURRENT_MODIFIER: 5,
 };
 
 const aliasValue = (query, current) => alias => {
     let score = 0;
-    if (alias.name === query) {
+    const normQuery = query.toLowerCase();
+    const normAlias = alias.name.toLowerCase();
+    if (normAlias === normQuery) {
         score += Values.EXACT;
-    } else if (alias.name.indexOf(query) === 0) {
+    } else if (normAlias.indexOf(normQuery) === 0) {
         score += Values.START;
-    } else if (alias.name.indexOf(query) !== -1) {
+    } else if (normAlias.indexOf(normQuery) !== -1) {
         score += Values.PARTIAL;
-    } else if (asRegex(query).test(alias.name)) {
+    } else if (asRegex(normQuery).test(normAlias)) {
         score += Values.REGEX;
     }
-    if (alias.name === current) {
+    if (normAlias === current) {
         score * Values.CURRENT_MODIFIER;
     }
-    score * (1 - (Values.LOSS_PER_SECOND * timeDiff(alias.created_at)));
     return score;
 };
 
-const playerValue = query => memoize(player => {
-    let val = player.aliases
-        .map(aliasValue(query, player.name))
-        .reduce((a, b) => a + b, 0);
-    val = val * (1 / player.aliases.length);
-    return val;
-});
+const playerValue = query => memoize(player => player.aliases
+    .map(aliasValue(query, player.name))
+    .reduce((a, b) => a + b, 0));
 
 
 const fixAlias = alias => {
