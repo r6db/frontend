@@ -78,3 +78,4 @@ export const isPC = !isConsole;
 
 export const DATE_SHORT = "DD. MMM YYYY";
 export const DATE_LONG = "DD. MMM YYYY HH:MM";
+

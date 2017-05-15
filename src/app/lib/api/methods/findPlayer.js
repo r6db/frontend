@@ -62,6 +62,7 @@ const aliasValue = (query, current) => alias => {
     let score = 0;
     const normQuery = query.toLowerCase();
     const normAlias = alias.name.toLowerCase();
+    const normCurrent = current.toLowerCase();
     if (normAlias === normQuery) {
         score += Values.EXACT;
     } else if (normAlias.indexOf(normQuery) === 0) {
@@ -71,8 +72,8 @@ const aliasValue = (query, current) => alias => {
     } else if (asRegex(normQuery).test(normAlias)) {
         score += Values.REGEX;
     }
-    if (normAlias === current) {
-        score * Values.CURRENT_MODIFIER;
+    if (normAlias === normCurrent) {
+        score = score * Values.CURRENT_MODIFIER;
     }
     return score;
 };
@@ -101,9 +102,11 @@ const processPlayer = player => {
 const parseResponse = (name, exact) => players => {
     store.set("loading", "sorting players ...");
     const sorter = playerValue(name);
-    return players
+    const res = players
         .map(processPlayer)
         .sort((a, b) => sorter(b) - sorter(a));
+    console.table(res.map(x => ({ name: x.name, aliases: x.aliases, value: sorter(x) })));
+    return res;
 };
 
 const getUrl = (name, exact) => `${v2Api}/players?name=${name}&exact=${exact ? "1" : "0"}`;
