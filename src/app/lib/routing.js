@@ -82,6 +82,11 @@ export default function initRoutes() {
                 })
                 .catch(function(err) {
                     log.warn(err);
+                    state.merge({
+                        config: Pageconfig.RESULT,
+                        data: [],
+                        loading: false
+                    });
                     setMeta();
                 });
         } else {
@@ -124,6 +129,10 @@ export default function initRoutes() {
             })
             .catch(function(err) {
                 console.warn(err);
+                store.merge({
+                    data: null,
+                    loading: false
+                });
                 setMeta();
             });
     });

@@ -5,8 +5,8 @@ export default {
 
     view() {
         return (
-            <DetailError title="RIP">
-                Something went really wrong. We're working on it !
+            <DetailError title="404: Not found">
+                uh oh...
             </DetailError>
         );
     }
