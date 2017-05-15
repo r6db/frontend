@@ -13,7 +13,7 @@ const fixAlias = alias => {
 
 const getPlayer = id => { 
     store.set("loading", "getting data ...");
-    let promises = [
+    const promises = [
         fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
             .then(failEarly)
             .then(res => res.json()),
@@ -21,7 +21,7 @@ const getPlayer = id => {
             .then(failEarly)
             .then(res => res.json())
             .then(function (placements) {
-                let placement = placements.filter(function (placement) {
+                const placement = placements.filter(function (placement) {
                     return placement.id === id;
                 })[0];
                 if (placement) {
@@ -35,8 +35,8 @@ const getPlayer = id => {
 };
 
 const handleResponse = data => {
-    let player = data[0];
-    let globalRank = data[1];
+    const player = data[0];
+    const globalRank = data[1];
 
     store.set("loading", "crunching data ...");
     player.flags = {

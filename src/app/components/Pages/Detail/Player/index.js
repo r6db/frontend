@@ -9,8 +9,7 @@ import General from "./modules/General";
 import Ranked from "./modules/Ranked";
 import RankedSeason from "./modules/RankedSeason";
 import { getRegionName } from "lib/region";
-
-const isConsole = require("lib/constants").isConsole;
+import { isConsole } from "lib/constants";
 
 export default {
     view({ attrs, state }) {
@@ -30,12 +29,11 @@ export default {
                                     title="show on uplay">
                                     {attrs.id}
                                 </a> }
-                                {
-                                    attrs.globalRank === 0 ? '' :
-                                    <div className="detail-global-rank">
+                                {attrs.globalRank === 0
+                                    ? null
+                                    : <div className="detail-global-rank">
                                         Global <span>#{attrs.globalRank}</span>
-                                    </div>
-                                }
+                                    </div>}
                             </div>
                         </div>
                         <div className="detail-seasonranks">
