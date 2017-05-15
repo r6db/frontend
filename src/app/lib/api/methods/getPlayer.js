@@ -38,6 +38,15 @@ const handleResponse = data => {
     const player = data[0];
     const globalRank = data[1];
 
+    if (!player.rank || Object.keys(player.rank).length == 0) {
+        player.rank = null;
+    }
+    if (!player.stats || Object.keys(player.stats).length == 0) {
+        player.stats = null;
+    }
+    player.rank = null;
+    player.stats = null;
+
     store.set("loading", "crunching data ...");
     player.flags = {
         noAliases: false,
@@ -57,18 +66,19 @@ const handleResponse = data => {
     }
 
     // check if has rank
-    const noNcsa = player.rank.ncsa.rank === 0;
-    const noApac = player.rank.apac.rank === 0;
-    const noEmea = player.rank.emea.rank === 0;
+    const noNcsa = player.rank && player.rank.ncsa.rank === 0;
+    const noApac = player.rank && player.rank.apac.rank === 0;
+    const noEmea = player.rank && player.rank.emea.rank === 0;
     const noRank = noNcsa && noApac && noEmea;
     if (!player.rank || noRank) {
         player.flags.noRanked = true;
     }
     player.pastRanks = player.seasonRanks
-            .concat(player.rank)
-            .map(x => [x.ncsa, x.emea, x.apac]
-                .map(y => ({ rank: y.max_rank, season: x.season }))
-                .sort((a, b) => b.rank - a.rank)[0]);
+        .concat(player.rank)
+        .filter(x => !!x)
+        .map(x => [x.ncsa, x.emea, x.apac]
+            .map(y => ({ rank: y.max_rank, season: x.season }))
+            .sort((a, b) => b.rank - a.rank)[0]);
 
     player.aliases = player.aliases
         .map(fixAlias)
