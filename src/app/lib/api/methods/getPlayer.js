@@ -11,7 +11,7 @@ const fixAlias = alias => {
 };
 
 
-const getPlayer = id => { 
+const getPlayer = id => {
     store.set("loading", "getting data ...");
     const promises = [
         fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
