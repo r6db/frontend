@@ -81,7 +81,7 @@ export default function initRoutes() {
                     });
                 })
                 .catch(function(err) {
-                    log.warn(err);
+                    console.warn(err);
                     setMeta();
                 });
         } else {
@@ -118,7 +118,7 @@ export default function initRoutes() {
                         });
                     }
                 } else {
-                    log.info("discarded data from previous route");
+                    console.info("discarded data from previous route");
                     store.set("loading", false);
                 }
             })
@@ -194,7 +194,7 @@ export default function initRoutes() {
             console.debug("trying to redirect path", ctx);
             page.redirect(ctx.path.substr(1));
         } else {
-            log.warn("route not found", ctx);
+            console.warn("route not found", ctx);
             page.redirect("/");
         }
     });
