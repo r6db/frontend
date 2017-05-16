@@ -58,7 +58,7 @@ export default {
                         )}
                     </div>
                     <a href="/leaderboard/chanka">
-                        <img src="/assets/chanky.png" id="chanky" alt="chanky"/>
+                        <img src="https://r6db.com/assets/chanky.png" id="chanky" alt="chanky"/>
                     </a>
                 </div>)
                 : null

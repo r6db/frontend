@@ -44,8 +44,6 @@ const handleResponse = data => {
     if (!player.stats || Object.keys(player.stats).length == 0) {
         player.stats = null;
     }
-    player.rank = null;
-    player.stats = null;
 
     store.set("loading", "crunching data ...");
     player.flags = {
