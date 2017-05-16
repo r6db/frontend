@@ -12,8 +12,7 @@ import { failEarly, getHeaders } from "../utils";
 * Released under an MIT license.
 */
 function memoize( fn ) {
-    return function () {
-        const args = Array.prototype.slice.call(arguments);
+    return function (...args) {
         let hash = "";
         let i = args.length;
         let currentArg = null;
@@ -103,6 +102,7 @@ const parseResponse = (name, exact) => players => {
     store.set("loading", "sorting players ...");
     const sorter = playerValue(name);
     const res = players
+        .filter(x => x.aliases && x.aliases.length)
         .map(processPlayer)
         .sort((a, b) => sorter(b) - sorter(a));
     console.table(res.map(x => ({ name: x.name, aliases: x.aliases, value: sorter(x) })));
@@ -118,5 +118,3 @@ export default function (name, exact) {
         .then(res => res.json())
         .then(parseResponse(name, exact));
 }
-
-
