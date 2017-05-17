@@ -28,6 +28,7 @@ export const Pageconfig = Object.freeze({
     DETAIL: { id: "DETAIL", class: "is-detail" },
     LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
     CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
+    FAQ: { id: "FAQ", class: "is-faq"}
 });
 
 /**
