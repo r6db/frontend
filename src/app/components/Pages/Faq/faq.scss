@@ -1,0 +1,62 @@
+@import "styles";
+
+.faq{
+    color: $white;
+    max-width: $screen-yourmom;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &-item{
+        background: $trans-med;
+        margin-bottom: $l*2;
+    }
+
+    &-question{
+        display: block;
+        padding: $l*2;
+        user-select: none;
+        color: $accent;
+        cursor: pointer;
+    }
+
+    &-answer{
+        padding: $l ($l*2) ($l*2);
+        
+        .is-closed &{
+            display: none;
+        }
+
+        p{
+            line-height: 1.4;
+            margin-bottom: 1em;
+        }
+
+        blockquote{
+            border-left: 5px solid $primary;
+            padding-left: $l;
+            margin: $l 0;
+        }
+
+        em{
+            background: $primary;
+            font-weight: bold;
+            padding: 3px;
+            border-radius: 3px;
+            margin: 0 2px;
+        }
+
+        i{
+            font-style: italic;
+        }
+        
+        ul{
+            list-style: initial;
+            padding-left: $l*2;
+            margin: $l 0;
+        }
+        a{
+            color: $accent;
+        }
+    }
+}

@@ -71,7 +71,7 @@ export default {
                 </Drawer>
                 <div className="app">
                     <div className="app-background">
-                        <img src="/assets/bg_prim.svg" />
+                        <img src="https://r6db.com/assets/bg_prim.svg" />
                     </div>
                     <div className="app-content">
                         {TopbarComponent}

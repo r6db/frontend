@@ -22,7 +22,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../build"),
-        publicPath: "/",
+        publicPath: "https://r6db.com/",
         filename: "js/[name].js",
         pathinfo: true
     },

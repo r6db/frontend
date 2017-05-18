@@ -13,6 +13,7 @@ import Search from "components/Pages/Search";
 import Detail from "components/Pages/Detail";
 import Leaderboard from "components/Pages/Leaderboard";
 import Chankaboard from "components/Pages/Chankaboard";
+import Faq from "components/Pages/Faq";
 
 function analyticsMiddleware(context, next) {
     ga("set", "page", context.path);
@@ -66,7 +67,7 @@ export default function initRoutes() {
                 }
             });
             api.findPlayer(ctx.params.query, exact)
-                .then(function(res) {
+                .then(function (res) {
                     store.merge({
                         config: Pageconfig.RESULT,
                         data: {
@@ -80,8 +81,13 @@ export default function initRoutes() {
                         description: `Find ${ctx.params.query} in the community database for Rainbow Six: Siege`
                     });
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     console.warn(err);
+                    state.merge({
+                        config: Pageconfig.RESULT,
+                        data: [],
+                        loading: false
+                    });
                     setMeta();
                 });
         } else {
@@ -122,8 +128,12 @@ export default function initRoutes() {
                     store.set("loading", false);
                 }
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.warn(err);
+                store.merge({
+                    data: null,
+                    loading: false
+                });
                 setMeta();
             });
     });
@@ -184,10 +194,19 @@ export default function initRoutes() {
                     type: "website"
                 });
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.warn(err);
                 setMeta();
             });
+    });
+
+    page("/faq", function () {
+        store.merge({
+            config: Pageconfig.FAQ,
+            Component: Faq,
+            loading: false,
+            data: null
+        });
     });
     page("*", function (ctx) {
         if (ctx.path.startsWith("//")) {
