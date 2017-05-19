@@ -1,7 +1,7 @@
 import * as m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import "./playercard.scss";
-const isConsole = require("lib/constants").isConsole;
+import { isConsole, platformShorthand } from "lib/constants";
 
 const round = (number, digits) => ((number * digits) | 0) / digits;
 
@@ -30,12 +30,12 @@ const getStats = player => (
         : null
 );
 export default {
-    view({attrs, state}) { 
+    view({attrs, state}) {
         return (
             <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
                 <a href={attrs.href} className="card-image">
                     <span className="player-level">lvl {attrs.player.level}</span>
-                    <Profilepic id={attrs.player.id} delay={attrs.index} />
+                    <Profilepic id={attrs.player.userId || attrs.player.id} delay={attrs.index} />
                 </a>
                 <div className="card-content">
                     <div className="player-identification">
@@ -43,10 +43,10 @@ export default {
                         <span className="player-id">{attrs.player.id}</span>
                     </div>
                     {getAliases(attrs.player)}
-                    {isConsole
+                    { isConsole && !attrs.player.userId
                         ? null
-                        : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.player.id}/multiplayer`} className="player-uplaylink">
-                            › view on uplay
+                        : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="player-uplaylink">
+                            › view on Ubisoft
                         </a>
                     }
                 </div>

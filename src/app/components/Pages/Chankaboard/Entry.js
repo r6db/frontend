@@ -1,5 +1,5 @@
 import * as m from "mithril";
-const isConsole = require("lib/constants").isConsole;
+import { isConsole, platformShorthand } from "lib/constants";
 
 export default {
     view({attrs}) {
@@ -9,7 +9,7 @@ export default {
                 <div className="entry-content">
                     <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>
 
-                    {isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`} className="entry-link">
+                    { isConsole && !attrs.userId || !isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.userId || attrs.id }/multiplayer`} className="entry-link">
                         › view on uplay
                     </a>}
                     <div className="entry-rating">
