@@ -42,7 +42,6 @@ config.devServer = {
         chunkOrigins: false
     }
 };
-config.output.publicPath = "/";
 
 config.plugins.push(new webpack.DefinePlugin({
     "process.env": {

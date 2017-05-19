@@ -22,7 +22,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../build"),
-        publicPath: "https://r6db.com/",
+        publicPath: "/",
         filename: "js/[name].js",
         pathinfo: true
     },
@@ -41,16 +41,15 @@ module.exports = {
         rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: "babel-loader",
+            use: "babel-loader",
             query: {
                 cacheDirectory: "./.cache"
             }
         }, {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract({
-                fallbackLoader: "style-loader",
-                diable: process.env.NODE_ENV !== "production",
-                loader: [
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: [
                     "css-loader",
                     {
                         loader: "postcss-loader"
@@ -65,7 +64,7 @@ module.exports = {
             })
         }, {
             test: /.svg$/,
-            loader: "svg-sprite-loader",
+            use: "svg-sprite-loader",
             query: {
                 name: "[name]",
                 prefixize: true

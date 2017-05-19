@@ -3,6 +3,7 @@
  */
 
 // import polyfills
+import "babel-polyfill";
 import "isomorphic-fetch";
 
 // import deps

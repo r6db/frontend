@@ -1,7 +1,15 @@
 {
-  "presets": ["es2015"],
+  "presets": [
+    ["env", {
+      "modules": false,
+      "loose": true,
+      "targets": {
+        "uglify": true
+      },
+      "useBuiltIns": true
+    }]
+  ],
   "plugins": [
-    "transform-runtime",
 		"transform-object-rest-spread",
 		["transform-react-jsx", {"pragma": "m"}]
   ]
