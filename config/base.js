@@ -41,14 +41,17 @@ module.exports = {
         rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            use: "babel-loader",
-            query: {
-                cacheDirectory: "./.cache"
+            use: {
+                loader: "babel-loader",
+                options: {
+                    cacheDirectory: "./.cache"
+                }
             }
         }, {
             test: /\.scss$/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
+                disable: process.env.NODE_ENV !== "production",
                 use: [
                     "css-loader",
                     {
@@ -64,29 +67,18 @@ module.exports = {
             })
         }, {
             test: /.svg$/,
-            use: "svg-sprite-loader",
-            query: {
-                name: "[name]",
-                prefixize: true
-            }
+            use: {
+                loader: "svg-sprite-loader",
+                options: {
+                    name: "[name]",
+                    prefixize: true
+                }
+            },
         }]
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new HappyPack({
-            id: "jsHappy",
-            cacheContext: {
-                env: process.env.NODE_ENV
-            },
-            verbose: false,
-            loaders: [{
-                path: "babel-loader",
-                query: {
-                    cacheDirectory: "./.cache"
-                }
-            }]
-        }),
         new CopyWebpackPlugin([
             { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },
