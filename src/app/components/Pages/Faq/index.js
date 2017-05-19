@@ -81,7 +81,9 @@ export default {
                 </Question>
                 <Question question="What technologies do you guys use?">
                     <p>
-                        The backend is written in <a href="https://nodejs.org/en/">Node JS</a>, and uses <a href="https://www.rethinkdb.com/">RethinkDB</a> and <a href="https://redis.io/">Redis</a> as data storage.
+                        The backend is written in <a href="https://nodejs.org/en/">Node JS</a>,
+                        and uses <a href="https://www.rethinkdb.com/">RethinkDB</a> and <a href="https://redis.io/">Redis</a> as data storage.
+                        Jobs are triggered through <a href="https://www.rabbitmq.com">RabbitMQ</a>.
                     </p>
                     <p>
                         On the frontend, we use <a href="https://mithril.js.org/">Mithril</a> (highly recommended) as framework with <a href="https://github.com/visionmedia/page.js/">PageJS</a> for routing and <a href="https://github.com/Yomguithereal/baobab">Baobab</a> for state management.  
