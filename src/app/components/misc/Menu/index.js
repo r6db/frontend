@@ -40,7 +40,7 @@ export default {
                 </div>
                 <footer className="menu-bottom is-center">
                     <div className="menu-tweets">{
-                        attrs.store.get("tweets")
+                        attrs.tweets
                             .map(tweet => <Tweet {...tweet} />)
                     }</div>
                     <div className="menu-footer">

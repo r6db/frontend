@@ -1,5 +1,5 @@
 import { v2Api } from "lib/constants";
-import store from "lib/store";
+import { set as stateSet } from "lib/appstate";
 import { failEarly, getHeaders } from "../utils";
 
 
@@ -98,8 +98,8 @@ const processPlayer = player => {
     return player;
 };
 
-const parseResponse = (name, exact) => players => {
-    store.set("loading", "sorting players ...");
+const parseResponse = name => players => {
+    stateSet("loading", "sorting players ...");
     const sorter = playerValue(name);
     const res = players
         .filter(x => x.aliases && x.aliases.length)
@@ -109,12 +109,12 @@ const parseResponse = (name, exact) => players => {
     return res;
 };
 
-const getUrl = (name, exact) => `${v2Api}/players?name=${name}&exact=${exact ? "1" : "0"}`;
+const getUrl = name => `${v2Api}/players?name=${name}`;
 
-export default function (name, exact) {
-    store.set("loading", "loading results ...");
-    return fetch(getUrl(name, exact), { headers: getHeaders() })
+export default function (name) {
+    stateSet("loading", "loading results ...");
+    return fetch(getUrl(name), { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())
-        .then(parseResponse(name, exact));
+        .then(parseResponse(name));
 }

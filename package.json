@@ -9,7 +9,6 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "baobab": "^2.3.3",
     "isomorphic-fetch": "^2.2.1",
     "mithril": "github:lhorie/mithril.js#rewrite",
     "page": "^1.7.1"

@@ -1,6 +1,5 @@
 import m from "mithril";
 import Searchbar from "../Searchbar";
-import store from "lib/store";
 import "./topbar.scss";
 
 export default {

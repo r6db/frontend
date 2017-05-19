@@ -8,7 +8,7 @@ import "isomorphic-fetch";
 // import deps
 import "../scss/styles.scss";
 import * as page from "page";
-import store from "lib/store";
+import * as appstate from "lib/appstate";
 import m from "mithril";
 
 if (process.env.NODE_ENV === "production") {
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
     // expose libs;
     window.page = page;
     window.m = m;
-    window.store = store;
+    window.appstate = appstate;
     
     // shim google analytics
     window["GoogleAnalyticsObject"] = window.ga = function() {};

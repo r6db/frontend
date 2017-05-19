@@ -1,18 +1,15 @@
 import m from "mithril";
 import "./drawer.scss";
 
+let toggleCallback = () => { };
+let showMenuCallback = () => { };
+
+export let toggleMenu = () => toggleCallback();
+export let showMenu = (bool) => showMenuCallback(bool);
+
 export default {
     oninit({ attrs, state }) {
-        const store = attrs.open;
-
-        store.on("update", function (e) { 
-            const isOpen = store.get();
-            if (store.get()) {
-                state.onOpenMenu();
-            } else {
-                state.onCloseMenu();
-            }
-        });
+        
 
         // interaction stuff
         state.isDragging = false;
@@ -22,6 +19,22 @@ export default {
         const MENU_MAX_WIDTH = 280;
         const TARGET_OPACITY = 0.8;
         const DRAG_THRESHOLD = 0.30;
+
+        showMenuCallback = function (val) {
+            if (val === true) {
+                state.onOpenMenu();
+            } else if(val === false) {
+                state.onCloseMenu();
+            }
+        }
+
+        toggleCallback = function () {
+            if (state.isOpen) {
+                state.onCloseMenu();
+            } else {
+                state.onOpenMenu();
+            }
+        }
 
         state.onTouchStart = function (e) {
             if (state.isOpen) { return; }

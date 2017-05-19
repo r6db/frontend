@@ -14,7 +14,7 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 import "./base.scss";
 import "./app.scss";
 
-import store from "lib/store";
+import * as appstate from "lib/appstate";
 import { Pageconfig } from "lib/constants";
 import initRoutes from "lib/routing";
 
@@ -39,35 +39,32 @@ const debounce = function (func, wait, immediate) {
 
 const update = debounce(function () {
     console.debug("state changed, redrawing");
-    console.debug("state", store.get());
+    console.debug("state", appstate.get());
     m.redraw();
 });
 
 export default {
     oninit(vnode) {
         initRoutes();
-        store.select("data").on("update", update);
-        store.select("tweets").on("update", update);
-        store.select("loading").on("update", update);
-        store.select("component").on("update", update);
+        appstate.onShouldRedraw(update);
 
     },
     view({ state }) {
-        const { Component, data, search, loading, config } = store.get();
+        const { Component, search } = appstate.get();
         // extend default pageconfig
-        const pconf = Object.assign({}, Pageconfig.default, config);
+        const pconf = Object.assign({}, Pageconfig.default, appstate.get("config"));
 
         const Search = pconf.searchbar
-            ? <Searchbar search={search} selector={store.select("search")} />
+            ? <Searchbar search={search} />
             : null;
 
         const TopbarComponent = pconf.menu
-            ? <Topbar>{Search}</Topbar>
+            ? <Topbar key="topbar">{Search}</Topbar>
             : null;
         return (
              <div className={"content-wrapper " + pconf.class}>
-                <Drawer open={store.select("menu")}> 
-                    <Menu loading={loading} data={data} store={store} search={search}  />
+                <Drawer> 
+                    <Menu tweets={appstate.get("tweets")} />
                 </Drawer>
                 <div className="app">
                     <div className="app-background">
@@ -76,10 +73,17 @@ export default {
                     <div className="app-content">
                         {TopbarComponent}
                         <div className="app-page">
-                            <Component loading={loading} data={data} store={store} search={search} />
+                            <Component
+                                loading={appstate.get("loading")}
+                                data={appstate.get("data")}
+                                store={appstate}
+                                search={search}
+                            />
                         </div>
                     </div>
-                    {optional(loading, () => <Loading />)}
+                    {optional(appstate.get("loading"),
+                        () => <Loading message={appstate.get("loading")} />)
+                    }
                 </div>
             </div>
         );
