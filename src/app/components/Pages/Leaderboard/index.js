@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import page from "page";
 import { Leaderboards } from "lib/constants";
 import Entry from "./Entry";

@@ -10,7 +10,7 @@ import "isomorphic-fetch";
 import "../scss/styles.scss";
 import * as page from "page";
 import * as appstate from "lib/appstate";
-import m from "mithril";
+import * as m from "mithril";
 
 if (process.env.NODE_ENV === "production") {
 

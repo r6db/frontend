@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 export default {

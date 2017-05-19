@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 const isConsole = require("lib/constants").isConsole;
 
 export default {

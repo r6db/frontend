@@ -1,9 +1,9 @@
-import m from "mithril";
+import * as m from "mithril";
 
 const getWL = o => (((o.won / (o.won + o.lost)) * 100) || 0).toFixed(2);
 const getKD = o => ((o.kills / o.deaths) || 0).toFixed(2);
 
-module.exports = {
+export default {
     view: ({ attrs }) => attrs.player.stats != null
         ? (<div className="detail-casualstats module">
             <header className="module-header">Casual Stats</header>

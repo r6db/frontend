@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import page from "page";
 import Home from "components/Pages/Home";
 import Search from "components/Pages/Search";

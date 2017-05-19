@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 
 function formatDuration(seconds) {
     const rawHours = seconds / (60 * 60);

@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import "./menu.scss";
 import Icon, { GLYPHS } from "../Icon";
 import Searchbar from "../Searchbar";

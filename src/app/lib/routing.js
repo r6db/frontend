@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import { parse } from "querystring";
 import page from "page";
 import * as appstate from "./appstate";

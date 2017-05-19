@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import "./alias.scss";
 
 const formatTitle = date => date

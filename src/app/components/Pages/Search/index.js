@@ -1,10 +1,10 @@
-import m from "mithril";
+import * as m from "mithril";
 import Result from "./Result";
 import "./search.scss";
 
 const showPlayer = id => `/player/${id}`;
 
-module.exports = {
+export default {
     view({ attrs, state }) {
         const resultList = attrs.data.result ? attrs.data.result : [];
 

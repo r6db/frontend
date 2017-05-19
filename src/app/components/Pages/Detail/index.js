@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import Player from "./Player";
 import Placeholder from "./Placeholder";
 import NotFound from "./Errors/NotFound";

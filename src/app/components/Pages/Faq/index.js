@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 import "./faq.scss";
 
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;

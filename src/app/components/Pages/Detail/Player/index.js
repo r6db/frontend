@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 
 import Profilepic from "components/misc/Profilepic";
 import Alias from "./Alias";
