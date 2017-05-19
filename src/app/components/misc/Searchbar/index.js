@@ -4,7 +4,7 @@ import page from "page";
 
 export default {
     oninit({ attrs, state }) {
-        state.query = "";
+        state.query = attrs.search;
         state.exact = false;
         state.onEnter = state.onEnter = e => {
             if (e.keyCode === 13) {
@@ -21,7 +21,6 @@ export default {
                 page("/");
             }
         };
-        console.debug("<Searchbar /> oninit", attrs.search);
         state.onQueryChange = e => {
             state.query =  e.target.value;
         };

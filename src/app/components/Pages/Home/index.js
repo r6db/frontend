@@ -19,8 +19,7 @@ export default {
             <div className="home">
                 <Searchbar
                     className="menu-search"    
-                    search={attrs.search}
-                    selector={attrs.store.select("search")} />
+                    search={attrs.search} />
             </div>
         );
     }
