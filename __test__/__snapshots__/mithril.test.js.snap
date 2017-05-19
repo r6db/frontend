@@ -1,8 +1,0 @@
-exports[`test can render the searchbar 1`] = `
-"<div class=\"search-form\">
-  <div class=\"search-input\">
-    <input type=\"text\" placeholder=\"Who are you looking for?\">
-  </div><button class=\"search-submit\">Search</button>
-</div>
-"
-`;

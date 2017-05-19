@@ -1,5 +1,4 @@
 import { v2Api, DATE_LONG } from "lib/constants";
-import store from "lib/store";
 import { failEarly, tap, getHeaders } from "../utils";
 
 export default function () {

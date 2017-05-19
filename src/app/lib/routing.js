@@ -1,8 +1,9 @@
 import m from "mithril";
-import store from "./store";
-import page from "page";
-import { Pageconfig, Leaderboards } from "lib/constants";
 import { parse } from "querystring";
+import page from "page";
+import * as appstate from "./appstate";
+import { showMenu } from "components/misc/Drawer";
+import { Pageconfig, Leaderboards } from "lib/constants";
 import * as api from "lib/api";
 import setMeta from "lib/meta";
 
@@ -21,7 +22,7 @@ function analyticsMiddleware(context, next) {
     return next();
 }
 function menuMiddleware(context, next) {
-    store.set("menu", false);
+    showMenu(false);
     return next();
 }
 
@@ -36,24 +37,20 @@ export default function initRoutes() {
             return;
         }
         console.debug("router mount <Home />");
-        store.merge({
+        appstate.merge({
             config: Pageconfig.INITIAL,
             Component: Home,
             loading: false,
             data: null,
-            search: {
-                query: "",
-                exact: false
-            }
+            search: ""
         });
         setMeta();
     });
     page("/search/:query", function (ctx) {
         console.debug("router mount <Search />");
         const qs = parse(ctx.querystring);
-        const exact = qs.exact === "true" || qs.exact === "1";
         if (ctx.params.query && ctx.params.query.length > 2) {
-            store.merge({
+            appstate.merge({
                 config: Pageconfig.SEARCH,
                 Component: Search,
                 loading: true,
@@ -61,14 +58,11 @@ export default function initRoutes() {
                     query: ctx.params.query,
                     result: []
                 },
-                search: {
-                    query: ctx.params.query,
-                    exact
-                }
+                search: ctx.params.query
             });
-            api.findPlayer(ctx.params.query, exact)
+            api.findPlayer(ctx.params.query)
                 .then(function (res) {
-                    store.merge({
+                    appstate.merge({
                         config: Pageconfig.RESULT,
                         data: {
                             query: ctx.params.query,
@@ -83,9 +77,12 @@ export default function initRoutes() {
                 })
                 .catch(function (err) {
                     console.warn(err);
-                    state.merge({
+                    appstate.merge({
                         config: Pageconfig.RESULT,
-                        data: [],
+                        data: {
+                            query: ctx.params.query,
+                            result: []
+                        },
                         loading: false
                     });
                     setMeta();
@@ -97,7 +94,7 @@ export default function initRoutes() {
     page("/player/:id", function (ctx) {
         console.debug("router mount <Detail />");
         const id = ctx.params.id;
-        store.merge({
+        appstate.merge({
             config: Pageconfig.DETAIL,
             Component: Detail,
             loading: true,
@@ -106,7 +103,7 @@ export default function initRoutes() {
         api.getPlayer(id)
             .then(function (res) {
                 if (res.id === id) {
-                    store.merge({
+                    appstate.merge({
                         data: res,
                         loading: false
                     });
@@ -125,12 +122,12 @@ export default function initRoutes() {
                     }
                 } else {
                     console.info("discarded data from previous route");
-                    store.set("loading", false);
+                    appstate.set("loading", false);
                 }
             })
             .catch(function (err) {
                 console.warn(err);
-                store.merge({
+                appstate.merge({
                     data: null,
                     loading: false
                 });
@@ -144,7 +141,7 @@ export default function initRoutes() {
         const board = "operatorpvp_tachanka_turretkill";
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
         console.debug("router mount <Chankaboard />");
-        store.merge({
+        appstate.merge({
             config: Pageconfig.CHANKABOARD,
             Component: Chankaboard,
             loading: true,
@@ -152,7 +149,7 @@ export default function initRoutes() {
         });
         api.getLeaderboard(board)
             .then(function (res) {
-                store.merge({
+                appstate.merge({
                     data: {
                         board,
                         entries: res
@@ -173,7 +170,7 @@ export default function initRoutes() {
     page("/leaderboard/:board", function (ctx) {
         const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
         console.debug("router mount <Leaderboard />");
-        store.merge({
+        appstate.merge({
             config: Pageconfig.LEADERBOARD,
             Component: Leaderboard,
             loading: true,
@@ -181,7 +178,7 @@ export default function initRoutes() {
         });
         api.getLeaderboard(lb.board)
             .then(function (res) {
-                store.merge({
+                appstate.merge({
                     data: {
                         board: ctx.params.board,
                         entries: res
@@ -201,7 +198,7 @@ export default function initRoutes() {
     });
 
     page("/faq", function () {
-        store.merge({
+        appstate.merge({
             config: Pageconfig.FAQ,
             Component: Faq,
             loading: false,

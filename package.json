@@ -6,19 +6,9 @@
     "build:dev": "cross-env NODE_ENV=development webpack --config config/dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/prod.js",
     "stats": "webpack --config config/dev.js --profile --json > stats.json",
-    "test": "exit 0",
-    "jest": "jest"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^lib(.*)$": "<rootDir>/src/app/lib$1",
-      "^components(.*)$": "<rootDir>/src/app/components$1",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/testUtil/fileMock.js",
-      "\\.(css|scss)$": "<rootDir>/testUtil/styleMock.js"
-    }
+    "test": "exit 0"
   },
   "dependencies": {
-    "baobab": "^2.3.3",
     "isomorphic-fetch": "^2.2.1",
     "mithril": "github:lhorie/mithril.js#rewrite",
     "page": "^1.7.1"
@@ -26,7 +16,6 @@
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "babel-core": "^6.5.2",
-    "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
@@ -42,8 +31,6 @@
     "happypack": "^2.2.1",
     "html-webpack-inline-source-plugin": "^0.0.6",
     "html-webpack-plugin": "^2.26.0",
-    "jest": "^18.0.0",
-    "mithril-tidy": "^0.1.0",
     "node-sass": "^3.12.5",
     "postcss-discard-duplicates": "^2.0.2",
     "postcss-loader": "^1.1.1",
