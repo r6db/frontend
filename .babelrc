@@ -2,6 +2,7 @@
   "presets": [
     ["env", {
       "modules": false,
+      "loose": true,
       "targets": {
         "uglify": true
       }
