@@ -11,7 +11,7 @@
   "dependencies": {
     "baobab": "^2.3.3",
     "isomorphic-fetch": "^2.2.1",
-    "mithril": "github:lhorie/mithril.js#rewrite",
+    "mithril": "^1.1.1",
     "page": "^1.7.1"
   },
   "devDependencies": {
