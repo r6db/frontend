@@ -77,5 +77,7 @@ export const isPS4 = /(ps4)/.test(window.location.href);
 export const isXbox = /(xbox)/.test(window.location.href);
 export const isPC = !isConsole;
 
+export const platformShorthand = isPS4 ? 'psn' : isXbox ? 'xbl' : 'uplay';
+
 export const DATE_SHORT = "DD. MMM YYYY";
 export const DATE_LONG = "DD. MMM YYYY HH:MM";

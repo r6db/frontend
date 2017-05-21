@@ -16,6 +16,8 @@ import Leaderboard from "components/Pages/Leaderboard";
 import Chankaboard from "components/Pages/Chankaboard";
 import Faq from "components/Pages/Faq";
 
+import { isConsole } from "lib/constants";
+
 function analyticsMiddleware(context, next) {
     ga("set", "page", context.path);
     ga("send", "pageview");
@@ -111,7 +113,7 @@ export default function initRoutes() {
                         setMeta({
                             title: `${res.name}`,
                             description: `${res.name} player profile for Rainbow Six: Siege`,
-                            image: `http://uplay-avatars.s3.amazonaws.com/${res.id}/default_146_146.png`,
+                            image: isConsole ? `//ubisoft-avatars.akamaized.net/${ res.userId }/default_146_146.png` : `http://uplay-avatars.s3.amazonaws.com/${ res.id }/default_146_146.png`,
                             type: "profile"
                         });
                     } else {

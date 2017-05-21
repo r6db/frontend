@@ -9,7 +9,7 @@ import General from "./modules/General";
 import Ranked from "./modules/Ranked";
 import RankedSeason from "./modules/RankedSeason";
 import { getRegionName } from "lib/region";
-import { isConsole } from "lib/constants";
+import { isConsole, platformShorthand } from "lib/constants";
 
 export default {
     view({ attrs, state }) {
@@ -20,11 +20,11 @@ export default {
                         <div className="detail-identification">
                             <div className="detail-headerimage">
                                 <span className="detail-level">lvl {attrs.level}</span>
-                                <Profilepic id={attrs.id} delay={0} />
+                                <Profilepic id={attrs.userId || attrs.id} delay={0} />
                             </div>
                             <div className="detail-headertext">
                                 <div className="detail-name">{attrs.name}</div>
-                                { isConsole ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/uplay/player-statistics/${attrs.id}/multiplayer`}
+                                { isConsole && !attrs.userId ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.userId || attrs.id }/multiplayer`}
                                     className="detail-id"
                                     title="show on uplay">
                                     {attrs.id}

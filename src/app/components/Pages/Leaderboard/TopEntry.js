@@ -6,7 +6,7 @@ export default {
         return (
             <div className={`entry top-entry is-pos-${attrs.pos}`}>
                 <div className="entry-img">
-                    <Profilepic id={attrs.id} />
+                    <Profilepic id={attrs.userId || attrs.id} />
                     <div className="entry-place">{attrs.pos}</div>
                 </div>
                 <a href={`/player/${attrs.id}`} className="entry-name">{attrs.name}</a>

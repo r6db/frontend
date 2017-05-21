@@ -8,8 +8,9 @@ export default {
         e.target.src = "/assets/noavatar.svg";
     },
     oncreate({ attrs, state, dom }) {
-        if (attrs.id && !isConsole) {
-            const src = `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
+        if (attrs.id) {
+            const src = isConsole ? `//ubisoft-avatars.akamaized.net/${attrs.id}/default_146_146.png` :
+                                    `//uplay-avatars.s3.amazonaws.com/${attrs.id}/default_146_146.png`;
             const delay = (((attrs.delay || 0) / 9) | 0) * 2000;
             state.timeout = setTimeout(function () {
                 if (dom) {
