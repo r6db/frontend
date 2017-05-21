@@ -145,4 +145,25 @@
 			font-size: 0.7em;
 		}
 	}
+	// PENTA-Fabian
+	&.player-9cf4d4a1-e328-49f8-be77-c255d6efefaa:after,
+	// PENTA-Joonas
+	&.player-f4f6e2f1-5353-4dee-b35c-8b78788de238:after,
+	// PENTA-Pengu
+	&.player-f1b010e1-d441-47b1-be1f-cea6e2f22e19:after,
+	// PENTA-KS
+	&.player-aef1f7f1-112e-4110-b35d-61aba9de42ce:after,
+	// PENTA-Goga
+	&.player-61bcfa75-acbb-4ee5-a5c2-6a526b772b15:after,
+	// PENTA-Falko
+	&.player-e815fe52-dedc-4407-9bab-ae4dd8ed31f0:after {
+		@include large {
+			content: "🏆";
+			color: gold;
+			position: absolute;
+			left: $l*2 + 64px;
+			font-size: 0.7em;
+		}
+	}
+
 }
