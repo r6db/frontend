@@ -76,7 +76,14 @@ const handleResponse = data => {
         .filter(x => !!x)
         .map(x => [x.ncsa, x.emea, x.apac]
             .map(y => ({ rank: y.max_rank, season: x.season }))
-            .sort((a, b) => b.rank - a.rank)[0]);
+            .sort((a, b) => b.rank - a.rank)[0])
+        .reduce(function (acc, rank) {
+            let alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length;
+            if (!alreadyHasSeason) {
+                acc.push(rank)
+            }
+            return acc;
+        }, []);
 
     player.aliases = player.aliases
         .map(fixAlias)
