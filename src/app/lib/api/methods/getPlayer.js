@@ -13,31 +13,12 @@ const fixAlias = alias => {
 
 const getPlayer = id => {
     stateSet("loading", "getting data ...");
-    const promises = [
-        fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
-            .then(failEarly)
-            .then(res => res.json()),
-        fetch(`${v2Api}/players/${id}/placement?stat=highest_skill_adjusted`, { headers: getHeaders() })
-            .then(failEarly)
-            .then(res => res.json())
-            .then(function (placements) {
-                const placement = placements.filter(function (placement) {
-                    return placement.id === id;
-                })[0];
-                if (placement) {
-                    return placement.rank;
-                }
-                return -1;
-            })
-            .catch(x => -1)
-    ];
-    return Promise.all(promises);
+    return fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
+        .then(failEarly)
+        .then(res => res.json());
 };
 
-const handleResponse = data => {
-    const player = data[0];
-    const globalRank = data[1];
-
+const handleResponse = player => {
     if (!player.rank || Object.keys(player.rank).length == 0) {
         player.rank = null;
     }
@@ -89,7 +70,6 @@ const handleResponse = data => {
         .map(fixAlias)
         .sort((a, b) => b.created_at - a.created_at);
     player.name = player.aliases[0].name;
-    player.globalRank = globalRank + 1;
     return player;
 };
 
