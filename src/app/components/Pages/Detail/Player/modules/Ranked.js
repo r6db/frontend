@@ -1,6 +1,6 @@
 import * as m from "mithril";
 
-const getWL = o => (((o.won / (o.won + o.lost)) * 100) || 0).toFixed(2);
+const getWL = o => (((o.won / (o.won + o.lost + (o.abandoned || 0))) * 100) || 0).toFixed(2);
 const getKD = o => ((o.kills / o.deaths) || 0).toFixed(2);
 
 export default {
@@ -15,6 +15,10 @@ export default {
                 <div className="module-row">
                     <div className="module-label">Losses</div>
                     <div className="module-value">{attrs.player.stats.ranked.lost}</div>
+                </div>
+                <div className="module-row">
+                    <div className="module-label">Abandons</div>
+                    <div className="module-value">{attrs.player.stats.ranked.abandoned}</div>
                 </div>
                 <div className="module-row">
                     <div className="module-label">Win rate</div>

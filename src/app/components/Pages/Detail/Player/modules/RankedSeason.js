@@ -7,8 +7,8 @@ export default {
     season: null,
     oninit({ attrs, state}) {
         const season = attrs.stats;
-        if (season.rank) {
-            state.season = season;   
+        if (season.rank || (season.wins + season.losses)) {
+            state.season = season;
         } else {
             state.season = null;
         }

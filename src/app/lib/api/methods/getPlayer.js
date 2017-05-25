@@ -52,19 +52,30 @@ const handleResponse = player => {
     if (!player.rank || noRank) {
         player.flags.noRanked = true;
     }
-    player.pastRanks = player.seasonRanks
+
+    const allRanks = player.totalAbandons = player.seasonRanks
         .concat(player.rank)
         .filter(x => !!x)
-        .map(x => [x.ncsa, x.emea, x.apac]
-            .map(y => ({ rank: y.max_rank, season: x.season }))
-            .sort((a, b) => b.rank - a.rank)[0])
-        .reduce(function (acc, rank) {
-            let alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length;
+        .reduce((acc, rank) => {
+            let alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length
             if (!alreadyHasSeason) {
-                acc.push(rank)
+                acc.push(rank);
             }
             return acc;
-        }, []);
+        }, [])
+
+    player.pastRanks = allRanks.map(x => [x.ncsa, x.emea, x.apac]
+            .map(y => ({ rank: y.max_rank, season: x.season }))
+            .sort((a, b) => b.rank - a.rank)[0]);
+
+    const sum = (x, y) => x + y;
+
+    if (player.stats && player.stats.ranked) {
+        player.stats.ranked.abandoned = allRanks.map(x => [x.ncsa, x.emea, x.apac]
+                .map(y => y.abandons)
+                .reduce(sum, 0))
+            .reduce(sum, 0);
+    }
 
     player.aliases = player.aliases
         .map(fixAlias)
