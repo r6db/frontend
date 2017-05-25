@@ -57,12 +57,12 @@ const handleResponse = player => {
         .concat(player.rank)
         .filter(x => !!x)
         .reduce((acc, rank) => {
-            let alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length
+            let alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length;
             if (!alreadyHasSeason) {
                 acc.push(rank);
             }
             return acc;
-        }, [])
+        }, []);
 
     player.pastRanks = allRanks.map(x => [x.ncsa, x.emea, x.apac]
             .map(y => ({ rank: y.max_rank, season: x.season }))
