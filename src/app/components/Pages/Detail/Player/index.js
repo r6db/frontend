@@ -29,7 +29,7 @@ export default {
                                     title="show on uplay">
                                     {attrs.id}
                                 </a> }
-                                { !isNaN(attrs.placements.globalRank)
+                                { typeof attrs.placements.globalRank !== 'number'
                                     ? null
                                     : <div className="detail-global-rank">
                                         Global <span>#{attrs.placements.global + 1}</span>
