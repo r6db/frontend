@@ -15,14 +15,15 @@
     &-question{
         display: block;
         padding: $l*2;
-        user-select: none;
         color: $accent;
+        font-size: 1.25em;
+        user-select: none;
         cursor: pointer;
     }
 
     &-answer{
         padding: $l ($l*2) ($l*2);
-        
+
         .is-closed &{
             display: none;
         }
@@ -39,7 +40,7 @@
         }
 
         em{
-            background: $primary;
+            color: $accent;
             font-weight: bold;
             padding: 3px;
             border-radius: 3px;
@@ -49,7 +50,7 @@
         i{
             font-style: italic;
         }
-        
+
         ul{
             list-style: initial;
             padding-left: $l*2;
