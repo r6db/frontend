@@ -8,7 +8,7 @@ const showPlayer = id => e => page("/player/" + id);
 
 const Question = {
     oninit({ attrs, state }) {
-        state.isOpen = false;
+        state.isOpen = true;
         state.toggle = function () {
             state.isOpen = !state.isOpen;
             m.redraw();
@@ -32,26 +32,28 @@ export default {
     view({ attrs, state }) {
         return (
             <div className="faq">
-                <Question question="What is 'skill' and 'uncertainty', and now is it related to the leaderboard?">
+                <Question question="How is 'skill-rating' on the leaderboard determined?">
                     <p>
                         The matchmaking algorithm creates a <i>skill-rating</i> value for each player that it uses to find opponents.
                         When you start out, you have a skill-rating of 25. This value gets updated by playing. Basically, the better you perform, the higher your skill-rating.
                     </p>
                     <p>
-                        Because such system can't be perfect, another variable exists: <i>uncertainty</i>. As the name suggests, uncertainty models how accurate your skill-rating is. As you play, the uncertainty value constantly falls and approaches zero: "Perfect certainty". The points you see in-game is called the mmr (MatchMaking Rating). This value is calculated from your skill-rating, and up until Red Crow, also took your playtime into consideration. <br/>
-
-                        TLDR: <em>"skill on leaderboard" = skill-rating - uncertainty</em>.
+                        Because such system can't be perfect, another variable exists: <i>uncertainty</i>. As the name suggests, uncertainty models how accurate your skill-rating is. As you play, the uncertainty value constantly falls and approaches zero: "Perfect certainty". The points you see in-game is called the mmr (MatchMaking Rating). This value is calculated from your skill-rating, and up until Red Crow, also took your playtime into consideration.
                    </p>
                     <p>
                         How does this relate to the leaderboard?
                         When we decided on creating one, we had to find a stat to use as ranking. In our opinion win-rate and kill-death-ratio are not suitable for that, because they are easily skewed. For example:
                         <blockquote>
-                            In Season 2 (Dust Line) our team managed to go on a 80 win streak in the ranked playlist. <br/>
-                            We even managed to bring on of our mates up to a 54 win/loss ratio (thats 98%).
-                            There was (and is) obviously way better players than us, but we had the nice stats.
+                            In Season 2 (Dust Line) we managed to go on a 80 win streak in ranked. <br/>
+                            We even managed to bring one of our mates up to a 54 win/loss ratio (thats 98%).
+                            There were (and still are) obviously way better players than us, but we had the nice stats.
                         </blockquote>
                         We'd be "better" than most players, even though we really are not (well, except one). <br/>
-                        After a bit of thinking we realized, that the game already tracks player performance: the skill-rating. By taking the skill-rating and subtracting the uncertainty, we get a value, that basically describes the concept of you are guaranteed to be at least this good. This value is the safest we can get.
+                        After a bit of thinking we realized, that the game already tracks player performance: the skill-rating. By taking the skill-rating and subtracting the uncertainty, we get a value that basically describes the concept of 'you are guaranteed to be at least this good'. <br />
+                        We feel that this value is the safest and closest we can get to an accurate representation of player ability.
+                    </p>
+                    <p>
+                        TLDR: <em>"skill-rating" = skill - uncertainty</em>
                     </p>
                     <p>
                         Of course, the board is skewed towards pre-made teams (as they have a significantly higher win-rate), but given the data we have, its the best metric.
