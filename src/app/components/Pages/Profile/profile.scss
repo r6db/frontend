@@ -1,0 +1,10 @@
+@import "styles";
+
+.profile{
+    display: flex;
+    flex-direction: row;
+
+    @include large{
+        flex-direction: column;
+    }
+}
