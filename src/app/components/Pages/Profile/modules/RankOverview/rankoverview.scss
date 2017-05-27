@@ -1,0 +1,105 @@
+@import "styles";
+
+.rankoverview{
+    &-currentseason{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &-current{
+        flex: 1;
+        position: relative;
+        height: $l*7.5;
+        width: $l*7.5;
+        &-icon{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            svg{
+                height: $l*7.5;
+                width: $l*7.5;
+            }
+            &:after{
+                position: absolute;
+                display: block;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(50, 50, 50, 0.75);
+            }
+        }
+        &-region{
+            text-align: center;
+            padding: $l*0.5;
+            text-shadow: 0 0 10px $black;
+            font-weight: bold;
+        }
+        &-placement{
+            text-align: center;
+            pading: $l 0;
+            margin-top: $l*3;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px $black;
+            font-weight: bold;
+        }
+    }
+    &-past{
+        display: flex;
+        align-items: center;
+        padding: $l;
+
+        &.season-1{
+            border-left: 3px solid $black-ice;
+            .rankoverview-past-season{ color: $black-ice;}
+        }
+        &.season-2{
+            border-left: 3px solid $dust-line;
+            .rankoverview-past-season{ color: $dust-line;}
+        }
+        &.season-3{
+            border-left: 3px solid $skull-rain;
+            .rankoverview-past-season{ color: $skull-rain;}
+        }
+        &.season-4{
+            border-left: 3px solid $red-crow;
+            .rankoverview-past-season{ color: $red-crow;}
+        }
+        &.season-5{
+            border-left: 3px solid $velvet-shell;
+            .rankoverview-past-season{ color: $velvet-shell;}
+        }
+        &.season-6{
+            border-left: 3px solid $operation-health;
+            .rankoverview-past-season{ color: $operation-health;}
+        }
+
+        &-icon{
+            height: $l*5;
+            width: $l*5;
+            margin-right: $l;
+        }
+        &-text{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &-season{
+            margin-right: $l;
+            font-size: 0.8em;
+            line-height: 1.4;
+        }
+
+        &-rank{
+            font-size: 1.125em;
+        }
+        &-mmr{
+            margin-left: $l;
+            color: $gray;
+            font-size: 0.8em;
+        }
+    }
+}

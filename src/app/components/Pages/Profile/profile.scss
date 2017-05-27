@@ -2,9 +2,47 @@
 
 .profile{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     @include large{
+        flex-direction: row;
+         &-sidebar{
+             width: 35*$l;
+         }
+    }
+    &-statarea{
+        display: flex;
         flex-direction: column;
+        flex: 1;
+        margin: (-$l) 0;
+
+        @include openmenu{
+            flex-direction: row;
+            margin: 0 (-$l);
+
+            .profile-center{
+                width: 66%;
+                flex: 1 0 auto;
+            }
+            .profile-aside{
+                width: 35*$l;
+                flex: 0 0 auto;
+            }
+        }
+    }
+    &-module{
+        background: $trans-med;
+        margin: $l;
+
+        &-header{
+            padding: $l $l 0;
+            font-size: 1.125em;
+        }
+        &-divider{
+            width: 80%;
+            height: 1px;
+            background: $gray-dark;
+            margin: $l 10%;
+        }
     }
 }

@@ -4,7 +4,8 @@
       "modules": false,
       "loose": true,
       "targets": {
-        "uglify": true
+        "uglify": true,
+        "browsers": [ ">5%"]
       },
       "useBuiltIns": true
     }]

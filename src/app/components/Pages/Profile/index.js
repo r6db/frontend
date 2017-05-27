@@ -1,5 +1,5 @@
 import * as m from "mithril";
-import Player from "./player";
+import Player from "./stats";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";

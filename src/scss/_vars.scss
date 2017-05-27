@@ -1,9 +1,17 @@
-$primary: #6e3c87;
+$black-ice: #2e93b3;
+$dust-line: #d0a344;
+$skull-rain: #47893b;
+$red-crow: #bd1e2c;
+$velvet-shell: #6e3c87;
+$operation-health: #4a74a9;
+
+
+$primary: $operation-health;
 $accent: #ffdb00;
 $link: #2d95cf;
 $black: desaturate(darken($primary, 25%), 50%); //#030502;
 $gray-dark: #2f302f;
-$gray: #8d99ae;
+$gray: lighten($gray-dark, 30%);
 $gray-light: #eae8de;
 $blue-dark: rgb(16, 26, 36);
 $trans-high: rgba(16, 16, 16, 0.25);
@@ -13,7 +21,6 @@ $white: #fefefe;
 $success: #17bebb;
 $warn: #ffc914;
 $danger: #e4562e;
-
 $l: 10px;
 
 $topbar-height: $l*6;

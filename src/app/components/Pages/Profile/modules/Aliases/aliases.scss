@@ -1,0 +1,18 @@
+@import "styles";
+
+.aliases{
+    padding-bottom: $l;
+}
+.is-profile .alias{
+    padding: (.5*$l) $l;
+    position: relative;
+    margin-bottom: $l;
+
+    &-time{
+        color: $gray;
+        font-size: 0.9em;
+    }
+    &-name{
+        font-size: 1.1em;
+    }
+}

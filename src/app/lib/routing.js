@@ -97,7 +97,7 @@ export default function initRoutes() {
     page("/player/:id/extended", function (ctx) {
         const id = ctx.params.id;
         appstate.merge({
-            config: Pageconfig.DETAIL,
+            config: Pageconfig.PROFILE,
             Component: Profile,
             loading: true,
             data: null

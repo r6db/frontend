@@ -9,6 +9,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ResourceHintWebpackPlugin = require("resource-hints-webpack-plugin");
 const StyleExtHtmlWebpackPlugin = require("style-ext-html-webpack-plugin");
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
@@ -26,6 +27,7 @@ module.exports = {
         filename: "js/[name].js",
         pathinfo: true
     },
+    target: "web",
     resolve: {
         alias: {
             "components": path.join(__dirname, "../src/app/components"),
@@ -70,8 +72,7 @@ module.exports = {
             use: {
                 loader: "svg-sprite-loader",
                 options: {
-                    name: "[name]",
-                    prefixize: true
+                    extract: true
                 }
             },
         }]
@@ -99,5 +100,6 @@ module.exports = {
             template: "./src/index.ejs"
         }),
         new ExtractTextPlugin("styles.css"),
+        new SpriteLoaderPlugin()
     ]
 };

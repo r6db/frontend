@@ -18,12 +18,10 @@ export default {
         return (
             <div className="menu">
                 <div className="menu-top">
-                    <div className="menu-logo">
-                        <a href="/">
-                            <img src="/assets/r6db_logo_new.svg" alt="R6DB Logo"/>
-                        </a>
+                    <a href="/" className="menu-logo">
+                        <Icon glyph={GLYPHS.LOGO} />
                         <span className="platform">{platform}</span>
-                    </div>
+                    </a>
                     <div className="menu-platforms">
                         <a href="https://r6db.com"
                             className={`menu-item ${isPC ? "is-active" : ""}`}>PC</a><a href="https://ps4.r6db.com"
@@ -45,10 +43,10 @@ export default {
                     }</div>
                     <div className="menu-footer">
                         <a href="https://twitter.com/Rainbow6_DB">
-                            <Icon class="menu-twitter" glyph={GLYPHS.TWITTER} />
+                            <Icon className="menu-twitter" fill="#fff" glyph={GLYPHS.TWITTER} />
                         </a>
                         <a href="mailto:info@r6db.com">
-                            <Icon class="menu-email" glyph={GLYPHS.EMAIL} />
+                            <Icon className="menu-email" glyph={GLYPHS.EMAIL} />
                         </a>
                     </div>
                 </footer>

@@ -1,6 +1,6 @@
 @import "styles";
 
-.alias{
+.is-detail .alias{
 	padding: $l;
 	text-align: center;
 	position: relative;
@@ -45,7 +45,7 @@
 		}
 	}
 }
-.alias-name{
+.is-detail .alias-name{
 	font-weight: bold;
 	font-size: 1.5em;
 	padding-top: 10px;
