@@ -22,7 +22,7 @@
                 margin-left: $l;
             }
         }
-        @include openmenu{
+        @include large{
             flex-direction: row;
 
             .profile-center{

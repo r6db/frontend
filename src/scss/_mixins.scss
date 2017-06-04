@@ -49,31 +49,31 @@
 
 
 @mixin small{
-	@media screen and (max-width: $screen-medium) {
+	.contentsize.small &{
 		@content;
 	}
 }
 
 @mixin medium{
-	@media screen and (min-width: $screen-medium) {
+	.contentsize.medium &{
 		@content;
 	}
 }
 
 @mixin large {
-	@media screen and (min-width: $screen-yourmom) {
+	.contentsize.large &{
 		@content;
 	}
 }
 
 @mixin openmenu {
-	@media screen and (min-width: $screen-openmenu) {
+	.contentsize.openmenu &{
 		@content;
 	}
 }
 
 @mixin absurd {
-	@media screen and (min-width: $screen-absurd) {
+	.contentsize.absurd &{
 		@content;
 	}
 }

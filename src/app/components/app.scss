@@ -1,7 +1,7 @@
 @import "styles";
 
 .content-wrapper{
-	@include openmenu {
+	@include large {
 		display: flex;
 		flex-direction: row;
 	}

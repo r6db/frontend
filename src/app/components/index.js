@@ -8,7 +8,7 @@ import Searchbar from "components/misc/Searchbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
 import Topbar from "components/misc/Topbar";
-
+import ElementQuery from "components/misc/ElementQuery";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 import "./base.scss";
@@ -17,31 +17,22 @@ import "./app.scss";
 import * as appstate from "lib/appstate";
 import { Pageconfig } from "lib/constants";
 import initRoutes from "lib/routing";
-
+import debounce from "lib/debounce";
 
 const optional = (pred, cb) => pred ? cb() : null;
 
-const debounce = function (func, wait, immediate) {
-    let timeout;
-    return function () {
-        const context = this;
-        const args = arguments;
-        const later = function () {
-            timeout = null;
-            if (!immediate) { func.apply(context, args); }
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) { func.apply(context, args); }
-    };
-};
 
 const update = debounce(function () {
     console.debug("state changed, redrawing");
     console.debug("state", appstate.get());
     m.redraw();
 });
+
+const breakpoints = {
+    small: 0,
+    medium: 512,
+    large: 1024,
+}
 
 export default {
     oninit(vnode) {
@@ -63,7 +54,7 @@ export default {
             : null;
         return (
              <div className={"content-wrapper " + pconf.class}>
-                <Drawer> 
+                <Drawer>
                     <Menu tweets={appstate.get("tweets")} />
                 </Drawer>
                 <div className="app">
@@ -73,12 +64,14 @@ export default {
                     <div className="app-content">
                         {TopbarComponent}
                         <div className="app-page">
-                            <Component
-                                loading={appstate.get("loading")}
-                                data={appstate.get("data")}
-                                store={appstate}
-                                search={search}
-                            />
+                            <ElementQuery className="contentsize" query={breakpoints}>
+                                <Component
+                                    loading={appstate.get("loading")}
+                                    data={appstate.get("data")}
+                                    store={appstate}
+                                    search={search}
+                                />c
+                            </ElementQuery>
                         </div>
                     </div>
                     {optional(appstate.get("loading"),
