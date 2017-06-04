@@ -1,65 +1,65 @@
 @import "styles";
 
 .content-wrapper{
-	@include large {
-		display: flex;
-		flex-direction: row;
-	}
+    @include openmenu {
+        display: flex;
+        flex-direction: row;
+    }
 }
 .app{
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 .app-content{
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 .app-page{
-	position: relative;
-	width: 100%;
-	flex: 1;
-	overflow-x: hidden;
-	overflow-y: auto;
-	display: flex;
-	flex-direction: column;
-	backface-visibility: hidden;
-	transform: translateZ(0);
+    position: relative;
+    width: 100%;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 
-	>* {
-		margin-top: $l;
-	}
+    >* {
+        margin-top: $l;
+    }
 }
 .app-background{
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background: #333;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #333;
 
-	img{
-		min-height: 100vh;
-		min-width: 100vw;
-		height: auto;
-		width: auto;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		filter: contrast(30%) brightness(50%)
-	}
-	
-	svg{
-		height: 100vh;
-		width: 100vw;
-		position: absolute;
-		top: 0;
-		left: 0;
-		will-change: opacity;
-		transition: opacity $tdur ease-out;
-	}
+    img{
+        min-height: 100vh;
+        min-width: 100vw;
+        height: auto;
+        width: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: contrast(30%) brightness(50%)
+    }
+
+    svg{
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        will-change: opacity;
+        transition: opacity $tdur ease-out;
+    }
 }

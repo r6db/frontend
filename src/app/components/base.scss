@@ -20,12 +20,6 @@
     font-weight: 600;
     font-style: italic;
 }
-@font-face{
-    font-family: "Freeroad";
-    src: url("/assets/fonts/Freeroad/Freeroad_Bold.ttf") format("ttf");
-    font-weight: bold;
-    font-style: normal;
-}
 
 html{
     font-size: 14px;
@@ -91,9 +85,9 @@ label{
 
 .row{
     display: flex;
-    flex-direction: column;
-    @include medium{
-        flex-direction: row;
+    flex-direction: row;
+    @include small{
+        flex-direction: column;
     }
 }
 .col{

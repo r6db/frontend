@@ -1,79 +1,73 @@
 @mixin btnvariant($color, $fontcolor:$white){
-	@include boxshadow;
+    @include boxshadow;
     border-color: transparent;
-	background: $color;
-	color: $fontcolor;
-		&:hover, &:focus{
-			background: darken($color, 10%);
-		}
-		&.is-outlined{
-			background: none;
-			color: $color;
-			border-color: $color;
-			&:hover, &:focus{
-				background: $color;
-				color: $fontcolor;
-			}
-		}
-	&:disabled {
-		background: desaturate( $color, 40% );
-	}
+    background: $color;
+    color: $fontcolor;
+        &:hover, &:focus{
+            background: darken($color, 10%);
+        }
+        &.is-outlined{
+            background: none;
+            color: $color;
+            border-color: $color;
+            &:hover, &:focus{
+                background: $color;
+                color: $fontcolor;
+            }
+        }
+    &:disabled {
+        background: desaturate( $color, 40% );
+    }
 }
 
 @mixin btnreset {
-	background: none;
-	border: none;
-	box-shadow: none;
-	outline: none;
-	&:focus{
-		border: none;
-		box-shadow: none;
-		outline: none;
-	}
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    &:focus{
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
 }
 
 @mixin clearfix {
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
 
 @mixin textshadow{
-	text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
+    text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
 }
 @mixin boxshadow{
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 
 @mixin small{
-	.contentsize.small &{
-		@content;
-	}
+    .contentsize.small &{
+        @content;
+    }
 }
 
 @mixin medium{
-	.contentsize.medium &{
-		@content;
-	}
+    .contentsize.medium &{
+        @content;
+    }
 }
 
 @mixin large {
-	.contentsize.large &{
-		@content;
-	}
+    .contentsize.large &{
+        @content;
+    }
 }
 
 @mixin openmenu {
-	.contentsize.openmenu &{
-		@content;
-	}
-}
-
-@mixin absurd {
-	.contentsize.absurd &{
-		@content;
-	}
+    @media screen and (min-width: 1224px){
+        @content;
+    }
 }

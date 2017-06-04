@@ -70,7 +70,7 @@ export default {
                                     data={appstate.get("data")}
                                     store={appstate}
                                     search={search}
-                                />c
+                                />
                             </ElementQuery>
                         </div>
                     </div>

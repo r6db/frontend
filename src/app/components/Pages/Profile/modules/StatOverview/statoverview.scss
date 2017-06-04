@@ -4,7 +4,7 @@
     .row{
         flex-direction: column;
 
-        @include medium{
+        @include large{
             flex-direction: row;
         }
     }
