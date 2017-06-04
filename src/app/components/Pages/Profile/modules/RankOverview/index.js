@@ -5,7 +5,7 @@ import "./rankoverview.scss";
 
 const CurrentRank = {
     view({ attrs }) {
-        if (attrs.rank === 0) {
+        if (attrs.rank === 0 && !attrs.show) {
             return null;
         }
         return (
@@ -26,18 +26,23 @@ export default {
             <div className="profile-module rankoverview">
                 <div className="rankoverview-currentseason">
                     <CurrentRank
+                        key="rank-global"
                         rank={attrs.pastRanks[0].rank}
+                        show={true}
                         placement={attrs.placements.global}
                         region="Global" />
                     <CurrentRank
+                        key="rank-emea"
                         rank={attrs.rank.emea.rank}
                         placement={attrs.placements.emea}
                         region="Europe" />
                     <CurrentRank
+                        key="rank-ncsa"
                         rank={attrs.rank.ncsa.rank}
                         placement={attrs.placements.ncsa}
                         region="America" />
                     <CurrentRank
+                        key="rank-apac"
                         rank={attrs.rank.apac.rank}
                         placement={attrs.placements.apac}
                         region="Asia" />
@@ -45,7 +50,6 @@ export default {
                 <div className="profile-module-divider"></div>
                 <div className="rankoverview-pastseason">
                     {attrs.pastRanks
-                        .sort((a, b) => b.season - a.season)
                         .map(rank =>
                         <div
                             className={`rankoverview-past season-${rank.season}`}

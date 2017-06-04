@@ -64,9 +64,12 @@ const handleResponse = player => {
             return acc;
         }, [])
 
-    player.pastRanks = allRanks.map(x => [x.ncsa, x.emea, x.apac]
+    player.pastRanks = allRanks.map(x => {
+        return [x.ncsa, x.emea, x.apac]
             .map(y => ({ rank: y.max_rank, season: x.season, mmr: y.max_mmr.toFixed(2) }))
-            .sort((a, b) => b.rank - a.rank)[0]);
+            .sort((a, b) => b.rank - a.rank)[0]
+    })
+    .sort((a, b) => b.season - a.season);
 
     const sum = (x, y) => x + y;
 
@@ -74,7 +77,7 @@ const handleResponse = player => {
         player.stats.ranked.abandons = allRanks.map(x => [x.ncsa, x.emea, x.apac]
                 .map(y => y.abandons)
                 .reduce(sum, 0))
-            .reduce(sum, 0);
+            .reduce(sum, 0)
     }
 
 

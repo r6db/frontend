@@ -23,16 +23,22 @@
         font-size: 1.125em;
         margin-bottom: $l*0.5;
     }
+    &-id{
+        font-size: 0.75em;
+        margin-bottom: $l*0.5;
+    }
+    &-level{
+        margin-bottom: $l*0.5;
+    }
     &-links{
+        .col{
+            margin: 0;
+        }
         a{
             color: $gray;
             display: block;
             line-height: 1.25;
             font-size: 0.9em;
         }
-    }
-    &-id{
-        font-size: 0.75em;
-        margin-bottom: $l;
     }
 }

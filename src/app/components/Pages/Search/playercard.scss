@@ -1,169 +1,175 @@
 @import "styles";
 
 .playercard{
-	position: relative;
-	background: $trans-med;
-	box-shadow: 0 0 3px $trans-med;
-	display: flex;
-	flex-direction: row;
-	padding: $l 0;
-	margin-bottom: $l;
+    position: relative;
+    background: $trans-med;
+    box-shadow: 0 0 3px $trans-med;
+    display: flex;
+    flex-direction: row;
+    padding: $l 0;
+    margin-bottom: $l;
 
-	@include medium{
-		padding: $l;
-	}
+    @include medium{
+        padding: $l;
+    }
 
-	&.is-hidden{
-		opacity: 0;
-		transform: translateY(100px);
-	}
+    &.is-hidden{
+        opacity: 0;
+        transform: translateY(100px);
+    }
 
-	.card-content{
-		padding: 0 $l;
-		flex: 1 1 0;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.card-image{
-		@include btnreset;
-		display: none;
-		cursor: pointer;
-		width: 64px;
-		height: 64px;
-		position: relative;
-		@include medium{
-			display: block;
-		}
+    .card-content{
+        padding: 0 $l;
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .card-image{
+        @include btnreset;
+        display: none;
+        cursor: pointer;
+        width: 64px;
+        height: 64px;
+        position: relative;
+        @include medium{
+            display: block;
+        }
 
-		img{
-			width: 100%;
-			height: 100%;
-		}
-	}
-	.player-level{
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		padding: .2em;
-		font-weight: bold;
-		color: white;
-		background: $trans-med;
-		text-align: center;
-	}
-	.player-identification{
-		width: 16rem;
-		flex: 0 0 auto;
-	}
-	.player-name {
-		@include btnreset;
-		cursor: pointer;
-		display: block;
-		font-size: 1.7rem;
-		width: 100%;
-		flex: 0 0 auto;
-		color: $white;
-		text-align: left;
-	}
-	.player-id{
-		font-size: 0.8rem;
-		color: $gray;
-	}
-	.player-link{
-		color: $accent;
-		margin: 10px 0;
-		display: block;
-		margin-right: $l;
-		text-decoration: underline;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		flex: 0 0 auto;
-		text-decoration: none;
-	}
-	.player-aliases{
-		display: none;
-		flex: 1 1 auto;
-		@include large{
-			display: block;
-		}
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .player-level{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: .2em;
+        font-weight: bold;
+        color: white;
+        background: $trans-med;
+        text-align: center;
+    }
+    .player-identification{
+        width: 16rem;
+        flex: 0 0 auto;
+    }
+    .player-name {
+        @include btnreset;
+        cursor: pointer;
+        display: block;
+        font-size: 1.7rem;
+        width: 100%;
+        flex: 0 0 auto;
+        color: $white;
+        text-align: left;
+    }
+    .player-id{
+        font-size: 0.8rem;
+        color: $gray;
+    }
+    .player-extended{
+        display: block;
+        color: $accent;
+        padding: 0.1em 0;
+        font-size: 0.9rem;
+    }
+    .player-link{
+        color: $accent;
+        margin: 10px 0;
+        display: block;
+        margin-right: $l;
+        text-decoration: underline;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 0 0 auto;
+        text-decoration: none;
+    }
+    .player-aliases{
+        display: none;
+        flex: 1 1 auto;
+        @include large{
+            display: block;
+        }
 
-		header{
-			color: $gray;
-			font-weight: 500;
-			font-size: 0.8em;
-			line-height: 1.2;
-		}
-		ul{
-			list-style: none;
-			margin-right: 15px;
-		}
-		li{
-			display: inline-block;
-			margin-right: .5em;
-			&:after{
-				content:","
-			}
-			&:last-child:after{
-				content:""
-			}
-		}
-	}
+        header{
+            color: $gray;
+            font-weight: 500;
+            font-size: 0.8em;
+            line-height: 1.2;
+        }
+        ul{
+            list-style: none;
+            margin-right: 15px;
+        }
+        li{
+            display: inline-block;
+            margin-right: .5em;
+            &:after{
+                content:","
+            }
+            &:last-child:after{
+                content:""
+            }
+        }
+    }
 }
 
 
 .playercard {
-	&.player-ccd28cc4-845e-4726-8cf8-e2cac4de82a2 {
-		/* 
-			i was against this 
-			- laxis
-			i went ahead and did it anyway
-			- muppet
-		*/
-		background: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
-		.player-name {
-			color: #2d547b;
-		}
-		.player-uplaylink {
-			color: $gray-dark;
-		}
-	}
-	&.player-1b50085a-8a20-4ce6-b75f-db6a00e4d718:after {
-		@include large {
-			content: "Frontend Dude";
-			position: absolute;
-			left: $l*2 + 64px;
-			font-size: 0.7em;
-		}
-	}
-	&.player-cb2ef9f9-8557-4784-86ff-fb6e70e61f9f:after {
-		@include large {
-			content: "Pronounced \"Remork\"";
-			position: absolute;
-			left: $l*2 + 64px;
-			font-size: 0.7em;
-		}
-	}
-	// PENTA-Fabian
-	&.player-9cf4d4a1-e328-49f8-be77-c255d6efefaa:after,
-	// PENTA-Joonas
-	&.player-f4f6e2f1-5353-4dee-b35c-8b78788de238:after,
-	// PENTA-Pengu
-	&.player-f1b010e1-d441-47b1-be1f-cea6e2f22e19:after,
-	// PENTA-KS
-	&.player-aef1f7f1-112e-4110-b35d-61aba9de42ce:after,
-	// PENTA-Goga
-	&.player-61bcfa75-acbb-4ee5-a5c2-6a526b772b15:after,
-	// PENTA-Falko
-	&.player-e815fe52-dedc-4407-9bab-ae4dd8ed31f0:after {
-		@include large {
-			content: "🏆";
-			color: gold;
-			position: absolute;
-			left: $l*2 + 64px;
-			font-size: 0.7em;
-		}
-	}
+    &.player-ccd28cc4-845e-4726-8cf8-e2cac4de82a2 {
+        /* 
+            i was against this 
+            - laxis
+            i went ahead and did it anyway
+            - muppet
+        */
+        background: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
+        .player-name {
+            color: #2d547b;
+        }
+        .player-uplaylink {
+            color: $gray-dark;
+        }
+    }
+    &.player-1b50085a-8a20-4ce6-b75f-db6a00e4d718:after {
+        @include large {
+            content: "Frontend Dude";
+            position: absolute;
+            left: $l*2 + 64px;
+            font-size: 0.7em;
+        }
+    }
+    &.player-cb2ef9f9-8557-4784-86ff-fb6e70e61f9f:after {
+        @include large {
+            content: "Pronounced \"Remork\"";
+            position: absolute;
+            left: $l*2 + 64px;
+            font-size: 0.7em;
+        }
+    }
+    // PENTA-Fabian
+    &.player-9cf4d4a1-e328-49f8-be77-c255d6efefaa:after,
+    // PENTA-Joonas
+    &.player-f4f6e2f1-5353-4dee-b35c-8b78788de238:after,
+    // PENTA-Pengu
+    &.player-f1b010e1-d441-47b1-be1f-cea6e2f22e19:after,
+    // PENTA-KS
+    &.player-aef1f7f1-112e-4110-b35d-61aba9de42ce:after,
+    // PENTA-Goga
+    &.player-61bcfa75-acbb-4ee5-a5c2-6a526b772b15:after,
+    // PENTA-Falko
+    &.player-e815fe52-dedc-4407-9bab-ae4dd8ed31f0:after {
+        @include large {
+            content: "🏆";
+            color: gold;
+            position: absolute;
+            left: $l*2 + 64px;
+            font-size: 0.7em;
+        }
+    }
 
 }
