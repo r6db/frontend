@@ -3,6 +3,8 @@
 .profile{
     display: flex;
     flex-direction: column;
+    margin-top: 0;
+    padding: 0 $l;
 
     @include large{
         flex-direction: row;
@@ -14,25 +16,29 @@
         display: flex;
         flex-direction: column;
         flex: 1;
-        margin: (-$l) 0;
+
+        .profile-module {
+            padding: 10px;
+        }
 
         @include openmenu{
             flex-direction: row;
-            margin: 0 (-$l);
 
             .profile-center{
                 width: 66%;
-                flex: 1 0 auto;
+                flex: 1 1 auto;
+                margin-left: $l;
             }
             .profile-aside{
                 width: 35*$l;
                 flex: 0 0 auto;
+                margin-left: $l;
             }
         }
     }
     &-module{
         background: $trans-med;
-        margin: $l;
+        margin: $l 0;
 
         &-header{
             padding: $l $l 0;

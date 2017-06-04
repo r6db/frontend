@@ -2,6 +2,7 @@ import * as m from "mithril";
 import IdCard from "./modules/IdCard";
 import RankOverview from "./modules/RankOverview";
 import Aliases from "./modules/Aliases";
+import GameModes from "./modules/GameModes";
 import "./profile.scss";
 
 export default {
@@ -23,6 +24,7 @@ export default {
                         </div>
                     </div>
                     <div className="profile-aside">
+                        <GameModes {...attrs} />
                         <div className="profile-module">
                             ranked season - region breakdown?
                         </div>

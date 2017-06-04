@@ -1,0 +1,15 @@
+@import "styles";
+
+.stat{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &-label{
+        color: $gray;
+    }
+    &-value{
+
+    }
+}
