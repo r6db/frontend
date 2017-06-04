@@ -6,8 +6,7 @@ import { getWinChance } from "lib/stats";
 const ModeStats = {
     view({ attrs }) {
         return (
-            <div className="mode">
-                <header>{attrs.mode}</header>
+            <div className="profile-module-content mode">
                 <Stat label="max score">{attrs.bestScore}</Stat>
                 <Stat label="wins">{attrs.won}</Stat>
                 <Stat label="losses">{attrs.lost}</Stat>
@@ -22,12 +21,11 @@ export default {
     view({ attrs }) {
         return (
             <div className="profile-module gamemodes">
-                <div className="profile-module-header">Game Modes</div>
-                <div className="profile-module-divider"></div>
+                <div className="profile-module-header">Bomb</div>
                 <ModeStats mode="Bomb" {...attrs.stats.bomb} />
-                <div className="profile-module-divider"></div>
+                <div className="profile-module-header">Secure Area</div>
                 <ModeStats mode="Secure area" {...attrs.stats.secure} />
-                <div className="profile-module-divider"></div>
+                <div className="profile-module-header">Hostage</div>
                 <ModeStats mode="Hostage" {...attrs.stats.hostage} />
             </div>
         )

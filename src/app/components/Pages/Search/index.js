@@ -3,6 +3,7 @@ import Result from "./Result";
 import "./search.scss";
 
 const showPlayer = id => `/player/${id}`;
+const showExtended = id => `/player/${id}/extended`
 
 export default {
     view({ attrs, state }) {
@@ -14,7 +15,7 @@ export default {
                 <div className="colums is-multiline search-results">{
                     resultList.length > 0
                         ? resultList.map((player, i, total) =>
-                            <Result player={player} index={i} key={player.id} href={showPlayer(player.id)} />)
+                            <Result player={player} index={i} key={player.id} href={showPlayer(player.id)} extended={showExtended(player.id)} />)
                         : <div className="playercard is-empty">
                             we could not find any player matching that name. sorry
                     </div>

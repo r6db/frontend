@@ -43,9 +43,10 @@ export default {
                         <span className="player-id">{attrs.player.id}</span>
                     </div>
                     {getAliases(attrs.player)}
+                    <a className="player-link" href={attrs.extended}>› extended</a>
                     { isConsole && !attrs.player.userId
                         ? null
-                        : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="player-uplaylink">
+                        : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="player-link">
                             › view on Ubisoft
                         </a>
                     }

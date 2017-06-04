@@ -5,11 +5,13 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5*$l;
 
     &-label{
         color: $gray;
+        margin-right: $l*0.5;
     }
     &-value{
-
+        white-space: pre;
     }
 }

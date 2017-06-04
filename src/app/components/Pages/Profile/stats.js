@@ -3,6 +3,7 @@ import IdCard from "./modules/IdCard";
 import RankOverview from "./modules/RankOverview";
 import Aliases from "./modules/Aliases";
 import GameModes from "./modules/GameModes";
+import StatOverview from "./modules/StatOverview";
 import "./profile.scss";
 
 export default {
@@ -16,20 +17,24 @@ export default {
                 </div>
                 <div className="profile-statarea">
                     <div className="profile-center">
+                        <StatOverview {...attrs} />
                         <div className="profile-module">
-                            Stats and stuff?
+                            <div className="profile-module-content">
+                                ranked season - region breakdown?
+                            </div>
                         </div>
                         <div className="profile-module">
-                            past Matches? ubi pls
+                            <div className="profile-module-content">
+                                past Matches? ubi pls
+                            </div>
                         </div>
                     </div>
                     <div className="profile-aside">
                         <GameModes {...attrs} />
                         <div className="profile-module">
-                            ranked season - region breakdown?
-                        </div>
-                        <div className="profile-module">
-                            favourite operators?
+                            <div className="profile-module-content">
+                                favourite operators?
+                            </div>
                         </div>
                     </div>
                 </div>

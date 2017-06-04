@@ -3,90 +3,99 @@
 
 
 @font-face {
-	font-family: "Open Sans";
-	src: url("/assets/fonts/OpenSans/OpenSans-Regular.ttf") format("ttf");
-	font-weight: normal;
-	font-style: normal;
+    font-family: "Open Sans";
+    src: url("/assets/fonts/OpenSans/OpenSans-Regular.ttf") format("ttf");
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
-	font-family: "Open Sans";
-	src: url("/assets/fonts/OpenSans/OpenSans-Bold.ttf") format("ttf");
-	font-weight: bold;
-	font-style: normal;
+    font-family: "Open Sans";
+    src: url("/assets/fonts/OpenSans/OpenSans-Bold.ttf") format("ttf");
+    font-weight: bold;
+    font-style: normal;
 }
 @font-face {
-	font-family: "Open Sans";
-	src: url("/assets/fonts/OpenSans/OpenSans-Semibold.ttf") format("ttf");
-	font-weight: 600;
-	font-style: italic;
+    font-family: "Open Sans";
+    src: url("/assets/fonts/OpenSans/OpenSans-Semibold.ttf") format("ttf");
+    font-weight: 600;
+    font-style: italic;
 }
 @font-face{
-	font-family: "Freeroad";
-	src: url("/assets/fonts/Freeroad/Freeroad_Bold.ttf") format("ttf");
-	font-weight: bold;
-	font-style: normal;
+    font-family: "Freeroad";
+    src: url("/assets/fonts/Freeroad/Freeroad_Bold.ttf") format("ttf");
+    font-weight: bold;
+    font-style: normal;
 }
 
 html{
-	font-size: 14px;
+    font-size: 14px;
 }
 
 body{
-	font-family: "Open Sans", sans-serif;
-	position: relative;
-	color: $white;
-	display: flex;
-	flex-direction: column;
-	background: $black;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+    position: relative;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    background: $black;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 .content{
-	flex: 1 0 500px;
+    flex: 1 0 500px;
 }
 .footer{
-	flex: 0 0 3.5rem;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	padding: 0 .75rem;
+    flex: 0 0 3.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 .75rem;
 }
 .center{
-	text-align: center;
-	align-self: center;
+    text-align: center;
+    align-self: center;
 }
 .background-image{
-	position: fixed;
-	z-index: -1;
-	min-width: 100vw;
-	min-height: 100vh;
-	width: auto;
-	height: auto;
-	transform: translate(-50%, -50%);
-	top: 50%;
-	left: 50%;
-	opacity: 0.2;
+    position: fixed;
+    z-index: -1;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    opacity: 0.2;
 }
 
 a, button, input{
-	&:focus{
-		outline: 1px solid $primary;
-	}
+    &:focus{
+        outline: 1px solid $primary;
+    }
 }
 
 input{
-	padding: 0.5em 1em;
-	background: white;
+    padding: 0.5em 1em;
+    background: white;
 }
 
 label{
-	display: block;
-	color: $gray;
-	font-size: 0.7em;
-	font-weight: normal;
-	height: 1em;
-	margin-bottom: 0.5*$l;
+    display: block;
+    color: $gray;
+    font-size: 0.7em;
+    font-weight: normal;
+    height: 1em;
+    margin-bottom: 0.5*$l;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.col{
+    flex: 1;
+    margin: $l;
 }
 
 @import "components/button";

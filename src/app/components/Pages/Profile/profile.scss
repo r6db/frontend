@@ -17,22 +17,21 @@
         flex-direction: column;
         flex: 1;
 
-        .profile-module {
-            padding: 10px;
+        @include large{
+            .profile-center, .profile-aside{
+                margin-left: $l;
+            }
         }
-
         @include openmenu{
             flex-direction: row;
 
             .profile-center{
                 width: 66%;
                 flex: 1 1 auto;
-                margin-left: $l;
             }
             .profile-aside{
                 width: 35*$l;
                 flex: 0 0 auto;
-                margin-left: $l;
             }
         }
     }
@@ -41,13 +40,20 @@
         margin: $l 0;
 
         &-header{
-            padding: $l $l 0;
+            padding: (0.5*$l) $l 0;
             font-size: 1.125em;
+
+            &:first-child{
+                padding-top: $l;
+            }
+        }
+        &-content{
+            padding: $l;
         }
         &-divider{
             width: 80%;
             height: 1px;
-            background: $gray-dark;
+            background: lighten($gray-dark, 15%);
             margin: $l 10%;
         }
     }
