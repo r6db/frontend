@@ -13,10 +13,10 @@ export default {
                         <Stat label="wins">{attrs.stats.general.won}</Stat>
                         <Stat label="losses">{attrs.stats.general.lost}</Stat>
                         <Stat label="win rate">{getWinChance(attrs.stats.general)}</Stat>
-                        <Stat label="accuracy">{attrs.stats.general.hitChance.toFixed(2)} %</Stat>
+                        <Stat label="accuracy">{attrs.stats.general.hitChance.toFixed(2)}%</Stat>
                         <Stat label="headshots">{attrs.stats.general.headshot}</Stat>
                         <Stat label="headshot chance">
-                            {attrs.stats.general.headshotChance.toFixed(2)} %
+                            {attrs.stats.general.headshotChance.toFixed(2)}%
                         </Stat>
                         <Stat label="melee">{attrs.stats.general.meleeKills}</Stat>
                     </div>
@@ -26,7 +26,7 @@ export default {
                         <Stat label="k/d ratio">{getKillRatio(attrs.stats.general)}</Stat>
                         <Stat label="assists">{attrs.stats.general.assists}</Stat>
                         <Stat label="headshot ratio">
-                            {attrs.stats.general.headshotRatio.toFixed(2)} %
+                            {attrs.stats.general.headshotRatio.toFixed(2)}%
                         </Stat>
                         <Stat label="revives">{attrs.stats.general.revives}</Stat>
                         <Stat label="penetration kills">{attrs.stats.general.penetrationKills}</Stat>
