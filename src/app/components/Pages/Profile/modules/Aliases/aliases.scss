@@ -2,6 +2,28 @@
 
 .aliases{
     padding-bottom: $l;
+
+    &-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: auto;
+        padding-bottom: $l;
+
+        .alias{
+            text-align: center;
+        }
+
+        @include large{
+            flex-direction: column;
+            padding-bottom: 0;
+            max-height: 458px;
+            overflow-y: scroll;
+            .alias{
+                text-align: left;
+            }
+        }
+    }
 }
 .is-profile .alias{
     padding: (.5*$l) $l;
