@@ -1,5 +1,11 @@
 @import "styles";
 
 .statoverview{
+    .row{
+        flex-direction: column;
 
+        @include medium{
+            flex-direction: row;
+        }
+    }
 }

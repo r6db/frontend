@@ -1,6 +1,7 @@
 import * as m from "mithril";
 import IdCard from "./modules/IdCard";
 import RankOverview from "./modules/RankOverview";
+import RankSeason from "./modules/RankSeason";
 import Aliases from "./modules/Aliases";
 import GameModes from "./modules/GameModes";
 import StatOverview from "./modules/StatOverview";
@@ -18,11 +19,7 @@ export default {
                 <div className="profile-statarea">
                     <div className="profile-center">
                         <StatOverview {...attrs} />
-                        <div className="profile-module">
-                            <div className="profile-module-content">
-                                ranked season - region breakdown?
-                            </div>
-                        </div>
+                        <RankSeason {...attrs} />
                         <div className="profile-module">
                             <div className="profile-module-content">
                                 past Matches? ubi pls

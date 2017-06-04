@@ -91,7 +91,10 @@ label{
 
 .row{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    @include medium{
+        flex-direction: row;
+    }
 }
 .col{
     flex: 1;
