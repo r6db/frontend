@@ -20,19 +20,9 @@ export default {
                     <div className="profile-center">
                         <StatOverview {...attrs} />
                         <RankSeason {...attrs} />
-                        <div className="profile-module">
-                            <div className="profile-module-content">
-                                past Matches? ubi pls
-                            </div>
-                        </div>
                     </div>
                     <div className="profile-aside">
                         <GameModes {...attrs} />
-                        <div className="profile-module">
-                            <div className="profile-module-content">
-                                favourite operators?
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

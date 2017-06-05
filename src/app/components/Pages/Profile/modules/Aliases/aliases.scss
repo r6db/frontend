@@ -7,13 +7,11 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content: center;
         overflow: auto;
         margin-top: $l;
 
         @include large{
             flex-direction: column;
-            justify-content: flex-start;
             max-height: 458px;
             overflow-y: scroll;
             .alias{

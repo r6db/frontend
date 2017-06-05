@@ -17,12 +17,7 @@
         flex-direction: column;
         flex: 1;
 
-        @include large{
-            .profile-center, .profile-aside{
-                margin-left: $l;
-            }
-        }
-        @include large{
+        @include medium{
             flex-direction: row;
 
             .profile-center{
@@ -30,8 +25,15 @@
                 flex: 1 1 auto;
             }
             .profile-aside{
-                width: 35*$l;
+                width: 20*$l;
                 flex: 0 0 auto;
+                margin-left: $l;
+            }
+        }
+
+        @include large{
+            .profile-center{
+                margin-left: $l;
             }
         }
     }
