@@ -7,21 +7,22 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+        justify-content: center;
         overflow: auto;
-        padding-bottom: $l;
-
-        .alias{
-            text-align: center;
-        }
+        margin-top: $l;
 
         @include large{
             flex-direction: column;
-            padding-bottom: 0;
+            justify-content: flex-start;
             max-height: 458px;
             overflow-y: scroll;
             .alias{
                 text-align: left;
             }
+        }
+
+        .alias{
+            text-align: center;
         }
     }
 }

@@ -48,10 +48,20 @@
             font-weight: bold;
         }
     }
+    &-pastseason{
+        display: flex;
+        overflow: auto;
+        flex-direction: row;
+
+        @include large{
+            flex-direction: column;
+        }
+    }
     &-past{
         display: flex;
         align-items: center;
         padding: $l;
+        flex: 0 0 auto;
 
         &.season-1{
             border-left: 3px solid $black-ice;
