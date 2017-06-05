@@ -4,321 +4,326 @@ $searchbar-height: $l*5.4;
 $detail-image-height: 146px;
 $detail-header-height: $detail-image-height + (5*$l);
 .detail{
-	width: 100%;
-	min-height: 100vh;
-	color: $white;
-	display: flex;
-	flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    color: $white;
+    display: flex;
+    flex-direction: column;
 
-	.search-form{
-		flex: 0 0 auto;
-	}
+    .search-form{
+        flex: 0 0 auto;
+    }
 }
 .quiet {
-	color: #666;
+    color: #666;
 }
 .detail-player{
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 .detail-identification{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .detail-header{
-	margin: 0 auto;
-	width: 100%;
-	max-width: $screen-yourmom;
-	background: $trans-med;
+    margin: 0 auto;
+    width: 100%;
+    max-width: $screen-yourmom;
+    background: $trans-med;
 
-	@include large{
-		flex-direction: row;
-	}
+    @include large{
+        flex-direction: row;
+    }
 }
 .detail-info{
-	display: flex;
-	flex-direction: column;
-	flex: 0 0 auto;
-	align-items: flex-start;
-	justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    justify-content: space-between;
 
-	@include large{
-		flex-direction: row;
-	}
+    @include large{
+        flex-direction: row;
+    }
 }
 .detail-global-rank {
-	margin-top: $l;
-	span {
-		font-weight: 800;
-	}
+    margin-top: $l;
+    span {
+        font-weight: 800;
+    }
 }
 .detail-headerimage{
-	position: relative;
-	width: 10*$l;
-	height: 10*$l;
+    position: relative;
+    width: 10*$l;
+    height: 10*$l;
 
-	img{
-		width: 100%;
-		height: 100%;
-	}
-	@include large{
-		width: $detail-image-height;
-		height: $detail-image-height;
-	}
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    @include large{
+        width: $detail-image-height;
+        height: $detail-image-height;
+    }
 }
 .detail-level{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	padding: .5em;
-	font-size: 1.2em;
-	font-weight: bold;
-	color: white;
-	background: $trans-med;
-	text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: .5em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: $trans-med;
+    text-align: center;
 }
 
 .detail-headertext{
-	padding-left: $l;
-	flex: 1;
+    padding-left: $l;
+    flex: 1;
 }
 .detail-name{
-	width: 100%;
-	padding-bottom: $l;
-	font-size: 1.5rem;
-	font-weight: bold;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	text-shadow: 0 0 1px $gray-dark;
+    width: 100%;
+    padding-bottom: $l;
+    font-size: 1.5rem;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 1px $gray-dark;
 
-	@include medium {
-		font-size: 2rem;
-	}
-	@include large{
-		font-size: 3rem;
-	}
+    @include medium {
+        font-size: 2rem;
+    }
+    @include large{
+        font-size: 3rem;
+    }
 }
 
 .detail-seasonranks {
-	display: flex;
-	padding: 0 $l;
-	flex-direction: row;
-	align-self: center;
+    display: flex;
+    padding: 0 $l;
+    flex-direction: row;
+    align-self: center;
     flex-wrap: wrap;
     justify-content: center;
 
-	@include large {
-		justify-content: space-between;
-	}
+    @include large {
+        justify-content: space-between;
+    }
 }
 
 .rank {
-	margin: 0 $l;
-	
-	&-image {
-		width: 6 * $l;
-		height: 6 * $l;
-	}
-	&:last-child {
-		margin: 0;
-	}
+    margin: 0 $l;
+    
+    &-image {
+        width: 6 * $l;
+        height: 6 * $l;
+    }
+    &:last-child {
+        margin: 0;
+    }
 }
 
 
 .detail-id{
-	color: $accent;
+    color: $accent;
+}
+.detail-extended{
+    color: $accent;
+    margin-top: $l;
+    display: block;
 }
 .detail-content{
-	width: 100%;
-	max-width: $screen-yourmom;
-	margin: 0 auto;
+    width: 100%;
+    max-width: $screen-yourmom;
+    margin: 0 auto;
 }
 
 .detail-backdrop{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100vw;
-	height: 100vh;
-	background: rgba(0 ,0, 0, 0.3);
-	display: block;
-	transition: all $tdur ease-out;
-	transform: translate(100%, 0);
-	z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0 ,0, 0, 0.3);
+    display: block;
+    transition: all $tdur ease-out;
+    transform: translate(100%, 0);
+    z-index: -1;
 }
 
 
 .detail-aliases{
-	// height is detail-content height - all the paddings;
-	display: flex;
-	flex-direction: row;
-	overflow: auto;
-	width: auto;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	-webkit-overflow-scrolling: touch;
+    // height is detail-content height - all the paddings;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
 
-	&:after{
-		content: "";
-		display: block;
-		width: 20px;
-		height: 100%;
-		right: 0;
-		top: 0;
-	}
+    &:after{
+        content: "";
+        display: block;
+        width: 20px;
+        height: 100%;
+        right: 0;
+        top: 0;
+    }
 }
 
 .detail-stats{
-	padding: ($l*2) 0 (0.5*$l);
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+    padding: ($l*2) 0 (0.5*$l);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
 }
 
 
 .detailerror{
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .detailerror-title{
-	height: 146px;
-	flex: 0;
-	width: 100%;
-	max-width: $screen-yourmom;
-	margin: 0 auto;
-	padding: (2*$l) 0 (3*$l) (2*$l);
-	background: $trans-med;
-	font-size: 3rem;
-	line-height: 106px;
-	font-weight: bold;
-	text-shadow: 0 0 1px $gray-dark;
+    height: 146px;
+    flex: 0;
+    width: 100%;
+    max-width: $screen-yourmom;
+    margin: 0 auto;
+    padding: (2*$l) 0 (3*$l) (2*$l);
+    background: $trans-med;
+    font-size: 3rem;
+    line-height: 106px;
+    font-weight: bold;
+    text-shadow: 0 0 1px $gray-dark;
 }
 .detailerror-content{
-	background: $gray-dark;
-	box-shadow: 0 0 5px $gray-dark;
-	max-width: $screen-yourmom;
-	width: 100%;
-	margin: 0 auto;
+    background: $gray-dark;
+    box-shadow: 0 0 5px $gray-dark;
+    max-width: $screen-yourmom;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .detailerror-message{
-	padding: $l*2;
-	line-height: 1.4;
+    padding: $l*2;
+    line-height: 1.4;
 }
 
 .operator-icon {
-	height: $operator-size;
-	width: $operator-size;
-	display: inline-block;
-	/* padding: (-$operator-size*2) (-$operator-size*2); */
-	background-image: url(/assets/operators.png);
-	background-size: 512px*$operator-multiplyer 1664px * $operator-multiplyer;
-	background-repeat: no-repeat;
-	background-position: 0px 0px;
+    height: $operator-size;
+    width: $operator-size;
+    display: inline-block;
+    /* padding: (-$operator-size*2) (-$operator-size*2); */
+    background-image: url(/assets/operators.png);
+    background-size: 512px*$operator-multiplyer 1664px * $operator-multiplyer;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
 
-	&.jager {
-		background-position: (-$operator-size*0) (-$operator-size*0);
-	}
-	&.blitz {
-		background-position: (-$operator-size*1) (-$operator-size*0);
-	}
-	&.iq {
-		background-position: (-$operator-size*2) (-$operator-size*0);
-	}
-	&.bandit {
-		background-position: (-$operator-size*3) (-$operator-size*0);
-	}
+    &.jager {
+        background-position: (-$operator-size*0) (-$operator-size*0);
+    }
+    &.blitz {
+        background-position: (-$operator-size*1) (-$operator-size*0);
+    }
+    &.iq {
+        background-position: (-$operator-size*2) (-$operator-size*0);
+    }
+    &.bandit {
+        background-position: (-$operator-size*3) (-$operator-size*0);
+    }
 
-	&.fuze {
-		background-position: (-$operator-size*0) (-$operator-size*1);
-	}
-	&.kapkan {
-		background-position: (-$operator-size*1) (-$operator-size*1);
-	}
-	&.glaz {
-		background-position: (-$operator-size*2) (-$operator-size*1);
-	}
-	&.tachanka {
-		background-position: (-$operator-size*3) (-$operator-size*1);
-	}
+    &.fuze {
+        background-position: (-$operator-size*0) (-$operator-size*1);
+    }
+    &.kapkan {
+        background-position: (-$operator-size*1) (-$operator-size*1);
+    }
+    &.glaz {
+        background-position: (-$operator-size*2) (-$operator-size*1);
+    }
+    &.tachanka {
+        background-position: (-$operator-size*3) (-$operator-size*1);
+    }
 
-	&.thermite {
-		background-position: (-$operator-size*0) (-$operator-size*2);
-	}
-	&.castle {
-		background-position: (-$operator-size*1) (-$operator-size*2);
-	}
-	&.ash {
-		background-position: (-$operator-size*2) (-$operator-size*2);
-	}
-	&.pulse {
-		background-position: (-$operator-size*3) (-$operator-size*2);
-	}
+    &.thermite {
+        background-position: (-$operator-size*0) (-$operator-size*2);
+    }
+    &.castle {
+        background-position: (-$operator-size*1) (-$operator-size*2);
+    }
+    &.ash {
+        background-position: (-$operator-size*2) (-$operator-size*2);
+    }
+    &.pulse {
+        background-position: (-$operator-size*3) (-$operator-size*2);
+    }
 
-	&.twitch {
-		background-position: (-$operator-size*0) (-$operator-size*3);
-	}
-	&.montagne {
-		background-position: (-$operator-size*1) (-$operator-size*3);
-	}
-	&.rook {
-		background-position: (-$operator-size*2) (-$operator-size*3);
-	}
-	&.doc {
-		background-position: (-$operator-size*3) (-$operator-size*3);
-	}
+    &.twitch {
+        background-position: (-$operator-size*0) (-$operator-size*3);
+    }
+    &.montagne {
+        background-position: (-$operator-size*1) (-$operator-size*3);
+    }
+    &.rook {
+        background-position: (-$operator-size*2) (-$operator-size*3);
+    }
+    &.doc {
+        background-position: (-$operator-size*3) (-$operator-size*3);
+    }
 
-	&.sledge {
-		background-position: (-$operator-size*0) (-$operator-size*4);
-	}
-	&.thatcher {
-		background-position: (-$operator-size*1) (-$operator-size*4);
-	}
-	&.mute {
-		background-position: (-$operator-size*2) (-$operator-size*4);
-	}
-	&.smoke {
-		background-position: (-$operator-size*3) (-$operator-size*4);
-	}
+    &.sledge {
+        background-position: (-$operator-size*0) (-$operator-size*4);
+    }
+    &.thatcher {
+        background-position: (-$operator-size*1) (-$operator-size*4);
+    }
+    &.mute {
+        background-position: (-$operator-size*2) (-$operator-size*4);
+    }
+    &.smoke {
+        background-position: (-$operator-size*3) (-$operator-size*4);
+    }
 
-	&.valkyrie {
-		background-position: (-$operator-size*0) (-$operator-size*5);
-	}
-	&.blackbeard {
-		background-position: (-$operator-size*1) (-$operator-size*5);
-	}
-	&.frost {
-		background-position: (-$operator-size*2) (-$operator-size*5);
-	}
-	&.buck {
-		background-position: (-$operator-size*3) (-$operator-size*5);
-	}
+    &.valkyrie {
+        background-position: (-$operator-size*0) (-$operator-size*5);
+    }
+    &.blackbeard {
+        background-position: (-$operator-size*1) (-$operator-size*5);
+    }
+    &.frost {
+        background-position: (-$operator-size*2) (-$operator-size*5);
+    }
+    &.buck {
+        background-position: (-$operator-size*3) (-$operator-size*5);
+    }
 
-	&.caveira {
-		background-position: (-$operator-size*0) (-$operator-size*6);
-	}
-	&.capitao {
-		background-position: (-$operator-size*1) (-$operator-size*6);
-	}
-	&.hibana {
-		background-position: (-$operator-size*2) (-$operator-size*6);
-	}
-	&.echo {
-		background-position: (-$operator-size*3) (-$operator-size*6);
-	}
+    &.caveira {
+        background-position: (-$operator-size*0) (-$operator-size*6);
+    }
+    &.capitao {
+        background-position: (-$operator-size*1) (-$operator-size*6);
+    }
+    &.hibana {
+        background-position: (-$operator-size*2) (-$operator-size*6);
+    }
+    &.echo {
+        background-position: (-$operator-size*3) (-$operator-size*6);
+    }
 
-	&.mira {
-		background-position: (-$operator-size*0) (-$operator-size*7);
-	}
-	&.jackal {
-		background-position: (-$operator-size*1) (-$operator-size*7);
-	}
+    &.mira {
+        background-position: (-$operator-size*0) (-$operator-size*7);
+    }
+    &.jackal {
+        background-position: (-$operator-size*1) (-$operator-size*7);
+    }
 }
 
 /* booster thats currently first on the leaderboard */
