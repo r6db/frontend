@@ -1,4 +1,7 @@
 export const formatDuration = seconds => {
+    if (!seconds) {
+        return "0h 0m";
+    }
     const rawHours = seconds / (60 * 60);
     const hours = rawHours | 0;
     const minutes = ((rawHours % 1) * 60).toFixed(0);
