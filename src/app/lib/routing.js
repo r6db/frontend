@@ -12,6 +12,7 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 import Home from "components/Pages/Home";
 import Search from "components/Pages/Search";
 import Detail from "components/Pages/Detail";
+import Profile from "components/Pages/Profile"
 import Leaderboard from "components/Pages/Leaderboard";
 import Chankaboard from "components/Pages/Chankaboard";
 import Faq from "components/Pages/Faq";
@@ -92,6 +93,48 @@ export default function initRoutes() {
         } else {
             page.redirect("/");
         }
+    });
+    page("/player/:id/extended", function (ctx) {
+        const id = ctx.params.id;
+        appstate.merge({
+            config: Pageconfig.PROFILE,
+            Component: Profile,
+            loading: true,
+            data: null
+        });
+        api.getPlayer(id)
+            .then(function (res) {
+                if (res.id === id) {
+                    appstate.merge({
+                        data: res,
+                        loading: false
+                    });
+                    if (res.flags.noAliases === false) {
+                        setMeta({
+                            title: `${res.name}`,
+                            description: `${res.name} player profile for Rainbow Six: Siege`,
+                            image: isConsole ? `//ubisoft-avatars.akamaized.net/${ res.userId }/default_146_146.png` : `http://uplay-avatars.s3.amazonaws.com/${ res.id }/default_146_146.png`,
+                            type: "profile"
+                        });
+                    } else {
+                        setMeta({
+                            title: `account ${id}`,
+                            description: `${id} account details in the community database for Rainbow Six: Siege`
+                        });
+                    }
+                } else {
+                    console.info("discarded data from previous route");
+                    appstate.set("loading", false);
+                }
+            })
+            .catch(function (err) {
+                console.warn(err);
+                appstate.merge({
+                    data: null,
+                    loading: false
+                });
+                setMeta();
+            });
     });
     page("/player/:id", function (ctx) {
         console.debug("router mount <Detail />");

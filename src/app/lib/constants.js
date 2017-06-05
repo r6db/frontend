@@ -26,6 +26,7 @@ export const Pageconfig = Object.freeze({
     SEARCH: { id: "SEARCH", class: "is-searching" },
     RESULT: { id: "RESULT", class: "is-results" },
     DETAIL: { id: "DETAIL", class: "is-detail" },
+    PROFILE: {id: "PROFILE", class: "is-profile"},
     LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
     CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
     FAQ: { id: "FAQ", class: "is-faq"}
@@ -58,7 +59,15 @@ export const Ranks = [
     "Platinum Star",
     "Diamond"
 ];
-
+export const Seasons = [
+    "Release",
+    "Black Ice",
+    "Dust Line",
+    "Skull Rain",
+    "Red Crow",
+    "Velvet Shell",
+    "Operation Health"
+]
 /**
  * define our Leaderboards
  * id: url parameter we set for the board

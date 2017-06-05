@@ -1,0 +1,62 @@
+@import "styles";
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    padding: 0 $l;
+
+    @include large{
+        flex-direction: row;
+         &-sidebar{
+             width: 35*$l;
+         }
+    }
+    &-statarea{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        @include medium{
+            flex-direction: row;
+
+            .profile-center{
+                width: 66%;
+                flex: 1 1 auto;
+            }
+            .profile-aside{
+                width: 20*$l;
+                flex: 0 0 auto;
+                margin-left: $l;
+            }
+        }
+
+        @include large{
+            .profile-center{
+                margin-left: $l;
+            }
+        }
+    }
+    &-module{
+        background: $trans-med;
+        margin: $l 0;
+
+        &-header{
+            padding: (0.5*$l) $l 0;
+            font-size: 1.125em;
+
+            &:first-child{
+                padding-top: $l;
+            }
+        }
+        &-content{
+            padding: $l;
+        }
+        &-divider{
+            width: 80%;
+            height: 1px;
+            background: lighten($gray-dark, 15%);
+            margin: $l 10%;
+        }
+    }
+}

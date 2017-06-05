@@ -53,7 +53,7 @@ const handleResponse = player => {
         player.flags.noRanked = true;
     }
 
-    const allRanks = player.totalAbandons = player.seasonRanks
+    const allRanks = player.seasonRanks
         .concat(player.rank)
         .filter(x => !!x)
         .reduce((acc, rank) => {
@@ -64,18 +64,26 @@ const handleResponse = player => {
             return acc;
         }, []);
 
-    player.pastRanks = allRanks.map(x => [x.ncsa, x.emea, x.apac]
-            .map(y => ({ rank: y.max_rank, season: x.season }))
-            .sort((a, b) => b.rank - a.rank)[0]);
+    player.pastRanks = allRanks.map(x => {
+        return [x.ncsa, x.emea, x.apac]
+            .map(y => ({ rank: y.max_rank, season: x.season, mmr: y.max_mmr.toFixed(2) }))
+            .sort((a, b) => b.rank - a.rank)[0]
+    })
+    .sort((a, b) => b.season - a.season);
 
     const sum = (x, y) => x + y;
 
     if (player.stats && player.stats.ranked) {
-        player.stats.ranked.abandoned = allRanks.map(x => [x.ncsa, x.emea, x.apac]
+        player.stats.ranked.abandons = allRanks.map(x => [x.ncsa, x.emea, x.apac]
                 .map(y => y.abandons)
                 .reduce(sum, 0))
-            .reduce(sum, 0);
+            .reduce(sum, 0)
     }
+
+
+    player.stats.general.hitChance = ((player.stats.general.bulletsHit * 100) / (player.stats.general.bulletsFired || 1))
+    player.stats.general.headshotChance = ((player.stats.general.headshot * 100) / (player.stats.general.bulletsHit || 1))
+    player.stats.general.headshotRatio = ((player.stats.general.headshot * 100) / (player.stats.general.kills || 1))
 
     player.aliases = player.aliases
         .map(fixAlias)

@@ -6,7 +6,7 @@ export default {
         const glyph = GLYPHS["RANK" + attrs.rank.rank];
         return (
             <div className="rank">
-                <Icon class="rank-image" glyph={glyph} />
+                <Icon className="rank-image" glyph={glyph} />
                 <div className="rank-season">Season {attrs.rank.season}</div>
             </div>
         );

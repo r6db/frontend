@@ -9,11 +9,10 @@ export let showMenu = (bool) => showMenuCallback(bool);
 
 export default {
     oninit({ attrs, state }) {
-        
 
         // interaction stuff
         state.isDragging = false;
-        state.isOpen = false;
+        state.isOpen = window.innerWidth > 1304; // menu always shows on desktop
         state.startX = 0;
         state.currX = 0;
         const MENU_MAX_WIDTH = 280;

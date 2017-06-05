@@ -1,0 +1,11 @@
+@import "styles";
+
+.statoverview{
+    .row{
+        flex-direction: column;
+
+        @include large{
+            flex-direction: row;
+        }
+    }
+}

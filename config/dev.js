@@ -6,13 +6,14 @@ const config = Object.assign({}, base);
 
 config.devServer = {
     contentBase: path.resolve("./build"),
-    host: "localhost",
+    host: "0.0.0.0",
     compress: true,
     inline: true,
     hot: true,
     noInfo: true,
     lazy: false,
     port: 9000,
+    disableHostCheck: true,
     proxy: [{
         path: "/api",
         target: "https://r6db.com",
@@ -21,8 +22,8 @@ config.devServer = {
     historyApiFallback: true,
     clientLogLevel: "error",
     watchOptions: {
-        aggregateTimeout: 300,
-        poll: 1000
+        aggregateTimeout: 100,
+        poll: 500
     },
     stats: {
         colors: true,

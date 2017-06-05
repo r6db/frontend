@@ -1,0 +1,39 @@
+@import "styles";
+
+.aliases{
+    padding-bottom: $l;
+
+    &-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: auto;
+        margin-top: $l;
+
+        @include large{
+            flex-direction: column;
+            max-height: 458px;
+            overflow-y: scroll;
+            .alias{
+                text-align: left;
+            }
+        }
+
+        .alias{
+            text-align: center;
+        }
+    }
+}
+.is-profile .alias{
+    padding: (.5*$l) $l;
+    position: relative;
+    margin-bottom: $l;
+
+    &-time{
+        color: $gray;
+        font-size: 0.9em;
+    }
+    &-name{
+        font-size: 1.1em;
+    }
+}

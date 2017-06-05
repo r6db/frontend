@@ -10,7 +10,7 @@
     &-menuspacer{
         width: 60px;
         flex: 0 0 auto;
-        @include openmenu{
+        @include large{
             display: none;
         }
     }
@@ -25,7 +25,7 @@
         max-width: 100%;
         background: none;
         box-shadow: none;
-        
+
         input{
             height: $topbar-height;
         }
