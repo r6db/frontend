@@ -30,7 +30,7 @@ const update = debounce(function () {
 
 const breakpoints = {
     small: 0,
-    medium: 512,
+    medium: 768,
     large: 1024,
 }
 

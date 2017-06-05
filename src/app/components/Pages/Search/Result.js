@@ -41,9 +41,9 @@ export default {
                     <div className="player-identification">
                         <a href={attrs.href} className="player-name">{attrs.player.name}</a>
                         <span className="player-id">{attrs.player.id}</span>
-                        <a className="player-extended" href={attrs.extended}>extended profile (alpha)</a>
                     </div>
                     {getAliases(attrs.player)}
+                    <a className="player-link player-extended" href={attrs.extended}>extended (alpha)</a>
                     { isConsole && !attrs.player.userId
                         ? null
                         : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="player-link">

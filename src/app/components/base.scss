@@ -85,9 +85,10 @@ label{
 
 .row{
     display: flex;
-    flex-direction: row;
-    @include small{
-        flex-direction: column;
+    flex-direction: column;
+
+    @include medium{
+        flex-direction: row;
     }
 }
 .col{

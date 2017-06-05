@@ -33,7 +33,11 @@
         width: 64px;
         height: 64px;
         position: relative;
+
         @include medium{
+            display: block;
+        }
+        @include large{
             display: block;
         }
 
@@ -70,12 +74,6 @@
         font-size: 0.8rem;
         color: $gray;
     }
-    .player-extended{
-        display: block;
-        color: $accent;
-        padding: 0.1em 0;
-        font-size: 0.9rem;
-    }
     .player-link{
         color: $accent;
         margin: 10px 0;
@@ -87,6 +85,13 @@
         text-overflow: ellipsis;
         flex: 0 0 auto;
         text-decoration: none;
+    }
+    .player-extended{
+        display: none;
+
+        @include medium{
+            display: block;
+        }
     }
     .player-aliases{
         display: none;

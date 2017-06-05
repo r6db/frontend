@@ -27,7 +27,7 @@ export default {
             state.mediaClass = Object.keys(attrs.query)
                 .reduce((acc, curr) => {
                     return (width > attrs.query[curr])
-                        ? curr
+                        ? acc + " " + curr
                         : acc;
                 }, "");
         }
@@ -39,7 +39,7 @@ export default {
      },
     view({ attrs, state, children }) {
         return (
-            <div className={`elementquery ${state.mediaClass} ${attrs.className || ""}`}>
+            <div className={`elementquery${state.mediaClass} ${attrs.className || ""}`}>
                 {children}
             </div>
         )

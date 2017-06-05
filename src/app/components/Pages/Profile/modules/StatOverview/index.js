@@ -14,7 +14,7 @@ export default {
                         <Stat label="kills">{attrs.stats.general.kills}</Stat>
                         <Stat label="accuracy">{attrs.stats.general.hitChance.toFixed(2)}%</Stat>
                         <Stat label="headshots">{attrs.stats.general.headshot}</Stat>
-                        <Stat label="melee">{attrs.stats.general.meleeKills}</Stat>
+                        <Stat label="dbno">{attrs.stats.general.dbno}</Stat>
                     </div>
                     <div className="col">
                         <Stat label="losses">{attrs.stats.general.lost}</Stat>
@@ -23,12 +23,12 @@ export default {
                         <Stat label="hs ratio" tooltip="how many of your kills are headshots">
                             {attrs.stats.general.headshotRatio.toFixed(2)}%
                         </Stat>
-                        <Stat label="pen. kills" tooltip="how many kills were by wallbang">{attrs.stats.general.penetrationKills}</Stat>
+                        <Stat label="dbno assists">{attrs.stats.general.dbnoAssists}</Stat>
                     </div>
                     <div className="col">
                         <Stat label="win rate" tooltip="how many % of your games are wins">{getWinChance(attrs.stats.general)}</Stat>
                         <Stat label="k/d ratio">{getKillRatio(attrs.stats.general)}</Stat>
-                        <Stat label="revives">{attrs.stats.general.revives}</Stat>
+                        <Stat label="suicides">{attrs.stats.general.suicides}</Stat>
                         <Stat label="hs chance" tooltip="the chance of a shot being a headshot">
                             {attrs.stats.general.headshotChance.toFixed(2)}%
                         </Stat>
@@ -67,6 +67,27 @@ export default {
                     <div className="col">
                         <Stat label="win rate">{getWinChance(attrs.stats.casual)}</Stat>
                         <Stat label="k/d ratio">{getKillRatio(attrs.stats.casual)}</Stat>
+                    </div>
+                </div>
+
+                <div className="profile-module-header">Misc</div>
+                <div className="row">
+                    <div className="col">
+                        <Stat label="melees">{attrs.stats.general.meleeKills}</Stat>
+                        <Stat label="revives">{attrs.stats.general.revives}</Stat>
+                        <Stat label="gadgets destroyed">
+                            {attrs.stats.general.gadgetsDestroyed}
+                        </Stat>
+                    </div>
+                    <div className="col">
+                        <Stat label="pen. kills" tooltip="how many kills were by wallbang">
+                            {attrs.stats.general.penetrationKills}
+                        </Stat>
+                        <Stat label="revives denied">{attrs.stats.general.revivesDenied}</Stat>
+                    </div>
+                    <div className="col">
+                        <Stat label="blindfires">{attrs.stats.general.blindKills}</Stat>
+                        <Stat label="rappel breaches">{attrs.stats.general.rappelBreaches}</Stat>
                     </div>
                 </div>
 
