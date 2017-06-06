@@ -51,7 +51,7 @@ export default {
                         <General player={attrs} />
                         <Casual player={attrs} />
                         <Ranked player={attrs} />
-                        {attrs.rank && attrs.rank.ncsa ? <RankedSeason region={getRegionName("ncsa")}stats={attrs.rank.ncsa}/> : null}
+                        {attrs.rank && attrs.rank.ncsa ? <RankedSeason region={getRegionName("ncsa")} stats={attrs.rank.ncsa}/> : null}
                         {attrs.rank && attrs.rank.emea ? <RankedSeason region={getRegionName("emea")} stats={attrs.rank.emea} /> : null}
                         {attrs.rank && attrs.rank.apac ? <RankedSeason region={getRegionName("apac")} stats={attrs.rank.apac} /> : null}
                     </div>
