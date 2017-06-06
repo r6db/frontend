@@ -50,6 +50,7 @@ export default {
                 <div className="profile-module-divider"></div>
                 <div className="rankoverview-pastseason">
                     {attrs.pastRanks
+                        .sort((a, b) => b.season - a.season)
                         .map(rank =>
                         <div
                             className={`rankoverview-past season-${rank.season}`}
