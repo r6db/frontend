@@ -38,7 +38,7 @@ export default {
                             </div>
                         </div>
                         <div className="detail-seasonranks">
-                            {attrs.pastRanks.map(x => <Rank rank={x} />)}
+                            {attrs.pastRanks.reverse().map(x => <Rank rank={x} />)}
                         </div>
                     </div>
                     <div className="detail-aliases">
