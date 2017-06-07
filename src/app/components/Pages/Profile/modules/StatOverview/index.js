@@ -84,7 +84,6 @@ export default {
                             {attrs.stats.general.penetrationKills}
                         </Stat>
                         <Stat label="revives denied">{attrs.stats.general.revivesDenied}</Stat>
-                        <Stat label="customs">{formatDuration(attrs.stats.custom.timePlayed)}</Stat>
                     </div>
                     <div className="col">
                         <Stat label="blindfires">{attrs.stats.general.blindKills}</Stat>
