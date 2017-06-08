@@ -38,7 +38,11 @@ export default {
                             </div>
                         </div>
                         <div className="detail-seasonranks">
-                            { attrs.pastRanks.sort((a, b) => a.season - b.season).map(x => <Rank rank={x} />)}
+                            {attrs.pastRanks
+                                .slice()
+                                .sort((a, b) => a.season - b.season)
+                                .map(x => <Rank rank={x} />)
+                            }
                         </div>
                     </div>
                     <div className="detail-aliases">
