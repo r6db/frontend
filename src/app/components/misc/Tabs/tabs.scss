@@ -1,0 +1,39 @@
+@import "styles";
+
+.tabs{
+    width: 100%;
+    padding-top: $l;
+
+    /* container for tab buttons */
+    .tab-headers{
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+        background: $trans-med;
+    }
+    /* a single clickable tab */
+    .tab-header{
+        flex: 0 0 auto;
+        padding: $l*2;
+        margin: 0 $l;
+        color: darken($white, 50%);
+        cursor: pointer;
+        transition: color $tdur linear;
+        position: relative;
+        user-select: none;
+
+        &:hover{
+            color: darken($white, 30%);
+        }
+        &.is-selected{
+            color: $accent;
+        }
+    }
+
+    /* container for the active tab content */
+    .tab-content{
+        padding-top: $l;
+        width: 100%;
+        position: relative;
+    }
+}

@@ -8,7 +8,8 @@ export const formatDuration = seconds => {
     return `${hours}h ${minutes}m`;
 }
 
-export const getWinChance = (obj) => (obj.won * 100 / (obj.won + (obj.lost || 1) + (obj.abandons || 1))).toFixed(2) + "%"
+export const getWinChance = (obj) => (obj.won * 100 / (obj.won + (obj.lost || 1))).toFixed(2) + "%"
+export const getWinChanceRaw =  (obj) => (obj.won * 100 / (obj.won + (obj.lost || 1)))
 
 export const getKillRatio = obj => (obj.kills / (obj.deaths || 1)).toFixed(2)
 

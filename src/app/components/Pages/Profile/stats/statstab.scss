@@ -1,0 +1,40 @@
+@import "styles";
+
+.statstab{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    padding-top: 0;
+
+    @include large{
+        flex-direction: row;
+         &-sidebar{
+             width: 35*$l;
+         }
+    }
+    &-statarea{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        @include medium{
+            flex-direction: row;
+
+            .statstab-center{
+                width: 66%;
+                flex: 1 1 auto;
+            }
+            .statstab-aside{
+                width: 20*$l;
+                flex: 0 0 auto;
+                margin-left: $l;
+            }
+        }
+
+        @include large{
+            .statstab-center{
+                margin-left: $l;
+            }
+        }
+    }
+}

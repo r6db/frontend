@@ -1,0 +1,25 @@
+@import "styles";
+
+.opstab{
+    table{
+        width: 100%;
+    }
+    th{
+        background: $trans-low;
+        font-weight: bold;
+        padding: ($l*2) $l;
+        text-align: right;
+    }
+    td{
+        padding: $l;
+        vertical-align: middle;
+        text-align: right;
+        background: $trans-med;
+    }
+    .id{
+        text-align: left;
+    }
+    tr:nth-child(even) td{
+        background: fade-out($trans-med, 0.1);
+    }
+}
