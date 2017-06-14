@@ -33,6 +33,30 @@ export const Pageconfig = Object.freeze({
 });
 
 /**
+ * define our Leaderboards
+ * id: url parameter we set for the board
+ * board: api endpoint to call
+ * label: you know..
+ */
+export const Leaderboards = {
+    ALL: { id: "ALL", board: "highest_skill_adjusted", label: "Global" },
+    APAC: { id: "APAC", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
+    EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
+    NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
+};
+
+export const isConsole = /(xbox|ps4)/.test(window.location.href);
+export const isPS4 = /(ps4)/.test(window.location.href);
+export const isXbox = /(xbox)/.test(window.location.href);
+export const isPC = !isConsole;
+
+export const platformShorthand = isPS4 ? 'psn' : isXbox ? 'xbl' : 'uplay';
+
+export const DATE_SHORT = "DD. MMM YYYY";
+export const DATE_LONG = "DD. MMM YYYY HH:MM";
+
+
+/**
  * the api returns ranks in a number format
  * we can use that number as index to get the label
  */
@@ -68,25 +92,36 @@ export const Seasons = [
     "Velvet Shell",
     "Operation Health"
 ]
-/**
- * define our Leaderboards
- * id: url parameter we set for the board
- * board: api endpoint to call
- * label: you know..
- */
-export const Leaderboards = {
-    ALL: { id: "ALL", board: "highest_skill_adjusted", label: "Global" },
-    APAC: { id: "APAC", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
-    EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
-    NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
-};
 
-export const isConsole = /(xbox|ps4)/.test(window.location.href);
-export const isPS4 = /(ps4)/.test(window.location.href);
-export const isXbox = /(xbox)/.test(window.location.href);
-export const isPC = !isConsole;
-
-export const platformShorthand = isPS4 ? 'psn' : isXbox ? 'xbl' : 'uplay';
-
-export const DATE_SHORT = "DD. MMM YYYY";
-export const DATE_LONG = "DD. MMM YYYY HH:MM";
+export const Operators = {
+    ash: { name: "Ash" },
+    bandit: { name: "Bandit" },
+    blackbeard: { name: "Blackbeard" },
+    blitz: { name: "Blitz" },
+    buck: { name: "Buck" },
+    capitao: { name: "Capitão" },
+    castle: { name: "Castle" },
+    caveira: { name: "Caveira" },
+    doc: { name: "Doc" },
+    echo: { name: "Echo" },
+    frost: { name: "Frost" },
+    fuze: { name: "Fuze" },
+    glaz: { name: "Glaz" },
+    hibana: { name: "Hibana" },
+    iq: { name: "IQ" },
+    jackal: { name: "Jackal" },
+    jager: { name: "Jäger" },
+    kapkan: { name: "Kapkan" },
+    mira: { name: "Mira" },
+    montagne: { name: "Montagne" },
+    mute: { name: "Mute" },
+    pulse: { name: "Pulse" },
+    rook: { name: "Rook" },
+    sledge: { name: "Sledge" },
+    smoke: { name: "Smoke" },
+    tachanka: { name: "Tachanka" },
+    thatcher: { name: "Thatcher" },
+    thermite: { name: "Thermite" },
+    twitch: { name: "Twitch" },
+    valkyrie: { name: "Valkyrie" },
+}

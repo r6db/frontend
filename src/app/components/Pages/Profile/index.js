@@ -1,8 +1,11 @@
 import * as m from "mithril";
-import Player from "./stats";
+import Stats from "./stats";
+import Operators from "./operators";
+import Tabs from "components/misc/Tabs";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
+import "./profile.scss";
 
 export default {
     view({ attrs, state }) {
@@ -15,7 +18,22 @@ export default {
         } else if (attrs.data.flags && attrs.data.flags.noAliases) {
             return <NoAliases {...attrs.data} />;
         } else {
-            return <Player {...attrs.data} />;
+            const tabHeaders = {
+                stats: { label: "Stats" },
+                ops: { label: "Operators" }
+            }
+            return (
+                <div className={`profile ${attrs.data.id}`}>
+                    <Tabs headers={tabHeaders}>
+                        <div key="stats">
+                            <Stats {...attrs.data} />
+                        </div>
+                        <div key="ops">
+                            <Operators {...attrs.data} />
+                        </div>
+                    </Tabs>
+                </div>
+            );
         }
     }
 };

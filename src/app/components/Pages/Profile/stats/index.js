@@ -5,23 +5,24 @@ import RankSeason from "./modules/RankSeason";
 import Aliases from "./modules/Aliases";
 import GameModes from "./modules/GameModes";
 import StatOverview from "./modules/StatOverview";
-import "./profile.scss";
+import "./statstab.scss";
+
 
 export default {
     view({ attrs }) {
         return (
-            <div className={`profile ${attrs.id}`}>
-                <div className="profile-sidebar">
+            <div className="statstab">
+                <div className="statstab-sidebar">
                     <IdCard {...attrs} />
                     <RankOverview {...attrs} />
                     <Aliases {...attrs} />
                 </div>
-                <div className="profile-statarea">
-                    <div className="profile-center">
+                <div className="statstab-statarea">
+                    <div className="statstab-center">
                         <StatOverview {...attrs} />
                         <RankSeason {...attrs} />
                     </div>
-                    <div className="profile-aside">
+                    <div className="statstab-aside">
                         <GameModes {...attrs} />
                     </div>
                 </div>
