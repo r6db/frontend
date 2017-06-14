@@ -9,10 +9,11 @@ const sorters = {
     "Won": (a, b) => { return b.won - a.won },
     "Lost": (a, b) => { return b.lost - a.lost },
     "Win ratio": (a, b) => { return stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a) },
+    "Kills / Round": (a, b) => { return b.kpr - a.kpr },
     "Kills": (a, b) => { return b.kills - a.kills },
     "Deaths": (a, b) => { return b.deaths - a.deaths },
     "KD Ratio": (a, b) => { return stats.getKillRatio(b) - stats.getKillRatio(a) },
-    "Time played": (a, b) => { return b.timePlayed - a.timePlayed}
+    "Time played": (a, b) => { return b.timePlayed - a.timePlayed },
 }
 const filters = {
     "None": () => true,
@@ -40,7 +41,8 @@ export default {
                 acc.push(Object.assign({}, op, Operators[curr],  {
                     id: curr,
                     wlr: stats.getWinChanceRaw(op),
-                    kda: (op.kills) / (op.deaths || 1)
+                    kda: (op.kills) / (op.deaths || 1),
+                    kpr: (op.kills / ((op.won + op.lost) || 1))
                 }));
                 return acc;
             }, []);
@@ -82,6 +84,7 @@ export default {
                             <div className="fauxtable-heading won">Rounds won</div>
                             <div className="fauxtable-heading lost">Rounds lost</div>
                             <div className="fauxtable-heading wlr">Win ratio</div>
+                            <div className="fauxtable-heading wph">Kills / Round</div>
                             <div className="fauxtable-heading kills">Kills</div>
                             <div className="fauxtable-heading deaths">Deaths</div>
                             <div className="fauxtable-heading kda">KD Ratio</div>
@@ -98,6 +101,7 @@ export default {
                                 <div className="fauxtable-cell won">{datum.won}</div>
                                 <div className="fauxtable-cell lost">{datum.lost}</div>
                                 <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
+                                <div className="fauxtable-cell wph">{datum.kpr.toFixed(2)}</div>
                                 <div className="fauxtable-cell kills">{datum.kills}</div>
                                 <div className="fauxtable-cell deaths">{datum.deaths}</div>
                                 <div className="fauxtable-cell kda">{datum.kda.toFixed(2)}</div>
