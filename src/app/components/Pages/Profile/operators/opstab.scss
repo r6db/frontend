@@ -1,25 +1,78 @@
 @import "styles";
 
 .opstab{
-    table{
-        width: 100%;
+    .opstab-controls{
+        margin: $l;
+        display: flex;
+        p{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0 $l;
+        }
+        label{
+            margin: 0 $l 0 0;
+            font-size: 0.9em;
+        }
     }
-    th{
-        background: $trans-low;
-        font-weight: bold;
-        padding: ($l*2) $l;
-        text-align: right;
-    }
-    td{
-        padding: $l;
-        vertical-align: middle;
-        text-align: right;
-        background: $trans-med;
-    }
-    .id{
-        text-align: left;
-    }
-    tr:nth-child(even) td{
-        background: fade-out($trans-med, 0.1);
+
+    .operator-table{
+        flex: 1;
+
+        .fauxtable-cell{
+            text-align: right;
+        }
+        .fauxtable-heading,
+        .fauxtable-cell{
+            padding: ($l*1.5) ($l*2);
+        }
+        .fauxtable-row{
+            background: $trans-med;
+        }
+        .fauxtable-row:nth-child(even){
+            background: fade-out($trans-med, 0.4);
+        }
+        .name{
+            text-align: center;
+        }
+
+        @include medium{
+            .fauxtable-cell,
+            .fauxtable-heading{
+                flex: 1 0 0;
+            }
+            .name{
+                text-align: left;
+                flex-grow: 2;
+            }
+            .won{
+                text-align: right;
+                flex-grow: 1;
+            }
+            .lost{
+                text-align: right;
+                flex-grow: 1;
+            }
+            .wlr{
+                text-align: right;
+                flex-grow: 2;
+            }
+            .kills{
+                text-align: right;
+                flex-grow: 1;
+            }
+            .deaths{
+                text-align: right;
+                flex-grow: 1;
+            }
+            .kda{
+                text-align: right;
+                flex-grow: 1;
+            }
+            .time{
+                text-align: right;
+                flex-grow: 2;
+            }
+        }
     }
 }

@@ -25,12 +25,8 @@ export default {
             return (
                 <div className={`profile ${attrs.data.id}`}>
                     <Tabs headers={tabHeaders}>
-                        <div key="stats">
-                            <Stats {...attrs.data} />
-                        </div>
-                        <div key="ops">
-                            <Operators {...attrs.data} />
-                        </div>
+                        <Stats key="stats" {...attrs.data} />
+                        <Operators key="ops" {...attrs.data} />
                     </Tabs>
                 </div>
             );

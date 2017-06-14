@@ -1,0 +1,68 @@
+@import "styles";
+
+
+.fauxtable{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+    background: $trans-med;
+
+    &-head{
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        background: $trans-med;
+    }
+
+    &-body{
+        display: flex;
+        flex-direction: row;
+        flex: 1 1 auto;
+        overflow: auto;
+    }
+
+    &-row{
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        justify-content: space-between;
+        overflow: auto;
+    }
+
+    &-heading, &-cell{
+        padding: $l;
+    }
+    &-heading{
+        font-weight: bold;
+    }
+    &-cell{
+        flex: 0 0 auto;
+    }
+
+    @include medium{
+        flex-direction: column;
+        &-head{
+            flex-direction: row;
+
+            .fauxtable-row{
+                align-items: center;
+            }
+        }
+        &-heading{
+            text-align: center;
+        }
+        &-body{
+            flex-direction: column;
+        }
+        &-row{
+            flex-direction: row;
+        }
+        &-cell{
+            padding: ($l*1.5);
+        }
+        &-heading{
+            padding: ($l*2) $l;
+        }
+    }
+}

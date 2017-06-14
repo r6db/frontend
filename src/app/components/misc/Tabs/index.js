@@ -8,13 +8,11 @@ export default {
     currentTab: null,
     oninit({attrs, state, children}) {
         // iterate over all children and create a map with their keys
-        state.content = children.reduce(function (acc, curr) {
-            if (!curr.key) {
+        children.forEach(function (child) {
+            if (!child.key) {
                 throw new Error("all tab children need a set key");
             }
-            acc[curr.key] = curr;
-            return acc;
-        }, {});
+        });
         // select the first tab by default
         state.currentTab = children[0].key || attrs.selected;
         state.onTabSelect = key => e => {
@@ -38,7 +36,7 @@ export default {
                     }
                 </div>
                 <div className="tab-content">
-                    {state.content[state.currentTab]}
+                    {children.filter(x => x.key === state.currentTab)}
                 </div>
             </div>
         );

@@ -74,6 +74,12 @@ input{
     background: white;
 }
 
+select{
+    padding: $l;
+    background: $trans-low;
+    color: $white;
+}
+
 label{
     display: block;
     color: $gray;
