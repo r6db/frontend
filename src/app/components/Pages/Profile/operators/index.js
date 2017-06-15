@@ -84,7 +84,7 @@ export default {
                             <div className="fauxtable-heading won">Rounds won</div>
                             <div className="fauxtable-heading lost">Rounds lost</div>
                             <div className="fauxtable-heading wlr">Win ratio</div>
-                            <div className="fauxtable-heading wph">Kills / Round</div>
+                            <div className="fauxtable-heading kpr">Kills / Round</div>
                             <div className="fauxtable-heading kills">Kills</div>
                             <div className="fauxtable-heading deaths">Deaths</div>
                             <div className="fauxtable-heading kda">KD Ratio</div>
@@ -101,7 +101,7 @@ export default {
                                 <div className="fauxtable-cell won">{datum.won}</div>
                                 <div className="fauxtable-cell lost">{datum.lost}</div>
                                 <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
-                                <div className="fauxtable-cell wph">{datum.kpr.toFixed(2)}</div>
+                                <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
                                 <div className="fauxtable-cell kills">{datum.kills}</div>
                                 <div className="fauxtable-cell deaths">{datum.deaths}</div>
                                 <div className="fauxtable-cell kda">{datum.kda.toFixed(2)}</div>
