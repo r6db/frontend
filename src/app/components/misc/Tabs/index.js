@@ -14,9 +14,10 @@ export default {
             }
         });
         // select the first tab by default
-        state.currentTab = children[0].key || attrs.selected;
+        state.currentTab = window.location.hash.replace("#", "") || children[0].key || attrs.selected;
         state.onTabSelect = key => e => {
             state.currentTab = key;
+            window.location.hash = key;
         };
     },
     view({attrs, state, children}) {
