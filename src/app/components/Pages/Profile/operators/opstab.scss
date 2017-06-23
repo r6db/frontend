@@ -28,9 +28,15 @@
         }
         .fauxtable-row{
             background: $trans-med;
+            &:hover {
+                background: lighten($trans-med, 10%);
+            }
         }
         .fauxtable-row:nth-child(even){
             background: fade-out($trans-med, 0.4);
+            &:hover {
+                background: lighten(fade-out($trans-med, 0.4), 20%);
+            }
         }
         .name{
             text-align: center;
