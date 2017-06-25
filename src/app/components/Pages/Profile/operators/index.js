@@ -6,13 +6,13 @@ import "./fauxtable.scss";
 
 const sorters = {
     "Name": (a, b) => { return (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)) },
-    "Won": (a, b) => { return b.won - a.won },
-    "Lost": (a, b) => { return b.lost - a.lost },
+    "Rounds Won": (a, b) => { return b.won - a.won },
+    "Rounds Lost": (a, b) => { return b.lost - a.lost },
     "Win ratio": (a, b) => { return stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a) },
-    "Kills / Round": (a, b) => { return b.kpr - a.kpr },
     "Kills": (a, b) => { return b.kills - a.kills },
     "Deaths": (a, b) => { return b.deaths - a.deaths },
     "KD Ratio": (a, b) => { return stats.getKillRatio(b) - stats.getKillRatio(a) },
+    "Kills / Round": (a, b) => { return b.kpr - a.kpr },
     "Time played": (a, b) => { return b.timePlayed - a.timePlayed },
 }
 const filters = {
@@ -84,10 +84,10 @@ export default {
                             <div className="fauxtable-heading won">Rounds won</div>
                             <div className="fauxtable-heading lost">Rounds lost</div>
                             <div className="fauxtable-heading wlr">Win ratio</div>
-                            <div className="fauxtable-heading wph">Kills / Round</div>
                             <div className="fauxtable-heading kills">Kills</div>
                             <div className="fauxtable-heading deaths">Deaths</div>
                             <div className="fauxtable-heading kda">KD Ratio</div>
+                            <div className="fauxtable-heading wph">Kills / Round</div>
                             <div className="fauxtable-heading time">Time played</div>
                         </div>
                     </div>
@@ -101,10 +101,10 @@ export default {
                                 <div className="fauxtable-cell won">{datum.won}</div>
                                 <div className="fauxtable-cell lost">{datum.lost}</div>
                                 <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
-                                <div className="fauxtable-cell wph">{datum.kpr.toFixed(2)}</div>
                                 <div className="fauxtable-cell kills">{datum.kills}</div>
                                 <div className="fauxtable-cell deaths">{datum.deaths}</div>
                                 <div className="fauxtable-cell kda">{datum.kda.toFixed(2)}</div>
+                                <div className="fauxtable-cell wph">{datum.kpr.toFixed(2)}</div>
                                 <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
                             </div>
                         ))}

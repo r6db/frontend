@@ -43,39 +43,39 @@
             }
             .name{
                 text-align: left;
-                flex-grow: 2;
+                flex-grow: 4;
             }
             .won{
                 text-align: right;
-                flex-grow: 1;
+                flex-grow: 2;
             }
             .kpr{
                 text-align: right;
-                flex-grow: 1;
+                flex-grow: 2;
             }
             .lost{
                 text-align: right;
-                flex-grow: 1;
+                flex-grow: 2;
             }
             .wlr{
                 text-align: right;
-                flex-grow: 2;
+                flex-grow: 3;
             }
             .kills{
                 text-align: right;
-                flex-grow: 1;
+                flex-grow: 2;
             }
             .deaths{
                 text-align: right;
-                flex-grow: 1;
+                flex-grow: 2;
             }
             .kda{
                 text-align: right;
-                flex-grow: 1;
+                flex-grow: 2;
             }
             .time{
                 text-align: right;
-                flex-grow: 2;
+                flex-grow: 3;
             }
         }
     }
