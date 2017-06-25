@@ -1,0 +1,12 @@
+@import "styles";
+
+.profile-module.charts{
+
+    .row{
+        flex-direction: column;
+
+        @include large{
+            flex-direction: row;
+        }
+    }
+}

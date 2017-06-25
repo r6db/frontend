@@ -1,6 +1,7 @@
 import * as m from "mithril";
 import Chart from 'components/misc/Chart';
 import * as stats from "lib/stats";
+import "./charts.scss";
 
 const colors = {
     blue: "#2e93b3",
@@ -12,7 +13,9 @@ const colors = {
 
 export default {
     oninit({ attrs, state }) {
-
+        if (!attrs.progressions) {
+            return;
+        }
         const raw = [].concat(attrs.progressions)
             .sort((a, b) => a.created_at > b.created_at ? 1 : -1);
         const offsettedRaw = raw.slice(1);
@@ -164,24 +167,28 @@ export default {
     },
     view({ attrs, state }) {
         return (
-            <div className="profile-module charts">
-                <div className="row">
-                    <div className="col">
-                        <Chart {...state.mmrChart}/>
+            attrs.progressions
+                ? (
+                    <div className="profile-module charts">
+                        <div className="row">
+                            <div className="col">
+                                <Chart {...state.mmrChart}/>
+                            </div>
+                            <div className="col">
+                                <Chart {...state.mmrChangeChart}/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <Chart {...state.wlChart}/>
+                            </div>
+                            <div className="col">
+                                <Chart {...state.kdChart}/>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col">
-                        <Chart {...state.mmrChangeChart}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <Chart {...state.wlChart}/>
-                    </div>
-                    <div className="col">
-                        <Chart {...state.kdChart}/>
-                    </div>
-                </div>
-            </div>
+                )
+                : ""
         )
     }
 }
