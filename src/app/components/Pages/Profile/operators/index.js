@@ -41,7 +41,7 @@ export default {
                 acc.push(Object.assign({}, op, Operators[curr],  {
                     id: curr,
                     wlr: stats.getWinChanceRaw(op),
-                    kda: (op.kills) / (op.deaths || 1),
+                    kdr: (op.kills) / (op.deaths || 1),
                     kpr: (op.kills / ((op.won + op.lost) || 1))
                 }));
                 return acc;
@@ -86,8 +86,8 @@ export default {
                             <div className="fauxtable-heading wlr">Win ratio</div>
                             <div className="fauxtable-heading kills">Kills</div>
                             <div className="fauxtable-heading deaths">Deaths</div>
-                            <div className="fauxtable-heading kda">KD Ratio</div>
-                            <div className="fauxtable-heading wph">Kills / Round</div>
+                            <div className="fauxtable-heading kdr">KD Ratio</div>
+                            <div className="fauxtable-heading kpr">Kills / Round</div>
                             <div className="fauxtable-heading time">Time played</div>
                         </div>
                     </div>
@@ -103,8 +103,8 @@ export default {
                                 <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
                                 <div className="fauxtable-cell kills">{datum.kills}</div>
                                 <div className="fauxtable-cell deaths">{datum.deaths}</div>
-                                <div className="fauxtable-cell kda">{datum.kda.toFixed(2)}</div>
-                                <div className="fauxtable-cell wph">{datum.kpr.toFixed(2)}</div>
+                                <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
+                                <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
                                 <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
                             </div>
                         ))}

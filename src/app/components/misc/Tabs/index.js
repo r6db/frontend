@@ -1,6 +1,7 @@
 import m from "mithril";
 import TabHeader from "./TabHeader";
 import "./tabs.scss";
+import page from "page";
 
 const isSelected = (expected, current) => expected === current;
 
@@ -14,9 +15,11 @@ export default {
             }
         });
         // select the first tab by default
-        state.currentTab = children[0].key || attrs.selected;
+        state.currentTab = window.location.hash.replace("#", "") || children[0].key || attrs.selected;
         state.onTabSelect = key => e => {
             state.currentTab = key;
+            const newUrl = window.location.pathname.replace(/#.*$/) + "#" + key;
+            history.replaceState(null, window.document.title, newUrl);
         };
     },
     view({attrs, state, children}) {
