@@ -18,7 +18,7 @@ export default {
                 </div>
                 <div className="module-row">
                     <div className="module-label">Abandons</div>
-                    <div className="module-value">{attrs.player.stats.ranked.abandoned}</div>
+                    <div className="module-value">{attrs.player.stats.ranked.abandons}</div>
                 </div>
                 <div className="module-row">
                     <div className="module-label">Win rate</div>

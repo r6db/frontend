@@ -77,7 +77,7 @@ const handleResponse = player => {
         player.stats.ranked.abandons = allRanks.map(x => [x.ncsa, x.emea, x.apac]
                 .map(y => y.abandons)
                 .reduce(sum, 0))
-            .reduce(sum, 0)
+            .reduce(sum, 0);
     }
 
 
