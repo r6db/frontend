@@ -14,6 +14,7 @@ const sorters = {
     "KD Ratio": (a, b) => { return stats.getKillRatio(b) - stats.getKillRatio(a) },
     "Kills / Round": (a, b) => { return b.kpr - a.kpr },
     "Time played": (a, b) => { return b.timePlayed - a.timePlayed },
+    "Survival rate": (a, b) => { return b.survivalRate - a.survivalRate },
 }
 const filters = {
     "None": () => true,
@@ -42,7 +43,8 @@ export default {
                     id: curr,
                     wlr: stats.getWinChanceRaw(op),
                     kdr: (op.kills) / (op.deaths || 1),
-                    kpr: (op.kills / ((op.won + op.lost) || 1))
+                    kpr: (op.kills / ((op.won + op.lost) || 1)),
+                    survivalRate: 100 - ((op.deaths / (op.won + op.lost)) * 100),
                 }));
                 return acc;
             }, []);
@@ -89,6 +91,7 @@ export default {
                             <div className="fauxtable-heading kdr">KD Ratio</div>
                             <div className="fauxtable-heading kpr">Kills / Round</div>
                             <div className="fauxtable-heading time">Time played</div>
+                            <div className="fauxtable-heading survival">Survival rate</div>
                         </div>
                     </div>
                     <div className="fauxtable-body">
@@ -106,6 +109,7 @@ export default {
                                 <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
                                 <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
                                 <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
+                                <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}</div>
                             </div>
                         ))}
                     </div>
