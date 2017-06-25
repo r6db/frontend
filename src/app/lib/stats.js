@@ -7,6 +7,7 @@ export const formatDuration = seconds => {
     const minutes = ((rawHours % 1) * 60).toFixed(0);
     return `${hours}h ${minutes}m`;
 }
+export const formatDate = date => (new Date(date).toLocaleDateString());
 
 export const getWinChance = (obj) => (obj.won * 100 / (obj.won + (obj.lost) || 1)).toFixed(2) + "%"
 export const getWinChanceRaw =  (obj) => (obj.won * 100 / (obj.won + (obj.lost) || 1))

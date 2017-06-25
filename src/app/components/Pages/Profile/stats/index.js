@@ -5,6 +5,8 @@ import RankSeason from "./modules/RankSeason";
 import Aliases from "./modules/Aliases";
 import GameModes from "./modules/GameModes";
 import StatOverview from "./modules/StatOverview";
+import Charts from "./modules/Charts";
+
 import "./statstab.scss";
 
 
@@ -21,6 +23,7 @@ export default {
                     <div className="statstab-center">
                         <StatOverview {...attrs} />
                         <RankSeason {...attrs} />
+                        <Charts {...attrs} />
                     </div>
                     <div className="statstab-aside">
                         <GameModes {...attrs} />

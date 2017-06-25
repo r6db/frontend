@@ -98,8 +98,9 @@ label{
     }
 }
 .col{
-    flex: 1;
+    flex: 0 1 100%;
     margin: $l;
+    min-width:0;
 }
 
 @import "components/button";
