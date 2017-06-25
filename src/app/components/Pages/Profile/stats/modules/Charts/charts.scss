@@ -9,4 +9,11 @@
             flex-direction: row;
         }
     }
+    .chart{
+        min-height: 200px;
+
+        canvas{
+            height: 100%;
+        }
+    }
 }

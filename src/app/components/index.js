@@ -31,7 +31,7 @@ const update = debounce(function () {
 const breakpoints = {
     small: 0,
     medium: 768,
-    large: 1024,
+    large: 1200,
 }
 
 export default {
