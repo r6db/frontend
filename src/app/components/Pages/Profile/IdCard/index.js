@@ -2,12 +2,13 @@ import * as m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import { isConsole, platformShorthand } from "lib/constants";
 import "./idcard.scss";
+import Icon, { GLYPHS } from "components/misc/Icon";
 
 const getProfileLink = profile => {
     const id = isConsole ? profile.userId : profile.id;
-    return `https://game-rainbow6.ubi.com/en-gb/${platformShorthand}/player-statistics/${id}/multiplayer`
-}
-const getEslLink = profile => `https://play.eslgaming.com/search/?query=${profile.name}&type=gameaccount`
+    return `https://game-rainbow6.ubi.com/en-gb/${platformShorthand}/player-statistics/${id}/multiplayer`;
+};
+const getEslLink = profile => `https://play.eslgaming.com/search/?query=${profile.name}&type=gameaccount`;
 
 export default {
     view({ attrs }) {
@@ -27,8 +28,14 @@ export default {
                         <a href={getProfileLink(attrs)} target="_BLANK">view on Ubisoft</a>
                         <a href={getEslLink(attrs)} target="_BLANK">find on ESL</a>
                     </div>
+                    {
+                        !attrs.twitch ? "" :
+                        <a className="twitch-link" href={attrs.twitch}>
+                            <Icon className="twitch-logo" fill="#fff" glyph={GLYPHS.TWITCH} />
+                        </a>
+                    }
                 </div>
             </div>
-        )
+        );
     }
-}
+};

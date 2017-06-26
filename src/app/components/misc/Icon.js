@@ -2,6 +2,7 @@ import * as m from "mithril";
 
 import LOGO from "assets/r6db_logo_new.svg";
 import TWITTER from "assets/twitter.svg";
+import TWITCH from "assets/twitch.svg";
 import EMAIL from "assets/email.svg";
 import NOAVATAR from "assets/noavatar.svg";
 import RANK0 from "assets/ranks/0.svg";
@@ -43,6 +44,7 @@ export default {
 export const GLYPHS = {
     LOGO,
     TWITTER,
+    TWITCH,
     EMAIL,
     NOAVATAR,
     RANK0,
