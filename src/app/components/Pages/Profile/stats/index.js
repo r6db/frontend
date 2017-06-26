@@ -1,5 +1,4 @@
 import * as m from "mithril";
-import IdCard from "./modules/IdCard";
 import RankOverview from "./modules/RankOverview";
 import RankSeason from "./modules/RankSeason";
 import Aliases from "./modules/Aliases";
@@ -15,7 +14,6 @@ export default {
         return (
             <div className="statstab">
                 <div className="statstab-sidebar">
-                    <IdCard {...attrs} />
                     <RankOverview {...attrs} />
                     <Aliases {...attrs} />
                 </div>

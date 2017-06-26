@@ -1,0 +1,70 @@
+@import "styles";
+
+.idcard{
+    display: flex;
+    flex-direction: row;
+
+    &.profile-module{
+        margin: 0;
+    }
+
+    &-image{
+        height: $l*10;
+        width: auto;
+        img{
+            height: 100%;
+            width: auto;
+        }
+    }
+    &-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1;
+        .col{
+            margin: $l $l 0;
+        }
+
+        @include medium{
+            flex-direction: row;
+
+            .col{
+                margin: $l;
+                flex: 0 1 auto;
+            }
+        }
+    }
+    .col-names{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include medium{
+        font-size: 1.5em;
+        }
+    }
+    &-name{
+        font-size: 2em;
+    }
+    &-level{
+    }
+    &-links{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        @include medium{
+            justify-content: flex-end;
+        }
+
+
+        a{
+            color: $accent;
+            display: block;
+            line-height: 1.4;
+            text-align: right;
+            margin: 0 $l;
+        }
+    }
+}

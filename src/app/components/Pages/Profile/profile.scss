@@ -1,6 +1,7 @@
 @import "styles";
 
 .profile{
+    padding: 0 $l;
 
     &-module{
         background: $trans-med;
@@ -23,8 +24,5 @@
             background: lighten($gray-dark, 15%);
             margin: $l 10%;
         }
-    }
-    .tab-content{
-        padding: $l;
     }
 }

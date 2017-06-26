@@ -2,7 +2,6 @@
 
 .tabs{
     width: 100%;
-    padding-top: $l;
 
     /* container for tab buttons */
     .tab-headers{
@@ -32,7 +31,6 @@
 
     /* container for the active tab content */
     .tab-content{
-        padding-top: $l;
         width: 100%;
         position: relative;
     }

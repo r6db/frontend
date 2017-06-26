@@ -40,7 +40,8 @@ export default {
                 <div className="card-content">
                     <div className="player-identification">
                         <a href={attrs.href} className="player-name">{attrs.player.name}</a>
-                        <span className="player-id">{attrs.player.id}</span>
+                        <div className="player-flair">{attrs.player.flair}</div>
+                        <div className="player-id">{attrs.player.id}</div>
                     </div>
                     {getAliases(attrs.player)}
                     <a className="player-link player-extended" href={attrs.extended}>extended (alpha)</a>

@@ -93,10 +93,13 @@
             display: block;
         }
     }
+    .player-flair{
+        line-height: 1.4;
+    }
     .player-aliases{
         display: none;
         flex: 1 1 auto;
-        @include large{
+        @include medium{
             display: block;
         }
 

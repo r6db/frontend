@@ -24,11 +24,7 @@ export default {
                             </div>
                             <div className="detail-headertext">
                                 <div className="detail-name">{attrs.name}</div>
-                                { isConsole && !attrs.userId ? null : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.userId || attrs.id }/multiplayer`}
-                                    className="detail-id"
-                                    title="show on uplay">
-                                    {attrs.id}
-                                </a> }
+                                <div className="detail-flair">{attrs.flair}</div>
                                 { typeof attrs.placements.global !== 'number'
                                     ? null
                                     : <div className="detail-global-rank">

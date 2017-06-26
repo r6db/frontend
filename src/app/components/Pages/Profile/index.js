@@ -5,6 +5,7 @@ import Tabs from "components/misc/Tabs";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
+import IdCard from "./IdCard";
 import "./profile.scss";
 
 export default {
@@ -24,6 +25,7 @@ export default {
             }
             return (
                 <div className={`profile ${attrs.data.id}`}>
+                    <IdCard {...attrs.data} />
                     <Tabs headers={tabHeaders}>
                         <Stats key="stats" {...attrs.data} />
                         <Operators key="ops" {...attrs.data} />

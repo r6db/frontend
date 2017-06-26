@@ -1,20 +1,21 @@
 @import "styles";
 
 .search{
-	max-width: 1024px;
-	width: 100%;
-	margin: $l*2 auto 0;
+    max-width: 1024px;
+    width: 100%;
+    margin: $l*2 auto 0;
+    padding: 0 $l;
 
-	&-query{
-		font-size: 3em;
-		margin-bottom: $l;
-		text-shadow: 0 0 1px $gray-dark;
-	}
-	&-results{
-		width: 100%;
+    &-query{
+        font-size: 3em;
+        margin-bottom: $l;
+        text-shadow: 0 0 1px $gray-dark;
+    }
+    &-results{
+        width: 100%;
 
-		*:first-child{
-			margin-top: 0;
-		}
-	}
+        *:first-child{
+            margin-top: 0;
+        }
+    }
 }
