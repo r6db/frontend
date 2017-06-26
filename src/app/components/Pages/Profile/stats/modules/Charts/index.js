@@ -53,7 +53,7 @@ export default {
                 }]
             },
             options: {
-                title: { display: true, text: "win chance (%)" },
+                title: { display: true, text: "win/loss (%)" },
                 responsive: true,
             }
         };
