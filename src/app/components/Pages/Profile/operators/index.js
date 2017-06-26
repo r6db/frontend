@@ -13,8 +13,8 @@ const sorters = {
     "Deaths": (a, b) => { return b.deaths - a.deaths },
     "KD Ratio": (a, b) => { return stats.getKillRatio(b) - stats.getKillRatio(a) },
     "Kills / Round": (a, b) => { return b.kpr - a.kpr },
-    "Time played": (a, b) => { return b.timePlayed - a.timePlayed },
     "Survival rate": (a, b) => { return b.survivalRate - a.survivalRate },
+    "Time played": (a, b) => { return b.timePlayed - a.timePlayed },
 }
 const filters = {
     "None": () => true,
