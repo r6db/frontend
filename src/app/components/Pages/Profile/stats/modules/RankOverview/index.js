@@ -13,7 +13,7 @@ const CurrentRank = {
                 <div className="rankoverview-current-icon">
                     <Icon glyph={GLYPHS["RANK" + attrs.rank]} />
                 </div>
-                <div className="rankoverview-current-placement">#{attrs.placement + 1}</div>
+                <div className="rankoverview-current-placement">{ attrs.placement ? "#" + (attrs.placement + 1) : ""}</div>
                 <div className="rankoverview-current-region">{attrs.region}</div>
             </div>
         )
