@@ -9,7 +9,7 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "chart.js": "^2.6.0",
+    "chartist": "^0.11.0",
     "isomorphic-fetch": "^2.2.1",
     "mithril": "^1.1.1",
     "page": "^1.7.1"

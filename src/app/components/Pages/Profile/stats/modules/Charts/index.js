@@ -16,152 +16,184 @@ export default {
         if (!attrs.progressions) {
             return;
         }
-        const raw = [].concat(attrs.progressions)
+        let raw = [].concat(attrs.progressions)
             .sort((a, b) => a.created_at > b.created_at ? 1 : -1);
+
         const offsettedRaw = raw.slice(1);
 
         const getDelta = cb => offsettedRaw.reduce((acc, curr, i, arr) => {
             return acc.concat(cb(curr, raw[i]));
         }, []);
 
+        const labelInterpolationFnc = function(value, index) {
+            return index % Math.floor(raw.length/6) === 0 ? value : null;
+        }
+
         state.wlChart = {
-            type: "line",
+            type: "Line",
+            title: "Win/Loss %",
             data: {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
-                datasets: [{
-                    label: "ranked",
+                series: [{
+                    name: "ranked",
                     data: getDelta(function (curr, prev) {
                         const dWon = curr.stats.ranked.won - prev.stats.ranked.won;
                         const dLost = curr.stats.ranked.lost - prev.stats.ranked.lost;
                         const dResult = dWon / (dWon + dLost);
                         return dResult * 100 || null;
                     }),
-                    backgroundColor: colors.red,
-                    borderColor: colors.red,
-                    fill: false
+                    className: "ranked"
                 }, {
-                    label: "casual",
+                    name: "casual",
                     data: getDelta(function (curr, prev) {
                         const dWon = curr.stats.casual.won - prev.stats.casual.won;
                         const dLost = curr.stats.casual.lost - prev.stats.casual.lost;
                         const dResult = dWon / (dWon + dLost);
                         return dResult * 100 || null;
                     }),
-                    backgroundColor: colors.blue,
-                    borderColor: colors.blue,
-                    fill: false
+                    className: "casual"
                 }]
             },
             options: {
-                title: { display: true, text: "win/loss (%)" },
-                responsive: true,
+                axisX: {
+                    labelInterpolationFnc
+                }
             }
         };
         state.kdChart = {
-            type: "line",
+            type: "Bar",
+            title: "K/D Ratio",
             data: {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
-                datasets: [{
-                    label: "ranked",
+                series: [{
+                    name: "ranked",
                     data: getDelta(function (curr, prev) {
-                        return curr.stats.ranked.played - prev.stats.ranked.played;
+                        const dKills = curr.stats.ranked.kills - prev.stats.ranked.kills;
+                        const dDeaths = curr.stats.ranked.deaths - prev.stats.ranked.deaths;
+                        const dResult = dKills / dDeaths;
+                        return dResult || null;
                     }),
-                    backgroundColor: colors.red,
-                    borderColor: colors.red,
-                    fill: false
+                    className: "ranked"
                 }, {
-                    label: "casual",
+                    name: "casual",
                     data: getDelta(function (curr, prev) {
-                        return curr.stats.casual.played - prev.stats.casual.played;
+                        const dKills = curr.stats.casual.kills - prev.stats.casual.kills;
+                        const dDeaths = curr.stats.casual.deaths - prev.stats.casual.deaths;
+                        const dResult = dKills / dDeaths;
+                        return dResult || null;
                     }),
-                    backgroundColor: colors.blue,
-                    borderColor: colors.blue,
-                    fill: false
-                }, {
-                    label: "total",
-                    data: getDelta(function (curr, prev) {
-                        const dCasual = curr.stats.casual.played - prev.stats.casual.played;
-                        const dRanked = curr.stats.ranked.played - prev.stats.ranked.played;
-                        return dCasual + dRanked;
-                    }),
-                    backgroundColor: colors.green,
-                    borderColor: colors.green,
-                    fill: false
+                    className: "casual"
                 }]
             },
             options: {
-                title: { display: true, text: "games played" },
-                responsive: true,
+                axisX: {
+                    labelInterpolationFnc
+                }
             }
         };
 
         state.mmrChangeChart = {
-            type: "line",
-            responsive: true,
+            type: "Line",
+            title: "MMR Change",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                datasets: [{
-                    label: "EMEA",
+                series: [{
+                    name: "EMEA",
                     data: getDelta(function (curr, prev) {
                         return curr.ranks.emea.mmr - prev.ranks.emea.mmr
                     }),
-                    backgroundColor: colors.red,
-                    borderColor: colors.red,
-                    fill: false
+                    className: "emea"
                 }, {
-                    label: "NCSA",
+                    name: "NCSA",
                     data: getDelta(function (curr, prev) {
                         return curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr
                     }),
-                    backgroundColor: colors.blue,
-                    borderColor: colors.blue,
-                    fill: false
+                    className: "ncsa"
                 }, {
-                    label: "APAC",
+                    name: "APAC",
                     data: getDelta(function (curr, prev) {
                         return curr.ranks.apac.mmr - prev.ranks.apac.mmr
                     }),
-                    backgroundColor: colors.green,
-                    borderColor: colors.green,
-                    fill: false
+                    className: "apac"
                 }]
             },
             options: {
-                title: { display: true, text: "mmr change" },
-                responsive: true,
-                spanGaps: true,
+                axisX: {
+                    labelInterpolationFnc
+                }
             }
         };
 
+
         state.mmrChart = {
-            type: "line",
-            responsive: true,
+            type: "Line",
+            title: "MMR Total",
             data: {
                 labels: raw.slice(1).map(x => stats.formatDate(x.created_at)),
-                datasets: [{
-                    label: "EMEA",
+                series: [{
+                    name: "EMEA",
                     data: raw.map(x => x.ranks.emea.mmr),
-                    backgroundColor: colors.red,
-                    borderColor: colors.red,
-                    fill: false
+                    className: "emea"
                 }, {
-                    label: "NCSA",
+                    name: "NCSA",
                     data: raw.map(x => x.ranks.ncsa.mmr),
-                    backgroundColor: colors.blue,
-                    borderColor: colors.blue,
-                    fill: false
+                    className: "ncsa"
                 }, {
-                    label: "APAC",
+                    name: "APAC",
                     data: raw.map(x => x.ranks.apac.mmr),
-                    backgroundColor: colors.green,
-                    borderColor: colors.green,
-                    fill: false
+                    className: "apac"
                 }]
             },
             options: {
-                title: { display: true, text: "mmr" },
-                responsive: true,
-                spanGaps: true,
+                axisX: {
+                    labelInterpolationFnc
+                }
+            }
+        };
+
+        state.gameCountChart = {
+            type: "Bar",
+            title: "Matches played",
+            data: {
+                labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
+                series: [{
+                    name: "ranked",
+                    data: getDelta(function (curr, prev) {
+                        return curr.stats.ranked.played - prev.stats.ranked.played;
+                    }),
+                    className: "ranked"
+                }, {
+                    name: "casual",
+                    data: getDelta(function (curr, prev) {
+                        return curr.stats.casual.played - prev.stats.casual.played;
+                    }),
+                    className: "casual"
+                }]
+            },
+            options: {
+                stackBars: true,
+                axisX: {
+                    labelInterpolationFnc
+                }
+            }
+        };
+        state.hsChart = {
+            type: "Bar",
+            title: "Accuracy",
+            data: {
+                labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
+                series: [
+                    getDelta(function (curr, prev) {
+                        const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
+                        const dFired = curr.stats.general.bulletsFired - prev.stats.general.bulletsFired;
+                        return (dHit * 100 / dFired) || 0;
+                    })
+                ]
+            },
+            options: {
+                axisX: {
+                    labelInterpolationFnc
+                }
             }
         };
     },
@@ -184,6 +216,14 @@ export default {
                             </div>
                             <div className="col">
                                 <Chart {...state.kdChart}/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <Chart {...state.gameCountChart}/>
+                            </div>
+                            <div className="col">
+                                <Chart {...state.hsChart}/>
                             </div>
                         </div>
                     </div>
