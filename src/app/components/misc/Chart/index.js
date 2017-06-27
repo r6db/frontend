@@ -10,7 +10,6 @@ export default {
         if (!Chart) {
             console.error(`type "${attrs.type} is not valid"`);
         }
-        console.log("chart", attrs);
         state.chart = new Chart(el, attrs.data, attrs.options || {});
         // state.onResize = () => state.chart.update();
         // window.addEventListener("resize", state.onResize);

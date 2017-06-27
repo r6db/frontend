@@ -20,7 +20,6 @@ export default {
             .sort((a, b) => a.created_at > b.created_at ? 1 : -1);
 
         const offsettedRaw = raw.slice(1);
-        console.table(raw);
 
         const getDelta = cb => offsettedRaw.reduce((acc, curr, i, arr) => {
             return acc.concat(cb(curr, raw[i]));
