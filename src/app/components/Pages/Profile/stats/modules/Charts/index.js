@@ -20,6 +20,7 @@ export default {
             .sort((a, b) => a.created_at > b.created_at ? 1 : -1);
 
         const offsettedRaw = raw.slice(1);
+        console.table(raw);
 
         const getDelta = cb => offsettedRaw.reduce((acc, curr, i, arr) => {
             return acc.concat(cb(curr, raw[i]));
@@ -93,7 +94,7 @@ export default {
         };
 
         state.mmrChangeChart = {
-            type: "Line",
+            type: "Bar",
             title: "MMR Change",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
