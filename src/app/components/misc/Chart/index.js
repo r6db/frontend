@@ -1,7 +1,6 @@
 import * as m from "mithril";
 import * as Chartist from "chartist";
 import "./chart.scss";
-window.Chartist = Chartist;
 
 export default {
     oncreate({ attrs, dom, state }) {
