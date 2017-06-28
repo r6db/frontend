@@ -2,8 +2,8 @@ import * as m from "mithril";
 import Result from "./Result";
 import "./search.scss";
 
-const showPlayer = id => `/player/${id}`;
-const showExtended = id => `/player/${id}/extended`
+const showPlayer = id => `/profile/${id}/simple`;
+const showExtended = id => `/profile/${id}`
 
 export default {
     view({ attrs, state }) {

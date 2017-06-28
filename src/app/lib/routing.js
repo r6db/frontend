@@ -95,6 +95,9 @@ export default function initRoutes() {
         }
     });
     page("/player/:id/extended", function (ctx) {
+        page.redirect(`/profile/${ctx.params.id}`);
+    });
+    page("/profile/:id", function (ctx) {
         const id = ctx.params.id;
         appstate.merge({
             config: Pageconfig.PROFILE,
@@ -135,8 +138,11 @@ export default function initRoutes() {
                 });
                 setMeta();
             });
-    });
+    })
     page("/player/:id", function (ctx) {
+        page.redirect(`/profile/${ctx.params.id}/simple`);
+    });
+    page("/profile/:id/simple", function (ctx) {
         console.debug("router mount <Detail />");
         const id = ctx.params.id;
         appstate.merge({
