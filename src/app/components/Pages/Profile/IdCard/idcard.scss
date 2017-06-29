@@ -6,6 +6,13 @@
 
     &.profile-module{
         margin: 0;
+        flex-direction: column;
+        align-items: center;
+
+        @include medium{
+            flex-direction: row;
+            align-items: flex-start;
+        }
     }
 
     &-image{
@@ -27,6 +34,7 @@
 
         @include medium{
             flex-direction: row;
+            justify-content: space-between;
 
             .col{
                 margin: $l;
@@ -38,9 +46,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        text-align: center;
 
         @include medium{
-        font-size: 1.5em;
+            font-size: 1.5em;
+            text-align: left;
         }
     }
     &-name{
@@ -53,9 +63,13 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
+        margin: $l 0 0;
 
         @include medium{
             justify-content: flex-end;
+            a{
+                text-align: right;
+            }
         }
 
 
@@ -63,7 +77,7 @@
             color: $accent;
             display: block;
             line-height: 1.4;
-            text-align: right;
+            text-align: center;
             margin: 0 $l;
         }
     }

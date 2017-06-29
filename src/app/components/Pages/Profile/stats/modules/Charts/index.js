@@ -25,8 +25,13 @@ export default {
             return acc.concat(cb(curr, raw[i]));
         }, []);
 
-        const labelInterpolationFnc = function(value, index) {
-            return index % Math.floor(raw.length/6) === 0 ? value : null;
+        const labelInterpolationFnc = function (value, index, arr) {
+            if (window.innerWidth > 720) {
+                return index % 2 ? value : null;
+            } else {
+                const allowed = [0, (arr.length/2)|0, arr.length - 1]
+                return allowed.indexOf(index) !== -1 ? value : null;
+            }
         }
 
         state.wlChart = {
@@ -98,19 +103,19 @@ export default {
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [{
-                    name: "EMEA",
+                    name: "Europe, Africa & M.East",
                     data: getDelta(function (curr, prev) {
                         return curr.ranks.emea.mmr - prev.ranks.emea.mmr
                     }),
                     className: "emea"
                 }, {
-                    name: "NCSA",
+                    name: "America",
                     data: getDelta(function (curr, prev) {
                         return curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr
                     }),
                     className: "ncsa"
                 }, {
-                    name: "APAC",
+                    name: "Asia",
                     data: getDelta(function (curr, prev) {
                         return curr.ranks.apac.mmr - prev.ranks.apac.mmr
                     }),
@@ -129,17 +134,17 @@ export default {
             type: "Line",
             title: "MMR Total",
             data: {
-                labels: raw.slice(1).map(x => stats.formatDate(x.created_at)),
+                labels: raw.map(x => stats.formatDate(x.created_at)),
                 series: [{
-                    name: "EMEA",
+                    name: "Europe, Africa & M.East",
                     data: raw.map(x => x.ranks.emea.mmr),
                     className: "emea"
                 }, {
-                    name: "NCSA",
+                    name: "America",
                     data: raw.map(x => x.ranks.ncsa.mmr),
                     className: "ncsa"
                 }, {
-                    name: "APAC",
+                    name: "Asia",
                     data: raw.map(x => x.ranks.apac.mmr),
                     className: "apac"
                 }]
