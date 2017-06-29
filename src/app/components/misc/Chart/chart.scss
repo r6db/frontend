@@ -116,15 +116,4 @@ $ct-series-colors: (
             margin-right: $l;
         }
     }
-    &-container{
-        .indicator,
-        .ct-series{
-            &.emea{ stroke: $red-crow; background-color: $red-crow; }
-            &.ncsa{ stroke: $black-ice; background-color: $black-ice; }
-            &.apac{ stroke: $skull-rain; background-color: $skull-rain; }
-
-            &.ranked{ stroke: $red-crow; background-color: $red-crow; }
-            &.casual{ stroke: $black-ice; background-color: $black-ice; }
-        }
-    }
 }

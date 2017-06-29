@@ -9,7 +9,16 @@
             flex-direction: row;
         }
     }
-    .chart{
-        min-height: 200px;
+    .chart-container .ct-series,
+    .chart-container .indicator{
+        &.emea{ stroke: $red-crow; background-color: $red-crow; }
+        &.ncsa{ stroke: $black-ice; background-color: $black-ice; }
+        &.apac{ stroke: $skull-rain; background-color: $skull-rain; }
+
+        &.ranked{ stroke: $red-crow; background-color: $red-crow; }
+        &.casual{ stroke: $black-ice; background-color: $black-ice; }
+
+        &.accuracy{ stroke: $red-crow; background-color: $red-crow; }
+        &.hsrate{ stroke: $black-ice; background-color: $black-ice; }
     }
 }

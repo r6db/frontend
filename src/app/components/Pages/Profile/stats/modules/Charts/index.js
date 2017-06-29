@@ -36,7 +36,7 @@ export default {
 
         state.wlChart = {
             type: "Line",
-            title: "Win/Loss %",
+            title: "win/loss %",
             data: {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
                 series: [{
@@ -67,7 +67,7 @@ export default {
         };
         state.kdChart = {
             type: "Bar",
-            title: "K/D Ratio",
+            title: "k/d ratio",
             data: {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
                 series: [{
@@ -99,7 +99,7 @@ export default {
 
         state.mmrChangeChart = {
             type: "Bar",
-            title: "MMR Change",
+            title: "MMR change",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [{
@@ -132,7 +132,7 @@ export default {
 
         state.mmrChart = {
             type: "Line",
-            title: "MMR Total",
+            title: "MMR total",
             data: {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
                 series: [{
@@ -158,7 +158,7 @@ export default {
 
         state.gameCountChart = {
             type: "Bar",
-            title: "Matches played",
+            title: "matches played",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [{
@@ -184,16 +184,26 @@ export default {
         };
         state.hsChart = {
             type: "Bar",
-            title: "Accuracy",
+            title: "accuracy & headshot rate",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                series: [
-                    getDelta(function (curr, prev) {
+                series: [{
+                    name: 'accuracy',
+                    data: getDelta(function (curr, prev) {
                         const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
                         const dFired = curr.stats.general.bulletsFired - prev.stats.general.bulletsFired;
                         return (dHit * 100 / dFired) || 0;
-                    })
-                ]
+                    }),
+                    className: 'accuracy'
+                }, {
+                    name: 'headshot rate',
+                    data: getDelta(function (curr, prev) {
+                        const dHs = curr.stats.general.headshot - prev.stats.general.headshot;
+                        const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
+                        return (dHs * 100 / dHit) || 0;
+                    }),
+                    className: 'hsrate'
+                }]
             },
             options: {
                 axisX: {
