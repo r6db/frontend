@@ -27,9 +27,9 @@ if (process.env.NODE_ENV === "production") {
     window.page = page;
     window.m = m;
     window.appstate = appstate;
-    
+
     // shim google analytics
-    window["GoogleAnalyticsObject"] = window.ga = function() {};
+    window["GoogleAnalyticsObject"] = window.ga = function(...args) { console.log("analytics", args)};
 }
 
 require("./app");

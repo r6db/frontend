@@ -20,9 +20,13 @@ import Faq from "components/Pages/Faq";
 import { isConsole } from "lib/constants";
 
 function analyticsMiddleware(context, next) {
-    ga("set", "page", context.path);
+    const n = next();
+    const cleanedUrl = Object.keys(context.params)
+        .filter(x => Number.isNaN(Number.parseInt(x)))
+        .reduce((url, key) => url.replace(context.params[key], ":"+key), context.path);
+    ga("set", "page", cleanedUrl);
     ga("send", "pageview");
-    return next();
+    return n;
 }
 function menuMiddleware(context, next) {
     showMenu(false);
