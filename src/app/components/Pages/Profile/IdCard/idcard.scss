@@ -34,7 +34,6 @@
 
         @include medium{
             flex-direction: row;
-            justify-content: space-between;
 
             .col{
                 margin: $l;
