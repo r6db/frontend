@@ -6,9 +6,13 @@
         display: flex;
         p{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             margin: 0 $l;
+
+            @include medium{
+                flex-direction: row;
+            }
         }
         label{
             margin: 0 $l 0 0;

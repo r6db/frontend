@@ -47,6 +47,10 @@
         justify-content: space-between;
         text-align: center;
 
+        >*{
+            flex: none;
+        }
+
         @include medium{
             font-size: 1.5em;
             text-align: left;
@@ -56,6 +60,7 @@
         font-size: 2em;
     }
     &-level{
+        margin-top: $l*0.5;
     }
     &-links{
         display: flex;
