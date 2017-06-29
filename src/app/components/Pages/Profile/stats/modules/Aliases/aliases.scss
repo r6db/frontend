@@ -28,6 +28,7 @@
     padding: (.5*$l) $l;
     position: relative;
     margin-bottom: $l;
+    flex: none;
 
     &-time{
         color: $gray;

@@ -17,6 +17,7 @@
         flex-direction: column;
         flex: 0 1 100%;
         overflow: hidden;
+        flex: none;
 
         @include medium{
             flex-direction: row;
@@ -27,7 +28,7 @@
             }
             .statstab-aside{
                 width: 20*$l;
-                flex: 0 0 auto;
+                flex: none;
                 margin-left: $l;
             }
         }
