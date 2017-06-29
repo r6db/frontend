@@ -79,7 +79,7 @@
             .search-input{
                 > input{
                     padding: .5em ($l*7) .5em $l;
-                }   
+                }
                 span{
                     width: $l*6;
                 }
@@ -128,6 +128,9 @@
             .tweet:not(:first-child) {
                 display: none;
             }
+        }
+        @media screen and (max-height: 620px){
+            display: none;
         }
     }
     .platform{
