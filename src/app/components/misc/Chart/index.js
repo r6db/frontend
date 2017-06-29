@@ -9,7 +9,7 @@ export default {
         if (!Chart) {
             console.error(`type "${attrs.type} is not valid"`);
         }
-        state.chart = new Chart(el, attrs.data, attrs.options || {});
+        state.chart = new Chart(el, attrs.data, attrs.options || {}, attrs.responsiveOptions || {});
         // state.onResize = () => state.chart.update();
         // window.addEventListener("resize", state.onResize);
     },

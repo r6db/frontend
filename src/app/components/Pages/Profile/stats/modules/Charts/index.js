@@ -19,6 +19,10 @@ export default {
         let raw = [].concat(attrs.progressions)
             .sort((a, b) => a.created_at > b.created_at ? 1 : -1);
 
+        if (raw.length > 10 && window.innerWidth < 640) {
+            raw = raw.slice(-10);
+        }
+
         const offsettedRaw = raw.slice(1);
 
         const getDelta = cb => offsettedRaw.reduce((acc, curr, i, arr) => {
@@ -26,13 +30,18 @@ export default {
         }, []);
 
         const labelInterpolationFnc = function (value, index, arr) {
-            if (window.innerWidth > 720) {
+            if (window.innerWidth > 640) {
                 return index % 2 ? value : null;
             } else {
                 const allowed = [0, (arr.length/2)|0, arr.length - 1]
                 return allowed.indexOf(index) !== -1 ? value : null;
             }
         }
+        const responsiveOptions = [
+        ['screen and (max-width: 640px)', {
+            seriesBarDistance: 2
+        }]
+        ];
 
         state.wlChart = {
             type: "Line",
@@ -94,7 +103,8 @@ export default {
                 axisX: {
                     labelInterpolationFnc
                 }
-            }
+            },
+            responsiveOptions
         };
 
         state.mmrChangeChart = {
@@ -126,7 +136,8 @@ export default {
                 axisX: {
                     labelInterpolationFnc
                 }
-            }
+            },
+            responsiveOptions
         };
 
 
@@ -180,7 +191,8 @@ export default {
                 axisX: {
                     labelInterpolationFnc
                 }
-            }
+            },
+            responsiveOptions
         };
         state.hsChart = {
             type: "Bar",
@@ -209,7 +221,8 @@ export default {
                 axisX: {
                     labelInterpolationFnc
                 }
-            }
+            },
+            responsiveOptions
         };
     },
     view({ attrs, state }) {
