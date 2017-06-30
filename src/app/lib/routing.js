@@ -56,6 +56,8 @@ export default function initRoutes() {
     page("/search/:query", function (ctx) {
         console.debug("router mount <Search />");
         const qs = parse(ctx.querystring);
+        ga("send", "event", "search", "query", ctx.params.query);
+
         if (ctx.params.query && ctx.params.query.length > 2) {
             appstate.merge({
                 config: Pageconfig.SEARCH,
@@ -103,6 +105,8 @@ export default function initRoutes() {
     });
     page("/profile/:id", function (ctx) {
         const id = ctx.params.id;
+        ga("send", "event", "profile", "extended", id);
+
         appstate.merge({
             config: Pageconfig.PROFILE,
             Component: Profile,
@@ -149,6 +153,7 @@ export default function initRoutes() {
     page("/profile/:id/simple", function (ctx) {
         console.debug("router mount <Detail />");
         const id = ctx.params.id;
+        ga("send", "event", "profile", "simple", id);
         appstate.merge({
             config: Pageconfig.DETAIL,
             Component: Detail,
@@ -196,6 +201,8 @@ export default function initRoutes() {
         const board = "operatorpvp_tachanka_turretkill";
         const boardLabel = "Chanka, Chanka Chanka, CHANKAAAA";
         console.debug("router mount <Chankaboard />");
+
+        ga("send", "event", "leaderboard", "view", "chanka");
         appstate.merge({
             config: Pageconfig.CHANKABOARD,
             Component: Chankaboard,
@@ -224,6 +231,8 @@ export default function initRoutes() {
     });
     page("/leaderboard/:board", function (ctx) {
         const lb = Leaderboards[ctx.params.board] || Leaderboards.ALL;
+
+        ga("send", "event", "leaderboard", "view", ctx.params.board);
         console.debug("router mount <Leaderboard />");
         appstate.merge({
             config: Pageconfig.LEADERBOARD,
