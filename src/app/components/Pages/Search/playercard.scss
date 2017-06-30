@@ -1,6 +1,6 @@
 @import "styles";
 
-.result{
+.playercard{
     background: $trans-med;
     box-shadow: 0 0 3px $trans-med;
     display: flex;
@@ -37,7 +37,7 @@
             padding: $l;
         }
     }
-    &-identification{
+    &-left{
         flex: none;
         height: auto;
         flex: 1 1 auto;
@@ -61,26 +61,29 @@
         color: $gray;
         flex: 0 0 auto;
     }
-    &-aliases{
-        display: none;
-
-        @include medium{
-            display: block;
-            flex: 1 1 auto;
-        }
+    &-center{
+        flex: 1 1 auto;
+        margin: 0 $l;
 
         &-header{
             color: $gray;
             font-size: $font-small;
         }
-        &-list{
-            li{
-                display: inline-block;
-                margin-right: $l;
-            }
-        }
     }
-    &-links{
+    &-aliases{
+        display: none;
+
+        @include medium{
+            display: block;
+        }
+
+        .playercard-center-content li{
+            display: inline-block;
+            margin-right: $l;
+        }
+
+    }
+    &-right{
         display: flex;
         flex: 0 0 auto;
         margin-top: $l*0.5;

@@ -6,7 +6,7 @@ const listener = function (e) {
     listeners.forEach(f => f(e));
     m.redraw();
 };
-window.addEventListener("resize", debounce(listener, 32));
+window.addEventListener("resize", listener);
 let listeners = [];
 
 

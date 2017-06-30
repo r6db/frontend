@@ -14,11 +14,11 @@ const getAliases = player => {
         ? <li>and {player.aliases.length - 2} more</li>
         : null;
     return (
-        <div className="result-aliases">
-            <header className="result-aliases-header">
+        <div className="playercard-center playercard-aliases">
+            <header className="playercard-center-header">
                 known aliases
                 </header>
-            <ul className="result-aliases-list">
+            <ul className="playercard-center-content">
                 {shown}
                 {rest}
             </ul>
@@ -34,27 +34,27 @@ const getStats = player => (
 export default {
     view({attrs, state}) {
         return (
-            <div className={`result player-${attrs.player.id}`}>
-                <a href={attrs.href} className="result-image">
-                    <span className="result-level">lvl {attrs.player.level}</span>
+            <div className={`playercard player-${attrs.player.id}`}>
+                <a href={attrs.href} className="playercard-image">
+                    <span className="playercard-level">lvl {attrs.player.level}</span>
                     <Profilepic id={attrs.player.userId || attrs.player.id} delay={attrs.index} />
                 </a>
-                <div className="result-content">
-                    <a href={attrs.href} className="result-identification">
-                        <header className="result-name">{attrs.player.name}</header>
-                        <span className="result-flair">{attrs.player.flair}</span>
+                <div className="playercard-content">
+                    <a href={attrs.href} className="playercard-left">
+                        <header className="playercard-name">{attrs.player.name}</header>
+                        <span className="playercard-flair">{attrs.player.flair}</span>
                     </a>
                     {getAliases(attrs.player)}
-                    <div className="result-links">
-                        <a className="result-link player-simple" href={attrs.href}>
+                    <div className="playercard-right">
+                        <a className="playercard-link player-simple" href={attrs.href}>
                             profile
                             </a>
-                        <a className="result-link player-extended" href={attrs.extended}>
+                        <a className="playercard-link player-extended" href={attrs.extended}>
                             extended (beta)
                             </a>
                         { isConsole && !attrs.player.userId
                             ? null
-                            : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="result-link player-ubi">
+                            : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="playercard-link player-ubi">
                                 Ubisoft
                             </a>
                         }

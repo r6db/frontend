@@ -48,14 +48,9 @@ export default {
                             </select>
                         </p>
                     </div>
-                    <div className="leaderboard-top">
-                        {attrs.data.entries.slice(0, 3).map((x, i) =>
-                            <TopEntry pos={i + 1} {...x} key={x.id} />)}
-                    </div>
                     <div className="leaderboard-entries">
-                        {attrs.data.entries.slice(3).map((x, i) =>
-                            <Entry pos={i + 4} {...x} key={x.id} />
-                        )}
+                        {attrs.data.entries.map((x, i) =>
+                            <Entry isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
                     </div>
                     <a href="/leaderboard/chanka">
                         <img src="https://r6db.com/assets/chanky.png" id="chanky" alt="chanky"/>

@@ -5,6 +5,7 @@ export default {
     view({attrs}) {
         return (
             <div className={`entry top-entry is-pos-${attrs.pos}`}>
+                <div className="entry-background"></div>
                 <div className="entry-img">
                     <Profilepic id={attrs.userId || attrs.id} />
                     <div className="entry-place">{attrs.pos}</div>

@@ -6,6 +6,7 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+
     &-header{
         padding: 0 1%;
     }
@@ -22,15 +23,10 @@
             color: $accent;
         }
     }
-    &-top{
-        margin: 3em auto 3em;
-        flex-direction: row;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
+
     &-entries{
-        max-width: 900px;
+        max-width: 1024px;
+        width: 100%;
         margin: 0 auto;
         padding: $l;
     }
@@ -48,163 +44,138 @@
 }
 .entry{
     background: $trans-med;
-    padding: 0 ($l*2) 0 $l;
-	width: 98%;
-	margin: 1%;
+	margin: $l 0;
+    width: 100%;
     display: flex;
     align-items: center;
     box-shadow: 1px 1px 3px $trans-med;
+    position: relative;
+
+
+    &-background{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 1;
+        z-index: -1;
+    }
+    &-place{
+        font-size: 2rem;
+        display: block;
+        width: 64px;
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
+        margin-right: $l*2;
+    }
+    &-name{
+        font-size: 1.25rem;
+        width: 15em;
+        color: white;
+    }
+    &-link{
+        color: $accent;
+    }
+    &-content{
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-position{
+        position: absolute;
+        top: 0;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: $trans-med;
+
+        span{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: $font-bigger;
+            color: $white;
+        }
+    }
+    &-valuelabel{
+        display: none;
+        margin-right: $l*2;
+        vertical-align: top;
+        line-height:  $font-huge;
+
+        @include medium{
+            display: inline;
+        }
+    }
+    &-value{
+        display: inline;
+        font-weight: bold;
+        font-size:  $font-huge;
+    }
+    .playercard-image{
+        @include medium{
+            margin-right: $l*2;
+        }
+    }
+    .playercard-name{
+        max-width: 8em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .playercard-content{
+        flex-direction: row;
+        align-items: center;
+
+        @include medium{
+            display: column;
+        }
+    }
+    .playercard-center{
+        flex: 0 0 auto;
+
+        @include medium{
+            flex: 1 0 auto;
+        }
+    }
+    .playercard-right{
+        display: none;
+
+        @include medium{
+            margin: 0;
+            display: block;
+        }
+    }
 }
-.entry-place{
-    font-size: 2rem;
-    display: block;
-    width: 64px;
-    height: 64px;
-    line-height: 64px;
-    text-align: center;
-    margin-right: $l*2;
-}
-.entry-name{
-    font-size: 1.25rem;
-    width: 15em;
-    color: white;
-}
-.entry-link{
-    color: $accent;
-}
-.entry-content{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-.entry-rating{
-    display: flex;
-    align-items: center;
-}
-.entry-valuelabel{
-    display: inline-block;
-    margin-right: $l*2;
-}
-.entry-value{
-    display: inline-block;
-    font-size: 3em;
-}
-.entry-value{
-    font-weight: bold;
-    font-size:  2em;
-}
-.top-entry{
-    width: 310px;
-    flex: 0 0 auto;
-    height: auto;
-    flex-direction: column;
-    background: $trans-med;
-    box-shadow: 1px 1px 3px $trans-med;
-    padding: $l*2 0;
-    margin: 4% 2%;
-    @include large{
-        margin: 1%;
+
+.entry.is-top{
+
+    .playercard-name{
+        font-size: $font-bigger;
+    }
+    .playercard-image{
+        width: 80px;
+        height: 80px;
+        margin-right: 0 !important; /* fight me */
     }
 
-    .entry-place,
-    .entry-name,
-    .entry-region,
-    .entry-link{
-        text-align: center;
-        width: 100%;
-    }
-    .entry-place{
-        font-size: 4em;
-        margin: 0;
-        text-align: center;
-    }
-    .entry-name{
-        padding: ($l*1.5) 0;
-        text-shadow: 0 0 2px $gray-dark;
-        background-size: cover;
-    }
-    .entry-link{
-        padding: ($l*2) 0;
-    }
-    .entry-rating{
-        position: relative;
-        display: block;
-        width: $l*20;
-        height: $l*20;
-        line-height: $l*20;
-        border-radius: 50%;
-        text-align: center;
-        margin: ($l*2) auto 0;
-        border: 1px solid $white;
-    }
-    .entry-valuelabel{
-        position: absolute;
-        left: 50%;
-        top: $l*5;
-        transform: translate(-50%, 0);
-        margin: 0;
-        line-height: 1em;
-    }
-    .entry-value{
-        font-size: 3em;
-    }
-    .entry-img{
-        width: 128px;
-        height: 128px;
-        overflow: hidden;
-        position: relative;
-        margin-bottom: $l*2;
-        
-        img{
-            opacity: 0.75;
-        }
-        .entry-place{
-            position: absolute;
-            top: 0;
-            width: 128px;
-            height: 128px;
-            line-height: 128px;
-            text-shadow: 0 0 3px $primary;
-            color: white;
-        }
-    }
-    &.is-pos-1{
-        align-self: flex-start;
-        .entry-name{
+    &:nth-child(1){
+        .entry-background{
             background-image: url(/assets/pattern_gold.svg);
         }
     }
-    &.is-pos-2{
-        align-self: center;
-        .entry-name{
+    &:nth-child(2){
+        .entry-background{
             background-image: url(/assets/pattern_silver.svg);
         }
     }
-    &.is-pos-3{
-        align-self: flex-end;
-        .entry-name{
+    &:nth-child(3){
+        .entry-background{
             background-image: url(/assets/pattern_bronze.svg);
-        }
-    }
-}
-
-.bottom-entry{
-    .entry-link{
-        display: none;
-    }
-    .entry-rating{
-        display: none;
-    }
-    @media screen and (min-width: 570px) {
-        .entry-rating{
-            display: flex;
-        }
-    }
-    @include large{
-        .entry-link{
-            display: block;
         }
     }
 }
