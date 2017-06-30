@@ -9,7 +9,7 @@
 	flex: 0 0 auto;
 	display: flex;
 	height: 4*$l;
-	box-shadow: 0 0 3px $trans-med;
+	box-shadow: 0 0 5px $trans-med;
 	background: $trans-med;
 
 	@include large{

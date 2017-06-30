@@ -25,7 +25,7 @@ export default {
                     </div>
                     <div className="col idcard-links">
                         <a href={`/player/${attrs.id}`}>simple view</a>
-                        <a href={getProfileLink(attrs)} target="_BLANK">view on Ubisoft</a>
+                        <a href={getProfileLink(attrs)} target="_BLANK">Ubisoft</a>
                         <a href={getEslLink(attrs)} target="_BLANK">find on ESL</a>
                     </div>
                     {

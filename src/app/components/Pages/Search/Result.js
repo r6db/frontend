@@ -14,9 +14,11 @@ const getAliases = player => {
         ? <li>and {player.aliases.length - 2} more</li>
         : null;
     return (
-        <div className="player-aliases">
-            <header>known aliases</header>
-            <ul>
+        <div className="result-aliases">
+            <header className="result-aliases-header">
+                known aliases
+                </header>
+            <ul className="result-aliases-list">
                 {shown}
                 {rest}
             </ul>
@@ -32,25 +34,31 @@ const getStats = player => (
 export default {
     view({attrs, state}) {
         return (
-            <div className={`playercard player-${attrs.player.id} is-${attrs.player.role || "user"}`}>
-                <a href={attrs.href} className="card-image">
-                    <span className="player-level">lvl {attrs.player.level}</span>
+            <div className={`result player-${attrs.player.id}`}>
+                <a href={attrs.href} className="result-image">
+                    <span className="result-level">lvl {attrs.player.level}</span>
                     <Profilepic id={attrs.player.userId || attrs.player.id} delay={attrs.index} />
                 </a>
-                <div className="card-content">
-                    <div className="player-identification">
-                        <a href={attrs.href} className="player-name">{attrs.player.name}</a>
-                        <div className="player-flair">{attrs.player.flair}</div>
-                        <div className="player-id">{attrs.player.id}</div>
-                    </div>
+                <div className="result-content">
+                    <a href={attrs.href} className="result-identification">
+                        <header className="result-name">{attrs.player.name}</header>
+                        <span className="result-flair">{attrs.player.flair}</span>
+                    </a>
                     {getAliases(attrs.player)}
-                    <a className="player-link player-extended" href={attrs.extended}>extended (alpha)</a>
-                    { isConsole && !attrs.player.userId
-                        ? null
-                        : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="player-link">
-                            › view on Ubisoft
-                        </a>
-                    }
+                    <div className="result-links">
+                        <a className="result-link player-simple" href={attrs.href}>
+                            profile
+                            </a>
+                        <a className="result-link player-extended" href={attrs.extended}>
+                            extended (beta)
+                            </a>
+                        { isConsole && !attrs.player.userId
+                            ? null
+                            : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="result-link player-ubi">
+                                Ubisoft
+                            </a>
+                        }
+                    </div>
                 </div>
             </div>
         );
