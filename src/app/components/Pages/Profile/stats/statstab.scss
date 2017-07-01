@@ -17,7 +17,6 @@
         flex-direction: column;
         flex: 0 1 100%;
         overflow: hidden;
-        flex: none;
 
         @include medium{
             flex-direction: row;

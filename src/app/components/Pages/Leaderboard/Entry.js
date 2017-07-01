@@ -22,7 +22,7 @@ export default {
                     </div>
                 </a>
                 <div className="playercard-content">
-                    <a href={attrs.href} className="playercard-left">
+                    <a href={showPlayer(attrs.id)} className="playercard-left">
                         <header className="playercard-name">{attrs.name}</header>
                     </a>
                     <div className="playercard-center">
