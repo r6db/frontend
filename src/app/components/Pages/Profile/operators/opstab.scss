@@ -29,6 +29,10 @@
         .fauxtable-heading{
             cursor: pointer;
             user-select: none;
+
+            &.is-active{
+                color: $primary;
+            }
         }
         .fauxtable-heading,
         .fauxtable-cell{
@@ -89,7 +93,7 @@
             }
             .time{
                 text-align: right;
-                flex-grow: 3;
+                flex-grow: 2;
             }
         }
     }

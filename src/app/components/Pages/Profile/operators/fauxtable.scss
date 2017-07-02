@@ -58,11 +58,9 @@
         &-row{
             flex-direction: row;
         }
-        &-cell{
-            padding: ($l*1.5);
-        }
+        &-cell,
         &-heading{
-            padding: ($l*2) $l;
+            padding: ($l*1.5);
         }
     }
 }

@@ -4,18 +4,18 @@ import * as stats from "lib/stats";
 import "./opstab.scss";
 import "./fauxtable.scss";
 
-const sorters = {
-    name: (a, b) => { return (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)) },
-    won: (a, b) => { return b.won - a.won },
-    lost: (a, b) => { return b.lost - a.lost },
-    wlr: (a, b) => { return stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a) },
-    kills: (a, b) => { return b.kills - a.kills },
-    deaths: (a, b) => { return b.deaths - a.deaths },
-    kdr: (a, b) => { return stats.getKillRatio(b) - stats.getKillRatio(a) },
-    kpr: (a, b) => { return b.kpr - a.kpr },
-    dpr: (a, b) => { return b.survivalRate - a.survivalRate },
-    time: (a, b) => { return b.timePlayed - a.timePlayed },
-}
+const sorters = [
+    { key: "name", label: "name", fn: (a, b) => ((a.name < b.name ? -1 : (a.name > b.name ? 1 : 0))) },
+    { key: "won", label: "won", fn: (a, b) => (b.won - a.won) },
+    { key: "lost", label: "lost", fn: (a, b) => (b.lost - a.lost) },
+    { key: "wlr", label: "win ratio", fn: (a, b) => (stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a)) },
+    { key: "kills", label: "kills", fn: (a, b) => (b.kills - a.kills) },
+    { key: "deaths", label: "deaths", fn: (a, b) => (b.deaths - a.deaths) },
+    { key: "kdr", label: "k/d ratio", fn: (a, b) => (stats.getKillRatio(b) - stats.getKillRatio(a)) },
+    { key: "kpr", label: "kpr", fn: (a, b) => (b.kpr - a.kpr) },
+    { key: "dpr", label: "survival rate", fn: (a, b) => (b.dpr - a.dpr) },
+    { key: "time", label: "time played", fn: (a, b) => (b.time - a.time) },
+];
 const filters = {
     "None": () => true,
     "Attackers": op => op.side === "Attack",
@@ -35,12 +35,26 @@ export default {
     oninit({ attrs, state }) {
 
         let filterProp = "None";
-        let sortProp = "name";
+        let sorter = sorters[0];
         let isSortReversed = false;
 
+        state.getSorterClass = tester => {
+            if(tester !== sorter) { return tester.key; }
+            return isSortReversed
+                ? tester.key + ' is-active is-reversed'
+                : tester.key + ' is-active';
+        };
         state.sort = function (a, b) {
-            const res = sorters[sortProp](a, b);
+            const res = sorter.fn(a, b);
             return isSortReversed ? -res : res;
+        }
+        state.setSort = newSorter => {
+            if (newSorter === sorter) {
+                isSortReversed = !isSortReversed;
+            } else {
+                isSortReversed = false;
+                sorter = newSorter;
+            }
         }
         state.filter = x => filters[filterProp](x)
 
@@ -88,16 +102,15 @@ export default {
                 <div className="fauxtable operator-table">
                     <div className="fauxtable-head">
                         <div className="fauxtable-row">
-                            <div className="fauxtable-heading name" onclick={() => state.onSort("name")}>Name</div>
-                            <div className="fauxtable-heading won" onclick={() => state.onSort("won")}>Rounds won</div>
-                            <div className="fauxtable-heading lost" onclick={() => state.onSort("lost")}>Rounds lost</div>
-                            <div className="fauxtable-heading wlr" onclick={() => state.onSort("wlr")}>Win ratio</div>
-                            <div className="fauxtable-heading kills" onclick={() => state.onSort("kills")}>Kills</div>
-                            <div className="fauxtable-heading deaths" onclick={() => state.onSort("deaths")}>Deaths</div>
-                            <div className="fauxtable-heading kdr" onclick={() => state.onSort("kdr")}>KD Ratio</div>
-                            <div className="fauxtable-heading kpr" onclick={() => state.onSort("kpr")}>Kills / Round</div>
-                            <div className="fauxtable-heading survival" onclick={() => state.onSort("dpr")}>Survival rate</div>
-                            <div className="fauxtable-heading time" onclick={() => state.onSort("time")}>Time played</div>
+                            {
+                                sorters.map(sorter => (
+                                    <div className={`fauxtable-heading ${state.getSorterClass(sorter)}`}
+                                        onclick={() => state.setSort(sorter)}
+                                    >
+                                        {sorter.label}
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                     <div className="fauxtable-body">
