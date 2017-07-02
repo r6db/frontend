@@ -26,6 +26,10 @@
         .fauxtable-cell{
             text-align: right;
         }
+        .fauxtable-heading{
+            cursor: pointer;
+            user-select: none;
+        }
         .fauxtable-heading,
         .fauxtable-cell{
             padding: ($l*1.5) ($l*2);
