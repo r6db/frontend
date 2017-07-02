@@ -13,8 +13,8 @@ const sorters = [
     { key: "deaths", label: "deaths", fn: (a, b) => (b.deaths - a.deaths) },
     { key: "kdr", label: "k/d ratio", fn: (a, b) => (stats.getKillRatio(b) - stats.getKillRatio(a)) },
     { key: "kpr", label: "kpr", fn: (a, b) => (b.kpr - a.kpr) },
-    { key: "dpr", label: "survival rate", fn: (a, b) => (b.dpr - a.dpr) },
-    { key: "time", label: "time played", fn: (a, b) => (b.time - a.time) },
+    { key: "survival", label: "survival rate", fn: (a, b) => (b.survivalRate - a.survivalRate) },
+    { key: "time", label: "time played", fn: (a, b) => (b.timePlayed - a.timePlayed) },
 ];
 const filters = {
     "None": () => true,
@@ -127,7 +127,7 @@ export default {
                                 <div className="fauxtable-cell deaths">{datum.deaths}</div>
                                 <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
                                 <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
-                                <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)} %</div>
+                                <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}%</div>
                                 <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
                             </div>
                         ))}
