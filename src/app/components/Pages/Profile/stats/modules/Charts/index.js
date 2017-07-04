@@ -38,9 +38,9 @@ export default {
             }
         }
         const responsiveOptions = [
-        ['screen and (max-width: 640px)', {
-            seriesBarDistance: 2
-        }]
+            ['screen and (max-width: 640px)', {
+                seriesBarDistance: 2
+            }]
         ];
 
         state.wlChart = {
@@ -115,19 +115,28 @@ export default {
                 series: [{
                     name: "Europe, Africa & M.East",
                     data: getDelta(function (curr, prev) {
-                        return (curr.ranks.emea.mmr - prev.ranks.emea.mmr).toFixed(2)
+                        if (curr.ranks && curr.ranks.emea && prev.ranks && prev.ranks.emea){
+                            return (curr.ranks.emea.mmr - prev.ranks.emea.mmr).toFixed(2)
+                        }
+                        return null;
                     }),
                     className: "emea"
                 }, {
                     name: "America",
                     data: getDelta(function (curr, prev) {
-                        return (curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr).toFixed(2)
+                        if (curr.ranks && curr.ranks.ncsa && prev.ranks && prev.ranks.ncsa){
+                            return (curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr).toFixed(2)
+                        }
+                        return null;
                     }),
                     className: "ncsa"
                 }, {
                     name: "Asia",
                     data: getDelta(function (curr, prev) {
-                        return (curr.ranks.apac.mmr - prev.ranks.apac.mmr).toFixed(2)
+                        if (curr.ranks && curr.ranks.apac && prev.ranks && prev.ranks.apac){
+                            return (curr.ranks.apac.mmr - prev.ranks.apac.mmr).toFixed(2)
+                        }
+                        return null;
                     }),
                     className: "apac"
                 }]
@@ -148,15 +157,21 @@ export default {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
                 series: [{
                     name: "Europe, Africa & M.East",
-                    data: raw.map(x => (x.ranks.emea.mmr).toFixed(2)),
+                    data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.emea && x.ranks.emea.mmr === 2500))
+                        ? []
+                        : raw.map(x => x.ranks && x.ranks.emea ? (x.ranks.emea.mmr).toFixed(2) : null),
                     className: "emea"
                 }, {
                     name: "America",
-                    data: raw.map(x => (x.ranks.ncsa.mmr).toFixed(2)),
+                    data:raw.every(x => !x.ranks ||  (x.ranks && x.ranks.ncsa && x.ranks.ncsa.mmr === 2500))
+                        ? []
+                        : raw.map(x => x.ranks && x.ranks.ncsa ? (x.ranks.ncsa.mmr).toFixed(2) : null),
                     className: "ncsa"
                 }, {
                     name: "Asia",
-                    data: raw.map(x => (x.ranks.apac.mmr).toFixed(2)),
+                    data:raw.every(x => !x.ranks ||  (x.ranks && x.ranks.apac && x.ranks.apac.mmr === 2500))
+                        ? []
+                        : raw.map(x => x.ranks && x.ranks.apac ? (x.ranks.apac.mmr).toFixed(2) : null),
                     className: "apac"
                 }]
             },
@@ -204,7 +219,7 @@ export default {
                     data: getDelta(function (curr, prev) {
                         const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
                         const dFired = curr.stats.general.bulletsFired - prev.stats.general.bulletsFired;
-                        return (dHit * 100 / dFired) || 0;
+                        return (dHit * 100 / dFired).toFixed(2) || 0;
                     }),
                     className: 'accuracy'
                 }, {
@@ -212,7 +227,7 @@ export default {
                     data: getDelta(function (curr, prev) {
                         const dHs = curr.stats.general.headshot - prev.stats.general.headshot;
                         const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
-                        return (dHs * 100 / dHit) || 0;
+                        return (dHs * 100 / dHit).toFixed(2) || 0;
                     }),
                     className: 'hsrate'
                 }]
