@@ -117,4 +117,15 @@ $ct-series-colors: (
             margin-right: $l;
         }
     }
+    &-element{
+        position: relative;
+    }
+}
+.chartist-tooltip{
+    color: $white;
+    background: $trans-low;
+
+    &:before {
+        border-top-color: $trans-low;
+    }
 }

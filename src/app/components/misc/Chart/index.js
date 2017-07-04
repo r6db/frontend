@@ -1,6 +1,6 @@
 import * as m from "mithril";
 import * as Chartist from "chartist";
-import  "chartist-plugin-tooltips";
+import "chartist-plugin-tooltips";
 import "./chart.scss";
 
 export default {

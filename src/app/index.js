@@ -11,6 +11,7 @@ import "../scss/styles.scss";
 import * as page from "page";
 import * as appstate from "lib/appstate";
 import * as m from "mithril";
+import * as api from "lib/api";
 
 if (process.env.NODE_ENV === "production") {
 
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === "production") {
     window.page = page;
     window.m = m;
     window.appstate = appstate;
+    window.api = api;
 
     // shim google analytics
     window["GoogleAnalyticsObject"] = window.ga = function(...args) { console.log("analytics", args)};

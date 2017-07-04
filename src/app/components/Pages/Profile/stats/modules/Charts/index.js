@@ -54,7 +54,7 @@ export default {
                         const dWon = curr.stats.ranked.won - prev.stats.ranked.won;
                         const dLost = curr.stats.ranked.lost - prev.stats.ranked.lost;
                         const dResult = dWon / (dWon + dLost);
-                        return dResult * 100 || null;
+                        return( dResult * 100).toFixed(2) || null;
                     }),
                     className: "ranked"
                 }, {
@@ -63,7 +63,7 @@ export default {
                         const dWon = curr.stats.casual.won - prev.stats.casual.won;
                         const dLost = curr.stats.casual.lost - prev.stats.casual.lost;
                         const dResult = dWon / (dWon + dLost);
-                        return dResult * 100 || null;
+                        return (dResult * 100).toFixed(2) || null;
                     }),
                     className: "casual"
                 }]
@@ -85,7 +85,7 @@ export default {
                         const dKills = curr.stats.ranked.kills - prev.stats.ranked.kills;
                         const dDeaths = curr.stats.ranked.deaths - prev.stats.ranked.deaths;
                         const dResult = dKills / dDeaths;
-                        return dResult || null;
+                        return dResult.toFixed(2) || null;
                     }),
                     className: "ranked"
                 }, {
@@ -94,7 +94,7 @@ export default {
                         const dKills = curr.stats.casual.kills - prev.stats.casual.kills;
                         const dDeaths = curr.stats.casual.deaths - prev.stats.casual.deaths;
                         const dResult = dKills / dDeaths;
-                        return dResult || null;
+                        return dResult.toFixed(2) || null;
                     }),
                     className: "casual"
                 }]
@@ -115,19 +115,19 @@ export default {
                 series: [{
                     name: "Europe, Africa & M.East",
                     data: getDelta(function (curr, prev) {
-                        return curr.ranks.emea.mmr - prev.ranks.emea.mmr
+                        return (curr.ranks.emea.mmr - prev.ranks.emea.mmr).toFixed(2)
                     }),
                     className: "emea"
                 }, {
                     name: "America",
                     data: getDelta(function (curr, prev) {
-                        return curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr
+                        return (curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr).toFixed(2)
                     }),
                     className: "ncsa"
                 }, {
                     name: "Asia",
                     data: getDelta(function (curr, prev) {
-                        return curr.ranks.apac.mmr - prev.ranks.apac.mmr
+                        return (curr.ranks.apac.mmr - prev.ranks.apac.mmr).toFixed(2)
                     }),
                     className: "apac"
                 }]
@@ -148,15 +148,15 @@ export default {
                 labels: raw.map(x => stats.formatDate(x.created_at)),
                 series: [{
                     name: "Europe, Africa & M.East",
-                    data: raw.map(x => x.ranks.emea.mmr),
+                    data: raw.map(x => (x.ranks.emea.mmr).toFixed(2)),
                     className: "emea"
                 }, {
                     name: "America",
-                    data: raw.map(x => x.ranks.ncsa.mmr),
+                    data: raw.map(x => (x.ranks.ncsa.mmr).toFixed(2)),
                     className: "ncsa"
                 }, {
                     name: "Asia",
-                    data: raw.map(x => x.ranks.apac.mmr),
+                    data: raw.map(x => (x.ranks.apac.mmr).toFixed(2)),
                     className: "apac"
                 }]
             },
