@@ -88,6 +88,7 @@ $ct-series-colors: (
 ) !default;
 
 @import "~chartist/dist/scss/chartist.scss";
+@import "~chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css";
 
 .chart{
     width: 100%;

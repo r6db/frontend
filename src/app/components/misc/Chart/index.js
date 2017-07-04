@@ -1,5 +1,6 @@
 import * as m from "mithril";
 import * as Chartist from "chartist";
+import  "chartist-plugin-tooltips";
 import "./chart.scss";
 
 export default {
@@ -9,7 +10,9 @@ export default {
         if (!Chart) {
             console.error(`type "${attrs.type} is not valid"`);
         }
-        state.chart = new Chart(el, attrs.data, attrs.options || {}, attrs.responsiveOptions || {});
+        const opts = attrs.options || {};
+        opts.plugins = [Chartist.plugins.tooltip()];
+        state.chart = new Chart(el, attrs.data, opts, attrs.responsiveOptions || {});
         // state.onResize = () => state.chart.update();
         // window.addEventListener("resize", state.onResize);
     },
