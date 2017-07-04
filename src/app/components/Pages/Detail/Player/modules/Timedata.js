@@ -1,11 +1,5 @@
 import * as m from "mithril";
-
-function formatDuration(seconds) {
-    const rawHours = seconds / (60 * 60);
-    const hours = rawHours | 0;
-    const minutes = ((rawHours % 1) * 60).toFixed(0);
-    return `${hours}h ${minutes}m`;
-}
+import { formatDuration } from "lib/stats";
 
 export default {
     view: ({ attrs }) => (
