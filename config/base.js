@@ -21,7 +21,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
-        filename: "[name].[hash].js",
+        filename: "[name].js",
         pathinfo: true
     },
     target: "web",
@@ -93,9 +93,10 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            template: "./src/index.ejs"
+            template: "./src/index.ejs",
+            hash: true
         }),
-        new ExtractTextPlugin("styles.[hash].css"),
+        new ExtractTextPlugin("styles.css"),
         new SpriteLoaderPlugin()
     ]
 };
