@@ -3,7 +3,6 @@ const webpack = require("webpack");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
-const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 const config = Object.assign({}, base);
 // config.output.publicPath = "https://r6db.com/";
@@ -33,8 +32,7 @@ config.plugins = config.plugins.concat([
       },
       comments: false
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new HtmlWebpackInlineSourcePlugin()
+    new webpack.optimize.OccurrenceOrderPlugin()
 ]);
 
 module.exports = config;

@@ -1,5 +1,4 @@
 const webpack = require("webpack");
-const HappyPack = require("happypack");
 const path = require("path");
 const util = require("util");
 
@@ -7,8 +6,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ResourceHintWebpackPlugin = require("resource-hints-webpack-plugin");
-const StyleExtHtmlWebpackPlugin = require("style-ext-html-webpack-plugin");
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const autoprefixer = require("autoprefixer");
@@ -24,7 +21,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
-        filename: "js/[name].js",
+        filename: "[name].[hash].js",
         pathinfo: true
     },
     target: "web",
@@ -96,10 +93,9 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            inlineSource: ".(css)$",
             template: "./src/index.ejs"
         }),
-        new ExtractTextPlugin("styles.css"),
+        new ExtractTextPlugin("styles.[hash].css"),
         new SpriteLoaderPlugin()
     ]
 };
