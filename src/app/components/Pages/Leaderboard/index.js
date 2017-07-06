@@ -25,7 +25,7 @@ export default {
                                 For more info on the current rank system, head over to the <a href="/faq">FAQ</a>.
                             </p>
                             <p className="is-highlight">
-                                Any accounts proven to abuse the system will be from the leaderboard. This includes queueing with coppers or hackers, hacking themselves or playing exclusively imbalanced gamemodes (<a href="https://medium.com/@r6db/on-excluding-accounts-from-the-leaderboard-596cc217b2af">details and reasoning</a>). If you have questions, please contact us per <a href="mailto:info@r6db.com">email</a> or <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
+                                Any accounts proven to abuse the system will be removed from the leaderboard. This includes queueing with coppers or hackers, hacking themselves or playing exclusively imbalanced gamemodes (<a href="https://medium.com/@r6db/on-excluding-accounts-from-the-leaderboard-596cc217b2af">details and reasoning</a>). If you have questions, please contact us per <a href="mailto:info@r6db.com">email</a> or <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
                             </p>
                         <p>the Leaderboard updates every 24h.</p>
                         </div>
