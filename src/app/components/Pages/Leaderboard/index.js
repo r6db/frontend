@@ -18,13 +18,17 @@ export default {
                 ? (<div className="leaderboard">
                     <div className="leaderboard-header">
                         <h1 className="leaderboard-title">Top Skilled Players</h1>
-                        <p className="leaderboard-description">
-                            We use the ranked system's 'skill' and an 'uncertainty' variables to calculate a downward adjusted skill rating
-                            (aka "you're at least this good" value). That way we can ensure that players with identical skill but more games will be ranked higher.
-                            For more info on the current rank system, you can read 
-                            <a href="http://rainbow6.ubi.com/siege/en-gb/news/detail.aspx?c=tcm:154-277344-16&ct=tcm:148-76770-32"> this blog post by Ubisoft</a>.
-                        </p>
+                        <div className="leaderboard-description">
+                            <p>
+                                We use the ranked system's 'skill' and an 'uncertainty' variables to calculate a downward adjusted skill rating
+                                (aka "you're at least this good" value). That way we can ensure that players with identical skill but more games will be ranked higher.
+                                For more info on the current rank system, head over to the <a href="/faq">FAQ</a>.
+                            </p>
+                            <p className="is-highlight">
+                                Any accounts proven to abuse the system will be from the leaderboard. This includes queueing with coppers or hackers, hacking themselves or playing exclusively imbalanced gamemodes (<a href="https://medium.com/@r6db/on-excluding-accounts-from-the-leaderboard-596cc217b2af">details and reasoning</a>). If you have questions, please contact us per <a href="mailto:info@r6db.com">email</a> or <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
+                            </p>
                         <p>the Leaderboard updates every 24h.</p>
+                        </div>
                         <p className="leaderboard-region">
                             <label
                                 className="leaderboard-regionlabel" htmlFor="regionselect">

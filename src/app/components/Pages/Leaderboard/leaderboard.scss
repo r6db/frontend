@@ -19,6 +19,14 @@
         color: $gray-light;
         line-height: 1.4;
         text-shadow: 0 0 1px $gray-dark;
+
+        p{
+            margin-bottom: $l;
+        }
+        .is-highlight{
+            padding-left: $l;
+            border-left: 2px solid $accent;
+        }
         a{
             color: $accent;
         }
