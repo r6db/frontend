@@ -3,6 +3,7 @@
 .idcard{
     display: flex;
     flex-direction: row;
+    flex: 0 0 auto;
 
     &.profile-module{
         margin: 0;

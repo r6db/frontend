@@ -79,6 +79,7 @@ select{
     background: $trans-low;
     color: $white;
     display: inline-block;
+    -webkit-appearance: none;
 }
 
 label{

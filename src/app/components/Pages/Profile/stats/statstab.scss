@@ -5,6 +5,7 @@
     flex-direction: column;
     margin-top: 0;
     padding-top: 0;
+    width: 100%;
 
     @include large{
         flex-direction: row;
@@ -15,8 +16,7 @@
     &-statarea{
         display: flex;
         flex-direction: column;
-        flex: 0 1 100%;
-        overflow: hidden;
+        flex: auto;
 
         @include medium{
             flex-direction: row;

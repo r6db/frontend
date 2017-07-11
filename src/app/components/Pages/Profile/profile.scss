@@ -2,6 +2,20 @@
 
 .profile{
     padding: 0 $l;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .tabs{
+        flex: 1 1 auto;
+    }
+    .tab-content{
+        display: flex;
+
+        >*{
+            flex: auto;
+        }
+    }
 
     &-module{
         background: $trans-med;

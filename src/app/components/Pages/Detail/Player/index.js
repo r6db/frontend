@@ -30,7 +30,7 @@ export default {
                                     : <div className="detail-global-rank">
                                         Global <span>#{attrs.placements.global + 1}</span>
                                     </div>}
-                                <a className="detail-extended" href={`/player/${attrs.id}/extended`}>extended view (alpha)</a>
+                                <a className="detail-extended" href={`/player/${attrs.id}/extended`}>extended view (beta)</a>
                             </div>
                         </div>
                         <div className="detail-seasonranks">

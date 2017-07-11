@@ -1,7 +1,7 @@
 @import "styles";
 .menu{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: $menu-background;
     overflow: auto;
     display: flex;
@@ -42,7 +42,7 @@
         }
     }
     &-center{
-        flex: 1;
+        flex: 1 0 0px;
     }
 
     &-bottom{

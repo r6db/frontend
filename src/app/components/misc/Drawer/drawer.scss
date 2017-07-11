@@ -83,7 +83,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        height: 100%;
+        height: 100vh;
         padding-right: 3%;
         transform: translateX(-97%);
         transition: all 100ms ease-out;
@@ -98,7 +98,7 @@
 
     &-menu{
         width: 280px;
-        height: 100%;
+        height: 100vh;
         background: white;
         box-shadow: 0 0 5px $trans-med;
     }
