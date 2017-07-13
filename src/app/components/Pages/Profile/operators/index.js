@@ -1,6 +1,7 @@
 import * as m from "mithril";
 import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
+import Chart from 'components/misc/Chart';
 import "./opstab.scss";
 import "./fauxtable.scss";
 
@@ -71,6 +72,51 @@ export default {
                 return acc;
             }, []);
 
+        state.operatorsShowMap = {};
+
+        const opProgressions = attrs.progressions
+            .map(prog => ({
+                ops: prog.stats && prog.stats.operator,
+                date: prog.created_at
+            }))
+            .filter(x => x.ops);
+
+        const getDelta = cb => opProgressions
+            .reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
+
+        state.opgraphs = ops.reduce((acc, op) => {
+            const prog = opProgressions.map(x => x.ops[op.id]);
+            console.log(prog);
+            acc[op.id] = {
+                type: "Line",
+                title: "Kills/Deaths",
+                data: {
+                    // labels: raw.map(x => stats.formatDate(x.created_at)),
+                    series: [{
+                        name: "opkd",
+                        data: getDelta(function (curr, prev) {
+                            if (!prev) return null;
+                            console.log(curr, prev);
+                            return (curr.kills - prev.kills) / (curr.deaths - prev.deaths);
+                        }),
+                        className: "opkd"
+                    }]
+                },
+                options: {
+                    axisX: {
+//                        labelInterpolationFnc
+                    }
+                }
+            };
+            console.log(acc[op.id]);
+            return acc;
+        }, {});
+
+        state.toggleOp = op => {
+            state.operatorsShowMap[op] = !state.operatorsShowMap[op];
+            console.log(op);
+        };
+
         state.onSort = stat => {
             if (stat in sorters) {
                 if (sortProp === stat) {
@@ -118,17 +164,22 @@ export default {
                             .filter(state.filter)
                             .sort(state.sort)
                             .map(datum => (
-                            <div key={datum.id} className="fauxtable-row">
-                                <div className="fauxtable-cell name">{datum.name}</div>
-                                <div className="fauxtable-cell won">{datum.won}</div>
-                                <div className="fauxtable-cell lost">{datum.lost}</div>
-                                <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
-                                <div className="fauxtable-cell kills">{datum.kills}</div>
-                                <div className="fauxtable-cell deaths">{datum.deaths}</div>
-                                <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
-                                <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
-                                <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}%</div>
-                                <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
+                            <div>
+                                <div key={datum.id} className="fauxtable-row">
+                                    <div className="fauxtable-cell name" onclick={ () => state.toggleOp(datum.id) }>{datum.name}</div>
+                                    <div className="fauxtable-cell won">{datum.won}</div>
+                                    <div className="fauxtable-cell lost">{datum.lost}</div>
+                                    <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
+                                    <div className="fauxtable-cell kills">{datum.kills}</div>
+                                    <div className="fauxtable-cell deaths">{datum.deaths}</div>
+                                    <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
+                                    <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
+                                    <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}%</div>
+                                    <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
+                                </div>
+                                { !state.operatorsShowMap[datum.id] ? "" :
+                                <div><Chart { ...state.opgraphs[datum.id] }/></div>
+                                }
                             </div>
                         ))}
                     </div>
