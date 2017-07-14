@@ -48,8 +48,11 @@ function updateTweets() {
         .then(tweets => set("tweets", tweets))
         .then(() => {
             // nasty hack to fix safari not recalculating flex
-            document.querySelector(".menu-center").style.minHeight = "1px";
-        })
+            const el = document.querySelector(".menu-center");
+            if (el) {
+                el.style.minHeight = "1px";
+            }
+        });
 }
 setInterval(updateTweets, 2 * 60 * 1000);
 updateTweets();
