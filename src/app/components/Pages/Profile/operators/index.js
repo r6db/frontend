@@ -73,42 +73,110 @@ export default {
             }, []);
 
         state.operatorsShowMap = {};
-
         const opProgressions = attrs.progressions
             .map(prog => ({
                 ops: prog.stats && prog.stats.operator,
                 date: prog.created_at
             }))
-            .filter(x => x.ops);
+            .filter(x => x.ops)
+            .reduce((acc, day) => {
+                Object.keys(day.ops)
+                    .forEach(op => {
+                        acc[op] = acc[op] || [];
+                        acc[op].push({
+                            date: stats.formatDate(day.date),
+                            data: day.ops[op]
+                        });
+                    });
+                return acc;
+            }, {});
 
-        const getDelta = cb => opProgressions
+        const getDelta = op => cb => opProgressions[op]
             .reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
 
+        const labelInterpolationFnc = function (value, index, arr) {
+            if (window.innerWidth > 640) {
+                return index % 2 ? value : null;
+            } else {
+                const allowed = [0, (arr.length / 2) | 0, arr.length - 1]
+                return allowed.indexOf(index) !== -1 ? value : null;
+            }
+        }
+
         state.opgraphs = ops.reduce((acc, op) => {
-            const prog = opProgressions.map(x => x.ops[op.id]);
-            console.log(prog);
-            acc[op.id] = {
+            acc[op.id] = {};
+            acc[op.id].kd = {
                 type: "Line",
-                title: "Kills/Deaths",
+                title: "Kill/Death Ratio",
                 data: {
-                    // labels: raw.map(x => stats.formatDate(x.created_at)),
+                    labels: opProgressions[op.id].map(x => x.date),
                     series: [{
-                        name: "opkd",
-                        data: getDelta(function (curr, prev) {
+                        data: getDelta(op.id)(function (curr, prev) {
                             if (!prev) return null;
-                            console.log(curr, prev);
-                            return (curr.kills - prev.kills) / (curr.deaths - prev.deaths);
-                        }),
-                        className: "opkd"
+                            return (curr.data.kills - prev.data.kills) / (curr.data.deaths - prev.data.deaths);
+                        }).map(x => {
+                            return x;
+                            if (Number.isFinite(x)) {
+                                return x;
+                            }
+                            return NaN;
+                        })
                     }]
                 },
                 options: {
                     axisX: {
-//                        labelInterpolationFnc
+                        labelInterpolationFnc
                     }
                 }
             };
-            console.log(acc[op.id]);
+            acc[op.id].wl = {
+                type: "Line",
+                title: "Round Win/Loss Ratio",
+                data: {
+                    labels: opProgressions[op.id].map(x => x.date),
+                    series: [{
+                        data: getDelta(op.id)(function (curr, prev) {
+                            if (!prev) return null;
+                            return (curr.data.won - prev.data.won) / (curr.data.lost - prev.data.lost);
+                        }).map(x => {
+                            return x;
+                            if (Number.isFinite(x)) {
+                                return x;
+                            }
+                            return NaN;
+                        })
+                    }]
+                },
+                options: {
+                    axisX: {
+                        labelInterpolationFnc
+                    }
+                }
+            };
+            acc[op.id].playtime = {
+                type: "Line",
+                title: "Playtime (minutes)",
+                data: {
+                    labels: opProgressions[op.id].map(x => x.date),
+                    series: [{
+                        data: getDelta(op.id)(function (curr, prev) {
+                            if (!prev) return null;
+                            return Math.abs(curr.data.timePlayed - prev.data.timePlayed) / 60;
+                        }).map(x => {
+                            return x;
+                            if (Number.isFinite(x)) {
+                                return x;
+                            }
+                            return 0;
+                        })
+                    }]
+                },
+                options: {
+                    axisX: {
+                        labelInterpolationFnc
+                    }
+                }
+            };
             return acc;
         }, {});
 
@@ -178,7 +246,19 @@ export default {
                                     <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
                                 </div>
                                 { !state.operatorsShowMap[datum.id] ? "" :
-                                <div><Chart { ...state.opgraphs[datum.id] }/></div>
+                                <div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div><Chart { ...state.opgraphs[datum.id].kd }/></div>
+                                        </div>
+                                        <div className="col">
+                                            <div><Chart { ...state.opgraphs[datum.id].wl } /></div>
+                                        </div>
+                                        <div className="col">
+                                            <div><Chart { ...state.opgraphs[datum.id].playtime } /></div>
+                                        </div>
+                                    </div>
+                                </div>
                                 }
                             </div>
                         ))}
@@ -187,4 +267,4 @@ export default {
             </div>
         );
     }
-}
+};
