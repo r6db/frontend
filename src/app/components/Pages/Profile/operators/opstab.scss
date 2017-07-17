@@ -103,9 +103,12 @@
         }
     }
 
-    @include small {
+    .operator-graphs {
+        display: none;
+    }
+    @include medium {
         .operator-graphs {
-            display: none;
+            display: block;
         }
     }
 
