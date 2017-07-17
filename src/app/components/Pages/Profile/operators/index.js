@@ -1,6 +1,7 @@
 import * as m from "mithril";
 import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
+import Chart from 'components/misc/Chart';
 import "./opstab.scss";
 import "./fauxtable.scss";
 
@@ -71,6 +72,140 @@ export default {
                 return acc;
             }, []);
 
+        state.operatorsShowMap = {};
+        const opProgressions = attrs.progressions
+            .map(prog => ({
+                ops: prog.stats && prog.stats.operator,
+                date: prog.created_at
+            }))
+            .filter(x => x.ops)
+            .reverse()
+            .reduce((acc, day) => {
+                Object.keys(day.ops)
+                    .forEach(op => {
+                        acc[op] = acc[op] || [];
+                        acc[op].push({
+                            date: stats.formatDate(day.date),
+                            data: day.ops[op]
+                        });
+                    });
+                return acc;
+            }, {});
+
+        const getDelta = op => cb => opProgressions[op]
+            .reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
+
+        const getProgressionAverage = (op, cb) => {
+            const series = opProgressions[op];
+            return cb(series[0], series[series.length - 1]);
+        };
+
+        const labelInterpolationFnc = function (value, index, arr) {
+            if (window.innerWidth > 640) {
+                return index % 2 ? value : null;
+            } else {
+                const allowed = [0, (arr.length / 2) | 0, arr.length - 1]
+                return allowed.indexOf(index) !== -1 ? value : null;
+            }
+        }
+
+        state.opgraphs = ops.reduce((acc, op) => {
+            acc[op.id] = {};
+            acc[op.id].kd = {
+                type: "Line",
+                title: "Kill/Death Ratio",
+                data: {
+                    labels: opProgressions[op.id].map(x => x.date),
+                    series: [{
+                        name: "KD Ratio",
+                        data: getDelta(op.id)(function (curr, prev) {
+                            if (!prev) return null;
+                            return (curr.data.kills - prev.data.kills) / (curr.data.deaths - prev.data.deaths);
+                        }).map(x => {
+                            return x;
+                            if (Number.isFinite(x)) {
+                                return x;
+                            }
+                            return NaN;
+                        }),
+                        className: "opdaily"
+                    }, {
+                        name: "Average for past " + opProgressions[op.id].length + " days",
+                        data: new Array(opProgressions[op.id].length).fill(getProgressionAverage(op.id, function (start, end) {
+                            return (start.data.kills - end.data.kills) / (start.data.deaths - end.data.deaths);
+                        })),
+                        className: "opavg"
+                    }]
+                },
+                options: {
+                    axisX: {
+                        labelInterpolationFnc
+                    }
+                }
+            };
+            acc[op.id].wl = {
+                type: "Line",
+                title: "Round Win/Loss Ratio",
+                data: {
+                    labels: opProgressions[op.id].map(x => x.date),
+                    series: [{
+                        name: "WL Ratio",
+                        data: getDelta(op.id)(function (curr, prev) {
+                            if (!prev) return null;
+                            return (curr.data.won - prev.data.won) / (curr.data.lost - prev.data.lost);
+                        }).map(x => {
+                            return x;
+                            if (Number.isFinite(x)) {
+                                return x;
+                            }
+                            return NaN;
+                        }),
+                        className: "opdaily"
+                    }, {
+                        name: "Average for past " + opProgressions[op.id].length + " days",
+                        data: new Array(opProgressions[op.id].length).fill(getProgressionAverage(op.id, function (start, end) {
+                            return (start.data.won - end.data.won) / (start.data.lost - end.data.lost);
+                        })),
+                        className: "opavg"
+                    }]
+                },
+                options: {
+                    axisX: {
+                        labelInterpolationFnc
+                    }
+                }
+            };
+            acc[op.id].playtime = {
+                type: "Line",
+                title: "Playtime (minutes)",
+                data: {
+                    labels: opProgressions[op.id].map(x => x.date),
+                    series: [{
+                        data: getDelta(op.id)(function (curr, prev) {
+                            if (!prev) return null;
+                            return Math.abs(curr.data.timePlayed - prev.data.timePlayed) / 60;
+                        }).map(x => {
+                            return x;
+                            if (Number.isFinite(x)) {
+                                return x;
+                            }
+                            return 0;
+                        })
+                    }]
+                },
+                options: {
+                    axisX: {
+                        labelInterpolationFnc
+                    }
+                }
+            };
+            return acc;
+        }, {});
+
+        state.toggleOp = op => {
+            state.operatorsShowMap[op] = !state.operatorsShowMap[op];
+        };
+
         state.onSort = stat => {
             if (stat in sorters) {
                 if (sortProp === stat) {
@@ -118,17 +253,38 @@ export default {
                             .filter(state.filter)
                             .sort(state.sort)
                             .map(datum => (
-                            <div key={datum.id} className="fauxtable-row">
-                                <div className="fauxtable-cell name">{datum.name}</div>
-                                <div className="fauxtable-cell won">{datum.won}</div>
-                                <div className="fauxtable-cell lost">{datum.lost}</div>
-                                <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
-                                <div className="fauxtable-cell kills">{datum.kills}</div>
-                                <div className="fauxtable-cell deaths">{datum.deaths}</div>
-                                <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
-                                <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
-                                <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}%</div>
-                                <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
+                            <div>
+                                <div key={datum.id} className="fauxtable-row">
+                                    <div className="fauxtable-cell name" onclick={ () => state.toggleOp(datum.id) }>{datum.name}</div>
+                                    <div className="fauxtable-cell won">{datum.won}</div>
+                                    <div className="fauxtable-cell lost">{datum.lost}</div>
+                                    <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
+                                    <div className="fauxtable-cell kills">{datum.kills}</div>
+                                    <div className="fauxtable-cell deaths">{datum.deaths}</div>
+                                    <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
+                                    <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
+                                    <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}%</div>
+                                    <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
+                                </div>
+                                { !state.operatorsShowMap[datum.id] ? "" :
+                                <div class="operator-graphs">
+                                    <div className="row">
+                                        <div className="col">
+                                            <div><Chart { ...state.opgraphs[datum.id].kd }/></div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div><Chart { ...state.opgraphs[datum.id].wl } /></div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div><Chart { ...state.opgraphs[datum.id].playtime } /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
                             </div>
                         ))}
                     </div>
@@ -136,4 +292,4 @@ export default {
             </div>
         );
     }
-}
+};
