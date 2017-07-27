@@ -1,4 +1,107 @@
 @import "styles";
 
 .rankstab{
+    .rankstab-controls{
+        margin: $l;
+        display: flex;
+        p{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 $l;
+
+            @include medium{
+                flex-direction: row;
+            }
+        }
+        label{
+            margin: 0 $l 0 0;
+            font-size: 0.9em;
+        }
+    }
+
+    .ranks-table{
+        flex: 1;
+
+        .fauxtable-cell{
+            text-align: right;
+        }
+        .fauxtable-heading{
+            cursor: pointer;
+            user-select: none;
+
+            &.is-active{
+                color: $primary;
+            }
+        }
+        .fauxtable-heading,
+        .fauxtable-cell{
+            padding: ($l*1.5) ($l*2);
+        }
+        .fauxtable-row{
+            background: $trans-med;
+            &:hover {
+                background: lighten($trans-med, 10%);
+            }
+        }
+        .fauxtable-row:nth-child(even){
+            background: fade-out($trans-med, 0.4);
+            &:hover {
+                background: lighten(fade-out($trans-med, 0.4), 20%);
+            }
+        }
+        .name{
+            text-align: center;
+        }
+
+        @include medium{
+            .fauxtable-cell,
+            .fauxtable-heading{
+                flex: 1 0 0;
+            }
+            .region{
+                text-align: left;
+                // flex-grow: 2;
+            }
+            .rank {
+                flex-grow: 4;
+                text-align: left;
+                .rank-image {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+            .season {
+                text-align: left;
+            }
+            .skill_mean,
+            .skill_stdev,
+            .wins,
+            .losses,
+            .wlp,
+            .abandons {
+                text-align: right;
+                // flex-grow: 2;
+            }
+            .mmr, .max_mmr {
+                text-align: left;
+            }
+        }
+    }
+
+    .operator-graphs {
+        display: none;
+    }
+    @include medium {
+        .operator-graphs {
+            display: block;
+        }
+    }
+
+    .chart-container .ct-series,
+    .chart-container .indicator{
+        &.opdaily { stroke: $black-ice; background-color: $black-ice; }
+        &.opavg { stroke: $skull-rain; background-color: $skull-rain; }
+        &.opavg .ct-point { stroke: none; }
+    }
 }
