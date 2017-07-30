@@ -41,7 +41,7 @@
             padding: ($l*1.5) ($l*2);
         }
         .fauxtable-row{
-
+            overflow: hidden;
             &:hover {
                 background: $trans-low;
             }
