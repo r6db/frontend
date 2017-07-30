@@ -18,14 +18,6 @@ const sorters = [
     { key: "wlp", label: "w/l %", fn: (a, b) => (getWLP(b) - getWLP(a)) }
 ];
 
-function getRank(rank) {
-    const glyph = GLYPHS["RANK" + rank];
-    return <div>
-        <Icon className="rank-image" glyph={glyph} />
-        <span class="ranks-text">{Ranks[rank].replace("Unranked", "")}</span>
-    </div>;
-}
-
 function getWLP(rank) {
     return rank.wins * 100/ (rank.wins + rank.abandons + rank.losses) || 0;
     //(obj.won * 100 / (obj.won + (obj.lost) || 1)).toFixed(2) + "%"
@@ -135,7 +127,10 @@ export default {
                                 <div key={datum.id} className="fauxtable-row">
                                     <div className="fauxtable-cell region">{regions[datum.region]}</div>
                                     <div className="fauxtable-cell ">{datum.season}</div>
-                                    <div className="fauxtable-cell rank">{getRank(datum.rank)}</div>
+                                    <div className="fauxtable-cell rank">
+                                        <Icon className="rank-image" glyph={GLYPHS["RANK" + datum.rank]} />
+                                        <span class="ranks-text">{Ranks[datum.rank].replace("Unranked", "")}</span>
+                                    </div>
                                     <div className="fauxtable-cell mmr">{datum.mmr.toFixed(2)}</div>
                                     <div className="fauxtable-cell max_mmr">{datum.max_mmr.toFixed(2)}</div>
                                     <div className="fauxtable-cell skill_stdev">{datum.skill_stdev.toFixed(2)}</div>
