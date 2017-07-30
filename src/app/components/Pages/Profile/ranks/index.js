@@ -5,17 +5,17 @@ import {Ranks} from "lib/constants";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 const sorters = [
-    { key: "region", label: "region", fn: (a, b) => ((a.region < b.region ? -1 : (a.region > b.region ? 1 : 0))) },
-    { key: "season", label: "season", fn: (a, b) => (b.season - a.season) },
-    { key: "rank", label: "rank", fn: (a, b) => (b.rank - a.rank) },
-    { key: "mmr", label: "mmr", fn: (a, b) => (b.mmr - a.mmr) },
-    { key: "max_mmr", label: "max_mmr", fn: (a, b) => (b.max_mmr - a.max_mmr) },
-    { key: "skill_stdev", label: "skill_stdev", fn: (a, b) => (b.skill_stdev - a.skill_stdev) },
-    { key: "skill_mean", label: "skill_mean", fn: (a, b) => (b.skill_mean - a.skill_mean) },
-    { key: "wins", label: "wins", fn: (a, b) => (b.wins - a.wins) },
-    { key: "losses", label: "losses", fn: (a, b) => (b.losses - a.losses) },
-    { key: "abandons", label: "abandons", fn: (a, b) => (b.abandons - a.abandons) },
-    { key: "wlp", label: "w/l %", fn: (a, b) => (getWLP(b) - getWLP(a)) }
+    { key: "region", label: "Region", fn: (a, b) => ((a.region < b.region ? -1 : (a.region > b.region ? 1 : 0))) },
+    { key: "season", label: "Season", fn: (a, b) => (b.season - a.season) },
+    { key: "rank", label: "Rank", fn: (a, b) => (b.rank - a.rank) },
+    { key: "mmr", label: "MMR", fn: (a, b) => (b.mmr - a.mmr) },
+    { key: "max_mmr", label: "Max MMR", fn: (a, b) => (b.max_mmr - a.max_mmr) },
+    { key: "skill_stdev", label: "Skill", fn: (a, b) => (b.skill_stdev - a.skill_stdev) },
+    { key: "skill_mean", label: "Uncertainty", fn: (a, b) => (b.skill_mean - a.skill_mean) },
+    { key: "wins", label: "Wins", fn: (a, b) => (b.wins - a.wins) },
+    { key: "losses", label: "Losses", fn: (a, b) => (b.losses - a.losses) },
+    { key: "abandons", label: "Abandons", fn: (a, b) => (b.abandons - a.abandons) },
+    { key: "wlp", label: "W/L %", fn: (a, b) => (getWLP(b) - getWLP(a)) }
 ];
 
 function getRank(rank) {
