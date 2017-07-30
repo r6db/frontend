@@ -51,7 +51,7 @@ export default {
                     return false;
                 }
             }
-            if (showUnranked) {
+            if (!showUnranked) {
                 return x.rank !== 0;
             }
             return true;

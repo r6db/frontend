@@ -62,34 +62,64 @@
                 flex: 1 0 0;
             }
             .region{
+                justify-content: flex-start;
                 text-align: left;
-                flex-grow: 3;
+                flex-grow: 4;
             }
             .rank {
                 flex-grow: 3;
+                justify-content: flex-start;
                 text-align: left;
+                padding: 0;
                 .rank-image {
-                    width: 40px;
-                    height: 40px;
+                    width: $l*4;
+                    height: $l*4;
                 }
             }
             .season {
                 flex-grow: 1;
+                justify-content: flex-start;
                 text-align: left;
             }
-            .skill_mean,
-            .skill_stdev,
-            .wins,
-            .losses,
+            .skill_mean{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 1;
+            }
+            .skill_stdev{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 1;
+            }
+            .wins{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+            .losses{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
             .abandons {
+                justify-content: flex-end;
                 text-align: right;
                 flex-grow: 2;
             }
             .wlp {
-                flex-grow: 1
-            }
-            .mmr, .max_mmr {
+                flex-grow: 2;
+                justify-content: flex-end;
                 text-align: right;
+            }
+            .mmr{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+            .max_mmr {
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
             }
             .ranks-text {
                 position: absolute;
