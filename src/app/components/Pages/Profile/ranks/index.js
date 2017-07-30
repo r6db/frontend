@@ -133,8 +133,8 @@ export default {
                                     </div>
                                     <div className="fauxtable-cell mmr">{datum.mmr.toFixed(2)}</div>
                                     <div className="fauxtable-cell max_mmr">{datum.max_mmr.toFixed(2)}</div>
-                                    <div className="fauxtable-cell skill_stdev">{datum.skill_stdev.toFixed(2)}</div>
                                     <div className="fauxtable-cell skill_mean">{datum.skill_mean.toFixed(2)}</div>
+                                    <div className="fauxtable-cell skill_stdev">{datum.skill_stdev.toFixed(2)}</div>
                                     <div className="fauxtable-cell wins">{datum.wins}</div>
                                     <div className="fauxtable-cell losses">{datum.losses}</div>
                                     <div className="fauxtable-cell abandons">{datum.abandons}</div>
