@@ -25,6 +25,8 @@
 
         .fauxtable-cell{
             text-align: right;
+            align-items: center;
+            display: flex;
         }
         .fauxtable-heading{
             cursor: pointer;
@@ -61,10 +63,10 @@
             }
             .region{
                 text-align: left;
-                // flex-grow: 2;
+                flex-grow: 3;
             }
             .rank {
-                flex-grow: 4;
+                flex-grow: 3;
                 text-align: left;
                 .rank-image {
                     width: 40px;
@@ -87,7 +89,7 @@
                 flex-grow: 1
             }
             .mmr, .max_mmr {
-                text-align: left;
+                text-align: right;
             }
             .ranks-text {
                 position: absolute;

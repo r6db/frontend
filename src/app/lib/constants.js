@@ -125,3 +125,9 @@ export const Operators = {
     twitch: { name: "Twitch", side: "Attack", unit: "GIGN" },
     valkyrie: { name: "Valkyrie", side: "Defense", unit: "SEALS" },
 }
+
+export const regions = {
+    emea: "Europe, Africa & M.East",
+    ncsa: "America",
+    apac: "Asia"
+};

@@ -1,21 +1,21 @@
 import * as m from "mithril";
 import "./rankstab.scss";
-import {Ranks} from "lib/constants";
+import {Ranks, regions} from "lib/constants";
 
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 const sorters = [
-    { key: "region", label: "Region", fn: (a, b) => ((a.region < b.region ? -1 : (a.region > b.region ? 1 : 0))) },
-    { key: "season", label: "Season", fn: (a, b) => (b.season - a.season) },
-    { key: "rank", label: "Rank", fn: (a, b) => (b.rank - a.rank) },
-    { key: "mmr", label: "MMR", fn: (a, b) => (b.mmr - a.mmr) },
-    { key: "max_mmr", label: "Max MMR", fn: (a, b) => (b.max_mmr - a.max_mmr) },
-    { key: "skill_stdev", label: "Skill", fn: (a, b) => (b.skill_stdev - a.skill_stdev) },
-    { key: "skill_mean", label: "Uncertainty", fn: (a, b) => (b.skill_mean - a.skill_mean) },
-    { key: "wins", label: "Wins", fn: (a, b) => (b.wins - a.wins) },
-    { key: "losses", label: "Losses", fn: (a, b) => (b.losses - a.losses) },
-    { key: "abandons", label: "Abandons", fn: (a, b) => (b.abandons - a.abandons) },
-    { key: "wlp", label: "W/L %", fn: (a, b) => (getWLP(b) - getWLP(a)) }
+    { key: "region", label: "region", fn: (a, b) => ((a.region < b.region ? -1 : (a.region > b.region ? 1 : 0))) },
+    { key: "season", label: "season", fn: (a, b) => (b.season - a.season) },
+    { key: "rank", label: "rank", fn: (a, b) => (b.rank - a.rank) },
+    { key: "mmr", label: "mmr", fn: (a, b) => (b.mmr - a.mmr) },
+    { key: "max_mmr", label: "max mmr", fn: (a, b) => (b.max_mmr - a.max_mmr) },
+    { key: "skill_mean", label: "skill", fn: (a, b) => (b.skill_mean - a.skill_mean) },
+    { key: "skill_stdev", label: "uncertainty", fn: (a, b) => (b.skill_stdev - a.skill_stdev) },
+    { key: "wins", label: "wins", fn: (a, b) => (b.wins - a.wins) },
+    { key: "losses", label: "losses", fn: (a, b) => (b.losses - a.losses) },
+    { key: "abandons", label: "abandons", fn: (a, b) => (b.abandons - a.abandons) },
+    { key: "wlp", label: "w/l %", fn: (a, b) => (getWLP(b) - getWLP(a)) }
 ];
 
 function getRank(rank) {
@@ -36,10 +36,10 @@ export default {
     oninit({ attrs, state }) {
         let seasonFilter = "all";
         let regionFilter = "all";
-        let hideUnranked = false;
+        let showUnranked = false;
         state.onRegionFilter = x => regionFilter = x;
         state.onFilter = x => seasonFilter = x;
-        state.onHideUnranked = x => hideUnranked = <x></x>;
+        state.onShowUnranked = x => showUnranked = x;
         state.filter = x => {
             if (seasonFilter !== "all") {
                 if (x.season !== parseInt(seasonFilter)) {
@@ -51,7 +51,7 @@ export default {
                     return false;
                 }
             }
-            if (hideUnranked) {
+            if (showUnranked) {
                 return x.rank !== 0;
             }
             return true;
@@ -95,8 +95,8 @@ export default {
         return <div className="rankstab">
             <div className="rankstab-controls">
                 <p>
-                    <label htmlFor="hide-unranked">Hide unranked</label>
-                    <input type="checkbox" name="hide-unranked" onchange={m.withAttr("checked", state.onHideUnranked)} />
+                    <label htmlFor="show-unranked">Show unranked</label>
+                    <input type="checkbox" name="show-unranked" onchange={m.withAttr("checked", state.onShowUnranked)} />
                     <label htmlFor="season-filter">Season</label>
                     <select name="season-filter" onchange={m.withAttr("value", state.onFilter)}>
                         <option value="all">All</option>
@@ -133,7 +133,7 @@ export default {
                         .map(datum => (
                             <div>
                                 <div key={datum.id} className="fauxtable-row">
-                                    <div className="fauxtable-cell region">{datum.region}</div>
+                                    <div className="fauxtable-cell region">{regions[datum.region]}</div>
                                     <div className="fauxtable-cell ">{datum.season}</div>
                                     <div className="fauxtable-cell rank">{getRank(datum.rank)}</div>
                                     <div className="fauxtable-cell mmr">{datum.mmr.toFixed(2)}</div>
