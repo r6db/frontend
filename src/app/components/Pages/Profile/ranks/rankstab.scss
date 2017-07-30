@@ -15,7 +15,7 @@
             }
         }
         label{
-            margin: 0 $l 0 0;
+            margin: 0 $l 0 $l;
             font-size: 0.9em;
         }
     }
@@ -72,19 +72,27 @@
                 }
             }
             .season {
+                flex-grow: 1;
                 text-align: left;
             }
             .skill_mean,
             .skill_stdev,
             .wins,
             .losses,
-            .wlp,
             .abandons {
                 text-align: right;
-                // flex-grow: 2;
+                flex-grow: 2;
+            }
+            .wlp {
+                flex-grow: 1
             }
             .mmr, .max_mmr {
                 text-align: left;
+            }
+            .ranks-text {
+                position: absolute;
+                margin-top: 15px;
+                margin-left: 5px;
             }
         }
     }

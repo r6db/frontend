@@ -22,28 +22,48 @@ function getRank(rank) {
     const glyph = GLYPHS["RANK" + rank];
     return <div>
         <Icon className="rank-image" glyph={glyph} />
-        <span>{Ranks[rank].replace("Unranked", "")}</span>
+        <span class="ranks-text">{Ranks[rank].replace("Unranked", "")}</span>
     </div>;
 }
 
 function getWLP(rank) {
-    console.log(rank.wins, rank.losses, rank.abandons);
     return rank.wins * 100/ (rank.wins + rank.abandons + rank.losses) || 0;
     //(obj.won * 100 / (obj.won + (obj.lost) || 1)).toFixed(2) + "%"
 }
 let sorter = sorters[1];
 let isSortReversed = false;
 export default {
-    view({ attrs, state }) {
-        state.filter = x => x;
+    oninit({ attrs, state }) {
+        let seasonFilter = "all";
+        let regionFilter = "all";
+        let hideUnranked = false;
+        state.onRegionFilter = x => regionFilter = x;
+        state.onFilter = x => seasonFilter = x;
+        state.onHideUnranked = x => hideUnranked = <x></x>;
+        state.filter = x => {
+            if (seasonFilter !== "all") {
+                if (x.season !== parseInt(seasonFilter)) {
+                    return false;
+                }
+            }
+            if (regionFilter !== "all") {
+                if (x.region !== regionFilter) {
+                    return false;
+                }
+            }
+            if (hideUnranked) {
+                return x.rank !== 0;
+            }
+            return true;
+        };
         state.ranks = attrs.seasonRanks.concat(attrs.rank)
             .reduce((acc, rank) => {
                 const emea = rank.emea;
                 const apac = rank.apac;
                 const ncsa = rank.ncsa;
-                emea.region = 'emea';
-                apac.region = 'apac';
-                ncsa.region = 'ncsa';
+                emea.region = "emea";
+                apac.region = "apac";
+                ncsa.region = "ncsa";
                 return acc.concat([emea, apac, ncsa].map(region => {
                     region.season = rank.season;
                     return region;
@@ -55,29 +75,39 @@ export default {
         state.getSorterClass = tester => {
             if (tester !== sorter) { return tester.key; }
             return isSortReversed
-                ? tester.key + ' is-active is-reversed'
-                : tester.key + ' is-active';
+                ? tester.key + " is-active is-reversed"
+                : tester.key + " is-active";
         };
         state.sort = function (a, b) {
             const res = sorter.fn(a, b);
             return isSortReversed ? -res : res;
         }
         state.setSort = newSorter => {
-            console.log(sorter);
             if (newSorter === sorter) {
                 isSortReversed = !isSortReversed;
             } else {
                 isSortReversed = false;
                 sorter = newSorter;
             }
-        }
-        console.log(attrs);
+        };
+    },
+    view({ attrs, state }) {
         return <div className="rankstab">
             <div className="rankstab-controls">
                 <p>
-                    <label htmlFor="filter">Season</label>
-                    <select name="filter" onchange={m.withAttr('value', state.onFilter)}>
-                        {state.getSeasonFilters().map(x => <option value={x}>Season {x}</option>)}
+                    <label htmlFor="hide-unranked">Hide unranked</label>
+                    <input type="checkbox" name="hide-unranked" onchange={m.withAttr("checked", state.onHideUnranked)} />
+                    <label htmlFor="season-filter">Season</label>
+                    <select name="season-filter" onchange={m.withAttr("value", state.onFilter)}>
+                        <option value="all">All</option>
+                        {state.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
+                    </select>
+                    <label htmlFor="regionFilter">Region</label>
+                    <select name="regionFilter" onchange={m.withAttr("value", state.onRegionFilter)}>
+                        <option value="all">All</option>
+                        <option value="emea">Europe, Africa & M.East</option>
+                        <option value="ncsa">America</option>
+                        <option value="apac">Asia</option>
                     </select>
                 </p>
             </div>
@@ -104,7 +134,7 @@ export default {
                             <div>
                                 <div key={datum.id} className="fauxtable-row">
                                     <div className="fauxtable-cell region">{datum.region}</div>
-                                    <div className="fauxtable-cell season">{datum.season}</div>
+                                    <div className="fauxtable-cell ">{datum.season}</div>
                                     <div className="fauxtable-cell rank">{getRank(datum.rank)}</div>
                                     <div className="fauxtable-cell mmr">{datum.mmr.toFixed(2)}</div>
                                     <div className="fauxtable-cell max_mmr">{datum.max_mmr.toFixed(2)}</div>
@@ -113,7 +143,7 @@ export default {
                                     <div className="fauxtable-cell wins">{datum.wins}</div>
                                     <div className="fauxtable-cell losses">{datum.losses}</div>
                                     <div className="fauxtable-cell abandons">{datum.abandons}</div>
-                                    <div className="fauxtable-cell wlr">{getWLP(datum).toFixed(2)} %</div>
+                                    <div className="fauxtable-cell wlp">{getWLP(datum).toFixed(2)} %</div>
                                 </div>
                             </div>
                         ))}
