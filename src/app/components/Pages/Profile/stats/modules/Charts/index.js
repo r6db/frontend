@@ -54,7 +54,10 @@ export default {
                         const dWon = curr.stats.ranked.won - prev.stats.ranked.won;
                         const dLost = curr.stats.ranked.lost - prev.stats.ranked.lost;
                         const dResult = dWon / (dWon + dLost);
-                        return( dResult * 100).toFixed(2) || null;
+                        return {
+                            meta: "Ranked " + stats.formatDate(curr.created_at),
+                            value: (dResult * 100).toFixed(2) || null
+                        };
                     }),
                     className: "ranked"
                 }, {
@@ -63,7 +66,10 @@ export default {
                         const dWon = curr.stats.casual.won - prev.stats.casual.won;
                         const dLost = curr.stats.casual.lost - prev.stats.casual.lost;
                         const dResult = dWon / (dWon + dLost);
-                        return (dResult * 100).toFixed(2) || null;
+                        return {
+                            meta: "Canked " + stats.formatDate(curr.created_at),
+                            value: (dResult * 100).toFixed(2) || null
+                        };
                     }),
                     className: "casual"
                 }]
@@ -85,7 +91,10 @@ export default {
                         const dKills = curr.stats.ranked.kills - prev.stats.ranked.kills;
                         const dDeaths = curr.stats.ranked.deaths - prev.stats.ranked.deaths;
                         const dResult = dKills / dDeaths;
-                        return dResult.toFixed(2) || null;
+                        return {
+                            meta: "Ranked " + stats.formatDate(curr.created_at),
+                            value: dResult.toFixed(2) || null
+                        };
                     }),
                     className: "ranked"
                 }, {
@@ -94,7 +103,10 @@ export default {
                         const dKills = curr.stats.casual.kills - prev.stats.casual.kills;
                         const dDeaths = curr.stats.casual.deaths - prev.stats.casual.deaths;
                         const dResult = dKills / dDeaths;
-                        return dResult.toFixed(2) || null;
+                        return {
+                            meta: "Casual " + stats.formatDate(curr.created_at),
+                            value: dResult.toFixed(2) || null
+                        };
                     }),
                     className: "casual"
                 }]
@@ -115,8 +127,11 @@ export default {
                 series: [{
                     name: "Europe, Africa & M.East",
                     data: getDelta(function (curr, prev) {
-                        if (curr.ranks && curr.ranks.emea && prev.ranks && prev.ranks.emea){
-                            return (curr.ranks.emea.mmr - prev.ranks.emea.mmr).toFixed(2)
+                        if (curr.ranks && curr.ranks.emea && prev.ranks && prev.ranks.emea) {
+                            return {
+                                value: (curr.ranks.emea.mmr - prev.ranks.emea.mmr).toFixed(2),
+                                meta: "Europe, Africa & M.East " + stats.formatDate(curr.created_at)
+                            };
                         }
                         return null;
                     }),
@@ -124,8 +139,11 @@ export default {
                 }, {
                     name: "America",
                     data: getDelta(function (curr, prev) {
-                        if (curr.ranks && curr.ranks.ncsa && prev.ranks && prev.ranks.ncsa){
-                            return (curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr).toFixed(2)
+                        if (curr.ranks && curr.ranks.ncsa && prev.ranks && prev.ranks.ncsa) {
+                            return {
+                                value: (curr.ranks.ncsa.mmr - prev.ranks.ncsa.mmr).toFixed(2),
+                                meta: "America " + stats.formatDate(curr.created_at)
+                            };
                         }
                         return null;
                     }),
@@ -134,7 +152,10 @@ export default {
                     name: "Asia",
                     data: getDelta(function (curr, prev) {
                         if (curr.ranks && curr.ranks.apac && prev.ranks && prev.ranks.apac){
-                            return (curr.ranks.apac.mmr - prev.ranks.apac.mmr).toFixed(2)
+                            return {
+                                value: (curr.ranks.apac.mmr - prev.ranks.apac.mmr).toFixed(2),
+                                meta: "Asia " + stats.formatDate(curr.created_at)
+                            };
                         }
                         return null;
                     }),
@@ -159,19 +180,34 @@ export default {
                     name: "Europe, Africa & M.East",
                     data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.emea && x.ranks.emea.mmr === 2500))
                         ? []
-                        : raw.map(x => x.ranks && x.ranks.emea ? (x.ranks.emea.mmr).toFixed(2) : null),
+                        : raw.map(x => {
+                            return {
+                                value: x.ranks && x.ranks.emea ? (x.ranks.emea.mmr).toFixed(2) : null,
+                                meta: "Europe, Africa & M.East " + stats.formatDate(x.created_at)
+                            };
+                        }),
                     className: "emea"
                 }, {
                     name: "America",
-                    data:raw.every(x => !x.ranks ||  (x.ranks && x.ranks.ncsa && x.ranks.ncsa.mmr === 2500))
+                    data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.ncsa && x.ranks.ncsa.mmr === 2500))
                         ? []
-                        : raw.map(x => x.ranks && x.ranks.ncsa ? (x.ranks.ncsa.mmr).toFixed(2) : null),
+                        : raw.map(x => {
+                            return {
+                                value: x.ranks && x.ranks.ncsa ? (x.ranks.ncsa.mmr).toFixed(2) : null,
+                                meta: "America " + stats.formatDate(x.created_at)
+                            };
+                        }),
                     className: "ncsa"
                 }, {
                     name: "Asia",
-                    data:raw.every(x => !x.ranks ||  (x.ranks && x.ranks.apac && x.ranks.apac.mmr === 2500))
+                    data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.apac && x.ranks.apac.mmr === 2500))
                         ? []
-                        : raw.map(x => x.ranks && x.ranks.apac ? (x.ranks.apac.mmr).toFixed(2) : null),
+                        : raw.map(x => {
+                            return {
+                                value: x.ranks && x.ranks.apac ? (x.ranks.apac.mmr).toFixed(2) : null,
+                                meta: "Asia " + stats.formatDate(x.created_at)
+                            };
+                        }),
                     className: "apac"
                 }]
             },
@@ -190,13 +226,19 @@ export default {
                 series: [{
                     name: "ranked",
                     data: getDelta(function (curr, prev) {
-                        return curr.stats.ranked.played - prev.stats.ranked.played;
+                        return {
+                            value: curr.stats.ranked.played - prev.stats.ranked.played,
+                            meta: "Ranked " + stats.formatDate(curr.created_at)
+                        };
                     }),
                     className: "ranked"
                 }, {
                     name: "casual",
                     data: getDelta(function (curr, prev) {
-                        return curr.stats.casual.played - prev.stats.casual.played;
+                        return {
+                            value: curr.stats.casual.played - prev.stats.casual.played,
+                            meta: "Casual " + stats.formatDate(curr.created_at)
+                        };
                     }),
                     className: "casual"
                 }]
@@ -219,7 +261,10 @@ export default {
                     data: getDelta(function (curr, prev) {
                         const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
                         const dFired = curr.stats.general.bulletsFired - prev.stats.general.bulletsFired;
-                        return (dHit * 100 / dFired).toFixed(2) || 0;
+                        return {
+                            value: (dHit * 100 / dFired).toFixed(2) || 0,
+                            meta: "Accuracy " + stats.formatDate(curr.created_at)
+                        };
                     }),
                     className: 'accuracy'
                 }, {
@@ -227,7 +272,10 @@ export default {
                     data: getDelta(function (curr, prev) {
                         const dHs = curr.stats.general.headshot - prev.stats.general.headshot;
                         const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
-                        return (dHs * 100 / dHit).toFixed(2) || 0;
+                        return {
+                            value: (dHs * 100 / dHit).toFixed(2) || 0,
+                            meta: "Headshot rate " + stats.formatDate(curr.created_at)
+                        };
                     }),
                     className: 'hsrate'
                 }]
