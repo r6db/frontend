@@ -94,11 +94,11 @@ export default {
 
         const getOp = id => (opProgressions[id] || []);
 
-        const getDelta = op => cb => (opProgressions[op.id] || [])
+        const getDelta = op => cb => getOp(op)
             .reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
 
         const getProgressionAverage = (op, cb) => {
-            const series = getOp(op.id);
+            const series = getOp(op);
             return cb(series[0], series[series.length - 1]);
         };
 
@@ -135,6 +135,7 @@ export default {
                         name: "Average for past " + getOp(op.id).length + " days",
                         data: new Array(getOp(op.id).length).fill(getProgressionAverage(op.id, function (start, end) {
                             if (!start || !end) {
+                                debugger;
                                 return null;
                             }
                             return (start.data.kills - end.data.kills) / (start.data.deaths - end.data.deaths);
