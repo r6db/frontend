@@ -24,7 +24,8 @@ export default {
                     </a>
                     <div className="menu-platforms">
                         <a href="https://r6db.com"
-                            className={`menu-item ${isPC ? "is-active" : ""}`}>PC</a><a href="https://ps4.r6db.com"
+                            className={`menu-item ${isPC ? "is-active" : ""}`}>PC</a>
+                        <a href="https://ps4.r6db.com"
                             className={`menu-item ${isPS4 ? "is-active" : ""}`}>PS4</a>
                         <a href="https://xbox.r6db.com"
                             className={`menu-item ${isXbox ? "is-active" : ""}`}>XBOX</a>

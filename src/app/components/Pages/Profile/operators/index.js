@@ -122,13 +122,10 @@ export default {
                         name: "KD Ratio",
                         data: getDelta(op.id)(function (curr, prev) {
                             if (!prev) return null;
-                            return (curr.data.kills - prev.data.kills) / (curr.data.deaths - prev.data.deaths);
-                        }).map(x => {
-                            return x;
-                            if (Number.isFinite(x)) {
-                                return x;
-                            }
-                            return NaN;
+                            return {
+                                value: (curr.data.kills - prev.data.kills) / ((curr.data.deaths - prev.data.deaths) || 1),
+                                meta: stats.formatDate(curr.date)
+                            };
                         }),
                         className: "opdaily"
                     }, {
@@ -157,13 +154,10 @@ export default {
                         name: "WL Ratio",
                         data: getDelta(op.id)(function (curr, prev) {
                             if (!prev) return null;
-                            return (curr.data.won - prev.data.won) / (curr.data.lost - prev.data.lost);
-                        }).map(x => {
-                            return x;
-                            if (Number.isFinite(x)) {
-                                return x;
-                            }
-                            return NaN;
+                            return {
+                                value: (curr.data.won - prev.data.won) / ((curr.data.lost - prev.data.lost) || 1),
+                                meta: stats.formatDate(curr.date)
+                            };
                         }),
                         className: "opdaily"
                     }, {
@@ -191,13 +185,10 @@ export default {
                     series: [{
                         data: getDelta(op.id)(function (curr, prev) {
                             if (!prev) return null;
-                            return Math.abs(curr.data.timePlayed - prev.data.timePlayed) / 60;
-                        }).map(x => {
-                            return x;
-                            if (Number.isFinite(x)) {
-                                return x;
-                            }
-                            return 0;
+                            return {
+                                value: Math.abs(curr.data.timePlayed - prev.data.timePlayed) / 60,
+                                meta: stats.formatDate(curr.date)
+                            };
                         })
                     }]
                 },
