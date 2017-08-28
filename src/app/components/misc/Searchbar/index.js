@@ -1,12 +1,12 @@
 import * as m from "mithril";
+import { redirect } from "redux-first-router";
+import { connect } from "lib/store/connect";
 import "./searchbar.scss";
-import page from "page";
 
-export default {
+const Searchbar = {
     oninit({ attrs, state }) {
         state.query = attrs.search;
-        state.exact = false;
-        state.onEnter = state.onEnter = e => {
+        state.onEnter = e => {
             if (e.keyCode === 13) {
                 state.onSearch();
             }
@@ -14,18 +14,14 @@ export default {
         state.onSearch = function () {
 
             const q = state.query;
-            const e = state.exact;
             if (q.length > 2) {
-                page(`/search/${q}${e ? "?exact=true" : ""}`);
+                attrs.goSearch(q);
             } else {
-                page("/");
+                attrs.goHome();
             }
         };
         state.onQueryChange = e => {
             state.query =  e.target.value;
-        };
-        state.onExactChange = e => {
-            state.exact =  e.target.checked;
         };
     },
     view({ state }) {
@@ -43,3 +39,9 @@ export default {
         );
     }
 };
+
+const mapDispatchToProps = (dispatch) => ({
+    goSearch: (name) => dispatch(redirect({ type: "SEARCH", payload: { query: name } })),
+    goHome: () => dispatch(redirect({ type: "HOME" }))
+})
+export default connect(null, mapDispatchToProps)(Searchbar);

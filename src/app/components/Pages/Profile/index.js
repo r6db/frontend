@@ -7,9 +7,10 @@ import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
 import IdCard from "./IdCard";
+import { connect } from "lib/store/connect";
 import "./profile.scss";
 
-export default {
+const Profile = {
     view({ attrs, state }) {
         if (attrs.loading) {
             return (<div className="profile"></div>)
@@ -38,3 +39,14 @@ export default {
         }
     }
 };
+
+
+const mapStateToProps = getState => {
+    const { players, location: { payload: { id } } } = getState();
+
+    return {
+        data: players[id] || {}
+    }
+}
+
+export default connect(mapStateToProps)(Profile);

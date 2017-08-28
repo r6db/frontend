@@ -278,5 +278,5 @@ export default function initRoutes() {
             page.redirect("/");
         }
     });
-    page.start();
+    // page.start();
 }

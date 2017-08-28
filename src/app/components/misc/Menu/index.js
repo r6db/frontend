@@ -5,41 +5,40 @@ import Searchbar from "../Searchbar";
 import page from "page";
 import { isPC, isPS4, isXbox } from "lib/constants";
 import Tweet from "./Tweet";
+import Link from "components/misc/Link";
+import { connect } from "lib/store/connect";
 
-let platform = "PC";
-if (isPS4) { platform = "PS4"; }
-if (isXbox) {  platform = "XBox"; }
 
 
 const link = href => e => page(href);
 
-export default {
+const Menu = {
     view({ attrs, children }) {
         return (
             <div className="menu">
                 <div className="menu-top">
-                    <a href="/" className="menu-logo">
+                    <Link to="/" className="menu-logo">
                         <Icon glyph={GLYPHS.LOGO} />
-                        <span className="platform">{platform}</span>
-                    </a>
+                        <span className="platform">{attrs.platform}</span>
+                    </Link>
                     <div className="menu-platforms">
-                        <a href="https://r6db.com"
-                            className={`menu-item ${isPC ? "is-active" : ""}`}>PC</a>
-                        <a href="https://ps4.r6db.com"
-                            className={`menu-item ${isPS4 ? "is-active" : ""}`}>PS4</a>
-                        <a href="https://xbox.r6db.com"
-                            className={`menu-item ${isXbox ? "is-active" : ""}`}>XBOX</a>
+                        <button onclick={attrs.changePlatform("PC")}
+                            className={`menu-item ${attrs.platform === "PC" ? "is-active" : ""}`}>PC</button>
+                        <button onclick={attrs.changePlatform("PS4")}
+                            className={`menu-item ${attrs.platform === "PS4" ? "is-active" : ""}`}>PS4</button>
+                        <button onclick={attrs.changePlatform("XBOX")}
+                            className={`menu-item ${attrs.platform === "XBOX" ? "is-active" : ""}`}>XBOX</button>
                     </div>
                 </div>
                 <div className="menu-center">
-                    <a href="/" className="menu-item">Home</a>
-                    <a href="/leaderboard" className="menu-item">Leaderboard</a>
-                    <a href="/faq" className="menu-item">FAQ</a>
+                    <Link to="/" className="menu-item">Home</Link>
+                    <Link to="/leaderboard/ALL" className="menu-item">Leaderboard</Link>
+                    <Link to="/faq" className="menu-item">FAQ</Link>
                     <a href="https://gitlab.com/gitgudscrub/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
                 </div>
                 <footer className="menu-bottom is-center">
                     <div className="menu-tweets">{
-                        attrs.tweets
+                        (attrs.tweets)
                             .map(tweet => <Tweet {...tweet} />)
                     }</div>
                     <div className="menu-footer">
@@ -55,3 +54,13 @@ export default {
         );
     }
 };
+
+const mapStateToProps = getState => {
+    const { tweets, platform } = getState();
+    return { tweets, platform };
+}
+const mapDispatchToProps = dispatch => ({
+    changePlatform: platform => e => dispatch({ type: "SELECT_PLATFORM", payload: platform })
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

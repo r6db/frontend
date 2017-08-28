@@ -4,10 +4,11 @@ import Placeholder from "./Placeholder";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
+import { connect } from "lib/store/connect";
 import "./module.scss";
 import "./detail.scss";
 
-export default {
+const Detail = {
     onremove({ state }) {
         console.debug("<Detail /> onremove");
     },
@@ -28,3 +29,14 @@ export default {
         }
     }
 };
+
+
+const mapStateToProps = getState => {
+    const { players, location: { payload: { id } } } = getState();
+
+    return {
+        data: players[id] || {}
+    }
+}
+
+export default connect(mapStateToProps)(Detail);

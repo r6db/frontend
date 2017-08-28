@@ -17,7 +17,7 @@ export const Pageconfig = Object.freeze({
         menu: true,
         footer: true
     },
-    INITIAL: {
+    HOME: {
         id: "INITIAL",
         class: "is-initial",
         footer: false,
@@ -26,7 +26,7 @@ export const Pageconfig = Object.freeze({
     SEARCH: { id: "SEARCH", class: "is-searching" },
     RESULT: { id: "RESULT", class: "is-results" },
     DETAIL: { id: "DETAIL", class: "is-detail" },
-    PROFILE: {id: "PROFILE", class: "is-profile"},
+    PROFILE: { id: "PROFILE", class: "is-profile" },
     LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
     CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
     FAQ: { id: "FAQ", class: "is-faq"}

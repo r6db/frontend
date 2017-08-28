@@ -1,31 +1,37 @@
 import * as m from "mithril";
-import page from "page";
 import { Leaderboards } from "lib/constants";
+import { connect } from "lib/store/connect";
 import "../Leaderboard/leaderboard.scss";
 import Entry from "./Entry";
-import TopEntry from "./TopEntry";
 
 const isSelected = (expected, value) => expected === value ? "selected" : undefined;
 
-export default {
+const Chankaboard = {
     view({ attrs, state }) {
         return (
-            attrs.data
-                ? (<div className="leaderboard">
-                    <div className="leaderboard-header">
-                        <h1 className="leaderboard-title">Most kills with Tachanka LMG</h1>
-                    </div>
-                    <div className="leaderboard-top">
-                        {attrs.data.entries.slice(0, 3).map((x, i) =>
-                            <TopEntry pos={i + 1} {...x} key={x.id} />)}
-                    </div>
-                    <div className="leaderboard-entries">
-                        {attrs.data.entries.slice(3).map((x, i) =>
-                            <Entry pos={i + 4} {...x} key={x.id} />
-                        )}
-                    </div>
-                </div>)
-                : null
+            <div className="leaderboard">
+                <div className="leaderboard-header">
+                    <h1 className="leaderboard-title">Most kills with Tachanka LMG</h1>
+                </div>
+                <div className="leaderboard-entries">
+                    {attrs.entries.map((x, i) =>
+                        <Entry isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
+                </div>
+            </div>
         );
     }
 };
+
+
+const mapStateToProps = (getState) => {
+    const { leaderboard } = getState();
+    return {
+        board: "CHANKA",
+        entries: leaderboard["CHANKA"] || []
+    }
+}
+const mapDispatchToProps = (dispatch) => ({
+    changeBoard: board => dispatch({ type: "LEADERBOARD", payload: { board } })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chankaboard);

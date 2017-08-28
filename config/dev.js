@@ -43,7 +43,7 @@ config.devServer = {
         chunkOrigins: false
     }
 };
-
+config.plugins.push(new webpack.NamedModulesPlugin());
 config.plugins.push(new webpack.DefinePlugin({
     "process.env": {
         "NODE_ENV": JSON.stringify("development")

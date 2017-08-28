@@ -30,6 +30,15 @@ export default {
         }, []);
 
         const labelInterpolationFnc = function (value, index, arr) {
+            const quart = (arr.length) / 4 | 0;
+            if (index === 0 ||
+                index === quart ||
+                index === quart*2 ||
+                index === quart*3) {
+                return value;
+            } else {
+                return null
+            }
             if (window.innerWidth > 640) {
                 return index % 2 ? value : null;
             } else {
