@@ -34,6 +34,12 @@ export default {
                         <Link className={attrs.tab === "ranks" ? "is-active": ""} to={toPlayerTab(attrs.id, "ranks")}>Ranks</Link>
                     </div>
                     <div className="col idcard-links">
+                        {
+                            !attrs.twitch ? "" :
+                            <a href={attrs.twitch} target="_BLANK">
+                                <Icon fill="#fff" glyph={GLYPHS.TWITCH} /> Twitch
+                            </a>
+                        }
                         <a href={getProfileLink(attrs)} target="_BLANK">
                             <Icon glyph={GLYPHS.UBI} fill="white" /> Ubisoft
                         </a>
@@ -41,12 +47,6 @@ export default {
                             <Icon glyph={GLYPHS.ESL} fill="white" /> ESL
                         </a>
                     </div>
-                    {
-                        !attrs.twitch ? "" :
-                        <a className="twitch-link" href={attrs.twitch}>
-                            <Icon className="twitch-logo" fill="#fff" glyph={GLYPHS.TWITCH} />
-                        </a>
-                    }
                 </div>
             </div>
         );
