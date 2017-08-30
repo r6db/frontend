@@ -44,24 +44,14 @@
     background: #333;
 
     img{
-        min-height: 100vh;
-        min-width: 100vw;
-        height: auto;
-        width: auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        filter: contrast(40%) brightness(50%)
-    }
-
-    svg{
-        height: 100vh;
-        width: 100vw;
         position: absolute;
         top: 0;
         left: 0;
-        will-change: opacity;
-        transition: opacity $tdur ease-out;
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        object-position: 30% 0%;
+        filter: contrast(60%) brightness(30%);
     }
+
 }

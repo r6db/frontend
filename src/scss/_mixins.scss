@@ -62,6 +62,21 @@
     }
 }
 
+@mixin placeholder-color($color){
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &::-moz-placeholder {
+        color: $color;
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+    &:-moz-placeholder {
+        color: $color;
+    }
+}
+
 @mixin textshadow{
     text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
 }
