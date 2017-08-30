@@ -1,8 +1,7 @@
-@import "styles";
+@import "scss/styles";
 
 .playercard{
-    background: $trans-med;
-    box-shadow: 0 0 3px $trans-med;
+    @include card;
     display: flex;
     flex-direction: row;
     margin-bottom: $l;

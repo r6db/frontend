@@ -13,6 +13,7 @@ const query = queryString.parse(window.location.search);
 const history = createHistory();
 const { store } = configureStore(history, { platform: query.platform ? query.platform.toUpperCase() : "PC"});
 
+store.subscribe(() => m.redraw());
 store.dispatch(initAction);
 
 window.store = store;

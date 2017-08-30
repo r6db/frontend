@@ -11,17 +11,10 @@ export default (history, preLoadedState) => {
         routesMap
     );
 
-    const logMiddleware = store => next => action => {
-        const res = next(action);
-        m.redraw();
-        return res;
-    };
-
     const rootReducer = combineReducers({ ...reducers, location: reducer });
     const middlewares = applyMiddleware(
         thunkMiddleware,
         middleware,
-        logMiddleware
     );
     const enhancers = compose(
         enhancer,

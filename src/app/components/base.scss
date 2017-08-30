@@ -1,5 +1,5 @@
-@import "styles";
-@import "components/reset";
+@import "scss/styles";
+@import "scss/components/reset";
 
 
 @font-face {
@@ -105,5 +105,5 @@ label{
     min-width:0;
 }
 
-@import "components/button";
-@import "components/card";
+@import "scss/components/button";
+@import "scss/components/card";

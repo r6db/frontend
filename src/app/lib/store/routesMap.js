@@ -73,30 +73,6 @@ export default {
         }
     },
     FAQ: "/faq",
-    DETAIL: {
-        path: "/profile/:id/simple",
-        thunk: async (dispatch, getState) => {
-            const { id } = getState().location.payload;
-            api.getPlayer(id)
-                .then(function (player) {
-                    dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    if (res.flags.noAliases === false) {
-                        setMeta({
-                            title: `${player.name}`,
-                            description: `${player.name} player profile for Rainbow Six: Siege`,
-                            image: isConsole ? `//ubisoft-avatars.akamaized.net/${ player.userId }/default_146_146.png` : `http://uplay-avatars.s3.amazonaws.com/${ player.id }/default_146_146.png`,
-                            type: "profile"
-                        });
-                     } else {
-                         setMeta({
-                             title: `account ${id}`,
-                             description: `${id} account details in the community database for Rainbow Six: Siege`
-                         });
-                     }
-            })
-            .catch(error => dispatch({ type: "PLAYER_FAILED", payload: { id, error } }));
-        }
-    },
     PROFILE: {
         path: "/profile/:id",
         thunk: async (dispatch, getState) => {
@@ -104,11 +80,11 @@ export default {
             api.getPlayer(id)
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    if (res.flags.noAliases === false) {
+                    ga("send", "event", "profile", id);
+                    if (player.flags.noAliases === false) {
                         setMeta({
                             title: `${player.name}`,
-                            description: `${player.name} in-depth player statistics for Rainbow Six: Siege`,
-                            image: isConsole ? `//ubisoft-avatars.akamaized.net/${ player.userId }/default_146_146.png` : `http://uplay-avatars.s3.amazonaws.com/${ player.id }/default_146_146.png`,
+                            description: `${player.name} player profile for Rainbow Six: Siege`,
                             type: "profile"
                         });
                      } else {
@@ -117,8 +93,44 @@ export default {
                              description: `${id} account details in the community database for Rainbow Six: Siege`
                          });
                      }
-            })
-            .catch(error => dispatch({ type: "PLAYER_FAILED", payload: { id, error } }));
+                })
+                .catch(error => {
+                    console.error(error);
+                    dispatch({ type: "PLAYER_FAILED", payload: { id, error } })
+                });
         }
+    },
+    PLAYER: {
+        path: "/player/:id",
+        thunk: playerThunk,
+    },
+    PLAYERTABS: {
+        path: "/player/:id/:tab",
+        thunk: playerThunk
     }
+}
+
+
+async function playerThunk(dispatch, getState) {
+    const { id, tab } = getState().location.payload;
+    api.getPlayer(id)
+        .then(function (player) {
+            dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
+            ga("send", "event", "player", id, tab || "stats");
+            if (player.flags.noAliases === false) {
+                setMeta({
+                    title: `${player.name}`,
+                    type: "profile"
+                });
+            } else {
+                setMeta({
+                    title: `account ${id}`,
+                    description: `${id} account details in the community database for Rainbow Six: Siege`
+                });
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            dispatch({ type: "PLAYER_FAILED", payload: { id, error } })
+        });
 }

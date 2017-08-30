@@ -1,6 +1,8 @@
 import * as m from "mithril";
 
 import LOGO from "assets/r6db_logo_new.svg";
+import UBI from "assets/ubi.svg";
+import ESL from "assets/esl.svg";
 import TWITTER from "assets/twitter.svg";
 import TWITCH from "assets/twitch.svg";
 import EMAIL from "assets/email.svg";
@@ -42,6 +44,8 @@ export default {
 };
 
 export const GLYPHS = {
+    UBI,
+    ESL,
     LOGO,
     TWITTER,
     TWITCH,

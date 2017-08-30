@@ -1,7 +1,9 @@
 import * as m from "mithril";
 import Profilepic from "components/misc/Profilepic";
+import Link from "components/misc/Link";
 import "./playercard.scss";
 import { isConsole, platformShorthand } from "lib/constants";
+import { toPlayer, toProfile } from "lib/store/actions";
 
 const round = (number, digits) => ((number * digits) | 0) / digits;
 
@@ -35,23 +37,23 @@ export default {
     view({attrs, state}) {
         return (
             <div className={`playercard player-${attrs.player.id}`}>
-                <a href={attrs.href} className="playercard-image">
+                <div className="playercard-image">
                     <span className="playercard-level">lvl {attrs.player.level}</span>
                     <Profilepic id={attrs.player.userId || attrs.player.id} delay={attrs.index} />
-                </a>
+                </div>
                 <div className="playercard-content">
-                    <a href={attrs.href} className="playercard-left">
+                    <Link to={toPlayer(attrs.player.id)} className="playercard-left">
                         <header className="playercard-name">{attrs.player.name}</header>
                         <span className="playercard-flair">{attrs.player.flair}</span>
-                    </a>
+                    </Link>
                     {getAliases(attrs.player)}
                     <div className="playercard-right">
-                        <a className="playercard-link player-simple" href={attrs.href}>
-                            profile
-                            </a>
-                        <a className="playercard-link player-extended" href={attrs.extended}>
-                            extended (beta)
-                            </a>
+                        <Link className="playercard-link player-simple" to={toPlayer(attrs.player.id)}>
+                            details
+                        </Link>
+                        <Link className="playercard-link player-extended" to={toProfile(attrs.player.id)}>
+                            simple View
+                        </Link>
                         { isConsole && !attrs.player.userId
                             ? null
                             : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="playercard-link player-ubi">

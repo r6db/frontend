@@ -1,13 +1,11 @@
-.card{
-    margin-bottom: $l;
-    padding: $l;
-    background: $gray-dark;
-    color: $white;
-    position: relative;
-    box-shadow: 1px 1px 3px black;
 
-	&.is-empty{
-		text-align: center;
-		justify-content: center;
-	}
+.card{
+    @include card;
+    width: 100%;
+    margin: $l;
+    display: block;
+
+    &-header{ @include card-header; }
+    &-content{ @include card-content; }
+    &-divider{ @include card-divider; }
 }

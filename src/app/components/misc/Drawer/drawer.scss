@@ -1,4 +1,4 @@
-@import "styles";
+@import "scss/styles";
 
 .drawer{
     position: fixed;
@@ -99,8 +99,7 @@
     &-menu{
         width: 280px;
         height: 100vh;
-        background: white;
-        box-shadow: 0 0 5px $trans-med;
+        @include card;
     }
 }
 

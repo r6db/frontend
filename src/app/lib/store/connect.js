@@ -22,7 +22,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => Component => ({
     view({ attrs, children }) {
         const mapState = mapStateToProps || (() => ({}));
         const mapDispatch = mapDispatchToProps || (() => ({}));
-        const mappedProps = Object.assign({}, attrs, mapState(getState, attrs), mapDispatch(dispatch, attrs));
+        const mappedProps = Object.assign({}, attrs, mapState(getState), mapDispatch(dispatch, getState));
         return <Component {...mappedProps}>{children}</Component>
     }
 })

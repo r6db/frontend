@@ -1,0 +1,149 @@
+@import "scss/styles";
+
+.rankstab{
+    .rankstab-controls{
+        margin: $l;
+        display: flex;
+        p{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 $l;
+
+            @include medium{
+                flex-direction: row;
+            }
+        }
+        label{
+            margin: 0 $l 0 $l;
+            font-size: 0.9em;
+        }
+    }
+
+    .ranks-table{
+        flex: 1;
+
+        .fauxtable-cell{
+            text-align: right;
+            align-items: center;
+            display: flex;
+        }
+        .fauxtable-heading{
+            cursor: pointer;
+            user-select: none;
+
+            &.is-active{
+                color: $primary;
+            }
+        }
+        .fauxtable-heading,
+        .fauxtable-cell{
+            padding: ($l*1.5) ($l*2);
+        }
+        .fauxtable-row{
+            overflow: hidden;
+            &:hover {
+                background: $trans-low;
+            }
+        }
+        .name{
+            text-align: center;
+        }
+        .region{
+            white-space: pre;
+            text-overflow: ellipsis;
+        }
+        .rank{
+            text-align: left;
+            margin: 0;
+        }
+        .rank-image{
+            display: none;
+        }
+
+        @include medium{
+            .fauxtable-cell,
+            .fauxtable-heading{
+                flex: 1 0 0;
+            }
+            .region{
+                justify-content: flex-start;
+                text-align: left;
+                flex-grow: 4;
+            }
+            .rank {
+                flex-grow: 3;
+                justify-content: flex-start;
+                text-align: left;
+                padding: 0;
+                .rank-image {
+                    display: inline-block;
+                    width: $l*4;
+                    height: $l*4;
+                    margin-right: $l*0.5;
+                }
+            }
+            .season {
+                flex-grow: 1;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .skill_mean{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 1;
+            }
+            .skill_stdev{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 1;
+            }
+            .wins{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+            .losses{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+            .abandons {
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+            .wlp {
+                flex-grow: 2;
+                justify-content: flex-end;
+                text-align: right;
+            }
+            .mmr{
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+            .max_mmr {
+                justify-content: flex-end;
+                text-align: right;
+                flex-grow: 2;
+            }
+        }
+    }
+
+    .operator-graphs {
+        display: none;
+    }
+    @include medium {
+        .operator-graphs {
+            display: block;
+        }
+    }
+
+    .chart-container .ct-series,
+    .chart-container .indicator{
+        &.opdaily { stroke: $black-ice; background-color: $black-ice; }
+        &.opavg { stroke: $skull-rain; background-color: $skull-rain; }
+        &.opavg .ct-point { stroke: none; }
+    }
+}

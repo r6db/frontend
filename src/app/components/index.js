@@ -3,9 +3,10 @@ import Home from "components/Pages/Home";
 import Leaderboard from "components/Pages/Leaderboard";
 import Chankaboard from "components/Pages/Chankaboard";
 import Search from "components/Pages/Search";
-import Detail from "components/Pages/Detail";
 import Profile from "components/Pages/Profile";
+import Player from "components/Pages/Player";
 import Faq from "components/Pages/Faq";
+import NotFound from "components/Pages/Errors/NotFound";
 
 import Loading from "components/misc/Loading";
 import Searchbar from "components/misc/Searchbar";
@@ -16,6 +17,7 @@ import ElementQuery from "components/misc/ElementQuery";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { Pageconfig } from "lib/constants";
 import { connect } from "lib/store/connect";
+import { NOT_FOUND } from "redux-first-router";
 
 import "./base.scss";
 import "./app.scss";
@@ -26,8 +28,10 @@ const componentMap = {
     "FAQ": Faq,
     "LEADERBOARD": Leaderboard,
     "CHANKABOARD": Chankaboard,
-    "DETAIL": Detail,
-    "PROFILE": Profile
+    "PROFILE": Profile,
+    "PLAYER": Player,
+    "PLAYERTABS": Player,
+    [NOT_FOUND]: NotFound
 };
 
 const breakpoints = {
@@ -55,7 +59,7 @@ const App = {
                 </Drawer>
                 <div className="app">
                     <div className="app-background">
-                        <img src="https://r6db.com/assets/bg_prim.svg" />
+                        <img src="/assets/bg_prim.svg" />
                     </div>
                     <div className="app-content">
                         {TopbarComponent}
