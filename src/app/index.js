@@ -8,8 +8,6 @@ import "isomorphic-fetch";
 
 // import deps
 import "../scss/styles.scss";
-import * as page from "page";
-import * as appstate from "lib/appstate";
 import * as m from "mithril";
 import * as api from "lib/api";
 
@@ -25,9 +23,7 @@ if (process.env.NODE_ENV === "production") {
     ga("create", "UA-86120096-1", "auto");
 } else {
     // expose libs;
-    window.page = page;
     window.m = m;
-    window.appstate = appstate;
     window.api = api;
 
     // shim google analytics

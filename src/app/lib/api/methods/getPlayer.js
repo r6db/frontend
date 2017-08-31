@@ -1,5 +1,4 @@
 import { v2Api } from "lib/constants";
-import { set as stateSet } from "lib/appstate";
 import { failEarly, getHeaders } from "../utils";
 
 const fixAlias = alias => {
@@ -12,7 +11,6 @@ const fixAlias = alias => {
 
 
 const getPlayer = id => {
-    stateSet("loading", "getting data ...");
     return fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json());
@@ -26,7 +24,6 @@ const handleResponse = player => {
         player.stats = null;
     }
 
-    stateSet("loading", "crunching data ...");
     player.flags = {
         noAliases: false,
         noPlaytime: false,

@@ -2,15 +2,11 @@ import * as m from "mithril";
 import "./menu.scss";
 import Icon, { GLYPHS } from "../Icon";
 import Searchbar from "../Searchbar";
-import page from "page";
 import { isPC, isPS4, isXbox } from "lib/constants";
 import Tweet from "./Tweet";
 import Link from "components/misc/Link";
 import { connect } from "lib/store/connect";
 
-
-
-const link = href => e => page(href);
 
 const Menu = {
     view({ attrs, children }) {

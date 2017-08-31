@@ -3037,12 +3037,6 @@ p-map@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/p-map/-/p-map-1.1.1.tgz#05f5e4ae97a068371bc2a5cc86bfbdbc19c4ae7a"
 
-page@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/page/-/page-1.7.1.tgz#3886c147b895487783759b37e800a11213bc38ed"
-  dependencies:
-    path-to-regexp "~1.2.1"
-
 pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
@@ -3107,12 +3101,6 @@ path-to-regexp@0.1.7:
 path-to-regexp@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
-  dependencies:
-    isarray "0.0.1"
-
-path-to-regexp@~1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.2.1.tgz#b33705c140234d873c8721c7b9fd8b541ed3aff9"
   dependencies:
     isarray "0.0.1"
 

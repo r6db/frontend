@@ -1,5 +1,4 @@
 import { v2Api } from "lib/constants";
-import { set as stateSet } from "lib/appstate";
 import { failEarly, getHeaders } from "../utils";
 
 
@@ -99,7 +98,6 @@ const processPlayer = player => {
 };
 
 const parseResponse = name => players => {
-    stateSet("loading", "sorting players ...");
     const sorter = playerValue(name);
     const res = players
         .filter(x => x.aliases && x.aliases.length)
@@ -112,7 +110,6 @@ const parseResponse = name => players => {
 const getUrl = name => `${v2Api}/players?name=${name}`;
 
 export default function (name) {
-    stateSet("loading", "loading results ...");
     return fetch(getUrl(name), { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())

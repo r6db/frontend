@@ -14,7 +14,6 @@
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
     "mithril": "^1.1.1",
-    "page": "^1.7.1",
     "redux": "^3.7.2",
     "redux-first-router": "^1.9.19",
     "redux-thunk": "^2.2.0"
