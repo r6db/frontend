@@ -10,7 +10,7 @@ const isSelected = (expected, value) => expected === value ? "selected" : undefi
 
 const Leaderboard = {
     oninit({ attrs, state }) {
-        state.platform = "PC";
+        state.platform = attrs.platform;
         state.board = Leaderboards.ALL.id;
         state.changePlatform = val => state.platform = val;
         state.changeBoard = val => state.board = val;
@@ -41,14 +41,14 @@ const Leaderboard = {
                                 <option value="XBOX">XBOX</option>
                             </select>
                         </p>
-                        <p className="leaderboard-region">
+                        <p className="leaderboard-board">
                             <label
-                                className="leaderboard-regionlabel" htmlFor="regionselect">
+                                className="leaderboard-boardlabel" htmlFor="boardselect">
                                 Board
                             </label>
                             <select
-                                id="regionselect"
-                                className="leaderboard-regionselect"
+                                id="boardselect"
+                                className="leaderboard-boardselect"
                                 value={state.board}
                                 onchange={m.withAttr("value", state.changeBoard)}>
                                 {
@@ -73,7 +73,7 @@ const Leaderboard = {
                     {attrs.entries.map((x, i) =>
                         <Entry isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
                 </div>
-                <Link to="/leaderboard/CHANKA">
+                <Link to={`/leaderboard/${state.platform}/CHANKA`}>
                     <img src="https://r6db.com/assets/chanky.png" id="chanky" alt="chanky"/>
                 </Link>
             </div>
@@ -82,8 +82,9 @@ const Leaderboard = {
 };
 
 const mapStateToProps = (getState) => {
-    const { leaderboard, location: { payload: { board } } } = getState();
+    const { platform, leaderboard, location: { payload: { board } } } = getState();
     return {
+        platform,
         board,
         entries: leaderboard[board] || []
     }

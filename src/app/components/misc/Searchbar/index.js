@@ -6,7 +6,7 @@ import "./searchbar.scss";
 const Searchbar = {
     oninit({ attrs, state }) {
         state.query = attrs.search;
-        state.platform = attrs.platform || "PC";
+        state.platform = attrs.platform;
         state.onEnter = e => {
             if (e.keyCode === 13) {
                 state.onSearch();
@@ -46,8 +46,10 @@ const Searchbar = {
     }
 };
 
+const mapStateToProps = getState => ({ platform: getState().platform });
 const mapDispatchToProps = (dispatch) => ({
-    goSearch: (name, platform) => dispatch({ type: "SEARCH", payload: { query: name, platform} }),
-    goHome: () => dispatch({ type: "HOME" })
-})
-export default connect(null, mapDispatchToProps)(Searchbar);
+    goSearch: (name, platform) => dispatch({ type: "SEARCH", payload: { query: name, platform } }),
+    goHome: () => dispatch({ type: "HOME" }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);

@@ -19,7 +19,7 @@ const Menu = {
                 </div>
                 <div className="menu-center">
                     <Link to="/" className="menu-item">Home</Link>
-                    <Link to="/leaderboard/PC/ALL" className="menu-item">Leaderboard</Link>
+                    <Link to={`/leaderboard/${attrs.platform}/ALL`} className="menu-item">Leaderboard</Link>
                     <Link to="/faq" className="menu-item">FAQ</Link>
                     <a href="https://gitlab.com/gitgudscrub/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
                 </div>

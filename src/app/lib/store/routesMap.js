@@ -11,7 +11,7 @@ export default {
             const { location } = getState();
             const { query, platform } = location.payload;
             ga("send", "event", "search", "query", query);
-
+            dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
                     setMeta({
@@ -36,6 +36,7 @@ export default {
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
             ga("send", "event", "leaderboard", "view", "CHANKA");
+            dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
                 .then(entries => {
                     setMeta({
@@ -55,9 +56,8 @@ export default {
             const board = b.toUpperCase();
             if (board === "CHANKA") { return; }
             ga("send", "event", "leaderboard", "view", board);
-
             const lbConfig = Leaderboards[board];
-
+            dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard(lbConfig.board, platform)
                 .then(entries => {
                     setMeta({

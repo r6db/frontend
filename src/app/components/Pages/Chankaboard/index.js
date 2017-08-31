@@ -7,12 +7,30 @@ import Entry from "./Entry";
 const isSelected = (expected, value) => expected === value ? "selected" : undefined;
 
 const Chankaboard = {
+    oninit({ attrs, state }) {
+        state.platform = attrs.platform;
+        state.changePlatform = val => state.platform = val;
+        state.loadLeaderboard = () => attrs.load("CHANKA", state.platform);
+    },
     view({ attrs, state }) {
         return (
             <div className="leaderboard">
                 <div className="leaderboard-header">
                     <h1 className="leaderboard-title">Most kills with Tachanka LMG</h1>
                 </div>
+                <form className="leaderboard-filters" onsubmit={state.loadLeaderboard}>
+                <p className="leaderboard-platform">
+                    <label htmlFor="platformselect">Platform</label>
+                    <select id="platformselect" value={state.platform} onchange={m.withAttr("value", state.changePlatform)}>
+                        <option value="PC">PC</option>
+                        <option value="PS4">PS4</option>
+                        <option value="XBOX">XBOX</option>
+                    </select>
+                </p>
+                <p>
+                    <button className="button is-primary">GO</button>
+                </p>
+            </form>
                 <div className="leaderboard-entries">
                     {attrs.entries.map((x, i) =>
                         <Entry isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
@@ -24,14 +42,15 @@ const Chankaboard = {
 
 
 const mapStateToProps = (getState) => {
-    const { leaderboard } = getState();
+    const { platform, leaderboard } = getState();
     return {
+        platform,
         board: "CHANKA",
         entries: leaderboard["CHANKA"] || []
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    changeBoard: board => dispatch({ type: "LEADERBOARD", payload: { board } })
+    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chankaboard);
