@@ -5,7 +5,7 @@
     width: 100%;
     height: $topbar-height;
     flex: 0 0 auto;
-    background: $trans-med;
+    @include card;
 
     &-menuspacer{
         flex: 0 0 60px;
