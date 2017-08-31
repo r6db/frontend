@@ -107,10 +107,10 @@ const parseResponse = name => players => {
     return res;
 };
 
-const getUrl = name => `${v2Api}/players?name=${name}`;
+const getUrl = (name, platform) => `${v2Api}/players?name=${name}&platform=${platform}`;
 
-export default function (name) {
-    return fetch(getUrl(name), { headers: getHeaders() })
+export default function (name, platform) {
+    return fetch(getUrl(name, platform), { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())
         .then(parseResponse(name));

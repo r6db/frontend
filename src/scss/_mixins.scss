@@ -1,7 +1,7 @@
 @mixin btnvariant($color, $fontcolor:$white){
-    @include boxshadow;
     border-color: transparent;
     background: $color;
+    box-shadow: 0 2px 4px darken($color, 20%);;
     color: $fontcolor;
         &:hover, &:focus{
             background: darken($color, 10%);

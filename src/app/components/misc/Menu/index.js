@@ -15,20 +15,11 @@ const Menu = {
                 <div className="menu-top">
                     <Link to="/" className="menu-logo">
                         <Icon glyph={GLYPHS.LOGO} />
-                        <span className="platform">{attrs.platform}</span>
                     </Link>
-                    <div className="menu-platforms">
-                        <button onclick={attrs.changePlatform("PC")}
-                            className={`menu-item ${attrs.platform === "PC" ? "is-active" : ""}`}>PC</button>
-                        <button onclick={attrs.changePlatform("PS4")}
-                            className={`menu-item ${attrs.platform === "PS4" ? "is-active" : ""}`}>PS4</button>
-                        <button onclick={attrs.changePlatform("XBOX")}
-                            className={`menu-item ${attrs.platform === "XBOX" ? "is-active" : ""}`}>XBOX</button>
-                    </div>
                 </div>
                 <div className="menu-center">
                     <Link to="/" className="menu-item">Home</Link>
-                    <Link to="/leaderboard/ALL" className="menu-item">Leaderboard</Link>
+                    <Link to="/leaderboard/PC/ALL" className="menu-item">Leaderboard</Link>
                     <Link to="/faq" className="menu-item">FAQ</Link>
                     <a href="https://gitlab.com/gitgudscrub/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
                 </div>

@@ -2,8 +2,8 @@ import { v2Api } from "lib/constants";
 import { failEarly, getHeaders } from "../utils";
 
 
-export default function (board) {
-    return fetch(`${v2Api}/leaderboards?stat=${board}&limit=100`, { headers: getHeaders() })
+export default function (board, platform) {
+    return fetch(`${v2Api}/leaderboards?stat=${board}&limit=100&platform=${platform}`, { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())
         .then(entries => entries.map(entry => {

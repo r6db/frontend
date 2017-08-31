@@ -6,42 +6,48 @@ import "./searchbar.scss";
 const Searchbar = {
     oninit({ attrs, state }) {
         state.query = attrs.search;
+        state.platform = attrs.platform || "PC";
         state.onEnter = e => {
             if (e.keyCode === 13) {
                 state.onSearch();
             }
         };
-        state.onSearch = function () {
-
+        state.onSearch = function (e) {
+            e.preventDefault();
+            console.log(state);
             const q = state.query;
             if (q.length > 2) {
-                attrs.goSearch(q);
+                attrs.goSearch(q, state.platform);
             } else {
                 attrs.goHome();
             }
         };
-        state.onQueryChange = e => {
-            state.query =  e.target.value;
-        };
+        state.onQueryChange = e => { state.query =  e.target.value; };
+        state.onPlatformChange = e => { state.platform =  e.target.value; };
     },
     view({ state }) {
         return (
-            <div className="search-form">
+            <form className="search-form" action="" onsubmit={state.onSearch}>
                 <div className="search-input">
                     <input type="text"
                         value={state.query}
                         placeholder="Who are you looking for?"
                         oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
+                    <select value={state.platform} onchange={state.onPlatformChange}>
+                        <option value="PC">PC</option>
+                        <option value="PS4">PS4</option>
+                        <option value="XBOX">XBOX</option>
+                    </select>
                 </div>
-                <button className="search-submit" onclick={state.onSearch}>Search</button>
-            </div>
+                <button className="button is-primary search-submit">Search</button>
+            </form>
         );
     }
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    goSearch: (name) => dispatch(redirect({ type: "SEARCH", payload: { query: name } })),
-    goHome: () => dispatch(redirect({ type: "HOME" }))
+    goSearch: (name, platform) => dispatch({ type: "SEARCH", payload: { query: name, platform} }),
+    goHome: () => dispatch({ type: "HOME" })
 })
 export default connect(null, mapDispatchToProps)(Searchbar);

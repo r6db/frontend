@@ -8,7 +8,8 @@
     margin-right: auto;
 
     &-header{
-        padding: 0 1%;
+        padding: $l;
+        @include card;
     }
     &-title{
         font-size: 3em;
@@ -38,15 +39,19 @@
         margin: 0 auto;
         padding: $l;
     }
-
-    &-region{
+    &-filters{
         margin-top: $l*2;
-
-        &label{
+        p{
+            display: inline-block;
+            margin-right: $l;
+        }
+        label{
             display: inline;
             color: $white;
             font-size: 1rem;
             margin-right: $l;
+        }
+        select{
         }
     }
 }

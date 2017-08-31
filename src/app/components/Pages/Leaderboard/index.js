@@ -9,7 +9,14 @@ import "./leaderboard.scss";
 const isSelected = (expected, value) => expected === value ? "selected" : undefined;
 
 const Leaderboard = {
-    view({ attrs }) {
+    oninit({ attrs, state }) {
+        state.platform = "PC";
+        state.board = Leaderboards.ALL.id;
+        state.changePlatform = val => state.platform = val;
+        state.changeBoard = val => state.board = val;
+        state.loadLeaderboard = () => attrs.load(state.board, state.platform);
+    },
+    view({ attrs, state }) {
         return (
             <div className="leaderboard">
                 <div className="leaderboard-header">
@@ -23,30 +30,44 @@ const Leaderboard = {
                         <p className="is-highlight">
                             Any accounts proven to abuse the system will be removed from the leaderboard. This includes queueing with coppers or hackers, hacking themselves or playing exclusively imbalanced gamemodes (<a href="https://medium.com/@r6db/on-excluding-accounts-from-the-leaderboard-596cc217b2af">details and reasoning</a>). If you have questions, please contact us per <a href="mailto:info@r6db.com">email</a> or <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
                         </p>
-                    <p>the Leaderboard updates every 24h.</p>
+                        <p>the Leaderboard updates every 24h.</p>
                     </div>
-                    <p className="leaderboard-region">
-                        <label
-                            className="leaderboard-regionlabel" htmlFor="regionselect">
-                            Board
-                        </label>
-                        <select
-                            id="regionselect"
-                            className="leaderboard-regionselect"
-                            onchange={m.withAttr("value", attrs.changeBoard)}>
-                            {
-                                Object.keys(Leaderboards)
-                                    .map(l => {
-                                        const lb = Leaderboards[l];
-                                        return (<option
-                                            key={lb.id}
-                                            selected={isSelected(lb.id, attrs.board)}
-                                            value={lb.id}>
-                                            {lb.label}</option>);
-                                    })
-                            }
-                        </select>
-                    </p>
+                    <form className="leaderboard-filters" onsubmit={state.loadLeaderboard}>
+                        <p className="leaderboard-platform">
+                            <label htmlFor="platformselect">Platform</label>
+                            <select id="platformselect" value={state.platform} onchange={m.withAttr("value", state.changePlatform)}>
+                                <option value="PC">PC</option>
+                                <option value="PS4">PS4</option>
+                                <option value="XBOX">XBOX</option>
+                            </select>
+                        </p>
+                        <p className="leaderboard-region">
+                            <label
+                                className="leaderboard-regionlabel" htmlFor="regionselect">
+                                Board
+                            </label>
+                            <select
+                                id="regionselect"
+                                className="leaderboard-regionselect"
+                                value={state.board}
+                                onchange={m.withAttr("value", state.changeBoard)}>
+                                {
+                                    Object.keys(Leaderboards)
+                                        .map(l => {
+                                            const lb = Leaderboards[l];
+                                            return (<option
+                                                key={lb.id}
+                                                selected={isSelected(lb.id, attrs.board)}
+                                                value={lb.id}>
+                                                {lb.label}</option>);
+                                        })
+                                }
+                            </select>
+                        </p>
+                        <p>
+                            <button className="button is-primary">GO</button>
+                        </p>
+                    </form>
                 </div>
                 <div className="leaderboard-entries">
                     {attrs.entries.map((x, i) =>
@@ -68,7 +89,7 @@ const mapStateToProps = (getState) => {
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    changeBoard: board => dispatch({ type: "LEADERBOARD", payload: { board } })
+    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);

@@ -59,7 +59,7 @@ const App = {
                 </Drawer>
                 <div className="app">
                     <div className="app-background">
-                        <img src="/assets/bg.jpg" srcset="/assets/bg@1.5x.jpg 1600w, /assets/bg@2x.jpg 2160w" alt="background image" />
+                        <img src="/assets/bg.jpg" srcset="/assets/bg.jpg 1000w, /assets/bg@1.5x.jpg 1600w, /assets/bg@2x.jpg 2160w" alt="background image" />
                     </div>
                     <div className="app-content">
                         {TopbarComponent}

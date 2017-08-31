@@ -6,20 +6,19 @@ import setMeta from "lib/meta";
 export default {
     HOME: "/",
     SEARCH: {
-        path: "/search/:query",
+        path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
             const { location } = getState();
-            const query = location.payload.query;
-
+            const { query, platform } = location.payload;
             ga("send", "event", "search", "query", query);
 
-            api.findPlayer(query)
+            api.findPlayer(query, platform)
                 .then(result => {
                     setMeta({
-                        title: `Search for ${query}`,
+                        title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
                     });
-                    dispatch({ type: "SEARCH_FETCHED", payload: { query, result } });
+                    dispatch({ type: "SEARCH_FETCHED", payload: { query, platform, result } });
                 })
                 .catch(error => {
                     dispatch({ type: "SEARCH_FAILED", payload: { query, error } });
@@ -33,11 +32,11 @@ export default {
         }
     },
     CHANKABOARD: {
-        path: "/leaderboard/CHANKA",
+        path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
-
+            const { platform } = getState().location.payload;
             ga("send", "event", "leaderboard", "view", "CHANKA");
-            api.getLeaderboard("operatorpvp_tachanka_turretkill")
+            api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
                 .then(entries => {
                     setMeta({
                         title: "LMG kills leaderboard",
@@ -50,18 +49,17 @@ export default {
         }
     },
     LEADERBOARD: {
-        path: "/leaderboard/:board",
+        path: "/leaderboard/:platform/:board",
         thunk: async (dispatch, getState) => {
-            const { board: b } = getState().location.payload;
+            const { board: b, platform } = getState().location.payload;
             const board = b.toUpperCase();
             if (board === "CHANKA") { return; }
             ga("send", "event", "leaderboard", "view", board);
 
             const lbConfig = Leaderboards[board];
 
-            api.getLeaderboard(lbConfig.board)
+            api.getLeaderboard(lbConfig.board, platform)
                 .then(entries => {
-
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
                         description: `find the top 100 players (${lbConfig.label}) in our Database`,

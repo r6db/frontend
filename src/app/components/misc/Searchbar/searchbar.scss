@@ -19,11 +19,11 @@
     flex: 1 1 auto;
     position: relative;
 
-    >input{
+    input{
         background: none;
         color: $white;
         padding: $l (2*$l);
-        width: 100%;
+        width: calc(100% - 5em);
         height: 100%;
         @include placeholder-color(darken($gray-light, 30%));
 
@@ -36,6 +36,20 @@
             outline: none;
         }
 
+    }
+    select{
+        width: 5em;
+        display: inline-block;
+        background: none;
+        height: 100%;
+        padding: $l ($l*2);
+        box-shadow: none;
+
+        @include large{
+            font-size: 1.25rem;
+            height: 6*$l;
+        }
+        option{ color: $black; }
     }
     span{
         position: absolute;
@@ -62,12 +76,9 @@
         }
     }
 }
-.search-submit{
+.search-submit.button{
     flex: 0 1 auto;
     padding: .5em 1em;
-    border-radius: 1px;
-    background: $primary;
-    color: $white;
     cursor: pointer;
 
     @media screen and (min-width: 720px){
