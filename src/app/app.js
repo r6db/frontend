@@ -11,7 +11,7 @@ import queryString from "query-string";
 const query = queryString.parse(window.location.search);
 
 const history = createHistory();
-const { store } = configureStore(history, {});
+const { store } = configureStore(history);
 
 store.subscribe(() => m.redraw());
 store.dispatch(initAction);

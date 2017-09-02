@@ -44,6 +44,7 @@
         height: 100%;
         padding: $l ($l*2);
         box-shadow: none;
+        appearance: none;
 
         @include large{
             font-size: 1.25rem;

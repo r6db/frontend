@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { connectRoutes } from "redux-first-router";
 import thunkMiddleware from "redux-thunk";
-import persistState from "redux-localstorage";
+import * as persistState from "redux-localstorage";
 
 import routesMap from "./routesMap";
 import * as reducers from "./reducers";
@@ -20,8 +20,7 @@ export default (history, preLoadedState) => {
     const enhancers = compose(
         enhancer,
         persistState(["platform"]),
-        middlewares,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        middlewares
     );
 
     const store = createStore(rootReducer, preLoadedState, enhancers);
