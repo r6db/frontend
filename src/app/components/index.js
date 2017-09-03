@@ -53,7 +53,7 @@ const App = {
             : null;
 
         return (
-             <div className={"content-wrapper " + attrs.config.class}>
+             <div className={"content-wrapper " + attrs.location + " " + attrs.config.class}>
                 <Drawer>
                     <Menu platform={attrs.platform} tweets={attrs.tweets} />
                 </Drawer>
@@ -81,6 +81,7 @@ const App = {
 const mapStateToProps = (getState) => {
     const { platform, tweets, search, location, loading } = getState();
     return {
+        location: location.type,
         Component: componentMap[location.type],
         config: Object.assign({}, Pageconfig.default, Pageconfig[location.type]),
         loading,

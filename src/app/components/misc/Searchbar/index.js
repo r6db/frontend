@@ -5,8 +5,7 @@ import "./searchbar.scss";
 
 const Searchbar = {
     oninit({ attrs, state }) {
-        state.query = attrs.search;
-        state.platform = attrs.platform;
+        state.query = attrs.search || "";
         state.onEnter = e => {
             if (e.keyCode === 13) {
                 state.onSearch();
@@ -17,15 +16,19 @@ const Searchbar = {
             console.log(state);
             const q = state.query;
             if (q.length > 2) {
-                attrs.goSearch(q, state.platform);
+                attrs.goSearch(q, attrs.platform);
             } else {
                 attrs.goHome();
             }
         };
         state.onQueryChange = e => { state.query =  e.target.value; };
-        state.onPlatformChange = e => { state.platform =  e.target.value; };
     },
-    view({ state }) {
+    onbeforeupdate(vnode, old) {
+        if (vnode.attrs.platform !== old.attrs.platform) {
+            vnode.state.platform = vnode.attrs.platform;
+        }
+    },
+    view({ attrs, state }) {
         return (
             <form className="search-form" action="" onsubmit={state.onSearch}>
                 <div className="search-input">
@@ -34,7 +37,7 @@ const Searchbar = {
                         placeholder="Who are you looking for?"
                         oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
-                    <select value={state.platform} onchange={state.onPlatformChange}>
+                    <select value={attrs.platform} onchange={m.withAttr("value", attrs.setPlatform)}>
                         <option value="PC">PC</option>
                         <option value="PS4">PS4</option>
                         <option value="XBOX">XBOX</option>
@@ -50,6 +53,7 @@ const mapStateToProps = getState => ({ platform: getState().platform });
 const mapDispatchToProps = (dispatch) => ({
     goSearch: (name, platform) => dispatch({ type: "SEARCH", payload: { query: name, platform } }),
     goHome: () => dispatch({ type: "HOME" }),
+    setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);

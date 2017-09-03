@@ -81,7 +81,7 @@
     text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
 }
 @mixin boxshadow{
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px $gray-dark;
 }
 
 

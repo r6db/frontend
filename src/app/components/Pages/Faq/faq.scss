@@ -1,12 +1,18 @@
 @import "scss/styles";
 
 .faq{
-    @include card;
     max-width: $screen-yourmom;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 $l $l $l;
 
+    &-item{
+        @include card;
+        margin-bottom: $l;
+
+        &:last-child .card-divider{
+            display: none;
+        }
+    }
     &-question{
         display: block;
         padding: $l*2;
@@ -14,7 +20,6 @@
         user-select: none;
         cursor: pointer;
     }
-
     &-answer{
         padding: $l ($l*4) ($l*2);
 
@@ -53,5 +58,6 @@
         a{
             color: $accent;
         }
+
     }
 }

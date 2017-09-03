@@ -22,8 +22,8 @@
     input{
         background: none;
         color: $white;
-        padding: $l (2*$l);
-        width: calc(100% - 5em);
+        padding: $l $l $l 0;
+        width: calc(100% - 4rem);
         height: 100%;
         @include placeholder-color(darken($gray-light, 30%));
 
@@ -32,18 +32,24 @@
             height: 6*$l;
         }
 
+        @include openmenu {
+            padding: $l ($l*2);
+        }
+
         &:focus{
             outline: none;
         }
 
     }
     select{
-        width: 5em;
+        width: 4rem;
         display: inline-block;
         background: none;
         height: 100%;
-        padding: $l ($l*2);
+        padding: $l;
+        font-size: $font-smaller;
         box-shadow: none;
+        vertical-align: top;
         appearance: none;
 
         @include large{

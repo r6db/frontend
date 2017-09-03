@@ -6,6 +6,12 @@ export default (state = false, action = {}) => {
             return alwaysOpen() || !state;
         case "MENU_OPEN":
             return alwaysOpen() || true;
+        case "HOME":
+        case "LEADERBOARD":
+        case "SEARCH":
+        case "PROFILE":
+        case "PLAYER":
+        case "FAQ":
         case "MENU_CLOSE":
             return alwaysOpen() || false;
         default:

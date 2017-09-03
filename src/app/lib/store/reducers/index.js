@@ -5,3 +5,4 @@ export { default as searchResults } from "./searchResults";
 export { default as leaderboard } from "./leaderboard";
 export { default as players } from "./players";
 export { default as platform } from "./platform";
+export { default as menu } from "./menu";

@@ -19,9 +19,10 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
 
     .card{
+        margin: $l*0.5;
 
         @include medium{
-            margin: $l;
+            margin: $l*0.5;
             flex: 1 1 40%;
             display: inline-block;
         }
@@ -175,11 +176,10 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
 
     &-stats{
-        padding: ($l*2) 0 (0.5*$l);
         display: flex;
-        margin: 0 (-$l);
         flex-wrap: wrap;
         justify-content: space-between;
+        margin: ($l*0.5) (-$l*0.5);
     }
 
 }

@@ -19,6 +19,7 @@
 }
 .app-page{
     position: relative;
+    padding: $l;
     width: 100%;
     flex: 1;
     overflow-x: hidden;
@@ -29,7 +30,6 @@
     transform: translateZ(0);
 
     .elementquery{
-        margin-top: $l;
         flex: 1 1 auto;
         display: flex;
     }

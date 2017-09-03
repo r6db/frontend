@@ -18,7 +18,7 @@ const Chankaboard = {
                 <div className="leaderboard-header">
                     <h1 className="leaderboard-title">Most kills with Tachanka LMG</h1>
                 </div>
-                <form className="leaderboard-filters" onsubmit={state.loadLeaderboard}>
+                <form className="leaderboard-filters" action="" onsubmit={state.loadLeaderboard}>
                 <p className="leaderboard-platform">
                     <label htmlFor="platformselect">Platform</label>
                     <select id="platformselect" value={state.platform} onchange={m.withAttr("value", state.changePlatform)}>

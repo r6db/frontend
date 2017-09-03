@@ -23,7 +23,6 @@ const Question = {
                 <section className="faq-answer">
                     {children}
                 </section>
-                <div className="card-divider"></div>
             </article>
         );
     }
