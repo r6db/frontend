@@ -13,11 +13,11 @@ const createLogger = ({ getState }) => next => action => {
     const nextState = getState();
     const actionType = String(action.type);
     const message = `action ${actionType}`;
-    console.groupCollapsed("action");
-    console.debug(`old state, %o`, prevState);
-    console.debug(`action`, action);
-    console.debug(`new state, %o`, nextState);
-    console.groupEnd("action");
+    console.groupCollapsed(message);
+    console.info(`old state, %o`, prevState);
+    console.info(`action`, action);
+    console.info(`new state, %o`, nextState);
+    console.groupEnd(message);
     return returnValue;
   };
 
