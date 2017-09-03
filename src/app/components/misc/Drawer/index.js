@@ -1,4 +1,5 @@
 import * as m from "mithril";
+import { connect } from "lib/store/connect";
 import "./drawer.scss";
 
 let toggleCallback = () => { };
@@ -7,12 +8,11 @@ let showMenuCallback = () => { };
 export let toggleMenu = () => toggleCallback();
 export let showMenu = (bool) => showMenuCallback(bool);
 
-export default {
+const Drawer = {
     oninit({ attrs, state }) {
 
         // interaction stuff
         state.isDragging = false;
-        state.isOpen = window.innerWidth > 1304; // menu always shows on desktop
         state.startX = 0;
         state.currX = 0;
         const MENU_MAX_WIDTH = 280;
@@ -28,7 +28,7 @@ export default {
         }
 
         toggleCallback = function () {
-            if (state.isOpen) {
+            if (attrs.isOpen) {
                 state.onCloseMenu();
             } else {
                 state.onOpenMenu();
@@ -36,7 +36,7 @@ export default {
         }
 
         state.onTouchStart = function (e) {
-            if (state.isOpen) { return; }
+            if (attrs.isOpen) { return; }
             state.startX = e.touches[0].pageX;
             state.isDragging = true;
             state.backgroundEl.style.display = "inherit";
@@ -51,23 +51,23 @@ export default {
                 // we are not fully opened yet.
                 // animate stuff
                 e.preventDefault();
-                if (state.isOpen && state.currX - state.startX > MENU_MAX_WIDTH) {
+                if (attrs.isOpen && state.currX - state.startX > MENU_MAX_WIDTH) {
                     // return early if the user wantds to drag further than max distance
                     return;
                 } else {
-                    state.isOpen = false;
+                    attrs.closeMenu();
                     state.containerEl.classList.remove("is-open");
                     // otherwise display the change
                     const changeX = Math.min(state.currX - MENU_MAX_WIDTH, 0);
                     state.drawerEl.style.transform =
-                        state.drawerEl.style.webkitTransform = 
+                        state.drawerEl.style.webkitTransform =
                         state.backgroundEl.style.transform =
                         state.backgroundEl.style.webkitTransform = `translateX(${changeX}px)`;
                     state.backgroundEl.style.opacity = (((state.currX - state.startX) / MENU_MAX_WIDTH) * TARGET_OPACITY).toFixed(2);
                 }
             } else {
-                // if the drag brings us over the 
-                state.isOpen = true;
+                // if the drag brings us over the
+                attrs.openMenu();
                 state.containerEl.classList.add("is-open");
                 return;
             }
@@ -82,24 +82,23 @@ export default {
                 if (Math.abs(deltaX) > (MENU_MAX_WIDTH * DRAG_THRESHOLD)) {
                     if (state.currX < state.startX) {
                         // we are dragging to close -> close menu
-                        store.set(false);
+                        attrs.closeMenu();
                         return;
                     } else {
                         // we dragged more than enough to 'fall open'
                         state.onOpenMenu();
                     }
                 } else {
-                    store.set(false);
+                    attrs.closeMenu();
                     state.onCloseMenu();
                     m.redraw();
                 }
                 // we are open now. stop dragging
             }
-            
         };
         state.onCloseMenu = function (e) {
+            attrs.closeMenu();
             state.isDragging = false;
-            state.isOpen = false;
             state.startX = 0;
             state.currX = 0;
             state.containerEl.classList.remove("is-open");
@@ -111,6 +110,7 @@ export default {
             state.backgroundEl.style.opacity = "";
         };
         state.onOpenMenu = function (e) {
+            attrs.openMenu();
             state.isDragging = false;
             state.isOpen = true;
             state.startX = 0;
@@ -128,8 +128,8 @@ export default {
             e.stopPropagation();
             return false;
         };
-        state.open = () => store.set(true);
-        state.close = () =>  store.set(false);
+        state.open = () => attrs.openMenu();
+        state.close = () => attrs.closeMenu();
     },
     oncreate({dom, state}) {
         state.containerEl = dom;
@@ -141,7 +141,7 @@ export default {
         return (<div className="drawer">
             <div className="drawer-topbar">
                 <div className="drawer-burger" onclick={state.onOpenMenu}><span></span></div>
-            </div>    
+            </div>
             <div className="drawer-background" onclick={state.onCloseMenu}></div>
             <div className="drawer-container"
                     ontouchstart={state.onTouchStart}
@@ -154,3 +154,11 @@ export default {
         </div>);
     }
 };
+
+const mapStateToProps = getState => ({ isOpen: getState().menu })
+const mapDispatchToProps = dispatch => ({
+    openMenu: () => dispatch({ type: "MENU_OPEN" }),
+    closeMenu: () => dispatch({ type: "MENU_CLOSE" }),
+    toggleMenu: () => dispatch({ type: "MENU_TOGGLE" })
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Drawer);
