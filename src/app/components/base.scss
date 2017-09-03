@@ -76,11 +76,11 @@ input{
 
 select{
     padding: $l;
-    background: $trans-low;
+    background: darken($gray-dark, 3%);
     color: $white;
     display: inline-block;
     -webkit-appearance: none;
-    box-shadow: 0 2px 4px black;
+    box-shadow: 0 2px 4px darken(darken($gray-dark, 3%), 40%);
 }
 
 label{

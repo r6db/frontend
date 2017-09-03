@@ -3,6 +3,7 @@
     padding: 0.5em 1em;
     border: 1px solid $gray;
     border-radius: $borderradius;
+    box-shadow: 0 2px 4px $gray-dark;
     cursor: pointer;
 	width: auto;
     &:focus{
