@@ -89,7 +89,6 @@ const Drawer = {
                         state.onOpenMenu();
                     }
                 } else {
-                    attrs.closeMenu();
                     state.onCloseMenu();
                     m.redraw();
                 }

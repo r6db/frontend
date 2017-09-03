@@ -6,6 +6,22 @@ import * as persistState from "redux-localstorage";
 import routesMap from "./routesMap";
 import * as reducers from "./reducers";
 
+const createLogger = ({ getState }) => next => action => {
+    const console = window.console;
+    const prevState = getState();
+    const returnValue = next(action);
+    const nextState = getState();
+    const actionType = String(action.type);
+    const message = `action ${actionType}`;
+    console.groupCollapsed("action");
+    console.debug(`old state, %o`, prevState);
+    console.debug(`action`, action);
+    console.debug(`new state, %o`, nextState);
+    console.groupEnd("action");
+    return returnValue;
+  };
+
+
 export default (history, preLoadedState) => {
     const { reducer, middleware, enhancer, thunk } = connectRoutes(
         history,
@@ -15,6 +31,7 @@ export default (history, preLoadedState) => {
     const rootReducer = combineReducers({ ...reducers, location: reducer });
     const middlewares = applyMiddleware(
         thunkMiddleware,
+        createLogger,
         middleware,
     );
     const enhancers = compose(
