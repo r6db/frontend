@@ -11,23 +11,28 @@ import "../scss/styles.scss";
 import * as m from "mithril";
 import * as api from "lib/api";
 
-if (process.env.NODE_ENV === "production") {
+/**
+ * load analytics
+ */
 
-    // run google analytics
-    (function (i, s, o, g, r, a, m) {
-        i["GoogleAnalyticsObject"] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments);
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
-    })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
-    ga("create", "UA-86120096-1", "auto");
-} else {
+const _paq = _paq || [];
+/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+_paq.push(["setCookieDomain", "*.r6db.com"]);
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  const u="//anal.r6db.com/";
+  _paq.push(['setTrackerUrl', u+'p.php']);
+  _paq.push(['setSiteId', '1']);
+  const d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'p.js'; s.parentNode.insertBefore(g,s);
+})();
+
+
+if (process.env.NODE_ENV !== "production"){
     // expose libs;
     window.m = m;
     window.api = api;
-
-    // shim google analytics
-    window["GoogleAnalyticsObject"] = window.ga = function(...args) { console.log("analytics", args)};
 }
 
 require("./app");

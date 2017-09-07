@@ -8,12 +8,19 @@ export default {
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
+            let tracker;
+            try {
+                tracker = Piwik.getTracker("//anal.r6db.com/piwik.php", 1);
+                tracker.sendPageView("search");
+            }catch(e){}
             const { location } = getState();
             const { query, platform } = location.payload;
-            ga("send", "event", "search", "query", query);
             dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
+                    if (tracker) {
+                        tracker.trackSiteSearch(query, platform, result.length);
+                    }
                     setMeta({
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
@@ -35,7 +42,11 @@ export default {
         path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
-            ga("send", "event", "leaderboard", "view", "CHANKA");
+            try {
+                const tracker = Piwik.getTracker("//anal.r6db.com/piwik.php", 1);
+                tracker.trackPageView("leaderboard");
+                tracker.trackEvent("leaderboard", "view", "board", "chanka");
+            } catch (e) { }
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
                 .then(entries => {
@@ -55,7 +66,11 @@ export default {
             const { board: b, platform } = getState().location.payload;
             const board = b.toUpperCase();
             if (board === "CHANKA") { return; }
-            ga("send", "event", "leaderboard", "view", board);
+            try{
+                const tracker = Piwik.getTracker("//anal.r6db.com/piwik.php", 1);
+                tracker.trackPageView("leaderboard");
+                tracker.trackEvent("leaderboard", "view", "board", board);
+            } catch(e){ }
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard(lbConfig.board, platform)
@@ -70,7 +85,15 @@ export default {
                 .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board, error } }));
         }
     },
-    FAQ: "/faq",
+    FAQ: {
+        path: "/faq",
+        thunk: (dispatch, getState) => {
+            try {
+                const tracker = Piwik.getTracker("//anal.r6db.com/piwik.php", 1);
+                tracker.trackPageView("faq");
+            } catch(e){}
+        }
+    },
     PROFILE: {
         path: "/profile/:id",
         thunk: async (dispatch, getState) => {
@@ -78,7 +101,11 @@ export default {
             api.getPlayer(id)
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    ga("send", "event", "profile", id);
+                    try {
+                        const tracker = Piwik.getTracker("//anal.r6db.com/piwik.php", 1);
+                        tracker.trackPageView("profile");
+                        tracker.trackEvent("profile", "view", "id", id);
+                    } catch (e) { }
                     if (player.flags.noAliases === false) {
                         setMeta({
                             title: `${player.name}`,
@@ -114,7 +141,12 @@ async function playerThunk(dispatch, getState) {
     api.getPlayer(id)
         .then(function (player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            ga("send", "event", "player", id, tab || "stats");
+            try {
+                const tracker = Piwik.getTracker("//anal.r6db.com/piwik.php", 1);
+                tracker.trackPageView("player");
+                tracker.trackEvent("player", "view", "id", id);
+                tracker.trackEvent("player", "tab", "tab", tab || "stats");
+            } catch (e) { }
             if (player.flags.noAliases === false) {
                 setMeta({
                     title: `${player.name}`,
