@@ -10,7 +10,7 @@ export default {
         thunk: async (dispatch, getState) => {
             let tracker;
             try {
-                tracker = Piwik.getTracker("//anal.r6db.com/p.php", 1);
+                tracker = Piwik.getAsyncTracker();
                 tracker.sendPageView("search");
             }catch(e){}
             const { location } = getState();
@@ -43,7 +43,7 @@ export default {
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
             try {
-                const tracker = Piwik.getTracker("//anal.r6db.com/p.php", 1);
+                const tracker = Piwik.getAsyncTracker();
                 tracker.trackPageView("leaderboard");
                 tracker.trackEvent("leaderboard", "view", "board", "chanka");
             } catch (e) { }
@@ -67,7 +67,7 @@ export default {
             const board = b.toUpperCase();
             if (board === "CHANKA") { return; }
             try{
-                const tracker = Piwik.getTracker("//anal.r6db.com/p.php", 1);
+                const tracker = Piwik.getAsyncTracker();
                 tracker.trackPageView("leaderboard");
                 tracker.trackEvent("leaderboard", "view", "board", board);
             } catch(e){ }
@@ -89,7 +89,7 @@ export default {
         path: "/faq",
         thunk: (dispatch, getState) => {
             try {
-                const tracker = Piwik.getTracker("//anal.r6db.com/p.php", 1);
+                const tracker = Piwik.getAsyncTracker();
                 tracker.trackPageView("faq");
             } catch(e){}
         }
@@ -102,7 +102,7 @@ export default {
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
                     try {
-                        const tracker = Piwik.getTracker("//anal.r6db.com/p.php", 1);
+                        const tracker = Piwik.getAsyncTracker();
                         tracker.trackPageView("profile");
                         tracker.trackEvent("profile", "view", "id", id);
                     } catch (e) { }
@@ -142,7 +142,7 @@ async function playerThunk(dispatch, getState) {
         .then(function (player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             try {
-                const tracker = Piwik.getTracker("//anal.r6db.com/p.php", 1);
+                const tracker = Piwik.getAsyncTracker();
                 tracker.trackPageView("player");
                 tracker.trackEvent("player", "view", "id", id);
                 tracker.trackEvent("player", "tab", "tab", tab || "stats");
