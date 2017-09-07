@@ -20,6 +20,7 @@
         flex-direction: row;
         flex: 1 1 auto;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     &-row{
@@ -28,6 +29,7 @@
         flex: 1 0 auto;
         justify-content: space-between;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     &-heading, &-cell{

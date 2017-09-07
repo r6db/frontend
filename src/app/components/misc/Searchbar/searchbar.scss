@@ -23,6 +23,7 @@
         background: none;
         color: $white;
         padding: $l $l $l 0;
+        line-height: 2*$l;
         width: calc(100% - 4rem);
         height: 100%;
         @include placeholder-color(darken($gray-light, 30%));
@@ -30,6 +31,7 @@
         @include large{
             font-size: 1.25rem;
             height: 6*$l;
+            line-height: 4*$l;
         }
 
         @include openmenu {
@@ -50,11 +52,12 @@
         font-size: $font-smaller;
         box-shadow: none;
         vertical-align: top;
-        appearance: none;
+        line-height: 2*$l;
 
         @include large{
             font-size: 1.25rem;
             height: 6*$l;
+            line-height: 4*$l;
         }
         option{ color: $black; }
     }

@@ -53,6 +53,7 @@
     &-pastseason{
         display: flex;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
         flex-direction: row;
 
         @include large{

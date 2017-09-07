@@ -20,18 +20,22 @@
 .app-page{
     position: relative;
     padding: $l;
-    width: 100%;
+    width: 100vw;
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     backface-visibility: hidden;
-    transform: translateZ(0);
 
     .elementquery{
         flex: 1 1 auto;
         display: flex;
+    }
+
+    @include openmenu{
+        width: 100%;
     }
 }
 .app-background{

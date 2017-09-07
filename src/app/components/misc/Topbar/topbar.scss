@@ -68,8 +68,9 @@
         background: none;
         box-shadow: none;
 
-        input{
+        input, select{
             height: $topbar-height;
+            line-height: $topbar-height - (2*$l);
         }
     }
 }

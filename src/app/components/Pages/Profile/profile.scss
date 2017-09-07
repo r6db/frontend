@@ -160,6 +160,7 @@ $profile-header-height: $profile-image-height + (5*$l);
         display: flex;
         flex-direction: row;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
         width: auto;
         transform: translateZ(0);
         backface-visibility: hidden;

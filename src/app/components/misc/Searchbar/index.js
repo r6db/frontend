@@ -12,7 +12,9 @@ const Searchbar = {
             }
         };
         state.onSearch = function (e) {
-            e.preventDefault();
+            if (e && "preventDefault" in e) {
+                e.preventDefault();
+            }
             console.log(state);
             const q = state.query;
             if (q.length > 2) {
@@ -34,7 +36,7 @@ const Searchbar = {
                 <div className="search-input">
                     <input type="text"
                         value={state.query}
-                        placeholder="Who are you looking for?"
+                        placeholder="player name"
                         oninput={state.onQueryChange}
                         onkeypress={state.onEnter} />
                     <select value={attrs.platform} onchange={m.withAttr("value", attrs.setPlatform)}>

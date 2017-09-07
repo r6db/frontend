@@ -36,7 +36,9 @@ const toUrl = (to, routesMap, serializer) => {
 const Link = {
     oninit({ attrs, state }) {
         state.doLink = e => {
-            e.preventDefault();
+            if (e && "preventDefault" in e) {
+                e.preventDefault();
+            }
             const { querySerializer } = getOptions();
             state.serializer = querySerializer;
             let action = isAction(attrs.to)

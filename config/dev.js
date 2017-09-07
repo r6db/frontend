@@ -6,7 +6,7 @@ const config = Object.assign({}, base);
 
 config.devServer = {
     contentBase: path.resolve("./build"),
-    host: "0.0.0.0",
+    host: "192.168.178.40",
     compress: true,
     inline: true,
     hot: true,

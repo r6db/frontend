@@ -48,7 +48,9 @@
             margin: $l $l 0;
             flex: none;
         }
-
+        a{
+            padding: $l;
+        }
         @include medium{
             flex-direction: row;
             height: $l*8;
@@ -56,6 +58,9 @@
             .col{
                 margin: $l;
                 flex: 0 1 auto;
+            }
+            a{
+                padding: 0;
             }
         }
     }

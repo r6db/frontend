@@ -4,6 +4,7 @@
     height: 100vh;
     background: $menu-background;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
