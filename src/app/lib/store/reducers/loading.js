@@ -1,5 +1,5 @@
 export default (state = false, action = {}) => {
-    if (["SEARCH", "LEADERBOARD", "DETAIL"].includes(action.type)) {
+    if (["SEARCH", "LEADERBOARD", "DETAIL", "PLAYER", "PROFILE"].includes(action.type)) {
         return true;
     }
     if (["SEARCH_FETCHED",

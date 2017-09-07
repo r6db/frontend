@@ -14,7 +14,7 @@ const Player = {
     view({ attrs, state }) {
         if (attrs.loading) {
             return null;
-        } else if (!attrs.data || !attrs.data.id) {
+        } else if (!attrs.data) {
             return <NotFound />;
         } else if (attrs.data.flags && attrs.data.flags.noPlaytime) {
             return <NoPlaytime {...attrs.data} />;
@@ -38,7 +38,7 @@ const mapStateToProps = getState => {
     const { platform, loading, players, location: { payload } } = getState();
 
     return {
-        data: players[payload.id] || {},
+        data: players[payload.id],
         tab: payload.tab || "stats",
         loading,
         platform

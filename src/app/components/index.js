@@ -65,13 +65,10 @@ const App = {
                         {TopbarComponent}
                         <div className="app-page">
                             <ElementQuery className="contentsize" query={breakpoints}>
-                                {attrs.loading ? null : <attrs.Component />}
+                                {attrs.loading ? <Loading /> : <attrs.Component />}
                             </ElementQuery>
                         </div>
                     </div>
-                    {attrs.loading
-                        ? <Loading />
-                        : null}
                 </div>
             </div>
         );
