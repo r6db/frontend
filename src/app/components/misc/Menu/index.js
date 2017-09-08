@@ -21,7 +21,7 @@ const Menu = {
                     <Link to="/" className="menu-item">Home</Link>
                     <Link to={`/leaderboard/${attrs.platform}/ALL`} className="menu-item">Leaderboard</Link>
                     <Link to="/faq" className="menu-item">FAQ</Link>
-                    <a href="https://gitlab.com/gitgudscrub/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
+                    <a href="https://github.com/r6db/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
                 </div>
                 <footer className="menu-bottom is-center">
                     <div className="menu-tweets">{
