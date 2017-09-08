@@ -126,7 +126,7 @@ export const Operators = {
     thermite: { name: "Thermite", side: "Attack", unit: "FBI" },
     twitch: { name: "Twitch", side: "Attack", unit: "GIGN" },
     valkyrie: { name: "Valkyrie", side: "Defense", unit: "SEALS" },
-    ying: { name: "Ying", side: "Attack", unit: "GROM" },
+    ying: { name: "Ying", side: "Attack", unit: "SDU" },
 }
 
 export const regions = {
