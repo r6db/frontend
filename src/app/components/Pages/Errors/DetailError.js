@@ -1,4 +1,5 @@
 import * as m from "mithril";
+import "./detailerror.scss";
 
 export default {
 

@@ -11,6 +11,9 @@ import "./statstab.scss";
 
 export default {
     view({ attrs }) {
+        if (!attrs.stats || !attrs.rank){
+            return null;
+        }
         return (
             <div className="statstab">
                 <div className="statstab-sidebar">

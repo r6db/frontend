@@ -31,7 +31,7 @@ const componentMap = {
     "PROFILE": Profile,
     "PLAYER": Player,
     "PLAYERTABS": Player,
-    [NOT_FOUND]: Home
+    [NOT_FOUND]: NotFound
 };
 
 const breakpoints = {

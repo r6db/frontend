@@ -6,6 +6,7 @@ import Tabs from "components/misc/Tabs";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
+import NoData from "../Errors/NoData";
 import IdCard from "./IdCard";
 import { connect } from "lib/store/connect";
 import "./player.scss";
@@ -20,6 +21,8 @@ const Player = {
             return <NoPlaytime {...attrs.data} />;
         } else if (attrs.data.flags && attrs.data.flags.noAliases) {
             return <NoAliases {...attrs.data} />;
+        } else if (!attrs.data.stats || !attrs.data.rank) {
+            return <NoData {...attrs.data} />;
         } else {
             return (
                 <div className={`player ${attrs.data.id}`}>
