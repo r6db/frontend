@@ -3,7 +3,7 @@
 .faq{
     max-width: $screen-yourmom;
     width: 100%;
-    margin: 0 $l $l $l;
+    margin: 0 auto;
 
     &-item{
         @include card;
