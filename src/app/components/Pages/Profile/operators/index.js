@@ -31,7 +31,10 @@ const filters = {
     "BOPE": op => op.unit === "BOPE",
     "SAT": op => op.unit === "SAT",
     "GEO": op => op.unit === "GEO",
-}
+    "GROM": op => op.unit === "GROM",
+    "SDU": op => op.unit === "SDU",
+};
+
 export default {
     oninit({ attrs, state }) {
 

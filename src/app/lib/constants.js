@@ -104,6 +104,7 @@ export const Operators = {
     caveira: { name: "Caveira", side: "Defense", unit: "BOPE" },
     doc: { name: "Doc", side: "Defense", unit: "GIGN" },
     echo: { name: "Echo", side: "Defense", unit: "SAT" },
+    ela: { name: "Ela", side: "Defense", unit: "GROM" },
     frost: { name: "Frost", side: "Defense", unit: "JTF-2" },
     fuze: { name: "Fuze", side: "Attack", unit: "SPEZNAS" },
     glaz: { name: "Glaz", side: "Attack", unit: "SPEZNAS" },
@@ -112,6 +113,7 @@ export const Operators = {
     jackal: { name: "Jackal", side: "Attack", unit: "GEO" },
     jager: { name: "Jäger", side: "Defense", unit: "GSG9" },
     kapkan: { name: "Kapkan", side: "Defense", unit: "SPEZNAS" },
+    lesion: { name: "Lesion", side: "Defense", unit: "SDU" },
     mira: { name: "Mira", side: "Defense", unit: "GEO" },
     montagne: { name: "Montagne", side: "Attack", unit: "GIGN" },
     mute: { name: "Mute", side: "Defense", unit: "SAS" },
@@ -124,6 +126,7 @@ export const Operators = {
     thermite: { name: "Thermite", side: "Attack", unit: "FBI" },
     twitch: { name: "Twitch", side: "Attack", unit: "GIGN" },
     valkyrie: { name: "Valkyrie", side: "Defense", unit: "SEALS" },
+    ying: { name: "Ying", side: "Attack", unit: "GROM" },
 }
 
 export const regions = {
