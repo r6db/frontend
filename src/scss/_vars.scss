@@ -13,16 +13,17 @@ $link: mix(#2d95cf, $primary, 70%);
 $black: desaturate(darken($primary, 25%), 50%); //#030502;
 
 $gray-dark: hsl(hue($primary), 3%, 10%);
-$gray: lighten($gray-dark, 30%);
+$gray: lighten($gray-dark, 40%);
 $gray-light: hsl(hue($primary), 5%, 95%);
 $blue-dark: rgb(16, 26, 36);
 $trans-high: rgba(16, 16, 16, 0.25);
 $trans-med: rgba(16, 16, 16, 0.5);
 $trans-low: rgba(16, 16, 16, 0.75);
 $white: hsl(hue($primary), 5%, 95%);
-$success: #17bebb;
-$warn: #ffc914;
-$danger: #e4562e;
+$success: mix(#17bebb, $primary, 95%);
+$warn: mix(#ffc914, $primary, 95%);
+$danger: mix(#B62F23, $primary, 95%);
+
 $l: 10px;
 
 $font-tiny: .5rem;
