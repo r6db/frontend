@@ -13,7 +13,6 @@
 
         @include large{
             flex-direction: column;
-            max-height: 458px;
             overflow-y: auto;
             .alias{
                 text-align: left;
