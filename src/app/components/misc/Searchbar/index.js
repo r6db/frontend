@@ -15,7 +15,6 @@ const Searchbar = {
             if (e && "preventDefault" in e) {
                 e.preventDefault();
             }
-            console.log(state);
             const q = state.query;
             if (q.length > 2) {
                 attrs.goSearch(q, attrs.platform);

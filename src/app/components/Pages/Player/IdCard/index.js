@@ -12,6 +12,15 @@ const getProfileLink = (profile) => {
 };
 const getEslLink = profile => `https://play.eslgaming.com/search/?query=${profile.name}&type=gameaccount`;
 
+function ExportButton(player) {
+    const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`
+    return (
+        <a download={`${player.name}.json`} href={href}>
+            <Icon glyph={GLYPHS.DOWNLOAD} fill="white" /> export
+        </a>
+    );
+}
+
 export default {
     view({ attrs }) {
         return (
@@ -34,6 +43,7 @@ export default {
                         <Link className={attrs.tab === "ranks" ? "is-active": ""} to={toPlayerTab(attrs.id, "ranks")}>Ranks</Link>
                     </div>
                     <div className="col idcard-links">
+                        {ExportButton(attrs)}
                         {
                             !attrs.twitch ? "" :
                             <a href={attrs.twitch} target="_BLANK">
