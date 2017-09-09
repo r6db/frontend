@@ -2,25 +2,20 @@ import { redirect, push, NOT_FOUND } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
 import * as api from "../api";
 import setMeta from "lib/meta";
+import tracker from "lib/tracker";
 
 export default {
     HOME: "/",
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
-            let tracker;
-            try {
-                tracker = Piwik.getAsyncTracker();
-                tracker.sendPageView("search");
-            }catch(e){}
+            tracker.then(tracker => tracker.sendPageView("search"));
             const { location } = getState();
             const { query, platform } = location.payload;
             dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
-                    if (tracker) {
-                        tracker.trackSiteSearch(query, platform, result.length);
-                    }
+                    tracker.then(tracker => tracker.trackSiteSearch(query, platform, result.length))
                     setMeta({
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
@@ -42,11 +37,10 @@ export default {
         path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
-            try {
-                const tracker = Piwik.getAsyncTracker();
-                tracker.trackPageView("leaderboard");
+            tracker.then(tracker => {
+                tracker.sendPageView("search");
                 tracker.trackEvent("leaderboard", "view", "board", "chanka");
-            } catch (e) { }
+            });
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
                 .then(entries => {
@@ -66,11 +60,10 @@ export default {
             const { board: b, platform } = getState().location.payload;
             const board = b.toUpperCase();
             if (board === "CHANKA") { return; }
-            try{
-                const tracker = Piwik.getAsyncTracker();
-                tracker.trackPageView("leaderboard");
+            tracker.then(tracker => {
+                tracker.sendPageView("search");
                 tracker.trackEvent("leaderboard", "view", "board", board);
-            } catch(e){ }
+            });
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard(lbConfig.board, platform)
@@ -88,10 +81,9 @@ export default {
     FAQ: {
         path: "/faq",
         thunk: (dispatch, getState) => {
-            try {
-                const tracker = Piwik.getAsyncTracker();
-                tracker.trackPageView("faq");
-            } catch(e){}
+            tracker.then(tracker => {
+                tracker.sendPageView("faw");
+            });
         }
     },
     PROFILE: {
@@ -101,11 +93,10 @@ export default {
             api.getPlayer(id)
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    try {
-                        const tracker = Piwik.getAsyncTracker();
+                    tracker.then(tracker => {
                         tracker.trackPageView("profile");
                         tracker.trackEvent("profile", "view", "id", id);
-                    } catch (e) { }
+                    });
                     if (player.flags.noAliases === false) {
                         setMeta({
                             title: `${player.name}`,
@@ -141,12 +132,11 @@ async function playerThunk(dispatch, getState) {
     api.getPlayer(id)
         .then(function (player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            try {
-                const tracker = Piwik.getAsyncTracker();
+            tracker.then(tracker => {
                 tracker.trackPageView("player");
                 tracker.trackEvent("player", "view", "id", id);
                 tracker.trackEvent("player", "tab", "tab", tab || "stats");
-            } catch (e) { }
+            });
             if (player.flags.noAliases === false) {
                 setMeta({
                     title: `${player.name}`,

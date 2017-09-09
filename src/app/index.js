@@ -11,25 +11,7 @@ import "../scss/styles.scss";
 import * as m from "mithril";
 import * as api from "lib/api";
 
-/**
- * load analytics
- */
-
-const _paq = _paq || [];
-/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setCookieDomain", "*.r6db.com"]);
-  _paq.push(["setDomains", ["*.r6db.com"]]);
-  _paq.push(["setDoNotTrack", true]);
-  _paq.push(["disableCookies"]);
-  _paq.push(['enableLinkTracking']);
-(function() {
-  const u="http://anal.r6db.com/";
-  _paq.push(['setTrackerUrl', u+'p.php']);
-  _paq.push(['setSiteId', '1']);
-  const d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'p.js'; s.parentNode.insertBefore(g,s);
-})();
-
+import "lib/tracker";
 
 if (process.env.NODE_ENV !== "production"){
     // expose libs;
