@@ -4,15 +4,15 @@
 
 export default new Promise((resolve, reject) => {
     const analyticsDomain = "http://anal.r6db.com/";
-    const _paq = _paq || [];
+    window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(["setCookieDomain", "*.r6db.com"]);
-    _paq.push(["setDomains", ["*.r6db.com"]]);
-    _paq.push(["setDoNotTrack", true]);
-    _paq.push(["disableCookies"]);
-    _paq.push(["enableLinkTracking"]);
-    _paq.push(["setTrackerUrl", analyticsDomain + "p.php"]);
-    _paq.push(["setSiteId", "1"]);
+    window._paq.push(["setCookieDomain", "*.r6db.com"]);
+    window._paq.push(["setDomains", ["*.r6db.com"]]);
+    window._paq.push(["setDoNotTrack", true]);
+    window._paq.push(["disableCookies"]);
+    window._paq.push(["enableLinkTracking"]);
+    window._paq.push(["setTrackerUrl", analyticsDomain + "p.php"]);
+    window._paq.push(["setSiteId", "1"]);
     const d = document,
     g = d.createElement("script"),
     s = d.getElementsByTagName("script")[0];

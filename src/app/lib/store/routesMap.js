@@ -4,6 +4,8 @@ import * as api from "../api";
 import setMeta from "lib/meta";
 import tracker from "lib/tracker";
 
+tracker.then(t => window.tracker = t);
+
 export default {
     HOME: "/",
     SEARCH: {
