@@ -84,23 +84,29 @@ export default {
     },
     view({ attrs, state }) {
         return <div className="rankstab">
-            <div className="rankstab-controls">
-                <p>
-                    <label htmlFor="show-unranked">Show unranked</label>
-                    <input type="checkbox" name="show-unranked" onchange={m.withAttr("checked", state.onShowUnranked)} />
-                    <label htmlFor="season-filter">Season</label>
-                    <select name="season-filter" onchange={m.withAttr("value", state.onFilter)}>
-                        <option value="all">All</option>
-                        {state.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
-                    </select>
-                    <label htmlFor="regionFilter">Region</label>
-                    <select name="regionFilter" onchange={m.withAttr("value", state.onRegionFilter)}>
-                        <option value="all">All</option>
-                        <option value="emea">Europe, Africa & M.East</option>
-                        <option value="ncsa">America</option>
-                        <option value="apac">Asia</option>
-                    </select>
-                </p>
+            <div className="rankstab-controls card">
+                <div className="card-content">
+                    <p>
+                        <label htmlFor="show-unranked">Show unranked</label>
+                        <input type="checkbox" name="show-unranked" onchange={m.withAttr("checked", state.onShowUnranked)} />
+                    </p>
+                    <p>
+                        <label htmlFor="season-filter">Season</label>
+                        <select name="season-filter" onchange={m.withAttr("value", state.onFilter)}>
+                            <option value="all">All</option>
+                            {state.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
+                        </select>
+                    </p>
+                    <p>
+                        <label htmlFor="regionFilter">Region</label>
+                        <select name="regionFilter" onchange={m.withAttr("value", state.onRegionFilter)}>
+                            <option value="all">All</option>
+                            <option value="emea">Europe, Africa & M.East</option>
+                            <option value="ncsa">America</option>
+                            <option value="apac">Asia</option>
+                        </select>
+                    </p>
+                </div>
             </div>
 
             <div className="fauxtable ranks-table">

@@ -231,13 +231,15 @@ export default {
     view({ attrs, state }) {
         return (
             <div className="opstab">
-                <div className="opstab-controls">
-                    <p>
-                        <label htmlFor="filter">filter by</label>
-                        <select name="filter" onchange={m.withAttr('value', state.onFilter)}>
-                            {Object.keys(filters).map(x => <option value={x}>{x}</option>)}
-                        </select>
-                    </p>
+                <div className="opstab-controls card">
+                    <div className="card-content">
+                        <p>
+                            <label htmlFor="filter">filter by</label>
+                            <select name="filter" onchange={m.withAttr('value', state.onFilter)}>
+                                {Object.keys(filters).map(x => <option value={x}>{x}</option>)}
+                            </select>
+                        </p>
+                    </div>
                 </div>
                 <div className="fauxtable operator-table">
                     <div className="fauxtable-head">

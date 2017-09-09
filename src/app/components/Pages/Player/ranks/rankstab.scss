@@ -2,8 +2,20 @@
 
 .rankstab{
     .rankstab-controls{
-        margin: $l;
-        display: flex;
+        margin: $l 0;
+
+        .card-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            @include medium{
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+        }
+
         p{
             display: flex;
             flex-direction: column;
