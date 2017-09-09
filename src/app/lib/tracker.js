@@ -8,10 +8,8 @@ const tracker = new Promise((resolve, reject) => {
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     window._paq.push(["setCookieDomain", "*.r6db.com"]);
     window._paq.push(["setDomains", ["*.r6db.com"]]);
-    window._paq.push(["setDoNotTrack", true]);
-    window._paq.push(["disableCookies"]);
     window._paq.push(["enableLinkTracking"]);
-    window._paq.push(["setTrackerUrl", analyticsDomain + "p.php"]);
+    window._paq.push(["setTrackerUrl", analyticsDomain + "piwik.php"]);
     window._paq.push(["setSiteId", "1"]);
     const d = document,
     g = d.createElement("script"),
@@ -19,13 +17,13 @@ const tracker = new Promise((resolve, reject) => {
     g.type = "text/javascript";
     g.async = true;
     g.defer = true;
-    g.src = analyticsDomain + "p.js";
+    g.src = analyticsDomain + "piwik.js";
     s.parentNode.insertBefore(g, s);
     g.addEventListener("load", onLoad);
     g.addEventListener("error", reject);
 
     function onLoad() {
-        const tracker = Piwik.getTracker(analyticsDomain + "p.php", "1");
+        const tracker = Piwik.getTracker(analyticsDomain + "piwik.php", "1");
         resolve(tracker);
     }
 });
