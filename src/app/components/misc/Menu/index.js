@@ -35,7 +35,7 @@ export default {
                     <a href="/" className="menu-item">Home</a>
                     <a href="/leaderboard" className="menu-item">Leaderboard</a>
                     <a href="/faq" className="menu-item">FAQ</a>
-                    <a href="https://gitlab.com/gitgudscrub/frontend/issues" className="menu-item">Issue / Feature Tracker</a>
+                    <a href="https://github.com/r6db/frontend" className="menu-item">Issue / Feature Tracker</a>
                 </div>
                 <footer className="menu-bottom is-center">
                     <div className="menu-tweets">{
