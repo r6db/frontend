@@ -12,6 +12,12 @@
     input{
         padding: $l;
     }
+    &-disclaimer{
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        text-shadow: 0 0 1px black;
+    }
 }
 .HOME .topbar{
     background: none;

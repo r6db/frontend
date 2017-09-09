@@ -20,6 +20,10 @@ export default {
                 <Searchbar
                     className="menu-search"
                     search={attrs.search} />
+                <div className="home-disclaimer">
+                    welcome to our new frontend. we moved all platforms under one website. <br />
+                    select your platform and we'll try to remember it.
+                </div>
             </div>
         );
     }
