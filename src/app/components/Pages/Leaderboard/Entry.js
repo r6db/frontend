@@ -11,7 +11,6 @@ export default {
 
         return (
             <div className={`entry playercard player-${attrs.id} ${attrs.isTopEntry ? 'is-top' : ''}`}>
-                <div className="entry-background"></div>
                 <Link to={toPlayer(attrs.id)} className="playercard-image">
                     {
                         attrs.isTopEntry

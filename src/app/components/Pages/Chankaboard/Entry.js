@@ -11,7 +11,6 @@ export default {
     view({ attrs }) {
         return (
             <div className={`entry playercard player-${attrs.id} ${attrs.isTopEntry ? 'is-top' : ''}`}>
-                <div className="entry-background"></div>
                 <Link to={showPlayer(attrs.id)} className="playercard-image">
                     {
                         attrs.isTopEntry

@@ -64,16 +64,6 @@
     box-shadow: 1px 1px 3px $trans-med;
     position: relative;
 
-
-    &-background{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: 1;
-        z-index: -1;
-    }
     &-place{
         font-size: 2rem;
         display: block;
@@ -174,22 +164,6 @@
         width: 80px;
         height: 80px;
         margin-right: 0 !important; /* fight me */
-    }
-
-    &:nth-child(1){
-        .entry-background{
-            background-image: url(/assets/pattern_gold.svg);
-        }
-    }
-    &:nth-child(2){
-        .entry-background{
-            background-image: url(/assets/pattern_silver.svg);
-        }
-    }
-    &:nth-child(3){
-        .entry-background{
-            background-image: url(/assets/pattern_bronze.svg);
-        }
     }
 }
 
