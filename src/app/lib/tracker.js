@@ -3,7 +3,7 @@
  */
 
 export default new Promise((resolve, reject) => {
-    const analyticsDomain = "http://anal.r6db.com/";
+    const analyticsDomain = "https://anal.r6db.com/";
     window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     window._paq.push(["setCookieDomain", "*.r6db.com"]);
