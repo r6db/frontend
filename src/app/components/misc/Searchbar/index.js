@@ -17,17 +17,12 @@ const Searchbar = {
             }
             const q = state.query;
             if (q.length > 2) {
-                attrs.goSearch(q, attrs.platform);
+                attrs.goSearch(q);
             } else {
                 attrs.goHome();
             }
         };
         state.onQueryChange = e => { state.query =  e.target.value; };
-    },
-    onbeforeupdate(vnode, old) {
-        if (vnode.attrs.platform !== old.attrs.platform) {
-            vnode.state.platform = vnode.attrs.platform;
-        }
     },
     view({ attrs, state }) {
         return (
@@ -51,8 +46,11 @@ const Searchbar = {
 };
 
 const mapStateToProps = getState => ({ platform: getState().platform });
-const mapDispatchToProps = (dispatch) => ({
-    goSearch: (name, platform) => dispatch({ type: "SEARCH", payload: { query: name, platform } }),
+const mapDispatchToProps = (dispatch, getState) => ({
+    goSearch: name => {
+        const { platform } = getState();
+        dispatch({ type: "SEARCH", payload: { query: name, platform } })
+    },
     goHome: () => dispatch({ type: "HOME" }),
     setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl })
 });

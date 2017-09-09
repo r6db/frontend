@@ -13,7 +13,7 @@ const query = queryString.parse(window.location.search);
 const history = createHistory();
 const { store } = configureStore(history);
 
-store.subscribe(() => m.redraw());
+store.subscribe(() => requestAnimationFrame(m.redraw));
 store.dispatch(initAction);
 
 window.store = store;
