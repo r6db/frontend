@@ -71,7 +71,7 @@ const Leaderboard = {
                 </div>
                 <div className="leaderboard-entries">
                     {attrs.entries.map((x, i) =>
-                        <Entry isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
+                        <Entry platform={attrs.platform} isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
                 </div>
                 <Link to={`/leaderboard/${state.platform}/CHANKA`}>
                     <img src="https://r6db.com/assets/chanky.png" id="chanky" alt="chanky"/>

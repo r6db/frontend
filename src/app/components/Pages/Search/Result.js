@@ -2,7 +2,6 @@ import * as m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import Link from "components/misc/Link";
 import "./playercard.scss";
-import { isConsole, platformShorthand } from "lib/constants";
 import { toPlayer, toProfile } from "lib/store/actions";
 
 const round = (number, digits) => ((number * digits) | 0) / digits;
@@ -33,6 +32,12 @@ const getStats = player => (
         </div>)
         : null
 );
+
+const getProfileLink = (profile) => {
+    const id = profile.platform !== "PC" ? profile.userId : profile.id;
+    const platformShorthand = ({ "PC": "uplay", "PS4": "psn", "XBOX": "xbl"}[profile.platform])
+    return `https://game-rainbow6.ubi.com/en-gb/${platformShorthand}/player-statistics/${id}/multiplayer`;
+};
 export default {
     view({attrs, state}) {
         return (
@@ -54,12 +59,9 @@ export default {
                         <Link className="playercard-link player-extended" to={toProfile(attrs.player.id)}>
                             simple View
                         </Link>
-                        { isConsole && !attrs.player.userId
-                            ? null
-                            : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.player.userId || attrs.player.id }/multiplayer`} className="playercard-link player-ubi">
-                                Ubisoft
-                            </a>
-                        }
+                        <a href={getProfileLink(attrs.player)} className="playercard-link player-ubi">
+                            Ubisoft
+                        </a>
                     </div>
                 </div>
             </div>

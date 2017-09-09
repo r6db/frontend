@@ -1,7 +1,6 @@
 import * as m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import Link from "components/misc/Link";
-import { isConsole, platformShorthand } from "lib/constants";
 
 const showPlayer = id => `/profile/${id}/simple`;
 const showExtended = id => `/profile/${id}`
@@ -37,13 +36,7 @@ export default {
                             </Link>
                         <Link className="playercard-link player-extended" to={showExtended(attrs.id)}>
                             extended (beta)
-                            </Link>
-                        { isConsole && !attrs.userId
-                            ? null
-                            : <a href={`https://game-rainbow6.ubi.com/en-gb/${ platformShorthand }/player-statistics/${ attrs.userId || attrs.id }/multiplayer`} className="playercard-link player-ubi">
-                                Ubisoft
-                            </a>
-                        }
+                        </Link>
                     </div>
                 </div>
             </div>

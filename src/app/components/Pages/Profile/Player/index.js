@@ -10,7 +10,6 @@ import Ranked from "./modules/Ranked";
 import RankedSeason from "./modules/RankedSeason";
 import Link from "components/misc/Link";
 import { getRegionName } from "lib/region";
-import { isConsole, platformShorthand } from "lib/constants";
 
 export default {
     view({ attrs, state }) {
