@@ -80,11 +80,12 @@ const handleResponse = player => {
             .reduce(sum, 0);
     }
 
+    if (player.stats) {
+        player.stats.general.hitChance = ((player.stats.general.bulletsHit * 100) / (player.stats.general.bulletsFired || 1))
+        player.stats.general.headshotChance = ((player.stats.general.headshot * 100) / (player.stats.general.bulletsHit || 1))
+        player.stats.general.headshotRatio = ((player.stats.general.headshot * 100) / (player.stats.general.kills || 1))
 
-    player.stats.general.hitChance = ((player.stats.general.bulletsHit * 100) / (player.stats.general.bulletsFired || 1))
-    player.stats.general.headshotChance = ((player.stats.general.headshot * 100) / (player.stats.general.bulletsHit || 1))
-    player.stats.general.headshotRatio = ((player.stats.general.headshot * 100) / (player.stats.general.kills || 1))
-
+    }
     player.aliases = player.aliases
         .map(fixAlias)
         .sort((a, b) => b.created_at - a.created_at);

@@ -19,12 +19,12 @@ export default {
                 </div>
                 <div className="statstab-statarea">
                     <div className="statstab-center">
-                        <StatOverview {...attrs} />
+                        {attrs.stats ? <StatOverview {...attrs} /> : null}
                         <RankSeason {...attrs} />
-                        <Charts {...attrs} />
+                        {attrs.stats ? <Charts {...attrs} /> : null}
                     </div>
                     <div className="statstab-aside">
-                        <GameModes {...attrs} />
+                        {attrs.stats ? <GameModes {...attrs} /> : null}
                     </div>
                 </div>
             </div>
