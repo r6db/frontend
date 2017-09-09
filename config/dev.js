@@ -6,7 +6,7 @@ const config = Object.assign({}, base);
 
 config.devServer = {
     contentBase: path.resolve("./build"),
-    host: "192.168.178.40",
+    host: "0.0.0.0",
     compress: true,
     inline: true,
     hot: true,
@@ -16,7 +16,7 @@ config.devServer = {
     disableHostCheck: true,
     proxy: [{
         path: "/api",
-        target: "https://r6db.com",
+        target: "https://new.r6db.com",
         changeOrigin: true
     }],
     historyApiFallback: true,
