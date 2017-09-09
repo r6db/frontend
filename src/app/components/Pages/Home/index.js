@@ -21,8 +21,7 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    welcome to our new frontend. we moved all platforms under one website. <br />
-                    select your platform and we'll try to remember it.
+                    We merged all platforms together!<br />Check the dropdown in the searchbar and leaderboard.
                 </div>
             </div>
         );
