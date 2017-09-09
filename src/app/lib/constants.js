@@ -45,13 +45,6 @@ export const Leaderboards = {
     NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };
 
-export const isConsole = /(xbox|ps4)/.test(window.location.href);
-export const isPS4 = /(ps4)/.test(window.location.href);
-export const isXbox = /(xbox)/.test(window.location.href);
-export const isPC = !isConsole;
-
-export const platformShorthand = isPS4 ? 'psn' : isXbox ? 'xbl' : 'uplay';
-
 export const DATE_SHORT = "DD. MMM YYYY";
 export const DATE_LONG = "DD. MMM YYYY HH:MM";
 
@@ -104,6 +97,7 @@ export const Operators = {
     caveira: { name: "Caveira", side: "Defense", unit: "BOPE" },
     doc: { name: "Doc", side: "Defense", unit: "GIGN" },
     echo: { name: "Echo", side: "Defense", unit: "SAT" },
+    ela: { name: "Ela", side: "Defense", unit: "GROM" },
     frost: { name: "Frost", side: "Defense", unit: "JTF-2" },
     fuze: { name: "Fuze", side: "Attack", unit: "SPEZNAS" },
     glaz: { name: "Glaz", side: "Attack", unit: "SPEZNAS" },
@@ -112,6 +106,7 @@ export const Operators = {
     jackal: { name: "Jackal", side: "Attack", unit: "GEO" },
     jager: { name: "Jäger", side: "Defense", unit: "GSG9" },
     kapkan: { name: "Kapkan", side: "Defense", unit: "SPEZNAS" },
+    lesion: { name: "Lesion", side: "Defense", unit: "SDU" },
     mira: { name: "Mira", side: "Defense", unit: "GEO" },
     montagne: { name: "Montagne", side: "Attack", unit: "GIGN" },
     mute: { name: "Mute", side: "Defense", unit: "SAS" },
@@ -124,10 +119,11 @@ export const Operators = {
     thermite: { name: "Thermite", side: "Attack", unit: "FBI" },
     twitch: { name: "Twitch", side: "Attack", unit: "GIGN" },
     valkyrie: { name: "Valkyrie", side: "Defense", unit: "SEALS" },
+    ying: { name: "Ying", side: "Attack", unit: "SDU" },
 }
 
 export const regions = {
-    emea: "Europe, Africa & M.East",
+    emea: "Europe",
     ncsa: "America",
     apac: "Asia"
 };

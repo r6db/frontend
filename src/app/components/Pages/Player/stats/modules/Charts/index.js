@@ -1,15 +1,8 @@
 import * as m from "mithril";
-import Chart from 'components/misc/Chart';
+import Chart, { labelInterpolationFnc } from 'components/misc/Chart';
 import * as stats from "lib/stats";
 import "./charts.scss";
 
-const colors = {
-    blue: "#2e93b3",
-    orange: "#d0a344",
-    green: "#47893b",
-    red: "#bd1e2c",
-    purple: "#6e3c87"
-}
 
 export default {
     oninit({ attrs, state }) {
@@ -29,23 +22,6 @@ export default {
             return acc.concat(cb(curr, raw[i]));
         }, []);
 
-        const labelInterpolationFnc = function (value, index, arr) {
-            const quart = (arr.length) / 4 | 0;
-            if (index === 0 ||
-                index === quart ||
-                index === quart*2 ||
-                index === quart*3) {
-                return value;
-            } else {
-                return null
-            }
-            if (window.innerWidth > 640) {
-                return index % 2 ? value : null;
-            } else {
-                const allowed = [0, (arr.length/2)|0, arr.length - 1]
-                return allowed.indexOf(index) !== -1 ? value : null;
-            }
-        }
         const responsiveOptions = [
             ['screen and (max-width: 640px)', {
                 seriesBarDistance: 2
@@ -85,7 +61,7 @@ export default {
             },
             options: {
                 axisX: {
-                    labelInterpolationFnc
+                    labelInterpolationFnc,
                 }
             }
         };
@@ -173,7 +149,7 @@ export default {
             },
             options: {
                 axisX: {
-                    labelInterpolationFnc
+                    labelInterpolationFnc,
                 }
             },
             responsiveOptions

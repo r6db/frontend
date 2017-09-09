@@ -1,7 +1,6 @@
 import * as m from "mithril";
 import "./rankstab.scss";
 import {Ranks, regions} from "lib/constants";
-
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 const sorters = [
@@ -11,7 +10,7 @@ const sorters = [
     { key: "mmr", label: "mmr", fn: (a, b) => (b.mmr - a.mmr) },
     { key: "max_mmr", label: "max mmr", fn: (a, b) => (b.max_mmr - a.max_mmr) },
     { key: "skill_mean", label: "skill", fn: (a, b) => (b.skill_mean - a.skill_mean) },
-    { key: "skill_stdev", label: "uncertainty", fn: (a, b) => (b.skill_stdev - a.skill_stdev) },
+    { key: "skill_stdev", label: "uncert.", fn: (a, b) => (b.skill_stdev - a.skill_stdev) },
     { key: "wins", label: "wins", fn: (a, b) => (b.wins - a.wins) },
     { key: "losses", label: "losses", fn: (a, b) => (b.losses - a.losses) },
     { key: "abandons", label: "abandons", fn: (a, b) => (b.abandons - a.abandons) },

@@ -133,9 +133,9 @@ $ct-series-colors: (
 }
 .chartist-tooltip{
     color: $white;
-    background: $trans-low;
+    background: darken($gray-dark, 5%);
 
     &:before {
-        border-top-color: $trans-low;
+        border-top-color: darken($gray-dark, 5%);
     }
 }

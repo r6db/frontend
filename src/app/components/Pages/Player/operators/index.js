@@ -1,7 +1,8 @@
 import * as m from "mithril";
 import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
-import Chart from 'components/misc/Chart';
+import Chart, {colors, labelInterpolationFnc} from 'components/misc/Chart';
+import Scale from "components/misc/Scale";
 import "./opstab.scss";
 import "./fauxtable.scss";
 
@@ -31,7 +32,11 @@ const filters = {
     "BOPE": op => op.unit === "BOPE",
     "SAT": op => op.unit === "SAT",
     "GEO": op => op.unit === "GEO",
+    "GROM": op => op.unit === "GROM",
+    "SDU": op => op.unit === "SDU",
 }
+
+
 export default {
     oninit({ attrs, state }) {
 
@@ -101,15 +106,6 @@ export default {
             const series = getOp(op);
             return cb(series[0], series[series.length - 1]);
         };
-
-        const labelInterpolationFnc = function (value, index, arr) {
-            if (window.innerWidth > 640) {
-                return index % 2 ? value : null;
-            } else {
-                const allowed = [0, (arr.length / 2) | 0, arr.length - 1]
-                return allowed.indexOf(index) !== -1 ? value : null;
-            }
-        }
 
         state.opgraphs = ops.reduce((acc, op) => {
             acc[op.id] = {};
@@ -265,14 +261,22 @@ export default {
                             <div>
                                 <div key={datum.id} className="fauxtable-row">
                                     <div className="fauxtable-cell name" onclick={ () => state.toggleOp(datum.id) }>{datum.name}</div>
-                                    <div className="fauxtable-cell won">{datum.won}</div>
-                                    <div className="fauxtable-cell lost">{datum.lost}</div>
-                                    <div className="fauxtable-cell wlr">{datum.wlr.toFixed(2)} %</div>
-                                    <div className="fauxtable-cell kills">{datum.kills}</div>
-                                    <div className="fauxtable-cell deaths">{datum.deaths}</div>
-                                    <div className="fauxtable-cell kdr">{datum.kdr.toFixed(2)}</div>
-                                    <div className="fauxtable-cell kpr">{datum.kpr.toFixed(2)}</div>
-                                    <div className="fauxtable-cell survival">{datum.survivalRate.toFixed(2)}%</div>
+                                    <div className="fauxtable-cell won">{datum.won || 0}</div>
+                                    <div className="fauxtable-cell lost">{datum.lost || 0}</div>
+                                    <div className="fauxtable-cell wlr">
+                                        <Scale value={datum.wlr} neutral={50}>%</Scale>
+                                    </div>
+                                    <div className="fauxtable-cell kills">{datum.kills || 0}</div>
+                                    <div className="fauxtable-cell deaths">{datum.deaths || 0}</div>
+                                    <div className="fauxtable-cell kdr">
+                                        <Scale value={datum.kdr} neutral={1} />
+                                    </div>
+                                    <div className="fauxtable-cell kpr">
+                                        <Scale value={datum.kpr} neutral={0.5} />
+                                    </div>
+                                    <div className="fauxtable-cell survival">
+                                            <Scale value={datum.survivalRate} neutral={50}>%</Scale>
+                                    </div>
                                     <div className="fauxtable-cell time">{stats.formatDuration(datum.timePlayed)}</div>
                                 </div>
                                 { !state.operatorsShowMap[datum.id] ? "" :

@@ -18,5 +18,5 @@ export const getKillRatio = obj => getKillRatioRaw(obj).toFixed(2);
 export const getKdaRatopRaw = obj => ((obj.kills) + (obj.assists || 0)) / (obj.deaths || 1);
 export const getKdaRatio = obj => getKdaRatopRaw(obj).toFixed(2);
 
-export const getRankWinChanceRaw = (obj) => obj.wins * 100 / ((obj.wins + obj.losses + obj.abandons) || 1);
-export const getRankWinChance = (obj) => getRankWinChanceRaw(obj).toFixed(2) + "%";
+export const getRankWinChanceRaw = (obj) => obj.wins / ((obj.wins + obj.losses + obj.abandons) || 1);
+export const getRankWinChance = (obj) => (getRankWinChanceRaw(obj) * 100).toFixed(2) + "%";

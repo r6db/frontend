@@ -38,7 +38,7 @@
         }
         .fauxtable-heading,
         .fauxtable-cell{
-            padding: ($l*1.5) ($l*2);
+            padding: ($l) ($l*1.5);
         }
         .fauxtable-row{
             overflow: hidden;
@@ -69,10 +69,10 @@
             .region{
                 justify-content: flex-start;
                 text-align: left;
-                flex-grow: 4;
+                flex-grow: 3;
             }
             .rank {
-                flex-grow: 3;
+                flex-grow: 4;
                 justify-content: flex-start;
                 text-align: left;
                 padding: 0;
