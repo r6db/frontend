@@ -31,7 +31,10 @@ const filters = {
     "BOPE": op => op.unit === "BOPE",
     "SAT": op => op.unit === "SAT",
     "GEO": op => op.unit === "GEO",
-}
+    "GROM": op => op.unit === "GROM",
+    "SDU": op => op.unit === "SDU",
+};
+
 export default {
     oninit({ attrs, state }) {
 
@@ -92,11 +95,13 @@ export default {
                 return acc;
             }, {});
 
-        const getDelta = op => cb => opProgressions[op]
+        const getOp = id => (opProgressions[id] || []);
+
+        const getDelta = op => cb => getOp(op)
             .reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
 
         const getProgressionAverage = (op, cb) => {
-            const series = opProgressions[op];
+            const series = getOp(op);
             return cb(series[0], series[series.length - 1]);
         };
 
@@ -115,7 +120,7 @@ export default {
                 type: "Line",
                 title: "Kill/Death Ratio",
                 data: {
-                    labels: opProgressions[op.id].map(x => x.date),
+                    labels: getOp(op.id).map(x => x.date),
                     series: [{
                         name: "KD Ratio",
                         data: getDelta(op.id)(function (curr, prev) {
@@ -130,8 +135,12 @@ export default {
                         }),
                         className: "opdaily"
                     }, {
-                        name: "Average for past " + opProgressions[op.id].length + " days",
-                        data: new Array(opProgressions[op.id].length).fill(getProgressionAverage(op.id, function (start, end) {
+                        name: "Average for past " + getOp(op.id).length + " days",
+                        data: new Array(getOp(op.id).length).fill(getProgressionAverage(op.id, function (start, end) {
+                            if (!start || !end) {
+                                debugger;
+                                return null;
+                            }
                             return (start.data.kills - end.data.kills) / (start.data.deaths - end.data.deaths);
                         })),
                         className: "opavg"
@@ -147,7 +156,7 @@ export default {
                 type: "Line",
                 title: "Round Win/Loss Ratio",
                 data: {
-                    labels: opProgressions[op.id].map(x => x.date),
+                    labels: getOp(op.id).map(x => x.date),
                     series: [{
                         name: "WL Ratio",
                         data: getDelta(op.id)(function (curr, prev) {
@@ -162,8 +171,11 @@ export default {
                         }),
                         className: "opdaily"
                     }, {
-                        name: "Average for past " + opProgressions[op.id].length + " days",
-                        data: new Array(opProgressions[op.id].length).fill(getProgressionAverage(op.id, function (start, end) {
+                        name: "Average for past " + getOp(op.id).length + " days",
+                        data: new Array(getOp(op.id).length).fill(getProgressionAverage(op.id, function (start, end) {
+                            if (!start || !end) {
+                                return null;
+                            }
                             return (start.data.won - end.data.won) / (start.data.lost - end.data.lost);
                         })),
                         className: "opavg"
@@ -179,7 +191,7 @@ export default {
                 type: "Line",
                 title: "Playtime (minutes)",
                 data: {
-                    labels: opProgressions[op.id].map(x => x.date),
+                    labels: getOp(op.id).map(x => x.date),
                     series: [{
                         data: getDelta(op.id)(function (curr, prev) {
                             if (!prev) return null;
