@@ -2,22 +2,21 @@ import { redirect, push, NOT_FOUND } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
 import * as api from "../api";
 import setMeta from "lib/meta";
-import tracker from "lib/tracker";
+import * as tracker from "lib/tracker";
 
-tracker.then(t => window.tracker = t);
 
 export default {
     HOME: "/",
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
-            tracker.then(tracker => tracker.sendPageView("search"));
+            tracker.trackPageView("search");
             const { location } = getState();
             const { query, platform } = location.payload;
             dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
-                    tracker.then(tracker => tracker.trackSiteSearch(query, platform, result.length))
+                    tracker.trackSiteSearch(query, platform, result.length);
                     setMeta({
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
@@ -39,10 +38,8 @@ export default {
         path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
-            tracker.then(tracker => {
-                tracker.sendPageView("search");
-                tracker.trackEvent("leaderboard", "view", "board", "chanka");
-            });
+            tracker.trackPageView("search");
+            tracker.trackEvent("leaderboard", "view", "board", "chanka");
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
                 .then(entries => {
@@ -62,10 +59,8 @@ export default {
             const { board: b, platform } = getState().location.payload;
             const board = b.toUpperCase();
             if (board === "CHANKA") { return; }
-            tracker.then(tracker => {
-                tracker.sendPageView("search");
-                tracker.trackEvent("leaderboard", "view", "board", board);
-            });
+            tracker.trackPageView("search");
+            tracker.trackEvent("leaderboard", "view", "board", board);
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard(lbConfig.board, platform)
@@ -83,9 +78,7 @@ export default {
     FAQ: {
         path: "/faq",
         thunk: (dispatch, getState) => {
-            tracker.then(tracker => {
-                tracker.sendPageView("faw");
-            });
+            tracker.trackPageView("faq");
         }
     },
     PROFILE: {
@@ -95,10 +88,8 @@ export default {
             api.getPlayer(id)
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    tracker.then(tracker => {
-                        tracker.trackPageView("profile");
-                        tracker.trackEvent("profile", "view", "id", id);
-                    });
+                    tracker.trackPageView("profile");
+                    tracker.trackEvent("profile", "view", "id", id);
                     if (player.flags.noAliases === false) {
                         setMeta({
                             title: `${player.name}`,
@@ -134,11 +125,9 @@ async function playerThunk(dispatch, getState) {
     api.getPlayer(id)
         .then(function (player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            tracker.then(tracker => {
-                tracker.trackPageView("player");
-                tracker.trackEvent("player", "view", "id", id);
-                tracker.trackEvent("player", "tab", "tab", tab || "stats");
-            });
+            tracker.trackPageView("player");
+            tracker.trackEvent("player", "view", "id", id);
+            tracker.trackEvent("player", "tab", "tab", tab || "stats");
             if (player.flags.noAliases === false) {
                 setMeta({
                     title: `${player.name}`,

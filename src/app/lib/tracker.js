@@ -2,7 +2,7 @@
  * load analytics
  */
 
-export default new Promise((resolve, reject) => {
+const tracker = new Promise((resolve, reject) => {
     const analyticsDomain = "https://anal.r6db.com/";
     window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -29,3 +29,17 @@ export default new Promise((resolve, reject) => {
         resolve(tracker);
     }
 });
+
+export function trackPageView(title) {
+    tracker.then(t => t.trackPageView(title));
+}
+
+export function trackSiteSearch(query, category, numResults) {
+    tracker.then(t => t.trackSiteSearch(query, category, numResults));
+}
+export function trackEvent(category, action, name, value) {
+    tracker.then(t => t.trackEvent(category, action, name, value));
+}
+export function trackGoal(goal, value) {
+    tracker.then(t => t.trackGoal(goal, value));
+}
