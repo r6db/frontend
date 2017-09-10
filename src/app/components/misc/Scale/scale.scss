@@ -1,0 +1,13 @@
+@import "scss/styles";
+
+$low: #BC4343;
+$mid: #C0BA44;
+$high: #419341;
+
+.scale{
+    &.is-low { color: $low; }
+    &.is-med-low { color: mix($mid, $low); }
+    &.is-med { color: $mid; }
+    &.is-med-high { color: mix($mid, $high); }
+    &.is-high { color: $high; }
+}

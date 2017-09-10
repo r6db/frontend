@@ -1,0 +1,40 @@
+@import "scss/styles";
+
+.aliases{
+    padding-bottom: $l;
+
+    &-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: $l;
+
+        @include large{
+            flex-direction: column;
+            overflow-y: auto;
+            .alias{
+                text-align: left;
+            }
+        }
+
+        .alias{
+            text-align: center;
+        }
+    }
+}
+.player .alias{
+    padding: (.5*$l) $l;
+    position: relative;
+    margin-bottom: $l;
+    flex: none;
+
+    &-time{
+        color: $gray;
+        font-size: 0.9em;
+    }
+    &-name{
+        font-size: 1.1em;
+    }
+}

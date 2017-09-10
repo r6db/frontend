@@ -1,12 +1,54 @@
-@import "styles";
+@import "scss/styles";
 
 .topbar{
 	display: flex;
     width: 100%;
     height: $topbar-height;
     flex: 0 0 auto;
-    background: $trans-med;
+    @include card;
 
+    @include openmenu{
+        &:before{
+            content: "";
+            position: absolute;
+            z-index: 2;
+            height: 60px;
+            width: 10px;
+            background: $gray-dark;
+        }
+    }
+
+    &-burger{
+        width: 40px;
+        height: 36px;
+        align-self: center;
+        margin: 0 $l;
+        cursor: pointer;
+        flex: 0 0 auto;
+        position: relative;
+
+        span, &:before, &:after{
+            content: "";
+            position: absolute;
+            height: 2px;
+            left: 10px;
+            right: 10px;
+            background: $white;
+        }
+        span{
+            top: 50%;
+            margin-top: -1px;
+        }
+        &:before {
+            top: 10px;
+        }
+        &:after {
+            bottom: 10px;
+        }
+        @include openmenu {
+            display: none;
+        }
+    }
     &-menuspacer{
         flex: 0 0 60px;
 
@@ -26,8 +68,9 @@
         background: none;
         box-shadow: none;
 
-        input{
+        input, select{
             height: $topbar-height;
+            line-height: $topbar-height - (2*$l);
         }
     }
 }

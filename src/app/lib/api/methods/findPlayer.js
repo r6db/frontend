@@ -1,5 +1,4 @@
 import { v2Api } from "lib/constants";
-import { set as stateSet } from "lib/appstate";
 import { failEarly, getHeaders } from "../utils";
 
 
@@ -90,7 +89,8 @@ const fixAlias = alias => {
     return alias;
 };
 
-const processPlayer = player => {
+const processPlayer = platform => player => {
+    player.platform = platform;
     player.aliases = player.aliases
         .map(fixAlias)
         .sort((a, b) => b.created_at - a.created_at);
@@ -98,23 +98,21 @@ const processPlayer = player => {
     return player;
 };
 
-const parseResponse = name => players => {
-    stateSet("loading", "sorting players ...");
+const parseResponse = (name, platform) => players => {
     const sorter = playerValue(name);
     const res = players
         .filter(x => x.aliases && x.aliases.length)
-        .map(processPlayer)
+        .map(processPlayer(platform))
         .sort((a, b) => sorter(b) - sorter(a));
     console.table(res.map(x => ({ name: x.name, aliases: x.aliases, value: sorter(x) })));
     return res;
 };
 
-const getUrl = name => `${v2Api}/players?name=${name}`;
+const getUrl = (name, platform) => `${v2Api}/players?name=${name}&platform=${platform}`;
 
-export default function (name) {
-    stateSet("loading", "loading results ...");
-    return fetch(getUrl(name), { headers: getHeaders() })
+export default function (name, platform) {
+    return fetch(getUrl(name, platform), { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())
-        .then(parseResponse(name));
+        .then(parseResponse(name, platform));
 }

@@ -77,7 +77,7 @@ export default {
                 </Question>
                 <Question question="I want to develop my own stuff with r6db data. Do you guys have an API?">
                     <p>
-                        The short answer is yes. Shoot us a mail and we'll get you going. Detailed documentation is in the works. <br />
+                        The short answer is yes. Shoot us a mail and we'll get you going. Detailed documentation is in the works.
                         <em>Just to make it clear: We do and can NOT give any guarantee about uptime and availability.</em> While Muppet does give his best, it is still a hobby project.
                     </p>
                 </Question>
@@ -88,7 +88,7 @@ export default {
                         Jobs are triggered through <a href="https://www.rabbitmq.com">RabbitMQ</a>.
                     </p>
                     <p>
-                        On the frontend, we use <a href="https://mithril.js.org/">Mithril</a> (highly recommended) as framework with <a href="https://github.com/visionmedia/page.js/">PageJS</a> for routing and <a href="https://github.com/Yomguithereal/baobab">Baobab</a> for state management.  
+                        On the frontend, we use <a href="https://mithril.js.org/">Mithril</a> (highly recommended) as framework with <a href="https://redux.js.org">Redix</a> for state management and <a href="https://github.com/faceyspacey/redux-first-router">redux-first-router</a> for routing.
                         <br />
                         We had a strong focus on high performance and small size with visuals coming second. This is the reason why we use so little images and animations.
                         Most images you see are actually SVGs, which scale perfectly and have a small size. <br />

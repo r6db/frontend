@@ -1,4 +1,4 @@
-@import "styles";
+@import "scss/styles";
 
 .drawer{
     position: fixed;
@@ -32,8 +32,7 @@
         width: 100vw;
         height: 100vh;
         left: $menuMaxWidth;
-        transform: translateX(200%);
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.5);
         opacity: 0;
         will-change: opacity;
         display: none;
@@ -43,49 +42,13 @@
             display: none !important;
         }
     }
-    &-burger{
-        position: absolute;
-        top: 12px;
-        width: 40px;
-        height: 36px;
-        margin: 0 $l;
-        cursor: pointer;
-        position: relative;
-        flex: 0;
-
-        span, &:before, &:after{
-            content: "";
-            position: absolute;
-            height: 3px;
-            left: 10px;
-            right: 10px;
-            background: $white;
-        }
-        span{
-            top: 50%;
-            margin-top: -2px;
-        }
-        &:before {
-            top: 10px;
-        }
-        &:after {
-            bottom: 10px;
-        }
-        @include openmenu {
-            display: none;
-        }
-    }
-    &-topcontent{
-        flex: 1 1 0;
-        height: 100%;
-    }
     &-container{
         position: fixed;
         top: 0;
         left: 0;
         height: 100vh;
-        padding-right: 3%;
-        transform: translateX(-97%);
+        transform: translateX(-100%);
+        @include boxshadow;
         transition: all 100ms ease-out;
 
         @include openmenu {
@@ -99,10 +62,10 @@
     &-menu{
         width: 280px;
         height: 100vh;
-        background: white;
-        box-shadow: 0 0 5px $trans-med;
+        @include card;
     }
 }
+
 
 .no-transition >*{
     transition: none !important;

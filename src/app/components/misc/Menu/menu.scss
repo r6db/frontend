@@ -1,9 +1,10 @@
-@import "styles";
+@import "scss/styles";
 .menu{
     width: 100%;
     height: 100vh;
     background: $menu-background;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

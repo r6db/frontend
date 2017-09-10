@@ -17,16 +17,16 @@ export const Pageconfig = Object.freeze({
         menu: true,
         footer: true
     },
-    INITIAL: {
+    HOME: {
         id: "INITIAL",
         class: "is-initial",
         footer: false,
-        menu: false
+        searchbar: false,
     },
     SEARCH: { id: "SEARCH", class: "is-searching" },
     RESULT: { id: "RESULT", class: "is-results" },
     DETAIL: { id: "DETAIL", class: "is-detail" },
-    PROFILE: {id: "PROFILE", class: "is-profile"},
+    PROFILE: { id: "PROFILE", class: "is-profile" },
     LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
     CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
     FAQ: { id: "FAQ", class: "is-faq"}
@@ -44,13 +44,6 @@ export const Leaderboards = {
     EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
     NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
 };
-
-export const isConsole = /(xbox|ps4)/.test(window.location.href);
-export const isPS4 = /(ps4)/.test(window.location.href);
-export const isXbox = /(xbox)/.test(window.location.href);
-export const isPC = !isConsole;
-
-export const platformShorthand = isPS4 ? 'psn' : isXbox ? 'xbl' : 'uplay';
 
 export const DATE_SHORT = "DD. MMM YYYY";
 export const DATE_LONG = "DD. MMM YYYY HH:MM";
@@ -130,7 +123,7 @@ export const Operators = {
 }
 
 export const regions = {
-    emea: "Europe, Africa & M.East",
+    emea: "Europe",
     ncsa: "America",
     apac: "Asia"
 };

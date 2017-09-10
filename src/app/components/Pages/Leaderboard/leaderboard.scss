@@ -1,4 +1,4 @@
-@import "styles";
+@import "scss/styles";
 
 .leaderboard{
     color: $white;
@@ -8,7 +8,8 @@
     margin-right: auto;
 
     &-header{
-        padding: 0 1%;
+        padding: $l;
+        @include card;
     }
     &-title{
         font-size: 3em;
@@ -38,15 +39,19 @@
         margin: 0 auto;
         padding: $l;
     }
-
-    &-region{
+    &-filters{
         margin-top: $l*2;
-
-        &label{
+        p{
+            display: inline-block;
+            margin-right: $l;
+        }
+        label{
             display: inline;
             color: $white;
             font-size: 1rem;
             margin-right: $l;
+        }
+        select{
         }
     }
 }
@@ -59,16 +64,6 @@
     box-shadow: 1px 1px 3px $trans-med;
     position: relative;
 
-
-    &-background{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: 1;
-        z-index: -1;
-    }
     &-place{
         font-size: 2rem;
         display: block;
@@ -169,22 +164,6 @@
         width: 80px;
         height: 80px;
         margin-right: 0 !important; /* fight me */
-    }
-
-    &:nth-child(1){
-        .entry-background{
-            background-image: url(/assets/pattern_gold.svg);
-        }
-    }
-    &:nth-child(2){
-        .entry-background{
-            background-image: url(/assets/pattern_silver.svg);
-        }
-    }
-    &:nth-child(3){
-        .entry-background{
-            background-image: url(/assets/pattern_bronze.svg);
-        }
     }
 }
 

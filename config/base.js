@@ -3,11 +3,9 @@ const path = require("path");
 const util = require("util");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const CompressionPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
 const nano = require("cssnano");
@@ -47,24 +45,6 @@ module.exports = {
                 }
             }
         }, {
-            test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                disable: process.env.NODE_ENV !== "production",
-                use: [
-                    "css-loader",
-                    {
-                        loader: "postcss-loader"
-                    },
-                    {
-                        loader: "sass-loader",
-                        query: {
-                            sourceMap: false,
-                        }
-                    }
-                ],
-            })
-        }, {
             test: /.svg$/,
             use: {
                 loader: "svg-sprite-loader",
@@ -83,12 +63,6 @@ module.exports = {
         ]),
         new webpack.LoaderOptionsPlugin({
             options: {
-                sassLoader: {
-                    includePaths: [
-                        path.resolve(__dirname, "../src/scss")
-                    ],
-                    sourceMap: true
-                },
                 postcss: [autoprefixer(), mqpacker(), cssdedupe(), nano()]
             }
         }),
@@ -96,7 +70,13 @@ module.exports = {
             template: "./src/index.ejs",
             hash: true
         }),
-        new ExtractTextPlugin("styles.css"),
-        new SpriteLoaderPlugin()
+        new SpriteLoaderPlugin(),
+        new CompressionPlugin({
+			asset: "[path].gz[query]",
+			algorithm: "gzip",
+			test: /\.(js|html|css)$/,
+			threshold: 10240,
+			minRatio: 0.8
+		}),
     ]
 };

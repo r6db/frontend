@@ -1,4 +1,4 @@
-@import "styles";
+@import "scss/styles";
 
 .content-wrapper{
     @include openmenu {
@@ -19,20 +19,23 @@
 }
 .app-page{
     position: relative;
-    width: 100%;
+    padding: $l;
+    width: 100vw;
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     backface-visibility: hidden;
-    transform: translateZ(0);
 
     .elementquery{
-        margin-top: $l;
         flex: 1 1 auto;
         display: flex;
-            
+    }
+
+    @include openmenu{
+        width: 100%;
     }
 }
 .app-background{
@@ -45,24 +48,14 @@
     background: #333;
 
     img{
-        min-height: 100vh;
-        min-width: 100vw;
-        height: auto;
-        width: auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        filter: contrast(30%) brightness(50%)
-    }
-
-    svg{
-        height: 100vh;
-        width: 100vw;
         position: absolute;
         top: 0;
         left: 0;
-        will-change: opacity;
-        transition: opacity $tdur ease-out;
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        object-position: 30% 0%;
+        filter: contrast(60%) brightness(30%);
     }
+
 }

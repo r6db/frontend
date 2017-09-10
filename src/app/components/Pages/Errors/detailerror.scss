@@ -1,0 +1,19 @@
+@import "scss/styles";
+
+.detailerror{
+
+    height: auto;
+    max-width: $screen-yourmom;
+    width: 100%;
+    margin: 0 auto;
+    align-self: flex-start;
+    border-left: 3px solid $danger;
+
+    @include card;
+
+    &-title{ @include card-header; }
+    &-content{
+        @include card-content;
+        line-height: 1.5;
+    }
+}

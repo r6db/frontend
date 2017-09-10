@@ -1,9 +1,8 @@
-@import "styles";
+@import "scss/styles";
 
 .search{
     max-width: 1024px;
     width: 100%;
-    padding: 0 $l;
     margin: 0 auto;
 
     &-query{

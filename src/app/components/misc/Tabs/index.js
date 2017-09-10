@@ -1,7 +1,6 @@
 import m from "mithril";
 import TabHeader from "./TabHeader";
 import "./tabs.scss";
-import page from "page";
 
 const isSelected = (expected, current) => expected === current;
 

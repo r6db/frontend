@@ -1,7 +1,7 @@
 @mixin btnvariant($color, $fontcolor:$white){
-    @include boxshadow;
     border-color: transparent;
     background: $color;
+    box-shadow: 0 2px 4px darken($color, 40%);
     color: $fontcolor;
         &:hover, &:focus{
             background: darken($color, 10%);
@@ -31,6 +31,28 @@
         outline: none;
     }
 }
+@mixin card {
+    background: $gray-dark;
+    box-shadow: 0px 2px 2px darken($gray-dark, 10%);
+    color: $white;
+}
+@mixin card-header{
+    padding: (0.5*$l) $l 0;
+    font-size: 1.125em;
+
+    &:first-child{
+        padding-top: $l;
+    }
+}
+@mixin card-content{
+    padding: $l;
+}
+@mixin card-divider{
+    width: 80%;
+    height: 1px;
+    background: lighten($gray-dark, 15%);
+    margin: $l 10%;
+}
 
 @mixin clearfix {
     &:after {
@@ -40,11 +62,26 @@
     }
 }
 
+@mixin placeholder-color($color){
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &::-moz-placeholder {
+        color: $color;
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+    &:-moz-placeholder {
+        color: $color;
+    }
+}
+
 @mixin textshadow{
     text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
 }
 @mixin boxshadow{
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px $gray-dark;
 }
 
 

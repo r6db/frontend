@@ -5,23 +5,25 @@ $skull-rain: #47893b;
 $red-crow: #bd1e2c;
 $velvet-shell: #6e3c87;
 $operation-health: #4a74a9;
+$blood-orchid: #ca361c;
 
-
-$primary: $operation-health;
-$accent: #ffdb00;
-$link: #2d95cf;
+$primary: $blood-orchid;
+$accent: mix(#ffdb00, $primary, 70%);
+$link: mix(#2d95cf, $primary, 70%);
 $black: desaturate(darken($primary, 25%), 50%); //#030502;
-$gray-dark: #2f302f;
-$gray: lighten($gray-dark, 30%);
-$gray-light: #eae8de;
+
+$gray-dark: hsl(hue($primary), 3%, 10%);
+$gray: lighten($gray-dark, 40%);
+$gray-light: hsl(hue($primary), 5%, 95%);
 $blue-dark: rgb(16, 26, 36);
 $trans-high: rgba(16, 16, 16, 0.25);
 $trans-med: rgba(16, 16, 16, 0.5);
 $trans-low: rgba(16, 16, 16, 0.75);
-$white: #fefefe;
-$success: #17bebb;
-$warn: #ffc914;
-$danger: #e4562e;
+$white: hsl(hue($primary), 5%, 95%);
+$success: mix(#17bebb, $primary, 95%);
+$warn: mix(#ffc914, $primary, 95%);
+$danger: mix(#B62F23, $primary, 95%);
+
 $l: 10px;
 
 $font-tiny: .5rem;
@@ -37,7 +39,7 @@ $font-huge: 2.5rem;
 $topbar-height: $l*6;
 $nav-height: 32px;
 $menu-width: 300px;
-$menu-background: #272727;
+$menu-background: $gray-dark;
 $menu-height: $l*4;
 $menuMaxWidth: 280px;
 $menuMaxOpacity: 0.8;

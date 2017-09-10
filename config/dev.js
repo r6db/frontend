@@ -16,7 +16,7 @@ config.devServer = {
     disableHostCheck: true,
     proxy: [{
         path: "/api",
-        target: "https://r6db.com",
+        target: "https://new.r6db.com",
         changeOrigin: true
     }],
     historyApiFallback: true,
@@ -44,6 +44,16 @@ config.devServer = {
     }
 };
 
+config.module.rules.push({
+    test: /\.scss$/,
+    use: [
+        { loader: "style-loader" },
+        { loader: "css-loader" },
+        { loader: "postcss-loader" },
+        { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")]} }
+    ]
+});
+config.plugins.push(new webpack.NamedModulesPlugin());
 config.plugins.push(new webpack.DefinePlugin({
     "process.env": {
         "NODE_ENV": JSON.stringify("development")

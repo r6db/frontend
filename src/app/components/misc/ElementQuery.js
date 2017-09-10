@@ -1,8 +1,9 @@
 import * as m from "mithril";
 import debounce from "lib/debounce";
+import { connect } from "lib/store/connect";
 
 const listener = function (e) {
-    console.debug("window resized. triggering ElementQuery")
+    console.debug("window resized. triggering ElementQuery");
     listeners.forEach(f => f(e));
     m.redraw();
 };
@@ -11,7 +12,7 @@ let listeners = [];
 
 
 
-export default {
+const Elementquery = {
     oninit({ attrs, state }) {
         state.mediaClass = "";
 
@@ -24,6 +25,8 @@ export default {
 
         state.onResize = function () {
             const width = dom.clientWidth;
+            if (width < 1304) { attrs.closeMenu(); }
+
             state.mediaClass = Object.keys(attrs.query)
                 .reduce((acc, curr) => {
                     return (width > attrs.query[curr])
@@ -45,3 +48,9 @@ export default {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    closeMenu: () => dispatch({ type: "MENU_CLOSE" })
+})
+
+export default connect(false, mapDispatchToProps)(Elementquery);

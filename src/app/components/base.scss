@@ -1,5 +1,5 @@
-@import "styles";
-@import "components/reset";
+@import "scss/styles";
+@import "scss/components/reset";
 
 
 @font-face {
@@ -35,6 +35,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    font-weight: normal;
 }
 .content{
     flex: 1 0 500px;
@@ -76,10 +77,11 @@ input{
 
 select{
     padding: $l;
-    background: $trans-low;
+    background: darken($gray-dark, 3%);
     color: $white;
     display: inline-block;
     -webkit-appearance: none;
+    box-shadow: 0 2px 4px darken(darken($gray-dark, 3%), 40%);
 }
 
 label{
@@ -105,5 +107,5 @@ label{
     min-width:0;
 }
 
-@import "components/button";
-@import "components/card";
+@import "scss/components/button";
+@import "scss/components/card";

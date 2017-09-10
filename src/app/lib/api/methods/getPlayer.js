@@ -1,5 +1,4 @@
 import { v2Api } from "lib/constants";
-import { set as stateSet } from "lib/appstate";
 import { failEarly, getHeaders } from "../utils";
 
 const fixAlias = alias => {
@@ -12,7 +11,6 @@ const fixAlias = alias => {
 
 
 const getPlayer = id => {
-    stateSet("loading", "getting data ...");
     return fetch(`${v2Api}/players/${id}`, { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json());
@@ -26,32 +24,10 @@ const handleResponse = player => {
         player.stats = null;
     }
 
-    stateSet("loading", "crunching data ...");
     player.flags = {
-        noAliases: false,
-        noPlaytime: false,
-        noRanked: false
+        noAliases: !player.aliases || !player.aliases.length,
+        noPlaytime: (!player.lastPlayed || (!player.lastPlayed.casual && !player.lastPlayed.ranked))
     };
-
-    // check if player has aliases
-    if (!player.aliases) {
-        player.flags.noAliases = true;
-        throw new Error("player object has no aliases");
-    }
-
-    // check if has playtime
-    if (!player.lastPlayed || (!player.lastPlayed.casual && !player.lastPlayed.ranked)) {
-        player.flags.noPlaytime = true;
-    }
-
-    // check if has rank
-    const noNcsa = player.rank && player.rank.ncsa.rank === 0;
-    const noApac = player.rank && player.rank.apac.rank === 0;
-    const noEmea = player.rank && player.rank.emea.rank === 0;
-    const noRank = noNcsa && noApac && noEmea;
-    if (!player.rank || noRank) {
-        player.flags.noRanked = true;
-    }
 
     const allRanks = player.seasonRanks
         .concat(player.rank)
@@ -67,7 +43,7 @@ const handleResponse = player => {
     player.pastRanks = allRanks.map(x => {
         return [x.ncsa, x.emea, x.apac]
             .map(y => ({ rank: y.max_rank, season: x.season, mmr: y.max_mmr.toFixed(2) }))
-            .sort((a, b) => b.rank - a.rank)[0]
+            .sort((a, b) => b.mmr - a.mmr)[0]
     })
     .sort((a, b) => b.season - a.season);
 

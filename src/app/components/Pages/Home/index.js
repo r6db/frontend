@@ -1,6 +1,6 @@
 import * as m from "mithril";
-import "./home.scss";
 import Searchbar from "components/misc/Searchbar";
+import "./home.scss";
 
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
@@ -8,7 +8,7 @@ const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA
 const showPlayer = id => e => page("/player/" + id);
 
 export default {
-    oncreate({ dom }) { 
+    oncreate({ dom }) {
         const search = dom.querySelector(".search-input input");
         if (search && !window.ontouchstart) {
             search.focus();
@@ -18,8 +18,11 @@ export default {
         return (
             <div className="home">
                 <Searchbar
-                    className="menu-search"    
+                    className="menu-search"
                     search={attrs.search} />
+                <div className="home-disclaimer">
+                    We merged all platforms together!<br />Check the dropdown in the searchbar and leaderboard.
+                </div>
             </div>
         );
     }
