@@ -23,8 +23,10 @@ const tracker = new Promise((resolve, reject) => {
     g.addEventListener("error", reject);
 
     function onLoad() {
-        const tracker = Piwik.getTracker(analyticsDomain + "piwik.php", "1");
-        resolve(tracker);
+        try {
+            const tracker = Piwik.getTracker(analyticsDomain + "piwik.php", "1");
+            resolve(tracker);
+        } catch (e) { reject(e); }
     }
 });
 
