@@ -13,6 +13,7 @@ export default {
             tracker.trackPageView("search");
             const { location } = getState();
             const { query, platform } = location.payload;
+            dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
                     tracker.trackSiteSearch(query, platform, result.length);
