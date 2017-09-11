@@ -14,6 +14,9 @@ export default {
             high: 1.5
         }, attrs.scales || {});
         const val = attrs.reverse ? -attrs.value : attrs.value;
+        if (!val) {
+            return <span className={`scale`}></span>;
+        }
         if (val < attrs.neutral * scale.low) { type = "is-low"; }
         else if (val < attrs.neutral * scale.midLow) { type = "is-med-low";}
         else if (val >= attrs.neutral * scale.midLow && attrs.value <= attrs.neutral*scale.midHigh ) { type = "is-med";}
