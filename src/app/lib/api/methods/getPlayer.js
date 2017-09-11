@@ -43,7 +43,10 @@ const handleResponse = player => {
     player.pastRanks = allRanks.map(x => {
         return [x.ncsa, x.emea, x.apac]
             .map(y => ({ rank: y.max_rank, season: x.season, mmr: y.max_mmr.toFixed(2) }))
-            .sort((a, b) => b.mmr - a.mmr)[0]
+            .sort((a, b) => b.rank != a.rank
+                ? b.rank - a.rank
+                : b.mmr - a.mmr
+            )[0]
     })
     .sort((a, b) => b.season - a.season);
 
