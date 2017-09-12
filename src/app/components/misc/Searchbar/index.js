@@ -6,11 +6,6 @@ import "./searchbar.scss";
 const Searchbar = {
     oninit({ attrs, state }) {
         state.query = attrs.search || "";
-        state.onEnter = e => {
-            if (e.keyCode === 13) {
-                state.onSearch();
-            }
-        };
         state.onSearch = function (e) {
             if (e && "preventDefault" in e) {
                 e.preventDefault();
@@ -31,12 +26,11 @@ const Searchbar = {
                     <input type="text"
                         value={state.query}
                         placeholder="player name"
-                        oninput={state.onQueryChange}
-                        onkeypress={state.onEnter} />
+                        oninput={state.onQueryChange} />
                     <select value={attrs.platform} onchange={m.withAttr("value", attrs.setPlatform)}>
                         <option value="PC">PC</option>
                         <option value="PS4">PS4</option>
-                        <option value="XBOX">XBOX</option>
+                        <option value="XBOX">XB1</option>
                     </select>
                 </div>
                 <button className="button is-primary search-submit">Search</button>
@@ -48,8 +42,10 @@ const Searchbar = {
 const mapStateToProps = getState => ({ platform: getState().platform });
 const mapDispatchToProps = (dispatch, getState) => ({
     goSearch: name => {
-        const { platform } = getState();
-        dispatch({ type: "SEARCH", payload: { query: name, platform } })
+        const { platform, loading } = getState();
+        if (!loading) {
+            dispatch({ type: "SEARCH", payload: { query: name, platform } })
+        }
     },
     goHome: () => dispatch({ type: "HOME" }),
     setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl })
