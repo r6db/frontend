@@ -12,7 +12,7 @@ const createLogger = ({ getState }) => next => action => {
     const returnValue = next(action);
     const nextState = getState();
     const actionType = String(action.type);
-    console.debug(`old state\t%o\naction\t\t%o\nnew state\t%o`, prevState, action, nextState);
+    console.debug(`old state\t%o\naction %s\t%o\nnew state\t%o`, prevState, action.type, action, nextState);
     return returnValue;
   };
 
