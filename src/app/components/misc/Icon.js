@@ -66,6 +66,9 @@ import YING from "assets/operators/ying.svg";
 
 export default {
     view({ attrs }) {
+        if (!attrs.glyph) {
+            return m("svg.icon");
+        }
         return m("svg.icon", {
             viewBox: attrs.glyph.viewBox,
             preserveAspectRatio: attrs.preserveAspectRatio,
