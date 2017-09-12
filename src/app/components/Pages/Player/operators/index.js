@@ -1,7 +1,8 @@
 import * as m from "mithril";
 import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
-import Chart, {colors, labelInterpolationFnc} from 'components/misc/Chart';
+import Chart, { colors, labelInterpolationFnc } from 'components/misc/Chart';
+import Icon, { GLYPHS } from "components/misc/Icon";
 import Scale from "components/misc/Scale";
 import "./opstab.scss";
 import "./fauxtable.scss";
@@ -71,8 +72,8 @@ export default {
                     id: curr,
                     wlr: stats.getWinChanceRaw(op),
                     kdr: (op.kills) / (op.deaths || 1),
-                    kpr: (op.kills / ((op.won + op.lost) || 1)),
-                    survivalRate: 100 - ((op.deaths / (op.won + op.lost)) * 100) || 0,
+                    kpr: (op.kills / (((op.won || 0) + (op.lost || 0)) || 1)),
+                    survivalRate: 100 - (((op.deaths ||0) / ((op.won ||0) + (op.lost || 0))) * 100) || 0,
                 }));
                 return acc;
             }, []);
@@ -262,11 +263,14 @@ export default {
                             .map(datum => (
                             <div>
                                 <div key={datum.id} className="fauxtable-row">
-                                    <div className="fauxtable-cell name" onclick={ () => state.toggleOp(datum.id) }>{datum.name}</div>
+                                    <div className="fauxtable-cell name" onclick={() => state.toggleOp(datum.id)}>
+                                        <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
+                                        {datum.name}
+                                    </div>
                                     <div className="fauxtable-cell won">{datum.won || 0}</div>
                                     <div className="fauxtable-cell lost">{datum.lost || 0}</div>
                                     <div className="fauxtable-cell wlr">
-                                        <Scale value={datum.wlr} neutral={50}>%</Scale>
+                                        <Scale value={datum.wlr*100} neutral={50}>%</Scale>
                                     </div>
                                     <div className="fauxtable-cell kills">{datum.kills || 0}</div>
                                     <div className="fauxtable-cell deaths">{datum.deaths || 0}</div>

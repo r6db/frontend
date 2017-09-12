@@ -14,19 +14,23 @@ let listeners = [];
 
 const Elementquery = {
     oninit({ attrs, state }) {
-        state.mediaClass = "";
-
         if (!attrs.query) {
             console.error("Please pass an object with string keys (class) and integer values (breakpoint)");
             throw new Error("ElementQuery attr: 'query' not given");
         }
      },
     oncreate({ attrs, state, dom }) {
+        const w = dom.clientWidth;
+        state.mediaClass = Object.keys(attrs.query)
+        .reduce((acc, curr) => {
+            return (w > attrs.query[curr])
+                ? acc + " " + curr
+                : acc;
+        }, "");
 
         state.onResize = function () {
             const width = dom.clientWidth;
             if (width < 1304) { attrs.closeMenu(); }
-
             state.mediaClass = Object.keys(attrs.query)
                 .reduce((acc, curr) => {
                     return (width > attrs.query[curr])

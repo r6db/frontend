@@ -47,7 +47,7 @@ export default {
                         {
                             !attrs.twitch ? "" :
                             <a href={attrs.twitch} target="_BLANK">
-                                <Icon fill="#fff" glyph={GLYPHS.TWITCH} /> Twitch
+                                <Icon fill="#fff" glyph={GLYPHS.TWITCHTV} /> Twitch
                             </a>
                         }
                         <a href={getProfileLink(attrs)} target="_BLANK">

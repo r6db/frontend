@@ -22,6 +22,15 @@
     .operator-table{
         flex: 1;
 
+        .icon{
+            width: 2em;
+            height: 2em;
+            vertical-align: middle;
+            @include medium{
+                margin-right: $l*0.5;
+            }
+        }
+
         .fauxtable-cell{
             text-align: right;
         }
