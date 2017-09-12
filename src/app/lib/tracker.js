@@ -12,8 +12,8 @@ const tracker = new Promise((resolve, reject) => {
     window._paq.push(["setTrackerUrl", analyticsDomain + "piwik.php"]);
     window._paq.push(["setSiteId", "1"]);
     const d = document,
-    g = d.createElement("script"),
-    s = d.getElementsByTagName("script")[0];
+        g = d.createElement("script"),
+        s = d.getElementsByTagName("script")[0];
     g.type = "text/javascript";
     g.async = true;
     g.defer = true;
@@ -25,21 +25,25 @@ const tracker = new Promise((resolve, reject) => {
     function onLoad() {
         try {
             const tracker = Piwik.getTracker(analyticsDomain + "piwik.php", "1");
-            resolve(tracker);
+            if (tracker && tracker.trackPageView) {
+                resolve(tracker);
+            } else {
+                reject(new Error("invalid tracker"));
+            }
         } catch (e) { reject(e); }
     }
-});
+}).catch(e => { });
 
 export function trackPageView(title) {
-    tracker.then(t => t.trackPageView(title));
+    tracker.then(t => t && t.trackPageView(title));
 }
 
 export function trackSiteSearch(query, category, numResults) {
-    tracker.then(t => t.trackSiteSearch(query, category, numResults));
+    tracker.then(t => t && t.trackSiteSearch(query, category, numResults));
 }
 export function trackEvent(category, action, name, value) {
-    tracker.then(t => t.trackEvent(category, action, name, value));
+    tracker.then(t => t && t.trackEvent(category, action, name, value));
 }
 export function trackGoal(goal, value) {
-    tracker.then(t => t.trackGoal(goal, value));
+    tracker.then(t => t && t.trackGoal(goal, value));
 }
