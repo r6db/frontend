@@ -9,14 +9,14 @@ export const formatDuration = seconds => {
 }
 export const formatDate = date => (new Date(date).toLocaleDateString());
 
-export const getWinChanceRaw = (obj) => obj.won * 100 / ((obj.won + obj.lost) || 1);
-export const getWinChance = (obj) => getWinChanceRaw(obj).toFixed(2) + "%";
+export const getWinChanceRaw = (obj) => obj.won / (((obj.won || 0) + (obj.lost || 0)) || 1);
+export const getWinChance = (obj) => (getWinChanceRaw(obj) * 100).toFixed(2) + "%";
 
 export const getKillRatioRaw = obj => obj.kills / (obj.deaths || 1);
 export const getKillRatio = obj => getKillRatioRaw(obj).toFixed(2);
 
-export const getKdaRatopRaw = obj => ((obj.kills) + (obj.assists || 0)) / (obj.deaths || 1);
-export const getKdaRatio = obj => getKdaRatopRaw(obj).toFixed(2);
+export const getKdaRatioRaw = obj => ((obj.kills) + (obj.assists || 0)) / (obj.deaths || 1);
+export const getKdaRatio = obj => getKdaRatioRaw(obj).toFixed(2);
 
 export const getRankWinChanceRaw = (obj) => obj.wins / ((obj.wins + obj.losses + obj.abandons) || 1);
 export const getRankWinChance = (obj) => (getRankWinChanceRaw(obj) * 100).toFixed(2) + "%";

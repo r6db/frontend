@@ -5,7 +5,7 @@ import DOWNLOAD from "assets/download.svg";
 import UBI from "assets/ubi.svg";
 import ESL from "assets/esl.svg";
 import TWITTER from "assets/twitter.svg";
-import TWITCH from "assets/twitch.svg";
+import TWITCHTV from "assets/twitchtv.svg";
 import EMAIL from "assets/email.svg";
 import NOAVATAR from "assets/noavatar.svg";
 import RANK0 from "assets/ranks/0.svg";
@@ -29,6 +29,40 @@ import RANK17 from "assets/ranks/17.svg";
 import RANK18 from "assets/ranks/18.svg";
 import RANK19 from "assets/ranks/19.svg";
 import RANK20 from "assets/ranks/20.svg";
+
+import ASH from "assets/operators/ash.svg";
+import BANDIT from "assets/operators/bandit.svg";
+import BLACKBEARD from "assets/operators/blackbeard.svg";
+import BLITZ from "assets/operators/blitz.svg";
+import BUCK from "assets/operators/buck.svg";
+import CAPITAO from "assets/operators/capitao.svg";
+import CASTLE from "assets/operators/castle.svg";
+import CAVEIRA from "assets/operators/caveira.svg";
+import DOC from "assets/operators/doc.svg";
+import ECHO from "assets/operators/echo.svg";
+import ELA from "assets/operators/ela.svg";
+import FROST from "assets/operators/frost.svg";
+import FUZE from "assets/operators/fuze.svg";
+import GLAZ from "assets/operators/glaz.svg";
+import HIBANA from "assets/operators/hibana.svg";
+import IQ from "assets/operators/iq.svg";
+import JACKAL from "assets/operators/jackal.svg";
+import JAGER from "assets/operators/jager.svg";
+import KAPKAN from "assets/operators/kapkan.svg";
+import LESION from "assets/operators/lesion.svg";
+import MIRA from "assets/operators/mira.svg";
+import MONTAGNE from "assets/operators/montagne.svg";
+import MUTE from "assets/operators/mute.svg";
+import PULSE from "assets/operators/pulse.svg";
+import ROOK from "assets/operators/rook.svg";
+import SLEDGE from "assets/operators/sledge.svg";
+import SMOKE from "assets/operators/smoke.svg";
+import TACHANKA from "assets/operators/tachanka.svg";
+import THATCHER from "assets/operators/thatcher.svg";
+import THERMITE from "assets/operators/thermite.svg";
+import TWITCH from "assets/operators/twitch.svg";
+import VALKYRIE from "assets/operators/valkyrie.svg";
+import YING from "assets/operators/ying.svg";
 
 export default {
     view({ attrs }) {
@@ -74,4 +108,37 @@ export const GLYPHS = {
     RANK18,
     RANK19,
     RANK20,
+    ASH,
+    BANDIT,
+    BLACKBEARD,
+    BLITZ,
+    BUCK,
+    CAPITAO,
+    CASTLE,
+    CAVEIRA,
+    DOC,
+    ECHO,
+    ELA,
+    FROST,
+    FUZE,
+    GLAZ,
+    HIBANA,
+    IQ,
+    JACKAL,
+    JAGER,
+    KAPKAN,
+    LESION,
+    MIRA,
+    MONTAGNE,
+    MUTE,
+    PULSE,
+    ROOK,
+    SLEDGE,
+    SMOKE,
+    TACHANKA,
+    THATCHER,
+    THERMITE,
+    TWITCH,
+    VALKYRIE,
+    YING,
 };
