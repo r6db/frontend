@@ -90,6 +90,10 @@
             border-left: 3px solid $operation-health;
             .rankoverview-past-season{ color: $operation-health;}
         }
+        &.season-7{
+            border-left: 3px solid $blood-orchid;
+            .rankoverview-past-season{ color: $blood-orchid;}
+        }
 
         &-icon{
             height: $l*5;
