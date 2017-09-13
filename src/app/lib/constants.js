@@ -83,7 +83,8 @@ export const Seasons = [
     "Skull Rain",
     "Red Crow",
     "Velvet Shell",
-    "Operation Health"
+    "Operation Health",
+    "Blood Orchid",
 ]
 
 export const Operators = {
