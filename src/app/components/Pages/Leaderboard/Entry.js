@@ -16,33 +16,30 @@ const getTrendClass = (curr, prev) => {
 }
 const TrendIndicator = (entry) => {
     const diff = entry.previousplacement - entry.placement
-    if (!entry.previousplacement || entry.placement == entry.previousplacement) {
-        return (
-            <div className="entry-position">
-                <div>
-                    <span className="entry-positiontext">
-                        {entry.placement}
-                    </span>
-                </div>
+    return (
+        <div className="entry-position">
+            <div>
+                <span className="entry-positiontext">
+                    {entry.placement}
+                </span>
+                {entry.previousplacement
+                    ? (
+                        <span className={`entry-trend ${getTrendClass(entry.placement, entry.previousplacement)}`}>
+                            (
+                            <span className="entry-trendicon">{diff === 0 ? "▶" : diff > 0 ? "▲" : "▼"}</span>
+                            {Math.abs(diff)}
+                            )
+                        </span>
+                    )
+                    : (
+                        <span className={`entry-trend is-new`}>
+                            ( new )
+                        </span>
+                    )
+                }
             </div>
-        );
-    } else {
-        return (
-            <div className="entry-position">
-                <div>
-                    <span className="entry-positiontext">
-                        {entry.placement}
-                    </span>
-                    <span className={`entry-trend ${getTrendClass(entry.placement, entry.previousplacement)}`}>
-                        (
-                        <span className="entry-trendicon">{diff > 0 ? "▲" : "▼"}</span>
-                        {Math.abs(diff)}
-                        )
-                    </span>
-                </div>
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default {

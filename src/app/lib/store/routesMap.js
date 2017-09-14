@@ -31,35 +31,38 @@ export default {
     LEADERBOARD_ENTRY: {
         path: "/leaderboard",
         thunk: async (dispatch, getState) => {
-            dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL" } }));
+            const platform = getState().platform;
+            dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
         }
     },
     CHANKABOARD: {
         path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
-            tracker.trackPageView("search");
-            tracker.trackEvent("leaderboard", "view", "board", "chanka");
-            dispatch({ type: "PLATFORM", payload: platform });
-            api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
-                .then(entries => {
-                    setMeta({
-                        title: "LMG kills leaderboard",
-                        description: "top 100 Tachanka players in our database",
-                        type: "website"
-                    });
-                    dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } })
-                })
-                .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
+            dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
+            return;
+            // tracker.trackPageView("leaderboard");
+            // tracker.trackEvent("leaderboard", "view", "board", "chanka");
+            // dispatch({ type: "PLATFORM", payload: platform });
+            // api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
+            //     .then(entries => {
+            //         setMeta({
+            //             title: "LMG kills leaderboard",
+            //             description: "top 100 Tachanka players in our database",
+            //             type: "website"
+            //         });
+            //         dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } });
+            //     })
+            //     .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
         }
     },
     LEADERBOARD: {
         path: "/leaderboard/:platform/:board",
         thunk: async (dispatch, getState) => {
             const { board: b, platform } = getState().location.payload;
-            const board = b.toUpperCase();
-            if (board === "CHANKA") { return; }
-            tracker.trackPageView("search");
+            const board = (b || "").toUpperCase();
+            if (!board || board === "CHANKA") { return; }
+            tracker.trackPageView("leaderboard");
             tracker.trackEvent("leaderboard", "view", "board", board);
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
