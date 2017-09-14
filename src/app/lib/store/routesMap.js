@@ -16,7 +16,7 @@ export default {
             dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
-                    tracker.trackSiteSearch(query, platform, result.length);
+                    tracker.trackSiteSearch(query.toLowerCase(), platform.toUpperCase(), result.length);
                     setMeta({
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
