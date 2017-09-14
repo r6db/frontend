@@ -94,9 +94,9 @@
         align-items: center;
         width: 100%;
         height: 100%;
-        background: $trans-med;
+        background: $trans-low;
 
-        span{
+        >div{
             position: absolute;
             top: 50%;
             left: 50%;
@@ -104,6 +104,18 @@
             font-size: $font-bigger;
             color: $white;
         }
+    }
+    &-trend{
+        margin-left: 0.5*$l;
+        font-size: $font-small;
+        line-height: $font-bigger;
+        vertical-align: text-bottom;
+
+        &.is-up{ color: $success; }
+        &.is-down{ color: $danger; }
+    }
+    &-trendicon{
+        font-weight: bold;
     }
     &-valuelabel{
         display: none;
@@ -118,12 +130,14 @@
     &-value{
         display: inline;
         font-weight: bold;
-        font-size:  $font-huge;
+        font-size: 1em;
+
+        @include medium{
+            font-size: $font-huge;
+        }
     }
     .playercard-image{
-        @include medium{
-            margin-right: $l*2;
-        }
+        width: $l*8;
     }
     .playercard-name{
         max-width: 8em;
@@ -161,14 +175,13 @@
         font-size: $font-bigger;
     }
     .playercard-image{
-        width: 80px;
-        height: 80px;
-        margin-right: 0 !important; /* fight me */
+        width: $l*8;
+        height: $l*8;
     }
 }
 
 #chanky {
-    width: 30px;
+    width: $l*3;
     position: absolute;
-    left: 30px;
+    left: $l*3;
 }
