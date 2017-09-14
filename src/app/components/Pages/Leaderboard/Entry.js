@@ -15,7 +15,7 @@ const getTrendClass = (curr, prev) => {
     }
 }
 const TrendIndicator = (entry) => {
-    const diff = entry.previousplacement - entry.placement
+    const diff = (entry.previousplacement - entry.placement) || 0;
     return (
         <div className="entry-position">
             <div>
