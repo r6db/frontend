@@ -14,14 +14,14 @@ export default {
             high: 1.5
         }, attrs.scales || {});
         const val = attrs.reverse ? -attrs.value : attrs.value;
-        if (!val) {
+        if (val == null) {
             return <span className={`scale`}></span>;
         }
-        if (val < attrs.neutral * scale.low) { type = "is-low"; }
-        else if (val < attrs.neutral * scale.midLow) { type = "is-med-low";}
-        else if (val >= attrs.neutral * scale.midLow && attrs.value <= attrs.neutral*scale.midHigh ) { type = "is-med";}
-        else if (val > attrs.neutral * scale.midHigh) { type = "is-med-high";}
-        else if (val > attrs.neutral * high) { type = "is-high"; }
+        if (val <= attrs.neutral * scale.low) { type = "is-low"; }
+        if (val <= attrs.neutral * scale.midLow) { type = "is-med-low";}
+        if (val > attrs.neutral * scale.midLow && attrs.value < attrs.neutral*scale.midHigh ) { type = "is-med";}
+        if (val >= attrs.neutral * scale.midHigh) { type = "is-med-high";}
+        if (val >= attrs.neutral * scale.high) { type = "is-high"; }
 
         return <span className={`scale ${type}`}>{asString(attrs.value)}{children}</span>
     }

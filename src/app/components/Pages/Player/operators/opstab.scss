@@ -52,6 +52,10 @@
             }
         }
         .name{
+            height: 4em;
+        }
+
+        .fauxtable-cell.name{
             text-align: center;
         }
 
@@ -63,6 +67,7 @@
             .name{
                 text-align: left;
                 flex-grow: 4;
+                height: auto;
                 cursor: pointer;
             }
             .won{
