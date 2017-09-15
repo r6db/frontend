@@ -68,12 +68,18 @@ export default {
         const ops = state.ops = Object.keys(attrs.stats.operator)
             .reduce((acc, curr) => {
                 const op = attrs.stats.operator[curr];
+                const k = op.kills || 0;
+                const d = op.deaths || 0;
+                const w = op.won || 0;
+                const l = op.lost || 0;
+                const p = w + l || 1;
+                const svl = (1 - (d / p)) * 100;
                 acc.push(Object.assign({}, op, Operators[curr],  {
                     id: curr,
                     wlr: stats.getWinChanceRaw(op),
-                    kdr: (op.kills) / (op.deaths || 1),
-                    kpr: (op.kills / (((op.won || 0) + (op.lost || 0)) || 1)),
-                    survivalRate: 100 - (((op.deaths ||0) / ((op.won ||0) + (op.lost || 0))) * 100) || 0,
+                    kdr: k / (d || 1),
+                    kpr: (k / p),
+                    survivalRate:  svl > 0 ? svl : 0,
                 }));
                 return acc;
             }, []);
@@ -278,7 +284,7 @@ export default {
                                         <Scale value={datum.kdr} neutral={1} />
                                     </div>
                                     <div className="fauxtable-cell kpr">
-                                        <Scale value={datum.kpr} neutral={0.5} />
+                                        <Scale value={datum.kpr} neutral={1} />
                                     </div>
                                     <div className="fauxtable-cell survival">
                                             <Scale value={datum.survivalRate} neutral={50}>%</Scale>
