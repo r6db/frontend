@@ -9,7 +9,7 @@ export const formatDuration = seconds => {
 }
 export const formatDate = date => (new Date(date).toLocaleDateString());
 
-export const getWinChanceRaw = (obj) => (obj.won || 0) / (((obj.won || 0) + (obj.lost || 0)) || 1);
+export const getWinChanceRaw = (obj) => (obj.won || 0) / (((obj.won || 0) + (obj.lost || 0)) + (obj.abandons || 0) || 1);
 export const getWinChance = (obj) => (getWinChanceRaw(obj) * 100).toFixed(2) + "%";
 
 export const getKillRatioRaw = obj => obj.kills / (obj.deaths || 1);
