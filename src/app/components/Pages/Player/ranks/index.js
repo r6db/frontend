@@ -6,7 +6,7 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 const sorters = [
     { key: "region", label: "region", fn: (a, b) => ((a.region < b.region ? -1 : (a.region > b.region ? 1 : 0))) },
     { key: "season", label: "season", fn: (a, b) => (b.season - a.season) },
-    { key: "rank", label: "rank", fn: (a, b) => (b.rank - a.rank) },
+    { key: "max rank", label: "rank", fn: (a, b) => (b.rank - a.rank) },
     { key: "mmr", label: "mmr", fn: (a, b) => (b.mmr - a.mmr) },
     { key: "max_mmr", label: "max mmr", fn: (a, b) => (b.max_mmr - a.max_mmr) },
     { key: "skill_mean", label: "skill", fn: (a, b) => (b.skill_mean - a.skill_mean) },
@@ -133,8 +133,8 @@ export default {
                                     <div className="fauxtable-cell region">{regions[datum.region]}</div>
                                     <div className="fauxtable-cell ">{datum.season}</div>
                                     <div className="fauxtable-cell rank">
-                                        <Icon className="rank-image" glyph={GLYPHS["RANK" + datum.rank]} />
-                                        <span class="ranks-text">{Ranks[datum.rank].replace("Unranked", "")}</span>
+                                        <Icon className="rank-image" glyph={GLYPHS["RANK" + datum.max_rank]} />
+                                        <span class="ranks-text">{Ranks[datum.max_rank].replace("Unranked", "")}</span>
                                     </div>
                                     <div className="fauxtable-cell mmr">{datum.mmr.toFixed(2)}</div>
                                     <div className="fauxtable-cell max_mmr">{datum.max_mmr.toFixed(2)}</div>

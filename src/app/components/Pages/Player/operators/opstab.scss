@@ -26,7 +26,10 @@
             width: 2em;
             height: 2em;
             vertical-align: middle;
+            display: block;
+            margin: 0 auto;
             @include medium{
+                display: inline-block;
                 margin-right: $l*0.5;
             }
         }
