@@ -8,15 +8,15 @@ import "./opstab.scss";
 import "./fauxtable.scss";
 
 const sorters = [
-    { key: "name", label: "name", fn: (a, b) => ((a.name < b.name ? -1 : (a.name > b.name ? 1 : 0))) },
+    { key: "name", label: "name", fn: (a, b) => (a.name.localeCompare(b.name)) },
     { key: "won", label: "won", fn: (a, b) => (b.won - a.won) },
     { key: "lost", label: "lost", fn: (a, b) => (b.lost - a.lost) },
     { key: "wlr", label: "win ratio", fn: (a, b) => (stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a)) },
     { key: "kills", label: "kills", fn: (a, b) => (b.kills - a.kills) },
     { key: "deaths", label: "deaths", fn: (a, b) => (b.deaths - a.deaths) },
     { key: "kdr", label: "k/d ratio", fn: (a, b) => (stats.getKillRatio(b) - stats.getKillRatio(a)) },
-    { key: "kpr", label: "kpr", fn: (a, b) => (b.kpr - a.kpr) },
-    { key: "survival", label: "survival rate", fn: (a, b) => (b.survivalRate - a.survivalRate) },
+    { key: "kpr", label: "kills/round", fn: (a, b) => (b.kpr - a.kpr) },
+    { key: "survival", label: "rounds survived", fn: (a, b) => (b.survivalRate - a.survivalRate) },
     { key: "time", label: "time played", fn: (a, b) => (b.timePlayed - a.timePlayed) },
 ];
 const filters = {
@@ -74,8 +74,13 @@ export default {
                 const l = op.lost || 0;
                 const p = w + l || 1;
                 const svl = (1 - (d / p)) * 100;
-                acc.push(Object.assign({}, op, Operators[curr],  {
+                acc.push(Object.assign({}, Operators[curr], {
                     id: curr,
+                    won: w,
+                    lost: l,
+                    kills: k,
+                    deaths: d,
+                    timePlayed: op.timePlayed || 0,
                     wlr: stats.getWinChanceRaw(op),
                     kdr: k / (d || 1),
                     kpr: (k / p),
