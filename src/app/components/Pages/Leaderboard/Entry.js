@@ -49,7 +49,7 @@ export default {
                 <Link to={toPlayer(attrs.id)} className="playercard-image">
                     {
                         attrs.isTopEntry
-                            ? <Profilepic id={attrs.userId || attrs.id} delay={0} />
+                            ? <Profilepic id={attrs.userId || attrs.id} />
                             : null
                     }
                     {TrendIndicator(attrs)}
