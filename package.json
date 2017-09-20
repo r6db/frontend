@@ -13,6 +13,7 @@
     "chartist-plugin-tooltips": "^0.0.17",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
     "lozad": "^1.0.2",
     "mithril": "^1.1.1",
     "redux": "^3.7.2",
