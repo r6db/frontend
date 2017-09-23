@@ -1,5 +1,6 @@
 import * as m from "mithril";
 import Stat from "components/misc/Stat";
+import * as get from "lodash/get";
 import { getRankWinChance } from "lib/stats";
 import { Ranks } from "lib/constants";
 import "./rankseason.scss";
@@ -14,16 +15,16 @@ const RankedSeason = {
                 <div className="player-module-header">{attrs.title}</div>
                 <div className="row">
                     <div className="col">
-                        <Stat label="wins">{attrs.wins}</Stat>
-                        <Stat label="losses">{attrs.losses}</Stat>
-                        <Stat label="abandons">{attrs.abandons}</Stat>
+                        <Stat label="wins">{get(attrs, "wins", 0)}</Stat>
+                        <Stat label="losses">{get(attrs, "losses", 0)}</Stat>
+                        <Stat label="abandons">{get(attrs, "abandons", 0)}</Stat>
                         <Stat label="win rate">{getRankWinChance(attrs)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="Rank">{Ranks[attrs.rank]}</Stat>
-                        <Stat label="max. Rank">{Ranks[attrs.max_rank]}</Stat>
-                        <Stat label="MMR">{attrs.mmr.toFixed(2)}</Stat>
-                        <Stat label="Skill ± Uncertainty" tooltip="numerical value of your performance in ranked">{attrs.skill_mean.toFixed(2)} ± {attrs.skill_stdev.toFixed(2)}</Stat>
+                        <Stat label="Rank">{Ranks[get(attrs, "rank", 0)]}</Stat>
+                        <Stat label="max. Rank">{Ranks[get(attrs, "max_rank", 0)]}</Stat>
+                        <Stat label="MMR">{get(attrs, "mmr", 0).toFixed(2)}</Stat>
+                        <Stat label="Skill ± Uncertainty" tooltip="numerical value of your performance in ranked">{get(attrs, "skill_mean", 0).toFixed(2)} ± {get(attrs, "skill_stdev", 0).toFixed(2)}</Stat>
                     </div>
                 </div>
             </div>

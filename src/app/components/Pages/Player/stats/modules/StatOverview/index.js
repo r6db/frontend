@@ -1,5 +1,6 @@
 import * as m from "mithril";
 import Stat from "components/misc/Stat";
+import * as get from "lodash/get";
 import { formatDuration, getWinChance, getKillRatio } from "lib/stats";
 import "./statoverview.scss";
 
@@ -10,27 +11,27 @@ export default {
                 <div className="player-module-header">General</div>
                 <div className="row">
                     <div className="col">
-                        <Stat label="wins">{attrs.stats.general.won}</Stat>
-                        <Stat label="losses">{attrs.stats.general.lost}</Stat>
+                        <Stat label="wins">{get(attrs, "stats.general.won", 0)}</Stat>
+                        <Stat label="losses">{get(attrs, "stats.general.lost", 0)}</Stat>
                         <Stat label="win rate" tooltip="how many % of your games are wins">{getWinChance(attrs.stats.general)}</Stat>
-                        <Stat label="dbno">{attrs.stats.general.dbno}</Stat>
-                        <Stat label="dbno assists">{attrs.stats.general.dbnoAssists}</Stat>
+                        <Stat label="dbno">{get(attrs, "stats.general.dbno", 0)}</Stat>
+                        <Stat label="dbno assists">{get(attrs, "stats.general.dbnoAssists", 0)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="kills">{attrs.stats.general.kills}</Stat>
+                        <Stat label="kills">{get(attrs, "stats.general.kills", 0)}</Stat>
                         <Stat label="k/d ratio">{getKillRatio(attrs.stats.general)}</Stat>
-                        <Stat label="deaths">{attrs.stats.general.deaths}</Stat>
-                        <Stat label="assists">{attrs.stats.general.assists}</Stat>
-                        <Stat label="suicides">{attrs.stats.general.suicides}</Stat>
+                        <Stat label="deaths">{get(attrs, "stats.general.deaths", 0)}</Stat>
+                        <Stat label="assists">{get(attrs, "stats.general.assists", 0)}</Stat>
+                        <Stat label="suicides">{get(attrs, "stats.general.suicides", 0)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="accuracy">{attrs.stats.general.hitChance.toFixed(2)}%</Stat>
-                        <Stat label="headshots">{attrs.stats.general.headshot}</Stat>
+                        <Stat label="accuracy">{get(attrs, "stats.general.hitChance", 0).toFixed(2)}%</Stat>
+                        <Stat label="headshots">{get(attrs, "stats.general.headshot", 0)}</Stat>
                         <Stat label="hs ratio" tooltip="how many of your kills are headshots">
-                            {attrs.stats.general.headshotRatio.toFixed(2)}%
+                            {get(attrs, "stats.general.headshotRatio", 0).toFixed(2)}%
                         </Stat>
-                        <Stat label="hs chance" tooltip="the chance of a shot being a headshot">
-                            {attrs.stats.general.headshotChance.toFixed(2)}%
+                        <Stat label="hs / hits" tooltip="the chance of a shot being a headshot">
+                            {get(attrs, "stats.general.headshotChance", 0).toFixed(2)}%
                         </Stat>
                     </div>
                 </div>
@@ -38,56 +39,56 @@ export default {
                 <div className="player-module-header">Ranked</div>
                 <div className="row">
                     <div className="col">
-                        <Stat label="wins">{attrs.stats.ranked.won}</Stat>
-                        <Stat label="losses">{attrs.stats.ranked.lost}</Stat>
+                        <Stat label="wins">{get(attrs, "stats.ranked.won", 0)}</Stat>
+                        <Stat label="losses">{get(attrs, "stats.ranked.lost", 0)}</Stat>
                         <Stat label="win rate">{getWinChance(attrs.stats.ranked)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="kills">{attrs.stats.ranked.kills}</Stat>
-                        <Stat label="deaths">{attrs.stats.ranked.deaths}</Stat>
+                        <Stat label="kills">{get(attrs, "stats.ranked.kills", 0)}</Stat>
+                        <Stat label="deaths">{get(attrs, "stats.ranked.deaths", 0)}</Stat>
                         <Stat label="k/d ratio">{getKillRatio(attrs.stats.ranked)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="abandons">{attrs.stats.ranked.abandons}</Stat>
-                        <Stat label="playtime">{formatDuration(attrs.lastPlayed.ranked)}</Stat>
+                        <Stat label="abandons">{get(attrs, "stats.ranked.abandons", 0)}</Stat>
+                        <Stat label="playtime">{formatDuration(get(attrs, "lastPlayed.ranked", 0))}</Stat>
                     </div>
                 </div>
 
                 <div className="player-module-header">Casual</div>
                 <div className="row">
                     <div className="col">
-                        <Stat label="wins">{attrs.stats.casual.won}</Stat>
-                        <Stat label="losses">{attrs.stats.casual.lost}</Stat>
+                        <Stat label="wins">{get(attrs, "stats.casual.won", 0)}</Stat>
+                        <Stat label="losses">{get(attrs, "stats.casual.lost", 0)}</Stat>
                         <Stat label="win rate">{getWinChance(attrs.stats.casual)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="kills">{attrs.stats.casual.kills}</Stat>
-                        <Stat label="deaths">{attrs.stats.casual.deaths}</Stat>
+                        <Stat label="kills">{get(attrs, "stats.casual.kills", 0)}</Stat>
+                        <Stat label="deaths">{get(attrs, "stats.casual.deaths", 0)}</Stat>
                         <Stat label="k/d ratio">{getKillRatio(attrs.stats.casual)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="playtime">{formatDuration(attrs.lastPlayed.casual)}</Stat>
+                        <Stat label="playtime">{formatDuration(get(attrs, "lastPlayed.casual", 0))}</Stat>
                     </div>
                 </div>
 
                 <div className="player-module-header">Misc</div>
                 <div className="row">
                     <div className="col">
-                        <Stat label="melees">{attrs.stats.general.meleeKills}</Stat>
-                        <Stat label="revives">{attrs.stats.general.revives}</Stat>
+                        <Stat label="melees">{get(attrs, "stats.general.meleeKills", 0)}</Stat>
+                        <Stat label="revives">{get(attrs, "stats.general.melreviveseeKills", 0)}</Stat>
                         <Stat label="gadgets destroyed">
-                            {attrs.stats.general.gadgetsDestroyed}
+                            {get(attrs, "stats.general.gadgetsDestroyed", 0)}
                         </Stat>
                     </div>
                     <div className="col">
                         <Stat label="pen. kills" tooltip="how many kills were by wallbang">
-                            {attrs.stats.general.penetrationKills}
+                            {get(attrs, "stats.general.penetrationKills", 0)}
                         </Stat>
-                        <Stat label="revives denied">{attrs.stats.general.revivesDenied}</Stat>
+                        <Stat label="revives denied">{get(attrs, "stats.general.revivesDenied", 0)}</Stat>
                     </div>
                     <div className="col">
-                        <Stat label="blindfires">{attrs.stats.general.blindKills}</Stat>
-                        <Stat label="rappel breaches">{attrs.stats.general.rappelBreaches}</Stat>
+                        <Stat label="blindfires">{get(attrs, "stats.general.blindKills", 0)}</Stat>
+                        <Stat label="rappel breaches">{get(attrs, "stats.general.rappelBreaches", 0)}</Stat>
                     </div>
                 </div>
 
@@ -101,7 +102,7 @@ export default {
                     <div className="col">
                         <Stat label="last played">
                             {attrs.lastPlayed.last_played
-                                ? new Date(attrs.lastPlayed.last_played).toLocaleDateString()
+                                ? new Date(get(attrs, "attrs.played.LastPlayed", new Date())).toLocaleDateString()
                                 : "-"
                             }
                         </Stat>

@@ -1,4 +1,5 @@
 import * as m from "mithril";
+import * as get from "lodash/get";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { Ranks, Seasons } from "lib/constants";
 import "./rankoverview.scss";
@@ -27,24 +28,24 @@ export default {
                 <div className="rankoverview-currentseason">
                     <CurrentRank
                         key="rank-global"
-                        rank={attrs.pastRanks[0].rank}
+                        rank={get(attrs, "pastRanks.0.rank", 0)}
                         show={true}
-                        placement={attrs.placements.global}
+                        placement={get(attrs, "placements.global", "-")}
                         region="Global" />
                     <CurrentRank
                         key="rank-emea"
-                        rank={attrs.rank.emea.rank}
-                        placement={attrs.placements.emea}
+                        rank={get(attrs, "rank.emea.rank", 0)}
+                        placement={get(attrs, "placements.emea", "-")}
                         region="Europe" />
                     <CurrentRank
                         key="rank-ncsa"
-                        rank={attrs.rank.ncsa.rank}
-                        placement={attrs.placements.ncsa}
+                        rank={get(attrs, "rank.ncsa.rank", 0)}
+                        placement={get(attrs, "placements.ncsa", "-")}
                         region="America" />
                     <CurrentRank
                         key="rank-apac"
-                        rank={attrs.rank.apac.rank}
-                        placement={attrs.placements.apac}
+                        rank={get(attrs, "rank.apac.rank", 0)}
+                        placement={get(attrs, "placements.apac", "-")}
                         region="Asia" />
                 </div>
                 <div className="player-module-divider"></div>
