@@ -25,11 +25,17 @@ paths:
         name query. Some characters also match their substitutions (e.g i, l, 1)
       operationId: findPlayers
       parameters:
+        - $ref: '#/parameters/CommonAppIdHeader'
         - name: name
           in: query
           description: Player you search for
           required: true
           type: string
+        - name: platform
+          in: query
+          description: ps4, xbox or pc
+          type: string
+          required: true
         - name: exact
           in: query
           description: only search for exact matches
@@ -44,13 +50,12 @@ paths:
               $ref: '#/definitions/SearchResult'
         '409':
           description: Bad request
-    parameters:
-      - $ref: '#/parameters/CommonAppIdHeader'
   '/players/{id}':
     get:
       tags:
         - detail
       parameters:
+        - $ref: '#/parameters/CommonAppIdHeader'
         - in: path
           name: id
           type: string
@@ -63,6 +68,23 @@ paths:
             $ref: '#/definitions/Player'
   /leaderboards:
     get:
+      parameters:
+        - $ref: '#/parameters/CommonAppIdHeader'
+        - name: stat
+          in: query
+          description: board you want to see
+          type: string
+          required: true
+          enum:
+             - highest_skill_adjusted
+             - apac_skill_adjusted
+             - emea_skill_adjusted
+             - ncsa_skill_adjusted
+        - name: platform
+          in: query
+          description: ps4, xbox or pc
+          type: string
+          required: true
       tags:
         - listings
       responses:
