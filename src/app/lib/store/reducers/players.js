@@ -1,8 +1,15 @@
 export default (state = {}, action = {}) => {
-    return action.type === "PLAYER_FETCHED"
-        ? {
-            ...state,
-            [action.payload.id]: action.payload.player
-        }
-        : state;
+    switch (action.type) {
+        case "PLAYERS_FETCHED":
+            const s = Object.assign({}, state);
+            return action.payload.reduce((acc, curr) => {
+                acc[curr.id] = curr.player;
+                return acc;
+            }, s);
+        case "PLAYER_FETCHED":
+            return { ...state, [action.payload.id]: action.payload.player };
+        default:
+            return state;
+    };
 }
+

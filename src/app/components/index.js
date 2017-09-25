@@ -6,6 +6,7 @@ import Search from "components/Pages/Search";
 import Profile from "components/Pages/Profile";
 import Player from "components/Pages/Player";
 import Faq from "components/Pages/Faq";
+import COMPARISON from "components/Pages/Comparison";
 import NotFound from "components/Pages/Errors/NotFound";
 
 import Loading from "components/misc/Loading";
@@ -31,6 +32,7 @@ const componentMap = {
     "PROFILE": Profile,
     "PLAYER": Player,
     "PLAYERTABS": Player,
+    "COMPARISON": COMPARISON,
     [NOT_FOUND]: NotFound
 };
 

@@ -119,7 +119,19 @@ export default {
     PLAYERTABS: {
         path: "/player/:id/:tab",
         thunk: playerThunk
-    }
+    },
+    COMPARISON: {
+        path: "/compare/:ids",
+        thunk: async (dispatch, getState) => {
+            const { ids } = getState().location.payload;
+            let idList = ids.split(",").map(x => x.trim());
+            const playerProms = idList.map(api.getPlayer);
+            Promise.all(playerProms)
+                .then(x => {
+                    dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
+                });
+        }
+    },
 }
 
 
