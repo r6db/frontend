@@ -1,10 +1,12 @@
 import { v2Api } from "lib/constants";
 import { failEarly, getHeaders } from "../utils";
 
+const earliestDate = new Date("2015-01-01");
 const fixAlias = alias => {
     // eslint-disable-next-line camelcase
-    alias.created_at = alias.created_at
-        ? new Date(alias.created_at)
+    const d = new Date(alias.created_at);
+    alias.created_at = alias.created_at && d > earliestDate
+        ? d
         : null;
     return alias;
 };
