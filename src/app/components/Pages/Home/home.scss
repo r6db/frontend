@@ -24,6 +24,10 @@
         padding: $l;
         a{
             color: $accent;
+
+            &:visited{
+                color: $white;
+            }
         }
     }
 }
