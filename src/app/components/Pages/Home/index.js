@@ -21,8 +21,7 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    1 year anniversary hype! <br />
-                    <a href="https://medium.com/@r6db/one-year-anniversary-e7083181370d">blog post</a>
+                    Server's down! We're working on it.
                 </div>
             </div>
         );
