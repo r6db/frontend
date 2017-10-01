@@ -21,7 +21,8 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    Server's down! We're working on it.
+                    PC restore mostly finished.<br />
+                    Console restore is currently running
                 </div>
             </div>
         );
