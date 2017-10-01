@@ -11,15 +11,15 @@ const ProfilePic = {
         state.onerror = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            debugger;
             state.src = "/assets/noavatar.svg";
+            e.target.src = "/assets/noavatar.svg";
         }
     },
     oncreate() {
         const observer = lozad(".profile-pic");
         observer.observe();
     },
-    view: vnode => m("img.profile-pic", { "data-src": vnode.state.src })
+    view: vnode => m("img.profile-pic", { "data-src": vnode.state.src, onerror: vnode.state.onerror })
 };
 
 const mapStateToProps = getState => ({
