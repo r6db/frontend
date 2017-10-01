@@ -21,8 +21,8 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    All base data is recovered. <br />
-                    the rest will update over the next few days.
+                    Most data is recovered. <br />
+                    updates are still running.
                 </div>
             </div>
         );
