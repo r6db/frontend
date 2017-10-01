@@ -21,8 +21,8 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    PC restore mostly finished.<br />
-                    Console restore is currently running
+                    All base data is recovered. <br />
+                    the rest will update over the next few days.
                 </div>
             </div>
         );
