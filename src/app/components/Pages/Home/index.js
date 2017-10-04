@@ -21,8 +21,8 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    Most data is recovered. <br />
-                    updates are still running.
+                    Old season ranks are temporarily missing. <br />
+                    Waiting for UBI to fix.
                 </div>
             </div>
         );
