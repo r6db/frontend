@@ -1,11 +1,19 @@
 @import "scss/styles";
 
 .rankoverview{
+    .player-module-divider:first-child{
+        display: none;
+    }
     &-currentseason{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         padding-top: $l;
+
+        &.is-underage{
+            padding: $l*3;
+            justify-content: center;
+        }
     }
     &-current{
         flex: 1;
