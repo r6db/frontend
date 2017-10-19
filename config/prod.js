@@ -4,26 +4,9 @@ const path = require("path");
 
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = Object.assign({}, base);
 // config.output.publicPath = "https://r6db.com/";
-
-
-/**
- * setup extract-text-plugin
- */
-
-config.module.rules.push({
-  test: /\.scss$/,
-  use: ExtractTextPlugin.extract({
-    use: [
-      { loader: "css-loader" },
-      { loader: "postcss-loader" },
-      { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")]} }
-    ],
-  })
-});
 
 
 
@@ -53,7 +36,6 @@ config.plugins = config.plugins.concat([
       comments: false
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin("styles.css"),
 ]);
 
 

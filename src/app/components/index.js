@@ -1,13 +1,5 @@
 import * as m from "mithril";
-import Home from "components/Pages/Home";
-import Leaderboard from "components/Pages/Leaderboard";
-import Chankaboard from "components/Pages/Chankaboard";
-import Search from "components/Pages/Search";
-import Profile from "components/Pages/Profile";
-import Player from "components/Pages/Player";
-import Faq from "components/Pages/Faq";
-import NotFound from "components/Pages/Errors/NotFound";
-
+import AsyncComponent from "components/misc/AsyncComponent";
 import Loading from "components/misc/Loading";
 import Searchbar from "components/misc/Searchbar";
 import Menu from "components/misc/Menu";
@@ -23,15 +15,15 @@ import "./base.scss";
 import "./app.scss";
 
 const componentMap = {
-    "HOME": Home,
-    "SEARCH": Search,
-    "FAQ": Faq,
-    "LEADERBOARD": Leaderboard,
-    "CHANKABOARD": Chankaboard,
-    "PROFILE": Profile,
-    "PLAYER": Player,
-    "PLAYERTABS": Player,
-    [NOT_FOUND]: NotFound
+    "HOME": () => import("./pages/Home"),
+    "SEARCH": () => import("./pages/Search"),
+    "FAQ": () => import("./pages/Faq"),
+    "LEADERBOARD": () => import("./pages/Leaderboard"),
+    "CHANKABOARD": () => import("./pages/Chankaboard"),
+    "PROFILE": () => import("./pages/Profile"),
+    "PLAYER": () => import("./pages/Player"),
+    "PLAYERTABS": () => import("./pages/Player"),
+    [NOT_FOUND]: () => import("./pages/Errors/NotFound")
 };
 
 const breakpoints = {
@@ -42,7 +34,6 @@ const breakpoints = {
 
 const App = {
     view({ attrs, state }) {
-        const Component = attrs.Component;
 
         const Search = attrs.config.searchbar
             ? <Searchbar search={attrs.search} />
@@ -65,7 +56,8 @@ const App = {
                         {TopbarComponent}
                         <div className="app-page">
                             <ElementQuery className="contentsize" query={breakpoints}>
-                                {attrs.loading ? <Loading /> : <attrs.Component />}
+                                {attrs.loading ? <Loading /> : null}
+                                <AsyncComponent importFn={attrs.importFn} />
                             </ElementQuery>
                         </div>
                     </div>
@@ -79,7 +71,7 @@ const mapStateToProps = (getState) => {
     const { platform, tweets, search, location, loading } = getState();
     return {
         location: location.type,
-        Component: componentMap[location.type],
+        importFn: componentMap[location.type],
         config: Object.assign({}, Pageconfig.default, Pageconfig[location.type]),
         loading,
         search,

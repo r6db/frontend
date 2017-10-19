@@ -154,10 +154,6 @@
     .playercard-content{
         flex-direction: row;
         align-items: center;
-
-        @include medium{
-            display: column;
-        }
     }
     .playercard-center{
         flex: 0 0 auto;
