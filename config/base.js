@@ -66,6 +66,7 @@ module.exports = {
         } ]
     },
     plugins: [
+        new webpack.NamedModulesPlugin(),        
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new CopyWebpackPlugin([
