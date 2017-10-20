@@ -38,7 +38,7 @@
     "cssnano": "^3.9.1",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "html-webpack-plugin": "^2.26.0",
-    "node-sass": "^3.12.5",
+    "node-sass": "^4.5.3",
     "postcss-discard-duplicates": "^2.0.2",
     "postcss-loader": "^1.1.1",
     "rimraf": "^2.5.4",

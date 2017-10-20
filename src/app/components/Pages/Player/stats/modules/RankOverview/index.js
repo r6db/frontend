@@ -21,33 +21,50 @@ const CurrentRank = {
     }
 }
 
+const CurrentSeason = {
+    view({ attrs }) {
+        if (attrs.level < 100) {
+            return (
+                <div className="rankoverview-currentseason is-underage">
+                    rankings unlock at level 100
+                </div>
+            );
+        } else if (get(attrs, "placements.global", null) === null) {
+            return;
+        }
+        return (
+            <div className="rankoverview-currentseason">
+                <CurrentRank
+                    key="rank-global"
+                    rank={get(attrs, "pastRanks.0.rank", 0)}
+                    show={true}
+                    placement={get(attrs, "placements.global", "-")}
+                    region="Global" />
+                <CurrentRank
+                    key="rank-emea"
+                    rank={get(attrs, "rank.emea.rank", 0)}
+                    placement={get(attrs, "placements.emea", "-")}
+                    region="Europe" />
+                <CurrentRank
+                    key="rank-ncsa"
+                    rank={get(attrs, "rank.ncsa.rank", 0)}
+                    placement={get(attrs, "placements.ncsa", "-")}
+                    region="America" />
+                <CurrentRank
+                    key="rank-apac"
+                    rank={get(attrs, "rank.apac.rank", 0)}
+                    placement={get(attrs, "placements.apac", "-")}
+                    region="Asia" />
+            </div>
+        );
+    }
+}
+
 export default {
     view({ attrs }) {
         return (
             <div className="player-module rankoverview">
-                <div className="rankoverview-currentseason">
-                    <CurrentRank
-                        key="rank-global"
-                        rank={get(attrs, "pastRanks.0.rank", 0)}
-                        show={true}
-                        placement={get(attrs, "placements.global", "-")}
-                        region="Global" />
-                    <CurrentRank
-                        key="rank-emea"
-                        rank={get(attrs, "rank.emea.rank", 0)}
-                        placement={get(attrs, "placements.emea", "-")}
-                        region="Europe" />
-                    <CurrentRank
-                        key="rank-ncsa"
-                        rank={get(attrs, "rank.ncsa.rank", 0)}
-                        placement={get(attrs, "placements.ncsa", "-")}
-                        region="America" />
-                    <CurrentRank
-                        key="rank-apac"
-                        rank={get(attrs, "rank.apac.rank", 0)}
-                        placement={get(attrs, "placements.apac", "-")}
-                        region="Asia" />
-                </div>
+                <CurrentSeason {...attrs} />
                 <div className="player-module-divider"></div>
                 <div className="rankoverview-pastseason">
                     {attrs.pastRanks
