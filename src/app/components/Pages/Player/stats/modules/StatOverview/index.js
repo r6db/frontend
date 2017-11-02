@@ -75,7 +75,7 @@ export default {
                 <div className="row">
                     <div className="col">
                         <Stat label="melees">{get(attrs, "stats.general.meleeKills", 0)}</Stat>
-                        <Stat label="revives">{get(attrs, "stats.general.melreviveseeKills", 0)}</Stat>
+                        <Stat label="revives">{get(attrs, "stats.general.revives", 0)}</Stat>
                         <Stat label="gadgets destroyed">
                             {get(attrs, "stats.general.gadgetsDestroyed", 0)}
                         </Stat>
