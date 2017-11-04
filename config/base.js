@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const util = require("util");
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -19,7 +20,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
-        filename: "[name].js",
+        filename: "[name].bundle.js",
+        chunkFilename: "[name].bundle.js",
         pathinfo: true
     },
     target: "web",
@@ -52,9 +54,19 @@ module.exports = {
                     extract: true
                 }
             },
-        }]
+        }, {
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+                use: [
+                    { loader: "css-loader" },
+                    { loader: "postcss-loader" },
+                    { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")] } }
+                ],
+            })
+        } ]
     },
     plugins: [
+        new webpack.NamedModulesPlugin(),        
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new CopyWebpackPlugin([
@@ -78,5 +90,6 @@ module.exports = {
 			threshold: 10240,
 			minRatio: 0.8
 		}),
+        new ExtractTextPlugin({ filename: "styles.css", allChunks: true }),
     ]
 };

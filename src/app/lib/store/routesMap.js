@@ -2,21 +2,16 @@ import { redirect, push, NOT_FOUND } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
 import * as api from "../api";
 import setMeta from "lib/meta";
-import * as tracker from "lib/tracker";
-
-
 export default {
     HOME: "/",
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
-            tracker.trackPageView("search");
             const { location } = getState();
             const { query, platform } = location.payload;
             dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
-                    tracker.trackSiteSearch(query.toLowerCase(), platform.toUpperCase(), result.length);
                     setMeta({
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
@@ -58,8 +53,6 @@ export default {
             const { board: b, platform } = getState().location.payload;
             const board = (b || "").toUpperCase();
             if (!board || board === "CHANKA") { return; }
-            tracker.trackPageView("leaderboard");
-            tracker.trackEvent("leaderboard", "view", "board", board);
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard(lbConfig.board, platform)
@@ -77,7 +70,6 @@ export default {
     FAQ: {
         path: "/faq",
         thunk: (dispatch, getState) => {
-            tracker.trackPageView("faq");
         }
     },
     PROFILE: {
@@ -87,8 +79,6 @@ export default {
             api.getPlayer(id)
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    tracker.trackPageView("profile");
-                    tracker.trackEvent("profile", "view", "id", id);
                     if (player.flags.noAliases === false) {
                         setMeta({
                             title: `${player.name}`,
@@ -124,9 +114,6 @@ async function playerThunk(dispatch, getState) {
     api.getPlayer(id)
         .then(function (player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            tracker.trackPageView("player");
-            tracker.trackEvent("player", "view", "id", id);
-            tracker.trackEvent("player", "tab", "tab", tab || "stats");
             if (player.flags.noAliases === false) {
                 setMeta({
                     title: `${player.name}`,

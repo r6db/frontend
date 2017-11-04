@@ -37,7 +37,7 @@ function init(App) {
 if ( document.readyState === "interactive" || document.readyState === "complete") {
     init(App);
 } else {
-    window.addEventListener("load", () => init(App));
+    window.addEventListener("DOMContentLoaded", () => init(App));
 }
 
 if (module.hot && process.env.NODE_ENV === "development") {

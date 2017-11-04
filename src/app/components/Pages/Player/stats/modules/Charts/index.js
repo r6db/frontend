@@ -32,7 +32,7 @@ export default {
             type: "Line",
             title: "win/loss %",
             data: {
-                labels: raw.map(x => stats.formatDate(x.created_at)),
+                labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [{
                     name: "ranked",
                     data: getDelta(function (curr, prev) {
@@ -69,7 +69,7 @@ export default {
             type: "Bar",
             title: "k/d ratio",
             data: {
-                labels: raw.map(x => stats.formatDate(x.created_at)),
+                labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [{
                     name: "ranked",
                     data: getDelta(function (curr, prev) {
@@ -136,7 +136,7 @@ export default {
                 }, {
                     name: "Asia",
                     data: getDelta(function (curr, prev) {
-                        if (curr.ranks && curr.ranks.apac && prev.ranks && prev.ranks.apac){
+                        if (curr.ranks && curr.ranks.apac && prev.ranks && prev.ranks.apac) {
                             return {
                                 value: (curr.ranks.apac.mmr - prev.ranks.apac.mmr).toFixed(2),
                                 meta: stats.formatDate(curr.created_at)
@@ -160,12 +160,12 @@ export default {
             type: "Line",
             title: "MMR total",
             data: {
-                labels: raw.map(x => stats.formatDate(x.created_at)),
+                labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [{
                     name: "Europe, Africa & M.East",
-                    data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.emea && x.ranks.emea.mmr === 2500))
+                    data: offsettedRaw.every(x => !x.ranks || (x.ranks && x.ranks.emea && x.ranks.emea.mmr === 2500))
                         ? []
-                        : raw.map(x => {
+                        : offsettedRaw.map(x => {
                             return {
                                 value: x.ranks && x.ranks.emea ? (x.ranks.emea.mmr).toFixed(2) : null,
                                 meta: stats.formatDate(x.created_at)
@@ -174,9 +174,9 @@ export default {
                     className: "emea"
                 }, {
                     name: "America",
-                    data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.ncsa && x.ranks.ncsa.mmr === 2500))
+                    data: offsettedRaw.every(x => !x.ranks || (x.ranks && x.ranks.ncsa && x.ranks.ncsa.mmr === 2500))
                         ? []
-                        : raw.map(x => {
+                        : offsettedRaw.map(x => {
                             return {
                                 value: x.ranks && x.ranks.ncsa ? (x.ranks.ncsa.mmr).toFixed(2) : null,
                                 meta: stats.formatDate(x.created_at)
@@ -185,9 +185,9 @@ export default {
                     className: "ncsa"
                 }, {
                     name: "Asia",
-                    data: raw.every(x => !x.ranks ||  (x.ranks && x.ranks.apac && x.ranks.apac.mmr === 2500))
+                    data: offsettedRaw.every(x => !x.ranks || (x.ranks && x.ranks.apac && x.ranks.apac.mmr === 2500))
                         ? []
-                        : raw.map(x => {
+                        : offsettedRaw.map(x => {
                             return {
                                 value: x.ranks && x.ranks.apac ? (x.ranks.apac.mmr).toFixed(2) : null,
                                 meta: stats.formatDate(x.created_at)
@@ -279,22 +279,22 @@ export default {
                 ? (
                     <div className="player-module charts">
                         <div className="row">
-                            <Chart {...state.mmrChart}/>
+                            <Chart {...state.mmrChart} />
                         </div>
                         <div className="row">
-                            <Chart {...state.mmrChangeChart}/>
+                            <Chart {...state.mmrChangeChart} />
                         </div>
                         <div className="row">
-                            <Chart {...state.wlChart}/>
+                            <Chart {...state.wlChart} />
                         </div>
                         <div className="row">
-                            <Chart {...state.kdChart}/>
+                            <Chart {...state.kdChart} />
                         </div>
                         <div className="row">
-                            <Chart {...state.gameCountChart}/>
+                            <Chart {...state.gameCountChart} />
                         </div>
                         <div className="row">
-                            <Chart {...state.hsChart}/>
+                            <Chart {...state.hsChart} />
                         </div>
                     </div>
                 )
