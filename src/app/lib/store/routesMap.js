@@ -39,21 +39,17 @@ export default {
         path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
-            dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
-            return;
-            // tracker.trackPageView("leaderboard");
-            // tracker.trackEvent("leaderboard", "view", "board", "chanka");
-            // dispatch({ type: "PLATFORM", payload: platform });
-            // api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
-            //     .then(entries => {
-            //         setMeta({
-            //             title: "LMG kills leaderboard",
-            //             description: "top 100 Tachanka players in our database",
-            //             type: "website"
-            //         });
-            //         dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } });
-            //     })
-            //     .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
+            dispatch({ type: "PLATFORM", payload: platform });
+            api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
+                .then(entries => {
+                    setMeta({
+                        title: "LMG kills leaderboard",
+                        description: "top 100 Tachanka players in our database",
+                        type: "website"
+                    });
+                    dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } });
+                })
+                .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
         }
     },
     LEADERBOARD: {
@@ -99,12 +95,12 @@ export default {
                             description: `${player.name} player profile for Rainbow Six: Siege`,
                             type: "profile"
                         });
-                     } else {
-                         setMeta({
-                             title: `account ${id}`,
-                             description: `${id} account details in the community database for Rainbow Six: Siege`
-                         });
-                     }
+                    } else {
+                        setMeta({
+                            title: `account ${id}`,
+                            description: `${id} account details in the community database for Rainbow Six: Siege`
+                        });
+                    }
                 })
                 .catch(error => {
                     console.error(error);

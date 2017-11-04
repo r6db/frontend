@@ -19,21 +19,21 @@ const Chankaboard = {
                     <h1 className="leaderboard-title">Most kills with Tachanka LMG</h1>
                 </div>
                 <form className="leaderboard-filters" action="" onsubmit={state.loadLeaderboard}>
-                <p className="leaderboard-platform">
-                    <label htmlFor="platformselect">Platform</label>
-                    <select id="platformselect" value={state.platform} onchange={m.withAttr("value", state.changePlatform)}>
-                        <option value="PC">PC</option>
-                        <option value="PS4">PS4</option>
-                        <option value="XBOX">XBOX</option>
-                    </select>
-                </p>
-                <p>
-                    <button className="button is-primary">GO</button>
-                </p>
-            </form>
+                    <p className="leaderboard-platform">
+                        <label htmlFor="platformselect">Platform</label>
+                        <select id="platformselect" value={state.platform} onchange={m.withAttr("value", state.changePlatform)}>
+                            <option value="PC">PC</option>
+                            <option value="PS4">PS4</option>
+                            <option value="XBOX">XBOX</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button className="button is-primary">GO</button>
+                    </p>
+                </form>
                 <div className="leaderboard-entries">
                     {attrs.entries.map((x, i) =>
-                        <Entry isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
+                        <Entry platform={attrs.platform} isTopEntry={i < 3} pos={i + 1} {...x} key={x.id} />)}
                 </div>
             </div>
         );
