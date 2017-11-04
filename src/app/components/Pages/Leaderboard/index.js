@@ -2,6 +2,7 @@ import * as m from "mithril";
 import { redirect } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
 import { connect } from "lib/store/connect";
+import { toChanka } from "lib/store/actions";
 import Entry from "./Entry";
 import Link from "components/misc/Link";
 import "./leaderboard.scss";
@@ -73,6 +74,7 @@ const Leaderboard = {
                     {attrs.entries.map((x, i) =>
                         <Entry platform={attrs.platform} isTopEntry={i < 3} {...x} key={x.id} />)}
                 </div>
+                <Link id="chanky" to={toChanka(attrs.platform)}><img src="/assets/chanky.png" /></Link>
             </div>
         );
     }
@@ -88,6 +90,7 @@ const mapStateToProps = (getState) => {
 }
 const mapDispatchToProps = (dispatch) => ({
     load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
+    chanky: (platform) => dispatch({ type: "CHANKABOARD", payload: { platform } })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);
