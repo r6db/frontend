@@ -1,5 +1,5 @@
 import * as m from "mithril";
-import Alias from "components/pages/Profile/Player/Alias";
+import Alias from "components/Pages/Profile/Player/Alias";
 import "./aliases.scss";
 
 export default {

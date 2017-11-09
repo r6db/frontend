@@ -15,15 +15,15 @@ import "./base.scss";
 import "./app.scss";
 
 const componentMap = {
-    "HOME": () => import("./pages/Home"),
-    "SEARCH": () => import("./pages/Search"),
-    "FAQ": () => import("./pages/Faq"),
-    "LEADERBOARD": () => import("./pages/Leaderboard"),
-    "CHANKABOARD": () => import("./pages/Chankaboard"),
-    "PROFILE": () => import("./pages/Profile"),
-    "PLAYER": () => import("./pages/Player"),
-    "PLAYERTABS": () => import("./pages/Player"),
-    [NOT_FOUND]: () => import("./pages/Errors/NotFound")
+    "HOME": () => import("./Pages/Home"),
+    "SEARCH": () => import("./Pages/Search"),
+    "FAQ": () => import("./Pages/Faq"),
+    "LEADERBOARD": () => import("./Pages/Leaderboard"),
+    "CHANKABOARD": () => import("./Pages/Chankaboard"),
+    "PROFILE": () => import("./Pages/Profile"),
+    "PLAYER": () => import("./Pages/Player"),
+    "PLAYERTABS": () => import("./Pages/Player"),
+    [NOT_FOUND]: () => import("./Pages/Errors/NotFound")
 };
 
 const breakpoints = {
