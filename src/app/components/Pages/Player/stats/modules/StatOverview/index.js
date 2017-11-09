@@ -102,7 +102,7 @@ export default {
                     <div className="col">
                         <Stat label="last played">
                             {attrs.lastPlayed.last_played
-                                ? new Date(get(attrs, "attrs.played.LastPlayed", new Date())).toLocaleDateString()
+                                ? new Date(get(attrs, "lastPlayed.last_played", new Date())).toLocaleDateString()
                                 : "-"
                             }
                         </Stat>
