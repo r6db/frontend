@@ -14,12 +14,18 @@ const CurrentRank = {
                 <div className="rankoverview-current-icon">
                     <Icon glyph={GLYPHS["RANK" + attrs.rank]} />
                 </div>
-                <div className="rankoverview-current-placement">{ typeof attrs.placement === "number" ? "#" + (attrs.placement + 1) : ""}</div>
-                <div className="rankoverview-current-region">{attrs.region}</div>
+                <div className="rankoverview-current-placement">
+                    {typeof attrs.placement === "number"
+                        ? "#" + (attrs.placement + 1)
+                        : ""}
+                </div>
+                <div className="rankoverview-current-region">
+                    {attrs.region}
+                </div>
             </div>
-        )
-    }
-}
+        );
+    },
+};
 
 const CurrentSeason = {
     view({ attrs }) {
@@ -39,46 +45,52 @@ const CurrentSeason = {
                     rank={get(attrs, "pastRanks.0.rank", 0)}
                     show={true}
                     placement={get(attrs, "placements.global", "-")}
-                    region="Global" />
+                    region="Global"
+                />
                 <CurrentRank
                     key="rank-emea"
                     rank={get(attrs, "rank.emea.rank", 0)}
                     placement={get(attrs, "placements.emea", "-")}
-                    region="Europe" />
+                    region="Europe"
+                />
                 <CurrentRank
                     key="rank-ncsa"
                     rank={get(attrs, "rank.ncsa.rank", 0)}
                     placement={get(attrs, "placements.ncsa", "-")}
-                    region="America" />
+                    region="America"
+                />
                 <CurrentRank
                     key="rank-apac"
                     rank={get(attrs, "rank.apac.rank", 0)}
                     placement={get(attrs, "placements.apac", "-")}
-                    region="Asia" />
+                    region="Asia"
+                />
             </div>
         );
-    }
-}
+    },
+};
 
 export default {
     view({ attrs }) {
         return (
             <div className="player-module rankoverview">
                 <CurrentSeason {...attrs} />
-                <div className="player-module-divider"></div>
+                <div className="player-module-divider" />
                 <div className="rankoverview-pastseason">
-                    {attrs.pastRanks
-                        .map(rank =>
+                    {attrs.pastRanks.filter(x => x.rank !== 0).map(rank => (
                         <div
-                            className={`rankoverview-past season-${rank.season}`}
+                            className={`rankoverview-past season-${
+                                rank.season
+                            }`}
                             key={rank.season}
                         >
                             <Icon
                                 className="rankoverview-past-icon"
-                                glyph={GLYPHS["RANK" + rank.rank]} />
+                                glyph={GLYPHS["RANK" + rank.rank]}
+                            />
                             <div className="rankoverview-past-text">
                                 <div className="rankoverview-past-season">
-                                {Seasons[rank.season]}
+                                    {Seasons[rank.season]}
                                 </div>
                                 <div className="rankoverview-past-rank">
                                     {Ranks[rank.rank]}
@@ -88,9 +100,9 @@ export default {
                                 </div>
                             </div>
                         </div>
-                    )}
+                    ))}
                 </div>
             </div>
-        )
-    }
-}
+        );
+    },
+};
