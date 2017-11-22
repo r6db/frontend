@@ -1,7 +1,8 @@
 export const appname = "r6db";
 export const appid = "r6db";
 export const title = "R6DB - Rainbow 6 Player database";
-export const description= "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
+export const description =
+    "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
 export const baseurl = "/";
 export const v2Api = "/api/v2";
 
@@ -15,7 +16,7 @@ export const Pageconfig = Object.freeze({
         class: "",
         searchbar: true,
         menu: true,
-        footer: true
+        footer: true,
     },
     HOME: {
         id: "INITIAL",
@@ -29,7 +30,7 @@ export const Pageconfig = Object.freeze({
     PROFILE: { id: "PROFILE", class: "is-profile" },
     LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
     CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
-    FAQ: { id: "FAQ", class: "is-faq"}
+    FAQ: { id: "FAQ", class: "is-faq" },
 });
 
 /**
@@ -40,14 +41,25 @@ export const Pageconfig = Object.freeze({
  */
 export const Leaderboards = {
     ALL: { id: "ALL", board: "highest_skill_adjusted", label: "Global" },
-    APAC: { id: "APAC", board: "apac_skill_adjusted", label: "Asia & Pacific Area"},
-    EMEA: { id: "EMEA", board: "emea_skill_adjusted", label: "Europe, Africa & Middle East" },
-    NCSA: { id: "NCSA", board: "ncsa_skill_adjusted", label: "North, Central and South America" }
+    APAC: {
+        id: "APAC",
+        board: "apac_skill_adjusted",
+        label: "Asia & Pacific Area",
+    },
+    EMEA: {
+        id: "EMEA",
+        board: "emea_skill_adjusted",
+        label: "Europe, Africa & Middle East",
+    },
+    NCSA: {
+        id: "NCSA",
+        board: "ncsa_skill_adjusted",
+        label: "North, Central and South America",
+    },
 };
 
 export const DATE_SHORT = "DD. MMM YYYY";
 export const DATE_LONG = "DD. MMM YYYY HH:MM";
-
 
 /**
  * the api returns ranks in a number format
@@ -74,7 +86,7 @@ export const Ranks = [
     "Platinum 3",
     "Platinum 2",
     "Platinum Star",
-    "Diamond"
+    "Diamond",
 ];
 export const Seasons = [
     "Release",
@@ -85,7 +97,8 @@ export const Seasons = [
     "Velvet Shell",
     "Operation Health",
     "Blood Orchid",
-]
+    "White Noise",
+];
 
 export const Operators = {
     ash: { name: "Ash", side: "Attack", unit: "FBI" },
@@ -121,10 +134,13 @@ export const Operators = {
     twitch: { name: "Twitch", side: "Attack", unit: "GIGN" },
     valkyrie: { name: "Valkyrie", side: "Defense", unit: "SEALS" },
     ying: { name: "Ying", side: "Attack", unit: "SDU" },
-}
+    dokkaebi: { name: "Dokkaebi", side: "Attack", unit: "SMB" },
+    vigil: { name: "Vigil", side: "Defense", unit: "SMB" },
+    zofia: { name: "Zofia", side: "Attack", unit: "GROM" },
+};
 
 export const regions = {
     emea: "Europe",
     ncsa: "America",
-    apac: "Asia"
+    apac: "Asia",
 };

@@ -29,7 +29,7 @@ export default {
         ];
 
         state.wlChart = {
-            type: "Line",
+            type: "Bar",
             title: "win/loss %",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),

@@ -63,22 +63,27 @@ import THERMITE from "assets/operators/thermite.svg";
 import TWITCH from "assets/operators/twitch.svg";
 import VALKYRIE from "assets/operators/valkyrie.svg";
 import YING from "assets/operators/ying.svg";
+import DOKKAEBI from "assets/operators/dokkaebi.svg";
+import VIGIL from "assets/operators/vigil.svg";
+import ZOFIA from "assets/operators/zofia.svg";
 
 export default {
     view({ attrs }) {
         if (!attrs.glyph) {
             return m("svg.icon");
         }
-        return m("svg.icon", {
-            viewBox: attrs.glyph.viewBox,
-            preserveAspectRatio: attrs.preserveAspectRatio,
-            class: attrs.className,
-            fill: attrs.fill,
-            stroke: attrs.stroke
-        }, [
-            m(`use[xlink:href=${attrs.glyph}]`)
-        ]);
-    }
+        return m(
+            "svg.icon",
+            {
+                viewBox: attrs.glyph.viewBox,
+                preserveAspectRatio: attrs.preserveAspectRatio,
+                class: attrs.className,
+                fill: attrs.fill,
+                stroke: attrs.stroke,
+            },
+            [m(`use[xlink:href=${attrs.glyph}]`)],
+        );
+    },
 };
 
 export const GLYPHS = {
@@ -144,4 +149,7 @@ export const GLYPHS = {
     TWITCH,
     VALKYRIE,
     YING,
+    DOKKAEBI,
+    VIGIL,
+    ZOFIA,
 };
