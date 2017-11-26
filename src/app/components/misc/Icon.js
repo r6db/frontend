@@ -6,8 +6,10 @@ import UBI from "assets/ubi.svg";
 import ESL from "assets/esl.svg";
 import TWITTER from "assets/twitter.svg";
 import TWITCHTV from "assets/twitchtv.svg";
+import PATREON from "assets/patreon.svg";
 import EMAIL from "assets/email.svg";
 import NOAVATAR from "assets/noavatar.svg";
+
 import RANK0 from "assets/ranks/0.svg";
 import RANK1 from "assets/ranks/1.svg";
 import RANK2 from "assets/ranks/2.svg";
@@ -93,6 +95,7 @@ export const GLYPHS = {
     DOWNLOAD,
     TWITTER,
     TWITCH,
+    PATREON,
     EMAIL,
     NOAVATAR,
     RANK0,

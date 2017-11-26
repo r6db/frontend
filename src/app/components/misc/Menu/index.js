@@ -7,7 +7,6 @@ import Tweet from "./Tweet";
 import Link from "components/misc/Link";
 import { connect } from "lib/store/connect";
 
-
 const Menu = {
     view({ attrs, children }) {
         return (
@@ -18,36 +17,61 @@ const Menu = {
                     </Link>
                 </div>
                 <div className="menu-center">
-                    <Link to="/" className="menu-item">Home</Link>
-                    <Link to={`/leaderboard/${attrs.platform}/ALL`} className="menu-item">Leaderboard</Link>
-                    <Link to="/faq" className="menu-item">FAQ</Link>
-                    <a href="https://github.com/r6db/r6db/issues" className="menu-item">Issue / Feature Tracker</a>
+                    <Link to="/" className="menu-item">
+                        Home
+                    </Link>
+                    <Link
+                        to={`/leaderboard/${attrs.platform}/ALL`}
+                        className="menu-item"
+                    >
+                        Leaderboard
+                    </Link>
+                    <Link to="/faq" className="menu-item">
+                        FAQ
+                    </Link>
+                    <a
+                        href="https://github.com/r6db/r6db/issues"
+                        className="menu-item"
+                    >
+                        Issue / Feature Tracker
+                    </a>
                 </div>
                 <footer className="menu-bottom is-center">
-                    <div className="menu-tweets">{
-                        (attrs.tweets)
-                            .map(tweet => <Tweet {...tweet} />)
-                    }</div>
+                    <div className="menu-tweets">
+                        {attrs.tweets.map(tweet => <Tweet {...tweet} />)}
+                    </div>
                     <div className="menu-footer">
                         <a href="https://twitter.com/Rainbow6_DB">
-                            <Icon className="menu-twitter" fill="#fff" glyph={GLYPHS.TWITTER} />
+                            <Icon
+                                className="menu-twitter"
+                                fill="#fff"
+                                glyph={GLYPHS.TWITTER}
+                            />
                         </a>
                         <a href="mailto:info@r6db.com">
                             <Icon className="menu-email" glyph={GLYPHS.EMAIL} />
+                        </a>
+                        <a href="https://patreon.com/r6db">
+                            <Icon
+                                className="menu-patreon"
+                                fill="#fff"
+                                glyph={GLYPHS.PATREON}
+                            />
                         </a>
                     </div>
                 </footer>
             </div>
         );
-    }
+    },
 };
 
 const mapStateToProps = getState => {
     const { tweets, platform } = getState();
     return { tweets, platform };
-}
+};
 const mapDispatchToProps = dispatch => ({
-    changePlatform: platform => e => dispatch({ type: "SELECT_PLATFORM", payload: platform })
+    changePlatform: platform => e =>
+        dispatch({ type: "SELECT_PLATFORM", payload: platform }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
