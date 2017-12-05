@@ -1,5 +1,5 @@
 export const appname = "r6db";
-export const appid = "r6db";
+export const appid = "5e23d930-edd3-4240-b9a9-723c673fb649";
 export const title = "R6DB - Rainbow 6 Player database";
 export const description =
     "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
