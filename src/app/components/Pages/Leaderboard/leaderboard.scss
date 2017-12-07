@@ -110,6 +110,7 @@
         font-size: $font-smaller;
         line-height: $font-bigger;
         vertical-align: text-bottom;
+        white-space: pre;
 
         &.is-up{ color: $success; }
         &.is-down{ color: $danger; }
@@ -153,10 +154,6 @@
     .playercard-content{
         flex-direction: row;
         align-items: center;
-
-        @include medium{
-            display: column;
-        }
     }
     .playercard-center{
         flex: 0 0 auto;

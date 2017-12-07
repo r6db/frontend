@@ -44,15 +44,7 @@ config.devServer = {
     }
 };
 
-config.module.rules.push({
-    test: /\.scss$/,
-    use: [
-        { loader: "style-loader" },
-        { loader: "css-loader" },
-        { loader: "postcss-loader" },
-        { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")]} }
-    ]
-});
+
 config.plugins.push(new webpack.NamedModulesPlugin());
 config.plugins.push(new webpack.DefinePlugin({
     "process.env": {

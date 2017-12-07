@@ -2,21 +2,16 @@ import { redirect, push, NOT_FOUND } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
 import * as api from "../api";
 import setMeta from "lib/meta";
-import * as tracker from "lib/tracker";
-
-
 export default {
     HOME: "/",
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
-            tracker.trackPageView("search");
             const { location } = getState();
             const { query, platform } = location.payload;
             dispatch({ type: "PLATFORM", payload: platform });
             api.findPlayer(query, platform)
                 .then(result => {
-                    tracker.trackSiteSearch(query.toLowerCase(), platform.toUpperCase(), result.length);
                     setMeta({
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`
@@ -39,21 +34,17 @@ export default {
         path: "/leaderboard/:platform/CHANKA",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
-            dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
-            return;
-            // tracker.trackPageView("leaderboard");
-            // tracker.trackEvent("leaderboard", "view", "board", "chanka");
-            // dispatch({ type: "PLATFORM", payload: platform });
-            // api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
-            //     .then(entries => {
-            //         setMeta({
-            //             title: "LMG kills leaderboard",
-            //             description: "top 100 Tachanka players in our database",
-            //             type: "website"
-            //         });
-            //         dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } });
-            //     })
-            //     .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
+            dispatch({ type: "PLATFORM", payload: platform });
+            api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
+                .then(entries => {
+                    setMeta({
+                        title: "LMG kills leaderboard",
+                        description: "top 100 Tachanka players in our database",
+                        type: "website"
+                    });
+                    dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } });
+                })
+                .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
         }
     },
     LEADERBOARD: {
@@ -62,8 +53,6 @@ export default {
             const { board: b, platform } = getState().location.payload;
             const board = (b || "").toUpperCase();
             if (!board || board === "CHANKA") { return; }
-            tracker.trackPageView("leaderboard");
-            tracker.trackEvent("leaderboard", "view", "board", board);
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
             api.getLeaderboard(lbConfig.board, platform)
@@ -81,7 +70,6 @@ export default {
     FAQ: {
         path: "/faq",
         thunk: (dispatch, getState) => {
-            tracker.trackPageView("faq");
         }
     },
     PROFILE: {
@@ -91,20 +79,18 @@ export default {
             api.getPlayer(id)
                 .then(function (player) {
                     dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-                    tracker.trackPageView("profile");
-                    tracker.trackEvent("profile", "view", "id", id);
                     if (player.flags.noAliases === false) {
                         setMeta({
                             title: `${player.name}`,
                             description: `${player.name} player profile for Rainbow Six: Siege`,
                             type: "profile"
                         });
-                     } else {
-                         setMeta({
-                             title: `account ${id}`,
-                             description: `${id} account details in the community database for Rainbow Six: Siege`
-                         });
-                     }
+                    } else {
+                        setMeta({
+                            title: `account ${id}`,
+                            description: `${id} account details in the community database for Rainbow Six: Siege`
+                        });
+                    }
                 })
                 .catch(error => {
                     console.error(error);
@@ -140,9 +126,6 @@ async function playerThunk(dispatch, getState) {
     api.getPlayer(id)
         .then(function (player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            tracker.trackPageView("player");
-            tracker.trackEvent("player", "view", "id", id);
-            tracker.trackEvent("player", "tab", "tab", tab || "stats");
             if (player.flags.noAliases === false) {
                 setMeta({
                     title: `${player.name}`,

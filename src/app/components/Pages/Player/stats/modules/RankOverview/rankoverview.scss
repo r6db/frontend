@@ -1,29 +1,37 @@
 @import "scss/styles";
 
-.rankoverview{
-    &-currentseason{
+.rankoverview {
+    .player-module-divider:first-child {
+        display: none;
+    }
+    &-currentseason {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         padding-top: $l;
+
+        &.is-underage {
+            padding: $l*3;
+            justify-content: center;
+        }
     }
-    &-current{
+    &-current {
         flex: 1;
         position: relative;
         height: $l*7.5;
         width: $l*7.5;
         z-index: 0;
-        &-icon{
+        &-icon {
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             z-index: -1;
-            svg{
+            svg {
                 height: $l*7.5;
                 width: $l*7.5;
             }
-            &:after{
+            &:after {
                 position: absolute;
                 display: block;
                 content: "";
@@ -34,14 +42,14 @@
                 background: fade-out($gray-dark, 0.3);
             }
         }
-        &-region{
+        &-region {
             text-align: center;
             padding: $l*0.5;
             text-shadow: 0 0 10px $black;
             font-weight: bold;
             z-index: 1;
         }
-        &-placement{
+        &-placement {
             text-align: center;
             margin-top: $l*3;
             font-size: 1.5em;
@@ -50,71 +58,87 @@
             z-index: 2;
         }
     }
-    &-pastseason{
+    &-pastseason {
         display: flex;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         flex-direction: row;
+        justify-content: space-around;
 
-        @include large{
+        @include large {
             flex-direction: column;
+            justify-content: flex-start;
         }
     }
-    &-past{
+    &-past {
         display: flex;
         align-items: center;
         padding: $l;
         flex: 0 0 auto;
 
-        &.season-1{
+        &.season-1 {
             border-left: 3px solid $black-ice;
-            .rankoverview-past-season{ color: $black-ice;}
+            .rankoverview-past-season {
+                color: $black-ice;
+            }
         }
-        &.season-2{
+        &.season-2 {
             border-left: 3px solid $dust-line;
-            .rankoverview-past-season{ color: $dust-line;}
+            .rankoverview-past-season {
+                color: $dust-line;
+            }
         }
-        &.season-3{
+        &.season-3 {
             border-left: 3px solid $skull-rain;
-            .rankoverview-past-season{ color: $skull-rain;}
+            .rankoverview-past-season {
+                color: $skull-rain;
+            }
         }
-        &.season-4{
+        &.season-4 {
             border-left: 3px solid $red-crow;
-            .rankoverview-past-season{ color: $red-crow;}
+            .rankoverview-past-season {
+                color: $red-crow;
+            }
         }
-        &.season-5{
+        &.season-5 {
             border-left: 3px solid $velvet-shell;
-            .rankoverview-past-season{ color: $velvet-shell;}
+            .rankoverview-past-season {
+                color: $velvet-shell;
+            }
         }
-        &.season-6{
+        &.season-6 {
             border-left: 3px solid $operation-health;
-            .rankoverview-past-season{ color: $operation-health;}
+            .rankoverview-past-season {
+                color: $operation-health;
+            }
         }
-        &.season-7{
+        &.season-7 {
             border-left: 3px solid $blood-orchid;
-            .rankoverview-past-season{ color: $blood-orchid;}
+            .rankoverview-past-season {
+                color: $blood-orchid;
+            }
         }
 
-        &-icon{
+        &-icon {
             height: $l*5;
             width: $l*5;
             margin-right: $l;
         }
-        &-text{
+        &-text {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
-        &-season{
+        &-season {
             margin-right: $l;
             font-size: 0.8em;
             line-height: 1.4;
         }
 
-        &-rank{
+        &-rank {
             font-size: 1.125em;
         }
-        &-mmr{
+        &-mmr {
             margin-left: $l;
             color: $gray;
             font-size: 0.8em;

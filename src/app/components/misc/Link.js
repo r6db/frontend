@@ -16,15 +16,15 @@ const toUrl = (to, routesMap, serializer) => {
     } else if (typeof to === "object") {
         const action = to;
         try {
-        return actionToPath(action, routesMap, serializer);
+            return actionToPath(action, routesMap, serializer);
         } catch (e) {
-        console.warn(
-            "[redux-first-router-link] could not create path from action:",
-            action,
-            "For reference, here are your current routes:",
-            routesMap
-        );
-        return "#";
+            console.warn(
+                "[redux-first-router-link] could not create path from action:",
+                action,
+                "For reference, here are your current routes:",
+                routesMap
+            );
+            return "#";
         }
     }
     console.warn(
@@ -49,13 +49,14 @@ const Link = {
     },
     view({ attrs, state, children }) {
         return (
-        <a
-            href={toUrl(attrs.to, attrs.location.routesMap, state.serializer)}
-            className={attrs.className || ""}
-            onclick={state.doLink}
-        >
-            {children}
-        </a>
+            <a
+                id={attrs.id || null}
+                href={toUrl(attrs.to, attrs.location.routesMap, state.serializer)}
+                className={attrs.className || ""}
+                onclick={state.doLink}
+            >
+                {children}
+            </a>
         );
     }
 };

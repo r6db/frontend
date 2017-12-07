@@ -21,7 +21,8 @@ export default {
                     className="menu-search"
                     search={attrs.search} />
                 <div className="home-disclaimer">
-                    We merged all platforms together!<br />Check the dropdown in the searchbar and leaderboard.
+                    Old season ranks are temporarily missing. <br />
+                    Waiting for UBI to fix.
                 </div>
             </div>
         );

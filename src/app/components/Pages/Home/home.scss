@@ -22,6 +22,13 @@
         border-right: 3px solid $primary;
         line-height: 1.5;
         padding: $l;
+        a{
+            color: $accent;
+
+            &:visited{
+                color: $white;
+            }
+        }
     }
 }
 .HOME .topbar{
