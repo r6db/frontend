@@ -1,32 +1,45 @@
 @import "scss/styles";
 
-.search{
-    max-width: 1024px;
-    width: 100%;
-    margin: 0 auto;
-
-    &-query{
-        font-size: 3em;
-        margin-bottom: $l;
-        text-shadow: 0 0 1px $gray-dark;
+.search {
+    &__resultcount {
+        margin: $l*2 0;
+        font-weight: bold;
     }
-    &-results{
+    &__results {
         width: 100%;
 
-        *:first-child{
+        *:first-child {
             margin-top: 0;
         }
     }
-    &__result{
-        color: $black
+    &__result {
+        color: $font-color;
     }
 }
 
-.result{
+.result {
     display: block;
     margin-bottom: $l*2;
-    &__span+&__span:before{
-        content: " • ";
-
+    &__span {
+        color: $font-subtle-color;
+    }
+    &__aliases {
+    }
+    .media__label {
+        color: $primary;
+        border-color: $primary;
+    }
+    &__info {
+        display: none;
+    }
+    @include medium {
+        .media__text {
+            display: flex;
+            justify-content: space-between;
+        }
+        .result__info {
+            display: block;
+            text-align: right;
+        }
     }
 }

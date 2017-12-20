@@ -1,23 +1,25 @@
 @import "scss/styles";
 
-.content-wrapper{
+.content-wrapper {
     @include openmenu {
         display: flex;
         flex-direction: row;
     }
 }
-.app{
+.app {
     width: 100%;
     overflow: hidden;
     position: relative;
 }
-.app-content{
+.app-content {
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    // background: radial-gradient(50% 70% at 50% 15%, lighten($bg-color, 5%) 0%, $black 100%);
+    background: linear-gradient(110deg, lighten($bg-color, 5%) 0%, $black 100%);
 }
-.app-page{
+.app-page {
     position: relative;
     padding: $l;
     width: 100vw;
@@ -29,12 +31,12 @@
     flex-direction: column;
     backface-visibility: hidden;
 
-    .elementquery{
+    .elementquery {
         flex: 1 1 auto;
         display: flex;
     }
 
-    @include openmenu{
+    @include openmenu {
         width: 100%;
     }
 }

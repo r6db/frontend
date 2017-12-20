@@ -1,5 +1,5 @@
 import * as m from "mithril";
-import Alias from "components/Pages/Profile/Player/Alias";
+import Alias from "./Alias";
 import "./aliases.scss";
 
 export default {
@@ -7,12 +7,8 @@ export default {
         return (
             <div className="player-module aliases">
                 <div className="player-module-header">Alias History</div>
-                <div className="aliases-list">
-                    {
-                        attrs.aliases.map(x => <Alias alias={x} />)
-                    }
-                </div>
+                <div className="aliases-list">{attrs.aliases.map(x => <Alias alias={x} />)}</div>
             </div>
-        )
-    }
-}
+        );
+    },
+};

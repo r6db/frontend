@@ -1,7 +1,6 @@
 @import "scss/styles";
 @import "scss/components/reset";
 
-
 @font-face {
     font-family: "Open Sans";
     src: url("/assets/fonts/OpenSans/OpenSans-Regular.ttf") format("ttf");
@@ -21,37 +20,37 @@
     font-style: italic;
 }
 
-html{
+html {
     font-size: 14px;
 }
 
-body{
+body {
     font-family: "Open Sans", sans-serif;
     position: relative;
-    color: $black;
+    color: $font-color;
     display: flex;
     flex-direction: column;
-    background: $white;
+    background: $bg-color;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     font-weight: normal;
 }
-.content{
+.content {
     flex: 1 0 500px;
 }
-.footer{
+.footer {
     flex: 0 0 3.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0 .75rem;
+    padding: 0 0.75rem;
 }
-.center{
+.center {
     text-align: center;
     align-self: center;
 }
-.background-image{
+.background-image {
     position: fixed;
     z-index: -1;
     min-width: 100vw;
@@ -64,50 +63,57 @@ body{
     opacity: 0.2;
 }
 
-a, button, input{
-    &:focus{
+a,
+button,
+input {
+    &:focus {
         outline: 1px solid $primary;
     }
 }
 
-input{
+input {
     padding: 0.5em 1em;
 }
 
-select{
+select {
     padding: $l;
     background: darken($gray-dark, 3%);
-    color: $black;
+    color: $font-color;
     display: inline-block;
     -webkit-appearance: none;
-    box-shadow: 0 2px 4px darken(darken($gray-dark, 3%), 40%);
+    -moz-appearance: none;
 }
 
-label{
+label {
     display: block;
-    color: $gray;
+    color: $font-subtle-color;
     font-size: 0.7em;
     font-weight: normal;
     height: 1em;
     margin-bottom: 0.5*$l;
 }
-.container{
+.container {
+    width: 100%;
     max-width: $screen-yourmom;
     margin: 0 auto;
+
+    &--small {
+        max-width: $screen-large;
+    }
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: column;
 
-    @include medium{
+    @include medium {
         flex-direction: row;
     }
 }
-.col{
+.col {
     flex: 0 1 100%;
     margin: $l;
-    min-width:0;
+    min-width: 0;
 }
 
 @import "scss/components/button";

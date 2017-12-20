@@ -15,36 +15,30 @@ import "./base.scss";
 import "./app.scss";
 
 const componentMap = {
-    "HOME": () => import("./Pages/Home"),
-    "SEARCH": () => import("./Pages/Search"),
-    "FAQ": () => import("./Pages/Faq"),
-    "LEADERBOARD": () => import("./Pages/Leaderboard"),
-    "CHANKABOARD": () => import("./Pages/Chankaboard"),
-    "PROFILE": () => import("./Pages/Profile"),
-    "PLAYER": () => import("./Pages/Player"),
-    "PLAYERTABS": () => import("./Pages/Player"),
-    [NOT_FOUND]: () => import("./Pages/Errors/NotFound")
+    HOME: () => import("./Pages/Home"),
+    SEARCH: () => import("./Pages/Search"),
+    FAQ: () => import("./Pages/Faq"),
+    LEADERBOARD: () => import("./Pages/Leaderboard"),
+    CHANKABOARD: () => import("./Pages/Chankaboard"),
+    PLAYER: () => import("./Pages/Player"),
+    PLAYERTABS: () => import("./Pages/Player"),
+    [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
 
 const breakpoints = {
     small: 0,
     medium: 768,
     large: 1200,
-}
+};
 
 const App = {
     view({ attrs, state }) {
+        const Search = attrs.config.searchbar ? <Searchbar search={attrs.search} /> : null;
 
-        const Search = attrs.config.searchbar
-            ? <Searchbar search={attrs.search} />
-            : null;
-
-        const TopbarComponent = attrs.config.menu
-            ? <Topbar key="topbar">{Search}</Topbar>
-            : null;
+        const TopbarComponent = attrs.config.menu ? <Topbar key="topbar">{Search}</Topbar> : null;
 
         return (
-             <div className={"content-wrapper " + attrs.location + " " + attrs.config.class}>
+            <div className={"content-wrapper " + attrs.location + " " + attrs.config.class}>
                 <Drawer>
                     <Menu platform={attrs.platform} tweets={attrs.tweets} />
                 </Drawer>
@@ -61,10 +55,10 @@ const App = {
                 </div>
             </div>
         );
-    }
+    },
 };
 
-const mapStateToProps = (getState) => {
+const mapStateToProps = getState => {
     const { platform, tweets, search, location, loading } = getState();
     return {
         location: location.type,
@@ -73,8 +67,8 @@ const mapStateToProps = (getState) => {
         loading,
         search,
         platform,
-        tweets
-    }
-}
+        tweets,
+    };
+};
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);

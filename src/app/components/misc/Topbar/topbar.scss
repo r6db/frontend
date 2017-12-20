@@ -1,13 +1,18 @@
 @import "scss/styles";
 
-.topbar{
+.topbar {
     @include card;
-	display: flex;
+    display: flex;
     width: 100%;
-    height: $topbar-height;
+    height: 48px;
     flex: 0 0 auto;
-    
-    &-burger{
+    background: $gray-dark;
+
+    @include medium {
+        height: $topbar-height;
+    }
+
+    &-burger {
         width: 40px;
         height: 36px;
         align-self: center;
@@ -16,7 +21,9 @@
         flex: 0 0 auto;
         position: relative;
 
-        span, &:before, &:after{
+        span,
+        &:before,
+        &:after {
             content: "";
             position: absolute;
             height: 2px;
@@ -24,7 +31,7 @@
             right: 10px;
             background: $white;
         }
-        span{
+        span {
             top: 50%;
             margin-top: -1px;
         }
@@ -38,10 +45,10 @@
             display: none;
         }
     }
-    &-menuspacer{
+    &-menuspacer {
         flex: 0 0 60px;
 
-        @include openmenu{
+        @include openmenu {
             display: none;
         }
     }
@@ -49,17 +56,11 @@
         flex: 1;
         display: flex;
     }
-    .search-form{
+    .search-form {
         margin: 0;
-        height: $topbar-height;
         width: 100%;
+        height: 100%;
+        box-shadow: 0 0 5px $gray-dark;
         max-width: 100%;
-        background: none;
-        box-shadow: none;
-
-        input, select{
-            height: $topbar-height;
-            line-height: $topbar-height - (2*$l);
-        }
     }
 }

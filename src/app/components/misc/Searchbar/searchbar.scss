@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.search-form{
+.search-form {
     display: flex;
     width: 100%;
     max-width: 90*$l;
@@ -9,78 +9,57 @@
     margin: $l*2 auto;
     justify-content: center;
     align-items: stretch;
+    background: $gray-dark;
+    box-shadow: 0 0 5px $gray-dark;
 
-    @include large{
+    @include large {
         height: 6*$l;
     }
 
-    input{
+    input {
         background: none;
-        color: $black;
+        color: $font-color;
         padding: $l $l $l 0;
-        line-height: 2*$l;
         width: calc(100% - 4rem);
         height: 100%;
         @include placeholder-color(darken($gray-light, 30%));
 
-        @include large{
+        @include large {
             font-size: 1.25rem;
-            height: 6*$l;
-            line-height: 4*$l;
         }
 
         @include openmenu {
             padding: $l ($l*2);
         }
 
-        &:focus{
+        &:focus {
             outline: none;
         }
-
     }
-    select{
+    select {
         width: 4rem;
         background: none;
         margin: 0;
         box-shadow: none;
         padding: 0;
-
+        -moz-appearance: none;
         font-size: $font-smaller;
 
-        @include large{
+        @include large {
             font-size: $font-default;
         }
-        option{ color: $black; }
-    }
-    span{
-        height: 100%;
-        width: 11*$l;
-        display: inline-flex;
-        flex-direction: row;
-        vertical-align: top;
-        align-items: center;
-        label{
-            margin: 0 0 0 .3em;
-            font-size: 1rem;
-            user-select: none;
-            letter-spacing: -1px;
-            color: darken($gray, 30%);
-        }
-        input{
-            height: initial;
-            width: initial;
-            padding: 0;
-            line-height: 1;
+        option {
+            color: $black;
         }
     }
 }
-.search-submit.button{
+.search-submit.button {
     flex: 0 1 auto;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     cursor: pointer;
 
-    @media screen and (min-width: 720px){
+    @media screen and (min-width: 720px) {
         flex: 0 0 auto;
-        padding: .5em 3em;
+        padding: 0.5em 3em;
     }
 }

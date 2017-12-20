@@ -1,34 +1,34 @@
 @import "scss/styles";
 
-.idcard{
+.idcard {
     display: flex;
     flex-direction: row;
     flex: 0 0 auto;
     padding-bottom: $l;
 
-    @include medium{
+    @include medium {
         padding-bottom: 0;
     }
-    &.player-module{
+    &.player-module {
         margin: 0;
         flex-direction: column;
         align-items: center;
 
-        @include medium{
+        @include medium {
             flex-direction: row;
             align-items: flex-start;
         }
     }
 
-    &-image{
+    &-image {
         height: $l*8;
         width: auto;
         position: relative;
-        img{
+        img {
             height: 100%;
             width: auto;
         }
-        .idcard-level{
+        .idcard-level {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -38,78 +38,77 @@
             width: 100%;
         }
     }
-    &-text{
+    &-text {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         position: relative;
         flex: 1;
-        .col{
+        .col {
             margin: $l $l 0;
             flex: none;
         }
-        a{
+        a {
             padding: $l;
         }
-        @include medium{
+        @include medium {
             flex-direction: row;
             height: $l*8;
 
-            .col{
+            .col {
                 margin: $l;
                 flex: 0 1 auto;
             }
-            a{
+            a {
                 padding: 0;
             }
         }
     }
-    &-names{
+    &-names {
         display: flex;
         flex-direction: column;
         text-align: center;
 
-        >*{
+        > * {
             flex: none;
         }
 
-        @include medium{
+        @include medium {
             text-align: left;
             min-width: 18em;
         }
     }
-    &-name{
+    &-name {
         font-size: 2em;
     }
-    &-level{
+    &-level {
         margin-top: $l*0.5;
     }
-    &-simple{
+    &-simple {
         margin-top: $l*0.5;
         color: $accent;
     }
-    &-links, &-tabs{
+    &-links,
+    &-tabs {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        margin: $l 0 0;
 
-        @include medium{
-            justify-content: flex-end;
+        @include medium {
             padding: 0.5*$l;
-            a{
+            a {
                 text-align: right;
             }
         }
 
-        svg{
+        svg {
             width: 1.5em;
             height: 1.5em;
             line-height: 1em;
             vertical-align: middle;
         }
-        a{
+        a {
             color: $accent;
             display: block;
             line-height: 1.4;
@@ -117,24 +116,34 @@
             margin: 0 $l;
             cursor: pointer;
         }
-        .is-active{
+        .is-active {
             color: $gray;
             cursor: default;
         }
     }
-    @include medium{
-        &-links.col{
+
+    &-tabs {
+        justify-content: flex-start;
+    }
+    &-links {
+        margin: $l 0 0;
+        @include medium {
+            justify-content: flex-end;
+        }
+    }
+    @include medium {
+        &-links.col {
             position: absolute;
             right: 0;
             top: 0;
             margin: 0;
 
-            a{
+            a {
                 padding: ($l*0.75) ($l*0.5);
                 margin: 0 0 0 2px;
             }
         }
-        &-tabs.col{
+        &-tabs.col {
             display: flex;
             flex-direction: row;
             align-items: flex-end;
