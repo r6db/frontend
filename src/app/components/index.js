@@ -23,6 +23,7 @@ const componentMap = {
     PROFILE: () => import("./Pages/Profile"),
     PLAYER: () => import("./Pages/Player"),
     PLAYERTABS: () => import("./Pages/Player"),
+    COMPARISON: () => import("./Pages/Comparison"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
 
