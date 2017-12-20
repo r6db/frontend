@@ -7,7 +7,10 @@
     .search-form{
         position: relative;
         width: 90%;
+        max-width: 600px;
         margin-top: 30vh;
+        height: $l*5;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     }
     input{
         padding: $l;
@@ -17,7 +20,6 @@
         max-width: 100%;
         text-align: center;
         margin: 0 auto;
-        text-shadow: 0 0 1px black;
         border-left: 3px solid $primary;
         border-right: 3px solid $primary;
         line-height: 1.5;

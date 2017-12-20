@@ -1,27 +1,22 @@
 @import "scss/styles";
 
 .search-form{
-
-    @include card;
-    width: 100%;
-    margin: $l*2 auto;
-    max-width: 90*$l;
-    justify-content: center;
-    flex: 0 0 auto;
     display: flex;
+    width: 100%;
+    max-width: 90*$l;
+    flex: 0 0 auto;
     height: 4*$l;
+    margin: $l*2 auto;
+    justify-content: center;
+    align-items: stretch;
 
     @include large{
         height: 6*$l;
     }
-}
-.search-input{
-    flex: 1 1 auto;
-    position: relative;
 
     input{
         background: none;
-        color: $white;
+        color: $black;
         padding: $l $l $l 0;
         line-height: 2*$l;
         width: calc(100% - 4rem);
@@ -45,26 +40,19 @@
     }
     select{
         width: 4rem;
-        display: inline-block;
         background: none;
-        height: 100%;
-        padding: $l;
-        font-size: $font-smaller;
+        margin: 0;
         box-shadow: none;
-        vertical-align: top;
-        line-height: 2*$l;
+        padding: 0;
+
+        font-size: $font-smaller;
 
         @include large{
-            font-size: 1.25rem;
-            height: 6*$l;
-            line-height: 4*$l;
+            font-size: $font-default;
         }
         option{ color: $black; }
     }
     span{
-        position: absolute;
-        right: 0;
-        top: 0;
         height: 100%;
         width: 11*$l;
         display: inline-flex;

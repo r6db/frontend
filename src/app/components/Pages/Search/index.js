@@ -1,5 +1,6 @@
 import * as m from "mithril";
 import Result from "./Result";
+import Media from "components/misc/Media";
 import { connect } from "lib/store/connect";
 import "./search.scss";
 
@@ -11,14 +12,14 @@ const Search = {
 
         if (attrs.loading) { return ""; }
         return (
-            <div className="search">
+            <div className="container search">
                 <div className="colums is-multiline search-results">{
                     attrs.result.length > 0
                         ? attrs.result.map((player, i, total) =>
                             <Result player={player} index={i} key={player.id} href={showPlayer(player.id)} extended={showExtended(player.id)} />)
-                        : <div className="playercard is-empty">
-                            we could not find any player matching that name. sorry
-                    </div>
+                        :   <Media title="no results">
+                                we could not find any players matching that query.
+                            </Media>
                 }</div>
             </div>
         );
@@ -26,9 +27,10 @@ const Search = {
 };
 
 const mapStateToProps = (getState) => {
-    const { loading, search, searchResults } = getState();
+    const { platform, loading, search, searchResults } = getState();
     return {
         loading,
+        isConsole: platform !== "PC",
         result: searchResults[search] || []
     }
 }

@@ -22,17 +22,15 @@ const Searchbar = {
     view({ attrs, state }) {
         return (
             <form className="search-form" action="" onsubmit={state.onSearch}>
-                <div className="search-input">
-                    <input type="text"
+                <input type="text"
                         value={state.query}
                         placeholder="player name"
                         oninput={state.onQueryChange} />
-                    <select value={attrs.platform} onchange={m.withAttr("value", attrs.setPlatform)}>
-                        <option value="PC">PC</option>
-                        <option value="PS4">PS4</option>
-                        <option value="XBOX">XB1</option>
-                    </select>
-                </div>
+                <select value={attrs.platform} onchange={m.withAttr("value", attrs.setPlatform)}>
+                    <option value="PC">PC</option>
+                    <option value="PS4">PS4</option>
+                    <option value="XBOX">XB1</option>
+                </select>
                 <button className="button is-primary search-submit">Search</button>
             </form>
         );

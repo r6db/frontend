@@ -30,7 +30,8 @@ module.exports = {
             "components": path.join(__dirname, "../src/app/components"),
             "lib": path.join(__dirname, "../src/app/lib"),
             "assets": path.join(__dirname, "../src/assets")
-        }
+        },
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
     node: {
         __filename: true

@@ -28,10 +28,10 @@ html{
 body{
     font-family: "Open Sans", sans-serif;
     position: relative;
-    color: $white;
+    color: $black;
     display: flex;
     flex-direction: column;
-    background: $black;
+    background: $white;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -72,13 +72,12 @@ a, button, input{
 
 input{
     padding: 0.5em 1em;
-    background: white;
 }
 
 select{
     padding: $l;
     background: darken($gray-dark, 3%);
-    color: $white;
+    color: $black;
     display: inline-block;
     -webkit-appearance: none;
     box-shadow: 0 2px 4px darken(darken($gray-dark, 3%), 40%);
@@ -91,6 +90,10 @@ label{
     font-weight: normal;
     height: 1em;
     margin-bottom: 0.5*$l;
+}
+.container{
+    max-width: $screen-yourmom;
+    margin: 0 auto;
 }
 
 .row{

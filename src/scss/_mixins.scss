@@ -1,7 +1,6 @@
 @mixin btnvariant($color, $fontcolor:$white){
     border-color: transparent;
     background: $color;
-    box-shadow: 0 2px 4px darken($color, 40%);
     color: $fontcolor;
         &:hover, &:focus{
             background: darken($color, 10%);
@@ -32,9 +31,6 @@
     }
 }
 @mixin card {
-    background: $gray-dark;
-    box-shadow: 0px 2px 2px darken($gray-dark, 10%);
-    color: $white;
 }
 @mixin card-header{
     padding: (0.5*$l) $l 0;

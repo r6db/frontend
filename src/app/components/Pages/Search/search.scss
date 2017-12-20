@@ -17,4 +17,16 @@
             margin-top: 0;
         }
     }
+    &__result{
+        color: $black
+    }
+}
+
+.result{
+    display: block;
+    margin-bottom: $l*2;
+    &__span+&__span:before{
+        content: " • ";
+
+    }
 }

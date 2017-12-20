@@ -1,8 +1,8 @@
 {
   "name": "gitgudscrub-frontend",
   "scripts": {
-    "start": "webpack-dev-server --progress --hot --inline --config config/dev.js",
-    "watch": "webpack --progress --watch --config config/dev.js",
+    "start": "webpack-dev-server --hot --inline --config config/dev.js",
+    "watch": "webpack --watch --config config/dev.js",
     "build:dev": "cross-env NODE_ENV=development webpack --config config/dev.js",
     "build": "cross-env BROWSERLIST_STATS=./browserlist-stats.json NODE_ENV=production webpack --config config/prod.js",
     "stats": "webpack --config config/dev.js --profile --json > stats.json",
