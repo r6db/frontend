@@ -86,23 +86,20 @@ export default {
                 </Question>
                 <Question question="I want to develop my own stuff with r6db data. Do you guys have an API?">
                     <p>
-                        The short answer is yes. Shoot us a mail and we'll get you going. Detailed documentation is in
-                        the works.
-                        <em>
-                            Just to make it clear: We do and can NOT give any guarantee about uptime and availability.
-                        </em>{" "}
-                        While Muppet does give his best, it is still a hobby project.
+                        The short answer is yes. Shoot us a mail and we'll get you going. Just to make it clear:
+                        <em>We can and do NOT give any guarantee about uptime and availability for the API.</em> While
+                        Muppet does give his best, it <i>is</i> still a hobby project.
                     </p>
                 </Question>
                 <Question question="What technologies do you guys use?">
                     <p>
                         The backend is written in <a href="https://nodejs.org/en/">Node JS</a>, and uses{" "}
                         <a href="https://www.postgresql.org/">Postgresql</a> and <a href="https://redis.io/">Redis</a>{" "}
-                        as data storage. Jobs are triggered through <a href="https://www.rabbitmq.com">RabbitMQ</a>.
+                        as data storage. Updates are running over <a href="https://www.rabbitmq.com">RabbitMQ</a>.
                     </p>
                     <p>
                         On the frontend, we use <a href="https://mithril.js.org/">Mithril</a> (highly recommended) as
-                        framework with <a href="https://redux.js.org">Redix</a> for state management and{" "}
+                        framework with <a href="https://redux.js.org">Redux</a> for state management and{" "}
                         <a href="https://github.com/faceyspacey/redux-first-router">redux-first-router</a> for routing.
                         <br />
                         We had a strong focus on high performance and small size with visuals coming second. This is the

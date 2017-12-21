@@ -6,7 +6,6 @@
     margin-right: auto;
 
     &__header {
-        padding: $l;
         @include card;
     }
     &__title {

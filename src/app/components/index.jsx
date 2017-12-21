@@ -43,9 +43,12 @@ const App = {
                     <Menu platform={attrs.platform} tweets={attrs.tweets} />
                 </Drawer>
                 <div className="app">
-                    <div className="app-content">
+                    <div className="app__background">
+                        <img src="/assets/bg.jpg" srcset="/assets/bg@1.5x.jpg 1600w, /assets/bg@2x.jpg 1900w" alt="" />
+                    </div>
+                    <div className="app__content">
                         {TopbarComponent}
-                        <div className="app-page">
+                        <div className="app__page">
                             <ElementQuery className="contentsize" query={breakpoints}>
                                 {attrs.loading ? <Loading /> : null}
                                 <AsyncComponent importFn={attrs.importFn} />

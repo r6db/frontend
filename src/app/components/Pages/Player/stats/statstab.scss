@@ -1,39 +1,39 @@
 @import "scss/styles";
 
-.statstab{
+.statstab {
     display: flex;
     flex-direction: column;
     margin-top: 0;
     padding-top: 0;
     width: 100%;
 
-    @include large{
+    @include large {
         flex-direction: row;
-         &-sidebar{
-             width: 35*$l;
-         }
+        &-sidebar {
+            width: 30*$l;
+        }
     }
-    &-statarea{
+    &-statarea {
         display: flex;
         flex-direction: column;
         flex: auto;
 
-        @include medium{
+        @include medium {
             flex-direction: row;
 
-            .statstab-center{
+            .statstab-center {
                 width: 66%;
                 flex: 1 1 auto;
             }
-            .statstab-aside{
+            .statstab-aside {
                 width: 20*$l;
                 flex: none;
                 margin-left: $l;
             }
         }
 
-        @include large{
-            .statstab-center{
+        @include large {
+            .statstab-center {
                 margin-left: $l;
             }
         }

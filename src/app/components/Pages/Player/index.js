@@ -25,7 +25,7 @@ const Player = {
             return <NoData {...attrs.data} />;
         } else {
             return (
-                <div className={`player ${attrs.data.id}`}>
+                <div className={`container player ${attrs.data.id}`}>
                     <IdCard tab={attrs.tab} platform={attrs.platform} {...attrs.data}/>
                     { attrs.tab === "stats" ? <Stats key="stats" {...attrs.data} /> : null }
                     { attrs.tab === "ops" ? <Operators key="ops" {...attrs.data} /> : null }

@@ -1,10 +1,10 @@
 @import "scss/styles";
 
-.home{
+.home {
     height: 100%;
     width: 100%;
 
-    .search-form{
+    .search-form {
         position: relative;
         width: 90%;
         max-width: 600px;
@@ -12,10 +12,10 @@
         height: $l*5;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     }
-    input{
+    input {
         padding: $l;
     }
-    &-disclaimer{
+    &__disclaimer {
         width: 360px;
         max-width: 100%;
         text-align: center;
@@ -24,19 +24,19 @@
         border-right: 3px solid $primary;
         line-height: 1.5;
         padding: $l;
-        a{
+        a {
             color: $accent;
 
-            &:visited{
+            &:visited {
                 color: $white;
             }
         }
     }
 }
-.HOME .topbar{
+.HOME .topbar {
     background: none;
     box-shadow: none;
-    &:before{
+    &:before {
         display: none;
     }
 }
