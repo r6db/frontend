@@ -1,0 +1,81 @@
+@import "scss/vars";
+@import "scss/mixins";
+
+.playerheader {
+    position: relative;
+    margin-top: $l*5;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: $font-bigger;
+        text-align: center;
+
+        @include medium {
+            flex-direction: row;
+            align-items: flex-start;
+            text-align: left;
+        }
+    }
+    &__image {
+        width: $l*10;
+        flex: none;
+        margin-right: $l;
+    }
+    &__name {
+        margin: 0;
+        font-weight: 700;
+    }
+    &__flair,
+    &__level {
+        font-size: $font-default;
+    }
+    &__platform {
+        color: $font-subtle-color;
+        margin-left: $l;
+        font-size: 0.75em;
+    }
+    &__ranking {
+        margin-top: $l;
+    }
+    &__links {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        flex: 1;
+    }
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        margin-left: $l;
+        font-size: $font-default;
+        color: $font-color;
+        .icon {
+            width: $l*2;
+            height: $l*2;
+            fill: $font-color;
+            margin-right: 5px;
+        }
+    }
+    &__tabs {
+        margin: ($l*2) 0 0;
+        display: flex;
+    }
+    &__tab {
+        flex: 1;
+        transition: all 100ms ease-out;
+        padding: $l;
+        text-align: center;
+        font-weight: bold;
+        color: $font-color;
+
+        &:focus {
+            outline: none;
+        }
+        &--active {
+            background: $white;
+            color: $primary;
+        }
+    }
+}
