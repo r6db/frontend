@@ -69,6 +69,9 @@ export default {
                 axisX: {
                     labelInterpolationFnc,
                 },
+                lineSmooth: Chartist.Interpolation.monotoneCubic({
+                    fillHoles: true,
+                }),
             },
         };
         state.kdChart = {

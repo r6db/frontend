@@ -1,111 +1,106 @@
 @import "scss/styles";
 
-.opstab{
-    .opstab-controls{
+.opstab {
+    .opstab-controls {
         margin: $l 0;
-        p{
+        p {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0 $l;
 
-            @include medium{
+            @include medium {
                 flex-direction: row;
             }
         }
-        label{
+        label {
             margin: 0 $l 0 0;
             font-size: 0.9em;
         }
     }
 
-    .operator-table{
+    .operator-table {
         flex: 1;
 
-        .icon{
+        .icon {
             width: 2em;
             height: 2em;
             vertical-align: middle;
             display: block;
             margin: 0 auto;
-            @include medium{
+            @include medium {
                 display: inline-block;
                 margin-right: $l*0.5;
             }
         }
 
-        .fauxtable-cell{
+        .fauxtable-cell {
             text-align: right;
         }
-        .fauxtable-heading{
+        .fauxtable-heading {
             cursor: pointer;
             user-select: none;
 
-            &.is-active{
+            &.is-active {
                 color: $primary;
             }
         }
         .fauxtable-heading,
-        .fauxtable-cell{
+        .fauxtable-cell {
             padding: ($l*1.5) ($l*2);
         }
-        .fauxtable-row{
-            &:hover {
-                background: $trans-low;
-            }
-        }
-        .name{
+        .name {
             height: 4em;
         }
 
-        .fauxtable-cell.name{
+        .fauxtable-cell.name {
             text-align: center;
         }
 
-        @include medium{
+        @include medium {
             .fauxtable-cell,
-            .fauxtable-heading{
+            .fauxtable-heading {
                 flex: 1 0 0;
             }
-            .name{
+            .name {
                 text-align: left;
                 flex-grow: 4;
                 height: auto;
                 cursor: pointer;
             }
-            .won{
+            .won {
                 text-align: right;
                 flex-grow: 2;
             }
-            .kpr{
+            .kpr {
                 text-align: right;
                 flex-grow: 2;
             }
-            .survival{
+            .survival {
                 text-align: right;
                 flex-grow: 2;
             }
-            .lost{
+            .lost {
                 text-align: right;
                 flex-grow: 2;
             }
-            .wlr{
+            .wlr {
                 text-align: right;
                 flex-grow: 3;
             }
-            .kills{
+            .kills {
                 text-align: right;
                 flex-grow: 2;
             }
-            .deaths{
+            .deaths {
                 text-align: right;
                 flex-grow: 2;
             }
-            .kdr{
+            .kdr {
                 text-align: right;
                 flex-grow: 2;
             }
-            .time{
+            .time {
                 text-align: right;
                 flex-grow: 2;
             }
@@ -122,9 +117,17 @@
     }
 
     .chart-container .ct-series,
-    .chart-container .indicator{
-        &.opdaily { stroke: $black-ice; background-color: $black-ice; }
-        &.opavg { stroke: $skull-rain; background-color: $skull-rain; }
-        &.opavg .ct-point { stroke: none; }
+    .chart-container .indicator {
+        &.opdaily {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
+        &.opavg {
+            stroke: $skull-rain;
+            background-color: $skull-rain;
+        }
+        &.opavg .ct-point {
+            stroke: none;
+        }
     }
 }

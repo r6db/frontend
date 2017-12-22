@@ -29,6 +29,7 @@ export default {
     view({ attrs, state }) {
         return (
             <div className="faq">
+                <header className="header">F.A.Q</header>
                 <Question question="How is 'skill-rating' on the leaderboard determined?">
                     <p>
                         The matchmaking algorithm creates a <i>skill-rating</i> value for each player that it uses to

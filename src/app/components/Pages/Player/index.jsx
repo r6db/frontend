@@ -7,7 +7,7 @@ import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
 import NoData from "../Errors/NoData";
-import IdCard from "./IdCard";
+import Header from "./Header";
 import { connect } from "lib/store/connect";
 import "./player.scss";
 
@@ -26,25 +26,26 @@ const Player = {
         } else {
             return (
                 <div className={`container player ${attrs.data.id}`}>
-                    <IdCard tab={attrs.tab} platform={attrs.platform} {...attrs.data}/>
-                    { attrs.tab === "stats" ? <Stats key="stats" {...attrs.data} /> : null }
-                    { attrs.tab === "ops" ? <Operators key="ops" {...attrs.data} /> : null }
-                    { attrs.tab === "ranks" ? <Ranks key="ranks" {...attrs.data} /> : null }
+                    <Header tab={attrs.tab} platform={attrs.platform} {...attrs.data} />
+                    <div className="player__tab">
+                        {attrs.tab === "summary" ? <Stats key="summary" {...attrs.data} /> : null}
+                        {attrs.tab === "ops" ? <Operators key="ops" {...attrs.data} /> : null}
+                        {attrs.tab === "ranks" ? <Ranks key="ranks" {...attrs.data} /> : null}
+                    </div>
                 </div>
             );
         }
-    }
+    },
 };
-
 
 const mapStateToProps = getState => {
     const { platform, loading, players, location: { payload } } = getState();
 
     return {
         data: players[payload.id],
-        tab: payload.tab || "stats",
+        tab: payload.tab || "summary",
         loading,
-        platform
-    }
-}
+        platform,
+    };
+};
 export default connect(mapStateToProps)(Player);

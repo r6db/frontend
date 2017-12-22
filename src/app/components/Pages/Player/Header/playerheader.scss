@@ -65,6 +65,7 @@
     &__tab {
         flex: 1;
         transition: all 100ms ease-out;
+        border-bottom: 3px solid transparent;
         padding: $l;
         text-align: center;
         font-weight: bold;
@@ -74,8 +75,8 @@
             outline: none;
         }
         &--active {
-            background: $white;
             color: $primary;
+            border-color: $white;
         }
     }
 }

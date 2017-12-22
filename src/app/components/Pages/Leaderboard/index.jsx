@@ -21,7 +21,7 @@ const Leaderboard = {
         return (
             <div className="container leaderboard">
                 <div className="leaderboard__header">
-                    <h1 className="leaderboard__title">Top Skilled Players</h1>
+                    <h1 className="header leaderboard__title">Top Skilled Players</h1>
                     <div className="leaderboard__description">
                         <p>
                             We use the ranked system's 'skill' and an 'uncertainty' variables to calculate a downward

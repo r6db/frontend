@@ -8,15 +8,9 @@
     &__header {
         @include card;
     }
-    &__title {
-        font-size: 3em;
-        margin-bottom: $l;
-        text-shadow: 0 0 1px $gray-dark;
-    }
     &__description {
         color: $gray-light;
         line-height: 1.4;
-        text-shadow: 0 0 1px $gray-dark;
 
         p {
             margin-bottom: $l;

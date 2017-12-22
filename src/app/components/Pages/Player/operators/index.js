@@ -64,9 +64,7 @@ export default {
             if (tester !== sorter) {
                 return tester.key;
             }
-            return isSortReversed
-                ? tester.key + " is-active is-reversed"
-                : tester.key + " is-active";
+            return isSortReversed ? tester.key + " is-active is-reversed" : tester.key + " is-active";
         };
         state.sort = function(a, b) {
             const res = sorter.fn(a, b);
@@ -82,33 +80,30 @@ export default {
         };
         state.filter = x => filters[filterProp](x);
 
-        const ops = (state.ops = Object.keys(attrs.stats.operator).reduce(
-            (acc, curr) => {
-                const op = attrs.stats.operator[curr];
-                const k = op.kills || 0;
-                const d = op.deaths || 0;
-                const w = op.won || 0;
-                const l = op.lost || 0;
-                const p = w + l || 1;
-                const svl = (1 - d / p) * 100;
-                acc.push(
-                    Object.assign({}, Operators[curr], {
-                        id: curr,
-                        won: w,
-                        lost: l,
-                        kills: k,
-                        deaths: d,
-                        timePlayed: op.timePlayed || 0,
-                        wlr: stats.getWinChanceRaw(op),
-                        kdr: k / (d || 1),
-                        kpr: k / p,
-                        survivalRate: svl > 0 ? svl : 0,
-                    }),
-                );
-                return acc;
-            },
-            [],
-        ));
+        const ops = (state.ops = Object.keys(attrs.stats.operator).reduce((acc, curr) => {
+            const op = attrs.stats.operator[curr];
+            const k = op.kills || 0;
+            const d = op.deaths || 0;
+            const w = op.won || 0;
+            const l = op.lost || 0;
+            const p = w + l || 1;
+            const svl = (1 - d / p) * 100;
+            acc.push(
+                Object.assign({}, Operators[curr], {
+                    id: curr,
+                    won: w,
+                    lost: l,
+                    kills: k,
+                    deaths: d,
+                    timePlayed: op.timePlayed || 0,
+                    wlr: stats.getWinChanceRaw(op),
+                    kdr: k / (d || 1),
+                    kpr: k / p,
+                    survivalRate: svl > 0 ? svl : 0,
+                }),
+            );
+            return acc;
+        }, []));
 
         state.operatorsShowMap = {};
         const opProgressions = attrs.progressions
@@ -131,11 +126,7 @@ export default {
 
         const getOp = id => opProgressions[id] || [];
 
-        const getDelta = op => cb =>
-            getOp(op).reduce(
-                (acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])),
-                [],
-            );
+        const getDelta = op => cb => getOp(op).reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
 
         const getProgressionAverage = (op, cb) => {
             const series = getOp(op);
@@ -154,12 +145,8 @@ export default {
                             name: "KD Ratio",
                             data: getDelta(op.id)(function(curr, prev) {
                                 if (!prev) return null;
-                                return (
-                                    (curr.data.kills - prev.data.kills) /
-                                    (curr.data.deaths - prev.data.deaths)
-                                );
+                                return (curr.data.kills - prev.data.kills) / (curr.data.deaths - prev.data.deaths);
                             }).map(x => {
-                                return x;
                                 if (Number.isFinite(x)) {
                                     return x;
                                 }
@@ -168,23 +155,14 @@ export default {
                             className: "opdaily",
                         },
                         {
-                            name:
-                                "Average for past " +
-                                getOp(op.id).length +
-                                " days",
+                            name: "Average for past " + getOp(op.id).length + " days",
                             data: new Array(getOp(op.id).length).fill(
-                                getProgressionAverage(op.id, function(
-                                    start,
-                                    end,
-                                ) {
+                                getProgressionAverage(op.id, function(start, end) {
                                     if (!start || !end) {
                                         debugger;
                                         return null;
                                     }
-                                    return (
-                                        (start.data.kills - end.data.kills) /
-                                        (start.data.deaths - end.data.deaths)
-                                    );
+                                    return (start.data.kills - end.data.kills) / (start.data.deaths - end.data.deaths);
                                 }),
                             ),
                             className: "opavg",
@@ -207,12 +185,8 @@ export default {
                             name: "WL Ratio",
                             data: getDelta(op.id)(function(curr, prev) {
                                 if (!prev) return null;
-                                return (
-                                    (curr.data.won - prev.data.won) /
-                                    (curr.data.lost - prev.data.lost)
-                                );
+                                return (curr.data.won - prev.data.won) / (curr.data.lost - prev.data.lost);
                             }).map(x => {
-                                return x;
                                 if (Number.isFinite(x)) {
                                     return x;
                                 }
@@ -221,22 +195,13 @@ export default {
                             className: "opdaily",
                         },
                         {
-                            name:
-                                "Average for past " +
-                                getOp(op.id).length +
-                                " days",
+                            name: "Average for past " + getOp(op.id).length + " days",
                             data: new Array(getOp(op.id).length).fill(
-                                getProgressionAverage(op.id, function(
-                                    start,
-                                    end,
-                                ) {
+                                getProgressionAverage(op.id, function(start, end) {
                                     if (!start || !end) {
                                         return null;
                                     }
-                                    return (
-                                        (start.data.won - end.data.won) /
-                                        (start.data.lost - end.data.lost)
-                                    );
+                                    return (start.data.won - end.data.won) / (start.data.lost - end.data.lost);
                                 }),
                             ),
                             className: "opavg",
@@ -258,14 +223,8 @@ export default {
                         {
                             data: getDelta(op.id)(function(curr, prev) {
                                 if (!prev) return null;
-                                return (
-                                    Math.abs(
-                                        curr.data.timePlayed -
-                                            prev.data.timePlayed,
-                                    ) / 60
-                                );
+                                return Math.abs(curr.data.timePlayed - prev.data.timePlayed) / 60;
                             }).map(x => {
-                                return x;
                                 if (Number.isFinite(x)) {
                                     return x;
                                 }
@@ -310,13 +269,8 @@ export default {
                     <div className="card-content">
                         <p>
                             <label htmlFor="filter">filter by</label>
-                            <select
-                                name="filter"
-                                onchange={m.withAttr("value", state.onFilter)}
-                            >
-                                {Object.keys(filters).map(x => (
-                                    <option value={x}>{x}</option>
-                                ))}
+                            <select name="filter" onchange={m.withAttr("value", state.onFilter)}>
+                                {Object.keys(filters).map(x => <option value={x}>{x}</option>)}
                             </select>
                         </p>
                     </div>
@@ -326,9 +280,7 @@ export default {
                         <div className="fauxtable-row">
                             {sorters.map(sorter => (
                                 <div
-                                    className={`fauxtable-heading ${state.getSorterClass(
-                                        sorter,
-                                    )}`}
+                                    className={`fauxtable-heading ${state.getSorterClass(sorter)}`}
                                     onclick={() => state.setSort(sorter)}
                                 >
                                     {sorter.label}
@@ -342,69 +294,33 @@ export default {
                             .sort(state.sort)
                             .map(datum => (
                                 <div>
-                                    <div
-                                        key={datum.id}
-                                        className="fauxtable-row"
-                                    >
-                                        <div
-                                            className="fauxtable-cell name"
-                                            onclick={() =>
-                                                state.toggleOp(datum.id)
-                                            }
-                                        >
-                                            <Icon
-                                                glyph={
-                                                    GLYPHS[
-                                                        datum.id.toUpperCase()
-                                                    ]
-                                                }
-                                            />
+                                    <div key={datum.id} className="fauxtable-row">
+                                        <div className="fauxtable-cell name" onclick={() => state.toggleOp(datum.id)}>
+                                            <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
                                         </div>
-                                        <div className="fauxtable-cell won">
-                                            {datum.won || 0}
-                                        </div>
-                                        <div className="fauxtable-cell lost">
-                                            {datum.lost || 0}
-                                        </div>
+                                        <div className="fauxtable-cell won">{datum.won || 0}</div>
+                                        <div className="fauxtable-cell lost">{datum.lost || 0}</div>
                                         <div className="fauxtable-cell wlr">
-                                            <Scale
-                                                value={datum.wlr * 100}
-                                                neutral={50}
-                                            >
+                                            <Scale value={datum.wlr * 100} neutral={50}>
                                                 %
                                             </Scale>
                                         </div>
-                                        <div className="fauxtable-cell kills">
-                                            {datum.kills || 0}
-                                        </div>
-                                        <div className="fauxtable-cell deaths">
-                                            {datum.deaths || 0}
-                                        </div>
+                                        <div className="fauxtable-cell kills">{datum.kills || 0}</div>
+                                        <div className="fauxtable-cell deaths">{datum.deaths || 0}</div>
                                         <div className="fauxtable-cell kdr">
-                                            <Scale
-                                                value={datum.kdr}
-                                                neutral={1}
-                                            />
+                                            <Scale value={datum.kdr} neutral={1} />
                                         </div>
                                         <div className="fauxtable-cell kpr">
-                                            <Scale
-                                                value={datum.kpr}
-                                                neutral={1}
-                                            />
+                                            <Scale value={datum.kpr} neutral={1} />
                                         </div>
                                         <div className="fauxtable-cell survival">
-                                            <Scale
-                                                value={datum.survivalRate}
-                                                neutral={50}
-                                            >
+                                            <Scale value={datum.survivalRate} neutral={50}>
                                                 %
                                             </Scale>
                                         </div>
                                         <div className="fauxtable-cell time">
-                                            {stats.formatDuration(
-                                                datum.timePlayed,
-                                            )}
+                                            {stats.formatDuration(datum.timePlayed)}
                                         </div>
                                     </div>
                                     {!state.operatorsShowMap[datum.id] ? (
@@ -414,33 +330,21 @@ export default {
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
-                                                        <Chart
-                                                            {...state.opgraphs[
-                                                                datum.id
-                                                            ].kd}
-                                                        />
+                                                        <Chart {...state.opgraphs[datum.id].kd} />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
-                                                        <Chart
-                                                            {...state.opgraphs[
-                                                                datum.id
-                                                            ].wl}
-                                                        />
+                                                        <Chart {...state.opgraphs[datum.id].wl} />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
-                                                        <Chart
-                                                            {...state.opgraphs[
-                                                                datum.id
-                                                            ].playtime}
-                                                        />
+                                                        <Chart {...state.opgraphs[datum.id].playtime} />
                                                     </div>
                                                 </div>
                                             </div>

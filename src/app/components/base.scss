@@ -1,31 +1,13 @@
 @import "scss/styles";
 @import "scss/components/reset";
-
-@font-face {
-    font-family: "Open Sans";
-    src: url("/assets/fonts/OpenSans/OpenSans-Regular.ttf") format("ttf");
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Open Sans";
-    src: url("/assets/fonts/OpenSans/OpenSans-Bold.ttf") format("ttf");
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Open Sans";
-    src: url("/assets/fonts/OpenSans/OpenSans-Semibold.ttf") format("ttf");
-    font-weight: 600;
-    font-style: italic;
-}
+@import "scss/components/typo";
 
 html {
     font-size: 14px;
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Source Sans Pro", "Segoe UI", "Helvetica Neue", sans-serif;
     position: relative;
     color: $font-color;
     display: flex;
@@ -77,7 +59,7 @@ input {
 
 select {
     padding: $l;
-    background: darken($gray-dark, 3%);
+    background: $gray-dark;
     color: $font-color;
     display: inline-block;
     -webkit-appearance: none;
@@ -94,11 +76,11 @@ label {
 }
 .container {
     width: 100%;
-    max-width: $screen-yourmom;
+    max-width: 1200px;
     margin: 0 auto;
 
     &--small {
-        max-width: $screen-large;
+        max-width: 1024px;
     }
 }
 
