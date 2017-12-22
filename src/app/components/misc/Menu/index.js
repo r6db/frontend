@@ -51,13 +51,6 @@ const Menu = {
                         <a href="mailto:info@r6db.com">
                             <Icon className="menu-email" glyph={GLYPHS.EMAIL} />
                         </a>
-                        <a href="https://patreon.com/r6db">
-                            <Icon
-                                className="menu-patreon"
-                                fill="#fff"
-                                glyph={GLYPHS.PATREON}
-                            />
-                        </a>
                     </div>
                 </footer>
             </div>
