@@ -1,0 +1,17 @@
+@import "scss/styles";
+
+.comparison{
+    width: 100%;
+
+    &-value{
+        @include medium{
+            flex: 1 0 4em;
+            text-align: right;
+        }
+    }
+    &-stat{
+        @include medium{
+            flex: 0 0 10em;
+        }
+    }
+}

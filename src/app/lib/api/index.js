@@ -2,7 +2,7 @@ import Cache from "./cache";
 
 import findPlayerApi from "./methods/findPlayer";
 import getPlayerApi from "./methods/getPlayer";
-import getPlayersApi from "./methods/getPlayer";
+import getPlayersApi from "./methods/getPlayers";
 import getTweetsApi from "./methods/getTweets";
 import getLeaderboardApi from "./methods/getLeaderboard";
 

@@ -24,12 +24,24 @@ export default {
                 .then(result => {
                     setMeta({
                         title: `Search ${platform} for ${query}`,
+<<<<<<< HEAD
                         description: `Find ${query} in the community database for Rainbow Six: Siege`,
+=======
+                        description: `Find ${
+                            query
+                        } in the community database for Rainbow Six: Siege`,
                     });
-                    dispatch({ type: "SEARCH_FETCHED", payload: { query, platform, result } });
+                    dispatch({
+                        type: "SEARCH_FETCHED",
+                        payload: { query, platform, result },
+>>>>>>> feat/comparisons
+                    });
                 })
                 .catch(error => {
-                    dispatch({ type: "SEARCH_FAILED", payload: { query, error } });
+                    dispatch({
+                        type: "SEARCH_FAILED",
+                        payload: { query, error },
+                    });
                 });
         },
     },
@@ -37,7 +49,16 @@ export default {
         path: "/leaderboard",
         thunk: async (dispatch, getState) => {
             const platform = getState().platform;
+<<<<<<< HEAD
             dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
+=======
+            dispatch(
+                redirect({
+                    type: "LEADERBOARD",
+                    payload: { board: "ALL", platform },
+                }),
+            );
+>>>>>>> feat/comparisons
         },
     },
     CHANKABOARD: {
@@ -53,7 +74,6 @@ export default {
                         description: "top 100 Tachanka players in our database",
                         type: "website",
                     });
-                    dispatch({ type: "LEADERBOARD_FETCHED", payload: { board: "CHANKA", entries } });
                 })
                 .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
         },
@@ -73,12 +93,22 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
-                        description: `find the top 100 players (${lbConfig.label}) in our Database`,
+                        description: `find the top 100 players (${
+                            lbConfig.label
+                        }) in our Database`,
                         type: "website",
                     });
-                    dispatch({ type: "LEADERBOARD_FETCHED", payload: { board, entries } });
+                    dispatch({
+                        type: "LEADERBOARD_FETCHED",
+                        payload: { board, entries },
+                    });
                 })
-                .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board, error } }));
+                .catch(error =>
+                    dispatch({
+                        type: "LEADERBOARD_FAILED",
+                        payload: { board, error },
+                    }),
+                );
         },
     },
     FAQ: {
