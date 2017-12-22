@@ -24,17 +24,11 @@ export default {
                 .then(result => {
                     setMeta({
                         title: `Search ${platform} for ${query}`,
-<<<<<<< HEAD
                         description: `Find ${query} in the community database for Rainbow Six: Siege`,
-=======
-                        description: `Find ${
-                            query
-                        } in the community database for Rainbow Six: Siege`,
                     });
                     dispatch({
                         type: "SEARCH_FETCHED",
                         payload: { query, platform, result },
->>>>>>> feat/comparisons
                     });
                 })
                 .catch(error => {
@@ -49,16 +43,7 @@ export default {
         path: "/leaderboard",
         thunk: async (dispatch, getState) => {
             const platform = getState().platform;
-<<<<<<< HEAD
             dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
-=======
-            dispatch(
-                redirect({
-                    type: "LEADERBOARD",
-                    payload: { board: "ALL", platform },
-                }),
-            );
->>>>>>> feat/comparisons
         },
     },
     CHANKABOARD: {
@@ -73,6 +58,10 @@ export default {
                         title: "LMG kills leaderboard",
                         description: "top 100 Tachanka players in our database",
                         type: "website",
+                    });
+                    dispatch({
+                        type: "LEADERBOARD_FETCHED",
+                        payload: { board: "CHANKA", entries },
                     });
                 })
                 .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
@@ -93,9 +82,7 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
-                        description: `find the top 100 players (${
-                            lbConfig.label
-                        }) in our Database`,
+                        description: `find the top 100 players (${lbConfig.label}) in our Database`,
                         type: "website",
                     });
                     dispatch({
@@ -128,6 +115,17 @@ export default {
     PLAYERTABS: {
         path: "/player/:id/:tab",
         thunk: playerThunk,
+    },
+    COMPARISON: {
+        path: "/compare/:ids",
+        thunk: async (dispatch, getState) => {
+            const { ids } = getState().location.payload;
+            let idList = ids.split(",").map(x => x.trim());
+            const playerProms = idList.map(api.getPlayer);
+            Promise.all(playerProms).then(x => {
+                dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
+            });
+        },
     },
 };
 
