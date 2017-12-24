@@ -68,7 +68,7 @@ const PlayerHeader = {
                                     available {attrs.updateAvailableAt.toLocaleTimeString()}
                                 </button>
                             ) : (
-                                <button onclick={attrs.updatePlayer} className="button button--primary">
+                                <button onclick={attrs.updatePlayer} className="button button--accent">
                                     update
                                 </button>
                             )}
