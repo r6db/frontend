@@ -46,20 +46,33 @@ const PlayerHeader = {
                         </div>
                     </div>
                     <div className="playerheader__links">
-                        {ExportButton(attrs)}
-                        {!attrs.twitch ? (
-                            ""
-                        ) : (
-                            <a className="playerheader__link" href={attrs.twitch} target="_BLANK">
-                                <Icon glyph={GLYPHS.TWITCHTV} /> Twitch
+                        <div className="playerheader__links__top">
+                            {ExportButton(attrs)}
+                            {!attrs.twitch ? (
+                                ""
+                            ) : (
+                                <a className="playerheader__link" href={attrs.twitch} target="_BLANK">
+                                    <Icon glyph={GLYPHS.TWITCHTV} /> Twitch
+                                </a>
+                            )}
+                            <a className="playerheader__link" href={getProfileLink(attrs)} target="_BLANK">
+                                <Icon glyph={GLYPHS.UBI} /> Ubisoft
                             </a>
-                        )}
-                        <a className="playerheader__link" href={getProfileLink(attrs)} target="_BLANK">
-                            <Icon glyph={GLYPHS.UBI} /> Ubisoft
-                        </a>
-                        <a className="playerheader__link" href={getEslLink(attrs)} target="_BLANK">
-                            <Icon glyph={GLYPHS.ESL} /> ESL
-                        </a>
+                            <a className="playerheader__link" href={getEslLink(attrs)} target="_BLANK">
+                                <Icon glyph={GLYPHS.ESL} /> ESL
+                            </a>
+                        </div>
+                        <div className="playerheader__links__bottom">
+                            {attrs.updateAvailableAt > new Date() ? (
+                                <button className="button button--outline" disabled="disabled">
+                                    available {attrs.updateAvailableAt.toLocaleTimeString()}
+                                </button>
+                            ) : (
+                                <button onclick={attrs.updatePlayer} className="button button--primary">
+                                    update
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <div className="playerheader__tabs">

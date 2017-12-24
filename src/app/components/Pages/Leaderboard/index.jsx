@@ -73,7 +73,7 @@ const Leaderboard = {
                             </select>
                         </p>
                         <p>
-                            <button className="button is-primary">GO</button>
+                            <button className="button button--primary">GO</button>
                         </p>
                     </form>
                 </div>

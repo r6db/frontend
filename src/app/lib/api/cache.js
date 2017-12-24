@@ -1,16 +1,13 @@
-
-export default function (duration) {
+export default function(duration) {
     const cache = {};
-    
+
     function get(key) {
-        if(!key) {
+        if (!key) {
             return null;
         }
         const item = cache[key];
-        if(item) {
-            return item.timestamp > Date.now()
-                ? item.data
-                : null;
+        if (item) {
+            return item.timestamp > Date.now() ? item.data : null;
         }
         return null;
     }
@@ -18,11 +15,11 @@ export default function (duration) {
     function set(key, data) {
         cache[key] = {
             timestamp: Date.now() + duration,
-            data
+            data,
         };
     }
     return {
         get,
-        set
+        set,
     };
 }

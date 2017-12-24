@@ -62,6 +62,12 @@ export default function(player) {
     player.aliases = player.aliases.map(fixAlias).sort((a, b) => b.created_at - a.created_at);
     player.name = player.aliases[0].name;
 
+    if (player.updateAvailableAt && player.serverTime) {
+        const offset = new Date() - new Date(player.serverTime);
+        const available = new Date(player.updateAvailableAt) - offset;
+        player.updateAvailableAt = new Date(available);
+    }
+
     if (player.stats.operator) {
         player.stats.operator = Object.keys(player.stats.operator)
             .map(id => ({

@@ -9,6 +9,7 @@ import NoAliases from "../Errors/NoAliases";
 import NoData from "../Errors/NoData";
 import Header from "./Header";
 import { connect } from "lib/store/connect";
+import { updatePlayer } from "lib/store/actions";
 import "./player.scss";
 
 const Player = {
@@ -26,7 +27,12 @@ const Player = {
         } else {
             return (
                 <div className={`container player ${attrs.data.id}`}>
-                    <Header tab={attrs.tab} platform={attrs.platform} {...attrs.data} />
+                    <Header
+                        tab={attrs.tab}
+                        platform={attrs.platform}
+                        updatePlayer={attrs.updatePlayer}
+                        {...attrs.data}
+                    />
                     <div className="player__tab">
                         {attrs.tab === "summary" ? <Stats key="summary" {...attrs.data} /> : null}
                         {attrs.tab === "ops" ? <Operators key="ops" {...attrs.data} /> : null}
@@ -48,4 +54,10 @@ const mapStateToProps = getState => {
         platform,
     };
 };
-export default connect(mapStateToProps)(Player);
+const mapDispatchtoProps = (dispatch, getState) => {
+    const { location: { payload } } = getState();
+    return {
+        updatePlayer: () => dispatch(updatePlayer(payload.id)),
+    };
+};
+export default connect(mapStateToProps, mapDispatchtoProps)(Player);

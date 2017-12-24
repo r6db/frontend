@@ -14,7 +14,7 @@
 
         @include medium {
             flex-direction: row;
-            align-items: flex-start;
+            align-items: stretch;
             text-align: left;
         }
     }
@@ -41,15 +41,22 @@
     }
     &__links {
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: $font-default;
         flex: 1;
+
+        &__top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
     }
     &__link {
         display: inline-flex;
         align-items: center;
         margin-left: $l;
-        font-size: $font-default;
         color: $font-color;
         .icon {
             width: $l*2;
