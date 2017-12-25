@@ -27,7 +27,7 @@ const ExportButton = player => {
 const PlayerHeader = {
     view({ attrs }) {
         return (
-            <div className="container container--small playerheader">
+            <div className="container playerheader">
                 <div className="playerheader__content">
                     <div className="playerheader__image">
                         <Profilepic id={attrs.userId || attrs.id} />
