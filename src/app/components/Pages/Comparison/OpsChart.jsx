@@ -3,7 +3,6 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 
 export default {
     view({ attrs }) {
-        console.log("opschart", attrs.data);
         return (
             <table className="opschart">
                 {attrs.data.map(x => (

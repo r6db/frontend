@@ -17,7 +17,7 @@ const AsyncComponent = {
                     m.redraw();
                 })
                 .catch(err => {
-                    console.error(`couldn't import component ${importFn.name}`, err);
+                    throw err;
                     state.Component = null;
                     m.redraw();
                 });

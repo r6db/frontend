@@ -57,21 +57,81 @@
     &__wlr {
         flex: 1 1 1px;
     }
+
+    .chart-container .ct-series,
+    .chart-container .indicator {
+        &.player-0 {
+            stroke: $accent;
+            background-color: $accent;
+        }
+        &.player-1 {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
+        &.player-2 {
+            stroke: $dust-line;
+            background-color: $dust-line;
+        }
+        &.player-3 {
+            stroke: $skull-rain;
+            background-color: $skull-rain;
+        }
+        &.player-4 {
+            stroke: $red-crow;
+            background-color: $red-crow;
+        }
+        &.player-5 {
+            stroke: $velvet-shell;
+            background-color: $velvet-shell;
+        }
+        &.player-6 {
+            stroke: $operation-health;
+            background-color: $operation-health;
+        }
+        &.player-7 {
+            stroke: $skull-rain;
+            background-color: $skull-rain;
+        }
+        &.player-8 {
+            stroke: $skull-rain;
+            background-color: $skull-rain;
+        }
+        &.player-9 {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
+    }
 }
 .opschart {
+    width: 100%;
+
     td {
         vertical-align: middle;
     }
     .icon {
-        width: $l*5;
-        height: $l*5;
+        width: $l*3;
+        height: $l*3;
+        margin-right: $l;
+
+        @include medium {
+            width: $l*5;
+            height: $l*5;
+        }
     }
     &__ops {
         display: flex;
         margin-left: $l;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        @include medium {
+            flex-direction: row;
+        }
     }
     &__defenders {
-        margin-left: $l;
+        @include medium {
+            margin-left: $l*2;
+        }
     }
 }
 

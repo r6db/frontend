@@ -44,9 +44,7 @@ const App = {
                     <Menu platform={attrs.platform} tweets={attrs.tweets} />
                 </Drawer>
                 <div className="app">
-                    <div className="app__background app__background--pattern">
-                        <img src="/assets/pattern.svg" alt="" />
-                    </div>
+                    <div className="app__background app__background--pattern" />
                     <div className="app__content">
                         {TopbarComponent}
                         <div className="app__page">

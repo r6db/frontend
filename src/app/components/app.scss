@@ -50,6 +50,10 @@
         height: 100%;
         opacity: 1;
 
+        background: url(/assets/pattern.svg) no-repeat;
+        background-size: cover;
+        background-position: 80% 80%;
+
         img,
         svg {
             width: 100%;

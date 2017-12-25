@@ -119,12 +119,18 @@ export default {
     COMPARISON: {
         path: "/compare/:ids",
         thunk: async (dispatch, getState) => {
+            dispatch({ type: "loading", payload: "loading players" });
             const { ids } = getState().location.payload;
             let idList = ids.split(",").map(x => x.trim());
-            const playerProms = idList.map(api.getPlayer);
-            Promise.all(playerProms).then(x => {
-                dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
-            });
+            api
+                .getPlayers(idList)
+                .then(x => {
+                    dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
+                })
+                .catch(err => {
+                    console.error(error);
+                    dispatch({ type: "PLAYERS_FAILED", payload: { id, error } });
+                });
         },
     },
 };

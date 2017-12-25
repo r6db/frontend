@@ -6,34 +6,14 @@ import * as persistState from "redux-localstorage";
 import routesMap from "./routesMap";
 import * as reducers from "./reducers";
 
-const createLogger = ({ getState }) => next => action => {
-    const console = window.console;
-    const prevState = getState();
-    const returnValue = next(action);
-    const nextState = getState();
-    const actionType = String(action.type);
-    console.debug(`old state\t%o\naction %s\t%o\nnew state\t%o`, prevState, action.type, action, nextState);
-    return returnValue;
-  };
-
-
 export default (history, preLoadedState) => {
-    const { reducer, middleware, enhancer, thunk } = connectRoutes(
-        history,
-        routesMap
-    );
+    const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap);
+
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
     const rootReducer = combineReducers({ ...reducers, location: reducer });
-    const middlewares = applyMiddleware(
-        thunkMiddleware,
-        createLogger,
-        middleware,
-    );
-    const enhancers = compose(
-        enhancer,
-        persistState(["platform"]),
-        middlewares
-    );
+    const middlewares = applyMiddleware(thunkMiddleware, middleware);
+    const enhancers = composeEnhancers(enhancer, persistState(["platform"]), middlewares);
 
     const store = createStore(rootReducer, preLoadedState, enhancers);
 

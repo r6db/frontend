@@ -12,6 +12,7 @@ export default {
                 midLow: 0.8,
                 midHigh: 1.2,
                 high: 1.5,
+                nutty: 2.5,
             },
             attrs.scales || {},
         );
@@ -33,6 +34,9 @@ export default {
         }
         if (val >= attrs.neutral * scale.high) {
             type = "is-high";
+        }
+        if (val > attrs.neutral * scale.nutty) {
+            type = "is-nutty";
         }
 
         return (

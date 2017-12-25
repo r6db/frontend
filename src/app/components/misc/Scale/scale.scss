@@ -5,6 +5,7 @@ $mid-low: rgb(184, 101, 12);
 $mid: rgb(194, 185, 8);
 $mid-high: rgb(93, 223, 6);
 $high: rgb(3, 148, 3);
+$nutty: rgb(3, 148, 124);
 
 .scale {
     &.is-low {
@@ -21,5 +22,8 @@ $high: rgb(3, 148, 3);
     }
     &.is-high {
         color: $high;
+    }
+    &.is-nutty {
+        color: $nutty;
     }
 }
