@@ -10,7 +10,8 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(90deg, lighten($bg-color, 5%) 0%, $black 100%);
+    background: black;
+    // background: linear-gradient(90deg, lighten($bg-color, 5%) 0%, $black 100%);
 
     &__content {
         height: 100vh;
@@ -47,14 +48,16 @@
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0.6;
+        opacity: 1;
 
-        img {
+        img,
+        svg {
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0;
             z-index: 0;
+            object-position: center center;
             object-fit: cover;
         }
     }
