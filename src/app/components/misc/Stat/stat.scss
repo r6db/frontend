@@ -13,11 +13,12 @@
         white-space: pre;
     }
     &__value {
-        font-size: $font-huge;
+        font-size: $font-large;
         font-weight: 300;
     }
     &__label {
         margin-left: $l;
         font-weight: 600;
+        color: $font-subtle-color;
     }
 }
