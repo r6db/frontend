@@ -26,7 +26,7 @@ const cachifyMethod = function(apiCall, cacheDuration) {
 };
 
 export const findPlayer = cachifyMethod(findPlayerApi, minutesToMs(15));
-export const getPlayer = cachifyMethod(getPlayerApi, minutesToMs(60));
-export const getPlayers = cachifyMethod(getPlayersApi, minutesToMs(60));
+export const getPlayer = cachifyMethod(getPlayerApi, minutesToMs(15));
+export const getPlayers = cachifyMethod(getPlayersApi, minutesToMs(15));
 export const getLeaderboard = cachifyMethod(getLeaderboardApi, minutesToMs(60));
 export const getTweets = cachifyMethod(getTweetsApi, minutesToMs(2));

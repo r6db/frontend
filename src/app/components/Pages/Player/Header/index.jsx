@@ -25,6 +25,14 @@ const ExportButton = player => {
 };
 
 const PlayerHeader = {
+    oninit({ attrs, state }) {
+        // start checking 1 second before the timeout is finished
+        const timeout = attrs.updateAvailableAt - new Date() + 1000;
+        state.timeout = setTimeout(m.redraw(), timeout);
+    },
+    onremove({ state }) {
+        clearTimeout(state.timeout);
+    },
     view({ attrs }) {
         return (
             <div className="container playerheader">
