@@ -3,7 +3,7 @@ import { failEarly, getHeaders } from "../utils";
 import handleResponse from "../handlePlayer";
 
 const getPlayer = (id, opts) =>
-    fetch(`${v2Api}/players/${id}?update=${opts.update || false}`, { headers: getHeaders() })
+    fetch(`${v2Api}/players/${id}?platform=${opts.platform}&update=${opts.update || false}`, { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json());
 

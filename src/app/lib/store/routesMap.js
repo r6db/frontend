@@ -130,9 +130,10 @@ export default {
 };
 
 async function playerThunk(dispatch, getState) {
+    const { platform } = getState();
     const { id, tab } = getState().location.payload;
     api
-        .getPlayer(id)
+        .getPlayer(id, { platform })
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             if (player.flags.noAliases === false) {

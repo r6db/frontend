@@ -8,10 +8,11 @@ export const toProfile = id => ({ type: "PROFILE", payload: { id } });
 
 export const toChanka = platform => ({ type: "CHANKABOARD", payload: { platform } });
 
-export const updatePlayer = id => dispatch => {
+export const updatePlayer = id => (dispatch, getState) => {
+    const { platform } = getState();
     dispatch({ type: "LOADING", payload: "updating player data" });
     api
-        .getPlayer(id, { update: true })
+        .getPlayer(id, { update: true, platform })
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             dispatch({ type: "loading", payload: false });
