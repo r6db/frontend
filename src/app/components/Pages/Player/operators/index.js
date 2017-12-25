@@ -8,7 +8,7 @@ import "./opstab.scss";
 import "./fauxtable.scss";
 
 const sorters = [
-    { key: "name", label: "name", fn: (a, b) => a.name.localeCompare(b.name) },
+    { key: "name", label: "name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
     { key: "won", label: "won", fn: (a, b) => b.won - a.won },
     { key: "lost", label: "lost", fn: (a, b) => b.lost - a.lost },
     {
@@ -294,7 +294,7 @@ export default {
                             .sort(state.sort)
                             .map(datum => (
                                 <div>
-                                    <div key={datum.id} className="fauxtable-row">
+                                    <div key={datum.id} className={`fauxtable-row ${datum.id}`}>
                                         <div className="fauxtable-cell name" onclick={() => state.toggleOp(datum.id)}>
                                             <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}

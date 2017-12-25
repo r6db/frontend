@@ -70,6 +70,7 @@ export default function(player) {
 
     if (player.stats.operator) {
         player.stats.operator = Object.keys(player.stats.operator)
+            .filter(x => /recruit/.test(x) === false) // nope
             .map(id => ({
                 ...player.stats.operator[id],
                 id,
