@@ -54,11 +54,10 @@
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
 
         @include large {
             flex-direction: column;
-            justify-content: flex-start;
         }
     }
     &-past {
