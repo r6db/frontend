@@ -1,15 +1,25 @@
 @import "scss/styles";
 
-$low: #BC4343;
-$mid-low: #BC8343;
-$mid: #C0BA44;
-$mid-high: #9BC044;
-$high: #2FA72F;
+$low: rgb(185, 8, 8);
+$mid-low: rgb(184, 101, 12);
+$mid: rgb(194, 185, 8);
+$mid-high: rgb(93, 223, 6);
+$high: rgb(3, 148, 3);
 
-.scale{
-    &.is-low { color: $low; }
-    &.is-med-low { color: $mid-low; }
-    &.is-med { color: $mid; }
-    &.is-med-high { color: $mid-high; }
-    &.is-high { color: $high; }
+.scale {
+    &.is-low {
+        color: $low;
+    }
+    &.is-med-low {
+        color: $mid-low;
+    }
+    &.is-med {
+        color: $mid;
+    }
+    &.is-med-high {
+        color: $mid-high;
+    }
+    &.is-high {
+        color: $high;
+    }
 }

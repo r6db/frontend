@@ -1,0 +1,85 @@
+@import "scss/styles";
+
+.comparison {
+    width: 100%;
+
+    &-value {
+        @include medium {
+            flex: 1 0 4em;
+            text-align: right;
+        }
+    }
+    &-stat {
+        @include medium {
+            flex: 0 0 10em;
+        }
+    }
+    &__row {
+        @include medium {
+            display: flex;
+        }
+        margin: 0 (-0.5*$l);
+    }
+    &__module {
+        flex: 1 1 1px;
+        box-shadow: 1px 1px 3px fade-out($gray-dark, 0.6);
+        background: $bg-color;
+        margin: (0.5*$l);
+        position: relative;
+
+        &__header {
+            padding: $l;
+            font-weight: bold;
+        }
+        &__content {
+            padding: $l;
+        }
+        .stat {
+            margin-bottom: $l;
+        }
+    }
+    .playerlist__header {
+        display: inline-block;
+        margin: $l;
+    }
+    &__players {
+        display: inline-block;
+    }
+    &__player {
+        display: inline-block;
+        margin-right: $l;
+    }
+    &__mmr,
+    &__ops {
+        flex: 2 1 1px;
+    }
+    &__ranking,
+    &__wlr {
+        flex: 1 1 1px;
+    }
+}
+.opschart {
+    td {
+        vertical-align: middle;
+    }
+    .icon {
+        width: $l*5;
+        height: $l*5;
+    }
+    &__ops {
+        display: flex;
+        margin-left: $l;
+    }
+    &__defenders {
+        margin-left: $l;
+    }
+}
+
+.playerlabel {
+    padding: $l;
+    background: $bg-color;
+    &__remove {
+        margin-left: $l*2;
+        cursor: pointer;
+    }
+}

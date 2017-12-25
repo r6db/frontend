@@ -1,0 +1,54 @@
+@import "scss/vars";
+
+/**
+ * a media object is a component with an optinal image left,
+ * some center content with title, an optional (small) action top right
+ * and some optional actions on the bottom.
+ * basically the twitter/fb/etc status message component
+ */
+.media {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+
+    &__image {
+        flex: 0 0 $l*6;
+        margin-right: $l;
+        height: $l*6;
+    }
+    &__content {
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    &__contentheader {
+        display: flex;
+        flex-direction: row;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    &__label {
+        flex: none;
+        color: $font-subtle-color;
+        font-size: 0.8em;
+        margin-left: 1em;
+        padding: ($l*0.25) ($l*0.5);
+        border-radius: $l;
+        border: 1px solid $font-subtle-color;
+    }
+    &__header {
+        flex: none;
+        font-weight: bold;
+        line-height: 1.5em;
+        font-size: $font-big;
+    }
+    &__text {
+        flex: 1 1 50%;
+    }
+    &__actions {
+    }
+    &__action {
+    }
+}

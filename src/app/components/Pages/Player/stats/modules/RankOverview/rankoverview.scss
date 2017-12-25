@@ -30,16 +30,7 @@
             svg {
                 height: $l*7.5;
                 width: $l*7.5;
-            }
-            &:after {
-                position: absolute;
-                display: block;
-                content: "";
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: fade-out($gray-dark, 0.3);
+                opacity: 0.5;
             }
         }
         &-region {
@@ -63,11 +54,10 @@
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
 
         @include large {
             flex-direction: column;
-            justify-content: flex-start;
         }
     }
     &-past {
@@ -116,6 +106,12 @@
             border-left: 3px solid $blood-orchid;
             .rankoverview-past-season {
                 color: $blood-orchid;
+            }
+        }
+        &.season-8 {
+            border-left: 3px solid $white-noise;
+            .rankoverview-past-season {
+                color: $white-noise;
             }
         }
 

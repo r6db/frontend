@@ -1,84 +1,81 @@
 @import "scss/styles";
 
-.rankstab{
-    .rankstab-controls{
+.rankstab {
+    .rankstab-controls {
         margin: $l 0;
 
-        .card-content{
+        .card-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
-            @include medium{
+            @include medium {
                 flex-direction: row;
                 justify-content: flex-start;
             }
         }
 
-        p{
+        p {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0 $l;
 
-            @include medium{
+            @include medium {
                 flex-direction: row;
             }
         }
-        label{
+        label {
             margin: 0 $l 0 $l;
             font-size: 0.9em;
         }
     }
 
-    .ranks-table{
+    .ranks-table {
         flex: 1;
 
-        .fauxtable-cell{
+        .fauxtable-cell {
             text-align: right;
             align-items: center;
             display: flex;
         }
-        .fauxtable-heading{
+        .fauxtable-heading {
             cursor: pointer;
             user-select: none;
 
-            &.is-active{
+            &.is-active {
                 color: $primary;
             }
         }
         .fauxtable-heading,
-        .fauxtable-cell{
+        .fauxtable-cell {
             padding: ($l) ($l*1.5);
         }
-        .fauxtable-row{
+        .fauxtable-row {
             overflow: hidden;
-            &:hover {
-                background: $trans-low;
-            }
         }
-        .name{
+        .name {
             text-align: center;
         }
-        .region{
+        .region {
             white-space: pre;
             text-overflow: ellipsis;
         }
-        .rank{
+        .rank {
             text-align: left;
             margin: 0;
         }
-        .rank-image{
+        .rank-image {
             display: none;
         }
 
-        @include medium{
+        @include medium {
             .fauxtable-cell,
-            .fauxtable-heading{
+            .fauxtable-heading {
                 flex: 1 0 0;
             }
-            .region{
+            .region {
                 justify-content: flex-start;
                 text-align: left;
                 flex-grow: 3;
@@ -100,22 +97,22 @@
                 justify-content: flex-start;
                 text-align: left;
             }
-            .skill_mean{
+            .skill_mean {
                 justify-content: flex-end;
                 text-align: right;
                 flex-grow: 1;
             }
-            .skill_stdev{
+            .skill_stdev {
                 justify-content: flex-end;
                 text-align: right;
                 flex-grow: 1;
             }
-            .wins{
+            .wins {
                 justify-content: flex-end;
                 text-align: right;
                 flex-grow: 2;
             }
-            .losses{
+            .losses {
                 justify-content: flex-end;
                 text-align: right;
                 flex-grow: 2;
@@ -130,7 +127,7 @@
                 justify-content: flex-end;
                 text-align: right;
             }
-            .mmr{
+            .mmr {
                 justify-content: flex-end;
                 text-align: right;
                 flex-grow: 2;
@@ -153,9 +150,17 @@
     }
 
     .chart-container .ct-series,
-    .chart-container .indicator{
-        &.opdaily { stroke: $black-ice; background-color: $black-ice; }
-        &.opavg { stroke: $skull-rain; background-color: $skull-rain; }
-        &.opavg .ct-point { stroke: none; }
+    .chart-container .indicator {
+        &.opdaily {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
+        &.opavg {
+            stroke: $skull-rain;
+            background-color: $skull-rain;
+        }
+        &.opavg .ct-point {
+            stroke: none;
+        }
     }
 }

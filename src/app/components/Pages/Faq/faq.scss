@@ -1,44 +1,44 @@
 @import "scss/styles";
 
-.faq{
+.faq {
     max-width: $screen-yourmom;
     width: 100%;
     margin: 0 auto;
 
-    &-item{
+    &-item {
         @include card;
         margin-bottom: $l;
 
-        &:last-child .card-divider{
+        &:last-child .card-divider {
             display: none;
         }
     }
-    &-question{
+    &-question {
         display: block;
-        padding: $l*2;
+        padding: $l 0;
         font-size: 1.25em;
         user-select: none;
         cursor: pointer;
     }
-    &-answer{
-        padding: $l ($l*4) ($l*2);
+    &-answer {
+        padding: $l ($l*2) ($l*2);
 
-        .is-closed &{
+        .is-closed & {
             display: none;
         }
 
-        p{
+        p {
             line-height: 1.4;
             margin-bottom: 1em;
         }
 
-        blockquote{
+        blockquote {
             border-left: 5px solid $primary;
             padding-left: $l;
             margin: $l 0;
         }
 
-        em{
+        em {
             color: $accent;
             font-weight: bold;
             padding: 3px;
@@ -46,18 +46,17 @@
             margin: 0 2px;
         }
 
-        i{
+        i {
             font-style: italic;
         }
 
-        ul{
+        ul {
             list-style: initial;
             padding-left: $l*2;
             margin: $l 0;
         }
-        a{
+        a {
             color: $accent;
         }
-
     }
 }

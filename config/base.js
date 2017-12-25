@@ -6,7 +6,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
 const nano = require("cssnano");
@@ -26,11 +26,13 @@ module.exports = {
     },
     target: "web",
     resolve: {
+        extensions: [".js", ".jsx"],
         alias: {
             "components": path.join(__dirname, "../src/app/components"),
             "lib": path.join(__dirname, "../src/app/lib"),
             "assets": path.join(__dirname, "../src/assets")
-        }
+        },
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
     node: {
         __filename: true

@@ -1,17 +1,24 @@
 @import "scss/styles";
 
-.stat{
+.stat {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 0.5*$l;
 
-    &-label{
+    &-label {
         color: $gray;
         margin-right: $l*0.5;
     }
-    &-value{
+    &-value {
         white-space: pre;
+    }
+    &__value {
+        font-size: $font-large;
+        font-weight: 300;
+    }
+    &__label {
+        margin-left: $l;
+        font-weight: 600;
+        color: $font-subtle-color;
     }
 }

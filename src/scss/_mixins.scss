@@ -1,53 +1,17 @@
-@mixin btnvariant($color, $fontcolor:$white){
-    border-color: transparent;
-    background: $color;
-    box-shadow: 0 2px 4px darken($color, 40%);
-    color: $fontcolor;
-        &:hover, &:focus{
-            background: darken($color, 10%);
-        }
-        &.is-outlined{
-            background: none;
-            color: $color;
-            border-color: $color;
-            &:hover, &:focus{
-                background: $color;
-                color: $fontcolor;
-            }
-        }
-    &:disabled {
-        background: desaturate( $color, 40% );
-    }
-}
-
-@mixin btnreset {
-    background: none;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    &:focus{
-        border: none;
-        box-shadow: none;
-        outline: none;
-    }
-}
 @mixin card {
-    background: $gray-dark;
-    box-shadow: 0px 2px 2px darken($gray-dark, 10%);
-    color: $white;
 }
-@mixin card-header{
+@mixin card-header {
     padding: (0.5*$l) $l 0;
     font-size: 1.125em;
 
-    &:first-child{
+    &:first-child {
         padding-top: $l;
     }
 }
-@mixin card-content{
+@mixin card-content {
     padding: $l;
 }
-@mixin card-divider{
+@mixin card-divider {
     width: 80%;
     height: 1px;
     background: lighten($gray-dark, 15%);
@@ -62,7 +26,7 @@
     }
 }
 
-@mixin placeholder-color($color){
+@mixin placeholder-color($color) {
     &::-webkit-input-placeholder {
         color: $color;
     }
@@ -77,34 +41,33 @@
     }
 }
 
-@mixin textshadow{
+@mixin textshadow {
     text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
 }
-@mixin boxshadow{
+@mixin boxshadow {
     box-shadow: 0 2px 4px $gray-dark;
 }
 
-
-@mixin small{
-    .contentsize.small &{
+@mixin small {
+    .contentsize.small & {
         @content;
     }
 }
 
-@mixin medium{
-    .contentsize.medium &{
+@mixin medium {
+    .contentsize.medium & {
         @content;
     }
 }
 
 @mixin large {
-    .contentsize.large &{
+    .contentsize.large & {
         @content;
     }
 }
 
 @mixin openmenu {
-    @media screen and (min-width: 1224px){
+    @media screen and (min-width: 1224px) {
         @content;
     }
 }

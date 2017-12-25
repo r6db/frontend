@@ -1,183 +1,104 @@
 @import "scss/styles";
 
-.leaderboard{
-    color: $white;
-    max-width: $screen-yourmom;
+.leaderboard {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 
-    &-header{
-        padding: $l;
+    &__header {
         @include card;
     }
-    &-title{
-        font-size: 3em;
-        margin-bottom: $l;
-        text-shadow: 0 0 1px $gray-dark;
-    }
-    &-description{
+    &__description {
         color: $gray-light;
         line-height: 1.4;
-        text-shadow: 0 0 1px $gray-dark;
 
-        p{
+        p {
             margin-bottom: $l;
         }
-        .is-highlight{
+        .is-highlight {
             padding-left: $l;
             border-left: 2px solid $accent;
         }
-        a{
+        a {
             color: $accent;
         }
     }
-
-    &-entries{
-        max-width: 1024px;
-        width: 100%;
-        margin: 0 auto;
-        padding: $l;
-    }
-    &-filters{
+    &__filters {
         margin-top: $l*2;
-        p{
+        p {
             display: inline-block;
             margin-right: $l;
         }
-        label{
+        label {
             display: inline;
             color: $white;
             font-size: 1rem;
             margin-right: $l;
         }
-        select{
+        select {
         }
     }
-}
-.entry{
-    background: $trans-med;
-	margin: $l 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    box-shadow: 1px 1px 3px $trans-med;
-    position: relative;
+    &__entries {
+        margin: $l*2 auto 0;
 
-    &-place{
-        font-size: 2rem;
-        display: block;
-        width: 64px;
-        height: 64px;
-        line-height: 64px;
-        text-align: center;
-        margin-right: $l*2;
-    }
-    &-name{
-        font-size: 1.25rem;
-        width: 15em;
-        color: white;
-    }
-    &-link{
-        color: $accent;
-    }
-    &-content{
-        display: flex;
-        flex: 1;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    &-position{
-        position: absolute;
-        top: 0;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        background: $trans-low;
+        th {
+            text-align: left;
+            font-weight: bold;
+            padding: $l 0;
 
-        >div{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: $font-bigger;
-            color: $white;
-        }
-    }
-    &-trend{
-        margin-left: 0.5*$l;
-        font-size: $font-smaller;
-        line-height: $font-bigger;
-        vertical-align: text-bottom;
-        white-space: pre;
-
-        &.is-up{ color: $success; }
-        &.is-down{ color: $danger; }
-        &.is-same{
-            .entry-trendicon{
-                font-size: 90%;
-                margin-right: .1em;
+            &:first-child,
+            &:last-child {
+                text-align: center;
             }
         }
     }
-    &-trendicon{
-        font-weight: bold;
-    }
-    &-valuelabel{
-        display: none;
-        margin-right: $l*2;
-        vertical-align: top;
-        line-height:  $font-huge;
+}
+.entry {
+    color: $font-color;
 
-        @include medium{
-            display: inline;
+    td {
+        vertical-align: middle;
+        &:first-child,
+        &:last-child {
+            text-align: center;
         }
     }
-    &-value{
-        display: inline;
-        font-weight: bold;
-        font-size: 1em;
+    &__image {
+        width: 32px;
+        height: 32px;
+        margin-right: 20px;
 
-        @include medium{
-            font-size: $font-huge;
+        @include medium {
+            width: 48px;
+            height: 48px;
         }
     }
-    .playercard-image{
-        width: $l*8;
-    }
-    .playercard-name{
-        max-width: 8em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .playercard-content{
-        flex-direction: row;
+    &__info {
+        display: flex;
         align-items: center;
+        margin: $l 0;
+        color: $font-color;
     }
-    .playercard-center{
-        flex: 0 0 auto;
-
-        @include medium{
-            flex: 1 0 auto;
-        }
+    &__name {
+        font-size: $font-big;
+        display: block;
+        line-height: 1;
+        flex: auto;
     }
-    .playercard-right{
-        display: none;
-
-        @include medium{
-            margin: 0;
-            display: block;
+    &__rating {
+        font-size: $font-large;
+        flex: none;
+        @include medium {
+            font-size: $font-huge;
         }
     }
 }
 
-.entry.is-top{
-
-    .playercard-name{
+.entry.is-top {
+    .playercard-name {
         font-size: $font-bigger;
     }
-    .playercard-image{
+    .playercard-image {
         width: $l*8;
         height: $l*8;
     }

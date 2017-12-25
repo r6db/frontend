@@ -5,9 +5,9 @@ export default {
     view({ attrs, children }) {
         return (
             <div className="stat">
-                <div className="stat-label">{attrs.label}</div>
-                <div className="stat-value">{children}</div>
+                <div className="stat__value">{children}</div>
+                <div className="stat__label">{attrs.label}</div>
             </div>
-        )
-    }
-}
+        );
+    },
+};

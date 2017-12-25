@@ -7,22 +7,27 @@ $operation-health: #4a74a9;
 $blood-orchid: #ca361c;
 $white-noise: #006543;
 
-$primary: $white-noise;
-$accent: mix(#ffdb00, $primary, 90%);
+$primary: rgb(71, 104, 153);
+$black: #1c1c1c;
+$off-white: hsl(hue($primary), 5%, 85%);
+$white: hsl(hue($primary), 5%, 90%);
+$accent: mix(#ff7b00, $primary, 90%);
 $link: mix(#2d95cf, $primary, 90%);
-$black: #111;
-
-$gray-dark: hsl(hue($primary), 3%, 10%);
+$gray-dark: hsl(hue($primary), 3%, 5%);
+$gray-darkish: lighten($gray-dark, 20%);
 $gray: lighten($gray-dark, 40%);
 $gray-light: hsl(hue($primary), 5%, 95%);
 $blue-dark: rgb(16, 26, 36);
 $trans-high: rgba(16, 16, 16, 0.25);
 $trans-med: rgba(16, 16, 16, 0.5);
 $trans-low: rgba(16, 16, 16, 0.75);
-$white: hsl(hue($primary), 5%, 95%);
 $success: mix(#17bebb, $primary, 95%);
 $warn: mix(#ffc914, $primary, 95%);
 $danger: mix(#b62f23, $primary, 95%);
+
+$font-color: $white;
+$font-subtle-color: $gray;
+$bg-color: $gray-dark;
 
 $l: 10px;
 
