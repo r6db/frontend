@@ -8,6 +8,7 @@ import TWITTER from "assets/twitter.svg";
 import TWITCHTV from "assets/twitchtv.svg";
 import PATREON from "assets/patreon.svg";
 import EMAIL from "assets/email.svg";
+import DISCORD from "assets/discord.svg";
 import NOAVATAR from "assets/noavatar.svg";
 
 import RANK0 from "assets/ranks/0.svg";
@@ -97,6 +98,7 @@ export const GLYPHS = {
     TWITCH,
     PATREON,
     EMAIL,
+    DISCORD,
     NOAVATAR,
     RANK0,
     RANK1,

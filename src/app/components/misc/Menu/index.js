@@ -37,6 +37,9 @@ const Menu = {
                         <a href="mailto:info@r6db.com">
                             <Icon className="menu__email" glyph={GLYPHS.EMAIL} />
                         </a>
+                        <a href="https://discord.gg/xyMTkXm">
+                            <Icon className="menu__discord" fill="#fff" glyph={GLYPHS.DISCORD} />
+                        </a>
                     </div>
                 </footer>
             </div>
