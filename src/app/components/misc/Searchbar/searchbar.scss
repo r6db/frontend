@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.search-form {
+.searchbar {
     display: flex;
     width: 100%;
     max-width: 90*$l;
@@ -16,7 +16,7 @@
         height: 6*$l;
     }
 
-    input {
+    &__name {
         background: none;
         color: $font-color;
         padding: $l $l $l 0;
@@ -36,7 +36,7 @@
             outline: none;
         }
     }
-    select {
+    &__platform {
         width: 4rem;
         background: none;
         margin: 0;
@@ -52,14 +52,14 @@
             color: $black;
         }
     }
-}
-.search-submit.button {
-    flex: 0 1 auto;
-    padding: 0.5em 1em;
-    cursor: pointer;
+    &__submit {
+        flex: 0 1 auto;
+        padding: 0.5em 1em;
+        cursor: pointer;
 
-    @media screen and (min-width: 720px) {
-        flex: 0 0 auto;
-        padding: 0.5em 3em;
+        @media screen and (min-width: 720px) {
+            flex: 0 0 auto;
+            padding: 0.5em 3em;
+        }
     }
 }

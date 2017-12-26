@@ -16,17 +16,17 @@
         }
     }
 
-    &-module {
+    &module {
         @include card;
         margin: $l 0;
 
-        &-header {
+        &__header {
             @include card-header;
         }
-        &-content {
+        &__content {
             @include card-content;
         }
-        &-divider {
+        &__divider {
             @include card-divider;
         }
     }

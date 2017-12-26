@@ -12,7 +12,7 @@
         height: $topbar-height;
     }
 
-    &-burger {
+    &__burger {
         width: 40px;
         height: 36px;
         align-self: center;
@@ -45,18 +45,18 @@
             display: none;
         }
     }
-    &-menuspacer {
+    &__menuspacer {
         flex: 0 0 60px;
 
         @include openmenu {
             display: none;
         }
     }
-    &-content {
+    &__content {
         flex: 1;
         display: flex;
     }
-    .search-form {
+    .searchbar {
         margin: 0;
         width: 100%;
         height: 100%;

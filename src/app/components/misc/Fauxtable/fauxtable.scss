@@ -1,21 +1,20 @@
 @import "scss/styles";
 
-
-.fauxtable{
+.fauxtable {
     @include card;
     display: flex;
     flex-direction: row;
     width: 100%;
     overflow: hidden;
 
-    &-head{
+    &__head {
         flex: none;
         display: flex;
         flex-direction: column;
         background: $trans-med;
     }
 
-    &-body{
+    &__body {
         display: flex;
         flex-direction: row;
         flex: 1 1 auto;
@@ -23,7 +22,7 @@
         -webkit-overflow-scrolling: touch;
     }
 
-    &-row{
+    &__row {
         display: flex;
         flex-direction: column;
         flex: 1 0 auto;
@@ -32,36 +31,37 @@
         -webkit-overflow-scrolling: touch;
     }
 
-    &-heading, &-cell{
+    &__heading,
+    &__cell {
         padding: $l;
     }
-    &-heading{
+    &__heading {
         font-weight: bold;
     }
-    &-cell{
+    &__cell {
         flex: 0 0 auto;
     }
 
-    @include medium{
+    @include medium {
         flex-direction: column;
-        &-head{
+        &__head {
             flex-direction: row;
 
-            .fauxtable-row{
+            .fauxtable__row {
                 align-items: center;
             }
         }
-        &-heading{
+        &__heading {
             text-align: center;
         }
-        &-body{
+        &__body {
             flex-direction: column;
         }
-        &-row{
+        &__row {
             flex-direction: row;
         }
-        &-cell,
-        &-heading{
+        &__cell,
+        &__heading {
             padding: ($l*1.5);
         }
     }

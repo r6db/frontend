@@ -4,24 +4,24 @@
     max-width: $screen-yourmom;
     width: 100%;
     margin: 0 auto;
+}
+.faq-item {
+    @include card;
+    margin-bottom: $l;
 
-    &-item {
-        @include card;
-        margin-bottom: $l;
-
-        &:last-child .card-divider {
-            display: none;
-        }
+    &:last-child .card-divider {
+        display: none;
     }
-    &-question {
+    &__question {
         display: block;
         padding: $l 0;
         font-size: 1.25em;
         user-select: none;
         cursor: pointer;
     }
-    &-answer {
-        padding: $l ($l*2) ($l*2);
+    &__answer {
+        padding: $l ($l*2);
+        border-left: 1px solid $font-subtle-color;
 
         .is-closed & {
             display: none;

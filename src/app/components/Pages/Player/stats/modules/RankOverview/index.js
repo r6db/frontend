@@ -10,18 +10,14 @@ const CurrentRank = {
             return null;
         }
         return (
-            <div className="rankoverview-current">
-                <div className="rankoverview-current-icon">
+            <div className="currentrank">
+                <div className="currentrank__icon">
                     <Icon glyph={GLYPHS["RANK" + attrs.rank]} />
                 </div>
-                <div className="rankoverview-current-placement">
-                    {typeof attrs.placement === "number"
-                        ? "#" + (attrs.placement + 1)
-                        : ""}
+                <div className="currentrank__placement">
+                    {typeof attrs.placement === "number" ? "#" + (attrs.placement + 1) : ""}
                 </div>
-                <div className="rankoverview-current-region">
-                    {attrs.region}
-                </div>
+                <div className="currentrank__region">{attrs.region}</div>
             </div>
         );
     },
@@ -30,16 +26,12 @@ const CurrentRank = {
 const CurrentSeason = {
     view({ attrs }) {
         if (attrs.level < 100) {
-            return (
-                <div className="rankoverview-currentseason is-underage">
-                    rankings unlock at level 100
-                </div>
-            );
+            return <div className="rankoverview__currentseason is-underage">rankings unlock at level 100</div>;
         } else if (get(attrs, "placements.global", null) === null) {
             return;
         }
         return (
-            <div className="rankoverview-currentseason">
+            <div className="rankoverview__currentseason">
                 <CurrentRank
                     key="rank-global"
                     rank={get(attrs, "pastRanks.0.rank", 0)}
@@ -73,30 +65,18 @@ const CurrentSeason = {
 export default {
     view({ attrs }) {
         return (
-            <div className="player-module rankoverview">
+            <div className="playermodule rankoverview">
                 <CurrentSeason {...attrs} />
-                <div className="player-module-divider" />
-                <div className="rankoverview-pastseason">
+                <div className="playermodule__divider" />
+                <div className="rankoverview__pastseason">
                     {attrs.pastRanks.filter(x => x.rank !== 0).map(rank => (
-                        <div
-                            className={`rankoverview-past season-${
-                                rank.season
-                            }`}
-                            key={rank.season}
-                        >
-                            <Icon
-                                className="rankoverview-past-icon"
-                                glyph={GLYPHS["RANK" + rank.rank]}
-                            />
-                            <div className="rankoverview-past-text">
-                                <div className="rankoverview-past-season">
-                                    {Seasons[rank.season]}
-                                </div>
-                                <div className="rankoverview-past-rank">
+                        <div className={`pastrank season-${rank.season}`} key={rank.season}>
+                            <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.rank]} />
+                            <div className="pastrank__text">
+                                <div className="pastrank__season">{Seasons[rank.season]}</div>
+                                <div className="pastrank__rank">
                                     {Ranks[rank.rank]}
-                                    <span className="rankoverview-past-mmr">
-                                        {rank.mmr} MMR
-                                    </span>
+                                    <span className="pastrank__mmr">{rank.mmr} MMR</span>
                                 </div>
                             </div>
                         </div>

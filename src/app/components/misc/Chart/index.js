@@ -27,7 +27,7 @@ export function labelInterpolationFnc(value, index, arr) {
 
 export default {
     oncreate({ attrs, dom, state }) {
-        const el = dom.querySelector(".chart-element");
+        const el = dom.querySelector(".chart__element");
         const Chart = Chartist[attrs.type];
         if (!Chart) {
             console.error(`type "${attrs.type} is not valid"`);
@@ -43,13 +43,13 @@ export default {
     },
     view({ attrs, state }) {
         return (
-            <div className="chart-container">
-                <div className="chart-header">
-                    {attrs.hideTitle || false ? null : <div className="chart-title">{attrs.title}</div>}
+            <div className="chart">
+                <div className="chart__header">
+                    {attrs.hideTitle || false ? null : <div className="chart__title">{attrs.title}</div>}
                     {attrs.hideLegend || false ? null : (
-                        <div className="chart-legend">
+                        <div className="chart__legend">
                             {attrs.data.series.map(series => [
-                                <div className="chart-legenditem">
+                                <div className="chart__legenditem">
                                     <div className={"indicator " + series.className} />
                                     <div>{series.name}</div>
                                 </div>,
@@ -57,7 +57,7 @@ export default {
                         </div>
                     )}
                 </div>
-                <div className="chart-element" />
+                <div className="chart__element" />
             </div>
         );
     },

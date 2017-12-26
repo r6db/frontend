@@ -7,8 +7,8 @@ import "./statoverview.scss";
 export default {
     view({ attrs }) {
         return (
-            <div className="player-module statoverview">
-                <div className="player-module-header">General</div>
+            <div className="playermodule statoverview">
+                <div className="playermodule__header">General</div>
                 <div className="row">
                     <div className="col">
                         <Stat label="wins">{get(attrs, "stats.general.won", 0)}</Stat>
@@ -36,7 +36,7 @@ export default {
                     </div>
                 </div>
 
-                <div className="player-module-header">Ranked</div>
+                <div className="playermodule__header">Ranked</div>
                 <div className="row">
                     <div className="col">
                         <Stat label="wins">{get(attrs, "stats.ranked.won", 0)}</Stat>
@@ -54,7 +54,7 @@ export default {
                     </div>
                 </div>
 
-                <div className="player-module-header">Casual</div>
+                <div className="playermodule__header">Casual</div>
                 <div className="row">
                     <div className="col">
                         <Stat label="wins">{get(attrs, "stats.casual.won", 0)}</Stat>
@@ -71,7 +71,7 @@ export default {
                     </div>
                 </div>
 
-                <div className="player-module-header">Misc</div>
+                <div className="playermodule__header">Misc</div>
                 <div className="row">
                     <div className="col">
                         <Stat label="melees">{get(attrs, "stats.general.meleeKills", 0)}</Stat>
@@ -91,7 +91,7 @@ export default {
                     </div>
                 </div>
 
-                <div className="player-module-divider" />
+                <div className="playermodule__divider" />
                 <div className="row">
                     <div className="col">
                         <Stat label="first added">{new Date(attrs.created_at).toLocaleDateString()}</Stat>

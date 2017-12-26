@@ -1,26 +1,47 @@
 @import "scss/styles";
 
-.player-module.charts{
-    .chart-container{
+.playermodule.charts {
+    .chart {
         margin-top: $l;
     }
-    .row{
+    .row {
         flex-direction: column;
 
-        @include large{
+        @include large {
             flex-direction: row;
         }
     }
-    .chart-container .ct-series,
-    .chart-container .indicator{
-        &.emea{ stroke: $red-crow; background-color: $red-crow; }
-        &.ncsa{ stroke: $black-ice; background-color: $black-ice; }
-        &.apac{ stroke: $skull-rain; background-color: $skull-rain; }
+    .chart .ct-series,
+    .chart .indicator {
+        &.emea {
+            stroke: $red-crow;
+            background-color: $red-crow;
+        }
+        &.ncsa {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
+        &.apac {
+            stroke: $skull-rain;
+            background-color: $skull-rain;
+        }
 
-        &.ranked{ stroke: $red-crow; background-color: $red-crow; }
-        &.casual{ stroke: $black-ice; background-color: $black-ice; }
+        &.ranked {
+            stroke: $red-crow;
+            background-color: $red-crow;
+        }
+        &.casual {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
 
-        &.accuracy{ stroke: $red-crow; background-color: $red-crow; }
-        &.hsrate{ stroke: $black-ice; background-color: $black-ice; }
+        &.accuracy {
+            stroke: $red-crow;
+            background-color: $red-crow;
+        }
+        &.hsrate {
+            stroke: $black-ice;
+            background-color: $black-ice;
+        }
     }
 }

@@ -8,7 +8,7 @@ const showPlayer = id => e => page("/player/" + id);
 
 export default {
     oncreate({ dom }) {
-        const search = dom.querySelector(".search-input input");
+        const search = dom.querySelector(".searchbar__input");
         if (search && !window.ontouchstart) {
             search.focus();
         }
@@ -18,8 +18,8 @@ export default {
             <div className="home">
                 <Searchbar className="home__search" search={attrs.search} />
                 <div className="home__disclaimer">
-                    Old season ranks are temporarily missing. <br />
-                    Waiting for UBI to fix.
+                    Old season ranks are *still* missing. <br />
+                    Yell at UBI, not us pls
                 </div>
             </div>
         );

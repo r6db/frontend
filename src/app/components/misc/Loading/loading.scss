@@ -1,51 +1,51 @@
 @import "scss/styles";
 
-.loading{
-	position: absolute;
-	z-index: 10;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	opacity: 1;
-	transition: opacity 50ms ease-in;
-	background: rgba(0, 0, 0, 0.6);
-	&.is-leaving{
-		opacity: 0;
-	}
-}
-.loading-indicator{
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	width: $loading-indicatorsize;
-	height: $loading-indicatorsize;
-	background: $primary;
-	animation: loadingAnim 1.5s infinite ease-in-out;
-}
-.loading-message{
-	position: absolute;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%, 0);
-	color: $white;
-	text-align: center;
+.loading {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    transition: opacity 50ms ease-in;
+    background: rgba(0, 0, 0, 0.6);
+    &--leaving {
+        opacity: 0;
+    }
+    &__indicator {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: $loading-indicatorsize;
+        height: $loading-indicatorsize;
+        background: $primary;
+        animation: loadingAnim 1.5s infinite ease-in-out;
+    }
+    &__message {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        color: $white;
+        text-align: center;
+    }
 }
 
 @keyframes loadingAnim {
-	0%{
-		transform: translate(-$loading-indicatorsize,-$loading-indicatorsize) rotate3d(0, 0, 0, 180deg);
-	}
-	25%{
-		transform: translate(0,-$loading-indicatorsize) rotateY(180deg);
-	}
-	50%{
-		transform: translate(0,0) rotateZ(180deg);
-	}
-	75%{
-		transform: translate(-$loading-indicatorsize,0) rotateX(180deg);
-	}
-	100%{
-		transform: translate(-$loading-indicatorsize,-$loading-indicatorsize) rotateX(0deg);
-	}
+    0% {
+        transform: translate(-$loading-indicatorsize, -$loading-indicatorsize) rotate3d(0, 0, 0, 180deg);
+    }
+    25% {
+        transform: translate(0, -$loading-indicatorsize) rotateY(180deg);
+    }
+    50% {
+        transform: translate(0, 0) rotateZ(180deg);
+    }
+    75% {
+        transform: translate(-$loading-indicatorsize, 0) rotateX(180deg);
+    }
+    100% {
+        transform: translate(-$loading-indicatorsize, -$loading-indicatorsize) rotateX(0deg);
+    }
 }

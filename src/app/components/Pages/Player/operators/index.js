@@ -4,8 +4,8 @@ import * as stats from "lib/stats";
 import Chart, { colors, labelInterpolationFnc } from "components/misc/Chart";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import Scale from "components/misc/Scale";
+import Fauxtable from "components/misc/Fauxtable";
 import "./opstab.scss";
-import "./fauxtable.scss";
 
 const sorters = [
     { key: "name", label: "name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
@@ -265,7 +265,7 @@ export default {
     view({ attrs, state }) {
         return (
             <div className="opstab">
-                <div className="opstab-controls card">
+                <div className="opstab__controls card">
                     <div className="card-content">
                         <p>
                             <label htmlFor="filter">filter by</label>
@@ -275,58 +275,58 @@ export default {
                         </p>
                     </div>
                 </div>
-                <div className="fauxtable operator-table">
-                    <div className="fauxtable-head">
-                        <div className="fauxtable-row">
+                <Fauxtable className="opstab__table">
+                    <Fauxtable.Head>
+                        <Fauxtable.Row>
                             {sorters.map(sorter => (
-                                <div
-                                    className={`fauxtable-heading ${state.getSorterClass(sorter)}`}
+                                <Fauxtable.Heading
+                                    className={state.getSorterClass(sorter)}
                                     onclick={() => state.setSort(sorter)}
                                 >
                                     {sorter.label}
-                                </div>
+                                </Fauxtable.Heading>
                             ))}
-                        </div>
-                    </div>
-                    <div className="fauxtable-body">
+                        </Fauxtable.Row>
+                    </Fauxtable.Head>
+                    <Fauxtable.Body>
                         {state.ops
                             .filter(state.filter)
                             .sort(state.sort)
                             .map(datum => (
                                 <div>
-                                    <div key={datum.id} className={`fauxtable-row ${datum.id}`}>
-                                        <div className="fauxtable-cell name" onclick={() => state.toggleOp(datum.id)}>
+                                    <Fauxtable.Row key={datum.id} className={datum.id}>
+                                        <Fauxtable.Cell className="name" onclick={() => state.toggleOp(datum.id)}>
                                             <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
-                                        </div>
-                                        <div className="fauxtable-cell won">{datum.won || 0}</div>
-                                        <div className="fauxtable-cell lost">{datum.lost || 0}</div>
-                                        <div className="fauxtable-cell wlr">
+                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="won">{datum.won || 0}</Fauxtable.Cell>
+                                        <Fauxtable.Cell className="lost">{datum.lost || 0}</Fauxtable.Cell>
+                                        <Fauxtable.Cell className="wlr">
                                             <Scale value={datum.wlr * 100} neutral={50}>
                                                 %
                                             </Scale>
-                                        </div>
-                                        <div className="fauxtable-cell kills">{datum.kills || 0}</div>
-                                        <div className="fauxtable-cell deaths">{datum.deaths || 0}</div>
-                                        <div className="fauxtable-cell kdr">
+                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="kills">{datum.kills || 0}</Fauxtable.Cell>
+                                        <Fauxtable.Cell className="deaths">{datum.deaths || 0}</Fauxtable.Cell>
+                                        <Fauxtable.Cell className="kdr">
                                             <Scale value={datum.kdr} neutral={1} />
-                                        </div>
-                                        <div className="fauxtable-cell kpr">
+                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="kpr">
                                             <Scale value={datum.kpr} neutral={1} />
-                                        </div>
-                                        <div className="fauxtable-cell survival">
+                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="survival">
                                             <Scale value={datum.survivalRate} neutral={50}>
                                                 %
                                             </Scale>
-                                        </div>
-                                        <div className="fauxtable-cell time">
+                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="time">
                                             {stats.formatDuration(datum.timePlayed)}
-                                        </div>
-                                    </div>
+                                        </Fauxtable.Cell>
+                                    </Fauxtable.Row>
                                     {!state.operatorsShowMap[datum.id] ? (
                                         ""
                                     ) : (
-                                        <div class="operator-graphs">
+                                        <div class="opstab__graphs">
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
@@ -352,8 +352,8 @@ export default {
                                     )}
                                 </div>
                             ))}
-                    </div>
-                </div>
+                    </Fauxtable.Body>
+                </Fauxtable>
             </div>
         );
     },

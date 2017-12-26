@@ -8,22 +8,22 @@ $high: rgb(3, 148, 3);
 $nutty: rgb(3, 148, 124);
 
 .scale {
-    &.is-low {
+    &--low {
         color: $low;
     }
-    &.is-med-low {
+    &--med-low {
         color: $mid-low;
     }
-    &.is-med {
+    &--med {
         color: $mid;
     }
-    &.is-med-high {
+    &--med-high {
         color: $mid-high;
     }
-    &.is-high {
+    &--high {
         color: $high;
     }
-    &.is-nutty {
+    &--nutty {
         color: $nutty;
     }
 }

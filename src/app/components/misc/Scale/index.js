@@ -21,22 +21,22 @@ export default {
             return <span className={`scale`} />;
         }
         if (val <= attrs.neutral * scale.low) {
-            type = "is-low";
+            type = "scale--low";
         }
         if (val <= attrs.neutral * scale.midLow) {
-            type = "is-med-low";
+            type = "scale--med-low";
         }
         if (val > attrs.neutral * scale.midLow && attrs.value < attrs.neutral * scale.midHigh) {
-            type = "is-med";
+            type = "scale--med";
         }
         if (val >= attrs.neutral * scale.midHigh) {
-            type = "is-med-high";
+            type = "scale--med-high";
         }
         if (val >= attrs.neutral * scale.high) {
-            type = "is-high";
+            type = "scale--high";
         }
         if (val > attrs.neutral * scale.nutty) {
-            type = "is-nutty";
+            type = "scale--nutty";
         }
 
         return (

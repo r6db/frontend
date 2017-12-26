@@ -1,9 +1,9 @@
 @import "scss/styles";
 
-.aliases{
+.aliases {
     padding-bottom: $l;
 
-    &-list{
+    &__list {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -11,30 +11,30 @@
         -webkit-overflow-scrolling: touch;
         margin-top: $l;
 
-        @include large{
+        @include large {
             flex-direction: column;
             overflow-y: auto;
-            .alias{
+            .alias {
                 text-align: left;
             }
         }
 
-        .alias{
+        .alias {
             text-align: center;
         }
     }
 }
-.player .alias{
-    padding: (.5*$l) $l;
+.player .alias {
+    padding: (0.5*$l) $l;
     position: relative;
     margin-bottom: $l;
     flex: none;
 
-    &-time{
+    &-time {
         color: $gray;
         font-size: 0.9em;
     }
-    &-name{
+    &-name {
         font-size: 1.1em;
     }
 }

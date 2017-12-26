@@ -258,7 +258,7 @@ export default {
     },
     view({ attrs, state }) {
         return attrs.progressions ? (
-            <div className="player-module charts">
+            <div className="playermodule charts">
                 <div className="row">
                     <Chart {...state.mmrChart} />
                 </div>

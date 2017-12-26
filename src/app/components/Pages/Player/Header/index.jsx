@@ -4,17 +4,12 @@ import Link from "components/misc/Link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { toProfile, toPlayerTab } from "lib/store/actions";
 import { formatDuration, getWinChance, getKillRatio } from "lib/stats";
+import * as domain from "lib/domain";
 import { get } from "lodash";
 import "./playerheader.scss";
 
 const isActive = (expected, actual) => (expected === actual ? "playerheader__tab--active" : "");
-const getPlaytime = player => formatDuration(get(player, "stats.general.timePlayed", 0));
-const getProfileLink = profile => {
-    const id = profile.platform !== "PC" ? profile.userId : profile.id;
-    const platformShorthand = { PC: "uplay", PS4: "psn", XBOX: "xbl" }[profile.platform];
-    return `https://game-rainbow6.ubi.com/en-gb/${platformShorthand}/player-statistics/${id}/multiplayer`;
-};
-const getEslLink = profile => `https://play.eslgaming.com/search/?query=${profile.name}&type=gameaccount`;
+
 const ExportButton = player => {
     const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`;
     return (
@@ -63,10 +58,14 @@ const PlayerHeader = {
                                     <Icon glyph={GLYPHS.TWITCHTV} /> Twitch
                                 </a>
                             )}
-                            <a className="playerheader__link" href={getProfileLink(attrs)} target="_BLANK">
+                            <a
+                                className="playerheader__link"
+                                href={domain.getUbiLink(attrs.userId || attrs.id, attrs.platform)}
+                                target="_BLANK"
+                            >
                                 <Icon glyph={GLYPHS.UBI} /> Ubisoft
                             </a>
-                            <a className="playerheader__link" href={getEslLink(attrs)} target="_BLANK">
+                            <a className="playerheader__link" href={domain.getEslLink(attrs)} target="_BLANK">
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
                         </div>

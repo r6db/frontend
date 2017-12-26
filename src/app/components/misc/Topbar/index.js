@@ -5,16 +5,18 @@ import "./topbar.scss";
 
 const Topbar = {
     view({ attrs, children }) {
-        return (<div className="topbar">
-            <div className="topbar-burger" onclick={attrs.toggleMenu}><span></span></div>
-            <div className="topbar-content">
-                {children}
+        return (
+            <div className="topbar">
+                <div className="topbar__burger" onclick={attrs.toggleMenu}>
+                    <span />
+                </div>
+                <div className="topbar__content">{children}</div>
             </div>
-        </div>);
-    }
+        );
+    },
 };
 
 const mapDispatchToProps = dispatch => ({
-    toggleMenu: () => dispatch({ type: "MENU_TOGGLE" })
-})
+    toggleMenu: () => dispatch({ type: "MENU_TOGGLE" }),
+});
 export default connect(null, mapDispatchToProps)(Topbar);

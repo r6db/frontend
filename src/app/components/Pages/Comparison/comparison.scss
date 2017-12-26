@@ -58,8 +58,8 @@
         flex: 1 1 1px;
     }
 
-    .chart-container .ct-series,
-    .chart-container .indicator {
+    .chart .ct-series,
+    .chart .indicator {
         &.player-0 {
             stroke: $accent;
             background-color: $accent;

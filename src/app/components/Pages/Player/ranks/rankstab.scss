@@ -1,20 +1,8 @@
 @import "scss/styles";
 
 .rankstab {
-    .rankstab-controls {
+    &__controls {
         margin: $l 0;
-
-        .card-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            @include medium {
-                flex-direction: row;
-                justify-content: flex-start;
-            }
-        }
 
         p {
             display: flex;
@@ -32,15 +20,15 @@
         }
     }
 
-    .ranks-table {
+    &__table {
         flex: 1;
 
-        .fauxtable-cell {
+        .fauxtable__cell {
             text-align: right;
             align-items: center;
             display: flex;
         }
-        .fauxtable-heading {
+        .fauxtable__heading {
             cursor: pointer;
             user-select: none;
 
@@ -48,11 +36,11 @@
                 color: $primary;
             }
         }
-        .fauxtable-heading,
-        .fauxtable-cell {
+        .fauxtable__heading,
+        .fauxtable__cell {
             padding: ($l) ($l*1.5);
         }
-        .fauxtable-row {
+        .fauxtable__row {
             overflow: hidden;
         }
         .name {
@@ -71,8 +59,8 @@
         }
 
         @include medium {
-            .fauxtable-cell,
-            .fauxtable-heading {
+            .fauxtable__cell,
+            .fauxtable__heading {
                 flex: 1 0 0;
             }
             .region {
@@ -137,30 +125,6 @@
                 text-align: right;
                 flex-grow: 2;
             }
-        }
-    }
-
-    .operator-graphs {
-        display: none;
-    }
-    @include medium {
-        .operator-graphs {
-            display: block;
-        }
-    }
-
-    .chart-container .ct-series,
-    .chart-container .indicator {
-        &.opdaily {
-            stroke: $black-ice;
-            background-color: $black-ice;
-        }
-        &.opavg {
-            stroke: $skull-rain;
-            background-color: $skull-rain;
-        }
-        &.opavg .ct-point {
-            stroke: none;
         }
     }
 }

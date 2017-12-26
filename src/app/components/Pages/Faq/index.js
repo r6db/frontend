@@ -16,10 +16,10 @@ const Question = {
     view({ attrs, state, children }) {
         return (
             <article className={`faq-item ${state.isOpen ? "is-open" : "is-closed"}`}>
-                <a role="header" className="faq-question" onclick={state.toggle}>
+                <a role="header" className="faq-item__question" onclick={state.toggle}>
                     {attrs.question}
                 </a>
-                <section className="faq-answer">{children}</section>
+                <section className="faq-item__answer">{children}</section>
             </article>
         );
     },
@@ -67,7 +67,7 @@ export default {
                         win-rate), but given the data we have, its the best metric.
                     </p>
                 </Question>
-                <Question question="I searched for my name, but it says that I haven't played the game yet.">
+                <Question question="When I search for my name it says that I haven't played the game yet...">
                     <p>
                         The error can be triggered in multiple ways:
                         <ul>
@@ -79,8 +79,8 @@ export default {
                 </Question>
                 <Question question="I won a match and should appear on the leaderboard. Why am i not on there?">
                     <p>
-                        We only update the player profiles every 24 hours. Because of this it can take a bit until you
-                        show up there. <br />
+                        We only update the leaderboard every 24 hours. Because of this it can take a bit until you show
+                        up there. <br />
                         Also keep in mind, that we subtract your uncertainty from your skill-rating for the leaderboard
                         (see first question)
                     </p>

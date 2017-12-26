@@ -1,7 +1,7 @@
 @import "scss/styles";
 
 .opstab {
-    .opstab-controls {
+    &__controls {
         margin: $l 0;
         p {
             display: flex;
@@ -19,7 +19,7 @@
         }
     }
 
-    .operator-table {
+    &__table {
         flex: 1;
 
         .icon {
@@ -34,10 +34,10 @@
             }
         }
 
-        .fauxtable-cell {
+        .fauxtable__cell {
             text-align: right;
         }
-        .fauxtable-heading {
+        .fauxtable__heading {
             cursor: pointer;
             user-select: none;
 
@@ -45,21 +45,21 @@
                 color: $primary;
             }
         }
-        .fauxtable-heading,
-        .fauxtable-cell {
+        .fauxtable__heading,
+        .fauxtable__cell {
             padding: ($l*1.5) ($l*2);
         }
         .name {
             height: 4em;
         }
 
-        .fauxtable-cell.name {
+        .fauxtable__cell.name {
             text-align: center;
         }
 
         @include medium {
-            .fauxtable-cell,
-            .fauxtable-heading {
+            .fauxtable__cell,
+            .fauxtable__heading {
                 flex: 1 0 0;
             }
             .name {
@@ -107,17 +107,17 @@
         }
     }
 
-    .operator-graphs {
+    &__graphs {
         display: none;
     }
     @include medium {
-        .operator-graphs {
+        &__graphs {
             display: block;
         }
     }
 
-    .chart-container .ct-series,
-    .chart-container .indicator {
+    .chart .ct-series,
+    .chart .indicator {
         &.opdaily {
             stroke: $black-ice;
             background-color: $black-ice;

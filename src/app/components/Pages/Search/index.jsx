@@ -13,7 +13,7 @@ const Search = {
         }
         return (
             <div className="container container--small search">
-                <div className="colums is-multiline search__results">
+                <div className="search__results">
                     {attrs.result.length > 0 ? (
                         <div>
                             <div className="search__resultcount">

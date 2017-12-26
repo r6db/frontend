@@ -4,7 +4,7 @@
     .player-module-divider:first-child {
         display: none;
     }
-    &-currentseason {
+    &__currentseason {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -15,41 +15,8 @@
             justify-content: center;
         }
     }
-    &-current {
-        flex: 1;
-        position: relative;
-        height: $l*7.5;
-        width: $l*7.5;
-        z-index: 0;
-        &-icon {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            svg {
-                height: $l*7.5;
-                width: $l*7.5;
-                opacity: 0.5;
-            }
-        }
-        &-region {
-            text-align: center;
-            padding: $l*0.5;
-            text-shadow: 0 0 10px $black;
-            font-weight: bold;
-            z-index: 1;
-        }
-        &-placement {
-            text-align: center;
-            margin-top: $l*3;
-            font-size: 1.5em;
-            text-shadow: 0 0 2px $black, 1px 0 2px $black, 1px 1px 2px $black;
-            font-weight: bold;
-            z-index: 2;
-        }
-    }
-    &-pastseason {
+
+    &__pastseason {
         display: flex;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
@@ -60,84 +27,118 @@
             flex-direction: column;
         }
     }
-    &-past {
+}
+.currentrank {
+    flex: 1;
+    position: relative;
+    height: $l*7.5;
+    width: $l*7.5;
+    z-index: 0;
+    &__icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        svg {
+            height: $l*7.5;
+            width: $l*7.5;
+            opacity: 0.5;
+        }
+    }
+    &__region {
+        text-align: center;
+        padding: $l*0.5;
+        text-shadow: 0 0 10px $black;
+        font-weight: bold;
+        z-index: 1;
+    }
+    &__placement {
+        text-align: center;
+        margin-top: $l*3;
+        font-size: 1.5em;
+        text-shadow: 0 0 2px $black, 1px 0 2px $black, 1px 1px 2px $black;
+        font-weight: bold;
+        z-index: 2;
+    }
+}
+.pastrank {
+    display: flex;
+    align-items: center;
+    padding: $l;
+    flex: 0 0 auto;
+
+    &.season-1 {
+        border-left: 3px solid $black-ice;
+        .rankoverview-past-season {
+            color: $black-ice;
+        }
+    }
+    &.season-2 {
+        border-left: 3px solid $dust-line;
+        .rankoverview-past-season {
+            color: $dust-line;
+        }
+    }
+    &.season-3 {
+        border-left: 3px solid $skull-rain;
+        .rankoverview-past-season {
+            color: $skull-rain;
+        }
+    }
+    &.season-4 {
+        border-left: 3px solid $red-crow;
+        .rankoverview-past-season {
+            color: $red-crow;
+        }
+    }
+    &.season-5 {
+        border-left: 3px solid $velvet-shell;
+        .rankoverview-past-season {
+            color: $velvet-shell;
+        }
+    }
+    &.season-6 {
+        border-left: 3px solid $operation-health;
+        .rankoverview-past-season {
+            color: $operation-health;
+        }
+    }
+    &.season-7 {
+        border-left: 3px solid $blood-orchid;
+        .rankoverview-past-season {
+            color: $blood-orchid;
+        }
+    }
+    &.season-8 {
+        border-left: 3px solid $white-noise;
+        .rankoverview-past-season {
+            color: $white-noise;
+        }
+    }
+
+    &__icon {
+        height: $l*5;
+        width: $l*5;
+        margin-right: $l;
+    }
+    &__text {
         display: flex;
-        align-items: center;
-        padding: $l;
-        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    &__season {
+        margin-right: $l;
+        font-size: 0.8em;
+        line-height: 1.4;
+    }
 
-        &.season-1 {
-            border-left: 3px solid $black-ice;
-            .rankoverview-past-season {
-                color: $black-ice;
-            }
-        }
-        &.season-2 {
-            border-left: 3px solid $dust-line;
-            .rankoverview-past-season {
-                color: $dust-line;
-            }
-        }
-        &.season-3 {
-            border-left: 3px solid $skull-rain;
-            .rankoverview-past-season {
-                color: $skull-rain;
-            }
-        }
-        &.season-4 {
-            border-left: 3px solid $red-crow;
-            .rankoverview-past-season {
-                color: $red-crow;
-            }
-        }
-        &.season-5 {
-            border-left: 3px solid $velvet-shell;
-            .rankoverview-past-season {
-                color: $velvet-shell;
-            }
-        }
-        &.season-6 {
-            border-left: 3px solid $operation-health;
-            .rankoverview-past-season {
-                color: $operation-health;
-            }
-        }
-        &.season-7 {
-            border-left: 3px solid $blood-orchid;
-            .rankoverview-past-season {
-                color: $blood-orchid;
-            }
-        }
-        &.season-8 {
-            border-left: 3px solid $white-noise;
-            .rankoverview-past-season {
-                color: $white-noise;
-            }
-        }
-
-        &-icon {
-            height: $l*5;
-            width: $l*5;
-            margin-right: $l;
-        }
-        &-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        &-season {
-            margin-right: $l;
-            font-size: 0.8em;
-            line-height: 1.4;
-        }
-
-        &-rank {
-            font-size: 1.125em;
-        }
-        &-mmr {
-            margin-left: $l;
-            color: $gray;
-            font-size: 0.8em;
-        }
+    &__rank {
+        font-size: 1.125em;
+    }
+    &__mmr {
+        margin-left: $l;
+        color: $gray;
+        font-size: 0.8em;
     }
 }

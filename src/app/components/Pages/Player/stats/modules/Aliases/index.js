@@ -5,9 +5,9 @@ import "./aliases.scss";
 export default {
     view({ attrs }) {
         return (
-            <div className="player-module aliases">
-                <div className="player-module-header">Alias History</div>
-                <div className="aliases-list">{attrs.aliases.map(x => <Alias alias={x} />)}</div>
+            <div className="playermodule aliases">
+                <div className="playermodule__header">Alias History</div>
+                <div className="aliases__list">{attrs.aliases.map(x => <Alias alias={x} />)}</div>
             </div>
         );
     },

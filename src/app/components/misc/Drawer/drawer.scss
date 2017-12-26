@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.drawer{
+.drawer {
     position: fixed;
     left: 0;
     top: 0;
@@ -14,18 +14,18 @@
         height: auto;
     }
 
-    &.is-open{
-        .drawer-container{
+    &--open {
+        .drawer__container {
             transform: none;
         }
-        .drawer-background{
+        .drawer__background {
             display: block;
             transform: none;
             opacity: $menuMaxOpacity;
         }
     }
 
-    &-background{
+    &__background {
         position: fixed;
         left: 0;
         top: 0;
@@ -42,7 +42,7 @@
             display: none !important;
         }
     }
-    &-container{
+    &__container {
         position: fixed;
         top: 0;
         left: 0;
@@ -59,14 +59,14 @@
         }
     }
 
-    &-menu{
-        width: 280px;
+    &__menu {
+        width: 100%;
+        max-width: $menuMaxWidth;
         height: 100vh;
         @include card;
     }
 }
 
-
-.no-transition >*{
+.no-transition > * {
     transition: none !important;
 }

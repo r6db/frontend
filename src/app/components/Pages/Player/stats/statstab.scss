@@ -13,7 +13,7 @@
             width: 30*$l;
         }
     }
-    &-statarea {
+    &__statarea {
         display: flex;
         flex-direction: column;
         flex: auto;
@@ -21,11 +21,11 @@
         @include medium {
             flex-direction: row;
 
-            .statstab-center {
+            .statstab__center {
                 width: 66%;
                 flex: 1 1 auto;
             }
-            .statstab-aside {
+            .statstab__aside {
                 width: 20*$l;
                 flex: none;
                 margin-left: $l;
@@ -33,7 +33,7 @@
         }
 
         @include large {
-            .statstab-center {
+            .statstab__center {
                 margin-left: $l;
             }
         }

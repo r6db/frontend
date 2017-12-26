@@ -5,6 +5,7 @@ import Media from "components/misc/Media";
 import "./playercard.scss";
 import { toPlayer, toProfile } from "lib/store/actions";
 import { formatDuration } from "lib/stats";
+import * as get from "lodash/get";
 
 const getAliases = player => {
     const shown = player.aliases
@@ -17,15 +18,9 @@ const getAliases = player => {
     return [shown, rest];
 };
 
-const getProfileLink = profile => {
-    const id = profile.platform !== "PC" ? profile.userId : profile.id;
-    const platformShorthand = { PC: "uplay", PS4: "psn", XBOX: "xbl" }[profile.platform];
-    return `https://game-rainbow6.ubi.com/en-gb/${platformShorthand}/player-statistics/${id}/multiplayer`;
-};
-
 export default {
     view({ attrs, state }) {
-        const timePlayed = attrs.player.lastPlayed.ranked + attrs.player.lastPlayed.casual;
+        const timePlayed = get(attrs, "player.lastPlayed.ranked", 0) + get(attrs, "player.lastPlayed.casual", 0);
         return (
             <Link to={toPlayer(attrs.player.id)} className="search__result result">
                 <div className="media">

@@ -8,31 +8,26 @@ import Charts from "./modules/Charts";
 
 import "./statstab.scss";
 
-
 export default {
     view({ attrs }) {
-        if (!attrs.stats || !attrs.rank){
+        if (!attrs.stats || !attrs.rank) {
             return null;
         }
         return (
             <div className="statstab">
-                <div className="statstab-sidebar">
+                <div className="statstab__sidebar">
                     <RankOverview {...attrs} />
-                    {attrs.aliases && attrs.aliases.length > 1
-                        ? <Aliases {...attrs} />
-                        : null }
+                    {attrs.aliases && attrs.aliases.length > 1 ? <Aliases {...attrs} /> : null}
                 </div>
-                <div className="statstab-statarea">
-                    <div className="statstab-center">
+                <div className="statstab__statarea">
+                    <div className="statstab__center">
                         {attrs.stats ? <StatOverview {...attrs} /> : null}
                         <RankSeason {...attrs} />
                         {attrs.stats ? <Charts {...attrs} /> : null}
                     </div>
-                    <div className="statstab-aside">
-                        {attrs.stats ? <GameModes {...attrs} /> : null}
-                    </div>
+                    <div className="statstab__aside">{attrs.stats ? <GameModes {...attrs} /> : null}</div>
                 </div>
             </div>
-        )
-    }
-}
+        );
+    },
+};
