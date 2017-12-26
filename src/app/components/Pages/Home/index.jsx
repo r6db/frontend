@@ -19,7 +19,7 @@ export default {
                 <Searchbar className="home__search" search={attrs.search} />
                 <div className="home__disclaimer">
                     Old season ranks are *still* missing. <br />
-                    Yell at UBI, not us pls
+                    Please yell at UBI, not us
                 </div>
             </div>
         );
