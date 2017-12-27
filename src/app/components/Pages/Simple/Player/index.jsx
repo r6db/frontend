@@ -61,9 +61,6 @@ export default {
                         {attrs.rank && attrs.rank.apac ? (
                             <RankedSeason region={getRegionName("apac")} stats={attrs.rank.apac} />
                         ) : null}
-                        <div className="card">
-                            <div className="card__header">Ops</div>
-                        </div>
                     </div>
                 </div>
             </div>
