@@ -108,6 +108,10 @@ export default {
             });
         },
     },
+    SIMPLE: {
+        path: "/simple/:id",
+        thunk: playerThunk,
+    },
     PLAYER: {
         path: "/player/:id",
         thunk: playerThunk,

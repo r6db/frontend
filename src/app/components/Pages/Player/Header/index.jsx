@@ -2,7 +2,7 @@ import * as m from "mithril";
 import Profilepic from "components/misc/Profilepic";
 import Link from "components/misc/Link";
 import Icon, { GLYPHS } from "components/misc/Icon";
-import { toProfile, toPlayerTab } from "lib/store/actions";
+import { toSimple, toPlayerTab } from "lib/store/actions";
 import { formatDuration, getWinChance, getKillRatio } from "lib/stats";
 import * as domain from "lib/domain";
 import { get } from "lodash";
@@ -50,6 +50,9 @@ const PlayerHeader = {
                     </div>
                     <div className="playerheader__links">
                         <div className="playerheader__links__top">
+                            <Link className="playerheader__link" to={toSimple(attrs.id)} target="_BLANK">
+                                Simple View
+                            </Link>
                             {ExportButton(attrs)}
                             {!attrs.twitch ? (
                                 ""

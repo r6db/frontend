@@ -97,6 +97,15 @@ label {
     margin: $l;
     min-width: 0;
 }
+.card {
+    background: $bg-color;
+    padding: $l;
 
+    &__header {
+        display: block;
+        margin-bottom: $l;
+        font-weight: bold;
+    }
+}
 @import "scss/components/button";
 @import "scss/components/card";

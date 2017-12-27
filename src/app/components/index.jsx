@@ -21,6 +21,7 @@ const componentMap = {
     LEADERBOARD: () => import("./Pages/Leaderboard"),
     CHANKABOARD: () => import("./Pages/Chankaboard"),
     PLAYER: () => import("./Pages/Player"),
+    SIMPLE: () => import("./Pages/Simple"),
     PLAYERTABS: () => import("./Pages/Player"),
     COMPARISON: () => import("./Pages/Comparison"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),

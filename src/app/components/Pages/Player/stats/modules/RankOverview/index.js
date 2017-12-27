@@ -69,7 +69,7 @@ export default {
                 <CurrentSeason {...attrs} />
                 <div className="playermodule__divider" />
                 <div className="rankoverview__pastseason">
-                    {attrs.pastRanks.filter(x => x.rank !== 0).map(rank => (
+                    {attrs.pastRanks.filter(x => x.season === attrs.rank.season || x.rank !== 0).map(rank => (
                         <div className={`pastrank season-${rank.season}`} key={rank.season}>
                             <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.rank]} />
                             <div className="pastrank__text">
