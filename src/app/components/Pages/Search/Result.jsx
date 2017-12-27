@@ -3,7 +3,7 @@ import Profilepic from "components/misc/Profilepic";
 import Link from "components/misc/Link";
 import Media from "components/misc/Media";
 import "./playercard.scss";
-import { toPlayer, toProfile } from "lib/store/actions";
+import { toPlayer } from "lib/store/actions";
 import { formatDuration } from "lib/stats";
 import * as get from "lodash/get";
 
