@@ -17,7 +17,14 @@ const ProfilePic = {
         };
     },
     oncreate() {
-        const observer = lozad(".profile-pic");
+        const observer = lozad(".profile-pic", {
+            load(el) {
+                el.src = el.dataset.src;
+                el.onload = function() {
+                    el.setAttribute("data-created", "true");
+                };
+            }
+        });
         observer.observe();
     },
     view: vnode => m("img.profile-pic", { "data-src": vnode.state.src, onerror: vnode.state.onerror }),
