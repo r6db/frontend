@@ -37,7 +37,7 @@
         &:focus {
             outline: none;
             border: none;
-            border-bottom: 1px solid lighten($gray-dark, 2%);
+            color: desaturate($color: $accent, $amount: 0.75);
         }
         &:hover {
             color: $accent;

@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.is-home {
+.app.HOME {
     .menu {
         background: fade-out($gray-dark, 0.6);
     }
@@ -18,8 +18,10 @@
         height: $l*5;
         background: $gray-dark;
 
-        &__name {
-            font-size: $font-bigger;
+        @include large {
+            &__name {
+                font-size: $font-bigger;
+            }
         }
     }
     input {
@@ -34,7 +36,7 @@
         border-right: 5px solid $accent;
         line-height: 1.5;
         padding: $l;
-        background: fade-out($gray-dark, 0.6);
+        background: fade-out($gray-dark, 0.2);
         font-weight: 600;
         a {
             color: $accent;

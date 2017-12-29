@@ -49,25 +49,17 @@
 }
 
 @mixin small {
-    .app.small & {
-        @content;
-    }
+    @content;
 }
 
 @mixin medium {
-    .app.medium & {
+    @media screen and (min-width: $screen-medium) {
         @content;
     }
 }
 
 @mixin large {
-    .app.large & {
-        @content;
-    }
-}
-
-@mixin openmenu {
-    @media screen and (min-width: 1224px) {
+    @media screen and (min-width: $screen-large) {
         @content;
     }
 }

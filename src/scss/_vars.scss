@@ -49,11 +49,8 @@ $menuMaxWidth: 280px;
 $menuMaxOpacity: 0.8;
 $menu-hover-color: rgba(227, 214, 148, 1);
 
-$screen-medium: 512px;
-$screen-large: 768px;
-$screen-yourmom: 1024px;
-$screen-openmenu: $screen-yourmom + $menuMaxWidth;
-$screen-absurd: 1600px;
+$screen-medium: 800px;
+$screen-large: 1024px;
 
 $operator-multiplyer: 0.5;
 $operator-size: 128px * $operator-multiplyer;

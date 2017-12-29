@@ -77,12 +77,18 @@ module.exports = {
         new CopyWebpackPlugin([{ from: "src/assets", to: "assets" }, { from: "src/favicons/*", to: "[name].[ext]" }]),
         new webpack.LoaderOptionsPlugin({
             options: {
-                postcss: [autoprefixer(), mqpacker(), cssdedupe(), nano()],
+                postcss: [
+                    autoprefixer(),
+                    mqpacker(),
+                    cssdedupe(),
+                    nano({
+                        reduceIdents: false,
+                    }),
+                ],
             },
         }),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",
-            hash: true,
         }),
         new SpriteLoaderPlugin(),
         new ExtractTextPlugin({ filename: "styles.css", allChunks: true }),

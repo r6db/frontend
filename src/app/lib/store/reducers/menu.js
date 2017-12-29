@@ -1,11 +1,9 @@
-const alwaysOpen = () => window.innerWidth > 1304;
-
 export default (state = false, action = {}) => {
     switch (action.type) {
         case "MENU_TOGGLE":
-            return alwaysOpen() || !state;
+            return !state;
         case "MENU_OPEN":
-            return alwaysOpen() || true;
+            return true;
         case "HOME":
         case "LEADERBOARD":
         case "SEARCH":
@@ -13,8 +11,8 @@ export default (state = false, action = {}) => {
         case "PLAYER":
         case "FAQ":
         case "MENU_CLOSE":
-            return alwaysOpen() || false;
+            return false;
         default:
-            return alwaysOpen() || state;
+            return state;
     }
-}
+};

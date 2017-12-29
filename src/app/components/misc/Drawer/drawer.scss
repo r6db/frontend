@@ -8,10 +8,10 @@
     height: 0;
     z-index: 1;
 
-    @include openmenu {
-        position: relative;
-        width: auto;
+    @include medium {
+        position: static;
         height: auto;
+        width: 100%;
     }
 
     &--open {
@@ -38,35 +38,146 @@
         display: none;
         transition: all 100ms ease-out;
 
-        @include openmenu {
-            display: none !important;
+        @include medium {
+            display: none;
         }
     }
     &__container {
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh;
-        transform: translateX(-100%);
-        @include boxshadow;
         transition: all 100ms ease-out;
+        transform: translateX(-100%);
+        background: $bg-color;
 
-        @include openmenu {
+        @include medium {
+            position: static;
+            height: auto;
+            width: 100vw;
             transform: none;
-            width: auto;
-            position: relative;
-            padding-right: 0;
+            background: none;
         }
     }
 
     &__menu {
         width: 100%;
-        max-width: $menuMaxWidth;
         height: 100vh;
-        @include card;
-    }
-}
 
-.no-transition > * {
-    transition: none !important;
+        @include medium {
+            position: static;
+            width: 100%;
+            height: auto;
+            background: none;
+        }
+    }
+    &__topbar {
+        position: absolute;
+        top: 0;
+        height: $l*4;
+        width: 100vw;
+        background: fade-out($gray-dark, 0.6);
+        display: flex;
+    }
+    &__search {
+        flex: auto;
+    }
+    &__search .searchbar {
+        margin: 0;
+        background: none;
+        flex: 1;
+    }
+    &__burger {
+        position: relative;
+        width: 40px;
+        height: 36px;
+        flex: 0 0 40px;
+        left: $l;
+        top: $l;
+        align-self: center;
+        cursor: pointer;
+
+        span,
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            left: 10px;
+            right: 10px;
+            background: $white;
+        }
+        span {
+            top: 50%;
+            margin-top: -1px;
+        }
+        &:before {
+            top: 10px;
+        }
+        &:after {
+            bottom: 10px;
+        }
+        @include medium {
+            display: none;
+        }
+    }
+
+    .menu {
+        height: 100%;
+        max-width: 280px;
+
+        @include medium {
+            height: auto;
+            max-width: none;
+        }
+
+        &__logo svg {
+            height: 100px;
+            width: 150px;
+            margin: $l 0;
+
+            @include medium {
+                height: 60px;
+                width: 120px;
+                margin: 0;
+            }
+        }
+
+        &__container {
+            flex-direction: column;
+            justify-content: flex-start;
+
+            @include medium {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        &__links {
+            flex-direction: column;
+            align-items: stretch;
+
+            @include medium {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        &__item {
+            margin: 0;
+
+            @include medium {
+                margin: 0 $l;
+            }
+        }
+        &__search {
+            @include medium {
+                padding: 0 $l;
+            }
+        }
+        &__item {
+            text-align: left;
+
+            @include medium {
+                text-align: center;
+            }
+        }
+    }
 }

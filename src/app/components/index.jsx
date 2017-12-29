@@ -4,10 +4,7 @@ import Loading from "components/misc/Loading";
 import Searchbar from "components/misc/Searchbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
-import Topbar from "components/misc/Topbar";
-import ElementQuery from "components/misc/ElementQuery";
 import Icon, { GLYPHS } from "components/misc/Icon";
-import { Pageconfig } from "lib/constants";
 import { connect } from "lib/store/connect";
 import { NOT_FOUND } from "redux-first-router";
 
@@ -26,29 +23,20 @@ const componentMap = {
     COMPARISON: () => import("./Pages/Comparison"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
-
-const breakpoints = {
-    small: 0,
-    medium: 768,
-    large: 1200,
-};
-
 const App = {
     view({ attrs, state }) {
-        const Search = attrs.config.searchbar ? <Searchbar search={attrs.search} /> : null;
-
-        const TopbarComponent = attrs.config.menu ? <Topbar key="topbar">{Search}</Topbar> : null;
-
         return (
-            <ElementQuery className={"app " + attrs.location + " " + attrs.config.class} query={breakpoints}>
+            <div className={"app " + attrs.location}>
                 <div className="app__content">
-                    <Menu platform={attrs.platform} />
+                    <Drawer>
+                        <Menu platform={attrs.platform} />
+                    </Drawer>
                     <div className="app__page">
                         {attrs.loading ? <Loading /> : null}
                         <AsyncComponent importFn={attrs.importFn} />
                     </div>
                 </div>
-            </ElementQuery>
+            </div>
         );
     },
 };
@@ -58,9 +46,7 @@ const mapStateToProps = getState => {
     return {
         location: location.type,
         importFn: componentMap[location.type],
-        config: Object.assign({}, Pageconfig.default, Pageconfig[location.type]),
         loading,
-        search,
         platform,
     };
 };
