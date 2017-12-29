@@ -1,0 +1,32 @@
+@import "scss/vars";
+
+.page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    &__head {
+        flex: 1 0 250px;
+        display: flex;
+        align-items: center;
+
+        .header {
+            margin-top: 0;
+        }
+    }
+    &__image {
+        position: absolute;
+        z-index: -1;
+        object-fit: cover;
+        min-width: 100vw;
+        min-height: 100vh;
+        top: 0;
+        left: 0;
+        filter: brightness(30%);
+    }
+
+    &__content {
+        flex: 1 1 100%;
+        background: $bg-color;
+        padding: ($l*3) $l $l;
+    }
+}

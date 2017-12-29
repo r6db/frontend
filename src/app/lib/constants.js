@@ -20,7 +20,7 @@ export const Pageconfig = Object.freeze({
     },
     HOME: {
         id: "INITIAL",
-        class: "is-initial",
+        class: "is-home",
         footer: false,
         searchbar: false,
     },

@@ -49,19 +49,19 @@
 }
 
 @mixin small {
-    .contentsize.small & {
+    .app.small & {
         @content;
     }
 }
 
 @mixin medium {
-    .contentsize.medium & {
+    .app.medium & {
         @content;
     }
 }
 
 @mixin large {
-    .contentsize.large & {
+    .app.large & {
         @content;
     }
 }

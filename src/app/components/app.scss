@@ -10,19 +10,15 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    background: black;
     // background: linear-gradient(90deg, lighten($bg-color, 5%) 0%, $black 100%);
 
     &__content {
-        height: 100vh;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
         position: relative;
+        min-height: 100vh;
     }
     &__page {
-        position: relative;
-        padding: $l;
         width: 100vw;
         flex: 1;
         overflow-x: hidden;
@@ -50,7 +46,6 @@
         height: 100%;
         opacity: 1;
 
-        background: url(/assets/pattern.svg) no-repeat;
         background-size: cover;
         background-position: 80% 80%;
 

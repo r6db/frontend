@@ -40,29 +40,21 @@ const App = {
         const TopbarComponent = attrs.config.menu ? <Topbar key="topbar">{Search}</Topbar> : null;
 
         return (
-            <div className={"content-wrapper " + attrs.location + " " + attrs.config.class}>
-                <Drawer>
-                    <Menu platform={attrs.platform} tweets={attrs.tweets} />
-                </Drawer>
-                <div className="app">
-                    <div className="app__background app__background--pattern" />
-                    <div className="app__content">
-                        {TopbarComponent}
-                        <div className="app__page">
-                            <ElementQuery className="contentsize" query={breakpoints}>
-                                {attrs.loading ? <Loading /> : null}
-                                <AsyncComponent importFn={attrs.importFn} />
-                            </ElementQuery>
-                        </div>
+            <ElementQuery className={"app " + attrs.location + " " + attrs.config.class} query={breakpoints}>
+                <div className="app__content">
+                    <Menu platform={attrs.platform} />
+                    <div className="app__page">
+                        {attrs.loading ? <Loading /> : null}
+                        <AsyncComponent importFn={attrs.importFn} />
                     </div>
                 </div>
-            </div>
+            </ElementQuery>
         );
     },
 };
 
 const mapStateToProps = getState => {
-    const { platform, tweets, search, location, loading } = getState();
+    const { platform, search, location, loading } = getState();
     return {
         location: location.type,
         importFn: componentMap[location.type],
@@ -70,7 +62,6 @@ const mapStateToProps = getState => {
         loading,
         search,
         platform,
-        tweets,
     };
 };
 

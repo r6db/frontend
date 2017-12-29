@@ -27,7 +27,7 @@ $danger: mix(#b62f23, $primary, 95%);
 
 $font-color: $white;
 $font-subtle-color: $gray;
-$bg-color: $gray-dark;
+$bg-color: hsl(hue($primary), 3%, 10%);
 
 $l: 10px;
 
@@ -58,7 +58,7 @@ $screen-absurd: 1600px;
 $operator-multiplyer: 0.5;
 $operator-size: 128px * $operator-multiplyer;
 
-$borderradius: 1px;
+$borderradius: 5px;
 $borderradius-rel: 0.4em;
 
 $tdur: 200ms;
