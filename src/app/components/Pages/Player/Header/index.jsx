@@ -68,7 +68,7 @@ const PlayerHeader = {
                             >
                                 <Icon glyph={GLYPHS.UBI} /> Ubisoft
                             </a>
-                            <a className="playerheader__link" href={domain.getEslLink(attrs)} target="_BLANK">
+                            <a className="playerheader__link" href={domain.getEslLink(attrs.name)} target="_BLANK">
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
                         </div>
