@@ -1,1 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#FFF" stroke="#000" stroke-miterlimit="10" d="M22.2 23.7h469v469.7H22z"/><path stroke="#000" stroke-miterlimit="10" d="M43.6 43.8H470v431.5H43.7z"/><path fill="#5C2E88" d="M59.2 60.6h394v399.2h-394z"/><path stroke="#000" stroke-width="3" stroke-miterlimit="10" d="M22.2 143.4h469V371H22z"/><path fill="#FFF" stroke="#000" stroke-width="3" stroke-miterlimit="10" d="M-19.4 155.6h551.7v204.2H-19.4z"/><path stroke="#000" stroke-miterlimit="10" d="M-6.4 168.2H520v179.4H-6.3z"/><circle cx="59.2" cy="143.4" r="14.7" fill="#FFF" stroke="#000" stroke-width="5" stroke-miterlimit="10"/><circle cx="256" cy="143.4" r="14.7" fill="#FFF" stroke="#000" stroke-width="5" stroke-miterlimit="10"/><circle cx="455.4" cy="143.4" r="14.7" fill="#FFF" stroke="#000" stroke-width="5" stroke-miterlimit="10"/><circle cx="59.2" cy="371.1" r="14.7" fill="#FFF" stroke="#000" stroke-width="5" stroke-miterlimit="10"/><circle cx="256" cy="371.1" r="14.7" fill="#FFF" stroke="#000" stroke-width="5" stroke-miterlimit="10"/><circle cx="455.4" cy="371.1" r="14.7" fill="#FFF" stroke="#000" stroke-width="5" stroke-miterlimit="10"/><path fill="#FFF" stroke="#000" stroke-miterlimit="10" d="M171.4 181.2l-66 79-25.2 33.2-36.6 42h127.8l121.8-154.2zm166.8 0L213 335.4h62.6l121-154.2zm102.5 0L316.3 335.4H345l125-154.2z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g>
+	<rect x="41.77" y="41.345" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="429.513" height="429.309"/>
+	<rect x="61.397" y="59.777" stroke="#000000" stroke-miterlimit="10" width="390.642" height="394.366"/>
+	<rect x="75.637" y="75.138" fill="#5C2E88" width="361.007" height="364.797"/>
+	<rect x="41.77" y="150.785" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="429.513" height="208.126"/>
+	
+		<rect x="3.667" y="161.921" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="505.333" height="186.622"/>
+	<rect x="15.599" y="173.441" stroke="#000000" stroke-miterlimit="10" width="482.24" height="163.967"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="75.637" cy="150.785" rx="13.47" ry="13.439"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="255.933" cy="150.785" rx="13.47" ry="13.439"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="438.569" cy="150.785" rx="13.47" ry="13.439"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="75.637" cy="358.911" rx="13.47" ry="13.439"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="255.933" cy="358.911" rx="13.47" ry="13.439"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="438.569" cy="358.911" rx="13.47" ry="13.439"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="178.398,185.345 117.973,257.537 94.881,287.872 
+		61.397,326.271 178.398,326.271 290.009,185.345 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="331.191,185.345 216.5,326.271 273.845,326.271 
+		384.688,185.345 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="425.1,185.345 311.177,326.271 337.348,326.271 
+		452.039,185.345 	"/>
+</g>
+</svg>
