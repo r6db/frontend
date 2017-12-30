@@ -50,8 +50,9 @@ const App = {
                         {TopbarComponent}
                         <div className="app__page">
                             <ElementQuery className="contentsize" query={breakpoints}>
-                                {attrs.loading ? <Loading /> : null}
-                                <AsyncComponent importFn={attrs.importFn} />
+                                {attrs.loading > 0
+                                    ? <Loading />
+                                    : <AsyncComponent importFn={attrs.importFn} />}
                             </ElementQuery>
                         </div>
                     </div>
