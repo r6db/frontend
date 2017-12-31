@@ -40,6 +40,7 @@
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.26.0",
+    "image-webpack-loader": "^3.4.2",
     "node-sass": "^4.5.3",
     "postcss-discard-duplicates": "^2.0.2",
     "postcss-loader": "^1.1.1",
