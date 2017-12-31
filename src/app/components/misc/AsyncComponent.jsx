@@ -18,9 +18,9 @@ const AsyncComponent = {
                     m.redraw();
                 })
                 .catch(err => {
-                    throw err;
                     state.Component = null;
                     m.redraw();
+                    throw err;
                 });
         };
 

@@ -23,7 +23,7 @@ const PlayerHeader = {
     oninit({ attrs, state }) {
         // flip 1 second after the timeout is finished
         const timeout = attrs.updateAvailableAt - new Date() + 1000;
-        state.timeout = setTimeout(m.redraw(), timeout);
+        state.timeout = setTimeout(m.redraw, timeout);
     },
     onremove({ state }) {
         clearTimeout(state.timeout);
