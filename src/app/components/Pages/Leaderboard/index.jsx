@@ -30,12 +30,6 @@ const Leaderboard = {
                 <Page.Content>
                     <div className="container">
                         <div className="leaderboard__description">
-                            <p>
-                                We use the ranked system's 'skill' and an 'uncertainty' variables to calculate a
-                                downward adjusted skill rating (aka "you're at least this good" value). That way we can
-                                ensure that players with identical skill but more games will be ranked higher. For more
-                                info on the current rank system, head over to the <a href="/faq">FAQ</a>.
-                            </p>
                             <p className="is-highlight">
                                 Any accounts proven to abuse the system will be removed from the leaderboard. This
                                 includes queueing with coppers or hackers, hacking themselves or playing exclusively
@@ -45,7 +39,6 @@ const Leaderboard = {
                                 <a href="mailto:info@r6db.com">email</a> or{" "}
                                 <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
                             </p>
-                            <p>the Leaderboard updates every 24h.</p>
                         </div>
                         <form className="leaderboard__filters" action="" onsubmit={state.loadLeaderboard}>
                             <p className="leaderboard__platform">

@@ -1,5 +1,4 @@
-@import "scss/vars";
-@import "scss/mixins";
+@import "scss/styles";
 
 .playerheader {
     position: relative;
@@ -24,16 +23,27 @@
     }
     &__name {
         margin: 0;
-        font-weight: 700;
+        font-weight: 500;
+        line-height: 1.4;
     }
-    &__flair,
     &__level {
         font-size: $font-default;
+        color: $font-subtle-color;
     }
     &__platform {
-        color: $font-subtle-color;
-        margin-left: $l;
-        font-size: 0.75em;
+        display: inline-block;
+        margin: 0 0 0 $l;
+        font-weight: 700;
+    }
+    &__flair {
+        margin-left: $l*2;
+        padding: ($l*0.5) $l;
+        border-radius: $l;
+        border: 1px solid $primary;
+        color: $primary;
+        text-align: center;
+        display: inline-block;
+        font-size: $font-smaller;
     }
     &__ranking {
         margin-top: $l;

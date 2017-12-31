@@ -36,16 +36,15 @@ const PlayerHeader = {
                         <Profilepic id={attrs.userId || attrs.id} />
                     </div>
                     <div className="playerheader__info">
-                        <div className="playerheader__level">lvl. {attrs.level}</div>
                         <header className="header playerheader__name">
                             {attrs.name}
-                            <span className="playerheader__platform">{attrs.platform}</span>
+                            <span className="header header--small header--subtle playerheader__platform">
+                                {attrs.platform}
+                            </span>
                         </header>
-                        <div className="playerheader__flair">{attrs.flair}</div>
-                        <div className="playerheader__ranking">
-                            {get(attrs, "placements.global", null) != null
-                                ? `#${get(attrs, "placements.global", null) + 1} global`
-                                : null}
+                        <div className="playerheader__level">
+                            {attrs.placements.global ? "#" + attrs.placements.global : "-"} global / lvl {attrs.level}
+                            {attrs.flair ? <div className="playerheader__flair">{attrs.flair}</div> : null}
                         </div>
                     </div>
                     <div className="playerheader__links">
