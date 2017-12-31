@@ -4,6 +4,12 @@
     .menu {
         background: fade-out($gray-dark, 0.6);
     }
+
+    @include medium {
+        .page__headcontent {
+            padding-bottom: 100px;
+        }
+    }
 }
 
 .home {
@@ -38,6 +44,7 @@
         padding: $l;
         background: fade-out($gray-dark, 0.2);
         font-weight: 600;
+        border-radius: $borderradius;
         a {
             color: $accent;
 

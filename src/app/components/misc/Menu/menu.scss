@@ -1,6 +1,7 @@
 @import "scss/styles";
 .menu {
     width: 100%;
+    height: $menu-height;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,11 +12,6 @@
         align-items: center;
         justify-content: center;
         color: $white;
-
-        svg {
-            height: 60px;
-            width: 120px;
-        }
     }
     &__container {
         display: flex;

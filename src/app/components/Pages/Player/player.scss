@@ -1,5 +1,12 @@
 @import "scss/styles";
 
+.app.PLAYER,
+.app.PLAYERTABS {
+    .page__head {
+        align-items: flex-end;
+    }
+}
+
 .player {
     display: flex;
     flex-direction: column;

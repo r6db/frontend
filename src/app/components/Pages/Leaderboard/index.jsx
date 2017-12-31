@@ -7,6 +7,7 @@ import Link from "components/misc/Link";
 import Profilepic from "components/misc/Profilepic";
 import Page from "components/misc/Page";
 import "./leaderboard.scss";
+import chanka from "./chanky.png";
 
 const isSelected = (expected, value) => (expected === value ? "selected" : undefined);
 
@@ -112,7 +113,7 @@ const Leaderboard = {
                             </tbody>
                         </table>
                         <Link id="chanky" to={toChanka(attrs.platform)}>
-                            <img src="/assets/chanky.png" />
+                            <img src={chanka} />
                         </Link>
                     </div>
                 </Page.Content>

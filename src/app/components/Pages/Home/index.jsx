@@ -2,6 +2,7 @@ import * as m from "mithril";
 import Searchbar from "components/misc/Searchbar";
 import Page from "components/misc/Page";
 import "./home.scss";
+import bg from "./bg.jpg";
 
 const idRegex = /[\da-zA-Z]{8}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{4}-[\da-zA-Z]{12}/;
 
@@ -17,7 +18,7 @@ export default {
     view({ attrs, state }) {
         return (
             <Page className="home">
-                <Page.Head image="/assets/landing.jpg" top="0">
+                <Page.Head image={bg} position="50% 0%">
                     <div className="container">
                         <Searchbar className="home__search" search={attrs.search} />
                         <div className="home__disclaimer">

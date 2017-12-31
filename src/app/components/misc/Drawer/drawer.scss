@@ -6,7 +6,7 @@
     top: 0;
     width: 0;
     height: 0;
-    z-index: 1;
+    z-index: 3;
 
     @include medium {
         position: static;
@@ -46,7 +46,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        transition: all 100ms ease-out;
+        transition: all 100ms ease-in-out;
         transform: translateX(-100%);
         background: $bg-color;
 
@@ -64,7 +64,8 @@
         height: 100vh;
 
         @include medium {
-            position: static;
+            position: absolute;
+            top: 0;
             width: 100%;
             height: auto;
             background: none;
@@ -77,6 +78,9 @@
         width: 100vw;
         background: fade-out($gray-dark, 0.6);
         display: flex;
+        @include medium {
+            height: $menu-height;
+        }
     }
     &__search {
         flex: auto;
@@ -123,11 +127,13 @@
 
     .menu {
         height: 100%;
-        max-width: 280px;
+        width: $menu-width;
+        flex: 0 0 $menu-width;
 
         @include medium {
-            height: auto;
-            max-width: none;
+            height: $menu-height;
+            width: 100%;
+            flex: auto;
         }
 
         &__logo svg {
@@ -136,7 +142,7 @@
             margin: $l 0;
 
             @include medium {
-                height: 60px;
+                height: 80%;
                 width: 120px;
                 margin: 0;
             }
@@ -145,6 +151,7 @@
         &__container {
             flex-direction: column;
             justify-content: flex-start;
+            width: 100%;
 
             @include medium {
                 flex-direction: row;

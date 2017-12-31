@@ -51,6 +51,16 @@ module.exports = {
                 },
             },
             {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        { loader: "css-loader" },
+                        { loader: "postcss-loader" },
+                        { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")] } },
+                    ],
+                }),
+            },
+            {
                 test: /.svg$/,
                 use: {
                     loader: "svg-sprite-loader",
@@ -60,14 +70,13 @@ module.exports = {
                 },
             },
             {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        { loader: "css-loader" },
-                        { loader: "postcss-loader" },
-                        { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")] } },
-                    ],
-                }),
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {},
+                    },
+                ],
             },
         ],
     },
@@ -83,6 +92,7 @@ module.exports = {
                     cssdedupe(),
                     nano({
                         reduceIdents: false,
+                        zindex: false,
                     }),
                 ],
             },

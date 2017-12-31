@@ -1,17 +1,18 @@
 import * as m from "mithril";
 import "./page.scss";
+import background from "./RB6_WhiteNoise_Teaser1.jpg";
 
 const PageHead = {
     view({ attrs, children }) {
         return (
             <div className="page__head">
                 <img
-                    style={{ top: attrs.top || "-200px", left: attrs.top || 0 }}
-                    src={attrs.image || "/assets/tower_1.jpg"}
+                    style={{ "object-position": attrs.position || "50% 30%" }}
+                    src={attrs.image || background}
                     alt=""
                     className="page__image"
                 />
-                {children}
+                <div className="page__headcontent">{children}</div>
             </div>
         );
     },
