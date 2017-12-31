@@ -9,6 +9,8 @@ import Page from "components/misc/Page";
 import "./leaderboard.scss";
 import chanka from "./chanky.png";
 
+import bg from "./SixInvitational_KeyArt_Teaser02.jpg";
+
 const isSelected = (expected, value) => (expected === value ? "selected" : undefined);
 
 const Leaderboard = {
@@ -22,7 +24,7 @@ const Leaderboard = {
     view({ attrs, state }) {
         return (
             <Page className="leaderboard">
-                <Page.Head>
+                <Page.Head image={bg} position="50% 20%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">Top Skilled Players</h1>
                     </div>
