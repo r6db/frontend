@@ -8,7 +8,7 @@ const showPlayer = id => e => page("/player/" + id);
 
 export default {
     oncreate({}) {
-        const search = document.querySelector(".page__headcontent .searchbar__name");
+        const search = document.querySelector(".searchbar__name");
         if (search && !window.ontouchstart) {
             search.focus();
         }
