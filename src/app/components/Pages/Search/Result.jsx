@@ -3,7 +3,7 @@ import Profilepic from "components/misc/Profilepic";
 import Link from "components/misc/Link";
 import Media from "components/misc/Media";
 import "./playercard.scss";
-import { toPlayer, toProfile } from "lib/store/actions";
+import { toPlayer } from "lib/store/actions";
 import { formatDuration } from "lib/stats";
 import * as get from "lodash/get";
 
@@ -25,7 +25,7 @@ export default {
             <Link to={toPlayer(attrs.player.id)} className="search__result result">
                 <div className="media">
                     <div className="media__image">
-                        <Profilepic id={attrs.player.id} />
+                        <Profilepic id={attrs.player.userId || attrs.player.id} />
                     </div>
                     <div className="media__content">
                         <div className="media__contentheader">

@@ -7,33 +7,6 @@ export const baseurl = "/";
 export const v2Api = "https://r6db.com/api/v2";
 
 /**
- * this is used to set a css class on the root component
- * used for animations, page specific css, etc
- */
-export const Pageconfig = Object.freeze({
-    default: {
-        id: "",
-        class: "",
-        searchbar: true,
-        menu: true,
-        footer: true,
-    },
-    HOME: {
-        id: "INITIAL",
-        class: "is-initial",
-        footer: false,
-        searchbar: false,
-    },
-    SEARCH: { id: "SEARCH", class: "is-searching" },
-    RESULT: { id: "RESULT", class: "is-results" },
-    DETAIL: { id: "DETAIL", class: "is-detail" },
-    PROFILE: { id: "PROFILE", class: "is-profile" },
-    LEADERBOARD: { id: "LEADERBOARD", class: "is-leaderboard" },
-    CHANKABOARD: { id: "CHANKABOARD", class: "is-leaderboard" },
-    FAQ: { id: "FAQ", class: "is-faq" },
-});
-
-/**
  * define our Leaderboards
  * id: url parameter we set for the board
  * board: api endpoint to call

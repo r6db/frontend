@@ -27,7 +27,7 @@ $danger: mix(#b62f23, $primary, 95%);
 
 $font-color: $white;
 $font-subtle-color: $gray;
-$bg-color: $gray-dark;
+$bg-color: hsl(hue($primary), 3%, 10%);
 
 $l: 10px;
 
@@ -40,25 +40,20 @@ $font-bigger: 1.25rem;
 $font-large: 1.5rem;
 $font-huge: 2.5rem;
 
-$topbar-height: $l*6;
-$nav-height: 32px;
-$menu-width: 300px;
+$menu-height: 80px;
+$menu-width: 280px;
 $menu-background: $gray-dark;
-$menu-height: $l*4;
 $menuMaxWidth: 280px;
 $menuMaxOpacity: 0.8;
 $menu-hover-color: rgba(227, 214, 148, 1);
 
-$screen-medium: 512px;
-$screen-large: 768px;
-$screen-yourmom: 1024px;
-$screen-openmenu: $screen-yourmom + $menuMaxWidth;
-$screen-absurd: 1600px;
+$screen-medium: 800px;
+$screen-large: 1024px;
 
 $operator-multiplyer: 0.5;
 $operator-size: 128px * $operator-multiplyer;
 
-$borderradius: 1px;
+$borderradius: 5px;
 $borderradius-rel: 0.4em;
 
 $tdur: 200ms;

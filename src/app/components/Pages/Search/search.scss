@@ -1,5 +1,11 @@
 @import "scss/styles";
 
+.app.SEARCH {
+    .page__content {
+        padding: ($l*3) $l $l;
+    }
+}
+
 .search {
     &__resultcount {
         margin: $l*2 0;
