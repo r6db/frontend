@@ -6,6 +6,7 @@ import { Operators } from "lib/constants";
 import "./comparison.scss";
 import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";
+import Modal from "components/misc/Modal";
 import Chart from "components/misc/Chart";
 import Scale from "components/misc/Scale";
 import Stat from "components/misc/Stat";
@@ -32,11 +33,13 @@ const rows = [
 
 const getRankingAttrs = players =>
     players
+        .filter(p => get(p, "placements.global", null) != null)
         .map(p => ({
             label: p.name,
-            value: get(p, "placements.global", null) ? get(p, "placements.global", 0) + 1 : "-",
+            value: get(p, "placements.global", 0) + 1,
         }))
-        .sort((a, b) => a.value.toString().localeCompare(b.value));
+        .sort((a, b) => a.value - b.value)
+        .concat(players.filter(p => get(p, "placements.global", null) == null));
 
 const getWlAttrs = players =>
     players
@@ -167,16 +170,30 @@ const getMmrChartAttrs = players => ({
 });
 
 const Component = {
+    oninit({ state }) {
+        state.showPlayerModal = false;
+
+        state.onAddPlayer = () => (state.showPlayerModal = true);
+        state.onModalClose = () => (state.showPlayerModal = false);
+    },
     view({ attrs, state }) {
         if (attrs.loading) {
             return null;
         }
         return (
             <div className="container comparison">
+                {state.showPlayerModal ? (
+                    <Modal title="Add player" onclose={state.onModalClose}>
+                        add some then!
+                    </Modal>
+                ) : null}
                 <div className="comparison__playerlist playerlist">
                     <header className="playerlist__header">Comparing</header>
                     <div className="playerlist__players">
                         {attrs.players.map(player => <PlayerLabel {...player} />)}
+                        <button className="button button--primary" onclick={state.onAddPlayer}>
+                            add player
+                        </button>
                     </div>
                 </div>
                 <div className="comparison__row">
