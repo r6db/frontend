@@ -32,8 +32,11 @@ const rows = [
 
 const getRankingAttrs = players =>
     players
-        .map(p => ({ label: p.name, value: get(p, "placements.global", null) + 1 }))
-        .sort((a, b) => a.value - b.value);
+        .map(p => ({
+            label: p.name,
+            value: get(p, "placements.global", null) ? get(p, "placements.global", 0) + 1 : "-",
+        }))
+        .sort((a, b) => a.value.toString().localeCompare(b.value));
 
 const getWlAttrs = players =>
     players
