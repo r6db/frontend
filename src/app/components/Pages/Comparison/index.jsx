@@ -6,6 +6,7 @@ import { Operators } from "lib/constants";
 import "./comparison.scss";
 import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";
+import Page from "components/misc/Page";
 import Modal from "components/misc/Modal";
 import Chart from "components/misc/Chart";
 import Scale from "components/misc/Scale";
@@ -181,172 +182,181 @@ const Component = {
             return null;
         }
         return (
-            <div className="container comparison">
-                {state.showPlayerModal ? (
-                    <Modal title="Add player" onclose={state.onModalClose}>
-                        add some then!
-                    </Modal>
-                ) : null}
-                <div className="comparison__playerlist playerlist">
-                    <header className="playerlist__header">Comparing</header>
-                    <div className="playerlist__players">
-                        {attrs.players.map(player => <PlayerLabel {...player} />)}
-                        <button className="button button--primary" onclick={state.onAddPlayer}>
-                            add player
-                        </button>
-                    </div>
-                </div>
-                <div className="comparison__row">
-                    <div className="comparison__module comparison__mmr">
-                        <div className="comparison__module__header">MMR (most active region)</div>
-                        <div className="comparison__module__content">
-                            <Chart {...getMmrChartAttrs(attrs.players)} />
+            <Page className="comparison">
+                <Page.Head />
+                <Page.Content>
+                    <div className="container">
+                        {state.showPlayerModal ? (
+                            <Modal title="Add player" onclose={state.onModalClose}>
+                                add some then!
+                            </Modal>
+                        ) : null}
+                        <div className="comparison__playerlist playerlist">
+                            <header className="playerlist__header">Comparing</header>
+                            <div className="playerlist__players">
+                                {attrs.players.map(player => <PlayerLabel {...player} />)}
+                                <button className="button button--primary" onclick={state.onAddPlayer}>
+                                    add player
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="comparison__module comparison__ranking">
-                        <div className="comparison__module__header">Ranking</div>
-                        <div className="comparison__module__content">
-                            {getRankingAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    {player.value}
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="comparison__row">
-                    <div className="comparison__module comparison__wlr">
-                        <div className="comparison__module__header">Win Percentage (ranked)</div>
-                        <div className="comparison__module__content">
-                            {getRankedWlAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    <Scale value={player.value} neutral={50}>
-                                        %
-                                    </Scale>
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="comparison__module comparison__ops">
-                        <div className="comparison__module__header">most played Operators</div>
-                        <div className="comparison__module__content">
-                            <OpsChart data={getOpsAttrs(attrs.players)} />
-                        </div>
-                    </div>
-                </div>
-                <div className="comparison__row">
-                    <div className="comparison__module comparison__kdr">
-                        <div className="comparison__module__header">KD Ratio (ranked)</div>
-                        <div className="comparison__module__content">
-                            {getRankedKdAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    <Scale value={player.value} neutral={1} />
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">KD Ratio (global)</div>
-                        <div className="comparison__module__content">
-                            {getKdAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    <Scale value={player.value} neutral={1} />
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">KDA Ratio (global)</div>
-                        <div className="comparison__module__content">
-                            {getKdaAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    <Scale value={player.value} neutral={1} />
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="comparison__row">
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">Accuracy</div>
-                        <div className="comparison__module__content">
-                            {getAccuAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    {player.value}
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">Headshots</div>
-                        <div className="comparison__module__content">
-                            {getHeadshotAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    <Scale value={player.value} neutral={40}>
-                                        %
-                                    </Scale>
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="comparison__row">
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">Playtime</div>
-                        <div className="comparison__module__content">
-                            {getPlaytimeAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    {stats.formatDuration(player.value)}
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">Abandons</div>
-                        <div className="comparison__module__content">
-                            {getAbandonAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    {player.value}
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="comparison__module">
-                        <div className="comparison__module__header">Melee kills</div>
-                        <div className="comparison__module__content">
-                            {getKnifeAttrs(attrs.players).map(player => (
-                                <Stat label={player.label} key={player.label}>
-                                    {player.value}
-                                </Stat>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="comparison__row">
-                    <div className="comparison__module">
-                        <Fauxtable className="comparison-table">
-                            <Fauxtable.Head>
-                                <Fauxtable.Row>
-                                    <Fauxtable.Heading className="comparison-stat">Stat</Fauxtable.Heading>
-                                    {attrs.players.map(x => (
-                                        <Fauxtable.Heading className="comparison-value">{x.name}</Fauxtable.Heading>
+                        <div className="comparison__row">
+                            <div className="comparison__module comparison__mmr">
+                                <div className="comparison__module__header">MMR (most active region)</div>
+                                <div className="comparison__module__content">
+                                    <Chart {...getMmrChartAttrs(attrs.players)} />
+                                </div>
+                            </div>
+                            <div className="comparison__module comparison__ranking">
+                                <div className="comparison__module__header">Ranking</div>
+                                <div className="comparison__module__content">
+                                    {getRankingAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
                                     ))}
-                                </Fauxtable.Row>
-                            </Fauxtable.Head>
-                            <Fauxtable.Body>
-                                {rows.map(row => (
-                                    <Fauxtable.Row>
-                                        <Fauxtable.Cell className="comparison-stat">{row.label}</Fauxtable.Cell>
-                                        {attrs.players.map(x => (
-                                            <Fauxtable.Cell className="comparison-value">{row.prop(x)}</Fauxtable.Cell>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="comparison__row">
+                            <div className="comparison__module comparison__wlr">
+                                <div className="comparison__module__header">Win Percentage (ranked)</div>
+                                <div className="comparison__module__content">
+                                    {getRankedWlAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} neutral={50}>
+                                                %
+                                            </Scale>
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module comparison__ops">
+                                <div className="comparison__module__header">most played Operators</div>
+                                <div className="comparison__module__content">
+                                    <OpsChart data={getOpsAttrs(attrs.players)} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="comparison__row">
+                            <div className="comparison__module comparison__kdr">
+                                <div className="comparison__module__header">KD Ratio (ranked)</div>
+                                <div className="comparison__module__content">
+                                    {getRankedKdAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} neutral={1} />
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">KD Ratio (global)</div>
+                                <div className="comparison__module__content">
+                                    {getKdAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} neutral={1} />
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">KDA Ratio (global)</div>
+                                <div className="comparison__module__content">
+                                    {getKdaAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} neutral={1} />
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="comparison__row">
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">Accuracy</div>
+                                <div className="comparison__module__content">
+                                    {getAccuAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">Headshots</div>
+                                <div className="comparison__module__content">
+                                    {getHeadshotAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} neutral={40}>
+                                                %
+                                            </Scale>
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="comparison__row">
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">Playtime</div>
+                                <div className="comparison__module__content">
+                                    {getPlaytimeAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {stats.formatDuration(player.value)}
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">Abandons</div>
+                                <div className="comparison__module__content">
+                                    {getAbandonAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">Melee kills</div>
+                                <div className="comparison__module__content">
+                                    {getKnifeAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="comparison__row">
+                            <div className="comparison__module">
+                                <Fauxtable className="comparison-table">
+                                    <Fauxtable.Head>
+                                        <Fauxtable.Row>
+                                            <Fauxtable.Heading className="comparison-stat">Stat</Fauxtable.Heading>
+                                            {attrs.players.map(x => (
+                                                <Fauxtable.Heading className="comparison-value">
+                                                    {x.name}
+                                                </Fauxtable.Heading>
+                                            ))}
+                                        </Fauxtable.Row>
+                                    </Fauxtable.Head>
+                                    <Fauxtable.Body>
+                                        {rows.map(row => (
+                                            <Fauxtable.Row>
+                                                <Fauxtable.Cell className="comparison-stat">{row.label}</Fauxtable.Cell>
+                                                {attrs.players.map(x => (
+                                                    <Fauxtable.Cell className="comparison-value">
+                                                        {row.prop(x)}
+                                                    </Fauxtable.Cell>
+                                                ))}
+                                            </Fauxtable.Row>
                                         ))}
-                                    </Fauxtable.Row>
-                                ))}
-                            </Fauxtable.Body>
-                        </Fauxtable>
+                                    </Fauxtable.Body>
+                                </Fauxtable>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </Page.Content>
+            </Page>
         );
     },
 };

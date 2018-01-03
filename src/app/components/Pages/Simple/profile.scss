@@ -5,13 +5,9 @@ $profile-image-height: 146px;
 $profile-header-height: $profile-image-height + (5*$l);
 
 .profile {
-    width: 100%;
-    min-height: 100vh;
     color: $white;
     display: flex;
     flex-direction: column;
-    max-width: $screen-large;
-    margin: 0 auto;
 
     .search-form {
         flex: 0 0 auto;
@@ -146,11 +142,6 @@ $profile-header-height: $profile-image-height + (5*$l);
         color: $accent;
         margin-top: $l*0.5;
         display: block;
-    }
-    &-content {
-        width: 100%;
-        max-width: $screen-large;
-        margin: 0 auto;
     }
 
     &-aliases {

@@ -4,8 +4,7 @@
         "start": "webpack-dev-server --hot --inline --config webpack/dev.js",
         "watch": "webpack --watch --config webpack/dev.js",
         "build:dev": "cross-env NODE_ENV=development webpack --config webpack/dev.js",
-        "build":
-            "cross-env BROWSERLIST_STATS=./browserlist-stats.json NODE_ENV=production webpack --config webpack/prod.js",
+        "build": "cross-env BROWSERLIST_STATS=./browserlist-stats.json NODE_ENV=production webpack --config webpack/prod.js",
         "stats": "webpack --config webpack/dev.js --profile --json > stats.json",
         "test": "exit 0"
     },
@@ -40,7 +39,9 @@
         "cssnano": "^3.9.1",
         "eslint": "^4.14.0",
         "extract-text-webpack-plugin": "^2.0.0-beta",
+        "file-loader": "^1.1.6",
         "html-webpack-plugin": "^2.26.0",
+        "image-webpack-loader": "^3.4.2",
         "node-sass": "^4.5.3",
         "postcss-discard-duplicates": "^2.0.2",
         "postcss-loader": "^1.1.1",
