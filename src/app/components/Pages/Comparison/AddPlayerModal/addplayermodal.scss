@@ -14,9 +14,17 @@
         }
     }
     &__result {
-        border-left: 5px solid transparent;
-        &--selected {
-            border-color: $primary;
+        &--selected:after {
+            content: "✓";
+            width: $l*4;
+            height: $l*4;
+            flex: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $accent;
+            color: $accent;
         }
     }
     .media {
