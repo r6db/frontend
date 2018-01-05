@@ -6,13 +6,16 @@ import { Operators } from "lib/constants";
 import "./comparison.scss";
 import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";
+import AddPlayerModal from "./AddPlayerModal";
 import Page from "components/misc/Page";
-import Modal from "components/misc/Modal";
 import Chart from "components/misc/Chart";
 import Scale from "components/misc/Scale";
 import Stat from "components/misc/Stat";
 import Fauxtable from "components/misc/Fauxtable";
 import * as Chartist from "chartist";
+import * as uniq from "lodash/uniq";
+
+//#region data mappers
 
 const rows = [
     { label: "platform", prop: x => get(x, "platform", "-") },
@@ -111,6 +114,7 @@ const getOpsAttrs = players =>
                     .slice(0, 3)
                     .map(x => x.id),
             },
+            meta: get(p, "stats.operator", {}),
         };
     });
 
@@ -121,11 +125,20 @@ const getAccuAttrs = players =>
             value: get(p, "stats.general.hitChance", null) | 0,
         }))
         .sort((a, b) => b.value - a.value);
+
 const getHeadshotAttrs = players =>
     players
         .map(p => ({
             label: p.name,
             value: get(p, "stats.general.headshotRatio", null) | 0,
+        }))
+        .sort((a, b) => b.value - a.value);
+
+const getDbnoAttrs = players =>
+    players
+        .map(p => ({
+            label: p.name,
+            value: get(p, "stats.general.dbno", null) | 0,
         }))
         .sort((a, b) => b.value - a.value);
 const getAbandonAttrs = players =>
@@ -170,12 +183,26 @@ const getMmrChartAttrs = players => ({
     },
 });
 
-const Component = {
-    oninit({ state }) {
-        state.showPlayerModal = false;
+//#endregion data mappers
 
+const Component = {
+    oninit({ attrs, state }) {
+        state.showPlayerModal = false;
+        state.ids = attrs.ids;
         state.onAddPlayer = () => (state.showPlayerModal = true);
-        state.onModalClose = () => (state.showPlayerModal = false);
+        state.togglePlayer = id =>
+            (state.ids =
+                state.ids.find(x => x === id) !== undefined ? state.ids.filter(x => x !== id) : state.ids.concat(id));
+        state.onModalClose = () => {
+            state.showPlayerModal = false;
+            if (state.ids.length) {
+                attrs.compare(state.ids);
+            }
+        };
+        state.getPlayerRemovalLink = id => ({
+            type: "COMPARISON",
+            query: { test: "yes", ids: attrs.ids.filter(x => x !== id) },
+        });
     },
     view({ attrs, state }) {
         if (attrs.loading) {
@@ -187,14 +214,17 @@ const Component = {
                 <Page.Content>
                     <div className="container">
                         {state.showPlayerModal ? (
-                            <Modal title="Add player" onclose={state.onModalClose}>
-                                add some then!
-                            </Modal>
+                            <AddPlayerModal
+                                ids={state.ids}
+                                onselect={state.togglePlayer}
+                                onclose={state.onModalClose}
+                            />
                         ) : null}
                         <div className="comparison__playerlist playerlist">
-                            <header className="playerlist__header">Comparing</header>
                             <div className="playerlist__players">
-                                {attrs.players.map(player => <PlayerLabel {...player} />)}
+                                {attrs.players.map(player => (
+                                    <PlayerLabel removeAction={state.getPlayerRemovalLink(player.id)} {...player} />
+                                ))}
                                 <button className="button button--primary" onclick={state.onAddPlayer}>
                                     add player
                                 </button>
@@ -276,7 +306,7 @@ const Component = {
                                 <div className="comparison__module__content">
                                     {getAccuAttrs(attrs.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
-                                            {player.value}
+                                            {player.value}%
                                         </Stat>
                                     ))}
                                 </div>
@@ -289,6 +319,16 @@ const Component = {
                                             <Scale value={player.value} neutral={40}>
                                                 %
                                             </Scale>
+                                        </Stat>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="comparison__module">
+                                <div className="comparison__module__header">DBNOs</div>
+                                <div className="comparison__module__content">
+                                    {getDbnoAttrs(attrs.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
                                         </Stat>
                                     ))}
                                 </div>
@@ -362,14 +402,8 @@ const Component = {
 };
 
 const mapState = getState => {
-    const { players, loading, location: { payload, type } } = getState();
-    if (type !== "COMPARISON") {
-        return {
-            players: [],
-            ids: [],
-        };
-    }
-    const ids = payload.ids.split(",");
+    const { players, loading, location } = getState();
+    const ids = [].concat(get(location, "query.ids", [])).map(x => x.toLowerCase().trim());
     return {
         players: ids.map(x => players[x]).filter(x => !!x),
         ids,
@@ -378,7 +412,11 @@ const mapState = getState => {
 };
 
 const mapDispatch = (dispatch, getState) => ({
-    onRemove: id => () => dispatch({ type: "UNCOMPARE", payload: id }),
+    compare: ids =>
+        dispatch({
+            type: "COMPARISON",
+            query: { ids: uniq(ids) },
+        }),
 });
 
 export default connect(mapState, mapDispatch)(Component);

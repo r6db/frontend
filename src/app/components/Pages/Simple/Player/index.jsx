@@ -16,9 +16,8 @@ export default {
     view({ attrs, state }) {
         return (
             <Page className="simple profile">
-                <Page.Head />
-                <Page.Content>
-                    <div className={`container player-${attrs.id} is-${attrs.role || "user"}`}>
+                <Page.Head>
+                    <div className="container">
                         <div className="profile-header">
                             <div className="profile-info">
                                 <div className="profile-identification">
@@ -50,6 +49,10 @@ export default {
                                 <div className="profile-aliases">{attrs.aliases.map(x => <Alias alias={x} />)}</div>
                             ) : null}
                         </div>
+                    </div>
+                </Page.Head>
+                <Page.Content>
+                    <div className={`container player-${attrs.id} is-${attrs.role || "user"}`}>
                         <div className="profile-content">
                             <div className="profile-stats">
                                 <Timedata player={attrs} />

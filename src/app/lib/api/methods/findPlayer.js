@@ -1,7 +1,6 @@
 import { v2Api } from "lib/constants";
 import { failEarly, getHeaders } from "../utils";
 
-
 /*
 * memoize.js
 * by @philogb and @addyosmani
@@ -10,28 +9,25 @@ import { failEarly, getHeaders } from "../utils";
 * perf tests: http://bit.ly/q3zpG3
 * Released under an MIT license.
 */
-function memoize( fn ) {
-    return function (...args) {
+function memoize(fn) {
+    return function(...args) {
         let hash = "";
         let i = args.length;
         let currentArg = null;
         while (i--) {
             currentArg = args[i];
-            hash += (currentArg === Object(currentArg)) ?
-            JSON.stringify(currentArg) : currentArg;
+            hash += currentArg === Object(currentArg) ? JSON.stringify(currentArg) : currentArg;
             fn.memoize || (fn.memoize = {});
         }
-        return (hash in fn.memoize)
-            ? fn.memoize[hash]
-            : fn.memoize[hash] = fn.apply(this, args);
+        return hash in fn.memoize ? fn.memoize[hash] : (fn.memoize[hash] = fn.apply(this, args));
     };
 }
 
-
 const asRegex = string => {
-    const res = string.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")
+    const res = string
+        .replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")
         .split("")
-        .map(function (char) {
+        .map(function(char) {
             switch (char.toLowerCase()) {
                 case "i":
                 case "l":
@@ -76,24 +72,18 @@ const aliasValue = (query, current) => alias => {
     return score;
 };
 
-const playerValue = query => memoize(player => player.aliases
-    .map(aliasValue(query, player.name))
-    .reduce((a, b) => a + b, 0));
-
+const playerValue = query =>
+    memoize(player => player.aliases.map(aliasValue(query, player.name)).reduce((a, b) => a + b, 0));
 
 const fixAlias = alias => {
     // eslint-disable-next-line camelcase
-    alias.created_at = alias.created_at
-        ? new Date(alias.created_at)
-        : null;
+    alias.created_at = alias.created_at ? new Date(alias.created_at) : null;
     return alias;
 };
 
 const processPlayer = platform => player => {
     player.platform = platform;
-    player.aliases = player.aliases
-        .map(fixAlias)
-        .sort((a, b) => b.created_at - a.created_at);
+    player.aliases = player.aliases.map(fixAlias).sort((a, b) => b.created_at - a.created_at);
     player.name = player.aliases[0].name;
     return player;
 };
@@ -104,13 +94,12 @@ const parseResponse = (name, platform) => players => {
         .filter(x => x.aliases && x.aliases.length)
         .map(processPlayer(platform))
         .sort((a, b) => sorter(b) - sorter(a));
-    console.table(res.map(x => ({ name: x.name, aliases: x.aliases, value: sorter(x) })));
     return res;
 };
 
 const getUrl = (name, platform) => `${v2Api}/players?name=${name}&platform=${platform}`;
 
-export default function (name, platform) {
+export default function(name, platform) {
     return fetch(getUrl(name, platform), { headers: getHeaders() })
         .then(failEarly)
         .then(res => res.json())

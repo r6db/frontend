@@ -1,5 +1,15 @@
 import * as m from "mithril";
 import Icon, { GLYPHS } from "components/misc/Icon";
+import { formatDuration } from "lib/stats";
+
+function getIcon(id, data) {
+    return (
+        <div className="opschart__icon">
+            <Icon glyph={GLYPHS[id.toUpperCase()]} />
+            <span>{formatDuration(data.timePlayed)}</span>
+        </div>
+    );
+}
 
 export default {
     view({ attrs }) {
@@ -11,10 +21,10 @@ export default {
                         <td>
                             <div className="opschart__ops">
                                 <div className="opschart__attackers">
-                                    {x.value.attackers.map(x => <Icon glyph={GLYPHS[x.toUpperCase()]} />)}
+                                    {x.value.attackers.map(op => getIcon(op, x.meta[op]))}
                                 </div>
                                 <div className="opschart__defenders">
-                                    {x.value.defenders.map(x => <Icon glyph={GLYPHS[x.toUpperCase()]} />)}
+                                    {x.value.defenders.map(op => getIcon(op, x.meta[op]))}
                                 </div>
                             </div>
                         </td>

@@ -24,6 +24,10 @@ const Menu = {
                         <Link to={`/leaderboard/${attrs.platform}/ALL`} className="menu__item">
                             Leaderboard
                         </Link>
+
+                        <Link to={`/compare`} className="menu__item">
+                            Compare
+                        </Link>
                         <a target="_BLANK" className="menu__item" href="https://discord.gg/xyMTkXm">
                             Discord
                         </a>

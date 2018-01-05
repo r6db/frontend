@@ -22,17 +22,22 @@
     }
     &__module {
         flex: 1 1 1px;
-        box-shadow: 1px 1px 3px fade-out($gray-dark, 0.6);
-        background: $bg-color;
+        // box-shadow: 1px 1px 3px fade-out($gray-dark, 0.6);
+        // background: $bg-color;
         margin: (0.5*$l);
         position: relative;
 
         &__header {
-            padding: $l;
+            padding: $l 0;
             font-weight: bold;
+            @include medium {
+                padding: $l;
+            }
         }
         &__content {
-            padding: $l;
+            @include medium {
+                padding: $l;
+            }
         }
         .stat {
             margin-bottom: $l;
@@ -48,6 +53,10 @@
     &__player {
         display: inline-block;
         margin-right: $l;
+
+        a {
+            color: $font-color;
+        }
     }
     &__mmr,
     &__ops {
@@ -57,7 +66,9 @@
     &__wlr {
         flex: 1 1 1px;
     }
-
+    .chart .ct-horizontal {
+        display: none;
+    }
     .chart .ct-series,
     .chart .indicator {
         &.player-0 {
@@ -89,33 +100,46 @@
             background-color: $operation-health;
         }
         &.player-7 {
-            stroke: $skull-rain;
+            stroke: $white-noise;
             background-color: $skull-rain;
         }
         &.player-8 {
-            stroke: $skull-rain;
-            background-color: $skull-rain;
-        }
-        &.player-9 {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: magenta;
+            background-color: magenta;
         }
     }
 }
 .opschart {
     width: 100%;
+    border-spacing: 0;
 
     td {
         vertical-align: middle;
+        border-bottom: 1px solid fade-out($white, 0.6);
+        @include medium {
+            border: none;
+        }
     }
     .icon {
         width: $l*3;
         height: $l*3;
-        margin-right: $l;
 
-        @include medium {
-            width: $l*5;
-            height: $l*5;
+        // @include medium {
+        //     width: $l*4;
+        //     height: $l*4;
+        // }
+    }
+    &__icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: $l*0.5;
+
+        width: $l*5;
+
+        span {
+            font-size: $font-smaller;
         }
     }
     &__ops {
@@ -127,6 +151,10 @@
         @include medium {
             flex-direction: row;
         }
+    }
+    &__attackers,
+    &__defenders {
+        display: flex;
     }
     &__defenders {
         @include medium {

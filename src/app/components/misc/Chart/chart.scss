@@ -98,23 +98,22 @@ $ct-include-alternative-responsive-containers: $ct-include-classes !default;
 // Series names and colors. This can be extended or customized as desired. Just add more series and colors.
 $ct-series-names: (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) !default;
 $ct-series-colors: (
-        $black-ice,
-        $dust-line,
-        $skull-rain,
-        $red-crow,
-        $velvet-shell,
-        #59922b,
-        #0544d3,
-        #6b0392,
-        #f05b4f,
-        #dda458,
-        #eacf7d,
-        #86797d,
-        #b2c326,
-        #6188e2,
-        #a748ca
-    )
-    !default;
+    $black-ice,
+    $dust-line,
+    $skull-rain,
+    $red-crow,
+    $velvet-shell,
+    $white-noise,
+    #0544d3,
+    #6b0392,
+    #f05b4f,
+    #dda458,
+    #eacf7d,
+    #86797d,
+    #b2c326,
+    #6188e2,
+    #a748ca
+);
 @import "~chartist/dist/scss/chartist.scss";
 @import "~chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css";
 .chart {
@@ -127,19 +126,21 @@ $ct-series-colors: (
         width: auto;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
+        flex-wrap: wrap;
         font-size: 0.8rem;
         color: fade-out($gray-light, 0.2);
         &item {
             display: flex;
             flex-direction: row;
+            padding: ($l*0.5);
         }
         .indicator {
             width: 1em;
             height: 1em;
             display: block;
             border-radius: 50%;
-            margin-right: $l;
+            margin-right: $l*0.5;
         }
     }
     &__element {
