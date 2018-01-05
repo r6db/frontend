@@ -13,6 +13,8 @@ import { updatePlayer } from "lib/store/actions";
 import Page from "components/misc/Page";
 import "./player.scss";
 
+import background from "components/misc/Page/RB6_WhiteNoise_Teaser1.jpg";
+
 const Player = {
     view({ attrs, state }) {
         if (attrs.loading) {
@@ -28,7 +30,7 @@ const Player = {
         } else {
             return (
                 <Page className={"player " + attrs.data.id}>
-                    <Page.Head image="">
+                    <Page.Head image={background}>
                         <Header
                             tab={attrs.tab}
                             platform={attrs.platform}

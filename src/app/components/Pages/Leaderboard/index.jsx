@@ -26,7 +26,7 @@ const Leaderboard = {
             <Page className="leaderboard">
                 <Page.Head image={bg} position="50% 20%">
                     <div className="container leaderboard__header">
-                        <h1 className="header leaderboard__title">Top Skilled Players</h1>
+                        <h1 className="header leaderboard__title">Leaderboard</h1>
                     </div>
                 </Page.Head>
                 <Page.Content>

@@ -8,7 +8,7 @@ const PageHead = {
             <div className="page__head">
                 <img
                     style={{ "object-position": attrs.position || "50% 30%" }}
-                    src={attrs.image || background}
+                    src={attrs.image}
                     alt=""
                     className="page__image"
                 />

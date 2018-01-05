@@ -6,12 +6,13 @@
     flex-direction: column;
     position: relative;
     background: $bg-color;
+    padding-top: 40px;
 
     @include medium {
         padding-top: 80px;
     }
     &__head {
-        flex: 1 0 250px;
+        flex: 1 0 100px;
         display: flex;
         align-items: center;
         position: relative;
@@ -23,6 +24,7 @@
         &content {
             z-index: 1;
             width: 100%;
+            padding: 50px $l;
         }
     }
     &__image {
@@ -34,9 +36,11 @@
         height: 100%;
         left: 0;
         opacity: 0.3;
+        top: -40px;
+        height: calc(100% + 40px);
         @include medium {
             top: -80px;
-            height: calc(100% + #{$menu-height});
+            height: calc(100% + 80px);
         }
     }
 

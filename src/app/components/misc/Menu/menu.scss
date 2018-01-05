@@ -41,6 +41,9 @@
     }
     &__search {
         order: 1;
+        .searchbar {
+            margin: 0;
+        }
         @include medium {
             order: 2;
         }

@@ -10,6 +10,7 @@ export default (state = false, action = {}) => {
         case "PROFILE":
         case "PLAYER":
         case "FAQ":
+        case "COMPARISON":
         case "MENU_CLOSE":
             return false;
         default:

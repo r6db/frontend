@@ -158,13 +158,14 @@ const getMmrChartAttrs = players => ({
             // get the most played region
             const region = ["emea", "ncsa", "apac"]
                 .map(x => {
-                    const data = get(player, ["ranks", x], {});
+                    const data = get(player, ["rank", x], {});
                     return {
                         id: x,
-                        games: data.wins + data.losses + data.abandons,
+                        games: (data.wins || 0) + (data.losses || 0) + (data.abandons || 0),
                     };
                 })
                 .sort((a, b) => b.games - a.games)[0].id;
+            console.log(region);
 
             // and return its data
             return {
@@ -210,16 +211,9 @@ const Component = {
         }
         return (
             <Page className="comparison">
-                <Page.Head />
-                <Page.Content>
+                <Page.Head>
                     <div className="container">
-                        {state.showPlayerModal ? (
-                            <AddPlayerModal
-                                ids={state.ids}
-                                onselect={state.togglePlayer}
-                                onclose={state.onModalClose}
-                            />
-                        ) : null}
+                        <h1 className="header">Compare</h1>
                         <div className="comparison__playerlist playerlist">
                             <div className="playerlist__players">
                                 {attrs.players.map(player => (
@@ -230,6 +224,17 @@ const Component = {
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </Page.Head>
+                <Page.Content>
+                    <div className="container">
+                        {state.showPlayerModal ? (
+                            <AddPlayerModal
+                                ids={state.ids}
+                                onselect={state.togglePlayer}
+                                onclose={state.onModalClose}
+                            />
+                        ) : null}
                         <div className="comparison__row">
                             <div className="comparison__module comparison__mmr">
                                 <div className="comparison__module__header">MMR (most active region)</div>

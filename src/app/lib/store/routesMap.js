@@ -137,8 +137,10 @@ export default {
                     dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
                 })
                 .catch(err => {
-                    console.error(error);
-                    dispatch({ type: "PLAYERS_FAILED", payload: { id, error } });
+                    dispatch({
+                        type: "PLAYERS_FAILED",
+                    });
+                    throw err;
                 });
         },
     },

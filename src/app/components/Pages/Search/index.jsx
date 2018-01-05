@@ -18,7 +18,9 @@ const Search = {
                     <div className="container">
                         <div className="header">
                             Search "{attrs.search}"{" "}
-                            <span className="header header--small header--subtle">{attrs.result.length} result(s)</span>
+                            <span className="search__resultcount header header--small header--subtle">
+                                {attrs.result.length} result(s)
+                            </span>
                         </div>
                     </div>
                 </Page.Head>
