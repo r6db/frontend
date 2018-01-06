@@ -1,4 +1,5 @@
 import * as m from "mithril";
+import Page from "components/misc/Page";
 
 const AsyncComponent = {
     oninit({ attrs, state }) {
@@ -30,7 +31,14 @@ const AsyncComponent = {
     },
 
     view({ attrs, state }) {
-        return state.Component ? <state.Component {...attrs} /> : <div />;
+        return state.Component ? (
+            <state.Component {...attrs} />
+        ) : (
+            <Page>
+                <Page.Head />
+                <Page.Content />
+            </Page>
+        );
     },
 };
 

@@ -10,7 +10,10 @@ import NoData from "../Errors/NoData";
 import Header from "./Header";
 import { connect } from "lib/store/connect";
 import { updatePlayer } from "lib/store/actions";
+import Page from "components/misc/Page";
 import "./player.scss";
+
+import background from "components/misc/Page/RB6_WhiteNoise_Teaser1.jpg";
 
 const Player = {
     view({ attrs, state }) {
@@ -26,19 +29,23 @@ const Player = {
             return <NoData {...attrs.data} />;
         } else {
             return (
-                <div className={`container player ${attrs.data.id}`}>
-                    <Header
-                        tab={attrs.tab}
-                        platform={attrs.platform}
-                        updatePlayer={attrs.updatePlayer}
-                        {...attrs.data}
-                    />
-                    <div className="player__tab">
-                        {attrs.tab === "summary" ? <Stats key="summary" {...attrs.data} /> : null}
-                        {attrs.tab === "ops" ? <Operators key="ops" {...attrs.data} /> : null}
-                        {attrs.tab === "ranks" ? <Ranks key="ranks" {...attrs.data} /> : null}
-                    </div>
-                </div>
+                <Page className={"player " + attrs.data.id}>
+                    <Page.Head image={background}>
+                        <Header
+                            tab={attrs.tab}
+                            platform={attrs.platform}
+                            updatePlayer={attrs.updatePlayer}
+                            {...attrs.data}
+                        />
+                    </Page.Head>
+                    <Page.Content>
+                        <div className="container player__tab">
+                            {attrs.tab === "summary" ? <Stats key="summary" {...attrs.data} /> : null}
+                            {attrs.tab === "ops" ? <Operators key="ops" {...attrs.data} /> : null}
+                            {attrs.tab === "ranks" ? <Ranks key="ranks" {...attrs.data} /> : null}
+                        </div>
+                    </Page.Content>
+                </Page>
             );
         }
     },

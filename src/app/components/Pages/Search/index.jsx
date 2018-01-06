@@ -1,6 +1,7 @@
 import * as m from "mithril";
 import Result from "./Result";
 import Media from "components/misc/Media";
+import Page from "components/misc/Page";
 import { connect } from "lib/store/connect";
 import "./search.scss";
 
@@ -12,22 +13,31 @@ const Search = {
             return "";
         }
         return (
-            <div className="container container--small search">
-                <div className="search__results">
-                    {attrs.result.length > 0 ? (
-                        <div>
-                            <div className="search__resultcount">
-                                {attrs.result.length} results for "{attrs.search}" on {attrs.platform}
-                            </div>
-                            {attrs.result.map((player, i, total) => (
-                                <Result player={player} index={i} key={player.id} />
-                            ))}
+            <Page className="search">
+                <Page.Head>
+                    <div className="container">
+                        <div className="header">
+                            Search "{attrs.search}"{" "}
+                            <span className="search__resultcount header header--small header--subtle">
+                                {attrs.result.length} result(s)
+                            </span>
                         </div>
-                    ) : (
-                        <Media title="no results">we could not find any players matching that query.</Media>
-                    )}
-                </div>
-            </div>
+                    </div>
+                </Page.Head>
+                <Page.Content>
+                    <div className="container container--small">
+                        <div className="search__results">
+                            {attrs.result.length > 0 ? (
+                                attrs.result.map((player, i, total) => (
+                                    <Result player={player} index={i} key={player.id} />
+                                ))
+                            ) : (
+                                <Media title="no results">we could not find any players matching that query.</Media>
+                            )}
+                        </div>
+                    </div>
+                </Page.Content>
+            </Page>
         );
     },
 };

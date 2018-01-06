@@ -1,9 +1,21 @@
 @import "scss/styles";
 
+.app.SEARCH {
+    .page__headcontent {
+        padding-bottom: $l*2;
+    }
+    .page__content {
+        padding: ($l*3) $l $l;
+    }
+}
+
 .search {
     &__resultcount {
-        margin: $l*2 0;
-        font-weight: bold;
+        display: block;
+
+        @include medium {
+            display: inline-block;
+        }
     }
     &__results {
         width: 100%;

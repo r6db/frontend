@@ -1,0 +1,42 @@
+@import "scss/styles";
+
+.addplayermodal {
+    &__search {
+        background: none;
+        margin-top: 0;
+    }
+    &__results {
+        max-height: 50vh;
+        overflow: auto;
+
+        @include medium {
+            max-height: 60vh;
+        }
+    }
+    &__result {
+        &--selected:after {
+            content: "✓";
+            width: $l*4;
+            height: $l*4;
+            flex: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $accent;
+            color: $accent;
+        }
+    }
+    .media {
+        margin-bottom: $l;
+
+        &__image {
+            flex: 0 0 $l*4;
+            height: $l*4;
+        }
+
+        &__info {
+            display: block;
+        }
+    }
+}

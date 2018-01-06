@@ -121,19 +121,26 @@ export default {
         thunk: playerThunk,
     },
     COMPARISON: {
-        path: "/compare/:ids",
+        path: "/compare",
         thunk: async (dispatch, getState) => {
+            const players = getState().players;
+
             dispatch({ type: "loading", payload: "loading players" });
-            const { ids } = getState().location.payload;
-            let idList = ids.split(",").map(x => x.trim());
+            const query = getState().location.query || {};
+
+            const ids = [].concat(query.ids || []);
+
+            let idList = ids.map(x => x.toLowerCase().trim()).filter(x => players[x] == undefined);
             api
                 .getPlayers(idList)
                 .then(x => {
                     dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
                 })
                 .catch(err => {
-                    console.error(error);
-                    dispatch({ type: "PLAYERS_FAILED", payload: { id, error } });
+                    dispatch({
+                        type: "PLAYERS_FAILED",
+                    });
+                    throw err;
                 });
         },
     },

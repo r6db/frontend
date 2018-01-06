@@ -4,63 +4,58 @@ $searchbar-height: $l*5.4;
 $profile-image-height: 146px;
 $profile-header-height: $profile-image-height + (5*$l);
 
-
-.profile{
-    width: 100%;
-    min-height: 100vh;
+.profile {
     color: $white;
     display: flex;
     flex-direction: column;
-    max-width: $screen-yourmom;
-    margin: 0 auto;
 
-    .search-form{
+    .search-form {
         flex: 0 0 auto;
     }
 
-    .card{
+    .card {
         margin: $l*0.5;
 
-        @include medium{
+        @include medium {
             margin: $l*0.5;
             flex: 1 1 40%;
             display: inline-block;
         }
-        .row{
+        .row {
             display: flex;
             flex-direction: row;
             padding: ($l*0.5) 0;
         }
-        .label{
+        .label {
             flex: 1 1 35%;
             color: $gray;
         }
-        .value{
+        .value {
             flex: 1 1 65%;
             text-align: right;
         }
     }
 
-    &-player{
+    &-player {
         display: flex;
         flex-direction: column;
         flex: 1;
     }
-    &-identification{
+    &-identification {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    &-header{
+    &-header {
         @include card;
         margin: 0 auto;
         width: 100%;
 
-        @include large{
+        @include large {
             flex-direction: row;
         }
     }
-    &-info{
+    &-info {
         display: flex;
         flex-direction: column;
         flex: 0 0 auto;
@@ -68,30 +63,30 @@ $profile-header-height: $profile-image-height + (5*$l);
         justify-content: space-between;
         padding-bottom: $l;
 
-        @include large{
+        @include large {
             flex-direction: row;
         }
     }
 
-    &-headerimage{
+    &-headerimage {
         position: relative;
         width: 10*$l;
         height: 10*$l;
 
-        img{
+        img {
             width: 100%;
             height: 100%;
         }
-        @include large{
+        @include large {
             width: $profile-image-height;
             height: $profile-image-height;
         }
     }
-    &-level{
+    &-level {
         position: absolute;
         bottom: 0;
         width: 100%;
-        padding: .5em;
+        padding: 0.5em;
         font-size: 1.2em;
         font-weight: bold;
         color: white;
@@ -99,11 +94,11 @@ $profile-header-height: $profile-image-height + (5*$l);
         text-align: center;
     }
 
-    &-headertext{
+    &-headertext {
         padding: $l 0 0 $l;
         flex: 1;
     }
-    &-name{
+    &-name {
         width: 100%;
         font-size: 1.5rem;
         font-weight: bold;
@@ -115,11 +110,11 @@ $profile-header-height: $profile-image-height + (5*$l);
         @include medium {
             font-size: 2rem;
         }
-        @include large{
+        @include large {
             font-size: 3rem;
         }
     }
-    &-flair{
+    &-flair {
         color: $gray-light;
         margin-bottom: $l;
     }
@@ -140,22 +135,16 @@ $profile-header-height: $profile-image-height + (5*$l);
             justify-content: space-between;
         }
     }
-    &-id{
+    &-id {
         color: $accent;
     }
-    &-extended{
+    &-extended {
         color: $accent;
         margin-top: $l*0.5;
         display: block;
     }
-    &-content{
-        width: 100%;
-        max-width: $screen-yourmom;
-        margin: 0 auto;
 
-    }
-
-    &-aliases{
+    &-aliases {
         // height is profile-content height - all the paddings;
         display: flex;
         flex-direction: row;
@@ -166,7 +155,7 @@ $profile-header-height: $profile-image-height + (5*$l);
         backface-visibility: hidden;
         -webkit-overflow-scrolling: touch;
 
-        &:after{
+        &:after {
             content: "";
             display: block;
             width: 20px;
@@ -176,13 +165,12 @@ $profile-header-height: $profile-image-height + (5*$l);
         }
     }
 
-    &-stats{
+    &-stats {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         margin: ($l*0.5) (-$l*0.5);
     }
-
 }
 
 .quiet {
@@ -200,18 +188,17 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
 }
 
-
-.profileerror{
+.profileerror {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-.profileerror-title{
+.profileerror-title {
     height: 146px;
     flex: 0;
     width: 100%;
-    max-width: $screen-yourmom;
+    max-width: $screen-large;
     margin: 0 auto;
     padding: (2*$l) 0 (3*$l) (2*$l);
     background: $trans-med;
@@ -220,15 +207,15 @@ $profile-header-height: $profile-image-height + (5*$l);
     font-weight: bold;
     text-shadow: 0 0 1px $gray-dark;
 }
-.profileerror-content{
+.profileerror-content {
     background: $gray-dark;
     box-shadow: 0 0 5px $gray-dark;
-    max-width: $screen-yourmom;
+    max-width: $screen-large;
     width: 100%;
     margin: 0 auto;
 }
 
-.profileerror-message{
+.profileerror-message {
     padding: $l*2;
     line-height: 1.4;
 }

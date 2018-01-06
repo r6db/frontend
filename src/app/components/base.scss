@@ -14,8 +14,7 @@ body {
     flex-direction: column;
     background: $bg-color;
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     font-weight: normal;
 }
 .content {
@@ -75,7 +74,7 @@ label {
     margin-bottom: 0.5*$l;
 }
 .container {
-    width: 100%;
+    width: 96%;
     max-width: 1200px;
     margin: 0 auto;
 

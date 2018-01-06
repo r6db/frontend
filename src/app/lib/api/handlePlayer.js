@@ -30,18 +30,20 @@ export default function(player) {
             }
             return acc;
         }, []);
-
+    if (player.progressions) {
+        player.progressions = player.progressions.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+    }
     player.pastRanks = allRanks
-        .map(
-            x =>
-                [x.ncsa, x.emea, x.apac]
-                    .map(y => ({
-                        rank: y.max_rank,
-                        season: x.season,
-                        mmr: y.max_mmr.toFixed(2),
-                    }))
-                    .sort((a, b) => (b.rank != a.rank ? b.rank - a.rank : b.mmr - a.mmr))[0],
-        )
+        .map(x => {
+            const sortedRanks = [x.ncsa, x.emea, x.apac]
+                .map(y => ({
+                    rank: y.max_rank,
+                    season: x.season,
+                    mmr: y.max_mmr.toFixed(2),
+                }))
+                .sort((a, b) => (b.rank != a.rank ? b.rank - a.rank : b.mmr - a.mmr));
+            return sortedRanks[0];
+        })
         .sort((a, b) => b.season - a.season);
 
     const sum = (x, y) => x + y;

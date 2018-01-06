@@ -1,5 +1,6 @@
 import * as m from "mithril";
 import { connect } from "lib/store/connect";
+import Searchbar from "../Searchbar";
 import "./drawer.scss";
 
 const toggleCallback = () => {};
@@ -12,6 +13,9 @@ const Drawer = {
     view({ attrs, children }) {
         return (
             <div className={`drawer ${attrs.isOpen ? "drawer--open" : ""}`}>
+                <button onclick={attrs.toggleMenu} className="drawer__burger">
+                    <span />
+                </button>
                 <div className="drawer__background" onclick={attrs.closeMenu} />
                 <div className="drawer__container">
                     <div className="drawer__menu">{children}</div>

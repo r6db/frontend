@@ -51,15 +51,6 @@ module.exports = {
                 },
             },
             {
-                test: /.svg$/,
-                use: {
-                    loader: "svg-sprite-loader",
-                    options: {
-                        extract: true,
-                    },
-                },
-            },
-            {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
@@ -69,6 +60,30 @@ module.exports = {
                     ],
                 }),
             },
+            {
+                test: /.svg$/,
+                use: {
+                    loader: "svg-sprite-loader",
+                    options: {
+                        extract: true,
+                    },
+                },
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {},
+                    },
+                    {
+                        loader: "image-webpack-loader",
+                        options: {
+                            bypassOnDebug: true,
+                        },
+                    },
+                ],
+            },
         ],
     },
     plugins: [
@@ -77,12 +92,19 @@ module.exports = {
         new CopyWebpackPlugin([{ from: "src/assets", to: "assets" }, { from: "src/favicons/*", to: "[name].[ext]" }]),
         new webpack.LoaderOptionsPlugin({
             options: {
-                postcss: [autoprefixer(), mqpacker(), cssdedupe(), nano()],
+                postcss: [
+                    autoprefixer(),
+                    mqpacker(),
+                    cssdedupe(),
+                    nano({
+                        reduceIdents: false,
+                        zindex: false,
+                    }),
+                ],
             },
         }),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",
-            hash: true,
         }),
         new SpriteLoaderPlugin(),
         new ExtractTextPlugin({ filename: "styles.css", allChunks: true }),

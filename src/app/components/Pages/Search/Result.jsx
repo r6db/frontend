@@ -25,7 +25,7 @@ export default {
             <Link to={toPlayer(attrs.player.id)} className="search__result result">
                 <div className="media">
                     <div className="media__image">
-                        <Profilepic id={attrs.player.id} />
+                        <Profilepic id={attrs.player.userId || attrs.player.id} />
                     </div>
                     <div className="media__content">
                         <div className="media__contentheader">

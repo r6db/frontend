@@ -2,12 +2,15 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { connectRoutes } from "redux-first-router";
 import thunkMiddleware from "redux-thunk";
 import * as persistState from "redux-localstorage";
+import queryString from "querystring";
 
 import routesMap from "./routesMap";
 import * as reducers from "./reducers";
 
 export default (history, preLoadedState) => {
-    const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap);
+    const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap, {
+        querySerializer: queryString,
+    });
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

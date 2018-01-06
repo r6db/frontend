@@ -28,8 +28,8 @@ const Searchbar = {
                     className="searchbar__name"
                     type="text"
                     value={state.query}
-                    placeholder="player name"
-                    oninput={state.onQueryChange}
+                    placeholder="enter player name"
+                    onkeypress={state.onQueryChange}
                 />
                 <select
                     className="searchbar__platform"
