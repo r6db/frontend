@@ -1,4 +1,5 @@
 import * as api from "lib/api";
+import { event } from "lib/analytics";
 
 export const init = (dispatch, getState) => {};
 
@@ -11,7 +12,7 @@ export const toChanka = platform => ({ type: "CHANKABOARD", payload: { platform 
 export const updatePlayer = id => (dispatch, getState) => {
     const { platform } = getState();
     dispatch({ type: "LOADING", payload: "updating player data" });
-    gtag && gtag("event", "update", { id });
+    event("update", { id });
     api
         .getPlayer(id, { update: true, platform })
         .then(function(player) {

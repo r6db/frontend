@@ -5,7 +5,7 @@ import configureStore from "./lib/store";
 import { Provider } from "./lib/store/connect";
 import createHistory from "history/createBrowserHistory";
 import { init as initAction } from "lib/store/actions";
-
+import { setStore } from "lib/analytics";
 import queryString from "query-string";
 
 const query = queryString.parse(window.location.search);
@@ -16,7 +16,7 @@ const { store } = configureStore(history);
 store.subscribe(() => requestAnimationFrame(m.redraw));
 store.dispatch(initAction);
 
-window.store = store;
+setStore(store);
 
 function init(App) {
     const mount = document.querySelector("#mount");
@@ -28,13 +28,13 @@ function init(App) {
                     <App />
                 </Provider>
             );
-        }
-    }
+        },
+    };
     mount.innerHTML = "";
     m.mount(mount, Root);
 }
 
-if ( document.readyState === "interactive" || document.readyState === "complete") {
+if (document.readyState === "interactive" || document.readyState === "complete") {
     init(App);
 } else {
     window.addEventListener("DOMContentLoaded", () => init(App));
