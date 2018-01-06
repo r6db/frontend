@@ -6,12 +6,14 @@ const PageHead = {
     view({ attrs, children }) {
         return (
             <div className="page__head">
-                <img
-                    style={{ "object-position": attrs.position || "50% 30%" }}
-                    src={attrs.image}
-                    alt=""
-                    className="page__image"
-                />
+                {attrs.image ? (
+                    <img
+                        style={{ "object-position": attrs.position || "50% 30%" }}
+                        src={attrs.image}
+                        alt=""
+                        className="page__image"
+                    />
+                ) : null}
                 <div className="page__headcontent">{children}</div>
             </div>
         );

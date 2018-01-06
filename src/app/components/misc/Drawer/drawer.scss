@@ -84,11 +84,21 @@
     }
     &__search {
         flex: auto;
-    }
-    &__search .searchbar {
-        margin: 0;
-        background: none;
-        flex: 1;
+        width: 100%;
+        @include medium {
+            width: auto;
+        }
+
+        .searchbar {
+            margin: 0 auto;
+            background: none;
+            flex: 1;
+            width: 95%;
+
+            @include medium {
+                width: auto;
+            }
+        }
     }
     &__burger {
         position: relative;
