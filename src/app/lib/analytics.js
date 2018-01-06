@@ -8,7 +8,10 @@ export function setStore(s) {
 
 /* eslint-disable camelcase */
 export function pageView(title) {
-    const path = s.getState().location.pathname;
+    if (!store) {
+        return;
+    }
+    const path = store.getState().location.pathname;
     if (gtag) {
         gtag("config", TRACKING_ID, {
             //eslint-ignore

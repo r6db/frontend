@@ -13,10 +13,9 @@ const query = queryString.parse(window.location.search);
 const history = createHistory();
 const { store } = configureStore(history);
 
+setStore(store);
 store.subscribe(() => requestAnimationFrame(m.redraw));
 store.dispatch(initAction);
-
-setStore(store);
 
 function init(App) {
     const mount = document.querySelector("#mount");
