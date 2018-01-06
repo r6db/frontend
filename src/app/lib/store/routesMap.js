@@ -6,6 +6,7 @@ export default {
     HOME: {
         path: "/",
         thunk: () => {
+            gtag && gtag("event", "screen_view", { screen_name: "home" });
             setMeta({
                 title: `Home`,
                 description: `Find any player in Rainbow Six: Siege`,
@@ -18,6 +19,7 @@ export default {
         thunk: async (dispatch, getState) => {
             const { location } = getState();
             const { query, platform } = location.payload;
+            gtag && gtag("event", "search", { search_term: query });
             dispatch({ type: "PLATFORM", payload: platform });
             api
                 .findPlayer(query, platform)
@@ -26,6 +28,7 @@ export default {
                         title: `Search ${platform} for ${query}`,
                         description: `Find ${query} in the community database for Rainbow Six: Siege`,
                     });
+                    gtag && gtag("event", "screen_view", { screen_name: "search" });
                     dispatch({
                         type: "SEARCH_FETCHED",
                         payload: { query, platform, result },
@@ -59,6 +62,7 @@ export default {
                         description: "top 100 Tachanka players in our database",
                         type: "website",
                     });
+                    gtag && gtag("event", "screen_view", { screen_name: "leaderboard" });
                     dispatch({
                         type: "LEADERBOARD_FETCHED",
                         payload: { board: "CHANKA", entries },
@@ -85,6 +89,7 @@ export default {
                         description: `find the top 100 players (${lbConfig.label}) in our Database`,
                         type: "website",
                     });
+                    gtag && gtag("event", "screen_view", { screen_name: "leaderboard" });
                     dispatch({
                         type: "LEADERBOARD_FETCHED",
                         payload: { board, entries },
@@ -106,6 +111,7 @@ export default {
                 description: ``,
                 type: "website",
             });
+            gtag && gtag("event", "screen_view", { screen_name: "faq" });
         },
     },
     SIMPLE: {
@@ -135,6 +141,7 @@ export default {
                 .getPlayers(idList)
                 .then(x => {
                     dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
+                    gtag && gtag("event", "screen_view", { screen_name: "compare" });
                 })
                 .catch(err => {
                     dispatch({
@@ -153,6 +160,7 @@ async function playerThunk(dispatch, getState) {
         .getPlayer(id, { platform })
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
+            gtag && gtag("event", "screen_view", { screen_name: "player" });
             if (player.flags.noAliases === false) {
                 setMeta({
                     title: `${player.name}`,
