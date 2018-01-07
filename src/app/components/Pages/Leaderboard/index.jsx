@@ -97,7 +97,7 @@ const Leaderboard = {
                                         <td>
                                             <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
-                                                    <Profilepic id={entry.userId || entry.id} />
+                                                    <Profilepic id={entry.userid || entry.id} />
                                                 </div>
                                                 <span className="entry__name">{entry.name}</span>
                                             </Link>
