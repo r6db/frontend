@@ -26,7 +26,7 @@
     &__item {
         color: $white;
         padding: ($l*2) $l;
-        margin: 0 $l;
+        margin: 0;
         font-weight: 600;
         cursor: pointer;
         transition: 100ms linear color;

@@ -180,7 +180,7 @@
         &__item {
             margin: 0;
 
-            @include medium {
+            @include large {
                 margin: 0 $l;
             }
         }
