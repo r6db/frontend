@@ -5,7 +5,7 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 import { toSimple, toPlayerTab } from "lib/store/actions";
 import { formatDuration, getWinChance, getKillRatio } from "lib/stats";
 import * as domain from "lib/domain";
-import { get } from "lodash";
+import * as get from "lodash/get";
 import "./playerheader.scss";
 
 const isActive = (expected, actual) => (expected === actual ? "playerheader__tab--active" : "");

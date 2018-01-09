@@ -2,6 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const util = require("util");
 
+
+const DashboardPlugin = require("webpack-dashboard/plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -87,6 +89,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new DashboardPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new CopyWebpackPlugin([{ from: "src/assets", to: "assets" }, { from: "src/favicons/*", to: "[name].[ext]" }]),
