@@ -2,6 +2,10 @@
 this is all the code for our frontend at r6db.com  
 we are focusing on keeping the app small in size and quick in loading time.  
 If you want to suggest a feature or submit a bug, please head over to the [main repository](https://github.com/r6db/r6db/issues) and submit an issue there. Only internal issues are tracked here.
+
+## generate swagger client
+`curl -X POST -H "content-type:application/json" -d '{"swaggerUrl":"https://apidocs.r6db.com/r6db.yaml"}' https://generator.swagger.io/api/gen/clients/typescript-fetch`
+
 ## Structure
 
 ```
