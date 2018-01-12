@@ -46,6 +46,7 @@ const AddPlayerModal = {
                         value={state.query}
                         placeholder="enter player name"
                         onkeypress={state.onQueryChange}
+                        onchange={state.onQueryChange}
                     />
                     <select
                         className="searchbar__platform"
@@ -56,7 +57,7 @@ const AddPlayerModal = {
                         <option value="PS4">PS4</option>
                         <option value="XBOX">XB1</option>
                     </select>
-                    <button className="button button--primary searchbar__submit">Search</button>
+                    <button onsubmit={state.onSearch} className="button button--primary searchbar__submit">Search</button>
                 </form>
                 <div className="addplayermodal__results">
                     {state.results.map(x => (
