@@ -1,23 +1,10 @@
-@import "scss/vars";
+@import "scss/styles";
 
 .profile-pic {
     // border-radius: 50%;
     overflow: hidden;
     opacity: 0;
-}
-.profile-pic[data-created="true"] {
-    animation-duration: $tdur;
-    animation-timing-function: ease-in;
-    animation-delay: 0;
-    animation-iteration-count: 1;
-    animation-name: fadeInOnLoad;
-    opacity: 1;
-}
-@keyframes fadeInOnLoad {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
+    &[data-created="true"] {
+      @include fadeInAnimation($tdur, 1);
     }
 }

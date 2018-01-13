@@ -12,10 +12,6 @@ const Media = {
             e.target.src = "/assets/noavatar.svg";
         };
     },
-    oncreate() {
-        const observer = lozad(".profile-pic");
-        observer.observe();
-    },
     view({ attrs, state, children }) {
         return m(".media", [
             attrs.img ? m("img.media__image", { src: state.img }) : null,

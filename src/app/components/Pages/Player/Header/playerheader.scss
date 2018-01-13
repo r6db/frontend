@@ -18,8 +18,11 @@
     }
     &__image {
         width: $l*10;
+        height: $l*10;
         flex: none;
         margin-right: $l;
+        background-color: $trans-low;
+        @include boxshadow;
     }
     &__name {
         margin: 0;

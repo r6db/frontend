@@ -4,6 +4,7 @@ import Profilepic from "components/misc/Profilepic";
 import { findPlayer } from "lib/api";
 import { formatDuration } from "lib/stats";
 import "./addplayermodal.scss";
+import lozad from "lozad";
 
 const AddPlayerModal = {
     oninit(vnode) {
@@ -71,7 +72,7 @@ const AddPlayerModal = {
                             onclick={() => attrs.onselect(x.id)}
                         >
                             <div className="media__image">
-                                <Profilepic id={x.userId || x.id} />
+                                <Profilepic className="lazyload" id={x.userId || x.id} />
                             </div>
                             <div className="media__content">
                                 <div className="media__contentheader">
