@@ -12,6 +12,8 @@
         align-items: center;
         justify-content: center;
         color: $white;
+        left: -12px;
+        position: relative;
     }
     &__container {
         display: flex;

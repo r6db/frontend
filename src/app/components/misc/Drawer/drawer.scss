@@ -187,7 +187,7 @@
         }
         &__search {
             @include medium {
-                padding: 0 $l;
+                padding-left: $l;
             }
         }
         &__item {

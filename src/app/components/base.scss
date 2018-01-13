@@ -63,6 +63,7 @@ select {
     display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border-radius: $borderradius;
 }
 
 label {
@@ -74,7 +75,7 @@ label {
     margin-bottom: 0.5*$l;
 }
 .container {
-    width: 96%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 

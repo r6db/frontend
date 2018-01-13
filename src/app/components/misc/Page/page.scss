@@ -38,6 +38,7 @@
         opacity: 0;
         top: -40px;
         height: calc(100% + 40px);
+        filter: saturate(120%) contrast(110%);
 
         @include medium {
             top: -80px;
@@ -45,7 +46,7 @@
         }
 
         &[data-created="true"] {
-          @include fadeInAnimation(150ms, 0.3);
+          @include fadeInAnimation(150ms, 0.2);
         }
 
     }
