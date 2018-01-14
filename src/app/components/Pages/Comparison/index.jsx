@@ -9,7 +9,7 @@ import PlayerLabel from "./PlayerLabel";
 import AddPlayerModal from "./AddPlayerModal";
 import Page from "components/misc/Page";
 import Chart from "components/misc/Chart";
-import Scale from "components/misc/Scale";
+import Scale, { SCALES } from "components/misc/Scale";
 import Stat from "components/misc/Stat";
 import Fauxtable from "components/misc/Fauxtable";
 import * as Chartist from "chartist";
@@ -33,6 +33,13 @@ const rows = [
         label: "kdr",
         prop: x => stats.getKillRatio(get(x, "stats.general", {})),
     },
+    { label: "pen kills", prop: x => get(x, "stats.general.penetrationKills") },
+    { label: "blindfires", prop: x => get(x, "stats.general.blindKills") },
+    { label: "suicides", prop: x => get(x, "stats.general.suicides") },
+    { label: "gadgets destr.", prop: x => get(x, "stats.general.gadgetsDestroyed") },
+    { label: "best score bomb", prop: x => get(x, "stats.bomb.bestScore") },
+    { label: "best score secure", prop: x => get(x, "stats.secure.bestScore") },
+    { label: "best score hostage", prop: x => get(x, "stats.hostage.bestScore") },
 ];
 
 const getRankingAttrs = players =>
@@ -259,7 +266,7 @@ const Component = {
                                 <div className="comparison__module__content">
                                     {getRankedWlAttrs(attrs.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
-                                            <Scale value={player.value} neutral={50}>
+                                            <Scale value={player.value} scale={SCALES.WL}>
                                                 %
                                             </Scale>
                                         </Stat>
@@ -279,7 +286,7 @@ const Component = {
                                 <div className="comparison__module__content">
                                     {getRankedKdAttrs(attrs.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
-                                            <Scale value={player.value} neutral={1} />
+                                            <Scale value={player.value} scale={SCALES.KD} />
                                         </Stat>
                                     ))}
                                 </div>
@@ -289,7 +296,7 @@ const Component = {
                                 <div className="comparison__module__content">
                                     {getKdAttrs(attrs.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
-                                            <Scale value={player.value} neutral={1} />
+                                            <Scale value={player.value} scale={SCALES.KD} />
                                         </Stat>
                                     ))}
                                 </div>
@@ -299,7 +306,7 @@ const Component = {
                                 <div className="comparison__module__content">
                                     {getKdaAttrs(attrs.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
-                                            <Scale value={player.value} neutral={1} />
+                                            <Scale value={player.value} scale={SCALES.KDA} />
                                         </Stat>
                                     ))}
                                 </div>
@@ -321,7 +328,7 @@ const Component = {
                                 <div className="comparison__module__content">
                                     {getHeadshotAttrs(attrs.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
-                                            <Scale value={player.value} neutral={40}>
+                                            <Scale value={player.value} scale={SCALES.HS}>
                                                 %
                                             </Scale>
                                         </Stat>

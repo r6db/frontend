@@ -3,7 +3,7 @@ import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
 import Chart, { colors, labelInterpolationFnc } from "components/misc/Chart";
 import Icon, { GLYPHS } from "components/misc/Icon";
-import Scale from "components/misc/Scale";
+import Scale, { SCALES } from "components/misc/Scale";
 import Fauxtable from "components/misc/Fauxtable";
 import "./opstab.scss";
 
@@ -302,20 +302,20 @@ export default {
                                         <Fauxtable.Cell className="won">{datum.won || 0}</Fauxtable.Cell>
                                         <Fauxtable.Cell className="lost">{datum.lost || 0}</Fauxtable.Cell>
                                         <Fauxtable.Cell className="wlr">
-                                            <Scale value={datum.wlr * 100} neutral={50}>
+                                            <Scale value={datum.wlr * 100} scale={SCALES.WL}>
                                                 %
                                             </Scale>
                                         </Fauxtable.Cell>
                                         <Fauxtable.Cell className="kills">{datum.kills || 0}</Fauxtable.Cell>
                                         <Fauxtable.Cell className="deaths">{datum.deaths || 0}</Fauxtable.Cell>
                                         <Fauxtable.Cell className="kdr">
-                                            <Scale value={datum.kdr} neutral={1} />
+                                            <Scale value={datum.kdr} scale={SCALES.KD} />
                                         </Fauxtable.Cell>
                                         <Fauxtable.Cell className="kpr">
-                                            <Scale value={datum.kpr} neutral={1} />
+                                            <Scale value={datum.kpr} scale={SCALES.KPR} />
                                         </Fauxtable.Cell>
                                         <Fauxtable.Cell className="survival">
-                                            <Scale value={datum.survivalRate} neutral={50}>
+                                            <Scale value={datum.survivalRate} scale={SCALES.SVL}>
                                                 %
                                             </Scale>
                                         </Fauxtable.Cell>
