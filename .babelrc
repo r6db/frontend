@@ -1,18 +1,18 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false,
-      "loose": true,
-      "targets": {
-        "uglify": true,
-        "browsers": [ ">5%"]
-      },
-      "useBuiltIns": true
-    }]
-  ],
-  "plugins": [
-    "syntax-dynamic-import",
-		"transform-object-rest-spread",
-		["transform-react-jsx", {"pragma": "m"}]
-  ]
+    "presets": [
+        [
+            "env",
+            {
+                "modules": false,
+                "loose": true,
+                "targets": {
+                    "uglify": true,
+                    "browsers": [">5%"]
+                },
+                "useBuiltIns": true
+            }
+        ],
+        "minify"
+    ],
+    "plugins": ["syntax-dynamic-import", "transform-object-rest-spread", ["transform-react-jsx", { "pragma": "m" }]]
 }
