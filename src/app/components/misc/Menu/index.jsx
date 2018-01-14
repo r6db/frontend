@@ -26,7 +26,7 @@ const Menu = {
                         </Link>
 
                         <Link to={`/compare`} className="menu__item">
-                            Compare
+                            Compare (beta)
                         </Link>
                         <Link to="/faq" className="menu__item">
                             FAQ
