@@ -14,34 +14,34 @@
     .chart .ct-series,
     .chart .indicator {
         &.emea {
-            stroke: $red-crow;
-            background-color: $red-crow;
+            stroke: $graphcolor-emea;
+            background-color: $graphcolor-emea;
         }
         &.ncsa {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: $graphcolor-ncsa;
+            background-color: $graphcolor-ncsa;
         }
         &.apac {
-            stroke: $skull-rain;
-            background-color: $skull-rain;
+            stroke: $graphcolor-apac;
+            background-color: $graphcolor-apac;
         }
 
         &.ranked {
-            stroke: $red-crow;
-            background-color: $red-crow;
+            stroke: $graphcolor-emea;
+            background-color: $graphcolor-emea;
         }
         &.casual {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: $graphcolor-ncsa;
+            background-color: $graphcolor-ncsa;
         }
 
         &.accuracy {
-            stroke: $red-crow;
-            background-color: $red-crow;
+            stroke: $graphcolor-emea;
+            background-color: $graphcolor-emea;
         }
         &.hsrate {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: $graphcolor-ncsa;
+            background-color: $graphcolor-ncsa;
         }
     }
 }
