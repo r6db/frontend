@@ -70,16 +70,17 @@ export default {
         const scale = attrs.scale || defaultScale;
         const val = attrs.reverse ? -attrs.value : attrs.value;
 
-        const scaleEntries = Object.keys(scale).map(key => ({ key, value: scale[key] }));
-
-        const type = "scale--" + scaleEntries.reduce((acc, curr) => (val > curr.value ? curr.key : acc), "low");
+        // grab the matching scale key from our definitions
+        const type = Object.keys(scale)
+            .map(key => ({ key, value: scale[key] }))
+            .reduce((acc, curr) => (val > curr.value ? curr.key : acc), "low");
 
         if (val == null) {
             return <span className={`scale`} />;
         }
 
         return (
-            <span className={`scale ${type}`}>
+            <span className={`scale scale--${type}`}>
                 {asString(attrs.value)}
                 {children}
             </span>
