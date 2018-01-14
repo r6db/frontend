@@ -62,6 +62,7 @@
     &__menu {
         width: 100%;
         height: 100vh;
+        z-index: 1; /* Edge requires this to show the navbar */
 
         @include medium {
             position: absolute;
@@ -186,7 +187,7 @@
         }
         &__search {
             @include medium {
-                padding: 0 $l;
+                padding-left: $l;
             }
         }
         &__item {

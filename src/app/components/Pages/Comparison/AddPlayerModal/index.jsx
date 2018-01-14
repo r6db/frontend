@@ -4,6 +4,7 @@ import Profilepic from "components/misc/Profilepic";
 import { findPlayer } from "lib/api";
 import { formatDuration } from "lib/stats";
 import "./addplayermodal.scss";
+import lozad from "lozad";
 
 const AddPlayerModal = {
     oninit(vnode) {
@@ -46,6 +47,7 @@ const AddPlayerModal = {
                         value={state.query}
                         placeholder="enter player name"
                         onkeypress={state.onQueryChange}
+                        onchange={state.onQueryChange}
                     />
                     <select
                         className="searchbar__platform"
@@ -56,7 +58,7 @@ const AddPlayerModal = {
                         <option value="PS4">PS4</option>
                         <option value="XBOX">XB1</option>
                     </select>
-                    <button className="button button--primary searchbar__submit">Search</button>
+                    <button onsubmit={state.onSearch} className="button button--primary searchbar__submit">Search</button>
                 </form>
                 <div className="addplayermodal__results">
                     {state.results.map(x => (
@@ -70,7 +72,7 @@ const AddPlayerModal = {
                             onclick={() => attrs.onselect(x.id)}
                         >
                             <div className="media__image">
-                                <Profilepic id={x.userId || x.id} />
+                                <Profilepic className="lazyload" id={x.userId || x.id} />
                             </div>
                             <div className="media__content">
                                 <div className="media__contentheader">

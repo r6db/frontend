@@ -14,7 +14,7 @@ const ExportButton = player => {
     const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`;
     return (
         <a className="playerheader__link" download={`${player.name}.json`} href={href}>
-            <Icon glyph={GLYPHS.DOWNLOAD} /> export
+            <Icon glyph={GLYPHS.DOWNLOAD} /> Export
         </a>
     );
 };
@@ -36,23 +36,19 @@ const PlayerHeader = {
                         <Profilepic id={attrs.userId || attrs.id} />
                     </div>
                     <div className="playerheader__info">
-                        <header className="header playerheader__name">
-                            {attrs.name}
-                            <span className="header header--small header--subtle playerheader__platform">
+                        <header className="header playerheader__namebox">
+                            <span className="playerheader__name">
+                                {attrs.name}
+                            </span>
+                            <span className="playerheader__platform">
                                 {attrs.platform}
                             </span>
+                            {attrs.flair ? <div className="playerheader__flair">{attrs.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
                             {attrs.placements.global ? "#" + attrs.placements.global : "-"} global / lvl {attrs.level}
-                            {attrs.flair ? <div className="playerheader__flair">{attrs.flair}</div> : null}
                         </div>
-                    </div>
-                    <div className="playerheader__links">
-                        <div className="playerheader__links__top">
-                            <Link className="playerheader__link" to={toSimple(attrs.id)} target="_BLANK">
-                                Simple View
-                            </Link>
-                            {ExportButton(attrs)}
+                        <div className="playerheader__links">
                             {!attrs.twitch ? (
                                 ""
                             ) : (
@@ -70,18 +66,23 @@ const PlayerHeader = {
                             <a className="playerheader__link" href={domain.getEslLink(attrs.name)} target="_BLANK">
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
+                            {ExportButton(attrs)}
+                            <span className="playerheader__divider">|</span>
+                            <Link className="playerheader__link" to={toSimple(attrs.id)} target="_BLANK">
+                                                            Simple View
+                            </Link>
                         </div>
-                        <div className="playerheader__links__bottom">
-                            {attrs.updateAvailableAt > new Date() ? (
-                                <button className="button button--outline" disabled="disabled">
-                                    available {attrs.updateAvailableAt.toLocaleTimeString()}
-                                </button>
-                            ) : (
-                                <button onclick={attrs.updatePlayer} className="button button--accent">
-                                    update
-                                </button>
-                            )}
-                        </div>
+                    </div>
+                    <div className="playerheader__buttons">
+                        {attrs.updateAvailableAt > new Date() ? (
+                            <button className="button playerheader__button button--outline" disabled="disabled">
+                                available {attrs.updateAvailableAt.toLocaleTimeString()}
+                            </button>
+                        ) : (
+                            <button onclick={attrs.updatePlayer} className="button playerheader__button button--accent">
+                                update
+                            </button>
+                        )}
                     </div>
                 </div>
                 <div className="playerheader__tabs">
