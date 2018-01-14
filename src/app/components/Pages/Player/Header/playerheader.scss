@@ -25,13 +25,17 @@
         @include boxshadow;
     }
     &__info {
-      margin-left: 0.75rem;
+        margin-left: 0.75rem;
     }
     &__namebox {
         margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
     &__name {
-      font-weight: 500;
+        font-weight: 500;
     }
     &__level {
         font-size: $font-default;
@@ -60,8 +64,8 @@
     }
     &__links {
         display: flex;
-        align-items: center;
         flex-direction: row;
+        align-items: center;
         font-size: $font-default;
         flex: 1;
         margin: $l 0;
@@ -75,20 +79,20 @@
         }
     }
     &__divider {
-      margin-left: $l*1.5;
+        margin-left: $l*1.5;
     }
     &__buttons {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-      flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
     }
     &__button {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-left: $l;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: $l;
     }
     &__link {
         display: inline-flex;
@@ -96,7 +100,7 @@
         margin-left: $l*1.5;
         color: $font-color;
         &:first-child {
-          margin-left: 0;
+            margin-left: 0;
         }
         .icon {
             width: $l*2;
