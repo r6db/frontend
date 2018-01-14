@@ -106,27 +106,6 @@ export default {
                                 While Muppet does give his best, it <i>is</i> still a hobby project.
                             </p>
                         </Question>
-                        <Question question="What technologies do you guys use?">
-                            <p>
-                                The backend is written in <a href="https://nodejs.org/en/">Node JS</a>, and uses{" "}
-                                <a href="https://www.postgresql.org/">Postgresql</a> and{" "}
-                                <a href="https://redis.io/">Redis</a> as data storage. Updates are running over{" "}
-                                <a href="https://www.rabbitmq.com">RabbitMQ</a>.
-                            </p>
-                            <p>
-                                On the frontend, we use <a href="https://mithril.js.org/">Mithril</a> (highly
-                                recommended) as framework with <a href="https://redux.js.org">Redux</a> for state
-                                management and{" "}
-                                <a href="https://github.com/faceyspacey/redux-first-router">redux-first-router</a> for
-                                routing.
-                                <br />
-                                We had a strong focus on high performance and small size with visuals coming second.
-                                This is the reason why we use so little images and animations. Most images you see are
-                                actually SVGs, which scale perfectly and have a small size. <br />
-                                This allows us to load the site in 200ms (for the landing page) on DSL, and 1.1 seconds
-                                on a good 3G connection.
-                            </p>
-                        </Question>
                     </div>
                 </Page.Content>
             </Page>
