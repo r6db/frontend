@@ -32,11 +32,11 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: center;
+        align-items: baseline;
 
         @include medium {
             justify-content: flex-start;
-            align-items: center;
+            align-items: baseline;
         }
     }
     &__name {
@@ -60,9 +60,10 @@
         border: 1px solid $primary;
         color: $primary;
         text-align: center;
-        display: inline-block;
+        display: block;
         font-size: $font-smaller;
         vertical-align: middle;
+        align-self: flex-end;
     }
     &__ranking {
         margin-top: $l;
