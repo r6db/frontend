@@ -41,13 +41,15 @@ const Searchbar = {
                     <option value="PS4">PS4</option>
                     <option value="XBOX">XB1</option>
                 </select>
-                <button onsubmit={state.onSearch} className="button button--primary searchbar__submit">Search</button>
+                <button onsubmit={state.onSearch} className="button button--primary searchbar__submit">
+                    Search
+                </button>
             </form>
         );
     },
 };
 
-const mapStateToProps = getState => ({ platform: getState().platform });
+const mapStateToProps = getState => ({ platform: getState().platform, search: getState().search });
 const mapDispatchToProps = (dispatch, getState) => ({
     goSearch: name => {
         const { platform, loading } = getState();

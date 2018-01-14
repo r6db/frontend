@@ -3,6 +3,12 @@
 .comparison {
     width: 100%;
 
+    .fauxtable__cell {
+        flex: 1 1 auto;
+        @include medium {
+            flex: 1 1 100px;
+        }
+    }
     &-value {
         @include medium {
             flex: 1 0 4em;
