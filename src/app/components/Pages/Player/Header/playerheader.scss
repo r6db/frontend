@@ -33,6 +33,11 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+
+        @include medium {
+            justify-content: flex-start;
+            align-items: center;
+        }
     }
     &__name {
         font-weight: 500;
