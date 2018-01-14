@@ -5,6 +5,10 @@
         background: fade-out($gray-dark, 0.6);
     }
 
+    .page__head {
+        flex: 1 1 auto;
+    }
+
     @include medium {
         .page__headcontent {
             padding-bottom: 100px;

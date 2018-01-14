@@ -12,7 +12,8 @@
         padding-top: 80px;
     }
     &__head {
-        flex: auto;
+        flex: 0 1 auto;
+        width: 100%;
         display: flex;
         align-items: center;
         position: relative;
@@ -46,9 +47,8 @@
         }
 
         &[data-created="true"] {
-          @include fadeInAnimation(150ms, 0.2);
+            @include fadeInAnimation(150ms, 0.2);
         }
-
     }
 
     &__content {
