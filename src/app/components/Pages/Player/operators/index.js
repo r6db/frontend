@@ -295,7 +295,8 @@ export default {
                             .map(datum => (
                                 <div>
                                     <Fauxtable.Row key={datum.id} className={datum.id}>
-                                        <Fauxtable.Cell className="name" onclick={() => state.toggleOp(datum.id)}>
+                                        <Fauxtable.Cell className="name">
+                                        {/* <Fauxtable.Cell className="name" onclick={() => state.toggleOp(datum.id)}> */}
                                             <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
                                         </Fauxtable.Cell>
