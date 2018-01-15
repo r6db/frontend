@@ -12,7 +12,8 @@
         padding-top: 80px;
     }
     &__head {
-        flex: auto;
+        flex: 0 1 auto;
+        width: 100%;
         display: flex;
         align-items: center;
         position: relative;
@@ -35,12 +36,18 @@
         top: 0;
         height: 100%;
         left: 0;
-        opacity: 0.3;
+        opacity: 0;
         top: -40px;
         height: calc(100% + 40px);
+        filter: saturate(120%) contrast(110%);
+
         @include medium {
             top: -80px;
             height: calc(100% + 80px);
+        }
+
+        &[data-created="true"] {
+            @include fadeInAnimation(150ms, 0.2);
         }
     }
 

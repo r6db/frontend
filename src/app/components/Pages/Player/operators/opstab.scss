@@ -62,47 +62,50 @@
             .fauxtable__heading {
                 flex: 1 0 0;
             }
-            .name {
-                text-align: left;
-                flex-grow: 4;
-                height: auto;
-                cursor: pointer;
-            }
-            .won {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .kpr {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .survival {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .lost {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .wlr {
-                text-align: right;
-                flex-grow: 3;
-            }
-            .kills {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .deaths {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .kdr {
-                text-align: right;
-                flex-grow: 2;
-            }
-            .time {
-                text-align: right;
-                flex-grow: 2;
+            .fauxtable__cell,
+            .fauxtable__heading {
+                &.name {
+                    text-align: left;
+                    flex-grow: 4;
+                    height: auto;
+                    cursor: pointer;
+                }
+                &.won {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.kpr {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.survival {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.lost {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.wlr {
+                    text-align: right;
+                    flex-grow: 3;
+                }
+                &.kills {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.deaths {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.kdr {
+                    text-align: right;
+                    flex-grow: 2;
+                }
+                &.time {
+                    text-align: right;
+                    flex-grow: 2;
+                }
             }
         }
     }

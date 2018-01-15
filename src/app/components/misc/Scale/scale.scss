@@ -1,11 +1,11 @@
 @import "scss/styles";
 
-$low: rgb(185, 8, 8);
-$mid-low: rgb(184, 101, 12);
-$mid: rgb(194, 185, 8);
-$mid-high: rgb(93, 223, 6);
-$high: rgb(3, 148, 3);
-$nutty: rgb(3, 148, 124);
+$low: hsl(2, 67%, 46%);
+$mid-low: hsl(22, 67%, 46%);
+$mid: hsl(56, 67%, 46%);
+$mid-high: hsl(76, 67%, 46%);
+$high: hsl(133, 66%, 46%);
+$nutty: hsl(170, 66%, 46%);
 
 .scale {
     &--low {

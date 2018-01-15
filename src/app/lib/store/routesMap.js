@@ -143,6 +143,10 @@ export default {
                 .getPlayers(idList)
                 .then(x => {
                     dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
+                    setMeta({
+                        title: `Comparison`,
+                        description: `compare stats for ${x[0].name} and ${x.length - 1} more`,
+                    });
                     analytics.pageView("Comparison");
                 })
                 .catch(err => {

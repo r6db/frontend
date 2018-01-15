@@ -14,20 +14,24 @@ module.exports = merge(base, {
         lazy: false,
         port: 9000,
         disableHostCheck: true,
-        proxy: [{
-            path: "/api",
-            target: "https://r6db.com",
-            changeOrigin: true
-        }],
+        proxy: [
+            {
+                path: "/api",
+                target: "https://r6db.com",
+                changeOrigin: true,
+            },
+        ],
         historyApiFallback: true,
         watchOptions: {
             aggregateTimeout: 100,
-            poll: 500
+            poll: 500,
         },
     },
-    plugins: [new webpack.DefinePlugin({
-        "process.env": {
-            "NODE_ENV": JSON.stringify("development")
-        }
-    })]
+    plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("development"),
+            },
+        }),
+    ],
 });

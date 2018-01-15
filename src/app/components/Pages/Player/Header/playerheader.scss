@@ -18,13 +18,29 @@
     }
     &__image {
         width: $l*10;
+        height: $l*10;
         flex: none;
         margin-right: $l;
+        background-color: $trans-low;
+        @include boxshadow;
+    }
+    &__info {
+        margin-left: 0.75rem;
+    }
+    &__namebox {
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        @include medium {
+            justify-content: flex-start;
+            align-items: center;
+        }
     }
     &__name {
-        margin: 0;
         font-weight: 500;
-        line-height: 1.4;
     }
     &__level {
         font-size: $font-default;
@@ -32,57 +48,70 @@
     }
     &__platform {
         display: inline-block;
-        margin: 0 0 0 $l;
         font-weight: 700;
+        font-size: $font-large;
+        color: $font-subtle-color;
+        margin-left: $l;
     }
     &__flair {
-        margin-left: $l*2;
-        padding: ($l*0.5) $l;
+        margin-left: $l;
+        padding: 0.4rem 0.5rem;
         border-radius: $l;
         border: 1px solid $primary;
         color: $primary;
         text-align: center;
         display: inline-block;
         font-size: $font-smaller;
+        vertical-align: middle;
     }
     &__ranking {
         margin-top: $l;
     }
     &__links {
         display: flex;
+        flex-direction: row;
         align-items: center;
-        flex-direction: column;
-        justify-content: space-between;
         font-size: $font-default;
         flex: 1;
         margin: $l 0;
 
         @include medium {
-            margin: 0;
-            align-items: flex-end;
-        }
-
-        &__top {
-            display: flex;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-top: 1rem;
             align-items: center;
-            justify-content: flex-end;
-            margin: $l 0;
-
-            @include medium {
-                margin: 0;
-            }
         }
+    }
+    &__divider {
+        margin-left: $l*1.5;
+    }
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+    }
+    &__button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: $l;
     }
     &__link {
         display: inline-flex;
         align-items: center;
-        margin-left: $l;
+        margin-left: $l*1.5;
         color: $font-color;
+        &:first-child {
+            margin-left: 0;
+        }
         .icon {
             width: $l*2;
             height: $l*2;
             fill: $font-color;
-            margin-right: 5px;
+            margin-right: 0.5rem;
         }
     }
     &__tabs {

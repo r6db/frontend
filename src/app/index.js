@@ -11,7 +11,7 @@ import "../scss/styles.scss";
 import * as m from "mithril";
 import * as api from "lib/api";
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
     // expose libs;
     window.m = m;
     window.api = api;
