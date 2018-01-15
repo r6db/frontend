@@ -43,18 +43,18 @@ const headshotScale = {
 };
 
 const kprScale = {
-    "med-low": 0.7,
-    med: 0.85,
-    "med-high": 1,
-    high: 1.3,
-    nutty: 1.6,
+    "med-low": 0.5,
+    med: 0.7,
+    "med-high": 0.9,
+    high: 1.1,
+    nutty: 1.3,
 };
 const survivalScale = {
-    "med-low": 25,
-    med: 0.3,
-    "med-high": 35,
-    high: 45,
-    nutty: 55,
+    "med-low": 3,
+    med: 0.4,
+    "med-high": 0.5,
+    high: 0.55,
+    nutty: 0.6,
 };
 export const SCALES = {
     DEFAULT: defaultScale,
