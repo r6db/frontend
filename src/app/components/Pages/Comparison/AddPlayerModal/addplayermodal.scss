@@ -14,6 +14,8 @@
         }
     }
     &__result {
+        cursor: pointer;
+
         &--selected:after {
             content: "✓";
             width: $l*4;
