@@ -46,7 +46,7 @@ const PlayerHeader = {
                             {attrs.flair ? <div className="playerheader__flair">{attrs.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
-                            {attrs.placements.global ? "#" + attrs.placements.global : "-"} global / lvl {attrs.level}
+                            {attrs.placements.global ? "#" + (attrs.placements.global + 1) : "-"} global / lvl {attrs.level}
                         </div>
                         <div className="playerheader__links">
                             {!attrs.twitch ? (
