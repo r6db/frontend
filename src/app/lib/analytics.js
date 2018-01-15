@@ -18,7 +18,7 @@ export function pageView(title) {
             page_path: path,
             page_title: title,
         });
-        gtag("event", "page_view");
+        // gtag("event", "page_view");
     }
 }
 export function search(query) {
