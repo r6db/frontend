@@ -50,11 +50,11 @@ const kprScale = {
     nutty: 1.3,
 };
 const survivalScale = {
-    "med-low": 3,
-    med: 0.4,
-    "med-high": 0.5,
-    high: 0.55,
-    nutty: 0.6,
+    "med-low": 30,
+    med: 40,
+    "med-high": 45,
+    high: 50,
+    nutty: 55,
 };
 export const SCALES = {
     DEFAULT: defaultScale,
