@@ -37,16 +37,13 @@ const PlayerHeader = {
                     </div>
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">
-                            <span className="playerheader__name">
-                                {attrs.name}
-                            </span>
-                            <span className="playerheader__platform">
-                                {attrs.platform}
-                            </span>
+                            <span className="playerheader__name">{attrs.name}</span>
+                            <span className="playerheader__platform">{attrs.platform}</span>
                             {attrs.flair ? <div className="playerheader__flair">{attrs.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
-                            {attrs.placements.global ? "#" + (attrs.placements.global + 1) : "-"} global / lvl {attrs.level}
+                            {attrs.placements.global != null ? "#" + (attrs.placements.global + 1) : "-"} global / lvl{" "}
+                            {attrs.level}
                         </div>
                         <div className="playerheader__links">
                             {!attrs.twitch ? (
@@ -69,7 +66,7 @@ const PlayerHeader = {
                             {ExportButton(attrs)}
                             <span className="playerheader__divider">|</span>
                             <Link className="playerheader__link" to={toSimple(attrs.id)} target="_BLANK">
-                                                            Simple View
+                                Simple View
                             </Link>
                         </div>
                     </div>
