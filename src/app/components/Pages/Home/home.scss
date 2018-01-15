@@ -4,9 +4,11 @@
     .menu {
         background: fade-out($gray-dark, 0.6);
     }
-
+    .page{
+        padding-top: 0;
+    }
     .page__head {
-        flex: 1 1 auto;
+        height: 100vh;
     }
 
     @include medium {

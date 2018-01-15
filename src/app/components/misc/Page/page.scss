@@ -2,7 +2,6 @@
 
 .page {
     flex: 1;
-    display: flex;
     flex-direction: column;
     position: relative;
     background: $bg-color;
@@ -10,6 +9,7 @@
 
     @include medium {
         padding-top: 80px;
+        display: flex;
     }
     &__head {
         flex: 0 1 auto;
