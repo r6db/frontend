@@ -110,7 +110,7 @@ module.exports = {
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new ExtractTextPlugin({ filename: "styles.css", allChunks: true }),
+        new ExtractTextPlugin({ filename: "styles.[hash].css", allChunks: true }),
         new webpack.NamedModulesPlugin(),
     ],
 };
