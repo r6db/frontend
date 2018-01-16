@@ -1,0 +1,36 @@
+@import "scss/styles";
+
+.footer{
+    background: $gray-dark;
+
+    &__container{
+        padding: $l*2 0;
+        display: flex;
+        flex-direction: column;
+        @include medium{
+            flex-direction: row;
+        }
+    }
+    &__column{
+        display:  flex;
+        flex-direction: column;
+        flex: auto;
+    }
+    &__link{
+        padding: $l;
+        color: $font-color;
+        display: flex;
+        line-height: $l*2;
+        align-items: center;
+
+        &--noicon{
+            padding-left: $l*2 + $l*2;
+        }
+    }
+    &__icon{
+        width: $l*2;
+        height: $l*2;
+        margin-right: $l;
+        fill: $font-color;
+    }
+}

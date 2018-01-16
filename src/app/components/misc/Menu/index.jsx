@@ -31,9 +31,6 @@ const Menu = {
                         <Link to="/faq" className="menu__item">
                             FAQ
                         </Link>
-                        <a target="_BLANK" className="menu__item" href="https://discord.gg/xyMTkXm">
-                            Discord
-                        </a>
                     </div>
                 </div>
             </div>

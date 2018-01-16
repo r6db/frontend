@@ -5,6 +5,7 @@ import Searchbar from "components/misc/Searchbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
 import Page from "components/misc/Page";
+import Footer from "components/misc/Footer";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { connect } from "lib/store/connect";
 import { NOT_FOUND } from "redux-first-router";
@@ -43,7 +44,8 @@ const App = {
                             </div>
                         ) : (
                             <AsyncComponent importFn={attrs.importFn} />
-                        )}
+                            )}
+                        <Footer />
                     </div>
                 </div>
             </div>
