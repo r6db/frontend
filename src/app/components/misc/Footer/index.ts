@@ -7,6 +7,7 @@ const Footer: m.Component<{}, {}> = {
     view() {
         return m(".footer", [
             m(".footer__container.container", [
+                m(".footer__column", [m(Icon, { className: "footer__logo", glyph: GLYPHS.LOGO })]),
                 m(".footer__column", [
                     m(Link, { className: "footer__link footer__link--noicon", to: "/" }, "Home"),
                     m(Link, { className: "footer__link footer__link--noicon", to: "/leaderboard" }, "Leaderboard"),
@@ -14,7 +15,6 @@ const Footer: m.Component<{}, {}> = {
                     m(Link, { className: "footer__link footer__link--noicon", to: "/faq" }, "FAQ"),
                 ]),
                 m(".footer__column", [
-                    m("header.footer__header", ""),
                     m(
                         "a",
                         {
@@ -54,7 +54,7 @@ const Footer: m.Component<{}, {}> = {
                 m(".footer__column", [
                     m("header.footer__header", ""),
                     // m(Link, { className: "footer__link footer__link--noicon", to: "/"}, "Privacy"),
-                    // m(Link, { className: "footer__link footer__link--noicon", to: "/"}, "Thank you"),
+                    // m(Link, { className: "footer__link footer__link--noicon", to: "/about" }, "About"),
                     m(
                         "a",
                         { className: "footer__link footer__link--noicon", href: "https://github.com/r6db/r6db/issues" },

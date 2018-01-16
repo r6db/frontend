@@ -7,11 +7,21 @@ export default {
     HOME: {
         path: "/",
         thunk: (dispatch, getState) => {
-            const location = getState().location;
             analytics.pageView("Home");
             setMeta({
                 title: `Home`,
                 description: `Find any player in Rainbow Six: Siege`,
+                type: "website",
+            });
+        },
+    },
+    ABOUT: {
+        path: "/about",
+        thunk: (dispatch, getState) => {
+            analytics.pageView("About");
+            setMeta({
+                title: `About`,
+                description: `About R6DB`,
                 type: "website",
             });
         },

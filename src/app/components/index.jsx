@@ -23,6 +23,7 @@ const componentMap = {
     SIMPLE: () => import("./Pages/Simple"),
     PLAYERTABS: () => import("./Pages/Player"),
     COMPARISON: () => import("./Pages/Comparison"),
+    ABOUT: () => import("./Pages/About"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
 const App = {
@@ -44,7 +45,7 @@ const App = {
                             </div>
                         ) : (
                             <AsyncComponent importFn={attrs.importFn} />
-                            )}
+                        )}
                         <Footer />
                     </div>
                 </div>
