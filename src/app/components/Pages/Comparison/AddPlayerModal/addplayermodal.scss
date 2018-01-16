@@ -8,10 +8,16 @@
     &__results {
         max-height: 50vh;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
 
         @include medium {
             max-height: 60vh;
         }
+    }
+    &__close{
+        padding: $l 0;
+        display: flex;
+        justify-content: flex-end;
     }
     &__result {
         cursor: pointer;

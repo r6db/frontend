@@ -86,8 +86,10 @@
     &__search {
         flex: auto;
         width: 100%;
+        padding: 0 $l;
         @include medium {
             width: auto;
+            padding: 0;
         }
 
         .searchbar {

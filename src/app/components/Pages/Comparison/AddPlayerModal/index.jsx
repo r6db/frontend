@@ -86,6 +86,9 @@ const AddPlayerModal = {
                         </div>
                     ))}
                 </div>
+                <div className="addplayermodal__close">
+                    <button className="button button--primary" onclick={attrs.onclose}>done</button>
+                </div>
             </Modal>
         );
     },
