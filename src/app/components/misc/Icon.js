@@ -1,13 +1,14 @@
 import * as m from "mithril";
 
+import EMAIL from "feather-icons/dist/icons/mail.svg";
+import TWITTER from "feather-icons/dist/icons/twitter.svg";
+import GITHUB from "feather-icons/dist/icons/github.svg";
+
 import LOGO from "assets/r6db_logo_new.svg";
 import DOWNLOAD from "assets/download.svg";
 import UBI from "assets/ubi.svg";
 import ESL from "assets/esl.svg";
-import TWITTER from "assets/twitter.svg";
 import TWITCHTV from "assets/twitchtv.svg";
-import PATREON from "assets/patreon.svg";
-import EMAIL from "assets/email.svg";
 import DISCORD from "assets/discord.svg";
 import NOAVATAR from "assets/noavatar.svg";
 
@@ -96,7 +97,7 @@ export const GLYPHS = {
     DOWNLOAD,
     TWITTER,
     TWITCH,
-    PATREON,
+    GITHUB,
     EMAIL,
     DISCORD,
     NOAVATAR,
