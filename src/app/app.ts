@@ -1,17 +1,11 @@
 import * as m from "mithril";
 import App from "./components";
 
-import configureStore from "./lib/store";
-import { Provider } from "./lib/store/connect";
+import configureStore from "lib/store/index.js";
+import { Provider } from "lib/store/connect";
 import createHistory from "history/createBrowserHistory";
-import { init as initAction } from "lib/store/actions";
-import { setStore } from "lib/analytics";
-import queryString from "query-string";
-import { VALUE } from "./test";
-
-console.log("typescript value: ", VALUE);
-
-const query = queryString.parse(window.location.search);
+import { init as initAction } from "lib/store/actions/index.js";
+import { setStore } from "lib/analytics.js";
 
 const history = createHistory();
 const { store } = configureStore(history);
@@ -20,16 +14,12 @@ setStore(store);
 store.subscribe(() => requestAnimationFrame(m.redraw));
 store.dispatch(initAction);
 
-function init(App) {
+function init(App: m.Component<any, any>) {
     const mount = document.querySelector("#mount");
     console.log("mounting app");
     const Root = {
         view() {
-            return (
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            );
+            return m(Provider, { store }, m(App));
         },
     };
     mount.innerHTML = "";

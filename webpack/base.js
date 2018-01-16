@@ -17,7 +17,7 @@ const cssdedupe = require("postcss-discard-duplicates");
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
-        app: ["./src/app/index.js"],
+        app: ["./src/app/index.ts"],
     },
     output: {
         path: path.join(__dirname, "../build"),
@@ -33,8 +33,7 @@ module.exports = {
             components: path.join(__dirname, "../src/app/components"),
             lib: path.join(__dirname, "../src/app/lib"),
             assets: path.join(__dirname, "../src/assets"),
-        },
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        }
     },
     node: {
         __filename: true,

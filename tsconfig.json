@@ -9,19 +9,21 @@
         "experimentalDecorators": true,
         "moduleResolution": "node",
         "noEmitOnError": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "noFallthroughCasesInSwitch": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noUnusedLocals": true,
         "target": "es2015",
-        "outDir": "build",
-        "module": "commonjs"
+        "module": "commonjs",
+        "jsx": "react",
+        "jsxFactory": "m",
+        "baseUrl": ".",
+        "paths": {       
+            "components/*": ["./src/app/components/*"],       
+            "lib/*": ["./src/app/lib/*"],
+            "assets/*": ["./src/assets/*"]
+        }
     },
-    "include": ["src/**/*"],
-    "paths": {       
-        "components/*": ["./src/app/components/*"],       
-        "lib/*": ["./src/app/lib/*"],
-        "assets/*": ["./src/assets/*"]
-    }
+    "include": ["src/**/*", "declarations.d.ts"]
 }
