@@ -3,16 +3,19 @@ import * as lozad from "lozad";
 import "./page.scss";
 
 interface IPageAttrs {
-    position?: string;
-    image?: string;
     className?: string;
 }
+interface IPageheadAttrs {
+    position?: string;
+    image?: string;
+}
 interface IPage extends m.Component<IPageAttrs, {}> {
-    Head: m.Component<any, any>;
+    Head: m.Component<IPageheadAttrs, {}>;
     Content: m.Component<any, any>;
 }
-const PageHead = {
+const PageHead: m.Component<IPageheadAttrs, {}> = {
     oncreate(vnode) {
+        console.log("node", vnode);
         const observer = lozad(".lazyload", {
             load(el) {
                 el.onload = el.setAttribute("data-created", "true");
