@@ -16,7 +16,7 @@
     &__name {
         background: none;
         color: $font-color;
-        padding: $l;
+        padding: $l $l*1.25;
         width: calc(100% - 4rem);
         height: 100%;
         @include placeholder-color(darken($gray-light, 20%));
@@ -26,13 +26,17 @@
         }
     }
     &__platform {
-        width: 4rem;
+        width: 5rem;
         background: none;
         margin: 0;
         box-shadow: none;
-        padding: 0;
+        padding-right: $l*1.5;
         -moz-appearance: none;
         font-size: $font-smaller;
+        font-weight: 700;
+        text-align: center;
+        text-align-last: center;
+        cursor: pointer;
 
         @include large {
             font-size: $font-default;
@@ -45,6 +49,8 @@
         flex: 0 1 auto;
         padding: 0.5em 1em;
         border: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
         cursor: pointer;
     }
 }
