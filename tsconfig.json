@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": false,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "target": "es2015",
+        "outDir": "build",
+        "module": "commonjs"
+    },
+    "include": ["src/**/*"],
+    "paths": {       
+        "components/*": ["./src/app/components/*"],       
+        "lib/*": ["./src/app/lib/*"],
+        "assets/*": ["./src/assets/*"]
+    }
+}

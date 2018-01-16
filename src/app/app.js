@@ -7,6 +7,9 @@ import createHistory from "history/createBrowserHistory";
 import { init as initAction } from "lib/store/actions";
 import { setStore } from "lib/analytics";
 import queryString from "query-string";
+import { VALUE } from "./test";
+
+console.log("typescript value: ", VALUE);
 
 const query = queryString.parse(window.location.search);
 

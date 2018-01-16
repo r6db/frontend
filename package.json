@@ -28,6 +28,7 @@
     },
     "devDependencies": {
         "autoprefixer": "^6.3.7",
+        "awesome-typescript-loader": "^3.4.1",
         "babel-core": "^6.5.2",
         "babel-loader": "^6.2.3",
         "babel-minify-webpack-plugin": "^0.2.0",
@@ -55,6 +56,7 @@
         "sass-loader": "^4.0.2",
         "style-loader": "^0.13.1",
         "svg-sprite-loader": "2.1.0",
+        "typescript": "^2.6.2",
         "webpack": "^3.10.0",
         "webpack-dashboard": "^1.0.2",
         "webpack-dev-server": "^2.11.0",

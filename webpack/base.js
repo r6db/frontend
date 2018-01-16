@@ -3,6 +3,7 @@ const path = require("path");
 const util = require("util");
 
 const DashboardPlugin = require("webpack-dashboard/plugin");
+const { CheckerPlugin, TsConfigPathsPlugin } = require("awesome-typescript-loader");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -27,7 +28,7 @@ module.exports = {
     },
     target: "web",
     resolve: {
-        extensions: [".js", ".jsx"],
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
         alias: {
             components: path.join(__dirname, "../src/app/components"),
             lib: path.join(__dirname, "../src/app/lib"),
@@ -51,6 +52,16 @@ module.exports = {
                         cacheDirectory: "./.cache",
                     },
                 },
+            },
+            {
+                test: /\.tsx?$/,
+                use: {
+                    loader: "awesome-typescript-loader",
+                    options: {
+                        useCache: true,
+                        useBabel: true,
+                    }
+                }
             },
             {
                 test: /\.scss$/,
@@ -90,6 +101,8 @@ module.exports = {
     },
     plugins: [
         new DashboardPlugin(),
+        new TsConfigPathsPlugin(),
+        new CheckerPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new CopyWebpackPlugin([{ from: "src/assets", to: "assets" }, { from: "src/favicons/*", to: "[name].[ext]" }]),
