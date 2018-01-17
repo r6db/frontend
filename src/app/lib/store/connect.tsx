@@ -35,8 +35,8 @@ export const Provider: m.ComponentTypes<IProviderAttrs, IProviderState> = {
 
 
 
-export const connect = function<S,D, T>(mapStateToProps: IMapState<T,S>, mapDispatchToProps: IMapDispatch<T,D>) {
-    return function<PA>(Component: m.Component<S&D&PA, any>): m.Component<PA, any> {
+export const connect = function<S,D, T>(mapStateToProps?: IMapState<T,S>, mapDispatchToProps?: IMapDispatch<T,D>) {
+    return function<PA>(Component: m.Component<S&D&PA, any>): m.ComponentTypes<PA> {
         return {
             view({ attrs, children }) {
                 const mapState = mapStateToProps || ((state: any) => ({}));

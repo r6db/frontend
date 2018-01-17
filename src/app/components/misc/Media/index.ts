@@ -1,9 +1,9 @@
 import * as m from "mithril";
-import lozad from "lozad";
 import "./media.scss";
 
 const Media = {
-    oninit({ attrs, state, dom }) {
+    oninit(vnode) {
+        const { attrs, state } = vnode;
         state.img = attrs.img;
         state.onerror = e => {
             e.preventDefault();
@@ -12,7 +12,8 @@ const Media = {
             e.target.src = "/assets/noavatar.svg";
         };
     },
-    view({ attrs, state, children }) {
+    view(vnode) {
+        const { attrs, state, children } = vnode;
         return m(".media", [
             attrs.img ? m("img.media__image", { src: state.img }) : null,
             m(".media__content", [

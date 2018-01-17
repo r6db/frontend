@@ -1,5 +1,6 @@
 import * as m from "mithril";
 import * as lozad from "lozad";
+import { FadeImage } from "components/misc/FadeImage";
 import "./page.scss";
 
 interface IPageAttrs {
@@ -15,39 +16,39 @@ interface IPage extends m.Component<IPageAttrs, {}> {
 }
 const PageHead: m.Component<IPageheadAttrs, {}> = {
     oncreate(vnode) {
-        console.log("node", vnode);
-        const observer = lozad(".lazyload", {
-            load(el) {
-                el.onload = el.setAttribute("data-created", "true");
-            },
-        });
-        observer.observe();
+        const observer = lozad(".fadeimage");
+        setTimeout(() => observer.observe(), 200);
     },
     view(vnode) {
         return m(".page__head", [
             vnode.attrs.image
-                ? m("img.page__image.lazyload", {
-                      style: { "object-position": vnode.attrs.position || "50% 30%" },
-                      src: vnode.attrs.image,
-                      alt: "",
-                  })
-                : null,
-            m(".page__headcontent", vnode.children),
+            ? m(FadeImage, {
+                className: "page__image",
+                style: { "object-position": vnode.attrs.position || "50% 30%" },
+                src: vnode.attrs.image,
+                alt: ""
+            })
+            : null,
+            m(".page__headcontent", vnode.children)
         ]);
-    },
+    }
 };
 const PageContent = {
     view(vnode) {
         return m(".page__content", vnode.children);
-    },
+    }
 };
 
 const Page: IPage = {
     Head: PageHead,
     Content: PageContent,
     view(vnode) {
-        return m("div", { ...vnode.attrs, className: `page ${vnode.attrs.className || ""}` }, vnode.children);
-    },
+        return m(
+            "div",
+            { ...vnode.attrs, className: `page ${vnode.attrs.className || ""}` },
+            vnode.children
+        );
+    }
 };
 
 export default Page;

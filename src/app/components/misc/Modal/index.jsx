@@ -1,5 +1,5 @@
 import * as m from "mithril";
-import Portal from "mithril-portal";
+import Portal from "components/misc/Portal";
 import "./modal.scss";
 
 const Modal = {

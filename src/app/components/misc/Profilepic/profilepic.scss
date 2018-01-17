@@ -4,7 +4,4 @@
     // border-radius: 50%;
     overflow: hidden;
     opacity: 0;
-    &[data-created="true"] {
-      @include fadeInAnimation($tdur, 1);
-    }
 }

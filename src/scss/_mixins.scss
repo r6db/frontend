@@ -63,22 +63,3 @@
         @content;
     }
 }
-
-@mixin fadeInAnimation($duration, $opacity) {
-    animation-duration: $duration;
-    animation-timing-function: ease-in;
-    animation-delay: 0;
-    animation-iteration-count: 1;
-    $animation-name: unique-id();
-    animation-name: $animation-name;
-    opacity: $opacity;
-
-    @keyframes #{$animation-name} {
-      from {
-          opacity: 0;
-      }
-      to {
-          opacity: $opacity;
-      }
-    }
-}

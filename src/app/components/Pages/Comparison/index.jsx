@@ -172,7 +172,6 @@ const getMmrChartAttrs = players => ({
                     };
                 })
                 .sort((a, b) => b.games - a.games)[0].id;
-            console.log(region);
 
             // and return its data
             return {

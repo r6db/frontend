@@ -1,10 +1,11 @@
 import * as m from "mithril";
-import Profilepic from "components/misc/Profilepic";
+import { FadeImage } from "components/misc/FadeImage";
 import Link from "components/misc/Link";
 import Media from "components/misc/Media";
 import "./playercard.scss";
 import { toPlayer } from "lib/store/actions";
 import { formatDuration } from "lib/stats";
+import { getImageLink } from "lib/domain";
 import * as get from "lodash/get";
 
 const getAliases = player => {
@@ -25,7 +26,7 @@ export default {
             <Link to={toPlayer(attrs.player.id)} className="search__result result">
                 <div className="media">
                     <div className="media__image">
-                        <Profilepic id={attrs.player.userId || attrs.player.id} />
+                        <FadeImage data-src={getImageLink((attrs.player.userId || attrs.player.id), attrs.player.platform)} />
                     </div>
                     <div className="media__content">
                         <div className="media__contentheader">

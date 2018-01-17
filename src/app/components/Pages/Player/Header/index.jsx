@@ -1,5 +1,5 @@
 import * as m from "mithril";
-import Profilepic from "components/misc/Profilepic";
+import { FadeImage } from "components/misc/FadeImage";
 import Link from "components/misc/Link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { toSimple, toPlayerTab } from "lib/store/actions";
@@ -33,7 +33,7 @@ const PlayerHeader = {
             <div className="container playerheader">
                 <div className="playerheader__content">
                     <div className="playerheader__image">
-                        <Profilepic id={attrs.userId || attrs.id} />
+                        <FadeImage src={domain.getImageLink(attrs.userId || attrs.id, attrs.platform)} />
                     </div>
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">

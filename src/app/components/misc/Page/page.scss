@@ -45,10 +45,6 @@
             top: -80px;
             height: calc(100% + 80px);
         }
-
-        &[data-created="true"] {
-            @include fadeInAnimation(150ms, 0.2);
-        }
     }
 
     &__content {

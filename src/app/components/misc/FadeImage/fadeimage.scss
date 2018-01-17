@@ -1,0 +1,14 @@
+@import "scss/styles";
+
+.fadeimage{
+    opacity: 0;
+    filter: grayscale(1);
+    overflow: hidden;
+    transition: opacity 200ms ease-in-out, filter 200ms ease-in-out;
+    overflow: hidden;
+
+    &--loaded{
+        opacity: 1;
+        filter: none;
+    }
+}

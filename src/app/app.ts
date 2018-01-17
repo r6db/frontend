@@ -14,7 +14,7 @@ setStore(store);
 store.subscribe(() => requestAnimationFrame(m.redraw));
 store.dispatch(initAction);
 
-function init(App: m.Component<any, any>) {
+function init(App: any) {
     const mount = document.querySelector("#mount");
     console.log("mounting app");
     const Root = {
