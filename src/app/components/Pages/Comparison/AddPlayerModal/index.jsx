@@ -30,11 +30,11 @@ const AddPlayerModal = {
                     });
             }
         };
-        state.onPlatformChange = e => {
-            state.platform = e.target.value;
+        state.onPlatformChange = val => {
+            state.platform = val;
         };
-        state.onQueryChange = e => {
-            state.query = e.target.value;
+        state.onQueryChange = val => {
+            state.query = val;
         };
     },
     view({ attrs, state }) {
@@ -46,8 +46,8 @@ const AddPlayerModal = {
                         type="text"
                         value={state.query}
                         placeholder="enter player name"
-                        onkeypress={state.onQueryChange}
-                        onchange={state.onQueryChange}
+                        onkeypress={m.withAttr("value", state.onQueryChange)}
+                        onchange={m.withAttr("value", state.onQueryChange)}
                     />
                     <select
                         className="searchbar__platform"
@@ -58,36 +58,48 @@ const AddPlayerModal = {
                         <option value="PS4">PS4</option>
                         <option value="XBOX">XB1</option>
                     </select>
-                    <button onsubmit={state.onSearch} className="button button--primary searchbar__submit">Search</button>
+                    <button onsubmit={state.onSearch} className="button button--primary searchbar__submit">
+                        Search
+                    </button>
                 </form>
                 <div className="addplayermodal__results">
-                    {state.results.map(x => (
-                        <div
-                            key={x.id}
-                            className={`media addplayermodal__result ${
-                                attrs.ids.find(id => id === x.id) !== undefined
-                                    ? "addplayermodal__result--selected"
-                                    : ""
-                            }`}
-                            onclick={() => attrs.onselect(x.id)}
-                        >
-                            <div className="media__image">
-                                <Profilepic className="lazyload" id={x.userId || x.id} />
+                    {state.results.length > 0 ? (
+                        state.results.map(x => (
+                            <div
+                                key={x.id}
+                                className={`media addplayermodal__result ${
+                                    attrs.ids.find(id => id === x.id) !== undefined
+                                        ? "addplayermodal__result--selected"
+                                        : ""
+                                }`}
+                                onclick={() => attrs.onselect(x.id)}
+                            >
+                                <div className="media__image">
+                                    <Profilepic className="lazyload" id={x.userId || x.id} />
+                                </div>
+                                <div className="media__content">
+                                    <div className="media__contentheader">
+                                        <header className="media__header">{x.name}</header>
+                                        {x.flair ? <span className="media__label">{x.flair}</span> : null}
+                                    </div>
+                                    <div className="media__text">
+                                        <div>level {x.level}</div>
+                                    </div>
+                                </div>
                             </div>
+                        ))
+                    ) : (
+                        <div className="media">
                             <div className="media__content">
-                                <div className="media__contentheader">
-                                    <header className="media__header">{x.name}</header>
-                                    {x.flair ? <span className="media__label">{x.flair}</span> : null}
-                                </div>
-                                <div className="media__text">
-                                    <div>level {x.level}</div>
-                                </div>
+                                <div className="media__text">{state.query ? "no results" : null}</div>
                             </div>
                         </div>
-                    ))}
+                    )}
                 </div>
                 <div className="addplayermodal__close">
-                    <button className="button button--primary" onclick={attrs.onclose}>done</button>
+                    <button className="button button--primary" onclick={attrs.onclose}>
+                        done
+                    </button>
                 </div>
             </Modal>
         );
