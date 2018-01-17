@@ -86,7 +86,12 @@ export default {
                         payload: { board: "CHANKA", entries },
                     });
                 })
-                .catch(error => dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } }));
+                .catch(error => {
+                    if (error.message === "MAINTENANCE") {
+                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    }
+                    dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } });
+                });
         },
     },
     LEADERBOARD: {
@@ -113,12 +118,15 @@ export default {
                         payload: { board, entries },
                     });
                 })
-                .catch(error =>
+                .catch(error => {
+                    if (error.message === "MAINTENANCE") {
+                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    }
                     dispatch({
                         type: "LEADERBOARD_FAILED",
                         payload: { board, error },
-                    }),
-                );
+                    });
+                });
         },
     },
     FAQ: {
@@ -166,6 +174,9 @@ export default {
                     analytics.pageView("Comparison");
                 })
                 .catch(err => {
+                    if (error.message === "MAINTENANCE") {
+                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    }
                     dispatch({
                         type: "PLAYERS_FAILED",
                     });
@@ -196,7 +207,9 @@ async function playerThunk(dispatch, getState) {
             }
         })
         .catch(error => {
-            console.error(error);
+            if (error.message === "MAINTENANCE") {
+                return dispatch(redirect({ type: "MAINTENANCE" }));
+            }
             dispatch({ type: "PLAYER_FAILED", payload: { id, error } });
         });
 }
