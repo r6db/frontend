@@ -1,6 +1,9 @@
 import { appid } from "lib/constants";
 
 export const failEarly = function failEarly(res) {
+    if (res.status === 502) {
+        throw new Error("MAINTENANCE");
+    }
     if (!res.ok) {
         throw res.json();
     } else {
@@ -19,10 +22,9 @@ export const getHeaders = headers => {
     h.append("X-App-Id", appid);
 
     if (headers) {
-        Object.keys(headers)
-            .map(key => {
-                h.append(key, headers[key]);
-            });
+        Object.keys(headers).map(key => {
+            h.append(key, headers[key]);
+        });
     }
 
     return h;

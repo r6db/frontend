@@ -1,6 +1,5 @@
 import * as m from "mithril";
 import { redirect } from "redux-first-router";
-import * as lozad from "lozad";
 import { Leaderboards } from "lib/constants";
 import { connect } from "lib/store/connect";
 import { toChanka, toPlayer } from "lib/store/actions";
@@ -100,7 +99,12 @@ const Leaderboard = {
                                         <td>
                                             <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
-                                                    <FadeImage data-src={getImageLink((entry.userId || entry.id), attrs.platform)} />
+                                                    <FadeImage
+                                                        data-src={getImageLink(
+                                                            entry.userId || entry.id,
+                                                            attrs.platform,
+                                                        )}
+                                                    />
                                                 </div>
                                                 <span className="entry__name">{entry.name}</span>
                                             </Link>

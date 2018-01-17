@@ -24,6 +24,7 @@ const componentMap = {
     PLAYERTABS: () => import("./Pages/Player"),
     COMPARISON: () => import("./Pages/Comparison"),
     ABOUT: () => import("./Pages/About"),
+    MAINTENANCE: () => import("./Pages/Errors/Maintenance"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
 const App = {
@@ -37,7 +38,7 @@ const App = {
                     <div className="app__page">
                         {attrs.loading ? (
                             <div>
-                                <Page>
+                                <Page className="page--empty">
                                     <Page.Head />
                                     <Page.Content />
                                 </Page>

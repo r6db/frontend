@@ -26,6 +26,9 @@ export default {
             });
         },
     },
+    MAINTENANCE: {
+        path: "/rip",
+    },
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
@@ -47,6 +50,9 @@ export default {
                     });
                 })
                 .catch(error => {
+                    if (error.message === "MAINTENANCE") {
+                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    }
                     dispatch({
                         type: "SEARCH_FAILED",
                         payload: { query, error },

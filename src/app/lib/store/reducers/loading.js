@@ -1,6 +1,6 @@
 export default (state = 0, action = {}) => {
     if (["SEARCH", "LEADERBOARD", "DETAIL", "PLAYER", "PROFILE", "COMPARISON"].includes(action.type)) {
-        return state +1;
+        return state + 1;
     }
     if (
         [
@@ -12,9 +12,10 @@ export default (state = 0, action = {}) => {
             "PLAYER_FAILED",
             "PLAYERS_FETCHED",
             "PLAYERS_FAILED",
+            "MAINTENANCE",
         ].includes(action.type)
     ) {
-        return Math.max(state - 1, 0) ;
+        return Math.max(state - 1, 0);
     }
     return action.type === "LOADING" ? action.payload : state;
 };

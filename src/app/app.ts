@@ -13,6 +13,10 @@ const { store } = configureStore(history);
 setStore(store);
 store.subscribe(() => requestAnimationFrame(m.redraw));
 store.dispatch(initAction);
+if (process.env.NODE_ENV === "development") {
+    (window as any).store = store;
+    (window as any).m = m;
+}
 
 function init(App: any) {
     const mount = document.querySelector("#mount");

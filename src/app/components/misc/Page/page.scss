@@ -7,6 +7,13 @@
     background: $bg-color;
     padding-top: 40px;
 
+    &--empty {
+        .page__content {
+            height: calc(100vh - 100px);
+            flex: 0 0 auto;
+        }
+    }
+
     @include medium {
         padding-top: 80px;
         display: flex;
@@ -39,7 +46,11 @@
         opacity: 0;
         top: -40px;
         height: calc(100% + 40px);
-        filter: saturate(120%) contrast(110%);
+
+        &.fadeimage--loaded {
+            opacity: 0.5;
+            filter: saturate(120%) contrast(110%);
+        }
 
         @include medium {
             top: -80px;

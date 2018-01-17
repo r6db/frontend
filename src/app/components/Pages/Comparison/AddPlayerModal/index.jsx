@@ -4,7 +4,7 @@ import Profilepic from "components/misc/Profilepic";
 import { findPlayer } from "lib/api";
 import { formatDuration } from "lib/stats";
 import "./addplayermodal.scss";
-import lozad from "lozad";
+import * as lozad from "lozad";
 
 const AddPlayerModal = {
     oninit(vnode) {
@@ -22,6 +22,7 @@ const AddPlayerModal = {
                     .then(res => {
                         state.results = res;
                         m.redraw();
+                        lozad(".fadeimage");
                     })
                     .catch(err => {
                         console.error(err);
