@@ -8,7 +8,10 @@
         padding-top: 0;
     }
     .page__head {
-        height: 90vh;
+        height: 100vh;
+    }
+    .page__image{
+        opacity: 0.5;
     }
 
     @include medium {

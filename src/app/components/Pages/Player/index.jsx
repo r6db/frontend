@@ -13,7 +13,7 @@ import { updatePlayer } from "lib/store/actions";
 import Page from "components/misc/Page";
 import "./player.scss";
 
-import background from "components/misc/Page/RB6_WhiteNoise_Teaser1.jpg";
+import background from "./RB6_WhiteNoise_Teaser1.jpg";
 
 const Player = {
     view({ attrs, state }) {

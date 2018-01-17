@@ -10,7 +10,7 @@ import "./playerheader.scss";
 
 const isActive = (expected, actual) => (expected === actual ? "playerheader__tab--active" : "");
 
-const ExportButton = player => {
+const exportButton = player => {
     const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`;
     return (
         <a className="playerheader__link" download={`${player.name}.json`} href={href}>
@@ -63,7 +63,7 @@ const PlayerHeader = {
                             <a className="playerheader__link" href={domain.getEslLink(attrs.name)} target="_BLANK">
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
-                            {ExportButton(attrs)}
+                            {exportButton(attrs)}
                             <span className="playerheader__divider">|</span>
                             <Link className="playerheader__link" to={toSimple(attrs.id)} target="_BLANK">
                                 Simple View
