@@ -33,12 +33,12 @@ export default {
 
         state.wlChart = {
             type: "Line",
-            title: "win/loss %",
+            title: "Win/Loss %",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [
                     {
-                        name: "ranked",
+                        name: "Ranked",
                         data: getDelta(function(curr, prev) {
                             const dWon = curr.stats.ranked.won - prev.stats.ranked.won;
                             const dLost = curr.stats.ranked.lost - prev.stats.ranked.lost;
@@ -51,7 +51,7 @@ export default {
                         className: "ranked",
                     },
                     {
-                        name: "casual",
+                        name: "Casual",
                         data: getDelta(function(curr, prev) {
                             const dWon = curr.stats.casual.won - prev.stats.casual.won;
                             const dLost = curr.stats.casual.lost - prev.stats.casual.lost;
@@ -76,12 +76,12 @@ export default {
         };
         state.kdChart = {
             type: "Line",
-            title: "k/d ratio",
+            title: "K/D ratio",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [
                     {
-                        name: "ranked",
+                        name: "Ranked",
                         data: getDelta(function(curr, prev) {
                             const dKills = curr.stats.ranked.kills - prev.stats.ranked.kills;
                             const dDeaths = curr.stats.ranked.deaths - prev.stats.ranked.deaths;
@@ -94,7 +94,7 @@ export default {
                         className: "ranked",
                     },
                     {
-                        name: "casual",
+                        name: "Casual",
                         data: getDelta(function(curr, prev) {
                             const dKills = curr.stats.casual.kills - prev.stats.casual.kills;
                             const dDeaths = curr.stats.casual.deaths - prev.stats.casual.deaths;
@@ -121,12 +121,12 @@ export default {
 
         state.mmrChart = {
             type: "Line",
-            title: "MMR total",
+            title: "MMR",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [
                     {
-                        name: "Europe, Africa & M.East",
+                        name: "Europe",
                         data: offsettedRaw.every(
                             x => !x.ranks || (x.ranks && x.ranks.emea && x.ranks.emea.mmr === 2500),
                         )
@@ -178,12 +178,12 @@ export default {
 
         state.gameCountChart = {
             type: "Bar",
-            title: "matches played",
+            title: "Matches played",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [
                     {
-                        name: "ranked",
+                        name: "Ranked",
                         data: getDelta(function(curr, prev) {
                             return {
                                 value: curr.stats.ranked.played - prev.stats.ranked.played,
@@ -193,7 +193,7 @@ export default {
                         className: "ranked",
                     },
                     {
-                        name: "casual",
+                        name: "Casual",
                         data: getDelta(function(curr, prev) {
                             return {
                                 value: curr.stats.casual.played - prev.stats.casual.played,
@@ -215,12 +215,12 @@ export default {
 
         state.hsChart = {
             type: "Line",
-            title: "accuracy & headshot rate",
+            title: "Accuracy & Headshot Rate",
             data: {
                 labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
                 series: [
                     {
-                        name: "accuracy",
+                        name: "Accuracy",
                         data: getDelta(function(curr, prev) {
                             const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
                             const dFired = curr.stats.general.bulletsFired - prev.stats.general.bulletsFired;
@@ -232,7 +232,7 @@ export default {
                         className: "accuracy",
                     },
                     {
-                        name: "headshot rate",
+                        name: "Headshot Rate",
                         data: getDelta(function(curr, prev) {
                             const dHs = curr.stats.general.headshot - prev.stats.general.headshot;
                             const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;

@@ -118,21 +118,35 @@ $ct-series-colors: (
 @import "~chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css";
 .chart {
     width: 100%;
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $l;
+    }
     &__title {
-        text-align: center;
-        margin-bottom: $l*0.5;
+        justify-content: flex-start;
+        @include card-header;
     }
     &__legend {
+        flex: 1;
         width: auto;
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: flex-end;
         flex-wrap: wrap;
         font-size: 0.8rem;
-        color: fade-out($gray-light, 0.2);
+        color: fade-out($gray-light, 0.7);
+        margin-right: $l;
+
+        @include medium {
+            margin-right: 0;
+        }
         &item {
             display: flex;
             flex-direction: row;
+            align-items: center;
             padding: ($l*0.5);
         }
         .indicator {
@@ -140,23 +154,53 @@ $ct-series-colors: (
             height: 1em;
             display: block;
             border-radius: 50%;
-            margin-right: $l*0.5;
+            margin-right: $l*0.75;
+            position: relative;
+            top: 1px;
         }
     }
     &__element {
         position: relative;
+        .ct-grid {
+            &.ct-vertical {
+                stroke-dasharray: 0px;
+                opacity: 0.1;
+            }
+            &.ct-horizontal {
+                opacity: 0.05;
+            }
+        }
+        .ct-label {
+            &.ct-vertical {
+              opacity: 0.5;
+              top: 3px;
+              position: relative;
+            }
+            &.ct-horizontal {
+              opacity: 0.1;
+            }
+        }
         .ct-line {
             stroke-width: 3px;
         }
         .ct-point {
-            stroke-width: 6px;
+            stroke-width: 8px;
+            transition: stroke-width 100ms ease-in-out;
+            &:hover {
+              stroke-width: 12px;
+            }
         }
     }
 }
 .chartist-tooltip {
     color: $white;
-    background: darken($gray-dark, 5%);
+    background: darken($gray-dark, 20%);
+    border-radius: $borderradius;
+    line-height: 1.4;
     &:before {
-        border-top-color: darken($gray-dark, 5%);
+        border-top-color: darken($gray-dark, 20%);
+    }
+    &-meta {
+        opacity: 0.4;
     }
 }
