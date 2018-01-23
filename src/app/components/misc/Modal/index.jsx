@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Portal from "components/misc/Portal";
 import "./modal.scss";
 

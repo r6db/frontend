@@ -16,8 +16,7 @@
         "noUnusedLocals": true,
         "target": "es2015",
         "module": "commonjs",
-        "jsx": "react",
-        "jsxFactory": "m",
+        "jsx": "preserve",
         "baseUrl": ".",
         "paths": {       
             "components/*": ["./src/app/components/*"],       

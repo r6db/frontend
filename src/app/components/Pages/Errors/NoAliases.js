@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import DetailError from "./DetailError";
 
 export default {

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import * as get from "lodash/get";
 import "./gamemodes.scss";
 import Stat from "components/misc/Stat";

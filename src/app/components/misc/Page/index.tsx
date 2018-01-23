@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import * as lozad from "lozad";
 import { FadeImage } from "components/misc/FadeImage";
 import "./page.scss";
@@ -14,7 +14,7 @@ interface IPage extends m.Component<IPageAttrs, {}> {
     Head: m.Component<IPageheadAttrs, {}>;
     Content: m.Component<any, any>;
 }
-const PageHead: m.Component<IPageheadAttrs, {}> = {
+export const PageHead: m.Component<IPageheadAttrs, {}> = {
     oncreate(vnode) {
         const observer = lozad(".fadeimage");
         setTimeout(() => observer.observe(), 200);
@@ -33,13 +33,13 @@ const PageHead: m.Component<IPageheadAttrs, {}> = {
         ]);
     }
 };
-const PageContent = {
+export const PageContent = {
     view(vnode) {
         return m(".page__content", vnode.children);
     }
 };
 
-const Page: IPage = {
+export const Page: IPage = {
     Head: PageHead,
     Content: PageContent,
     view(vnode) {

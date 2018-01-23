@@ -1,4 +1,5 @@
-import * as m from "mithril";
+import Inferno from "inferno";
+import { connect } from "inferno-redux";
 import AsyncComponent from "components/misc/AsyncComponent";
 import Loading from "components/misc/Loading";
 import Searchbar from "components/misc/Searchbar";
@@ -7,7 +8,6 @@ import Drawer from "components/misc/Drawer";
 import Page from "components/misc/Page";
 import Footer from "components/misc/Footer";
 import Icon, { GLYPHS } from "components/misc/Icon";
-import { connect } from "lib/store/connect";
 import { NOT_FOUND } from "redux-first-router";
 
 import "./base.scss";
@@ -27,33 +27,30 @@ const componentMap = {
     MAINTENANCE: () => import("./Pages/Errors/Maintenance"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
-const App = {
-    view({ attrs, state }) {
-        return (
-            <div className={"app " + attrs.location}>
-                <div className="app__content">
-                    <Drawer>
-                        <Menu platform={attrs.platform} />
-                    </Drawer>
-                    <div className="app__page">
-                        {attrs.loading ? (
-                            <div>
-                                <Page className="page--empty">
-                                    <Page.Head />
-                                    <Page.Content />
-                                </Page>
-                                <Loading />
-                            </div>
-                        ) : (
-                            <AsyncComponent importFn={attrs.importFn} />
-                        )}
-                        <Footer />
+
+const App = ({ attrs, state }) => (
+    <div className={"app " + attrs.location}>
+        <div className="app__content">
+            <Drawer>
+                <Menu platform={attrs.platform} />
+            </Drawer>
+            <div className="app__page">
+                {attrs.loading ? (
+                    <div>
+                        <Page className="page--empty">
+                            <Page.Head />
+                            <Page.Content />
+                        </Page>
+                        <Loading />
                     </div>
-                </div>
+                ) : (
+                    <AsyncComponent importFn={attrs.importFn} />
+                )}
+                <Footer />
             </div>
-        );
-    },
-};
+        </div>
+    </div>
+);
 
 const mapStateToProps = getState => {
     const { platform, search, location, loading } = getState();

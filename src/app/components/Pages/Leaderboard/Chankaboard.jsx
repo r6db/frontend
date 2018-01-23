@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import { Leaderboards } from "lib/constants";
 import { connect } from "lib/store/connect";
 import { toPlayer } from "lib/store/actions";

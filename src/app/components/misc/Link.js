@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import { connect } from "lib/store/connect";
 import {
     actionToPath,

@@ -1,9 +1,14 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import DetailError from "./DetailError";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 export default {
     view({ attrs }) {
+        return (
+            <DetailError title="Maintenance">
+
+                </DetailError>
+        );
         return m(DetailError, { title: "Maintenance" }, [
             m("p.paragraph", [
                 "with 'maintenance' we mean that we royally fucked our server, but won't admit it.",

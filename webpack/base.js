@@ -3,7 +3,10 @@ const path = require("path");
 const util = require("util");
 
 const DashboardPlugin = require("webpack-dashboard/plugin");
-const { CheckerPlugin, TsConfigPathsPlugin } = require("awesome-typescript-loader");
+const {
+    CheckerPlugin,
+    TsConfigPathsPlugin
+} = require("awesome-typescript-loader");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -17,14 +20,14 @@ const cssdedupe = require("postcss-discard-duplicates");
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
-        app: ["./src/app/index.ts"],
+        app: ["./src/app/index.ts"]
     },
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
         filename: "[name].[hash].js",
         chunkFilename: "[name].[hash].js",
-        pathinfo: true,
+        pathinfo: true
     },
     target: "web",
     resolve: {
@@ -32,11 +35,11 @@ module.exports = {
         alias: {
             components: path.join(__dirname, "../src/app/components"),
             lib: path.join(__dirname, "../src/app/lib"),
-            assets: path.join(__dirname, "../src/assets"),
+            assets: path.join(__dirname, "../src/assets")
         }
     },
     node: {
-        __filename: true,
+        __filename: true
     },
     stats: "minimal",
     devtool: "source-map",
@@ -48,55 +51,58 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        cacheDirectory: "./.cache",
-                    },
-                },
-            },
-            {
-                test: /\.tsx?$/,
-                use: {
-                    loader: "awesome-typescript-loader",
-                    options: {
-                        useCache: true,
-                        useBabel: true,
+                        cacheDirectory: "./.cache"
                     }
                 }
-            },
-            {
+            }, {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            cacheDirectory: "./.cache"
+                        }
+                    },
+                    { loader: "ts-loader" }
+                ]
+            }, {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
                         { loader: "css-loader" },
                         { loader: "postcss-loader" },
-                        { loader: "sass-loader", options: { includePaths: [path.resolve(__dirname, "../src")] } },
-                    ],
-                }),
+                        {
+                            loader: "sass-loader",
+                            options: { includePaths: [path.resolve(__dirname, "../src")] }
+                        }
+                    ]
+                })
             },
             {
                 test: /.svg$/,
                 use: {
                     loader: "svg-sprite-loader",
                     options: {
-                        extract: true,
-                    },
-                },
+                        extract: true
+                    }
+                }
             },
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
                     {
                         loader: "file-loader",
-                        options: {},
+                        options: {}
                     },
                     {
                         loader: "image-webpack-loader",
                         options: {
-                            bypassOnDebug: true,
-                        },
-                    },
-                ],
-            },
-        ],
+                            bypassOnDebug: true
+                        }
+                    }
+                ]
+            }
+        ]
     },
     plugins: [
         new DashboardPlugin(),
@@ -104,7 +110,10 @@ module.exports = {
         new CheckerPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new CopyWebpackPlugin([{ from: "src/assets", to: "assets" }, { from: "src/favicons/*", to: "[name].[ext]" }]),
+        new CopyWebpackPlugin([
+            { from: "src/assets", to: "assets" },
+            { from: "src/favicons/*", to: "[name].[ext]" }
+        ]),
         new webpack.LoaderOptionsPlugin({
             options: {
                 postcss: [
@@ -113,16 +122,16 @@ module.exports = {
                     cssdedupe(),
                     nano({
                         reduceIdents: false,
-                        zindex: false,
-                    }),
-                ],
-            },
+                        zindex: false
+                    })
+                ]
+            }
         }),
         new HtmlWebpackPlugin({
-            template: "./src/index.ejs",
+            template: "./src/index.ejs"
         }),
         new SpriteLoaderPlugin(),
         new ExtractTextPlugin({ filename: "styles.[hash].css", allChunks: true }),
-        new webpack.NamedModulesPlugin(),
-    ],
+        new webpack.NamedModulesPlugin()
+    ]
 };

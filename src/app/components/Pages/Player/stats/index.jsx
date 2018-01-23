@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import RankOverview from "./modules/RankOverview";
 import RankSeason from "./modules/RankSeason";
 import Aliases from "./modules/Aliases";

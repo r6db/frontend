@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import { toPlayer } from "lib/store/actions";
 import Link from "components/misc/Link";
 

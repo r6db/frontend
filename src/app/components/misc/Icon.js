@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 
 import EMAIL from "feather-icons/dist/icons/mail.svg";
 import TWITTER from "feather-icons/dist/icons/twitter.svg";

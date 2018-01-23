@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import * as redux from "redux";
 
 let getState: () => any;

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Result from "./Result";
 import Media from "components/misc/Media";
 import Page from "components/misc/Page";

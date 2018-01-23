@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 
 const getWL = o => (o.won / (o.won + o.lost) * 100 || 0).toFixed(2);
 const getKD = o => (o.kills / o.deaths || 0).toFixed(2);

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import * as get from "lodash/get";
 import { connect } from "lib/store/connect";
 import * as stats from "lib/stats";

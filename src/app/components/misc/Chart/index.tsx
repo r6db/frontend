@@ -1,4 +1,5 @@
-import * as m from "mithril";
+import Inferno from "inferno";
+import Component from "inferno-component";
 import * as Chartist from "chartist";
 import "chartist-plugin-tooltips";
 import "./chart.scss";
@@ -25,30 +26,33 @@ export function labelInterpolationFnc(value, index, arr) {
     }
 }
 
-export default {
-    oncreate({ attrs, dom, state }) {
-        const el = dom.querySelector(".chart__element");
-        const Chart = Chartist[attrs.type];
-        if (!Chart) {
-            console.error(`type "${attrs.type} is not valid"`);
+export class Chart extends Component<any, any>{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            chart: null
         }
-        const opts = attrs.options || {};
+    }
+    init(el) {
+        const Chart = Chartist[this.props.type];
+        if (!Chart) {
+            console.error(`type "${this.props.type} is not valid"`);
+        }
+        const opts = this.props.options || {};
         opts.plugins = [Chartist.plugins.tooltip()];
-        state.chart = new Chart(el, attrs.data, opts, attrs.responsiveOptions || {});
-        // state.onResize = () => state.chart.update();
-        // window.addEventListener("resize", state.onResize);
-    },
-    onremove({ state }) {
-        // window.removeEventListener("resize", state.onResize);
-    },
-    view({ attrs, state }) {
+        this.setState({
+            chart: new Chart(el, this.props.data, opts, this.props.responsiveOptions || {})
+        })
+    }
+    render() {
         return (
             <div className="chart">
                 <div className="chart__header">
-                    {attrs.hideTitle || false ? null : <div className="chart__title">{attrs.title}</div>}
-                    {attrs.hideLegend || false ? null : (
+                    {this.props.hideTitle || false ? null : <div className="chart__title">{this.props.title}</div>}
+                    {this.props.hideLegend || false ? null : (
                         <div className="chart__legend">
-                            {attrs.data.series.map(series => [
+                            {this.props.data.series.map(series => [
                                 <div className="chart__legenditem">
                                     <div className={"indicator " + series.className} />
                                     <div>{series.name}</div>
@@ -57,8 +61,8 @@ export default {
                         </div>
                     )}
                 </div>
-                <div className="chart__element" />
+                <div className="chart__element" ref={el => this.init(el)} />
             </div>
         );
-    },
+    }
 };

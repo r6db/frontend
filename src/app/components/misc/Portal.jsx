@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 /**
  * inline of npm package "mithril-portal"
  * licensed under MIT

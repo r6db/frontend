@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import "./scale.scss";
 
 const asString = val => (typeof val === "number" ? val.toFixed(2) : val.toString());

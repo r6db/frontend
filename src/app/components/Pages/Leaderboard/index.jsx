@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import { redirect } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
 import { connect } from "lib/store/connect";

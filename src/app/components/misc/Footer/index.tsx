@@ -1,9 +1,25 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Link from "components/misc/Link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import "./footer.scss";
 
-const Footer: m.Component<{}, {}> = {
+const Footer = props => (
+    <div className="footer">
+        <div className="footer__container container">
+            <div className="footer__column">
+                <Icon className="footer__logo" glyph={GLYPHS.LOGO} />    
+            </div>
+            <div className="footer__column">
+            </div>
+            <div className="footer__column">
+            </div>
+            <div className="footer__column">
+                <a href="https://github.com/r6db/r6db/issues" className="footer__link footer__link--noicon">Report Bug</a>
+            </div>
+        </div>
+    </div>
+)
+const Footer2: m.Component<{}, {}> = {
     view() {
         return m(".footer", [
             m(".footer__container.container", [

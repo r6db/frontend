@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Stats from "./stats";
 import Operators from "./operators";
 import Ranks from "./ranks";

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import * as get from "lodash/get";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { Ranks, Seasons } from "lib/constants";

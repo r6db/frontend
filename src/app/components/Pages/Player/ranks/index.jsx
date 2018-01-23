@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import "./rankstab.scss";
 import { Ranks, regions } from "lib/constants";
 import Icon, { GLYPHS } from "components/misc/Icon";

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Searchbar from "components/misc/Searchbar";
 import Page from "components/misc/Page";
 import "./home.scss";

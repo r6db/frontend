@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Stat from "components/misc/Stat";
 import * as get from "lodash/get";
 import { getRankWinChance } from "lib/stats";

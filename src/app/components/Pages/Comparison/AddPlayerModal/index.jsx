@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Modal from "components/misc/Modal";
 import Profilepic from "components/misc/Profilepic";
 import { findPlayer } from "lib/api";

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import { FadeImage } from "components/misc/FadeImage";
 import Link from "components/misc/Link";
 import Icon, { GLYPHS } from "components/misc/Icon";

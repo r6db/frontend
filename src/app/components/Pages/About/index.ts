@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Page from "components/misc/Page";
 
 const About: m.Component<{}, {}> = {

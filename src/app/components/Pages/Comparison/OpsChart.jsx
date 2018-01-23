@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { formatDuration } from "lib/stats";
 

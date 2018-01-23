@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import Inferno from "inferno";
 import { Ranks } from "lib/constants";
 
 const games = s => s.wins + s.losses;
