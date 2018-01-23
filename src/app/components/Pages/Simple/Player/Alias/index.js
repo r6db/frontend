@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import "./alias.scss";
 
 const formatTitle = date => date

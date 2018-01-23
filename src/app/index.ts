@@ -1,3 +1,5 @@
+/// <reference path="../../declarations.d.ts" />
+
 /**
  * this is the app's entry point
  */

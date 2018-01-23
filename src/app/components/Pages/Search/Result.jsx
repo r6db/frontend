@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import { FadeImage } from "components/misc/FadeImage";
 import Link from "components/misc/Link";
 import Media from "components/misc/Media";

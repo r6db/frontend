@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import Alias from "./Alias";
 import "./aliases.scss";
 

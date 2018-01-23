@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import Chartist from "chartist";
 import Chart, { labelInterpolationFnc } from "components/misc/Chart";
 import * as stats from "lib/stats";

@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import { formatDuration } from "lib/stats";
 
 export default {

@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import { connect } from "inferno-redux";
 import AsyncComponent from "components/misc/AsyncComponent";
 import Loading from "components/misc/Loading";
@@ -15,16 +15,16 @@ import "./app.scss";
 
 const componentMap = {
     HOME: () => import("./Pages/Home"),
-    SEARCH: () => import("./Pages/Search"),
-    FAQ: () => import("./Pages/Faq"),
-    LEADERBOARD: () => import("./Pages/Leaderboard"),
-    CHANKABOARD: () => import("./Pages/Leaderboard/Chankaboard"),
-    PLAYER: () => import("./Pages/Player"),
-    SIMPLE: () => import("./Pages/Simple"),
-    PLAYERTABS: () => import("./Pages/Player"),
-    COMPARISON: () => import("./Pages/Comparison"),
+    // SEARCH: () => import("./Pages/Search"),
+    // FAQ: () => import("./Pages/Faq"),
+    // LEADERBOARD: () => import("./Pages/Leaderboard"),
+    // CHANKABOARD: () => import("./Pages/Leaderboard/Chankaboard"),
+    // PLAYER: () => import("./Pages/Player"),
+    // SIMPLE: () => import("./Pages/Simple"),
+    // PLAYERTABS: () => import("./Pages/Player"),
+    // COMPARISON: () => import("./Pages/Comparison"),
     ABOUT: () => import("./Pages/About"),
-    MAINTENANCE: () => import("./Pages/Errors/Maintenance"),
+    // MAINTENANCE: () => import("./Pages/Errors/Maintenance"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
 

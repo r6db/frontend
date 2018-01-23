@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import RankOverview from "./modules/RankOverview";
 import RankSeason from "./modules/RankSeason";
 import Aliases from "./modules/Aliases";

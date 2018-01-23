@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 export default {

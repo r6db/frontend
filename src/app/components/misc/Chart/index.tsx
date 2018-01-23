@@ -1,5 +1,4 @@
-import Inferno from "inferno";
-import Component from "inferno-component";
+import * as Inferno from "inferno";
 import * as Chartist from "chartist";
 import "chartist-plugin-tooltips";
 import "./chart.scss";
@@ -26,13 +25,13 @@ export function labelInterpolationFnc(value, index, arr) {
     }
 }
 
-export class Chart extends Component<any, any>{
+export class Chart extends Inferno.Component<any, any> {
     constructor(props) {
         super(props);
 
         this.state = {
-            chart: null
-        }
+            chart: null,
+        };
     }
     init(el) {
         const Chart = Chartist[this.props.type];
@@ -42,8 +41,8 @@ export class Chart extends Component<any, any>{
         const opts = this.props.options || {};
         opts.plugins = [Chartist.plugins.tooltip()];
         this.setState({
-            chart: new Chart(el, this.props.data, opts, this.props.responsiveOptions || {})
-        })
+            chart: new Chart(el, this.props.data, opts, this.props.responsiveOptions || {}),
+        });
     }
     render() {
         return (
@@ -65,4 +64,4 @@ export class Chart extends Component<any, any>{
             </div>
         );
     }
-};
+}

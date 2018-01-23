@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
 import Chart, { colors, labelInterpolationFnc } from "components/misc/Chart";

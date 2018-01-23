@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 
 import Profilepic from "components/misc/Profilepic";
 import Alias from "./Alias";

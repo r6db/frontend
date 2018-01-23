@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import Stats from "./stats";
 import Operators from "./operators";
 import Ranks from "./ranks";
@@ -8,7 +8,7 @@ import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
 import NoData from "../Errors/NoData";
 import Header from "./Header";
-import { connect } from "lib/store/connect";
+import { connect } from "inferno-redux";
 import { updatePlayer } from "lib/store/actions";
 import Page from "components/misc/Page";
 import "./player.scss";

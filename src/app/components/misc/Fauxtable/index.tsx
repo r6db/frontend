@@ -1,11 +1,11 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import "./fauxtable.scss";
 
 const getEl = baseClass => props => (
     <div {...props} className={`${baseClass} ${props.className || ""}`}>
         {props.children}
     </div>
-),
+);
 
 const Head = getEl("fauxtable__head");
 const Body = getEl("fauxtable__body");
@@ -19,5 +19,9 @@ export default {
     Head,
     Body,
     Heading,
-    Table: props => <div {...props} className={`fauxtable ${props.className}`}>{props.children}</div>
+    Table: props => (
+        <div {...props} className={`fauxtable ${props.className}`}>
+            {props.children}
+        </div>
+    ),
 };

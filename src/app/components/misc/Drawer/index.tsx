@@ -1,9 +1,9 @@
-import Inferno from "inferno";
-import { connect } from "lib/store/connect";
+import * as Inferno from "inferno";
+import { connect } from "inferno-redux";
 import Searchbar from "../Searchbar";
 import "./drawer.scss";
 
-const Drawer = (props) => (
+const Drawer = props => (
     <div className={`drawer ${props.isOpen ? "drawer--open" : ""}`}>
         <button onclick={props.toggleMenu} className="drawer__burger">
             <span />

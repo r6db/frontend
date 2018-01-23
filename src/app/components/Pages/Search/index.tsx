@@ -1,8 +1,8 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import Result from "./Result";
 import Media from "components/misc/Media";
 import Page from "components/misc/Page";
-import { connect } from "lib/store/connect";
+import { connect } from "inferno-redux";
 import "./search.scss";
 
 const Search = {

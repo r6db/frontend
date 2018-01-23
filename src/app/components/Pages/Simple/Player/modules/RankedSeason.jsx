@@ -1,4 +1,4 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import { Ranks } from "lib/constants";
 
 const games = s => s.wins + s.losses;

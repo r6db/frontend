@@ -1,9 +1,9 @@
-import Inferno from "inferno";
+import * as Inferno from "inferno";
 import Player from "./Player";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
-import { connect } from "lib/store/connect";
+import { connect } from "inferno-redux";
 import "./profile.scss";
 
 const Profile = {
