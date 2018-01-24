@@ -16,7 +16,7 @@
         "sourceMap": true,
         "target": "es2017",
         "module": "esnext",
-        "jsx": "react",
+        "jsx": "preserve",
         "baseUrl": ".",
         "lib": ["es2017", "dom"],
         "paths": {

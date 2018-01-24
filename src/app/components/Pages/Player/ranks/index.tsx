@@ -52,6 +52,9 @@ export default class RanksTable extends React.Component<any, any> {
             showUnranked: false,
             ranks,
         };
+
+        this.sort = this.sort.bind(this);
+        this.filter = this.filter.bind(this);
     }
 
     onRegionFilter(regionFilter) {
@@ -113,14 +116,18 @@ export default class RanksTable extends React.Component<any, any> {
                             <label htmlFor="season-filter">Season</label>
                             <select name="season-filter" onChange={e => this.onFilter(e.target.value)}>
                                 <option value="all">All</option>
-                                {this.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
+                                {this.getSeasonFilters().map(x => (
+                                    <option key={x} value={x}>
+                                        {x}
+                                    </option>
+                                ))}
                             </select>
                         </p>
                         <p>
                             <label htmlFor="region-filter">Region</label>
                             <select name="region-filter" onChange={e => this.onRegionFilter(e.target.value)}>
                                 <option value="all">All</option>
-                                <option value="emea">EUrope</option>
+                                <option value="emea">Europe</option>
                                 <option value="ncsa">America</option>
                                 <option value="apac">Asia</option>
                             </select>
@@ -133,6 +140,7 @@ export default class RanksTable extends React.Component<any, any> {
                         <Fauxtable.Row>
                             {sorters.map(sorter => (
                                 <Fauxtable.Heading
+                                    key={sorter.label}
                                     className={this.getSorterClass(sorter)}
                                     onClick={() => this.setSort(sorter)}
                                 >
@@ -143,8 +151,8 @@ export default class RanksTable extends React.Component<any, any> {
                     </Fauxtable.Head>
                     <Fauxtable.Body>
                         {this.state.ranks
-                            .filter(this.state.filter)
-                            .sort(this.state.sort)
+                            .filter(this.filter)
+                            .sort(this.sort)
                             .map(datum => (
                                 <Fauxtable.Row key={datum.id} className="fauxtable__row">
                                     <Fauxtable.Cell className="fauxtable__cell region">

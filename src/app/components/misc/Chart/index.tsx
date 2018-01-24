@@ -26,6 +26,8 @@ export function labelInterpolationFnc(value, index, arr) {
 }
 
 export default class Chart extends React.Component<any, any> {
+    el: HTMLElement;
+
     constructor(props) {
         super(props);
 
@@ -33,7 +35,7 @@ export default class Chart extends React.Component<any, any> {
             chart: null,
         };
     }
-    init(el) {
+    componentDidMount() {
         const Chart = Chartist[this.props.type];
         if (!Chart) {
             console.error(`type "${this.props.type} is not valid"`);
@@ -41,7 +43,7 @@ export default class Chart extends React.Component<any, any> {
         const opts = this.props.options || {};
         opts.plugins = [Chartist.plugins.tooltip()];
         this.setState({
-            chart: new Chart(el, this.props.data, opts, this.props.responsiveOptions || {}),
+            chart: new Chart(this.el, this.props.data, opts, this.props.responsiveOptions || {}),
         });
     }
     render() {
@@ -52,7 +54,7 @@ export default class Chart extends React.Component<any, any> {
                     {this.props.hideLegend || false ? null : (
                         <div className="chart__legend">
                             {this.props.data.series.map(series => [
-                                <div className="chart__legenditem">
+                                <div key={series.name} className="chart__legenditem">
                                     <div className={"indicator " + series.className} />
                                     <div>{series.name}</div>
                                 </div>,
@@ -60,7 +62,7 @@ export default class Chart extends React.Component<any, any> {
                         </div>
                     )}
                 </div>
-                <div className="chart__element" ref={el => this.init(el)} />
+                <div className="chart__element" ref={el => (this.el = el)} />
             </div>
         );
     }

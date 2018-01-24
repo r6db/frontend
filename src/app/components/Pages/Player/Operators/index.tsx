@@ -222,11 +222,15 @@ export default class OperatorTab extends React.Component<any, any> {
 
         this.state = {
             filterProp: "None",
-            sorter: null,
+            sorter: sorters[0],
             isSortReversed: false,
             operatorsShowMap,
             opgraphs,
+            ops,
         };
+
+        this.sort = this.sort.bind(this);
+        this.filter = this.filter.bind(this);
     }
 
     getSorterClass(tester) {
@@ -273,7 +277,11 @@ export default class OperatorTab extends React.Component<any, any> {
                         <p>
                             <label htmlFor="filter">filter by</label>
                             <select name="filter" onChange={e => this.onFilter(e.target.value)}>
-                                {Object.keys(filters).map(x => <option value={x}>{x}</option>)}
+                                {Object.keys(filters).map(x => (
+                                    <option key={x} value={x}>
+                                        {x}
+                                    </option>
+                                ))}
                             </select>
                         </p>
                     </div>
@@ -283,6 +291,7 @@ export default class OperatorTab extends React.Component<any, any> {
                         <Fauxtable.Row>
                             {sorters.map(sorter => (
                                 <Fauxtable.Heading
+                                    key={sorter.label}
                                     className={this.getSorterClass(sorter)}
                                     onClick={() => this.setSort(sorter)}
                                 >
@@ -293,11 +302,11 @@ export default class OperatorTab extends React.Component<any, any> {
                     </Fauxtable.Head>
                     <Fauxtable.Body>
                         {this.state.ops
-                            .filter(this.state.filter)
-                            .sort(this.state.sort)
+                            .filter(this.filter)
+                            .sort(this.sort)
                             .map(datum => (
-                                <div>
-                                    <Fauxtable.Row key={datum.id} className={datum.id}>
+                                <div key={datum.id}>
+                                    <Fauxtable.Row className={datum.id}>
                                         <Fauxtable.Cell className="name" onClick={() => this.toggleOp(datum.id)}>
                                             <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
