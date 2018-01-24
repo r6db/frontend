@@ -23,13 +23,7 @@ export default {
                     <div className="statstab__center">
                         {attrs.stats ? <StatOverview {...attrs} /> : null}
                         <RankSeason {...attrs} />
-                        {/* {attrs.stats ? <Charts {...attrs} /> : null} */}
-                        <div className="playermodule" style={{"text-align": "center"}}>
-                            <div className="playermodule__divider"></div>
-                            progressions are disabled due to low update performance. <br />
-                            we are working on a rewrite to enable this feature again soon!
-                            <div className="playermodule__divider"></div>
-                        </div>
+                        {attrs.stats ? <Charts {...attrs} /> : null}
                     </div>
                     <div className="statstab__aside">{attrs.stats ? <GameModes {...attrs} /> : null}</div>
                 </div>
