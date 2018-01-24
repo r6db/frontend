@@ -12,6 +12,7 @@
     },
     "license": "MIT",
     "dependencies": {
+        "babel-plugin-inferno": "^4.0.0-29",
         "chartist": "^0.11.0",
         "chartist-plugin-tooltips": "^0.0.17",
         "feather-icons": "^4.5.0",
@@ -35,7 +36,6 @@
         "babel-core": "^6.5.2",
         "babel-loader": "^6.2.3",
         "babel-minify-webpack-plugin": "^0.2.0",
-        "babel-plugin-inferno": "^4.0.0-29",
         "babel-plugin-syntax-dynamic-import": "^6.18.0",
         "babel-plugin-transform-object-rest-spread": "^6.19.0",
         "babel-plugin-transform-react-jsx": "^6.8.0",

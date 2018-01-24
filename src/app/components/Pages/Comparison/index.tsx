@@ -428,6 +428,7 @@ class Compare extends Inferno.Component<any, any> {
 const mapState = state => {
     const { players, loading, location } = state;
     const ids = [].concat(get(location, "query.ids", [])).map(x => x.toLowerCase().trim());
+    debugger;
     return {
         players: ids.map(x => players[x]).filter(x => !!x),
         ids,

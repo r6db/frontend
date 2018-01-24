@@ -1,50 +1,51 @@
 import * as Inferno from "inferno";
 import * as Page from "components/misc/Page";
 
+const Placeholder = () => (
+    <Page.Page>
+        <Page.PageHead />
+        <Page.PageContent />
+    </Page.Page>);
+
 export default class AsyncComponent extends Inferno.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
             Component: null,
-            currentImport: null,
-            loading: false,
+            loading: true,
         };
+        console.debug("AsyncComponent::ctor", props);
     }
     componentDidMount() {
         this.load(this.props.importFn);
     }
+    componentWillUpdate(newProps) {
+        if (newProps.importFn !== this.props.importFn) {
+            console.debug("AsyncComponent::will_update");
+            this.load(newProps.importFn);
+        }
+    }
     async load(importFn) {
-        console.log("AsyncComponent::start");
-        this.setState({ loading: true });
-        console.log("AsyncComponent::fetch");
+        console.debug("AsyncComponent::load_start");
+        this.setState({ loading: true, Component: <div className="asyncPlaceholder"/> });
+        console.debug("AsyncComponent::load_fetch");
+        let Component = <div className="asyncPlaceholder" />;
+
         try {
-            console.log("AsyncComponent::importer", importFn);
-            const imported = await importFn();
-            console.log("AsyncComponent::success");
-            const Component = imported.default;
-            this.setState({ Component, loading: false });
+            console.debug("AsyncComponent::load_importer", {hasFunc: !!importFn});
+            Component = (await importFn()).default;
+            console.debug("AsyncComponent::load_success", {hasComponent: !!Component});
         } catch (e) {
             console.error(e);
-            console.log("AsyncComponent::fail");
-            this.setState({ Component: null, loading: false });
+            console.debug("AsyncComponent::load_fail");
         }
+        this.setState({ Component, loading: false });
     }
 
-    componentWillUpdate(old) {
-        if (!this.props.loading && this.props.importFn !== this.state.currentImport) {
-            console.log("AsyncComponent::will_update");
-            this.setState({ currentImport: this.props.importFn });
-            this.load(this.props.importFn);
-        }
-    }
     render() {
-        return this.state.loading || !this.state.Component ? (
-            <Page.Page>
-                <Page.PageHead />
-                <Page.PageContent />
-            </Page.Page>
-        ) : (
-            <this.state.Component {...this.props} />
-        );
+        if (this.state.loading || !this.state.Component) {
+            return <Placeholder />;
+        }
+        return <this.state.Component key={this.state.Component.name} />
     }
 }

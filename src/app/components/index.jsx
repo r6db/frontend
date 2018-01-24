@@ -5,7 +5,7 @@ import Loading from "components/misc/Loading";
 import Searchbar from "components/misc/Searchbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
-import Page from "components/misc/Page";
+import Page, { PageHead, PageContent } from "components/misc/Page";
 import Footer from "components/misc/Footer";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { NOT_FOUND } from "redux-first-router";
@@ -29,6 +29,7 @@ const componentMap = {
 };
 
 function App(props) {
+    console.log("App::render", props);
     return (
         <div className={"app " + props.location}>
             <div className="app__content">
@@ -39,14 +40,12 @@ function App(props) {
                     {props.loading ? (
                         <div>
                             <Page className="page--empty">
-                                <Page.Head />
-                                <Page.Content />
+                                <PageHead />
+                                <PageContent />
                             </Page>
                             <Loading />
                         </div>
-                    ) : (
-                        <AsyncComponent importFn={props.importFn} />
-                    )}
+                    ) : <AsyncComponent importFn={props.importFn} /> }
                     <Footer />
                 </div>
             </div>
@@ -56,7 +55,7 @@ function App(props) {
 
 function mapStateToProps(state) {
     const { platform, search, location, loading } = state;
-    console.log("App::map_state_to_props", state.location.type, componentMap[state.location.type]);
+    console.log("App::map_state_to_props", state.location.type);
     return {
         location: location.type,
         importFn: componentMap[location.type],

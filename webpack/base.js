@@ -42,7 +42,7 @@ module.exports = {
         __filename: true
     },
     stats: "minimal",
-    devtool: "source-map",
+    // devtool: "source-map",
     module: {
         rules: [
             {
@@ -106,6 +106,9 @@ module.exports = {
     },
     plugins: [
         new DashboardPlugin(),
+        new webpack.ProvidePlugin({
+            Inferno: "inferno"
+        }),
         new TsConfigPathsPlugin(),
         new CheckerPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),

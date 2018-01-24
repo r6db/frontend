@@ -20,7 +20,7 @@ store.dispatch(initAction);
 
 function init(App: any) {
     const mount = document.querySelector("#mount");
-    console.log("mounting app");
+    console.log("init::mounting", App);
     mount.innerHTML = "";
     Inferno.render(
         <Provider store={store}>

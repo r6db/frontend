@@ -28,7 +28,7 @@ export function PageHead(props) {
 export const PageContent = props => <div className="page__content">{props.children}</div>;
 
 export const Page = props => (
-    <div {...props} className={`page ${props.className || ""}`}>
+    <div className={`page ${props.className || ""}`}>
         {props.children}
     </div>
 );

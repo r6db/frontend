@@ -1,4 +1,3 @@
-import * as Inferno from "inferno";
 import "./fadeimage.scss";
 
 const onload = e => {
