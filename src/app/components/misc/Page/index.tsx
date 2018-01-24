@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import * as lozad from "lozad";
 import { FadeImage } from "components/misc/FadeImage";
 import "./page.scss";
@@ -10,7 +10,7 @@ export function PageHead(props) {
                 <FadeImage
                     className="page__image fadeimage"
                     src={props.image}
-                    style={{ "object-position": props.position || "50% 30%" }}
+                    style={{ objectPosition: props.position || "50% 30%" }}
                     alt=""
                 />
             ) : null}

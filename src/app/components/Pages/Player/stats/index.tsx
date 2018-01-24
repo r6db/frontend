@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";

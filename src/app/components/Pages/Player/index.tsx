@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Stats from "./stats";
 import Operators from "./operators";
 import Ranks from "./ranks";
@@ -7,7 +7,7 @@ import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
 import NoData from "../Errors/NoData";
 import Header from "./Header";
-import { connect } from "inferno-redux";
+import { connect } from "react-redux";
 import { updatePlayer } from "lib/store/actions";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./player.scss";
@@ -59,9 +59,8 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
-    const { location: { payload } } = state;
     return {
-        updatePlayer: () => dispatch(updatePlayer(payload.id)),
+        updatePlayer: id => dispatch(updatePlayer(id)),
     };
 };
 export default connect(mapStateToProps, mapDispatchtoProps)(Player);

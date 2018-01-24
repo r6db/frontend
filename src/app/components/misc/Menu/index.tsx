@@ -1,8 +1,8 @@
-import * as Inferno from "inferno";
-import { connect } from "inferno-redux";
+import * as React from "react";
+import { connect } from "react-redux";
 import Icon, { GLYPHS } from "../Icon";
 import Searchbar from "../Searchbar";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 import "./menu.scss";
 
 const Menu = props => (

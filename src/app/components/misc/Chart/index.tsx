@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import * as Chartist from "chartist";
 import "chartist-plugin-tooltips";
 import "./chart.scss";
@@ -25,7 +25,7 @@ export function labelInterpolationFnc(value, index, arr) {
     }
 }
 
-export default class Chart extends Inferno.Component<any, any> {
+export default class Chart extends React.Component<any, any> {
     constructor(props) {
         super(props);
 

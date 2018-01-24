@@ -14,5 +14,5 @@
         ],
         "minify"
     ],
-    "plugins": ["syntax-dynamic-import", "transform-object-rest-spread", "inferno"]
+    "plugins": ["syntax-dynamic-import", "transform-object-rest-spread"]
 }

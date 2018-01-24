@@ -1,8 +1,8 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { Ranks } from "lib/constants";
 
 export default function SimpleSeason(props) {
-    props.season != null ? (
+    return props.season != null ? (
         <div className="profile-rankedstats card">
             <header className="card__header">Ranked Season ({props.region})</header>
             <div className="card__content">

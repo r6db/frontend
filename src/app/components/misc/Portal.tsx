@@ -1,7 +1,8 @@
-import * as Inferno from "inferno";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 const getRoot = () => document.getElementById("portal");
 
 export default function Portal(props) {
-    return Inferno.createPortal(props.children, getRoot());
+    return ReactDOM.createPortal(props.children, getRoot());
 }

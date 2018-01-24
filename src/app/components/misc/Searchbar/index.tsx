@@ -1,18 +1,21 @@
-import * as Inferno from "inferno";
-import { connect } from "inferno-redux";
+import * as React from "react";
+import { connect } from "react-redux";
 import "./searchbar.scss";
 import { toSearch } from "lib/store/actions";
 
-interface ISearchbarAttrs {
+interface ISearchbarProps {
     query: string;
     platform: string;
+    goSearch(query: string): any;
+    goHome(): any;
+    setPlatform(platform: string): any;
 }
 interface ISearchbarState {
     query: string;
     platform: string;
 }
 
-class Searchbar extends Inferno.Component<ISearchbarAttrs, ISearchbarState> {
+class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,18 +43,18 @@ class Searchbar extends Inferno.Component<ISearchbarAttrs, ISearchbarState> {
 
     render() {
         return (
-            <form className="searchbar" action="" onSubmit={this.onSearch}>
+            <form className="searchbar" action="" onSubmit={e => this.onSearch(e)}>
                 <input
                     className="searchbar__name"
                     type="text"
                     value={this.state.query}
                     placeholder="enter player name"
-                    onInput={this.onQueryChange}
+                    onChange={this.onQueryChange}
                 />
                 <select
                     className="searchbar__platform"
                     value={this.props.platform}
-                    onInput={e => this.props.setPlatform(e.target.value)}
+                    onChange={e => this.props.setPlatform((e.target as any).value)}
                 >
                     <option value="PC">PC</option>
                     <option value="PS4">PS4</option>

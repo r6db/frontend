@@ -1,10 +1,10 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { redirect } from "redux-first-router";
 import { Leaderboards } from "lib/constants";
-import { connect } from "inferno-redux";
+import { connect } from "react-redux";
 import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
@@ -12,9 +12,9 @@ import chanka from "./chanky.png";
 
 import bg from "./SixInvitational_KeyArt_Teaser02.jpg";
 
-const isSelected = (expected, value) => (expected === value ? "selected" : undefined);
+const isSelected = (expected, value) => expected === value;
 
-class Leaderboard extends Inferno.Component<any, any> {
+class Leaderboard extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,7 +55,7 @@ class Leaderboard extends Inferno.Component<any, any> {
                                 <select
                                     id="platformselect"
                                     value={this.state.platform}
-                                    onchange={e => this.props.changePlatform(e.target.value)}
+                                    onChange={e => this.props.changePlatform(e.target.value)}
                                 >
                                     <option value="PC">PC</option>
                                     <option value="PS4">PS4</option>
@@ -70,7 +70,7 @@ class Leaderboard extends Inferno.Component<any, any> {
                                     id="boardselect"
                                     className="leaderboard__boardselect"
                                     value={this.state.board}
-                                    onchange={e => this.changeBoard(e.target.value)}
+                                    onChange={e => this.changeBoard(e.target.value)}
                                 >
                                     {Object.keys(Leaderboards).map(l => {
                                         const lb = Leaderboards[l];
@@ -109,7 +109,7 @@ class Leaderboard extends Inferno.Component<any, any> {
                                             <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
                                                     <FadeImage
-                                                        data-src={getImageLink(
+                                                        src={getImageLink(
                                                             entry.userId || entry.id,
                                                             this.props.platform,
                                                         )}

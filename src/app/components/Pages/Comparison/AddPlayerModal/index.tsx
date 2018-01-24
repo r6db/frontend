@@ -1,5 +1,5 @@
-import * as Inferno from "inferno";
-import { connect } from "inferno-redux";
+import * as React from "react";
+import { connect } from "react-redux";
 import Modal from "components/misc/Modal";
 import FadeImage from "components/misc/FadeImage";
 import { findPlayer } from "lib/api";
@@ -8,7 +8,7 @@ import { getImageLink } from "lib/domain";
 import * as lozad from "lozad";
 import "./addplayermodal.scss";
 
-class AddPlayerModal extends Inferno.Component<any, any> {
+class AddPlayerModal extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,25 +39,25 @@ class AddPlayerModal extends Inferno.Component<any, any> {
     render() {
         return (
             <Modal className="addplayermodal" title="Add player" onclose={this.props.onclose}>
-                <form className="searchbar addplayermodal__search" action="" onsubmit={this.onSearch}>
+                <form className="searchbar addplayermodal__search" action="" onSubmit={this.onSearch}>
                     <input
                         className="searchbar__name"
                         type="text"
                         value={this.state.query}
                         placeholder="enter player name"
-                        onkeypress={e => this.onQueryChange(e.target.value)}
-                        onchange={e => this.onQueryChange(e.target.value)}
+                        onKeyPress={e => this.onQueryChange((e.target as any).value)}
+                        onChange={e => this.onQueryChange((e.target as any).value)}
                     />
                     <select
                         className="searchbar__platform"
                         value={this.props.platform}
-                        onchange={e => this.onPlatformChange(e.target.value)}
+                        onChange={e => this.onPlatformChange((e.target as any).value)}
                     >
                         <option value="PC">PC</option>
                         <option value="PS4">PS4</option>
                         <option value="XBOX">XB1</option>
                     </select>
-                    <button onsubmit={this.onSearch} className="button button--primary searchbar__submit">
+                    <button onSubmit={this.onSearch} className="button button--primary searchbar__submit">
                         Search
                     </button>
                 </form>
@@ -71,7 +71,7 @@ class AddPlayerModal extends Inferno.Component<any, any> {
                                         ? "addplayermodal__result--selected"
                                         : ""
                                 }`}
-                                onclick={() => this.props.onselect(x.id)}
+                                onClick={() => this.props.onselect(x.id)}
                             >
                                 <div className="media__image">
                                     <FadeImage className="lazyload" src={getImageLink(x.userId || x.Id, x.platform)} />
@@ -96,7 +96,7 @@ class AddPlayerModal extends Inferno.Component<any, any> {
                     )}
                 </div>
                 <div className="addplayermodal__close">
-                    <button className="button button--primary" onclick={this.props.onclose}>
+                    <button className="button button--primary" onClick={this.props.onclose}>
                         done
                     </button>
                 </div>

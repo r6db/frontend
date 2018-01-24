@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import "./stat.scss";
 
 export default function(props) {

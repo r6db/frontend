@@ -1,8 +1,8 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { getWinChance, getKillRatio } from "lib/stats";
 
 export default function SimpleCard(props) {
-    props.player.stats != null ? (
+    return props.player.stats != null ? (
         <div className="profile-rankedstats card">
             <header className="card__header">Ranked Stats</header>
             <div className="card__content">

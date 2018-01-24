@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import * as rip from "./rip.jpg";
 

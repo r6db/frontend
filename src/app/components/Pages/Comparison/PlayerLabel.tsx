@@ -1,6 +1,6 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { toPlayer } from "lib/store/actions";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 
 export default function PlayerLabel(props) {
     return (

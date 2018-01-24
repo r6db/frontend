@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import "./tabs.scss";
 
 const TabHeader = props => (
@@ -9,7 +9,7 @@ const TabHeader = props => (
 
 const isSelected = (expected, current) => expected === current;
 
-export default class Tabs extends Inferno.Component<any, any> {
+export default class Tabs extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,22 +20,24 @@ export default class Tabs extends Inferno.Component<any, any> {
         return e => this.setState({ currentTab: key });
     }
     render() {
-        <div className="tabs">
-            <div className="tabs__headers">
-                {Object.keys(this.props.headers).map(key => {
-                    const header = this.props.headers[key];
-                    return (
-                        <TabHeader
-                            key={"tabheader--" + key}
-                            header={header.label}
-                            icon={header.icon}
-                            selected={isSelected(key, this.state.currentTab)}
-                            onclick={this.onTabSelect(key)}
-                        />
-                    );
-                })}
+        return (
+            <div className="tabs">
+                <div className="tabs__headers">
+                    {Object.keys(this.props.headers).map(key => {
+                        const header = this.props.headers[key];
+                        return (
+                            <TabHeader
+                                key={"tabheader--" + key}
+                                header={header.label}
+                                icon={header.icon}
+                                selected={isSelected(key, this.state.currentTab)}
+                                onClick={this.onTabSelect(key)}
+                            />
+                        );
+                    })}
+                </div>
+                <div className="tabs__content">{this.props.children}</div>
             </div>
-            <div className="tabs__content">{this.props.children.filter(x => x.key === this.state.currentTab)}</div>
-        </div>;
+        );
     }
 }

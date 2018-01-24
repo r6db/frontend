@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 
 import EMAIL from "feather-icons/dist/icons/mail.svg";
 import TWITTER from "feather-icons/dist/icons/twitter.svg";
@@ -80,7 +80,7 @@ export default props =>
             fill={props.fill}
             stroke={props.stroke}
         >
-            <use href={props.glyph} />
+            <use xlinkHref={props.glyph} />
         </svg>
     ) : (
         <svg className="icon" />

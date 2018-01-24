@@ -1,5 +1,5 @@
-import * as Inferno from "inferno";
-import Link from "components/misc/Link";
+import * as React from "react";
+import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import "./footer.scss";
 

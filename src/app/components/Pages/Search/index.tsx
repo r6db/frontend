@@ -1,8 +1,8 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Result from "./Result";
 import Media from "components/misc/Media";
 import Page, { PageHead, PageContent } from "components/misc/Page";
-import { connect } from "inferno-redux";
+import { connect } from "react-redux";
 import "./search.scss";
 
 function Search(props) {

@@ -1,8 +1,8 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./faq.scss";
 
-class Question extends Inferno.Component<any, any> {
+class Question extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = { open: true };
@@ -13,7 +13,7 @@ class Question extends Inferno.Component<any, any> {
     render() {
         return (
             <article className={`faq__item ${this.state.open ? "is-open" : "is-closed"}`}>
-                <a role="header" className="faq__item__question" onclick={this.toggle}>
+                <a role="header" className="faq__item__question" onClick={this.toggle}>
                     {this.props.question}
                 </a>
                 <section className="faq__item__answer">{this.props.children}</section>

@@ -1,6 +1,6 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { FadeImage } from "components/misc/FadeImage";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 import "./playercard.scss";
 import { toPlayer } from "lib/store/actions";
 import { formatDuration } from "lib/stats";
@@ -21,10 +21,10 @@ const getAliases = player => {
 export default function Result(props) {
     const timePlayed = get(props, "player.lastPlayed.ranked", 0) + get(props, "player.lastPlayed.casual", 0);
     return (
-        <Link to={toPlayer(props.player.id)} className="search__result result">
+        <Link key={props.player.id} to={toPlayer(props.player.id)} className="search__result result">
             <div className="media">
                 <div className="media__image">
-                    <FadeImage data-src={getImageLink(props.player.userId || props.player.id, props.player.platform)} />
+                    <FadeImage src={getImageLink(props.player.userId || props.player.id, props.player.platform)} />
                 </div>
                 <div className="media__content">
                     <div className="media__contentheader">

@@ -1,10 +1,10 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Chartist from "chartist";
 import Chart, { labelInterpolationFnc } from "components/misc/Chart";
 import * as stats from "lib/stats";
 import "./charts.scss";
 
-export default class PlayerCharts extends Inferno.Component<any, any> {
+export default class PlayerCharts extends React.Component<any, any> {
     constructor(props) {
         super(props);
         let raw = [].concat(props.progressions || []).sort((a, b) => (a.created_at > b.created_at ? 1 : -1));
@@ -254,24 +254,25 @@ export default class PlayerCharts extends Inferno.Component<any, any> {
     }
 
     render() {
-        return this.props.progressions ? (
-            <div className="playermodule charts">
-                <div className="row">
-                    <Chart {...this.state.mmrChart} />
-                </div>
-                <div className="row">
-                    <Chart {...this.state.wlChart} />
-                </div>
-                <div className="row">
-                    <Chart {...this.state.kdChart} />
-                </div>
-                <div className="row">
-                    <Chart {...this.state.gameCountChart} />
-                </div>
-                <div className="row">
-                    <Chart {...this.state.hsChart} />
-                </div>
-            </div>
-        ) : null;
+        return null;
+        // return this.props.progressions ? (
+        //     <div className="playermodule charts">
+        //         <div className="row">
+        //             <Chart {...this.state.mmrChart} />
+        //         </div>
+        //         <div className="row">
+        //             <Chart {...this.state.wlChart} />
+        //         </div>
+        //         <div className="row">
+        //             <Chart {...this.state.kdChart} />
+        //         </div>
+        //         <div className="row">
+        //             <Chart {...this.state.gameCountChart} />
+        //         </div>
+        //         <div className="row">
+        //             <Chart {...this.state.hsChart} />
+        //         </div>
+        //     </div>
+        // ) : null;
     }
 }

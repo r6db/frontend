@@ -1,17 +1,17 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { Leaderboards } from "lib/constants";
-import { connect } from "inferno-redux";
+import { connect } from "react-redux";
 import { toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import FadeImage from "components/misc/FadeImage";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 
 import seductive from "./seductive.jpg";
 
-const isSelected = (expected, value) => (expected === value ? "selected" : undefined);
+const isSelected = (expected, value) => expected === value;
 
-class Chankaboard extends Inferno.Component<any, any> {
+class Chankaboard extends React.Component<any, any> {
     constructor(props) {
         super(props);
     }
@@ -37,7 +37,7 @@ class Chankaboard extends Inferno.Component<any, any> {
                                 <select
                                     id="platformselect"
                                     value={this.props.platform}
-                                    onchange={e => this.changePlatform(e.target.value)}
+                                    onChange={e => this.changePlatform(e.target.value)}
                                 >
                                     <option value="PC">PC</option>
                                     <option value="PS4">PS4</option>

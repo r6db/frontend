@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import * as get from "lodash/get";
 import FadeImage from "components/misc/FadeImage";
 import Alias from "./Alias";
@@ -7,7 +7,7 @@ import Timedata from "./modules/Timedata";
 import SimpleCard from "./modules/Card";
 import RankedSeason from "./modules/RankedSeason";
 import Page, { PageHead, PageContent } from "components/misc/Page";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 import { getRegionName } from "lib/region";
 import { getImageLink } from "lib/domain";
 

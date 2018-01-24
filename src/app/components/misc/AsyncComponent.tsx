@@ -1,50 +1,29 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import * as Page from "components/misc/Page";
+export default function asyncComponent(importComponent) {
+    class AsyncComponent extends React.Component<any, any> {
+        constructor(props) {
+            super(props);
 
-export default class AsyncComponent extends Inferno.Component<any, any> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            Component: null,
-            currentImport: null,
-            loading: false,
-        };
-    }
-    componentDidMount() {
-        this.load(this.props.importFn);
-    }
-    async load(importFn) {
-        console.log("AsyncComponent::start");
-        this.setState({ loading: true });
-        console.log("AsyncComponent::fetch");
-        try {
-            console.log("AsyncComponent::importer", importFn);
-            const imported = await importFn();
-            console.log("AsyncComponent::success");
-            const Component = imported.default;
-            this.setState({ Component, loading: false });
-        } catch (e) {
-            console.error(e);
-            console.log("AsyncComponent::fail");
-            this.setState({ Component: null, loading: false });
+            this.state = {
+                component: null,
+            };
+        }
+
+        async componentDidMount() {
+            const { default: component } = await importComponent();
+
+            this.setState({
+                component: component,
+            });
+        }
+
+        render() {
+            const C = this.state.component;
+
+            return C ? <C {...this.props} /> : null;
         }
     }
 
-    componentWillUpdate(old) {
-        if (!this.props.loading && this.props.importFn !== this.state.currentImport) {
-            console.log("AsyncComponent::will_update");
-            this.setState({ currentImport: this.props.importFn });
-            this.load(this.props.importFn);
-        }
-    }
-    render() {
-        return this.state.loading || !this.state.Component ? (
-            <Page.Page>
-                <Page.PageHead />
-                <Page.PageContent />
-            </Page.Page>
-        ) : (
-            <this.state.Component {...this.props} />
-        );
-    }
+    return AsyncComponent;
 }

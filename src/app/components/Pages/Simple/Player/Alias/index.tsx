@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import "./alias.scss";
 
 const formatTitle = date => (date ? new Date(date).toLocaleString() : "no Date");

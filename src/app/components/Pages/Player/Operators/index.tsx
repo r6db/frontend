@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { Operators } from "lib/constants";
 import * as stats from "lib/stats";
 import Chart, { colors, labelInterpolationFnc } from "components/misc/Chart";
@@ -54,7 +54,7 @@ const filters = {
     SMB: op => op.unit === "SMB",
 };
 
-export default class OperatorTab extends Inferno.Component<any, any> {
+export default class OperatorTab extends React.Component<any, any> {
     constructor(props) {
         super(props);
 
@@ -272,7 +272,7 @@ export default class OperatorTab extends Inferno.Component<any, any> {
                     <div className="card-content">
                         <p>
                             <label htmlFor="filter">filter by</label>
-                            <select name="filter" onchange={e => this.onFilter(e.target.value)}>
+                            <select name="filter" onChange={e => this.onFilter(e.target.value)}>
                                 {Object.keys(filters).map(x => <option value={x}>{x}</option>)}
                             </select>
                         </p>
@@ -284,7 +284,7 @@ export default class OperatorTab extends Inferno.Component<any, any> {
                             {sorters.map(sorter => (
                                 <Fauxtable.Heading
                                     className={this.getSorterClass(sorter)}
-                                    onclick={() => this.setSort(sorter)}
+                                    onClick={() => this.setSort(sorter)}
                                 >
                                     {sorter.label}
                                 </Fauxtable.Heading>
@@ -298,7 +298,7 @@ export default class OperatorTab extends Inferno.Component<any, any> {
                             .map(datum => (
                                 <div>
                                     <Fauxtable.Row key={datum.id} className={datum.id}>
-                                        <Fauxtable.Cell className="name" onclick={() => this.toggleOp(datum.id)}>
+                                        <Fauxtable.Cell className="name" onClick={() => this.toggleOp(datum.id)}>
                                             <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
                                         </Fauxtable.Cell>
@@ -327,7 +327,7 @@ export default class OperatorTab extends Inferno.Component<any, any> {
                                         </Fauxtable.Cell>
                                     </Fauxtable.Row>
                                     {!this.state.operatorsShowMap[datum.id] ? null : (
-                                        <div class="opstab__graphs">
+                                        <div className="opstab__graphs">
                                             <div className="row">
                                                 <div className="col">
                                                     <div>

@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { formatDuration } from "lib/stats";
 

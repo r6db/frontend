@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import * as get from "lodash/get";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { Ranks, Seasons } from "lib/constants";
@@ -24,7 +24,7 @@ function CurrentSeason(props) {
     if (props.level < 100) {
         return <div className="rankoverview__currentseason is-underage">rankings unlock at level 100</div>;
     } else if (get(props, "placements.global", null) === null) {
-        return;
+        return null;
     }
     return (
         <div className="rankoverview__currentseason">

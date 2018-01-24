@@ -1,6 +1,6 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import * as get from "lodash/get";
-import { connect } from "inferno-redux";
+import { connect } from "react-redux";
 import * as stats from "lib/stats";
 import { Operators } from "lib/constants";
 import "./comparison.scss";
@@ -191,7 +191,7 @@ const getMmrChartAttrs = players => ({
 });
 
 //#endregion data mappers
-class Compare extends Inferno.Component<any, any> {
+class Compare extends React.Component<any, any> {
     constructor(props) {
         super(props);
 
@@ -238,7 +238,7 @@ class Compare extends Inferno.Component<any, any> {
                                 {this.props.players.map(player => (
                                     <PlayerLabel removeAction={this.getPlayerRemovalLink(player.id)} {...player} />
                                 ))}
-                                <button className="button button--primary" onclick={this.onAddPlayer}>
+                                <button className="button button--primary" onClick={this.onAddPlayer}>
                                     add player
                                 </button>
                             </div>

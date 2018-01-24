@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Searchbar from "components/misc/Searchbar";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./home.scss";

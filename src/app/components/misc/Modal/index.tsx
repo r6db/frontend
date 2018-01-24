@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import Portal from "components/misc/Portal";
 import "./modal.scss";
 
@@ -12,12 +12,12 @@ interface IModalProps {
 const Modal = (props: IModalProps) => (
     <Portal>
         <div className="modal">
-            <div onclick={props.onclose} className="modal__background" />
+            <div onClick={props.onclose} className="modal__background" />
             <div className="modal__container">
                 <div className={"modal__item " + props.className}>
                     <div className="modal__head">
                         <header className="modal__title">{props.title}</header>
-                        <span onclick={props.onclose} className="modal__close">
+                        <span onClick={props.onclose} className="modal__close">
                             ✖
                         </span>
                     </div>

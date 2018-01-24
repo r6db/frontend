@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import DetailError from "./DetailError";
 
 export default function NotFoundError(props) {

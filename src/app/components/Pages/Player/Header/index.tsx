@@ -1,6 +1,6 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import { FadeImage } from "components/misc/FadeImage";
-import Link from "components/misc/Link";
+import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { toSimple, toPlayerTab } from "lib/store/actions";
 import { formatDuration, getWinChance, getKillRatio } from "lib/stats";
@@ -19,7 +19,7 @@ const exportButton = player => {
     );
 };
 
-class PlayerHeader extends Inferno.Component<any, any> {
+class PlayerHeader extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,12 +79,12 @@ class PlayerHeader extends Inferno.Component<any, any> {
                     </div>
                     <div className="playerheader__buttons">
                         {this.props.updateAvailableAt > new Date() ? (
-                            <button className="button playerheader__button button--outline" disabled="disabled">
+                            <button className="button playerheader__button button--outline" disabled>
                                 available {this.props.updateAvailableAt.toLocaleTimeString()}
                             </button>
                         ) : (
                             <button
-                                onclick={this.props.updatePlayer}
+                                onClick={() => this.props.updatePlayer(this.props.id)}
                                 className="button playerheader__button button--accent"
                             >
                                 update

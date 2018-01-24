@@ -1,4 +1,4 @@
-import * as Inferno from "inferno";
+import * as React from "react";
 import "./rankstab.scss";
 import { Ranks, regions } from "lib/constants";
 import Icon, { GLYPHS } from "components/misc/Icon";
@@ -25,7 +25,7 @@ function getWLP(rank) {
 let sorter = sorters[1];
 let isSortReversed = false;
 
-export default class RanksTable extends Inferno.Component<any, any> {
+export default class RanksTable extends React.Component<any, any> {
     constructor(props) {
         super(props);
 
@@ -106,19 +106,19 @@ export default class RanksTable extends Inferno.Component<any, any> {
                             <input
                                 type="checkbox"
                                 name="show-unranked"
-                                onchange={e => this.onShowUnranked(e.target.checked)}
+                                onChange={e => this.onShowUnranked(e.target.checked)}
                             />
                         </p>
                         <p>
                             <label htmlFor="season-filter">Season</label>
-                            <select name="season-filter" onchange={e => this.onFilter(e.target.value)}>
+                            <select name="season-filter" onChange={e => this.onFilter(e.target.value)}>
                                 <option value="all">All</option>
                                 {this.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
                             </select>
                         </p>
                         <p>
                             <label htmlFor="region-filter">Region</label>
-                            <select name="region-filter" onchange={e => this.onRegionFilter(e.target.value)}>
+                            <select name="region-filter" onChange={e => this.onRegionFilter(e.target.value)}>
                                 <option value="all">All</option>
                                 <option value="emea">EUrope</option>
                                 <option value="ncsa">America</option>
@@ -134,7 +134,7 @@ export default class RanksTable extends Inferno.Component<any, any> {
                             {sorters.map(sorter => (
                                 <Fauxtable.Heading
                                     className={this.getSorterClass(sorter)}
-                                    onclick={() => this.setSort(sorter)}
+                                    onClick={() => this.setSort(sorter)}
                                 >
                                     {sorter.label}
                                 </Fauxtable.Heading>
@@ -153,7 +153,9 @@ export default class RanksTable extends Inferno.Component<any, any> {
                                     <Fauxtable.Cell className="fauxtable__cell ">{datum.season}</Fauxtable.Cell>
                                     <Fauxtable.Cell className="fauxtable__cell rank">
                                         <Icon className="rank-image" glyph={GLYPHS["RANK" + datum.max_rank]} />
-                                        <span class="ranks-text">{Ranks[datum.max_rank].replace("Unranked", "")}</span>
+                                        <span className="ranks-text">
+                                            {Ranks[datum.max_rank].replace("Unranked", "")}
+                                        </span>
                                     </Fauxtable.Cell>
                                     <Fauxtable.Cell className="fauxtable__cell mmr">
                                         {datum.mmr.toFixed(2)}
