@@ -25,3 +25,8 @@ export const updatePlayer = id => (dispatch, getState) => {
             dispatch({ type: "loading", payload: false });
         });
 };
+
+export const toSearch = query => (dispatch, getState) => {
+    const { platform } = getState();
+    dispatch({ type: "SEARCH", payload: { query, platform } });
+};

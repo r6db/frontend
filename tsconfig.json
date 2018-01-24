@@ -13,7 +13,6 @@
         "noFallthroughCasesInSwitch": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
-        "noUnusedLocals": true,
         "target": "es2015",
         "module": "es2015",
         "jsx": "preserve",

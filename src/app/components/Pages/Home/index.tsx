@@ -13,7 +13,7 @@ const oncreate = () => {
 
 export default function(props) {
     return (
-        <Page componentDidMount={oncreate} className="home">
+        <Page className="home">
             <PageHead image={bg} position="50% 0%">
                 <div className="container">
                     <Searchbar className="home__search" search={props.search} />

@@ -9,7 +9,7 @@ const TabHeader = props => (
 
 const isSelected = (expected, current) => expected === current;
 
-class Tabs extends Inferno.Component<any, any> {
+export default class Tabs extends Inferno.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {

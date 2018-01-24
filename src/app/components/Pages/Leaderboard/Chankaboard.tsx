@@ -84,8 +84,8 @@ class Chankaboard extends Inferno.Component<any, any> {
         );
     }
 }
-const mapStateToProps = getState => {
-    const { platform, leaderboard } = getState();
+const mapStateToProps = state => {
+    const { platform, leaderboard } = state;
     return {
         platform,
         board: "CHANKA",

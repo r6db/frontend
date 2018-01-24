@@ -32,6 +32,7 @@ class Link extends Inferno.Component<any, any> {
         this.state = {
             serializer: null,
         };
+        this.doLink = this.doLink.bind(this);
     }
 
     doLink(e) {
@@ -60,8 +61,8 @@ class Link extends Inferno.Component<any, any> {
     }
 }
 
-const mapStateToProps = getState => ({
-    location: getState().location,
+const mapStateToProps = state => ({
+    location: state.location,
 });
 const mapDispatchToProps = dispatch => ({
     link: action => dispatch(action),

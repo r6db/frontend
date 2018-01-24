@@ -24,7 +24,7 @@ const rows = [
     { label: "lost", prop: x => get(x, "stats.general.lost", 0) },
     {
         label: "wlr",
-        prop: x => stats.getWinChance(get(x, "stats.general"), {}),
+        prop: x => stats.getWinChance(get(x, "stats.general")),
     },
     { label: "kills", prop: x => get(x, "stats.general.kills", 0) },
     { label: "deaths", prop: x => get(x, "stats.general.deaths", 0) },
@@ -191,23 +191,24 @@ const getMmrChartAttrs = players => ({
 });
 
 //#endregion data mappers
-class Compare extends Inferno.Component<any, any>{
+class Compare extends Inferno.Component<any, any> {
     constructor(props) {
         super(props);
 
         this.state = {
             showPlayerModal: false,
-            ids: props.ids;
-        }
+            ids: props.ids,
+        };
     }
     onAddPlayer() {
         this.setState({ showPlayerModal: true });
     }
     togglePlayer(id: string) {
-        const ids = this.state.ids.find(x => x === id) !== undefined
-            ? this.state.ids.filter(x => x !== id)
-            : this.state.ids.concat(id);
-        
+        const ids =
+            this.state.ids.find(x => x === id) !== undefined
+                ? this.state.ids.filter(x => x !== id)
+                : this.state.ids.concat(id);
+
         this.setState({ ids });
     }
     onModalClose() {
@@ -219,8 +220,8 @@ class Compare extends Inferno.Component<any, any>{
     getPlayerRemovalLink(id: string) {
         return {
             type: "COMPARISON",
-            query: { ids: this.props.ids.filter(x => x !== id)}
-        }
+            query: { ids: this.props.ids.filter(x => x !== id) },
+        };
     }
 
     render() {
@@ -424,8 +425,8 @@ class Compare extends Inferno.Component<any, any>{
     }
 }
 
-const mapState = getState => {
-    const { players, loading, location } = getState();
+const mapState = state => {
+    const { players, loading, location } = state;
     const ids = [].concat(get(location, "query.ids", [])).map(x => x.toLowerCase().trim());
     return {
         players: ids.map(x => players[x]).filter(x => !!x),
@@ -434,7 +435,7 @@ const mapState = getState => {
     };
 };
 
-const mapDispatch = (dispatch, getState) => ({
+const mapDispatch = dispatch => ({
     compare: ids =>
         dispatch({
             type: "COMPARISON",

@@ -25,7 +25,7 @@ export function labelInterpolationFnc(value, index, arr) {
     }
 }
 
-export class Chart extends Inferno.Component<any, any> {
+export default class Chart extends Inferno.Component<any, any> {
     constructor(props) {
         super(props);
 

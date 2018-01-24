@@ -1,42 +1,40 @@
 import * as Inferno from "inferno";
 import Result from "./Result";
 import Media from "components/misc/Media";
-import Page from "components/misc/Page";
+import Page, { PageHead, PageContent } from "components/misc/Page";
 import { connect } from "inferno-redux";
 import "./search.scss";
 
-const Search = {
-    view({ attrs, state }) {
-        if (attrs.loading) {
-            return "";
-        }
-        return m(Page, { className: "search" }, [
-            m(Page.Head, [
-                m(".container", [
-                    m(".header", [
-                        `Search ${attrs.search} `,
-                        m("span.saerch__resultcount.header.header--small.header--subtle", [
-                            `${attrs.result.length} result(s)`,
-                        ]),
-                    ]),
-                ]),
-            ]),
-            m(Page.Content, [
-                m(".container.container--small", [
-                    m(
-                        ".search__results",
-                        attrs.result.length > 0
-                            ? attrs.result.map(player => m(Result, { player, key: player.id }))
-                            : m(Media, { title: "no results" }, "we could not find any players matching that query."),
-                    ),
-                ]),
-            ]),
-        ]);
-    },
-};
+function Search(props) {
+    return (
+        <Page className="search">
+            <PageHead>
+                <div className="container">
+                    <div className="header">
+                        Search {props.search}
+                        <span className="saerch__resultcount header header--small header--subtle">
+                            {props.result.length} result(s)
+                        </span>
+                    </div>
+                </div>
+            </PageHead>
+            <PageContent>
+                <div className="container container--small">
+                    <div className="search_results">
+                        {props.result.length > 0 ? (
+                            props.result.map(player => <Result key={player.id} player={player} />)
+                        ) : (
+                            <Media title="No results">we could not find any players matching that query.</Media>
+                        )}
+                    </div>
+                </div>
+            </PageContent>
+        </Page>
+    );
+}
 
-const mapStateToProps = getState => {
-    const { platform, loading, search, searchResults } = getState();
+const mapStateToProps = state => {
+    const { platform, loading, search, searchResults } = state;
     return {
         loading,
         result: searchResults[search] || [],

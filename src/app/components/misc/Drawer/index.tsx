@@ -15,7 +15,7 @@ const Drawer = props => (
     </div>
 );
 
-const mapStateToProps = getState => ({ isOpen: getState().menu });
+const mapStateToProps = state => ({ isOpen: state.menu });
 const mapDispatchToProps = dispatch => ({
     openMenu: () => dispatch({ type: "MENU_OPEN" }),
     closeMenu: () => dispatch({ type: "MENU_CLOSE" }),

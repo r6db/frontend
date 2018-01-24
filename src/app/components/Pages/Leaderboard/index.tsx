@@ -133,8 +133,8 @@ class Leaderboard extends Inferno.Component<any, any> {
     }
 }
 
-const mapStateToProps = getState => {
-    const { platform, leaderboard, location: { payload: { board } } } = getState();
+const mapStateToProps = state => {
+    const { platform, leaderboard, location: { payload: { board } } } = state;
     return {
         platform,
         board,

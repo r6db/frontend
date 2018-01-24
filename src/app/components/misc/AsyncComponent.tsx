@@ -6,34 +6,45 @@ export default class AsyncComponent extends Inferno.Component<any, any> {
         super(props);
         this.state = {
             Component: null,
-            importFn: null,
+            currentImport: null,
+            loading: false,
         };
-        this.load(props.importFN);
+    }
+    componentDidMount() {
+        this.load(this.props.importFn);
     }
     async load(importFn) {
-        if (importFn === this.state.importFn) {
-            return null;
-        }
+        console.log("AsyncComponent::start");
+        this.setState({ loading: true });
+        console.log("AsyncComponent::fetch");
         try {
-            const module = await importFn();
-            const Component = module.default;
-            this.setState({ importFn, Component });
+            console.log("AsyncComponent::importer", importFn);
+            const imported = await importFn();
+            console.log("AsyncComponent::success");
+            const Component = imported.default;
+            this.setState({ Component, loading: false });
         } catch (e) {
-            this.setState({ Component: null, importFn: null });
+            console.error(e);
+            console.log("AsyncComponent::fail");
+            this.setState({ Component: null, loading: false });
         }
     }
 
-    componentDidUpdate(oldProps, newProps) {
-        this.load(newProps.importFn);
+    componentWillUpdate(old) {
+        if (!this.props.loading && this.props.importFn !== this.state.currentImport) {
+            console.log("AsyncComponent::will_update");
+            this.setState({ currentImport: this.props.importFn });
+            this.load(this.props.importFn);
+        }
     }
     render() {
-        return this.state.Component ? (
-            <this.state.Component {...this.props} />
-        ) : (
+        return this.state.loading || !this.state.Component ? (
             <Page.Page>
                 <Page.PageHead />
                 <Page.PageContent />
             </Page.Page>
+        ) : (
+            <this.state.Component {...this.props} />
         );
     }
 }

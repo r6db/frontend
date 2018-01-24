@@ -1,7 +1,7 @@
 import * as Inferno from "inferno";
 import { connect } from "inferno-redux";
 import Modal from "components/misc/Modal";
-import FadeImage from "components/misc/Fadeimage";
+import FadeImage from "components/misc/FadeImage";
 import { findPlayer } from "lib/api";
 import { formatDuration } from "lib/stats";
 import { getImageLink } from "lib/domain";
@@ -105,6 +105,6 @@ class AddPlayerModal extends Inferno.Component<any, any> {
     }
 }
 
-const mapStateToProps = getState => ({ platform: getState().platform });
+const mapStateToProps = state => ({ platform: state.platform });
 
 export default connect(mapStateToProps)(AddPlayerModal);

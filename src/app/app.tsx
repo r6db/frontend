@@ -8,7 +8,7 @@ import { init as initAction } from "lib/store/actions";
 import { setStore } from "lib/analytics";
 
 const history = createHistory();
-const { store } = configureStore(history, null);
+const { store } = configureStore(history);
 setStore(store);
 
 if (process.env.NODE_ENV === "development") {
@@ -21,15 +21,13 @@ store.dispatch(initAction);
 function init(App: any) {
     const mount = document.querySelector("#mount");
     console.log("mounting app");
-    const Root = function() {
-        return (
-            <Provider store={store}>
-                <App />
-            </Provider>
-        );
-    };
     mount.innerHTML = "";
-    Inferno.render(<Root />, mount);
+    Inferno.render(
+        <Provider store={store}>
+            <App />
+        </Provider>,
+        mount,
+    );
 }
 
 if (document.readyState === "interactive" || document.readyState === "complete") {

@@ -24,31 +24,12 @@ function getWLP(rank) {
 }
 let sorter = sorters[1];
 let isSortReversed = false;
-export default {
-    oninit({ attrs, state }) {
-        let seasonFilter = "all";
-        let regionFilter = "all";
-        let showUnranked = false;
-        state.onRegionFilter = x => (regionFilter = x);
-        state.onFilter = x => (seasonFilter = x);
-        state.onShowUnranked = x => (showUnranked = x);
-        state.filter = x => {
-            if (seasonFilter !== "all") {
-                if (x.season !== parseInt(seasonFilter)) {
-                    return false;
-                }
-            }
-            if (regionFilter !== "all") {
-                if (x.region !== regionFilter) {
-                    return false;
-                }
-            }
-            if (!showUnranked) {
-                return x.rank !== 0;
-            }
-            return true;
-        };
-        state.ranks = attrs.seasonRanks.concat(attrs.rank).reduce((acc, rank) => {
+
+export default class RanksTable extends Inferno.Component<any, any> {
+    constructor(props) {
+        super(props);
+
+        const ranks = props.seasonRanks.concat(props.rank).reduce((acc, rank) => {
             const emea = rank.emea;
             const apac = rank.apac;
             const ncsa = rank.ncsa;
@@ -62,27 +43,60 @@ export default {
                 }),
             );
         }, []);
-        state.getSeasonFilters = () => attrs.seasonRanks.concat(attrs.rank).map(rank => rank.season);
-        state.getSorterClass = tester => {
-            if (tester !== sorter) {
-                return tester.key;
-            }
-            return isSortReversed ? tester.key + " is-active is-reversed" : tester.key + " is-active";
+
+        this.state = {
+            sorter: sorters[1],
+            isSortReversed: false,
+            seasonFilter: "all",
+            regionFilter: "all",
+            showUnranked: false,
+            ranks,
         };
-        state.sort = function(a, b) {
-            const res = sorter.fn(a, b);
-            return isSortReversed ? -res : res;
-        };
-        state.setSort = newSorter => {
-            if (newSorter === sorter) {
-                isSortReversed = !isSortReversed;
-            } else {
-                isSortReversed = false;
-                sorter = newSorter;
-            }
-        };
-    },
-    view({ attrs, state }) {
+    }
+
+    onRegionFilter(regionFilter) {
+        this.setState({ regionFilter });
+    }
+    onFilter(seasonFilter) {
+        this.setState({ seasonFilter });
+    }
+    onShowUnranked(showUnranked) {
+        this.setState({ showUnranked });
+    }
+    filter(x) {
+        if (this.state.seasonFilter !== "all") {
+            return x.season === Number.parseInt(this.state.seasonFilter);
+        }
+        if (this.state.regionFilter !== "all") {
+            return x.region === this.state.regionFilter;
+        }
+        if (!this.state.showUnranked) {
+            return x.rank !== 0;
+        }
+        return true;
+    }
+    getSeasonFilters() {
+        return this.props.seasonRanks.concat(this.props.rank).map(rank => rank.season);
+    }
+    getSorterClass(tester) {
+        if (tester !== this.state.sorter) {
+            return tester.key;
+        }
+        return this.state.isSortReversed ? tester.key + " is-active is-reversed" : tester.key + " is-active";
+    }
+    sort(a, b) {
+        const res = this.state.sorter.fn(a, b);
+        return this.state.isSortReversed ? -res : res;
+    }
+    setSort(sorter) {
+        if (sorter === this.state.sorter) {
+            this.setState({ isSortReversed: !this.state.isSortReversed });
+        } else {
+            this.setState({ sorter, isSortReversed: false });
+        }
+    }
+
+    render() {
         return (
             <div className="rankstab">
                 <div className="rankstab__controls">
@@ -92,21 +106,21 @@ export default {
                             <input
                                 type="checkbox"
                                 name="show-unranked"
-                                onchange={m.withAttr("checked", state.onShowUnranked)}
+                                onchange={e => this.onShowUnranked(e.target.checked)}
                             />
                         </p>
                         <p>
                             <label htmlFor="season-filter">Season</label>
-                            <select name="season-filter" onchange={m.withAttr("value", state.onFilter)}>
+                            <select name="season-filter" onchange={e => this.onFilter(e.target.value)}>
                                 <option value="all">All</option>
-                                {state.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
+                                {this.getSeasonFilters().map(x => <option value={x}>{x}</option>)}
                             </select>
                         </p>
                         <p>
                             <label htmlFor="region-filter">Region</label>
-                            <select name="region-filter" onchange={m.withAttr("value", state.onRegionFilter)}>
+                            <select name="region-filter" onchange={e => this.onRegionFilter(e.target.value)}>
                                 <option value="all">All</option>
-                                <option value="emea">Europe, Africa & M.East</option>
+                                <option value="emea">EUrope</option>
                                 <option value="ncsa">America</option>
                                 <option value="apac">Asia</option>
                             </select>
@@ -114,13 +128,13 @@ export default {
                     </div>
                 </div>
 
-                <Fauxtable className="rankstab__table">
+                <Fauxtable.Table className="rankstab__table">
                     <Fauxtable.Head>
                         <Fauxtable.Row>
                             {sorters.map(sorter => (
                                 <Fauxtable.Heading
-                                    className={state.getSorterClass(sorter)}
-                                    onclick={() => state.setSort(sorter)}
+                                    className={this.getSorterClass(sorter)}
+                                    onclick={() => this.setSort(sorter)}
                                 >
                                     {sorter.label}
                                 </Fauxtable.Heading>
@@ -128,9 +142,9 @@ export default {
                         </Fauxtable.Row>
                     </Fauxtable.Head>
                     <Fauxtable.Body>
-                        {state.ranks
-                            .filter(state.filter)
-                            .sort(state.sort)
+                        {this.state.ranks
+                            .filter(this.state.filter)
+                            .sort(this.state.sort)
                             .map(datum => (
                                 <Fauxtable.Row key={datum.id} className="fauxtable__row">
                                     <Fauxtable.Cell className="fauxtable__cell region">
@@ -164,8 +178,8 @@ export default {
                                 </Fauxtable.Row>
                             ))}
                     </Fauxtable.Body>
-                </Fauxtable>
+                </Fauxtable.Table>
             </div>
         );
-    },
-};
+    }
+}

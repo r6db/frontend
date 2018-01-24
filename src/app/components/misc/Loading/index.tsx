@@ -3,8 +3,10 @@ import "./loading.scss";
 
 const componentWillUnMount = node => node.classList.add("loading--leaving");
 
-export const Loading = () => (
-    <div componentWillUnMount={componentWillUnMount} className="loading">
-        <div className="loading__indicator" />
-    </div>
-);
+export default function Loading() {
+    return (
+        <div componentWillUnMount={componentWillUnMount} className="loading">
+            <div className="loading__indicator" />
+        </div>
+    );
+}

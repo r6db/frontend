@@ -15,51 +15,54 @@ import "./app.scss";
 
 const componentMap = {
     HOME: () => import("./Pages/Home"),
-    // SEARCH: () => import("./Pages/Search"),
-    // FAQ: () => import("./Pages/Faq"),
-    // LEADERBOARD: () => import("./Pages/Leaderboard"),
-    // CHANKABOARD: () => import("./Pages/Leaderboard/Chankaboard"),
-    // PLAYER: () => import("./Pages/Player"),
-    // SIMPLE: () => import("./Pages/Simple"),
-    // PLAYERTABS: () => import("./Pages/Player"),
-    // COMPARISON: () => import("./Pages/Comparison"),
+    SEARCH: () => import("./Pages/Search"),
+    FAQ: () => import("./Pages/Faq"),
+    LEADERBOARD: () => import("./Pages/Leaderboard"),
+    CHANKABOARD: () => import("./Pages/Leaderboard/Chankaboard"),
+    PLAYER: () => import("./Pages/Player"),
+    SIMPLE: () => import("./Pages/Simple"),
+    PLAYERTABS: () => import("./Pages/Player"),
+    COMPARISON: () => import("./Pages/Comparison"),
     ABOUT: () => import("./Pages/About"),
-    // MAINTENANCE: () => import("./Pages/Errors/Maintenance"),
+    MAINTENANCE: () => import("./Pages/Errors/Maintenance"),
     [NOT_FOUND]: () => import("./Pages/Errors/NotFound"),
 };
 
-const App = ({ attrs, state }) => (
-    <div className={"app " + attrs.location}>
-        <div className="app__content">
-            <Drawer>
-                <Menu platform={attrs.platform} />
-            </Drawer>
-            <div className="app__page">
-                {attrs.loading ? (
-                    <div>
-                        <Page className="page--empty">
-                            <Page.Head />
-                            <Page.Content />
-                        </Page>
-                        <Loading />
-                    </div>
-                ) : (
-                    <AsyncComponent importFn={attrs.importFn} />
-                )}
-                <Footer />
+function App(props) {
+    return (
+        <div className={"app " + props.location}>
+            <div className="app__content">
+                <Drawer>
+                    <Menu platform={props.platform} />
+                </Drawer>
+                <div className="app__page">
+                    {props.loading ? (
+                        <div>
+                            <Page className="page--empty">
+                                <Page.Head />
+                                <Page.Content />
+                            </Page>
+                            <Loading />
+                        </div>
+                    ) : (
+                        <AsyncComponent importFn={props.importFn} />
+                    )}
+                    <Footer />
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+}
 
-const mapStateToProps = getState => {
-    const { platform, search, location, loading } = getState();
+function mapStateToProps(state) {
+    const { platform, search, location, loading } = state;
+    console.log("App::map_state_to_props", state.location.type, componentMap[state.location.type]);
     return {
         location: location.type,
         importFn: componentMap[location.type],
         loading,
         platform,
     };
-};
+}
 
 export default connect(mapStateToProps)(App);

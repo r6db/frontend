@@ -33,8 +33,5 @@ const Menu = props => (
     </div>
 );
 
-const mapStateToProps = getState => {
-    const { platform } = getState();
-    return { platform };
-};
+const mapStateToProps = state => ({ platform: state.platform });
 export default connect(mapStateToProps)(Menu);

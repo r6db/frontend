@@ -19,64 +19,74 @@ const exportButton = player => {
     );
 };
 
-const PlayerHeader = {
-    oninit({ attrs, state }) {
-        // flip 1 second after the timeout is finished
-        const timeout = attrs.updateAvailableAt - new Date() + 1000;
-        state.timeout = setTimeout(m.redraw, timeout);
-    },
-    onremove({ state }) {
-        clearTimeout(state.timeout);
-    },
-    view({ attrs }) {
+class PlayerHeader extends Inferno.Component<any, any> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            timeout: null,
+        };
+    }
+    componentDidMount() {
+        this.setState({
+            timeout: setTimeout(() => this.rerender(), this.props.updateAvailableAt - Date.now() + 1000),
+        });
+    }
+    rerender() {
+        this.setState({ timeout: null });
+    }
+
+    render() {
         return (
             <div className="container playerheader">
                 <div className="playerheader__content">
                     <div className="playerheader__image">
-                        <FadeImage src={domain.getImageLink(attrs.userId || attrs.id, attrs.platform)} />
+                        <FadeImage src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)} />
                     </div>
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">
-                            <span className="playerheader__name">{attrs.name}</span>
-                            <span className="playerheader__platform">{attrs.platform}</span>
-                            {attrs.flair ? <div className="playerheader__flair">{attrs.flair}</div> : null}
+                            <span className="playerheader__name">{this.props.name}</span>
+                            <span className="playerheader__platform">{this.props.platform}</span>
+                            {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
-                            {attrs.placements.global != null ? "#" + (attrs.placements.global + 1) : "-"} global / lvl{" "}
-                            {attrs.level}
+                            {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) : "-"}{" "}
+                            global / lvl {this.props.level}
                         </div>
                         <div className="playerheader__links">
-                            {!attrs.twitch ? (
+                            {!this.props.twitch ? (
                                 ""
                             ) : (
-                                <a className="playerheader__link" href={attrs.twitch} target="_BLANK">
+                                <a className="playerheader__link" href={this.props.twitch} target="_BLANK">
                                     <Icon glyph={GLYPHS.TWITCHTV} /> Twitch
                                 </a>
                             )}
                             <a
                                 className="playerheader__link"
-                                href={domain.getUbiLink(attrs.userId || attrs.id, attrs.platform)}
+                                href={domain.getUbiLink(this.props.userId || this.props.id, this.props.platform)}
                                 target="_BLANK"
                             >
                                 <Icon glyph={GLYPHS.UBI} /> Ubisoft
                             </a>
-                            <a className="playerheader__link" href={domain.getEslLink(attrs.name)} target="_BLANK">
+                            <a className="playerheader__link" href={domain.getEslLink(this.props.name)} target="_BLANK">
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
-                            {exportButton(attrs)}
+                            {exportButton(this.props)}
                             <span className="playerheader__divider">|</span>
-                            <Link className="playerheader__link" to={toSimple(attrs.id)} target="_BLANK">
+                            <Link className="playerheader__link" to={toSimple(this.props.id)} target="_BLANK">
                                 Simple View
                             </Link>
                         </div>
                     </div>
                     <div className="playerheader__buttons">
-                        {attrs.updateAvailableAt > new Date() ? (
+                        {this.props.updateAvailableAt > new Date() ? (
                             <button className="button playerheader__button button--outline" disabled="disabled">
-                                available {attrs.updateAvailableAt.toLocaleTimeString()}
+                                available {this.props.updateAvailableAt.toLocaleTimeString()}
                             </button>
                         ) : (
-                            <button onclick={attrs.updatePlayer} className="button playerheader__button button--accent">
+                            <button
+                                onclick={this.props.updatePlayer}
+                                className="button playerheader__button button--accent"
+                            >
                                 update
                             </button>
                         )}
@@ -84,27 +94,27 @@ const PlayerHeader = {
                 </div>
                 <div className="playerheader__tabs">
                     <Link
-                        className={`playerheader__tab ${isActive("summary", attrs.tab)}`}
-                        to={toPlayerTab(attrs.id, "summary")}
+                        className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
+                        to={toPlayerTab(this.props.id, "summary")}
                     >
                         Summary
                     </Link>
                     <Link
-                        className={`playerheader__tab ${isActive("ranks", attrs.tab)}`}
-                        to={toPlayerTab(attrs.id, "ranks")}
+                        className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
+                        to={toPlayerTab(this.props.id, "ranks")}
                     >
                         Ranks
                     </Link>
                     <Link
-                        className={`playerheader__tab ${isActive("ops", attrs.tab)}`}
-                        to={toPlayerTab(attrs.id, "ops")}
+                        className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
+                        to={toPlayerTab(this.props.id, "ops")}
                     >
                         Operators
                     </Link>
                 </div>
             </div>
         );
-    },
-};
+    }
+}
 
 export default PlayerHeader;

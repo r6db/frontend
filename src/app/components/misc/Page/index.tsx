@@ -8,7 +8,7 @@ export function PageHead(props) {
         <div className="page__head">
             {props.image ? (
                 <FadeImage
-                    className="page__image"
+                    className="page__image fadeimage"
                     src={props.image}
                     style={{ "object-position": props.position || "50% 30%" }}
                     alt=""

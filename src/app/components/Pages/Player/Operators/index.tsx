@@ -21,7 +21,7 @@ const sorters = [
     {
         key: "kdr",
         label: "k/d ratio",
-        fn: (a, b) => stats.getKillRatio(b) - stats.getKillRatio(a),
+        fn: (a, b) => (stats.getKillRatioRaw(b) - stats.getKillRatioRaw(a)).toFixed(2),
     },
     { key: "kpr", label: "kills/round", fn: (a, b) => b.kpr - a.kpr },
     {
@@ -54,34 +54,12 @@ const filters = {
     SMB: op => op.unit === "SMB",
 };
 
-export default {
-    oninit({ attrs, state }) {
-        let filterProp = "None";
-        let sorter = sorters[0];
-        let isSortReversed = false;
+export default class OperatorTab extends Inferno.Component<any, any> {
+    constructor(props) {
+        super(props);
 
-        state.getSorterClass = tester => {
-            if (tester !== sorter) {
-                return tester.key;
-            }
-            return isSortReversed ? tester.key + " is-active is-reversed" : tester.key + " is-active";
-        };
-        state.sort = function(a, b) {
-            const res = sorter.fn(a, b);
-            return isSortReversed ? -res : res;
-        };
-        state.setSort = newSorter => {
-            if (newSorter === sorter) {
-                isSortReversed = !isSortReversed;
-            } else {
-                isSortReversed = false;
-                sorter = newSorter;
-            }
-        };
-        state.filter = x => filters[filterProp](x);
-
-        const ops = (state.ops = Object.keys(attrs.stats.operator).reduce((acc, curr) => {
-            const op = attrs.stats.operator[curr];
+        const ops = Object.keys(props.stats.operator).reduce((acc, curr) => {
+            const op = props.stats.operator[curr];
             const k = op.kills || 0;
             const d = op.deaths || 0;
             const w = op.won || 0;
@@ -103,10 +81,10 @@ export default {
                 }),
             );
             return acc;
-        }, []));
+        }, []);
 
-        state.operatorsShowMap = {};
-        const opProgressions = attrs.progressions
+        const operatorsShowMap = {};
+        const opProgressions = props.progressions
             .map(prog => ({
                 ops: prog.stats && prog.stats.operator,
                 date: prog.created_at,
@@ -133,7 +111,7 @@ export default {
             return cb(series[0], series[series.length - 1]);
         };
 
-        state.opgraphs = ops.reduce((acc, op) => {
+        const opgraphs = ops.reduce((acc, op) => {
             acc[op.id] = {};
             acc[op.id].kd = {
                 type: "Line",
@@ -242,46 +220,71 @@ export default {
             return acc;
         }, {});
 
-        state.toggleOp = op => {
-            state.operatorsShowMap[op] = !state.operatorsShowMap[op];
+        this.state = {
+            filterProp: "None",
+            sorter: null,
+            isSortReversed: false,
+            operatorsShowMap,
+            opgraphs,
         };
+    }
 
-        state.onSort = stat => {
-            if (stat in sorters) {
-                if (sortProp === stat) {
-                    isSortReversed = !isSortReversed;
-                } else {
-                    isSortReversed = false;
-                    sortProp = stat;
-                }
-            }
-        };
-        state.onFilter = filter => {
-            if (filter in filters) {
-                filterProp = filter;
-            }
-        };
-    },
-    view({ attrs, state }) {
+    getSorterClass(tester) {
+        if (tester !== this.state.sorter) {
+            return tester.key;
+        }
+        return this.state.isSortReversed ? tester.key + " is-active is-reversed" : tester.key + " is-active";
+    }
+    sort(a, b) {
+        const res = this.state.sorter.fn(a, b);
+        return this.state.isSortReversed ? -res : res;
+    }
+    setSort(newSorter) {
+        if (newSorter === this.state.sorter) {
+            this.setState({ isSortReversed: !this.state.isSortReversed });
+        } else {
+            this.setState({
+                sorter: newSorter,
+                isSortReversed: false,
+            });
+        }
+    }
+    filter(x) {
+        return filters[this.state.filterProp](x);
+    }
+
+    toggleOp(op) {
+        const opsMap = this.state.operatorsShowMap;
+        opsMap[op] = !opsMap[op];
+        this.setState({ operatorsShowMap: opsMap });
+    }
+
+    onFilter(filterProp) {
+        if (filterProp in filters) {
+            this.setState({ filterProp });
+        }
+    }
+
+    render() {
         return (
             <div className="opstab">
                 <div className="opstab__controls card">
                     <div className="card-content">
                         <p>
                             <label htmlFor="filter">filter by</label>
-                            <select name="filter" onchange={m.withAttr("value", state.onFilter)}>
+                            <select name="filter" onchange={e => this.onFilter(e.target.value)}>
                                 {Object.keys(filters).map(x => <option value={x}>{x}</option>)}
                             </select>
                         </p>
                     </div>
                 </div>
-                <Fauxtable className="opstab__table">
+                <Fauxtable.Table className="opstab__table">
                     <Fauxtable.Head>
                         <Fauxtable.Row>
                             {sorters.map(sorter => (
                                 <Fauxtable.Heading
-                                    className={state.getSorterClass(sorter)}
-                                    onclick={() => state.setSort(sorter)}
+                                    className={this.getSorterClass(sorter)}
+                                    onclick={() => this.setSort(sorter)}
                                 >
                                     {sorter.label}
                                 </Fauxtable.Heading>
@@ -289,14 +292,13 @@ export default {
                         </Fauxtable.Row>
                     </Fauxtable.Head>
                     <Fauxtable.Body>
-                        {state.ops
-                            .filter(state.filter)
-                            .sort(state.sort)
+                        {this.state.ops
+                            .filter(this.state.filter)
+                            .sort(this.state.sort)
                             .map(datum => (
                                 <div>
                                     <Fauxtable.Row key={datum.id} className={datum.id}>
-                                        <Fauxtable.Cell className="name">
-                                        {/* <Fauxtable.Cell className="name" onclick={() => state.toggleOp(datum.id)}> */}
+                                        <Fauxtable.Cell className="name" onclick={() => this.toggleOp(datum.id)}>
                                             <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
                                         </Fauxtable.Cell>
@@ -324,28 +326,26 @@ export default {
                                             {stats.formatDuration(datum.timePlayed)}
                                         </Fauxtable.Cell>
                                     </Fauxtable.Row>
-                                    {!state.operatorsShowMap[datum.id] ? (
-                                        ""
-                                    ) : (
+                                    {!this.state.operatorsShowMap[datum.id] ? null : (
                                         <div class="opstab__graphs">
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
-                                                        <Chart {...state.opgraphs[datum.id].kd} />
+                                                        <Chart {...this.state.opgraphs[datum.id].kd} />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
-                                                        <Chart {...state.opgraphs[datum.id].wl} />
+                                                        <Chart {...this.state.opgraphs[datum.id].wl} />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col">
                                                     <div>
-                                                        <Chart {...state.opgraphs[datum.id].playtime} />
+                                                        <Chart {...this.state.opgraphs[datum.id].playtime} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -354,8 +354,8 @@ export default {
                                 </div>
                             ))}
                     </Fauxtable.Body>
-                </Fauxtable>
+                </Fauxtable.Table>
             </div>
         );
-    },
-};
+    }
+}

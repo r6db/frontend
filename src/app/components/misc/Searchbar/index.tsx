@@ -1,7 +1,7 @@
 import * as Inferno from "inferno";
-import { redirect } from "redux-first-router";
 import { connect } from "inferno-redux";
 import "./searchbar.scss";
+import { toSearch } from "lib/store/actions";
 
 interface ISearchbarAttrs {
     query: string;
@@ -40,25 +40,24 @@ class Searchbar extends Inferno.Component<ISearchbarAttrs, ISearchbarState> {
 
     render() {
         return (
-            <form className="searchbar" action="" onsubmit={this.onSearch}>
+            <form className="searchbar" action="" onSubmit={this.onSearch}>
                 <input
                     className="searchbar__name"
                     type="text"
                     value={this.state.query}
                     placeholder="enter player name"
-                    onkeypress={this.onQueryChange}
-                    onchange={this.onQueryChange}
+                    onInput={this.onQueryChange}
                 />
                 <select
                     className="searchbar__platform"
                     value={this.props.platform}
-                    onchange={e => this.props.setPlatform(e.value)}
+                    onInput={e => this.props.setPlatform(e.target.value)}
                 >
                     <option value="PC">PC</option>
                     <option value="PS4">PS4</option>
                     <option value="XBOX">XB1</option>
                 </select>
-                <button onsubmit={this.onSearch} className="button button--primary searchbar__submit">
+                <button onSubmit={this.onSearch} className="button button--primary searchbar__submit">
                     Search
                 </button>
             </form>
@@ -66,16 +65,13 @@ class Searchbar extends Inferno.Component<ISearchbarAttrs, ISearchbarState> {
     }
 }
 
-const mapStateToProps = getState => ({ platform: getState().platform, query: getState().search });
-const mapDispatchToProps = (dispatch, getState) => ({
-    goSearch: name => {
-        const { platform, loading } = getState();
-        if (!loading) {
-            dispatch({ type: "SEARCH", payload: { query: name, platform } });
-        }
-    },
-    goHome: () => dispatch({ type: "HOME" }),
-    setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl }),
-});
+const mapStateToProps = state => ({ platform: state.platform, query: state.search });
+const mapDispatchToProps = dispatch => {
+    return {
+        goSearch: name => dispatch(toSearch(name)),
+        goHome: () => dispatch({ type: "HOME" }),
+        setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl }),
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
