@@ -63,8 +63,7 @@ class Chankaboard extends Inferno.Component<any, any> {
                                         <td>
                                             <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
-                                                    <FadeImage
-                                                        src={getImageLink(
+                                                    <FadeImage src={getImageLink(
                                                             entry.userId || entry.id,
                                                             this.props.platform,
                                                         )}

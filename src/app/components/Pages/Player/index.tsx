@@ -49,19 +49,18 @@ function Player(props) {
 }
 
 const mapStateToProps = state => {
-    const { platform, loading, players, location: { payload } } = state;
+    const { platform, loading, players, location } = state;
 
     return {
-        data: players[payload.id],
-        tab: payload.tab || "summary",
+        data: players[location.payload.id],
+        tab: location.payload.tab || "summary",
         loading,
         platform,
     };
 };
-const mapDispatchtoProps = (dispatch, state) => {
-    const { location: { payload } } = state;
+const mapDispatchtoProps = (dispatch) => {
     return {
-        updatePlayer: () => dispatch(updatePlayer(payload.id)),
+        updatePlayer: (id) => dispatch(updatePlayer(id)),
     };
 };
 export default connect(mapStateToProps, mapDispatchtoProps)(Player);

@@ -84,7 +84,7 @@ class PlayerHeader extends Inferno.Component<any, any> {
                             </button>
                         ) : (
                             <button
-                                onclick={this.props.updatePlayer}
+                                onclick={() =>this.props.updatePlayer(this.props.id)}
                                 className="button playerheader__button button--accent"
                             >
                                 update
