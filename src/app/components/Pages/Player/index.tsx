@@ -1,6 +1,6 @@
 import * as React from "react";
 import Stats from "./stats";
-import Operators from "./operators";
+import Operators from "./Operators";
 import Ranks from "./ranks";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";

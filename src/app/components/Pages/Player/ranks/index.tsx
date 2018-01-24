@@ -39,6 +39,7 @@ export default class RanksTable extends React.Component<any, any> {
             return acc.concat(
                 [emea, apac, ncsa].map(region => {
                     region.season = rank.season;
+                    region.key = region.region + '-' + rank.season;
                     return region;
                 }),
             );
@@ -154,7 +155,7 @@ export default class RanksTable extends React.Component<any, any> {
                             .filter(this.filter)
                             .sort(this.sort)
                             .map(datum => (
-                                <Fauxtable.Row key={datum.id} className="fauxtable__row">
+                                <Fauxtable.Row key={datum.key} className="fauxtable__row">
                                     <Fauxtable.Cell className="fauxtable__cell region">
                                         {regions[datum.region]}
                                     </Fauxtable.Cell>

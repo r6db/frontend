@@ -14,7 +14,7 @@ const getAliases = player => {
         .join(", ");
 
     const rest =
-        player.aliases.length > 2 ? <span className="result__span"> and {player.aliases.length - 2} more</span> : "";
+        player.aliases.length > 2 ? <span key={player.id} className="result__span"> and {player.aliases.length - 2} more</span> : "";
     return [shown, rest];
 };
 
