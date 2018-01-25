@@ -18,14 +18,19 @@ class Leaderboard extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            board: Leaderboards.ALL.id,
+            board: props.board,
+            platform: props.platform,
         };
     }
     changeBoard(board) {
         this.setState({ board });
     }
-    loadLeaderboard() {
-        this.props.load(this.state.board, this.props.platform);
+    changePlatform(platform) {
+        this.setState({ platform });
+    }
+    loadLeaderboard(e) {
+        e.preventDefault();
+        this.props.load(this.state.board, this.state.platform);
     }
 
     render() {
@@ -49,13 +54,13 @@ class Leaderboard extends React.Component<any, any> {
                                 <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
                             </p>
                         </div>
-                        <form className="leaderboard__filters" action="" onSubmit={this.loadLeaderboard}>
+                        <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
                             <p className="leaderboard__platform">
                                 <label htmlFor="platformselect">Platform</label>
                                 <select
                                     id="platformselect"
                                     value={this.state.platform}
-                                    onChange={e => this.props.changePlatform(e.target.value)}
+                                    onChange={e => this.changePlatform(e.target.value)}
                                 >
                                     <option value="PC">PC</option>
                                     <option value="PS4">PS4</option>
@@ -131,6 +136,7 @@ class Leaderboard extends React.Component<any, any> {
 
 const mapStateToProps = state => {
     const { platform, leaderboard, location: { payload: { board } } } = state;
+    console.log(board, leaderboard);
     return {
         platform,
         board,

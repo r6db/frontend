@@ -92,8 +92,9 @@ export default {
         thunk: async (dispatch, getState) => {
             const { board: b, platform } = getState().location.payload;
             const board = (b || "").toUpperCase();
+
             if (!board || board === "CHANKA") {
-                return;
+                return redirect(`/chankaboard/${platform}`);
             }
             const lbConfig = Leaderboards[board];
             dispatch({ type: "PLATFORM", payload: platform });
