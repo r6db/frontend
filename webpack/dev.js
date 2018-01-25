@@ -27,6 +27,12 @@ module.exports = merge(base, {
             poll: 500,
         },
     },
+
+    output: {
+        path: path.join(__dirname, "../build"),
+        publicPath: "/",
+        filename: "[name].js",
+    },
     plugins: [
         new webpack.DefinePlugin({
             "process.env": {

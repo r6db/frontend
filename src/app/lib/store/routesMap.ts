@@ -163,7 +163,7 @@ export default {
                     dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) });
                     setMeta({
                         title: `Comparison`,
-                        description: `compare stats for ${x[0].name} and ${x.length - 1} more`,
+                        description: `compare stats for ${x.length} players`,
                     });
                     analytics.pageView("Comparison");
                 })

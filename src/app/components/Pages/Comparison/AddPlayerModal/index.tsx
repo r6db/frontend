@@ -14,8 +14,9 @@ class AddPlayerModal extends React.Component<any, any> {
         this.state = {
             query: "",
             platform: props.platform,
-            results: null,
+            results: [],
         };
+        this.onSearch = this.onSearch.bind(this);
     }
     async onSearch(e) {
         if (e && "preventDefault" in e) {

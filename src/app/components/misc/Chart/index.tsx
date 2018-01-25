@@ -50,15 +50,19 @@ export default class Chart extends React.Component<any, any> {
         return (
             <div className="chart">
                 <div className="chart__header">
-                    {this.props.hideTitle || false ? null : <div className="chart__title">{this.props.title}</div>}
+                    {this.props.hideTitle || false ? null : (
+                        <div key="title" className="chart__title">
+                            {this.props.title}
+                        </div>
+                    )}
                     {this.props.hideLegend || false ? null : (
-                        <div className="chart__legend">
-                            {this.props.data.series.map(series => [
+                        <div key="legend" className="chart__legend">
+                            {this.props.data.series.map(series => (
                                 <div key={series.name} className="chart__legenditem">
                                     <div className={"indicator " + series.className} />
                                     <div>{series.name}</div>
-                                </div>,
-                            ])}
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>

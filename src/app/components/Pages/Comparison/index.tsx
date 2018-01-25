@@ -199,6 +199,10 @@ class Compare extends React.Component<any, any> {
             showPlayerModal: false,
             ids: props.ids,
         };
+
+        this.onAddPlayer = this.onAddPlayer.bind(this);
+        this.togglePlayer = this.togglePlayer.bind(this);
+        this.onModalClose = this.onModalClose.bind(this);
     }
     onAddPlayer() {
         this.setState({ showPlayerModal: true });
@@ -213,7 +217,7 @@ class Compare extends React.Component<any, any> {
     }
     onModalClose() {
         if (this.state.ids) {
-            this.props.comapre(this.state.ids);
+            this.props.compare(this.state.ids);
         }
         this.setState({ showPlayerModal: false });
     }
@@ -405,7 +409,7 @@ class Compare extends React.Component<any, any> {
                                     </Fauxtable.Head>
                                     <Fauxtable.Body>
                                         {rows.map(row => (
-                                            <Fauxtable.Row>
+                                            <Fauxtable.Row key={row.label}>
                                                 <Fauxtable.Cell className="comparison-stat">{row.label}</Fauxtable.Cell>
                                                 {this.props.players.map(x => (
                                                     <Fauxtable.Cell className="comparison-value">

@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const util = require("util");
 
+const NameAllModulesPlugin = require("name-all-modules-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const { CheckerPlugin, TsConfigPathsPlugin } = require("awesome-typescript-loader");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -17,14 +18,24 @@ const cssdedupe = require("postcss-discard-duplicates");
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
+        vendor: [
+            "react",
+            "react-dom",
+            "redux",
+            "redux-first-router",
+            "redux-first-router-link",
+            "redux-localstorage",
+            "redux-thunk",
+            "history",
+            "isomorphic-fetch",
+        ],
         app: ["./src/app/index.ts"],
     },
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
-        filename: "[name].[hash].js",
-        chunkFilename: "[name].[hash].js",
-        pathinfo: true,
+        filename: "[name].js?v=[chunkhash:8]",
+        chunkFilename: "[chunkhash].js",
     },
     target: "web",
     resolve: {
@@ -108,8 +119,17 @@ module.exports = {
         new DashboardPlugin(),
         new TsConfigPathsPlugin(),
         new CheckerPlugin(),
+        new webpack.NamedModulesPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            minChunks: Infinity,
+            children: true,
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "app",
+        }),
         new CopyWebpackPlugin([{ from: "src/assets", to: "assets" }, { from: "src/favicons/*", to: "[name].[ext]" }]),
         new webpack.LoaderOptionsPlugin({
             options: {
@@ -128,7 +148,6 @@ module.exports = {
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new ExtractTextPlugin({ filename: "styles.[hash].css", allChunks: true }),
-        new webpack.NamedModulesPlugin(),
+        new ExtractTextPlugin({ filename: "styles.css?v=[contenthash]", allChunks: true }),
     ],
 };
