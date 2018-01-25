@@ -60,15 +60,8 @@ export default {
                 });
         },
     },
-    LEADERBOARD_ENTRY: {
-        path: "/leaderboard",
-        thunk: async (dispatch, getState) => {
-            const platform = getState().platform;
-            dispatch(redirect({ type: "LEADERBOARD", payload: { board: "ALL", platform } }));
-        },
-    },
     CHANKABOARD: {
-        path: "/leaderboard/:platform/CHANKA",
+        path: "/chankaboard/:platform",
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
             dispatch({ type: "PLATFORM", payload: platform });
@@ -82,15 +75,15 @@ export default {
                     });
                     analytics.pageView("Leaderboard");
                     dispatch({
-                        type: "LEADERBOARD_FETCHED",
-                        payload: { board: "CHANKA", entries },
+                        type: "CHANKABOARD_FETCHED",
+                        payload: { entries },
                     });
                 })
                 .catch(error => {
                     if (error.message === "MAINTENANCE") {
                         return dispatch(redirect({ type: "MAINTENANCE" }));
                     }
-                    dispatch({ type: "LEADERBOARD_FAILED", payload: { board: "CHANKA", error } });
+                    dispatch({ type: "CHANKABOARD_FAILED", payload: { entries: [], error } });
                 });
         },
     },

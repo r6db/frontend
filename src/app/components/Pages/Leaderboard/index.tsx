@@ -75,11 +75,7 @@ class Leaderboard extends React.Component<any, any> {
                                     {Object.keys(Leaderboards).map(l => {
                                         const lb = Leaderboards[l];
                                         return (
-                                            <option
-                                                key={lb.id}
-                                                selected={isSelected(lb.id, this.props.board)}
-                                                value={lb.id}
-                                            >
+                                            <option key={lb.id} value={lb.id}>
                                                 {lb.label}
                                             </option>
                                         );

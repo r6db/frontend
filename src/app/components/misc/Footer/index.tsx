@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import "./footer.scss";
@@ -13,7 +14,7 @@ const Footer = props => (
                 <Link to="/" className="footer__link footer__link--noicon">
                     Home
                 </Link>
-                <Link to="/leaderboard" className="footer__link footer__link--noicon">
+                <Link to={`/leaderboard/${props.platform}/ALL`} className="footer__link footer__link--noicon">
                     Leaderboard
                 </Link>
                 <Link to="/compare" className="footer__link footer__link--noicon">
@@ -45,4 +46,6 @@ const Footer = props => (
         </div>
     </div>
 );
-export default Footer;
+
+const mapState = state => ({ platform: state.platform });
+export default connect(mapState)(Footer);

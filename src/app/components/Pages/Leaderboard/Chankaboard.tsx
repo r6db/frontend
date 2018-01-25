@@ -17,9 +17,7 @@ class Chankaboard extends React.Component<any, any> {
     }
     changePlatform(pf) {
         this.props.changePlatform(pf);
-    }
-    componentDidMount() {
-        this.props.load("CHANKA", this.props.platform);
+        this.props.load(pf);
     }
     render() {
         return (
@@ -57,7 +55,7 @@ class Chankaboard extends React.Component<any, any> {
                                 {this.props.entries.map((entry, i) => (
                                     <tr className="entry" key={entry.id}>
                                         <td>
-                                            <span className="entry__placement">{entry.placement}</span>
+                                            <span className="entry__placement">{i + 1}</span>
                                             <span className="entry__medal" />
                                         </td>
                                         <td>
@@ -85,15 +83,14 @@ class Chankaboard extends React.Component<any, any> {
     }
 }
 const mapStateToProps = state => {
-    const { platform, leaderboard } = state;
+    const { platform, chankaboard } = state;
     return {
         platform,
-        board: "CHANKA",
-        entries: leaderboard["CHANKA"] || [],
+        entries: chankaboard || [],
     };
 };
 const mapDispatchToProps = dispatch => ({
-    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
+    load: platform => dispatch({ type: "CHANKABOARD", payload: { platform } }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chankaboard);
