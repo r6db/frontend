@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as lozad from "lozad";
 import { FadeImage } from "components/misc/FadeImage";
+import Footer from "components/misc/Footer";
 import "./page.scss";
 
 export function PageHead(props) {
@@ -30,6 +31,7 @@ export const PageContent = props => <div className="page__content">{props.childr
 export const Page = props => (
     <div {...props} className={`page ${props.className || ""}`}>
         {props.children}
+        <Footer />
     </div>
 );
 
