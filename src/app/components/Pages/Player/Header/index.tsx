@@ -37,8 +37,8 @@ class PlayerHeader extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="container playerheader">
-                <div className="playerheader__content">
+            <div className="playerheader">
+                <div className="playerheader__content container">
                     <div className="playerheader__image">
                         <FadeImage src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)} />
                     </div>
@@ -93,24 +93,26 @@ class PlayerHeader extends React.Component<any, any> {
                     </div>
                 </div>
                 <div className="playerheader__tabs">
-                    <Link
-                        className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
-                        to={toPlayerTab(this.props.id, "summary")}
-                    >
-                        Summary
-                    </Link>
-                    <Link
-                        className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
-                        to={toPlayerTab(this.props.id, "ranks")}
-                    >
-                        Ranks
-                    </Link>
-                    <Link
-                        className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
-                        to={toPlayerTab(this.props.id, "ops")}
-                    >
-                        Operators
-                    </Link>
+                    <div className="container">
+                      <Link
+                          className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
+                          to={toPlayerTab(this.props.id, "summary")}
+                      >
+                          Summary
+                      </Link>
+                      <Link
+                          className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
+                          to={toPlayerTab(this.props.id, "ops")}
+                      >
+                          Operators
+                      </Link>
+                      <Link
+                          className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
+                          to={toPlayerTab(this.props.id, "ranks")}
+                      >
+                          Ranks
+                      </Link>
+                    </div>
                 </div>
             </div>
         );

@@ -33,7 +33,7 @@
         &content {
             z-index: 1;
             width: 100%;
-            padding: 50px $l;
+            padding: 50px 0;
         }
     }
     &__image {
@@ -49,8 +49,8 @@
         height: calc(100% + 40px);
 
         &.fadeimage--loaded {
-            opacity: 0.5;
-            filter: saturate(120%) contrast(110%);
+            opacity: 0.25;
+            filter: saturate(150%) contrast(110%);
         }
 
         @include medium {
