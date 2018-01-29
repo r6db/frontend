@@ -1,7 +1,7 @@
 @import "scss/styles";
 
 .footer {
-    background: $gray-dark;
+    background: darken($bg-color, 2%);
     &__container {
         padding: $l*2 0;
         display: flex;

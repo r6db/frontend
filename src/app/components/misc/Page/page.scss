@@ -49,8 +49,8 @@
         height: calc(100% + 40px);
 
         &.fadeimage--loaded {
-            opacity: 0.5;
-            filter: saturate(120%) contrast(110%);
+            opacity: 0.25;
+            filter: saturate(150%) contrast(110%);
         }
 
         @include medium {
