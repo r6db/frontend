@@ -20,7 +20,7 @@ const history = createHistory();
 
 const { store } = makeStore(history);
 
-import imageLanding from "assets/landing.jpg";
+import imageLanding from "assets/backgrounds/landing.jpg";
 
 
 storiesOf("Loading", module)
@@ -85,7 +85,7 @@ storiesOf("Page", module)
       </Page.PageContent>
     </Page.Page>
   ));
-  
+
 storiesOf("Modal", module)
   .add("basic", () => (
     <Modal title="modal title" onclose={action("onclose()")}>
