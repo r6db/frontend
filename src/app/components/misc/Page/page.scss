@@ -6,7 +6,8 @@
     position: relative;
     background: $bg-color;
     padding-top: 40px;
-
+    min-height: 100vh;
+    
     &--empty {
         .page__content {
             height: calc(100vh - 100px);
