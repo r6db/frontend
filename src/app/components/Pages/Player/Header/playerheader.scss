@@ -116,24 +116,46 @@
         }
     }
     &__tabs {
-        margin: ($l*2) 0 0;
+        margin: ($l*5) 0 0;
         display: flex;
+        justify-content:center;
+        background: darken($bg-color, 1.5%);
+
+        .container {
+            display: flex;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
     }
     &__tab {
         flex: 1;
+        padding: ($l*1.5) $l;
         transition: all 100ms ease-out;
-        border-bottom: 3px solid transparent;
-        padding: $l;
+        border-bottom: 2px solid transparent;
         text-align: center;
-        font-weight: bold;
-        color: $font-color;
+        font-size: $font-big;
+        font-weight: 600;
+        color: darken($font-color, 20%);
 
         &:focus {
             outline: none;
         }
+        &:hover {
+          color: $font-color;
+        }
         &--active {
             color: $accent;
-            border-color: $white;
+            border-color: $accent;
+            &:hover {
+              color: $accent;
+            }
+        }
+
+        @include large {
+            padding: ($l*1.5) ($l*3);
+            flex: 0;
         }
     }
 }
