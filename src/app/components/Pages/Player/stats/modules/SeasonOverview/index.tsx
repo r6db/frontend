@@ -2,7 +2,7 @@ import * as React from "react";
 import Stat from "components/misc/Stat";
 import * as get from "lodash/get";
 import { getRankWinChance } from "lib/stats";
-import { Ranks } from "lib/constants";
+import { RANKS } from "lib/constants";
 import "./rankseason.scss";
 
 function RankedSeason(props) {
@@ -20,8 +20,8 @@ function RankedSeason(props) {
                     <Stat label="win rate">{getRankWinChance(props)}</Stat>
                 </div>
                 <div className="col">
-                    <Stat label="Rank">{Ranks[get(props, "rank", 0)]}</Stat>
-                    <Stat label="max. Rank">{Ranks[get(props, "max_rank", 0)]}</Stat>
+                    <Stat label="Rank">{RANKS[get(props, "rank", 0)]}</Stat>
+                    <Stat label="max. Rank">{RANKS[get(props, "max_rank", 0)]}</Stat>
                     <Stat label="MMR">{get(props, "mmr", 0).toFixed(2)}</Stat>
                     <Stat label="Skill ± Uncertainty" tooltip="numerical value of your performance in ranked">
                         {get(props, "skill_mean", 0).toFixed(2)} ± {get(props, "skill_stdev", 0).toFixed(2)}

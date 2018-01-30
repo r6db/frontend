@@ -1,4 +1,4 @@
-import { Operators } from "lib/constants";
+import { OPERATORS } from "lib/constants";
 const earliestDate = new Date("2015-01-01");
 const fixAlias = alias => {
     // eslint-disable-next-line camelcase
@@ -76,7 +76,7 @@ export default function(player) {
             .map(id => ({
                 ...player.stats.operator[id],
                 id,
-                ...Operators[id],
+                ...OPERATORS[id],
             }))
             .reduce(
                 (acc, curr) => ({

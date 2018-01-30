@@ -1,6 +1,6 @@
 import * as React from "react";
 import { redirect } from "redux-first-router";
-import { Leaderboards } from "lib/constants";
+import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
@@ -77,8 +77,8 @@ class Leaderboard extends React.Component<any, any> {
                                     value={this.state.board}
                                     onChange={e => this.changeBoard(e.target.value)}
                                 >
-                                    {Object.keys(Leaderboards).map(l => {
-                                        const lb = Leaderboards[l];
+                                    {Object.keys(LEADERBOARDS).map(l => {
+                                        const lb = LEADERBOARDS[l];
                                         return (
                                             <option key={lb.id} value={lb.id}>
                                                 {lb.label}

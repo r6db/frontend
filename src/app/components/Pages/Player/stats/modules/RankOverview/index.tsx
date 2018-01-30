@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as get from "lodash/get";
 import Icon, { GLYPHS } from "components/misc/Icon";
-import { Ranks, Seasons } from "lib/constants";
+import { RANKS, SEASONS } from "lib/constants";
 import "./rankoverview.scss";
 
 function CurrentRank(props) {
@@ -67,9 +67,9 @@ export default function PlayerRankOverview(props) {
                     <div className={`pastrank season-${rank.season}`} key={rank.season}>
                         <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.rank]} />
                         <div className="pastrank__text">
-                            <div className="pastrank__season">{Seasons[rank.season]}</div>
+                            <div className="pastrank__season">{SEASONS[rank.season]}</div>
                             <div className="pastrank__rank">
-                                {Ranks[rank.rank]}
+                                {RANKS[rank.rank]}
                                 <span className="pastrank__mmr">{rank.mmr} MMR</span>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 import { redirect } from "redux-first-router";
-import { Leaderboards } from "lib/constants";
+import { LEADERBOARDS } from "lib/constants";
 import * as api from "../api";
 import * as analytics from "../analytics";
 import setMeta from "lib/meta";
@@ -96,7 +96,7 @@ export default {
             if (!board || board === "CHANKA") {
                 return redirect(`/chankaboard/${platform}`);
             }
-            const lbConfig = Leaderboards[board];
+            const lbConfig = LEADERBOARDS[board];
             dispatch({ type: "PLATFORM", payload: platform });
             api
                 .getLeaderboard(lbConfig.board, platform)

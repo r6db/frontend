@@ -27,7 +27,7 @@ module.exports = merge(base, {
             poll: 500,
         },
     },
-
+    devtool: "source-map",
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",

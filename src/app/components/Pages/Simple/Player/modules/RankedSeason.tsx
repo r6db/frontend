@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Ranks } from "lib/constants";
+import { RANKS } from "lib/constants";
 
 export default function SimpleSeason(props) {
     return props.season != null ? (
@@ -38,8 +38,8 @@ export default function SimpleSeason(props) {
                 <div className="row">
                     <div className="label">Rank</div>
                     <div className={`value rank-${props.season.rank}`}>
-                        <span className="quiet">(Max: {Ranks[props.season.max_rank]}) </span>
-                        {Ranks[props.season.rank]}
+                        <span className="quiet">(Max: {RANKS[props.season.max_rank]}) </span>
+                        {RANKS[props.season.rank]}
                     </div>
                 </div>
                 <div className="row">

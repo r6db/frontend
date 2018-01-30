@@ -2,7 +2,7 @@ import * as React from "react";
 import * as get from "lodash/get";
 import { connect } from "react-redux";
 import * as stats from "lib/stats";
-import { Operators } from "lib/constants";
+import { OPERATORS } from "lib/constants";
 import "./comparison.scss";
 import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";

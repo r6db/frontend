@@ -12,7 +12,7 @@ export const v2Api = "/api/v2";
  * board: api endpoint to call
  * label: you know..
  */
-export const Leaderboards = {
+export const LEADERBOARDS = {
     ALL: { id: "ALL", board: "highest_skill_adjusted", label: "Global" },
     APAC: {
         id: "APAC",
@@ -38,30 +38,53 @@ export const DATE_LONG = "DD. MMM YYYY HH:MM";
  * the api returns ranks in a number format
  * we can use that number as index to get the label
  */
-export const Ranks = [
+export const RANKS = [
     "Unranked",
     "Copper 4",
     "Copper 3",
     "Copper 2",
-    "Copper Star",
+    "Copper 1",
     "Bronze 4",
     "Bronze 3",
     "Bronze 2",
-    "Bronze Star",
+    "Bronze 1",
     "Silver 4",
     "Silver 3",
     "Silver 2",
-    "Silver Star",
+    "Silver 1",
     "Gold 4",
     "Gold 3",
     "Gold 2",
-    "Gold Star",
-    "Platinum 3",
-    "Platinum 2",
-    "Platinum Star",
+    "Gold 1",
+    "Plat 3",
+    "Plat 2",
+    "Plat 1",
     "Diamond",
 ];
-export const Seasons = [
+export const SHORTRANKS = [
+    "-",
+    "Copp 4",
+    "Copp 3",
+    "Copp 2",
+    "Copp 1",
+    "Bron 4",
+    "Bron 3",
+    "Bron 2",
+    "Bron 1",
+    "Slvr 4",
+    "Slvr 3",
+    "Slvr 2",
+    "Slvr 1",
+    "Gold 4",
+    "Gold 3",
+    "Gold 2",
+    "Gold 1",
+    "Plat 3",
+    "Plat 2",
+    "Plat 1",
+    "Dia",
+];
+export const SEASONS = [
     "Release",
     "Black Ice",
     "Dust Line",
@@ -73,7 +96,7 @@ export const Seasons = [
     "White Noise",
 ];
 
-export const Operators = {
+export const OPERATORS = {
     ash: { name: "Ash", side: "Attack", unit: "FBI" },
     bandit: { name: "Bandit", side: "Defense", unit: "GSG9" },
     blackbeard: { name: "Blackbeard", side: "Attack", unit: "SEALS" },
@@ -112,7 +135,7 @@ export const Operators = {
     zofia: { name: "Zofia", side: "Attack", unit: "GROM" },
 };
 
-export const regions = {
+export const REGIONS = {
     emea: "Europe",
     ncsa: "America",
     apac: "Asia",

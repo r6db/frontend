@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Operators } from "lib/constants";
+import { OPERATORS } from "lib/constants";
 import * as stats from "lib/stats";
 import Chart, { colors, labelInterpolationFnc } from "components/misc/Chart";
 import Icon, { GLYPHS } from "components/misc/Icon";
@@ -67,7 +67,7 @@ export default class OperatorTab extends React.Component<any, any> {
             const p = w + l || 1;
             const svl = (1 - d / p) * 100;
             acc.push(
-                Object.assign({}, Operators[curr], {
+                Object.assign({}, OPERATORS[curr], {
                     id: curr,
                     won: w,
                     lost: l,

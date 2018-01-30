@@ -1,7 +1,7 @@
 import * as React from "react";
-import Stats from "./stats";
-import Operators from "./Operators";
-import Ranks from "./ranks";
+import StatsTab from "./stats";
+import OperatorsTab from "./Operators";
+import RanksTab from "./ranks";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
@@ -38,9 +38,9 @@ function Player(props) {
                 </PageHead>
                 <PageContent>
                     <div className="container player__tab">
-                        {props.tab === "summary" ? <Stats key="summary" {...props.data} /> : null}
-                        {props.tab === "ops" ? <Operators key="ops" {...props.data} /> : null}
-                        {props.tab === "ranks" ? <Ranks key="ranks" {...props.data} /> : null}
+                        {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
+                        {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
+                        {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}
                     </div>
                 </PageContent>
             </Page>

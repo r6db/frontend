@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Leaderboards } from "lib/constants";
+import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
