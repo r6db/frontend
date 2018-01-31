@@ -56,9 +56,9 @@ export const RANKS = [
     "Gold 3",
     "Gold 2",
     "Gold 1",
-    "Plat 3",
-    "Plat 2",
-    "Plat 1",
+    "Platinum 3",
+    "Platinum 2",
+    "Platinum 1",
     "Diamond",
 ];
 export const SHORTRANKS = [
