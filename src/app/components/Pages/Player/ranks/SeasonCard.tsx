@@ -8,6 +8,7 @@ import { getRankWinChance } from "lib/stats";
 import s3 from "assets/backgrounds/skullrain1.jpg";
 import s4 from "assets/backgrounds/redcrow1.jpg";
 import s5 from "assets/backgrounds/velvetshell1.jpg";
+import s6 from "assets/backgrounds/ophealth1.jpg";
 import s7 from "assets/backgrounds/bloodorchid1.jpg";
 import s8 from "assets/backgrounds/whitenoise1.jpg";
 
@@ -15,6 +16,7 @@ const imageMap = {
     3: s3,
     4: s4,
     5: s5,
+    6: s6,
     7: s7,
     8: s8,
     default: s3,
