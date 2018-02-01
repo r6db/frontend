@@ -21,6 +21,11 @@ export default class RanksTab extends React.Component<any, any> {
     render() {
         const ranks = this.getRanks(this.props);
         console.log(ranks);
-        return <div className="rankstab">{ranks.map(rank => <SeasonCard key={rank.season} {...rank} />)}</div>;
+        return (
+            <div className="rankstab">
+                {ranks.map(rank => <SeasonCard key={rank.season} {...rank} />)}
+                {/* <div className="rankstab__subtletext">Click to reveal additional data</div> */}
+            </div>
+        );
     }
 }

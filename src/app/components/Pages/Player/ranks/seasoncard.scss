@@ -8,53 +8,64 @@
     border-radius: $borderradius;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(to bottom, transparent 20%, $bg-color 80%);
+    background-color: $trans-high;
 
     @include large {
-        .seasoncard {
-            margin-bottom: $l*2;
-
-            // &__hero {
-            //     flex: 0 0 $l*12;
-            //     border-bottom: none;
-            //     border-right-width: 2px;
-            //     border-right-style: solid;
-            // }
-            &__season {
-                height: 100%;
-                display: flex;
-            }
-            &__content {
-                display: flex;
-                flex-direction: row;
-                flex: 1;
-                padding: $l 0 $l;
-            }
-        }
-        .regionstats {
-            flex: 0 0 33%;
-            padding: 0 $l;
-        }
+      &__content {
+          flex-direction: row;
+          padding-left: $l*2;
+          padding-right: 0;
+      }
+      &__season {
+          display: flex;
+          flex: 0 0 25%;
+      }
+      &__regions {
+          flex-direction: row;
+          flex: 0 0 75%;
+      }
+      .regionstats {
+          flex: 0 0 33%;
+          padding: 0 $l;
+          border-bottom: 0;
+          &__header {
+              margin-bottom: $l*1.5;
+          }
+          &__rankicon {
+              flex-basis: 3.5rem;
+              height: 3.5rem;
+              position: relative;
+              top: 2px;
+          }
+      }
     }
 
-    &__hero {
-        flex: 0 0 auto;
-        position: relative;
-    }
     &__image {
         position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        z-index: 1;
+        filter: saturate(150%) brightness(20%);
 
         &.fadeimage--loaded {
-            opacity: 0.2;
+            opacity: 0.20;
         }
     }
-    &__season {
+    &__content {
+        display: flex;
+        flex-direction: column;
         position: relative;
-        padding: $l;
-        font-weight: bold;
+        z-index: 2;
+        padding: $l $l*2;
+    }
+    &__season {
+        height: 5rem;
+    }
+    &__regions {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
     }
     &__stats {
         min-height: 1px;
@@ -64,48 +75,36 @@
         width: 80%;
         background: $gray;
     }
-
-    &--season-8 {
-        .seasoncard__hero {
-            border-color: $white-noise;
-        }
-        .seasoncard__season {
-            color: $white-noise;
-        }
-    }
-    &--season-7 {
-        .seasoncard__hero {
-            border-color: $blood-orchid;
-        }
-        .seasoncard__season {
-            color: $blood-orchid;
-        }
-    }
-    &--season-6 {
-        .seasoncard__hero {
-            border-color: $operation-health;
-        }
-        .seasoncard__season {
-            color: $operation-health;
-        }
-    }
-    &--season-5 {
-        .seasoncard__hero {
-            border-color: $velvet-shell;
-        }
-        .seasoncard__season {
-            color: $velvet-shell;
-        }
-    }
 }
 
 .regionstats {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid lighten($gray-dark, 15%);
+    padding-top: $l;
+    padding-bottom: $l;
 
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $l;
+    }
     &__region {
-        margin: 0 0 $l;
-        font-weight: bold;
+        font-size: $font-bigger;
+        line-height: 1.5;
+    }
+    &__rank {
+        font-weight: 600;
+        color: $font-subtle-color;
+    }
+    &__rankicon {
+        flex-basis: 3rem;
+        height: 3rem;
     }
     &__stats {
         flex: 1;
@@ -113,6 +112,10 @@
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: $l;
+        &--empty {
+          margin-bottom: 0;
+        }
     }
     .stat {
         flex: 1 1 50%;
