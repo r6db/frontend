@@ -23,7 +23,7 @@ export default class RanksTab extends React.Component<any, any> {
         console.log(ranks);
         return (
             <div className="rankstab">
-                {ranks.map(rank => <SeasonCard key={rank.season} {...rank} />)}
+                {ranks.map((rank, i) => <SeasonCard key={rank.season} collapsed={i > 0} {...rank} />)}
                 {/* <div className="rankstab__subtletext">Click to reveal additional data</div> */}
             </div>
         );

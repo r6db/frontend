@@ -9,35 +9,33 @@
     position: relative;
     overflow: hidden;
     background-color: $trans-high;
+    transition: all 200ms ease-in-out;
 
     @include large {
-      &__content {
-          flex-direction: row;
-          padding-left: $l*2;
-          padding-right: 0;
-      }
-      &__season {
-          display: flex;
-          flex: 0 0 25%;
-      }
-      &__regions {
-          flex-direction: row;
-          flex: 0 0 75%;
-      }
-      .regionstats {
-          flex: 0 0 33%;
-          padding: 0 $l;
-          border-bottom: 0;
-          &__header {
-              margin-bottom: $l*1.5;
-          }
-          &__rankicon {
-              flex-basis: 3.5rem;
-              height: 3.5rem;
-              position: relative;
-              top: 2px;
-          }
-      }
+        &__content {
+            flex-direction: row;
+            padding-left: $l*2;
+            padding-right: 0;
+        }
+        &__season {
+            display: flex;
+            flex: 0 0 25%;
+        }
+        &__regions {
+            flex-direction: row;
+            flex: 0 0 75%;
+        }
+        .regionstats {
+            flex: 0 0 33%;
+            padding: 0 $l;
+            border-bottom: 0;
+            &__rankicon {
+                flex-basis: 3.5rem;
+                height: 3.5rem;
+                position: relative;
+                top: 2px;
+            }
+        }
     }
 
     &__image {
@@ -49,7 +47,7 @@
         filter: saturate(150%) brightness(20%);
 
         &.fadeimage--loaded {
-            opacity: 0.20;
+            opacity: 0.2;
         }
     }
     &__content {
@@ -60,7 +58,14 @@
         padding: $l $l*2;
     }
     &__season {
-        height: 5rem;
+        height: 4rem;
+        transform-origin: top left;
+        transform: scale(1.25);
+        transition: transform 200ms ease-out;
+
+        .seasoncard--collapsed & {
+            transform: scale(1);
+        }
     }
     &__regions {
         display: flex;
@@ -92,7 +97,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: $l;
     }
     &__region {
         font-size: $font-bigger;
@@ -112,9 +116,17 @@
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: $l;
+        margin: ($l*1.5) 0 $l;
+        transition: all 200ms ease-in-out;
+        max-height: $l*8;
+        overflow: hidden;
+
         &--empty {
-          margin-bottom: 0;
+            margin-bottom: 0;
+        }
+        .seasoncard--collapsed & {
+            max-height: 0;
+            margin: 0;
         }
     }
     .stat {

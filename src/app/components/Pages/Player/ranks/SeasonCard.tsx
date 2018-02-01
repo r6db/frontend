@@ -40,7 +40,6 @@ const logoMap = {
     default: GLYPHS.LOGODEFAULT,
 };
 
-
 function getImage(season) {
     return imageMap[season] || imageMap.default;
 }
@@ -62,39 +61,52 @@ interface SeasonStats {
 }
 interface RegionStatsProps extends SeasonStats {
     region: string;
+    collapsed: boolean;
 }
 interface ISeasonCardProps {
     season: number;
     apac: SeasonStats;
     emea: SeasonStats;
     ncsa: SeasonStats;
+    collapsed: boolean;
 }
 
 interface ISeasonCardState {
-    extended: boolean;
+    collapsed: boolean;
 }
 
 export default class SeasonCard extends React.Component<ISeasonCardProps, ISeasonCardState> {
     constructor(props) {
         super(props);
         this.state = {
-            extended: false,
+            collapsed: this.props.collapsed || false,
         };
+
+        this.toggle = this.toggle.bind(this);
+    }
+    toggle() {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
     }
     render() {
         return (
-            <div className={`seasoncard seasoncard--season-${this.props.season}`}>
+            <div
+                className={`seasoncard seasoncard--season-${this.props.season} ${
+                    this.state.collapsed ? "seasoncard--collapsed" : ""
+                }`}
+                onClick={this.toggle}
+            >
                 <FadeImage className="seasoncard__image" src={getImage(this.props.season)} />
 
                 <div className="seasoncard__content">
                     <Icon className="seasoncard__season" glyph={getLogo(this.props.season)} />
                     <div className="seasoncard__regions">
-                        <RegionStats region={REGIONS.emea} {...this.props.emea} />
-                        <RegionStats region={REGIONS.ncsa} {...this.props.ncsa} />
-                        <RegionStats region={REGIONS.apac} {...this.props.apac} />
+                        <RegionStats collapsed={this.state.collapsed} region={REGIONS.emea} {...this.props.emea} />
+                        <RegionStats collapsed={this.state.collapsed} region={REGIONS.ncsa} {...this.props.ncsa} />
+                        <RegionStats collapsed={this.state.collapsed} region={REGIONS.apac} {...this.props.apac} />
                     </div>
                 </div>
-
             </div>
         );
     }
@@ -128,9 +140,9 @@ function RegionStats(region: RegionStatsProps) {
             </header>
             <div className="regionstats__stats">
                 {/*
-                <Stat label="rank">{RANKS[region.rank]}</Stat>
-                <Stat label="max rank">{RANKS[region.max_rank]}</Stat>
-                */}
+            <Stat label="rank">{RANKS[region.rank]}</Stat>
+            <Stat label="max rank">{RANKS[region.max_rank]}</Stat>
+            */}
                 <Stat label="MMR">{region.mmr.toFixed(2)}</Stat>
                 <Stat label="max MMR">{region.max_mmr.toFixed(2)}</Stat>
                 <Stat label="won">{region.wins}</Stat>
