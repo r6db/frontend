@@ -71,6 +71,17 @@ import DOKKAEBI from "assets/operators/dokkaebi.svg";
 import VIGIL from "assets/operators/vigil.svg";
 import ZOFIA from "assets/operators/zofia.svg";
 
+import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg"
+import LOGOS1 from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
+import LOGOS2 from "assets/seasonlogos/R6-OPDustLine-Horizontal.svg";
+import LOGOS3 from "assets/seasonlogos/R6-OPSkullRain-Horizontal.svg";
+import LOGOS4 from "assets/seasonlogos/R6-OPRedCrow-Horizontal.svg";
+import LOGOS5 from "assets/seasonlogos/R6-OPVelvetShell-Horizontal.svg";
+import LOGOS6 from "assets/seasonlogos/R6-OPHealth-Horizontal.svg";
+import LOGOS7 from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
+import LOGOS8 from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
+import LOGOS9 from "assets/seasonlogos/R6-OPChimera-Horizontal.svg";
+
 export default props =>
     props.glyph ? (
         <svg
@@ -154,4 +165,14 @@ export const GLYPHS = {
     DOKKAEBI,
     VIGIL,
     ZOFIA,
+    LOGODEFAULT,
+    LOGOS1,
+    LOGOS2,
+    LOGOS3,
+    LOGOS4,
+    LOGOS5,
+    LOGOS6,
+    LOGOS7,
+    LOGOS8,
+    LOGOS9,
 };
