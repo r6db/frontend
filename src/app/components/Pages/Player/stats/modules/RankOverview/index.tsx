@@ -67,7 +67,7 @@ export default function PlayerRankOverview(props) {
                     <div className={`pastrank season-${rank.season}`} key={rank.season}>
                         <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.rank]} />
                         <div className="pastrank__text">
-                            <div className="pastrank__season">{SEASONS[rank.season]}</div>
+                            <div className="pastrank__season">{SEASONS[rank.season].name}</div>
                             <div className="pastrank__rank">
                                 {RANKS[rank.rank]}
                                 <span className="pastrank__mmr">{rank.mmr} MMR</span>

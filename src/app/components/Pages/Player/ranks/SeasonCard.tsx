@@ -15,38 +15,6 @@ import s6 from "assets/backgrounds/ophealth1.jpg";
 import s7 from "assets/backgrounds/bloodorchid1.jpg";
 import s8 from "assets/backgrounds/whitenoise1.jpg";
 
-const imageMap = {
-    1: s1,
-    2: s2,
-    3: s3,
-    4: s4,
-    5: s5,
-    6: s6,
-    7: s7,
-    8: s8,
-    default: s3,
-};
-
-const logoMap = {
-    1: GLYPHS.LOGOS1,
-    2: GLYPHS.LOGOS2,
-    3: GLYPHS.LOGOS3,
-    4: GLYPHS.LOGOS4,
-    5: GLYPHS.LOGOS5,
-    6: GLYPHS.LOGOS6,
-    7: GLYPHS.LOGOS7,
-    8: GLYPHS.LOGOS8,
-    9: GLYPHS.LOGOS9,
-    default: GLYPHS.LOGODEFAULT,
-};
-
-function getImage(season) {
-    return imageMap[season] || imageMap.default;
-}
-
-function getLogo(season) {
-    return logoMap[season] || logoMap.default;
-}
 
 interface SeasonStats {
     wins: number;
@@ -97,10 +65,10 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
                 }`}
                 onClick={this.toggle}
             >
-                <FadeImage className="seasoncard__image" src={getImage(this.props.season)} />
+                <FadeImage className="seasoncard__image" src={SEASONS[this.props.season].cover} />
 
                 <div className="seasoncard__content">
-                    <Icon className="seasoncard__season" glyph={getLogo(this.props.season)} />
+                    <Icon className="seasoncard__season" glyph={SEASONS[this.props.season].logo} />
                     <div className="seasoncard__regions">
                         <RegionStats collapsed={this.state.collapsed} region={REGIONS.emea} {...this.props.emea} />
                         <RegionStats collapsed={this.state.collapsed} region={REGIONS.ncsa} {...this.props.ncsa} />

@@ -1,3 +1,21 @@
+import s0Logo from "assets/seasonlogos/R6-Default-Horizontal.svg";
+import s1Cover from "assets/backgrounds/blackice1.jpg";
+import s1Logo from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
+import s2Cover from "assets/backgrounds/dustline1.jpg";
+import s2Logo from "assets/seasonlogos/R6-OPDustLine-Horizontal.svg";
+import s3Cover from "assets/backgrounds/skullrain1.jpg";
+import s3Logo from "assets/seasonlogos/R6-OPSkullRain-Horizontal.svg";
+import s4Cover from "assets/backgrounds/redcrow1.jpg";
+import s4Logo from "assets/seasonlogos/R6-OPRedCrow-Horizontal.svg";
+import s5Cover from "assets/backgrounds/velvetshell1.jpg";
+import s5Logo from "assets/seasonlogos/R6-OPVelvetShell-Horizontal.svg";
+import s6Cover from "assets/backgrounds/ophealth1.jpg";
+import s6Logo from "assets/seasonlogos/R6-OPHealth-Horizontal.svg";
+import s7Cover from "assets/backgrounds/bloodorchid1.jpg";
+import s7Logo from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
+import s8Cover from "assets/backgrounds/whitenoise1.jpg";
+import s8Logo from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
+
 export const appname = "r6db";
 export const appid = "5e23d930-edd3-4240-b9a9-723c673fb649";
 export const title = "R6DB - Rainbow 6 Player database";
@@ -61,39 +79,98 @@ export const RANKS = [
     "Platinum 1",
     "Diamond",
 ];
-export const SHORTRANKS = [
-    "-",
-    "Copp 4",
-    "Copp 3",
-    "Copp 2",
-    "Copp 1",
-    "Bron 4",
-    "Bron 3",
-    "Bron 2",
-    "Bron 1",
-    "Slvr 4",
-    "Slvr 3",
-    "Slvr 2",
-    "Slvr 1",
-    "Gold 4",
-    "Gold 3",
-    "Gold 2",
-    "Gold 1",
-    "Plat 3",
-    "Plat 2",
-    "Plat 1",
-    "Dia",
-];
-export const SEASONS = [
-    "Release",
-    "Black Ice",
-    "Dust Line",
-    "Skull Rain",
-    "Red Crow",
-    "Velvet Shell",
-    "Operation Health",
-    "Blood Orchid",
-    "White Noise",
+
+interface ISeason {
+    id: number;
+    fullId: string;
+    name: string;
+    dateStart: Date | null;
+    dateEnd: Date | null,
+    cover: string;
+    logo: any;
+}
+export const SEASONS: ISeason[] = [
+    {
+        id: 0,
+        fullId: "Y1S0",
+        name: "Release",
+        dateStart: new Date("2016-12-01"),
+        dateEnd: new Date("2017-02-01"),
+        cover: null,
+        logo: s0Logo,
+    }, {
+        id: 1,
+        fullId: "Y1S1",
+        name: "Black Ice",
+        dateStart: null,
+        dateEnd: null,
+        cover: s1Cover,
+        logo: s1Logo,
+    }, {
+        id: 2,
+        fullId: "Y1S2",
+        name: "Dust Line",
+        dateStart: null,
+        dateEnd: null,
+        cover: s2Cover,
+        logo: s2Logo,
+    }, {
+        id: 3,
+        fullId: "Y1S3",
+        name: "Skull Rain",
+        dateStart: null,
+        dateEnd: null,
+        cover: s3Cover,
+        logo: s3Logo,
+    }, {
+        id: 4,
+        fullId: "Y1S4",
+        name: "Red Crow",
+        dateStart: null,
+        dateEnd: null,
+        cover: s3Cover,
+        logo: s3Logo,
+    }, {
+        id: 5,
+        fullId: "Y2S1",
+        name: "Velvet Shell",
+        dateStart: null,
+        dateEnd: null,
+        cover: s4Cover,
+        logo: s4Logo,
+    }, {
+        id: 6,
+        fullId: "Y2S2",
+        name: "Health",
+        dateStart: null,
+        dateEnd: null,
+        cover: s5Cover,
+        logo: s5Logo,
+    }, {
+        id: 7,
+        fullId: "Y2S3",
+        name: "Blood Orchid",
+        dateStart: null,
+        dateEnd: null,
+        cover: s7Cover,
+        logo: s7Logo,
+    }, {
+        id: 8,
+        fullId: "Y2S4",
+        name: "White Noise",
+        dateStart: null,
+        dateEnd: null,
+        cover: s8Cover,
+        logo: s8Logo,
+    }, {
+        id: 9,
+        fullId: "Y3S1",
+        name: "Chimera",
+        dateStart: null,
+        dateEnd: null,
+        cover: "",
+        logo: null,
+    },
 ];
 
 export const OPERATORS = {
