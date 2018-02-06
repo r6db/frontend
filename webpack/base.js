@@ -38,8 +38,8 @@ module.exports = {
     output: {
         path: DIST,
         publicPath: "/",
-        filename: "[name].[hash].js",
-        chunkFilename: "[name].[hash].js",
+        filename: "[name].[chunkhash].js",
+        chunkFilename: "[name].[chunkhash].js",
     },
     target: "web",
     resolve: {
@@ -157,7 +157,7 @@ module.exports = {
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new ExtractTextPlugin({ filename: "styles.css", allChunks: true }),
+        new ExtractTextPlugin({ filename: "styles.[contenthash].css", allChunks: true }),
         new workboxPlugin({
             globPatterns: ['*.{html,js,css,svg}'],
             swDest: path.join(DIST, 'sw.js'),
