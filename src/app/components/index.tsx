@@ -27,7 +27,7 @@ const pageMap = {
     PLAYERTABS: makeAsync(() => import("./Pages/Player")),
     COMPARISON: makeAsync(() => import("./Pages/Comparison")),
     ABOUT: makeAsync(() => import("./Pages/About")),
-    MAINTENANCE: makeAsync(() => import("./Pages/Errors/Maintenance")),
+    SERVERFAULT: makeAsync(() => import("./Pages/Errors/ServerFault")),
     [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound")),
 };
 

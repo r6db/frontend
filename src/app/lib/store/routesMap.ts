@@ -26,7 +26,7 @@ export default {
             });
         },
     },
-    MAINTENANCE: {
+    SERVERFAULT: {
         path: "/rip",
     },
     SEARCH: {
@@ -50,8 +50,8 @@ export default {
                     });
                 })
                 .catch(error => {
-                    if (error.message === "MAINTENANCE") {
-                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    if (error.message === "SERVERFAULT") {
+                        return dispatch(redirect({ type: "SERVERFAULT" }));
                     }
                     dispatch({
                         type: "SEARCH_FAILED",
@@ -80,8 +80,8 @@ export default {
                     });
                 })
                 .catch(error => {
-                    if (error.message === "MAINTENANCE") {
-                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    if (error.message === "SERVERFAULT") {
+                        return dispatch(redirect({ type: "SERVERFAULT" }));
                     }
                     dispatch({ type: "CHANKABOARD_FAILED", payload: { entries: [], error } });
                 });
@@ -113,8 +113,8 @@ export default {
                     });
                 })
                 .catch(error => {
-                    if (error.message === "MAINTENANCE") {
-                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    if (error.message === "SERVERFAULT") {
+                        return dispatch(redirect({ type: "SERVERFAULT" }));
                     }
                     dispatch({
                         type: "LEADERBOARD_FAILED",
@@ -168,8 +168,8 @@ export default {
                     analytics.pageView("Comparison");
                 })
                 .catch(err => {
-                    if (err.message === "MAINTENANCE") {
-                        return dispatch(redirect({ type: "MAINTENANCE" }));
+                    if (err.message === "SERVERFAULT") {
+                        return dispatch(redirect({ type: "SERVERFAULT" }));
                     }
                     dispatch({
                         type: "PLAYERS_FAILED",
@@ -201,8 +201,8 @@ async function playerThunk(dispatch, getState) {
             }
         })
         .catch(error => {
-            if (error.message === "MAINTENANCE") {
-                return dispatch(redirect({ type: "MAINTENANCE" }));
+            if (error.message === "SERVERFAULT") {
+                return dispatch(redirect({ type: "SERVERFAULT" }));
             }
             dispatch({ type: "PLAYER_FAILED", payload: { id, error } });
         });

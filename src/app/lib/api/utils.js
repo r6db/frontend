@@ -2,7 +2,7 @@ import { appid } from "lib/constants";
 
 export const failEarly = function failEarly(res) {
     if (res.status === 502) {
-        throw new Error("MAINTENANCE");
+        throw new Error("SERVERFAULT");
     }
     if (!res.ok) {
         throw res.json();
