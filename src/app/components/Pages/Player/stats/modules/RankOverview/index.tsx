@@ -75,6 +75,10 @@ export default function PlayerRankOverview(props) {
                         </div>
                     </div>
                 ))}
+                <div className="rankoverview__ubipls">
+                    <span>¯\_(ツ)_/¯</span>
+                    <span>waiting for UBI to fix</span>
+                </div>
             </div>
         </div>
     );

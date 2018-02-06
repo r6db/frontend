@@ -17,10 +17,8 @@ export default function(props) {
             <PageHead image={bg} position="50% 0%">
                 <div className="container">
                     <Searchbar className="home__search" search={props.search} />
-                    <div className="home__disclaimer">
-                        Old season ranks are *still* missing. <br />
-                        Please yell at UBI, not us
-                    </div>
+                    {/* <div className="home__disclaimer">
+                    </div> */}
                 </div>
             </PageHead>
         </Page>

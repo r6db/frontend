@@ -27,6 +27,19 @@
             flex-direction: column;
         }
     }
+
+    &__ubipls{
+        display: block;
+        color: $font-subtle-color;
+        margin-top: $l;
+        flex: none;
+
+        span{
+            display: block;
+            text-align: center;
+            line-height: 1.4em;
+        }
+    }
 }
 .currentrank {
     flex: 1;
