@@ -8,10 +8,16 @@ export function PageHead(props) {
     return (
         <div className="page__head">
             {props.image ? (
-                <FadeImage
-                    className="page__image fadeimage"
-                    src={props.image}
-                    style={{ objectPosition: props.position || "50% 40%" }}
+                <img
+                    className="page__image"
+                    style={{
+                        objectPosition: props.position || "50% 40%",
+                        backgroundPosition: props.position || "50% 40%",
+                        backgroundSize: "cover",
+                        backgroundImage: 'url("' + props.image.placeholder + '")',
+                    }}
+                    src={props.image.placeholder}
+                    srcSet={props.image.srcSet}
                     alt=""
                 />
             ) : null}

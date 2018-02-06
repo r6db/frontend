@@ -102,8 +102,16 @@ module.exports = {
                 },
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg)$/,
                 use: [
+                    {
+                        loader: "responsive-loader",
+                        options: {
+                            sizes: [320, 640, 1200, 2000],
+                            placeholder: true,
+                            placeholderSize: 40,
+                        },
+                    },
                     {
                         loader: "file-loader",
                         options: {},
@@ -137,7 +145,7 @@ module.exports = {
         new CopyWebpackPlugin([
             // { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },
-            { from: "src/maintenance.html", to: "maintenance.html"}
+            { from: "src/maintenance.html", to: "maintenance.html" },
         ]),
         new webpack.LoaderOptionsPlugin({
             options: {
