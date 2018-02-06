@@ -53,13 +53,6 @@ class PlayerHeader extends React.Component<any, any> {
                             global / lvl {this.props.level}
                         </div>
                         <div className="playerheader__links">
-                            {!this.props.twitch ? (
-                                ""
-                            ) : (
-                                <a className="playerheader__link" href={this.props.twitch} target="_BLANK">
-                                    <Icon glyph={GLYPHS.TWITCHTV} /> Twitch
-                                </a>
-                            )}
                             <a
                                 className="playerheader__link"
                                 href={domain.getUbiLink(this.props.userId || this.props.id, this.props.platform)}

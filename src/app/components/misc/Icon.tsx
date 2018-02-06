@@ -3,12 +3,11 @@ import * as React from "react";
 import EMAIL from "feather-icons/dist/icons/mail.svg";
 import TWITTER from "feather-icons/dist/icons/twitter.svg";
 import GITHUB from "feather-icons/dist/icons/github.svg";
+import DOWNLOAD from "feather-icons/dist/icons/download.svg";
 
 import LOGO from "assets/r6db_logo_new.svg";
-import DOWNLOAD from "assets/download.svg";
 import UBI from "assets/ubi.svg";
 import ESL from "assets/esl.svg";
-import TWITCHTV from "assets/twitchtv.svg";
 import DISCORD from "assets/discord.svg";
 import NOAVATAR from "assets/noavatar.svg";
 
@@ -103,7 +102,6 @@ export const GLYPHS = {
     LOGO,
     DOWNLOAD,
     TWITTER,
-    TWITCHTV,
     GITHUB,
     EMAIL,
     DISCORD,

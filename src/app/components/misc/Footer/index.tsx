@@ -27,15 +27,19 @@ const Footer = props => (
             </div>
             <div className="footer__column">
                 <a href="https://twitter.com/Rainbow6_DB" rel="noopener" target="_BLANK" className="footer__link">
+                    <Icon className="footer__icon" glyph={GLYPHS.TWITTER} />    
                     Twitter
                 </a>
                 <a href="mailto:info@r6db.com" rel="noopener" target="_BLANK" className="footer__link">
+                    <Icon className="footer__icon" glyph={GLYPHS.EMAIL} />    
                     Email
                 </a>
                 <a href="https://discord.gg/xyMTkXm" rel="noopener" target="_BLANK" className="footer__link">
+                    <Icon className="footer__icon" glyph={GLYPHS.DISCORD} />    
                     Dicord
                 </a>
                 <a href="https://github.com/r6db" rel="noopener" target="_BLANK" className="footer__link">
+                    <Icon className="footer__icon" glyph={GLYPHS.GITHUB} />    
                     Github
                 </a>
             </div>
