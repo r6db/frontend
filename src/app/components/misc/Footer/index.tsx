@@ -9,6 +9,7 @@ const Footer = props => (
         <div className="footer__container container">
             <div className="footer__column">
                 <Icon className="footer__logo" glyph={GLYPHS.LOGO} />
+                this site is not affiliated with Ubisoft.
             </div>
             <div className="footer__column">
                 <Link to="/" className="footer__link footer__link--noicon">
