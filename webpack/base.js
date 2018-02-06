@@ -135,7 +135,7 @@ module.exports = {
             name: "app",
         }),
         new CopyWebpackPlugin([
-            { from: "src/assets", to: "assets" },
+            // { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },
             { from: "src/maintenance.html", to: "maintenance.html"}
         ]),
