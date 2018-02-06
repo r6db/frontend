@@ -19,23 +19,14 @@ if (process.env.NODE_ENV === "development") {
 }
 
 store.dispatch(initAction);
-
-function init(App: any) {
-    const mount = document.querySelector("#mount");
-    console.log("mounting app");
-    mount.innerHTML = "";
-    ReactDOM.render(
-        <AppContainer>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </AppContainer>,
-        mount,
-    );
-}
-
-if (document.readyState === "interactive" || document.readyState === "complete") {
-    init(App);
-} else {
-    window.addEventListener("DOMContentLoaded", () => init(App));
-}
+const mount = document.querySelector("#mount");
+console.log("mounting app");
+mount.innerHTML = "";
+ReactDOM.render(
+    <AppContainer>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </AppContainer>,
+    mount,
+);

@@ -6,7 +6,6 @@ const NameAllModulesPlugin = require("name-all-modules-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const CleanPlugin = require("clean-webpack-plugin");
 const { CheckerPlugin, TsConfigPathsPlugin } = require("awesome-typescript-loader");
-const workboxPlugin = require("workbox-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -109,12 +108,12 @@ module.exports = {
                         loader: "file-loader",
                         options: {},
                     },
-                    // {
-                    //     loader: "image-webpack-loader",
-                    //     options: {
-                    //         bypassOnDebug: true,
-                    //     },
-                    // },
+                    {
+                        loader: "image-webpack-loader",
+                        options: {
+                            bypassOnDebug: true,
+                        },
+                    },
                 ],
             },
         ],
@@ -158,11 +157,5 @@ module.exports = {
         }),
         new SpriteLoaderPlugin(),
         new ExtractTextPlugin({ filename: "styles.[contenthash].css", allChunks: true }),
-        new workboxPlugin({
-            globPatterns: ['*.{html,js,css,svg}'],
-            swDest: path.join(DIST, 'sw.js'),
-            clientsClaim: true,
-            skipWaiting: true,
-        })
     ],
 };
