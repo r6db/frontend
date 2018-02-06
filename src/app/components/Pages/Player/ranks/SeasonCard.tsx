@@ -15,7 +15,6 @@ import s6 from "assets/backgrounds/ophealth1.jpg";
 import s7 from "assets/backgrounds/bloodorchid1.jpg";
 import s8 from "assets/backgrounds/whitenoise1.jpg";
 
-
 interface SeasonStats {
     wins: number;
     losses: number;
@@ -58,6 +57,7 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
         });
     }
     render() {
+        const img = SEASONS[this.props.season].cover;
         return (
             <div
                 className={`seasoncard seasoncard--season-${this.props.season} ${
@@ -65,7 +65,15 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
                 }`}
                 onClick={this.toggle}
             >
-                <FadeImage className="seasoncard__image" src={SEASONS[this.props.season].cover} />
+                <img
+                    className="seasoncard__image"
+                    style={{
+                        backgroundSize: "cover",
+                        backgroundImage: 'url("' + img.placeholder + '")',
+                    }}
+                    src={img.placeholder}
+                    srcSet={img.srcSet}
+                />
 
                 <div className="seasoncard__content">
                     <Icon className="seasoncard__season" glyph={SEASONS[this.props.season].logo} />

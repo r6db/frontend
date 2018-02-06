@@ -12,7 +12,6 @@
     transition: all 200ms ease-in-out;
     cursor: pointer;
 
-
     @include large {
         &__content {
             flex-direction: row;
@@ -47,10 +46,7 @@
         object-fit: cover;
         z-index: 1;
         filter: brightness(30%);
-
-        &.fadeimage--loaded {
-            opacity: 0.5;
-        }
+        opacity: 0.5;
     }
     &__content {
         display: flex;

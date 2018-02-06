@@ -85,8 +85,8 @@ interface ISeason {
     fullId: string;
     name: string;
     dateStart: Date | null;
-    dateEnd: Date | null,
-    cover: string;
+    dateEnd: Date | null;
+    cover: { src: string; srcSet: string; placeholder: string };
     logo: any;
 }
 export const SEASONS: ISeason[] = [
@@ -98,7 +98,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: new Date("2017-02-01"),
         cover: null,
         logo: s0Logo,
-    }, {
+    },
+    {
         id: 1,
         fullId: "Y1S1",
         name: "Black Ice",
@@ -106,7 +107,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s1Cover,
         logo: s1Logo,
-    }, {
+    },
+    {
         id: 2,
         fullId: "Y1S2",
         name: "Dust Line",
@@ -114,7 +116,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s2Cover,
         logo: s2Logo,
-    }, {
+    },
+    {
         id: 3,
         fullId: "Y1S3",
         name: "Skull Rain",
@@ -122,7 +125,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s3Cover,
         logo: s3Logo,
-    }, {
+    },
+    {
         id: 4,
         fullId: "Y1S4",
         name: "Red Crow",
@@ -130,7 +134,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s3Cover,
         logo: s3Logo,
-    }, {
+    },
+    {
         id: 5,
         fullId: "Y2S1",
         name: "Velvet Shell",
@@ -138,7 +143,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s4Cover,
         logo: s4Logo,
-    }, {
+    },
+    {
         id: 6,
         fullId: "Y2S2",
         name: "Health",
@@ -146,7 +152,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s5Cover,
         logo: s5Logo,
-    }, {
+    },
+    {
         id: 7,
         fullId: "Y2S3",
         name: "Blood Orchid",
@@ -154,7 +161,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s7Cover,
         logo: s7Logo,
-    }, {
+    },
+    {
         id: 8,
         fullId: "Y2S4",
         name: "White Noise",
@@ -162,7 +170,8 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s8Cover,
         logo: s8Logo,
-    }, {
+    },
+    {
         id: 9,
         fullId: "Y3S1",
         name: "Chimera",
