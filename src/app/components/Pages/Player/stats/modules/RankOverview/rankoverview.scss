@@ -31,8 +31,11 @@
     &__ubipls{
         display: block;
         color: $font-subtle-color;
-        margin-top: $l;
         flex: none;
+
+        @include large{
+            margin: $l 0 $l*3;
+        }
 
         span{
             display: block;

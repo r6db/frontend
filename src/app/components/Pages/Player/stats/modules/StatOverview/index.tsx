@@ -12,7 +12,7 @@ export default function StatOverview(props) {
                 <div className="col">
                     <Stat label="wins">{get(props, "stats.general.won", 0)}</Stat>
                     <Stat label="losses">{get(props, "stats.general.lost", 0)}</Stat>
-                    <Stat label="win rate" tooltip="how many % of your games are wins">
+                    <Stat label="win rate">
                         {getWinChance(props.stats.general)}
                     </Stat>
                     <Stat label="dbno">{get(props, "stats.general.dbno", 0)}</Stat>
@@ -26,10 +26,10 @@ export default function StatOverview(props) {
                 <div className="col">
                     <Stat label="accuracy">{get(props, "stats.general.hitChance", 0).toFixed(2)}%</Stat>
                     <Stat label="headshots">{get(props, "stats.general.headshot", 0)}</Stat>
-                    <Stat label="hs ratio" tooltip="how many of your kills are headshots">
+                    <Stat label="hs / kills">
                         {get(props, "stats.general.headshotRatio", 0).toFixed(2)}%
                     </Stat>
-                    <Stat label="hs / hits" tooltip="the chance of a shot being a headshot">
+                    <Stat label="hs / hits">
                         {get(props, "stats.general.headshotChance", 0).toFixed(2)}%
                     </Stat>
                 </div>
@@ -78,7 +78,7 @@ export default function StatOverview(props) {
                     <Stat label="gadgets destroyed">{get(props, "stats.general.gadgetsDestroyed", 0)}</Stat>
                 </div>
                 <div className="col">
-                    <Stat label="pen. kills" tooltip="how many kills were by wallbang">
+                    <Stat label="pen. kills">
                         {get(props, "stats.general.penetrationKills", 0)}
                     </Stat>
                     <Stat label="revives denied">{get(props, "stats.general.revivesDenied", 0)}</Stat>
