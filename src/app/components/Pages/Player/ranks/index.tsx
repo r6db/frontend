@@ -20,7 +20,6 @@ export default class RanksTab extends React.Component<any, any> {
     }
     render() {
         const ranks = this.getRanks(this.props);
-        console.log(ranks);
         return (
             <div className="rankstab">
                 {ranks.map((rank, i) => <SeasonCard key={rank.season} collapsed={i > 0} {...rank} />)}

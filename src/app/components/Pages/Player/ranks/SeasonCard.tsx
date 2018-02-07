@@ -27,7 +27,7 @@ interface SeasonStats {
     skill_stdev: number;
 }
 interface RegionStatsProps extends SeasonStats {
-    region: string;
+    label: string;
     collapsed: boolean;
 }
 interface ISeasonCardProps {
@@ -78,9 +78,9 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
                 <div className="seasoncard__content">
                     <Icon className="seasoncard__season" glyph={SEASONS[this.props.season].logo} />
                     <div className="seasoncard__regions">
-                        <RegionStats collapsed={this.state.collapsed} region={REGIONS.emea} {...this.props.emea} />
-                        <RegionStats collapsed={this.state.collapsed} region={REGIONS.ncsa} {...this.props.ncsa} />
-                        <RegionStats collapsed={this.state.collapsed} region={REGIONS.apac} {...this.props.apac} />
+                        <RegionStats collapsed={this.state.collapsed} label={REGIONS.emea} {...this.props.emea} />
+                        <RegionStats collapsed={this.state.collapsed} label={REGIONS.ncsa} {...this.props.ncsa} />
+                        <RegionStats collapsed={this.state.collapsed} label={REGIONS.apac} {...this.props.apac} />
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@ function RegionStats(region: RegionStatsProps) {
             <div className="regionstats">
                 <header className="regionstats__header">
                     <div className="regionstats__headertext">
-                        <div className="regionstats__region">{region.region}</div>
+                        <div className="regionstats__region">{region.label}</div>
                         <div className="regionstats__rank">Unranked</div>
                     </div>
                     <Icon className="regionstats__rankicon" glyph={GLYPHS["RANK" + 0]} />
@@ -109,7 +109,7 @@ function RegionStats(region: RegionStatsProps) {
         <div className="regionstats">
             <header className="regionstats__header">
                 <div className="regionstats__headertext">
-                    <div className="regionstats__region">{region.region}</div>
+                    <div className="regionstats__region">{region.label}</div>
                     <div className="regionstats__rank">{RANKS[region.rank]}</div>
                 </div>
                 <Icon className="regionstats__rankicon" glyph={GLYPHS["RANK" + region.rank]} />

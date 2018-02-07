@@ -110,6 +110,7 @@ module.exports = {
                             sizes: [320, 640, 1200, 2000],
                             placeholder: true,
                             placeholderSize: 40,
+                            quality: 85,
                         },
                     },
                     {

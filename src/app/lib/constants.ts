@@ -1,19 +1,20 @@
 import s0Logo from "assets/seasonlogos/R6-Default-Horizontal.svg";
-import s1Cover from "assets/backgrounds/blackice1.jpg";
+const s1Cover = require("assets/backgrounds/blackice1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s1Logo from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
-import s2Cover from "assets/backgrounds/dustline1.jpg";
+const s2Cover = require("assets/backgrounds/dustline1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s2Logo from "assets/seasonlogos/R6-OPDustLine-Horizontal.svg";
-import s3Cover from "assets/backgrounds/skullrain1.jpg";
+const s3Cover = require("assets/backgrounds/skullrain1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s3Logo from "assets/seasonlogos/R6-OPSkullRain-Horizontal.svg";
-import s4Cover from "assets/backgrounds/redcrow1.jpg";
+const s4Cover = require("assets/backgrounds/redcrow1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s4Logo from "assets/seasonlogos/R6-OPRedCrow-Horizontal.svg";
-import s5Cover from "assets/backgrounds/velvetshell1.jpg";
+const s5Cover = require("assets/backgrounds/velvetshell1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s5Logo from "assets/seasonlogos/R6-OPVelvetShell-Horizontal.svg";
-import s6Cover from "assets/backgrounds/ophealth1.jpg";
+const s6Cover = require("assets/backgrounds/ophealth1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s6Logo from "assets/seasonlogos/R6-OPHealth-Horizontal.svg";
-import s7Cover from "assets/backgrounds/bloodorchid1.jpg";
+const s7Cover = require("assets/backgrounds/bloodorchid1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s7Logo from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
-import s8Cover from "assets/backgrounds/whitenoise1.jpg";
+
+const s8Cover = require("assets/backgrounds/whitenoise1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s8Logo from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
 
 export const appname = "r6db";
@@ -48,9 +49,6 @@ export const LEADERBOARDS = {
         label: "North, Central and South America",
     },
 };
-
-export const DATE_SHORT = "DD. MMM YYYY";
-export const DATE_LONG = "DD. MMM YYYY HH:MM";
 
 /**
  * the api returns ranks in a number format

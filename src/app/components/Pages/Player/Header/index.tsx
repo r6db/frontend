@@ -65,7 +65,7 @@ class PlayerHeader extends React.Component<any, any> {
                             </a>
                             {exportButton(this.props)}
                             <span className="playerheader__divider">|</span>
-                            <Link className="playerheader__link" to={toSimple(this.props.id)} target="_BLANK">
+                            <Link className="playerheader__link" to={toSimple(this.props.id)}>
                                 Simple View
                             </Link>
                         </div>
