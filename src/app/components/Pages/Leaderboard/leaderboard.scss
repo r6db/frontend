@@ -1,5 +1,9 @@
 @import "scss/styles";
 
+.app.LEADERBOARD .page__content{
+    position: relative;
+}
+
 .leaderboard {
     width: 100%;
     margin-left: auto;
@@ -106,4 +110,5 @@
     width: $l*3;
     position: absolute;
     left: $l*3;
+    bottom: 0;
 }

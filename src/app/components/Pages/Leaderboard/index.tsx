@@ -6,6 +6,7 @@ import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
+import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
 import chanka from "./chanky.png";
@@ -127,6 +128,7 @@ class Leaderboard extends React.Component<any, any> {
                         <Link id="chanky" to={toChanka(this.props.platform)}>
                             <img src={chanka} />
                         </Link>
+                        { this.props.loading ? <Loading /> : null}
                     </div>
                 </PageContent>
             </Page>
@@ -135,10 +137,11 @@ class Leaderboard extends React.Component<any, any> {
 }
 
 const mapStateToProps = state => {
-    const { platform, leaderboard, location: { payload: { board } } } = state;
+    const { loading, platform, leaderboard, location: { payload: { board } } } = state;
     console.log(board, leaderboard);
     return {
         platform,
+        loading,
         board,
         entries: leaderboard[board] || [],
     };

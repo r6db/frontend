@@ -24,6 +24,9 @@
             margin-top: 0;
         }
     }
+    &__resultcount{
+        margin-left: $l;
+    }
     &__result {
         color: $font-color;
     }

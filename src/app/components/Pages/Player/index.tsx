@@ -9,14 +9,39 @@ import NoData from "../Errors/NoData";
 import Header from "./Header";
 import { connect } from "react-redux";
 import { updatePlayer } from "lib/store/actions";
+import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./player.scss";
 
 import background from "./RB6_WhiteNoise_Teaser1.jpg";
 
+const dummyPlayer = {
+    id: "0",
+    userid: "0",
+    name: "",
+    platform: "",
+    level: 0,
+    placements: { global: null }
+}
+
+
 function Player(props) {
     if (props.loading) {
-        return null;
+        return (
+            <Page className="player">
+                <PageHead image={background}>
+                    <Header
+                        tab={props.tab}
+                        platform={props.platform}
+                        updatePlayer={props.updatePlayer}
+                        {...dummyPlayer}
+                    />
+                </PageHead>
+                <PageContent>
+                    <Loading />
+                </PageContent>
+            </Page>
+        );
     } else if (!props.data) {
         return <NotFound />;
     } else if (props.data.flags && props.data.flags.noPlaytime) {

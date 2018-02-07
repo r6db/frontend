@@ -3,8 +3,9 @@ import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
-import FadeImage from "components/misc/FadeImage";
 import Link from "redux-first-router-link";
+import FadeImage from "components/misc/FadeImage";
+import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 
 import seductive from "./seductive.jpg";
@@ -76,6 +77,7 @@ class Chankaboard extends React.Component<any, any> {
                                 ))}
                             </tbody>
                         </table>
+                        { this.props.loading ? <Loading /> : null}
                     </div>
                 </PageContent>
             </Page>
@@ -83,8 +85,9 @@ class Chankaboard extends React.Component<any, any> {
     }
 }
 const mapStateToProps = state => {
-    const { platform, chankaboard } = state;
+    const { loading, platform, chankaboard } = state;
     return {
+        loading,
         platform,
         entries: chankaboard || [],
     };

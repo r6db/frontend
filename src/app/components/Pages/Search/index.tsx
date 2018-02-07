@@ -1,6 +1,7 @@
 import * as React from "react";
 import Result from "./Result";
 import Media from "components/misc/Media";
+import Loading from "components/misc/Loading"
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { connect } from "react-redux";
 import "./search.scss";
@@ -12,7 +13,7 @@ function Search(props) {
                 <div className="container">
                     <div className="header">
                         Search {props.search}
-                        <span className="saerch__resultcount header header--small header--subtle">
+                        <span className="search__resultcount header header--small header--subtle">
                             {props.result.length} result(s)
                         </span>
                     </div>
@@ -21,11 +22,15 @@ function Search(props) {
             <PageContent>
                 <div className="container container--small">
                     <div className="search_results">
-                        {props.result.length > 0 ? (
-                            props.result.map(player => <Result key={player.id} player={player} />)
-                        ) : (
-                            <Media title="No results">we could not find any players matching that query.</Media>
-                        )}
+                        {props.loading
+                            ? <Loading />
+                            : props.result.length > 0
+                                ? props.result.map(player => <Result key={player.id} player={player} />)
+                                : (
+                                    <Media title="No results">we could not find any players matching that query.</Media>
+                                )
+                        }    
+                        
                     </div>
                 </div>
             </PageContent>

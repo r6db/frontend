@@ -31,6 +31,8 @@ const pageMap = {
     [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound")),
 };
 
+pageMap.SEARCH.preload();
+pageMap.PLAYER.preload();
 
 function App(props) {
     return (
@@ -40,11 +42,7 @@ function App(props) {
                     <Menu platform={props.platform} />
                 </Drawer>
                 <div className="app__page">
-                    {props.loading ? (
-                        <Loading />
-                    ) : (
-                        <props.Component />
-                    )}
+                    <props.Component />
                 </div>
             </div>
         </div>
