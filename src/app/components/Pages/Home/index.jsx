@@ -1,6 +1,7 @@
 import * as m from "mithril";
 import Searchbar from "components/misc/Searchbar";
 import Page from "components/misc/Page";
+import Countdown from "components/misc/Countdown";
 import "./home.scss";
 import bg from "./bg.jpg";
 
@@ -21,10 +22,7 @@ export default {
                 <Page.Head image={bg} position="50% 0%">
                     <div className="container">
                         <Searchbar className="home__search" search={attrs.search} />
-                        <div className="home__disclaimer">
-                            Old season ranks are *still* missing. <br />
-                            Please yell at UBI, not us
-                        </div>
+                        <Countdown />
                     </div>
                 </Page.Head>
             </Page>
