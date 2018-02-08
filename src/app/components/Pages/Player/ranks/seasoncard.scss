@@ -14,19 +14,21 @@
     @include large {
         &__content {
             flex-direction: row;
-            padding-left: $l*2;
             padding-right: 0;
         }
         &__season {
-            display: flex;
-            flex: 0 0 25%;
+            display: block;
+            width: 25%;
+            flex: auto;
         }
         &__regions {
-            flex-direction: row;
-            flex: 0 0 75%;
+            display: block;
+            width: 75%;
+            flex: auto;
         }
         .regionstats {
-            flex: 0 0 33%;
+            width: 3%;
+            flex: auto;
             padding: 0 $l;
             border-bottom: 0;
             &__rankicon {
@@ -52,22 +54,28 @@
         flex-direction: column;
         position: relative;
         z-index: 2;
-        padding: $l $l*2;
+        padding: $l 0;
     }
     &__season {
-        height: 4rem;
-        transform-origin: top left;
-        transform: scale(1.25);
-        transition: transform 200ms ease-out;
+        display: block;
+        padding: 0 $l;
 
-        .seasoncard--collapsed & {
-            transform: scale(1);
+        svg{
+            height: 4rem;
+            transform-origin: top left;
+            transform: scale(1.25);
+            transition: transform 200ms ease-out;
+            .seasoncard--collapsed & {
+                transform: scale(1);
+            }
         }
     }
     &__regions {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
+        &row{
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+        }
     }
     &__stats {
         min-height: 1px;

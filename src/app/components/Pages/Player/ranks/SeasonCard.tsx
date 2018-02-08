@@ -74,13 +74,17 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
                     src={img.placeholder}
                     srcSet={img.srcSet}
                 />
-
+                
                 <div className="seasoncard__content">
-                    <Icon className="seasoncard__season" glyph={SEASONS[this.props.season].logo} />
+                    <div className="seasoncard__season">
+                        <Icon glyph={SEASONS[this.props.season].logo} />
+                    </div>
                     <div className="seasoncard__regions">
-                        <RegionStats collapsed={this.state.collapsed} label={REGIONS.emea} {...this.props.emea} />
-                        <RegionStats collapsed={this.state.collapsed} label={REGIONS.ncsa} {...this.props.ncsa} />
-                        <RegionStats collapsed={this.state.collapsed} label={REGIONS.apac} {...this.props.apac} />
+                        <div className="seasoncard__regionsrow">
+                            <RegionStats collapsed={this.state.collapsed} label={REGIONS.emea} {...this.props.emea} />
+                            <RegionStats collapsed={this.state.collapsed} label={REGIONS.ncsa} {...this.props.ncsa} />
+                            <RegionStats collapsed={this.state.collapsed} label={REGIONS.apac} {...this.props.apac} />
+                        </div>
                     </div>
                 </div>
             </div>
