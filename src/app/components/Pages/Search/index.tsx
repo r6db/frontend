@@ -39,11 +39,12 @@ function Search(props) {
 }
 
 const mapStateToProps = state => {
-    const { platform, loading, search, searchResults } = state;
+    const { platform, loading, search, searchResults, location } = state;
+    const query = location.payload.query;
     return {
         loading,
-        result: searchResults[search] || [],
-        search,
+        result: searchResults[query] || [],
+        search: query,
         platform,
     };
 };

@@ -8,34 +8,27 @@ interface ISearchbarProps {
     platform: string;
     goSearch(query: string): any;
     goHome(): any;
+    updateSearch(query: string): any;
     setPlatform(platform: string): any;
 }
 interface ISearchbarState {
-    query: string;
-    platform: string;
+    didEdit: boolean;
 }
 
 class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
     constructor(props) {
         super(props);
         this.state = {
-            query: props.query || "",
-            platform: props.platform,
+            didEdit: false
         };
-        this.onQueryChange = this.onQueryChange.bind(this);
         this.onSearch = this.onSearch.bind(this);
-    }
-
-    onQueryChange(e) {
-        const query = e.target.value;
-        this.setState({ query });
     }
     onSearch(e) {
         if (e && "preventDefault" in e) {
             e.preventDefault();
         }
-        if (this.state.query.length > 2) {
-            this.props.goSearch(this.state.query);
+        if (this.props.query.length > 2) {
+            this.props.goSearch(this.props.query);
         } else {
             this.props.goHome();
         }
@@ -47,9 +40,9 @@ class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
                 <input
                     className="searchbar__name"
                     type="text"
-                    value={this.state.query}
+                    value={this.props.query}
                     placeholder="enter player name"
-                    onChange={this.onQueryChange}
+                    onChange={e => this.props.updateSearch(e.target.value)}
                 />
                 <select
                     className="searchbar__platform"
@@ -73,6 +66,7 @@ const mapDispatchToProps = dispatch => {
     return {
         goSearch: name => dispatch(toSearch(name)),
         goHome: () => dispatch({ type: "HOME" }),
+        updateSearch: query => dispatch({ type: "QUERY", payload: query}),
         setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl }),
     };
 };

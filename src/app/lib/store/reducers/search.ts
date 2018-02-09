@@ -1,1 +1,1 @@
-export default (state = "", action) => (action.type === "SEARCH" ? action.payload.query : state);
+export default (state = "", action) => (action.type === "QUERY" ? action.payload : state);

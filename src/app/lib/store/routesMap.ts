@@ -35,6 +35,7 @@ export default {
             const { location } = getState();
             const { query, platform } = location.payload;
             analytics.search(query);
+            dispatch({ type: "QUERY", payload: query });
             dispatch({ type: "PLATFORM", payload: platform });
             api
                 .findPlayer(query, platform)
