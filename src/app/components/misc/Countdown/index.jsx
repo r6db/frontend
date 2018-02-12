@@ -1,26 +1,28 @@
 import * as m from "mithril";
+import {formatDuration} from "lib/stats";
 
-const daysUntilInvitationals = function() {
-    const oneDay = 24 * 60 * 60 * 1000;
-    const target = new Date(1518534000911);
-    const currentDate = new Date();
-    if (currentDate > target) {
-        return 0;
-    }
-    return Math.round(Math.abs((target.getTime() - currentDate.getTime())/(oneDay)));
+const target = new Date(1518534000911);
+
+const timeUntilInvitationals = function() {
+    return formatDuration((target - new Date()) / 1000);
 };
 
+let interval;
 
 const Countdown = {
+    oninit() {
+        interval = setInterval(m.redraw, 60 * 1000);
+    },
+    onremove() {
+        window.clearInterval(interval);
+    },
     view({ attrs, state }) {
         return (
             <div className="home__disclaimer">
-                {
-                    daysUntilInvitationals() > 0 ?
-                        `${daysUntilInvitationals()} days left until the invitationals`:
-                        (<span>Watch the invitationals at<br/>
-                            <a href="https://twitch.tv/rainbow6">https://twitch.tv/rainbow6</a></span>)
-                }
+                <span>{ target > new Date() ? timeUntilInvitationals() + " until the invitationals" : `Watch the invitationals at` }<br/>
+                    <a href="https://twitch.tv/rainbow6">twitch.tv/rainbow6</a><br/>
+                    <a href="https://twitch.tv/ubisoft">twitch.tv/ubisoft</a>
+                </span>
             </div>
         );
     },
