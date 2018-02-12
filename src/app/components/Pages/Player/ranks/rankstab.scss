@@ -131,7 +131,8 @@
     &__subtletext {
       color: $font-subtle-color;
       text-align: center;
-      margin-top: $l;
+      margin-top: $l*2;
       margin-bottom: ($l*2);
+      opacity: 0.6;
     }
 }
