@@ -1,278 +1,138 @@
 import * as React from "react";
-import Chartist from "chartist";
-import Chart, { labelInterpolationFnc } from "components/misc/Chart";
+import {
+    AreaChart,
+    Area,
+    CartesianGrid,
+    ResponsiveContainer,
+    Legend,
+    LineChart,
+    Line,
+    Tooltip,
+    YAxis,
+    XAxis,
+} from "recharts";
 import * as stats from "lib/stats";
+import * as get from "lodash/get";
 import "./charts.scss";
 
 export default class PlayerCharts extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
-        let raw = [].concat(props.progressions || []).sort((a, b) => (a.created_at > b.created_at ? 1 : -1));
+    getData() {
+        const progs = this.props.progressions || [];
 
-        if (raw.length > 10 && window.innerWidth < 640) {
-            raw = raw.slice(-10);
-        }
+        return progs.slice(1).reduce((acc, curr, i) => {
+            const current = curr;
+            const previous = progs[i];
 
-        const offsettedRaw = raw.slice(1);
+            function diff(key, defaultValue) {
+                return get(current, key, defaultValue) - get(previous, key, defaultValue);
+            }
 
-        const getDelta = cb =>
-            offsettedRaw.reduce((acc, curr, i, arr) => {
-                return acc.concat(cb(curr, raw[i]));
-            }, []);
+            const delta = {
+                stats: {
+                    casual: {
+                        kills: diff("stats.casual.kills", 0),
+                        deaths: diff("stats.casual.deaths", 0),
+                        won: diff("stats.casual.won", 0),
+                        lost: diff("stats.casual.lost", 0),
+                        played: diff("stats.casual.played", 0),
+                    },
+                    ranked: {
+                        kills: diff("stats.ranked.kills", 0),
+                        deaths: diff("stats.ranked.deaths", 0),
+                        won: diff("stats.ranked.won", 0),
+                        lost: diff("stats.ranked.lost", 0),
+                        played: diff("stats.ranked.played", 0),
+                    },
+                    general: {
+                        bulletsFired: diff("stats.general.bulletsFired", 0),
+                        bulletsHit: diff("stats.general.bulletsHit", 0),
+                        headshot: diff("stats.general.headshot", 0),
+                    },
+                },
+            };
 
-        const responsiveOptions = [
-            [
-                "screen and (max-width: 640px)",
-                {
-                    seriesBarDistance: 2,
-                },
-            ],
-        ];
-        this.state = {
-            wlChart: {
-                type: "Line",
-                title: "Win/Loss %",
-                data: {
-                    labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                    series: [
-                        {
-                            name: "Ranked",
-                            data: getDelta(function(curr, prev) {
-                                const dWon = curr.stats.ranked.won - prev.stats.ranked.won;
-                                const dLost = curr.stats.ranked.lost - prev.stats.ranked.lost;
-                                const dResult = dWon / (dWon + dLost);
-                                return {
-                                    meta: stats.formatDate(curr.created_at),
-                                    value: (dResult * 100).toFixed(2) || null,
-                                };
-                            }),
-                            className: "ranked",
-                        },
-                        {
-                            name: "Casual",
-                            data: getDelta(function(curr, prev) {
-                                const dWon = curr.stats.casual.won - prev.stats.casual.won;
-                                const dLost = curr.stats.casual.lost - prev.stats.casual.lost;
-                                const dResult = dWon / (dWon + dLost);
-                                return {
-                                    meta: stats.formatDate(curr.created_at),
-                                    value: (dResult * 100).toFixed(2) || null,
-                                };
-                            }),
-                            className: "casual",
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                    lineSmooth: Chartist.Interpolation.monotoneCubic({
-                        fillHoles: true,
-                    }),
-                },
-            },
-            kdChart: {
-                type: "Line",
-                title: "K/D ratio",
-                data: {
-                    labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                    series: [
-                        {
-                            name: "Ranked",
-                            data: getDelta(function(curr, prev) {
-                                const dKills = curr.stats.ranked.kills - prev.stats.ranked.kills;
-                                const dDeaths = curr.stats.ranked.deaths - prev.stats.ranked.deaths;
-                                const dResult = dKills / dDeaths;
-                                return {
-                                    meta: stats.formatDate(curr.created_at),
-                                    value: dResult.toFixed(2) || null,
-                                };
-                            }),
-                            className: "ranked",
-                        },
-                        {
-                            name: "Casual",
-                            data: getDelta(function(curr, prev) {
-                                const dKills = curr.stats.casual.kills - prev.stats.casual.kills;
-                                const dDeaths = curr.stats.casual.deaths - prev.stats.casual.deaths;
-                                const dResult = dKills / dDeaths;
-                                return {
-                                    meta: stats.formatDate(curr.created_at),
-                                    value: dResult.toFixed(2) || null,
-                                };
-                            }),
-                            className: "casual",
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                    lineSmooth: Chartist.Interpolation.monotoneCubic({
-                        fillHoles: true,
-                    }),
-                },
-                responsiveOptions,
-            },
-            mmrChart: {
-                type: "Line",
-                title: "MMR",
-                data: {
-                    labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                    series: [
-                        {
-                            name: "Europe",
-                            data: offsettedRaw.every(
-                                x => !x.ranks || (x.ranks && x.ranks.emea && x.ranks.emea.mmr === 2500),
-                            )
-                                ? []
-                                : offsettedRaw.map(x => {
-                                      return {
-                                          value: x.ranks && x.ranks.emea ? x.ranks.emea.mmr.toFixed(2) : null,
-                                          meta: stats.formatDate(x.created_at),
-                                      };
-                                  }),
-                            className: "emea",
-                        },
-                        {
-                            name: "America",
-                            data: offsettedRaw.every(
-                                x => !x.ranks || (x.ranks && x.ranks.ncsa && x.ranks.ncsa.mmr === 2500),
-                            )
-                                ? []
-                                : offsettedRaw.map(x => {
-                                      return {
-                                          value: x.ranks && x.ranks.ncsa ? x.ranks.ncsa.mmr.toFixed(2) : null,
-                                          meta: stats.formatDate(x.created_at),
-                                      };
-                                  }),
-                            className: "ncsa",
-                        },
-                        {
-                            name: "Asia",
-                            data: offsettedRaw.every(
-                                x => !x.ranks || (x.ranks && x.ranks.apac && x.ranks.apac.mmr === 2500),
-                            )
-                                ? []
-                                : offsettedRaw.map(x => {
-                                      return {
-                                          value: x.ranks && x.ranks.apac ? x.ranks.apac.mmr.toFixed(2) : null,
-                                          meta: stats.formatDate(x.created_at),
-                                      };
-                                  }),
-                            className: "apac",
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                },
-            },
-            gameCountChart: {
-                type: "Bar",
-                title: "Matches played",
-                data: {
-                    labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                    series: [
-                        {
-                            name: "Ranked",
-                            data: getDelta(function(curr, prev) {
-                                return {
-                                    value: curr.stats.ranked.played - prev.stats.ranked.played,
-                                    meta: stats.formatDate(curr.created_at),
-                                };
-                            }),
-                            className: "ranked",
-                        },
-                        {
-                            name: "Casual",
-                            data: getDelta(function(curr, prev) {
-                                return {
-                                    value: curr.stats.casual.played - prev.stats.casual.played,
-                                    meta: stats.formatDate(curr.created_at),
-                                };
-                            }),
-                            className: "casual",
-                        },
-                    ],
-                },
-                options: {
-                    stackBars: true,
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                },
-                responsiveOptions,
-            },
-            hsChart: {
-                type: "Line",
-                title: "Accuracy & Headshot Rate",
-                data: {
-                    labels: offsettedRaw.map(x => stats.formatDate(x.created_at)),
-                    series: [
-                        {
-                            name: "Accuracy",
-                            data: getDelta(function(curr, prev) {
-                                const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
-                                const dFired = curr.stats.general.bulletsFired - prev.stats.general.bulletsFired;
-                                return {
-                                    value: (dHit * 100 / dFired).toFixed(2) || 0,
-                                    meta: stats.formatDate(curr.created_at),
-                                };
-                            }),
-                            className: "accuracy",
-                        },
-                        {
-                            name: "Headshot Rate",
-                            data: getDelta(function(curr, prev) {
-                                const dHs = curr.stats.general.headshot - prev.stats.general.headshot;
-                                const dHit = curr.stats.general.bulletsHit - prev.stats.general.bulletsHit;
-                                return {
-                                    value: (dHs * 100 / dHit).toFixed(2) || 0,
-                                    meta: stats.formatDate(curr.created_at),
-                                };
-                            }),
-                            className: "hsrate",
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                    lineSmooth: Chartist.Interpolation.monotoneCubic({
-                        fillHoles: true,
-                    }),
-                },
-                responsiveOptions,
-            },
-        };
+            return acc.concat({
+                name: i,
+                kd_casual: stats.getKillRatioRaw(delta.stats.casual) || null,
+                kd_ranked: stats.getKillRatioRaw(delta.stats.ranked) || null,
+                wl_casual: stats.getWinChanceRaw(delta.stats.casual) || null,
+                wl_ranked: stats.getRankWinChanceRaw(delta.stats.ranked) || null,
+                // prepend + to corerce back to number
+                mmr_apac: +current.ranks.apac.mmr.toFixed(2),
+                mmr_emea: +current.ranks.emea.mmr.toFixed(2),
+                mmr_ncsa: +current.ranks.ncsa.mmr.toFixed(2),
+                games_casual: delta.stats.casual.played,
+                games_ranked: delta.stats.ranked.played,
+                accu: delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1),
+                hs_chance: delta.stats.general.headshot / (delta.stats.general.bulletsFired || 1),
+            });
+        }, []);
     }
 
     render() {
-        return null;
-        // return this.props.progressions ? (
-        //     <div className="playermodule charts">
-        //         <div className="row">
-        //             <Chart {...this.state.mmrChart} />
-        //         </div>
-        //         <div className="row">
-        //             <Chart {...this.state.wlChart} />
-        //         </div>
-        //         <div className="row">
-        //             <Chart {...this.state.kdChart} />
-        //         </div>
-        //         <div className="row">
-        //             <Chart {...this.state.gameCountChart} />
-        //         </div>
-        //         <div className="row">
-        //             <Chart {...this.state.hsChart} />
-        //         </div>
-        //     </div>
-        // ) : null;
+        const data = this.getData();
+
+        return this.props.progressions ? (
+            <div className="playermodule charts">
+                <div className="row">
+                    <ResponsiveContainer height={100}>
+                        <AreaChart data={data} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                            <defs>
+                                <linearGradient id="area1" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                                </linearGradient>
+                                <linearGradient id="area2" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                                </linearGradient>
+                                <linearGradient id="area3" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#f00" stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor="#f44" stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <YAxis domain={[0, "dataMax"]} />
+                            {/* 6f7376 == $gray */}
+                            <Tooltip cursor={{ stroke: "#6f7376" }} />
+                            <Legend align="right" verticalAlign="bottom" />
+                            <Area type="monotone" connectNulls name="Asia" dataKey="mmr_apac" fill="url(#area1)" />
+                            <Area type="monotone" connectNulls name="Europe" dataKey="mmr_emea" fill="url(#area2)" />
+                            <Area type="monotone" connectNulls name="America" dataKey="mmr_ncsa" fill="url(#area3)" />
+                        </AreaChart>
+                    </ResponsiveContainer>
+                </div>
+                <div className="row">
+                    <ResponsiveContainer height={100}>
+                        <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                            <YAxis domain={[0, 1]} />
+                            <Tooltip cursor={{ stroke: "#6f7376" }} />
+                            <Legend align="right" verticalAlign="bottom" />
+                            <Line type="monotone" connectNulls name="Casual" dataKey="wl_casual" stroke="red" />
+                            <Line type="monotone" connectNulls name="Ranked" dataKey="wl_ranked" stroke="blue" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                    <ResponsiveContainer height={100}>
+                        <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                            <YAxis domain={[0, "dataMax"]} />
+                            <Tooltip cursor={{ stroke: "#6f7376" }} />
+                            <Legend align="right" verticalAlign="bottom" />
+                            <Line type="monotone" connectNulls name="Casual" dataKey="kd_casual" stroke="red" />
+                            <Line type="monotone" connectNulls name="Ranked" dataKey="kd_ranked" stroke="blue" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+                <div className="row">
+                    <ResponsiveContainer height={100}>
+                        <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                            <YAxis domain={[0, "dataMax"]} />
+                            <Tooltip cursor={{ stroke: "#6f7376" }} />
+                            <Legend align="right" verticalAlign="bottom" />
+                            <Line type="monotone" connectNulls name="Accuracy" dataKey="accu" stroke="red" />
+                            <Line type="monotone" connectNulls name="HS Chance" dataKey="hs_chance" stroke="blue" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
+        ) : null;
     }
 }

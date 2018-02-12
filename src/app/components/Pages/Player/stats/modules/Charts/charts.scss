@@ -6,42 +6,22 @@
     }
     .row {
         flex-direction: column;
+        margin-bottom: $l*2;
 
         @include large {
             flex-direction: row;
         }
     }
-    .chart .ct-series,
-    .chart .indicator {
-        &.emea {
-            stroke: $graphcolor-emea;
-            background-color: $graphcolor-emea;
-        }
-        &.ncsa {
-            stroke: $graphcolor-ncsa;
-            background-color: $graphcolor-ncsa;
-        }
-        &.apac {
-            stroke: $graphcolor-apac;
-            background-color: $graphcolor-apac;
-        }
 
-        &.ranked {
-            stroke: $graphcolor-emea;
-            background-color: $graphcolor-emea;
-        }
-        &.casual {
-            stroke: $graphcolor-ncsa;
-            background-color: $graphcolor-ncsa;
-        }
-
-        &.accuracy {
-            stroke: $graphcolor-emea;
-            background-color: $graphcolor-emea;
-        }
-        &.hsrate {
-            stroke: $graphcolor-ncsa;
-            background-color: $graphcolor-ncsa;
-        }
+    .recharts-dot {
+        fill: $bg-color;
+    }
+    .recharts-default-tooltip {
+        background: lighten($bg-color, 5%) !important;
+        border: lighten($bg-color, 2%) !important;
+        color: $font-color;
+    }
+    .recharts-legend-item-text {
+        color: $font-subtle-color;
     }
 }
