@@ -117,7 +117,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                     <div className="wlratio">
                         <div className="chart__header">Win Rate</div>
                         <ResponsiveContainer height={125}>
-                            <AreaChart data={data} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
+                            <AreaChart data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorCasualWR" x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="5%" stopColor={colors.yellow} stopOpacity={0.6}/>

@@ -12,12 +12,11 @@
             &.half {
                 flex-direction: row;
             }
+            .wlratio, .kdratio {
+                width: 50%;
+            }
             flex-direction: column;
         }
-    }
-
-    .wlratio, .kdratio {
-        width: 50%;
     }
 
     .recharts-dot {
