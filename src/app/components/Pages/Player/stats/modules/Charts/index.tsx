@@ -103,13 +103,13 @@ export default class PlayerCharts extends React.Component<any, any> {
                                 </linearGradient>
                             </defs>
                             <XAxis tick={{dy: +3}} tickSize="8" dataKey="name"/>
-                            <YAxis tick={{dx: -3}} tickSize="8" scale="linear" domain={[0, "dataMax"]} />
+                            <YAxis tick={{dx: -3}} tickSize="8" domain={[0, "dataMax"]} />
                             <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3"/>
                             <Tooltip cursor={{ stroke: "#6f7376" }} />
                             <Legend align="right" verticalAlign="bottom" />
-                            <Area type="monotone" connectNulls name="Europe" dataKey="mmr_emea" stackId="1" fill="url(#colorEMEA)" dot={true} stroke={colors.red}/>
-                            <Area type="monotone" connectNulls name="America" dataKey="mmr_ncsa" stackId="1" fill="url(#colorNCSA)" dot={true} stroke={colors.blue}/>
-                            <Area type="monotone" connectNulls name="Asia" dataKey="mmr_apac" stackId="1" fill="url(#colorAPAC)" dot={true} stroke={colors.green}/>
+                            <Area type="monotone" connectNulls name="Europe" dataKey="mmr_emea" fill="url(#colorEMEA)" dot={true} stroke={colors.red}/>
+                            <Area type="monotone" connectNulls name="America" dataKey="mmr_ncsa" fill="url(#colorNCSA)" dot={true} stroke={colors.blue}/>
+                            <Area type="monotone" connectNulls name="Asia" dataKey="mmr_apac" fill="url(#colorAPAC)" dot={true} stroke={colors.green}/>
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
@@ -155,8 +155,8 @@ export default class PlayerCharts extends React.Component<any, any> {
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3"/>
                                 <Tooltip cursor={{ stroke: "#6f7376" }} />
                                 <Legend align="right" verticalAlign="bottom" />
-                                <Area type="monotone" connectNulls={true} name="Casual" dataKey="kd_casual" stackId="kd" fill="url(#colorCasual)" stroke={colors.teal} />
-                                <Area type="monotone" connectNulls={true} name="Ranked" dataKey="kd_ranked" stackId="kd" fill="url(#colorRanked)" stroke={colors.aqua} />
+                                <Area type="monotone" connectNulls={true} name="Casual" dataKey="kd_casual" fill="url(#colorCasual)" stroke={colors.teal} />
+                                <Area type="monotone" connectNulls={true} name="Ranked" dataKey="kd_ranked" fill="url(#colorRanked)" stroke={colors.aqua} />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
