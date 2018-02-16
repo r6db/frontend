@@ -130,8 +130,8 @@ export const SEASONS: ISeason[] = [
         name: "Red Crow",
         dateStart: null,
         dateEnd: null,
-        cover: s3Cover,
-        logo: s3Logo,
+        cover: s4Cover,
+        logo: s4Logo,
     },
     {
         id: 5,
@@ -139,8 +139,8 @@ export const SEASONS: ISeason[] = [
         name: "Velvet Shell",
         dateStart: null,
         dateEnd: null,
-        cover: s4Cover,
-        logo: s4Logo,
+        cover: s5Cover,
+        logo: s5Logo,
     },
     {
         id: 6,
@@ -148,8 +148,8 @@ export const SEASONS: ISeason[] = [
         name: "Health",
         dateStart: null,
         dateEnd: null,
-        cover: s5Cover,
-        logo: s5Logo,
+        cover: s6Cover,
+        logo: s6Logo,
     },
     {
         id: 7,
