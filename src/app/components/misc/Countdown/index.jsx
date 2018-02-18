@@ -20,8 +20,7 @@ const Countdown = {
         return (
             <div className="home__disclaimer">
                 <span>{ target > new Date() ? timeUntilInvitationals() + " until the invitationals" : `Watch the invitationals at` }<br/>
-                    <a href="https://twitch.tv/rainbow6">twitch.tv/rainbow6</a><br/>
-                    <a href="https://twitch.tv/ubisoft">twitch.tv/ubisoft</a>
+                    <a href="https://twitch.tv/rainbow6">twitch.tv/rainbow6</a>
                 </span>
             </div>
         );
