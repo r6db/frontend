@@ -19,9 +19,7 @@ const Countdown = {
     view({ attrs, state }) {
         return (
             <div className="home__disclaimer">
-                <span>{ target > new Date() ? timeUntilInvitationals() + " until the invitationals" : `Watch the invitationals at` }<br/>
-                    <a href="https://twitch.tv/rainbow6">twitch.tv/rainbow6</a>
-                </span>
+                GG
             </div>
         );
     },
