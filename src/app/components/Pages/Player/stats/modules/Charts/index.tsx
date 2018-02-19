@@ -15,6 +15,8 @@ import * as stats from "lib/stats";
 import * as get from "lodash/get";
 import "./charts.scss";
 
+const round = (val: number, decimals = 2) => Number.parseFloat(val.toFixed(decimals));
+
 const colors = {
     red: "#a22229",
     blue: "#0082fb",
@@ -63,14 +65,13 @@ export default class PlayerCharts extends React.Component<any, any> {
 
             return acc.concat({
                 name: i,
-                kd_casual: stats.getKillRatioRaw(delta.stats.casual) || null,
-                kd_ranked: stats.getKillRatioRaw(delta.stats.ranked) || null,
-                wl_casual: stats.getWinChanceRaw(delta.stats.casual) || null,
-                wl_ranked: stats.getRankWinChanceRaw(delta.stats.ranked) || null,
-                // prepend + to corerce back to number
-                mmr_apac: +current.ranks.apac.mmr.toFixed(2),
-                mmr_emea: +current.ranks.emea.mmr.toFixed(2),
-                mmr_ncsa: +current.ranks.ncsa.mmr.toFixed(2),
+                kd_casual: round(stats.getKillRatioRaw(delta.stats.casual)) || null,
+                kd_ranked: round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
+                wl_casual: round(stats.getWinChanceRaw(delta.stats.casual)) || null,
+                wl_ranked: round(stats.getRankWinChanceRaw(delta.stats.ranked)) || null,
+                mmr_apac: round(current.ranks.apac.mmr),
+                mmr_emea: round(current.ranks.emea.mmr),
+                mmr_ncsa: round(current.ranks.ncsa.mmr),
                 games_casual: delta.stats.casual.played,
                 games_ranked: delta.stats.ranked.played,
                 accu: delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1),
