@@ -22,8 +22,8 @@ const colors = {
     yellow: "#ff7b00",
     orange: "#FF3924",
     teal: "#17ead9",
-    aqua: "#3069cc"
-}
+    aqua: "#3069cc",
+};
 
 export default class PlayerCharts extends React.Component<any, any> {
     getData() {
@@ -87,29 +87,53 @@ export default class PlayerCharts extends React.Component<any, any> {
                 <div className="row">
                     <div className="chart__header">MMR</div>
                     <ResponsiveContainer height={175}>
-                        <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <AreaChart syncId="charts" data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                             <defs>
                                 <linearGradient id="colorEMEA" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor={colors.red} stopOpacity={0.6}/>
-                                <stop offset="95%" stopColor={colors.red} stopOpacity={0}/>
+                                    <stop offset="5%" stopColor={colors.red} stopOpacity={0.6} />
+                                    <stop offset="95%" stopColor={colors.red} stopOpacity={0} />
                                 </linearGradient>
                                 <linearGradient id="colorNCSA" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor={colors.blue} stopOpacity={0.6}/>
-                                <stop offset="95%" stopColor={colors.blue} stopOpacity={0}/>
+                                    <stop offset="5%" stopColor={colors.blue} stopOpacity={0.6} />
+                                    <stop offset="95%" stopColor={colors.blue} stopOpacity={0} />
                                 </linearGradient>
                                 <linearGradient id="colorAPAC" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="10%" stopColor={colors.green} stopOpacity={0.8}/>
-                                <stop offset="90%" stopColor={colors.green} stopOpacity={0}/>
+                                    <stop offset="10%" stopColor={colors.green} stopOpacity={0.8} />
+                                    <stop offset="90%" stopColor={colors.green} stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <XAxis tick={{dy: +3}} tickSize="8" dataKey="name"/>
-                            <YAxis tick={{dx: -3}} tickSize="8" domain={[0, "dataMax"]} />
-                            <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3"/>
+                            <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
+                            <YAxis tick={{ dx: -3 }} tickSize={8} domain={[0, "dataMax"]} />
+                            <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                             <Tooltip cursor={{ stroke: "#6f7376" }} />
                             <Legend align="right" verticalAlign="bottom" />
-                            <Area type="monotone" connectNulls name="Europe" dataKey="mmr_emea" fill="url(#colorEMEA)" dot={true} stroke={colors.red}/>
-                            <Area type="monotone" connectNulls name="America" dataKey="mmr_ncsa" fill="url(#colorNCSA)" dot={true} stroke={colors.blue}/>
-                            <Area type="monotone" connectNulls name="Asia" dataKey="mmr_apac" fill="url(#colorAPAC)" dot={true} stroke={colors.green}/>
+                            <Area
+                                type="monotone"
+                                connectNulls
+                                name="Europe"
+                                dataKey="mmr_emea"
+                                fill="url(#colorEMEA)"
+                                dot={true}
+                                stroke={colors.red}
+                            />
+                            <Area
+                                type="monotone"
+                                connectNulls
+                                name="America"
+                                dataKey="mmr_ncsa"
+                                fill="url(#colorNCSA)"
+                                dot={true}
+                                stroke={colors.blue}
+                            />
+                            <Area
+                                type="monotone"
+                                connectNulls
+                                name="Asia"
+                                dataKey="mmr_apac"
+                                fill="url(#colorAPAC)"
+                                dot={true}
+                                stroke={colors.green}
+                            />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
@@ -117,46 +141,78 @@ export default class PlayerCharts extends React.Component<any, any> {
                     <div className="wlratio">
                         <div className="chart__header">Win Rate</div>
                         <ResponsiveContainer height={125}>
-                            <AreaChart data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorCasualWR" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.yellow} stopOpacity={0.6}/>
-                                    <stop offset="95%" stopColor={colors.yellow} stopOpacity={0}/>
+                                        <stop offset="5%" stopColor={colors.yellow} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.yellow} stopOpacity={0} />
                                     </linearGradient>
                                     <linearGradient id="colorRankedWR" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.orange} stopOpacity={0.6}/>
-                                    <stop offset="95%" stopColor={colors.orange} stopOpacity={0}/>
+                                        <stop offset="5%" stopColor={colors.orange} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.orange} stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <YAxis tick={{dx: -3}} tickSize="8" scale="linear" domain={[0, "dataMax"]} />
-                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3"/>
+                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                 <Tooltip cursor={{ stroke: "#6f7376" }} />
                                 <Legend align="right" verticalAlign="bottom" />
-                                <Area type="monotone" connectNulls={true} name="Casual" dataKey="wl_casual" fill="url(#colorCasualWR)" stroke={colors.yellow} />
-                                <Area type="monotone" connectNulls={true} name="Ranked" dataKey="wl_ranked" fill="url(#colorRankedWR)" stroke={colors.orange} />
+                                <Area
+                                    type="monotone"
+                                    connectNulls={true}
+                                    name="Casual"
+                                    dataKey="wl_casual"
+                                    fill="url(#colorCasualWR)"
+                                    dot={true}
+                                    stroke={colors.yellow}
+                                />
+                                <Area
+                                    type="monotone"
+                                    connectNulls={true}
+                                    name="Ranked"
+                                    dataKey="wl_ranked"
+                                    fill="url(#colorRankedWR)"
+                                    dot={true}
+                                    stroke={colors.orange}
+                                />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
                     <div className="kdratio">
                         <div className="chart__header">K/D Ratio</div>
                         <ResponsiveContainer height={125}>
-                            <AreaChart data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorCasual" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6}/>
-                                    <stop offset="95%" stopColor={colors.teal} stopOpacity={0}/>
+                                        <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.teal} stopOpacity={0} />
                                     </linearGradient>
                                     <linearGradient id="colorRanked" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6}/>
-                                    <stop offset="95%" stopColor={colors.aqua} stopOpacity={0}/>
+                                        <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <YAxis tick={{dx: -3}} tickSize="8" scale="linear" domain={[0, "dataMax"]} />
-                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3"/>
+                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                 <Tooltip cursor={{ stroke: "#6f7376" }} />
                                 <Legend align="right" verticalAlign="bottom" />
-                                <Area type="monotone" connectNulls={true} name="Casual" dataKey="kd_casual" fill="url(#colorCasual)" stroke={colors.teal} />
-                                <Area type="monotone" connectNulls={true} name="Ranked" dataKey="kd_ranked" fill="url(#colorRanked)" stroke={colors.aqua} />
+                                <Area
+                                    type="monotone"
+                                    connectNulls={true}
+                                    name="Casual"
+                                    dataKey="kd_casual"
+                                    fill="url(#colorCasual)"
+                                    dot={true}
+                                    stroke={colors.teal}
+                                />
+                                <Area
+                                    type="monotone"
+                                    connectNulls={true}
+                                    name="Ranked"
+                                    dataKey="kd_ranked"
+                                    fill="url(#colorRanked)"
+                                    dot={true}
+                                    stroke={colors.aqua}
+                                />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
@@ -164,24 +220,40 @@ export default class PlayerCharts extends React.Component<any, any> {
                 <div className="row">
                     <div className="chart__header">Accuracy & Headshot Rate</div>
                     <ResponsiveContainer height={175}>
-                        <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <AreaChart syncId="charts" data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                             <defs>
                                 <linearGradient id="colorAccuracy" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor={colors.red} stopOpacity={0.6}/>
-                                <stop offset="95%" stopColor={colors.red} stopOpacity={0}/>
+                                    <stop offset="5%" stopColor={colors.red} stopOpacity={0.6} />
+                                    <stop offset="95%" stopColor={colors.red} stopOpacity={0} />
                                 </linearGradient>
                                 <linearGradient id="colorHSChance" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor={colors.blue} stopOpacity={0.6}/>
-                                <stop offset="95%" stopColor={colors.blue} stopOpacity={0}/>
+                                    <stop offset="5%" stopColor={colors.blue} stopOpacity={0.6} />
+                                    <stop offset="95%" stopColor={colors.blue} stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <XAxis tick={{dy: +3}} tickSize="8"/>
-                            <YAxis tick={{dx: -3}} tickSize="8" scale="linear" domain={[0, "dataMax"]} />
-                            <CartesianGrid stroke="inherit" vertical={false}/>
+                            <XAxis tick={{ dy: +3 }} tickSize={8} />
+                            <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                            <CartesianGrid stroke="inherit" vertical={false} />
                             <Tooltip cursor={{ stroke: "#6f7376" }} />
                             <Legend align="right" verticalAlign="bottom" />
-                            <Area type="monotone" dot={true} connectNulls={true} name="Accuracy" dataKey="accu" stroke={colors.red} fill="url(#colorAccuracy)"/>
-                            <Area type="monotone" dot={true} connectNulls={true} name="HS Chance" dataKey="hs_chance" stroke={colors.blue} fill="url(#colorHSChance)"/>
+                            <Area
+                                type="monotone"
+                                dot={true}
+                                connectNulls={true}
+                                name="Accuracy"
+                                dataKey="accu"
+                                stroke={colors.red}
+                                fill="url(#colorAccuracy)"
+                            />
+                            <Area
+                                type="monotone"
+                                dot={true}
+                                connectNulls={true}
+                                name="HS Chance"
+                                dataKey="hs_chance"
+                                stroke={colors.blue}
+                                fill="url(#colorHSChance)"
+                            />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
