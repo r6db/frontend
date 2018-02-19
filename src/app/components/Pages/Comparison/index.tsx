@@ -11,7 +11,6 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import Scale, { SCALES } from "components/misc/Scale";
 import Stat from "components/misc/Stat";
 import Fauxtable from "components/misc/Fauxtable";
-import * as Chartist from "chartist";
 import * as uniq from "lodash/uniq";
 
 //#region data mappers
