@@ -8,7 +8,6 @@ import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";
 import AddPlayerModal from "./AddPlayerModal";
 import Page, { PageHead, PageContent } from "components/misc/Page";
-import Chart from "components/misc/Chart";
 import Scale, { SCALES } from "components/misc/Scale";
 import Stat from "components/misc/Stat";
 import Fauxtable from "components/misc/Fauxtable";
@@ -240,7 +239,11 @@ class Compare extends React.Component<any, any> {
                         <div className="comparison__playerlist playerlist">
                             <div className="playerlist__players">
                                 {this.props.players.map(player => (
-                                    <PlayerLabel removeAction={this.getPlayerRemovalLink(player.id)} {...player} />
+                                    <PlayerLabel
+                                        key={player.id}
+                                        removeAction={this.getPlayerRemovalLink(player.id)}
+                                        {...player}
+                                    />
                                 ))}
                                 <button className="button button--primary" onClick={this.onAddPlayer}>
                                     add player
@@ -261,9 +264,7 @@ class Compare extends React.Component<any, any> {
                         <div className="comparison__row">
                             <div className="comparison__module comparison__mmr">
                                 <div className="comparison__module__header">MMR (most active region)</div>
-                                <div className="comparison__module__content">
-                                    <Chart {...getMmrChartAttrs(this.props.players)} />
-                                </div>
+                                <div className="comparison__module__content">{/* mmr chart */}</div>
                             </div>
                             <div className="comparison__module comparison__ranking">
                                 <div className="comparison__module__header">Ranking</div>

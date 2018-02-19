@@ -64,7 +64,7 @@ export default class PlayerCharts extends React.Component<any, any> {
             };
 
             return acc.concat({
-                name: i,
+                name: new Date(current.created_at).toLocaleDateString(),
                 kd_casual: round(stats.getKillRatioRaw(delta.stats.casual)) || null,
                 kd_ranked: round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
                 wl_casual: round(stats.getWinChanceRaw(delta.stats.casual)) || null,
@@ -153,6 +153,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                                         <stop offset="95%" stopColor={colors.orange} stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
+                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                                 <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                 <Tooltip cursor={{ stroke: "#6f7376" }} />
@@ -192,6 +193,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                                         <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
+                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                                 <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                 <Tooltip cursor={{ stroke: "#6f7376" }} />
@@ -232,12 +234,12 @@ export default class PlayerCharts extends React.Component<any, any> {
                                     <stop offset="95%" stopColor={colors.blue} stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <XAxis tick={{ dy: +3 }} tickSize={8} />
+                            <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                             <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                             <CartesianGrid stroke="inherit" vertical={false} />
                             <Tooltip cursor={{ stroke: "#6f7376" }} />
                             <Legend align="right" verticalAlign="bottom" />
-                            <Area
+                            {/** <Area
                                 type="monotone"
                                 dot={true}
                                 connectNulls={true}
@@ -245,7 +247,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                                 dataKey="accu"
                                 stroke={colors.red}
                                 fill="url(#colorAccuracy)"
-                            />
+                            /> */}
                             <Area
                                 type="monotone"
                                 dot={true}

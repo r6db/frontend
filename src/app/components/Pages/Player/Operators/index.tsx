@@ -1,7 +1,6 @@
 import * as React from "react";
 import { OPERATORS } from "lib/constants";
 import * as stats from "lib/stats";
-import Chart, { colors, labelInterpolationFnc } from "components/misc/Chart";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import Scale, { SCALES } from "components/misc/Scale";
 import Fauxtable from "components/misc/Fauxtable";
@@ -111,121 +110,11 @@ export default class OperatorTab extends React.Component<any, any> {
             return cb(series[0], series[series.length - 1]);
         };
 
-        const opgraphs = ops.reduce((acc, op) => {
-            acc[op.id] = {};
-            acc[op.id].kd = {
-                type: "Line",
-                title: "Kill/Death Ratio",
-                data: {
-                    labels: getOp(op.id).map(x => x.date),
-                    series: [
-                        {
-                            name: "KD Ratio",
-                            data: getDelta(op.id)(function(curr, prev) {
-                                if (!prev) return null;
-                                return (curr.data.kills - prev.data.kills) / (curr.data.deaths - prev.data.deaths);
-                            }).map(x => {
-                                if (Number.isFinite(x)) {
-                                    return x;
-                                }
-                                return NaN;
-                            }),
-                            className: "opdaily",
-                        },
-                        {
-                            name: "Average for past " + getOp(op.id).length + " days",
-                            data: new Array(getOp(op.id).length).fill(
-                                getProgressionAverage(op.id, function(start, end) {
-                                    if (!start || !end) {
-                                        debugger;
-                                        return null;
-                                    }
-                                    return (start.data.kills - end.data.kills) / (start.data.deaths - end.data.deaths);
-                                }),
-                            ),
-                            className: "opavg",
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                },
-            };
-            acc[op.id].wl = {
-                type: "Line",
-                title: "Round Win/Loss Ratio",
-                data: {
-                    labels: getOp(op.id).map(x => x.date),
-                    series: [
-                        {
-                            name: "WL Ratio",
-                            data: getDelta(op.id)(function(curr, prev) {
-                                if (!prev) return null;
-                                return (curr.data.won - prev.data.won) / (curr.data.lost - prev.data.lost);
-                            }).map(x => {
-                                if (Number.isFinite(x)) {
-                                    return x;
-                                }
-                                return NaN;
-                            }),
-                            className: "opdaily",
-                        },
-                        {
-                            name: "Average for past " + getOp(op.id).length + " days",
-                            data: new Array(getOp(op.id).length).fill(
-                                getProgressionAverage(op.id, function(start, end) {
-                                    if (!start || !end) {
-                                        return null;
-                                    }
-                                    return (start.data.won - end.data.won) / (start.data.lost - end.data.lost);
-                                }),
-                            ),
-                            className: "opavg",
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                },
-            };
-            acc[op.id].playtime = {
-                type: "Line",
-                title: "Playtime (minutes)",
-                data: {
-                    labels: getOp(op.id).map(x => x.date),
-                    series: [
-                        {
-                            data: getDelta(op.id)(function(curr, prev) {
-                                if (!prev) return null;
-                                return Math.abs(curr.data.timePlayed - prev.data.timePlayed) / 60;
-                            }).map(x => {
-                                if (Number.isFinite(x)) {
-                                    return x;
-                                }
-                                return 0;
-                            }),
-                        },
-                    ],
-                },
-                options: {
-                    axisX: {
-                        labelInterpolationFnc,
-                    },
-                },
-            };
-            return acc;
-        }, {});
-
         this.state = {
             filterProp: "None",
             sorter: sorters[0],
             isSortReversed: false,
             operatorsShowMap,
-            opgraphs,
             ops,
         };
 
@@ -336,29 +225,7 @@ export default class OperatorTab extends React.Component<any, any> {
                                         </Fauxtable.Cell>
                                     </Fauxtable.Row>
                                     {!this.state.operatorsShowMap[datum.id] ? null : (
-                                        <div className="opstab__graphs">
-                                            <div className="row">
-                                                <div className="col">
-                                                    <div>
-                                                        <Chart {...this.state.opgraphs[datum.id].kd} />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col">
-                                                    <div>
-                                                        <Chart {...this.state.opgraphs[datum.id].wl} />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col">
-                                                    <div>
-                                                        <Chart {...this.state.opgraphs[datum.id].playtime} />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div className="opstab__graphs">{/* kd/wl/playtime charts */}</div>
                                     )}
                                 </div>
                             ))}
