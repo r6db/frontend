@@ -6,42 +6,57 @@
     }
     .row {
         flex-direction: column;
+        margin-bottom: $l*2;
 
         @include large {
-            flex-direction: row;
+            &.half {
+                flex-direction: row;
+            }
+            .wlratio, .kdratio {
+                width: 50%;
+            }
+            flex-direction: column;
         }
     }
-    .chart .ct-series,
-    .chart .indicator {
-        &.emea {
-            stroke: $graphcolor-emea;
-            background-color: $graphcolor-emea;
-        }
-        &.ncsa {
-            stroke: $graphcolor-ncsa;
-            background-color: $graphcolor-ncsa;
-        }
-        &.apac {
-            stroke: $graphcolor-apac;
-            background-color: $graphcolor-apac;
-        }
 
-        &.ranked {
-            stroke: $graphcolor-emea;
-            background-color: $graphcolor-emea;
+    .recharts-dot {
+        stroke-width: 2px;
+        fill: $bg-color;
+        fill-opacity: 1;
+    }
+    .recharts-curve {
+        stroke-width: 2px;
+    }
+    .recharts-default-tooltip {
+        background: lighten($bg-color, 5%) !important;
+        border: lighten($bg-color, 2%) !important;
+        color: $font-color;
+    }
+    .recharts-default-legend {
+        position: relative;
+        top: 10px;
+        right: -10px;
+    }
+    .recharts-legend-item-text {
+        font-size: 12px;
+        color: $font-subtle-color;
+        margin-left: 5px;
+    }
+    .recharts-cartesian-grid {
+        stroke: rgba(255,255,255,0.04);
+        &-horizontal line {
+            stroke-dasharray: 0;
         }
-        &.casual {
-            stroke: $graphcolor-ncsa;
-            background-color: $graphcolor-ncsa;
+    }
+    .recharts-cartesian-axis {
+        &-line, &-tick-line {
+          stroke: rgba(255,255,255,0.04);
         }
-
-        &.accuracy {
-            stroke: $graphcolor-emea;
-            background-color: $graphcolor-emea;
+        &.yAxis {
+            tspan { font-size: 11px; }
         }
-        &.hsrate {
-            stroke: $graphcolor-ncsa;
-            background-color: $graphcolor-ncsa;
+        &.xAxis {
+            tspan { font-size: 11px; margin-top: 50px; }
         }
     }
 }

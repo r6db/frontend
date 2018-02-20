@@ -1,17 +1,19 @@
 @import "scss/styles";
 
 .seasoncard {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: $l;
-    border-radius: $borderradius;
     position: relative;
     overflow: hidden;
+    margin-bottom: $l;
+    border-radius: $borderradius;
     transition: all 200ms ease-in-out;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
     cursor: pointer;
 
     @include large {
+        &:hover, &:focus {
+            transform: scale(1.015) translateZ(0);
+        }
         &__content {
             flex-direction: row;
             padding-right: 0;
@@ -25,6 +27,9 @@
             display: block;
             width: 75%;
             flex: auto;
+        }
+        &__regionsrow {
+            flex-direction: row;
         }
         .regionstats {
             width: 3%;
@@ -47,20 +52,24 @@
         object-fit: cover;
         z-index: 1;
         filter: brightness(30%);
-        opacity: 0.5;
+        opacity: 0.3;
+        transition: all 200ms ease-in-out;
+        border-radius: $borderradius;
     }
+
     &__content {
         display: flex;
         flex-direction: column;
         position: relative;
         z-index: 2;
-        padding: $l 0;
+        padding: $l $l*2;
     }
+
     &__season {
         display: block;
-        padding: 0 $l;
+        padding-bottom: $l;
 
-        svg{
+        svg {
             height: 4rem;
             transform-origin: top left;
             transform: scale(1.25);
@@ -70,16 +79,17 @@
             }
         }
     }
-    &__regions {
-        &row{
-            display: flex;
-            flex: 1;
-            flex-direction: row;
-        }
+
+    &__regionsrow {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
     }
+
     &__stats {
         min-height: 1px;
     }
+
     &__emptyindicator {
         height: 1px;
         width: 80%;

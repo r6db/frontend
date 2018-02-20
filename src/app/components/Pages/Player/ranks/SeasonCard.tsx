@@ -74,7 +74,7 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
                     src={img.placeholder}
                     srcSet={img.srcSet}
                 />
-                
+
                 <div className="seasoncard__content">
                     <div className="seasoncard__season">
                         <Icon glyph={SEASONS[this.props.season].logo} />
