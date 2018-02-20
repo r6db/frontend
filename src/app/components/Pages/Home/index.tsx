@@ -2,7 +2,7 @@ import * as React from "react";
 import Searchbar from "components/misc/Searchbar";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./home.scss";
-import bg from "./bg.jpg";
+import bg from "assets/backgrounds/outbreak.jpg";
 
 const oncreate = () => {
     const search = document.querySelector(".home .searchbar__name") as HTMLInputElement;

@@ -13,7 +13,7 @@
 
     .page__image {
         top: -40px;
-        height: calc(100vh + 40px);
+        height: calc(100% + 40px);
 
         @include medium {
             top: -80px;

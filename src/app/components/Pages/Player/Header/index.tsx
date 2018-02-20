@@ -44,8 +44,10 @@ class PlayerHeader extends React.Component<any, any> {
                     </div>
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">
-                            <span className="playerheader__name">{this.props.name}</span>
-                            <span className="playerheader__platform">{this.props.platform}</span>
+                            <div className="playerheader__namewrapper">
+                              <span className="playerheader__name">{this.props.name}</span>
+                              <span className="playerheader__platform">{this.props.platform}</span>
+                            </div>
                             {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
