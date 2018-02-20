@@ -7,11 +7,11 @@ $operation-health: #4a74a9;
 $blood-orchid: #ca361c;
 $white-noise: #006543;
 
-$primary: #007ae5;
+$primary: #007BFF;
 $black: #1c1c1c;
 $off-white: hsl(hue($primary), 5%, 85%);
 $white: hsl(hue($primary), 5%, 90%);
-$accent: #ff7b00;
+$accent: #FF6E09;
 $link: mix(#2d95cf, $primary, 90%);
 $gray-dark: hsl(hue($primary), 3%, 5%);
 $gray-darkish: lighten($gray-dark, 20%);
@@ -27,11 +27,11 @@ $danger: mix(#b62f23, $primary, 95%);
 
 $font-color: $white;
 $font-subtle-color: $gray;
-$bg-color: #181b1f;
+$bg-color: #181B1F;
 
 $l: 10px;
 $a: 45deg;
-$borderradius: 0.275rem;
+$borderradius: 4px;
 $borderradius-rel: 0.4em;
 
 $font-tiny: 0.5rem;

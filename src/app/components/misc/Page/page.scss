@@ -34,6 +34,7 @@
             z-index: 1;
             width: 100%;
             padding: 50px 0;
+            background: linear-gradient(rgba($bg-color, 0), rgba($bg-color, 1) 98%);
         }
     }
     &__image {
@@ -46,13 +47,13 @@
         left: 0;
         opacity: 1;
         top: -40px;
-        height: calc(100% + 40px);
+        height: calc(100vh + 35px);
         opacity: 0.25;
-        filter: saturate(150%) contrast(110%);
+        filter: saturate(120%) blur(2px);
 
         @include medium {
             top: -80px;
-            height: calc(100% + 80px);
+            height: calc(100% + 75px);
         }
     }
 

@@ -5,7 +5,7 @@
     border: 1px solid $gray;
     border-radius: $borderradius;
     font-size: $font-default;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     width: auto;
     &[disabled] {
@@ -34,5 +34,10 @@
         border-color: darken($accent, 15%);
         background: $accent;
         color: $white;
+    }
+    &--outline--accent {
+        border-color: darken($accent, 15%);
+        background: none;
+        color: $accent;
     }
 }

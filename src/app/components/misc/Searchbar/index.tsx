@@ -41,7 +41,7 @@ class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
                     className="searchbar__name"
                     type="text"
                     value={this.props.query}
-                    placeholder="enter player name"
+                    placeholder="Search for players..."
                     onChange={e => this.props.updateSearch(e.target.value)}
                 />
                 <select

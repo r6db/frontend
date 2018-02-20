@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: $l*0.5;
 
     &__logo {
         flex: 0 1 auto;
@@ -26,19 +27,26 @@
         flex: 0 0 auto;
     }
     &__item {
-        color: $white;
-        padding: ($l*2) $l;
+        color: rgba($white, 0.6);
+        padding: ($l*2) $l*1.25;
         margin: 0;
-        font-weight: 600;
+        font-weight: 400;
         cursor: pointer;
         transition: 100ms linear color;
+        letter-spacing: 0.02em;
+
+        &.active {
+            color: $white;
+            font-weight: 600;
+        }
         &:focus {
             outline: none;
             border: none;
-            color: desaturate($color: $accent, $amount: 0.75);
+            color: $white;
+            font-weight: 600;
         }
         &:hover {
-            color: $accent;
+            color: $white;
         }
     }
     &__search {
