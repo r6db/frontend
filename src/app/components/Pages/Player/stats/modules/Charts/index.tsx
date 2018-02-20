@@ -62,13 +62,12 @@ export default class PlayerCharts extends React.Component<any, any> {
                     },
                 },
             };
-
             return acc.concat({
                 name: new Date(current.created_at).toLocaleDateString(),
                 kd_casual: round(stats.getKillRatioRaw(delta.stats.casual)) || null,
                 kd_ranked: round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
-                wl_casual: round(stats.getWinChanceRaw(delta.stats.casual)) || null,
-                wl_ranked: round(stats.getRankWinChanceRaw(delta.stats.ranked)) || null,
+                wl_casual: round(stats.getWinChanceRaw(delta.stats.casual)*100) || null,
+                wl_ranked: round(stats.getWinChanceRaw(delta.stats.ranked)*100) || null,
                 mmr_apac: round(current.ranks.apac.mmr),
                 mmr_emea: round(current.ranks.emea.mmr),
                 mmr_ncsa: round(current.ranks.ncsa.mmr),
@@ -140,7 +139,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                 </div>
                 <div className="row half">
                     <div className="wlratio">
-                        <div className="chart__header">Win Rate</div>
+                        <div className="chart__header">Win Rate (%)</div>
                         <ResponsiveContainer height={125}>
                             <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
@@ -221,7 +220,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="chart__header">Accuracy & Headshot Rate</div>
+                    <div className="chart__header">Accuracy & Headshots per hit (%)</div>
                     <ResponsiveContainer height={175}>
                         <AreaChart syncId="charts" data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                             <defs>
@@ -243,7 +242,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                                 type="monotone"
                                 dot={true}
                                 connectNulls={true}
-                                name="Accuracy"
+                                name="Accuracy (%)"
                                 dataKey="accu"
                                 stroke={colors.red}
                                 fill="url(#colorAccuracy)"
@@ -252,7 +251,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                                 type="monotone"
                                 dot={true}
                                 connectNulls={true}
-                                name="HS Chance"
+                                name="Headshots per hit (%)"
                                 dataKey="hs_chance"
                                 stroke={colors.blue}
                                 fill="url(#colorHSChance)"
