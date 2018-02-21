@@ -5,20 +5,42 @@ import { RANKS, SEASONS } from "lib/constants";
 import "./rankoverview.scss";
 
 function CurrentRank(props) {
-    if (props.rank === 0 && !props.show) {
-        return null;
+    if (props.rank === 0) {
+        return (
+            <div className="currentrank">
+                <div className="currentrank__icon">
+                    <Icon glyph={GLYPHS["RANK0"]} />
+                </div>
+                <div className="currentrank__placement">N/A</div>
+                <div className="currentrank__region">{props.region}</div>
+            </div>
+        );
     }
-    return (
-        <div className="currentrank">
-            <div className="currentrank__icon">
-                <Icon glyph={GLYPHS["RANK" + props.rank]} />
+    {/* TODO: NOT WORKING */}
+    if (props.key === "rank-global") {
+        return (
+            <div className="currentrank">
+                <div className="currentrank__icon">
+                    <Icon glyph={GLYPHS["RANK0"]} />
+                </div>
+                <div className="currentrank__placement">FUCK</div>
+                <div className="currentrank__region">{props.region}</div>
             </div>
-            <div className="currentrank__placement">
-                {typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
+        );
+    }
+    else {
+        return (
+            <div className="currentrank">
+                <div className="currentrank__icon">
+                    <Icon glyph={GLYPHS["RANK" + props.rank]} />
+                </div>
+                <div className="currentrank__placement">
+                    {typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
+                </div>
+                <div className="currentrank__region">{props.region}</div>
             </div>
-            <div className="currentrank__region">{props.region}</div>
-        </div>
-    );
+        );
+    }
 }
 function CurrentSeason(props) {
     if (props.level < 100) {
@@ -28,31 +50,38 @@ function CurrentSeason(props) {
     }
     return (
         <div className="rankoverview__currentseason">
-            <CurrentRank
-                key="rank-global"
-                rank={get(props, "pastRanks.0.rank", 0)}
-                show={true}
-                placement={get(props, "placements.global", "-")}
-                region="Global"
-            />
-            <CurrentRank
-                key="rank-emea"
-                rank={get(props, "rank.emea.rank", 0)}
-                placement={get(props, "placements.emea", "-")}
-                region="Europe"
-            />
-            <CurrentRank
-                key="rank-ncsa"
-                rank={get(props, "rank.ncsa.rank", 0)}
-                placement={get(props, "placements.ncsa", "-")}
-                region="America"
-            />
-            <CurrentRank
-                key="rank-apac"
-                rank={get(props, "rank.apac.rank", 0)}
-                placement={get(props, "placements.apac", "-")}
-                region="Asia"
-            />
+            <div className="rankoverview__global">
+                <CurrentRank
+                    key="rank-global"
+                    rank={get(props, "pastRanks.0.rank", 0)}
+                    show={true}
+                    placement={get(props, "placements.global", "-")}
+                    region="Global"
+                />
+            </div>
+            <div className="playermodule__divider"></div>
+            <div className="rankoverview__regional">
+                <CurrentRank
+                    key="rank-emea"
+                    rank={get(props, "rank.emea.rank", 0)}
+                    placement={get(props, "placements.emea", "-")}
+                    region="Europe"
+                />
+                <div className="rankoverview__vertdivider"></div>
+                <CurrentRank
+                    key="rank-ncsa"
+                    rank={get(props, "rank.ncsa.rank", 0)}
+                    placement={get(props, "placements.ncsa", "-")}
+                    region="America"
+                />
+                <div className="rankoverview__vertdivider"></div>
+                <CurrentRank
+                    key="rank-apac"
+                    rank={get(props, "rank.apac.rank", 0)}
+                    placement={get(props, "placements.apac", "-")}
+                    region="Asia"
+                />
+            </div>
         </div>
     );
 }

@@ -13,6 +13,7 @@ export default function StatsTab(props) {
         <div className="statstab">
             <div className="statstab__sidebar">
                 <RankOverview {...props} />
+                <div className="playermodule__divider"></div>
                 {props.aliases && props.aliases.length > 1 ? <Aliases {...props} /> : null}
             </div>
             <div className="statstab__statarea">

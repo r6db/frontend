@@ -6,7 +6,7 @@
     }
     &__currentseason {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
 
         &.is-underage {
@@ -14,7 +14,24 @@
             justify-content: center;
         }
     }
-
+    &__global {
+        display: flex;
+        flex: 1;
+        .currentrank {
+            margin-bottom: 0;
+        }
+    }
+    &__regional {
+        display: flex;
+        flex-direction: row;
+    }
+    &__vertdivider {
+        display: flex;
+        flex: 1px 0 auto;
+        width: 1px;
+        background: lighten($gray-dark, 15%);
+        margin: 0 $l;
+    }
     &__pastseason {
         display: flex;
         overflow: auto;
@@ -26,14 +43,13 @@
             flex-direction: column;
         }
     }
-
     &__ubipls{
         display: block;
         color: $font-subtle-color;
         flex: none;
 
         @include large{
-            margin: $l 0 $l*3;
+            margin-top: $l;
         }
 
         span{
@@ -48,6 +64,7 @@
     position: relative;
     height: $l*7.5;
     width: $l*7.5;
+    margin-bottom: 10px;
     z-index: 0;
     &__icon {
         position: absolute;
