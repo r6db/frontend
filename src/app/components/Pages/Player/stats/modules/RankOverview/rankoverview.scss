@@ -8,7 +8,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding-top: $l;
 
         &.is-underage {
             padding: $l*3;

@@ -35,10 +35,6 @@
             width: 100%;
             padding: $l*2 0;
             background: linear-gradient(rgba($bg-color, 0), rgba($bg-color, 1) 98%);
-
-            @include medium {
-                padding: $l*5 0;
-            }
         }
     }
     &__image {
