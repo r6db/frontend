@@ -5,17 +5,6 @@ import { RANKS, SEASONS } from "lib/constants";
 import "./rankoverview.scss";
 
 function CurrentRank(props) {
-    if (props.rank === 0) {
-        return (
-            <div className="currentrank">
-                <div className="currentrank__icon">
-                    <Icon glyph={GLYPHS["RANK0"]} />
-                </div>
-                <div className="currentrank__placement">N/A</div>
-                <div className="currentrank__region">{props.region}</div>
-            </div>
-        );
-    }
     if (props.region === "Global") {
         return (
             <div className="currentrank">
@@ -29,12 +18,17 @@ function CurrentRank(props) {
     }
     else {
         return (
-            <div className="currentrank">
+            <div className={`currentrank ${props.className || ""}`}>
                 <div className="currentrank__icon">
                     <Icon glyph={GLYPHS["RANK" + props.rank]} />
                 </div>
                 <div className="currentrank__placement">
-                    {typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
+                    {props.rank === 0
+                        ? "N/A"
+                        : typeof props.placement === "number"
+                            ? "#" + (props.placement + 1)
+                            : ""
+                    }
                 </div>
                 <div className="currentrank__region">{props.region}</div>
             </div>
@@ -54,6 +48,7 @@ function CurrentSeason(props) {
                     key="rank-global"
                     rank={get(props, "pastRanks.0.rank", 0)}
                     show={true}
+                    className="currentrank--global"
                     placement={get(props, "placements.global", "-")}
                     region="Global"
                 />
