@@ -16,8 +16,7 @@ function CurrentRank(props) {
             </div>
         );
     }
-    {/* TODO: NOT WORKING */}
-    if (props.key === "rank-global") {
+    if (props.region === "Global") {
         return (
             <div className="currentrank">
                 <div className="currentrank__icon">
