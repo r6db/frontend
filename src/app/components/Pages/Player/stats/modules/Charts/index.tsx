@@ -66,15 +66,15 @@ export default class PlayerCharts extends React.Component<any, any> {
                 name: new Date(current.created_at).toLocaleDateString(),
                 kd_casual: round(stats.getKillRatioRaw(delta.stats.casual)) || null,
                 kd_ranked: round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
-                wl_casual: round(stats.getWinChanceRaw(delta.stats.casual)*100) || null,
-                wl_ranked: round(stats.getWinChanceRaw(delta.stats.ranked)*100) || null,
+                wl_casual: round(stats.getWinChanceRaw(delta.stats.casual) * 100) || null,
+                wl_ranked: round(stats.getWinChanceRaw(delta.stats.ranked) * 100) || null,
                 mmr_apac: round(current.ranks.apac.mmr),
                 mmr_emea: round(current.ranks.emea.mmr),
                 mmr_ncsa: round(current.ranks.ncsa.mmr),
                 games_casual: delta.stats.casual.played,
                 games_ranked: delta.stats.ranked.played,
-                accu: delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1),
-                hs_chance: delta.stats.general.headshot / (delta.stats.general.bulletsFired || 1),
+                accu: round(delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1)) * 100,
+                hs_chance: round(delta.stats.general.headshot / (delta.stats.general.bulletsHit || 1)) * 100,
             });
         }, []);
     }

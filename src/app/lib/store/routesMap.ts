@@ -99,6 +99,13 @@ export default {
             }
             const lbConfig = LEADERBOARDS[board];
             dispatch({ type: "PLATFORM", payload: platform });
+            // grab community ranks
+            api
+                .getCommunityRanks(platform)
+                .then(ranks => {
+                    dispatch({ type: "COMMUNITYRANKS_FETCHED", payload: ranks });
+                })
+                .catch(console.error);
             api
                 .getLeaderboard(lbConfig.board, platform)
                 .then(entries => {

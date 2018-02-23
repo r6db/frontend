@@ -7,3 +7,4 @@ export { default as chankaboard } from "./chankaboard";
 export { default as players } from "./players";
 export { default as platform } from "./platform";
 export { default as menu } from "./menu";
+export { default as community } from "./community";

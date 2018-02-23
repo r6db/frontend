@@ -16,7 +16,7 @@ export const tap = cb => data => {
     return data;
 };
 
-export const getHeaders = headers => {
+export const getHeaders = (headers?) => {
     const h = new Headers();
 
     h.append("X-App-Id", appid);
