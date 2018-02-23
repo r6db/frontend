@@ -93,6 +93,7 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = dispatch => ({
+    changePlatform: pf => dispatch({ type: "PLATFORM", payload: pf }),
     load: platform => dispatch({ type: "CHANKABOARD", payload: { platform } }),
 });
 
