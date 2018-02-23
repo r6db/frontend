@@ -19,7 +19,7 @@ function memoize(fn) {
             hash += currentArg === Object(currentArg) ? JSON.stringify(currentArg) : currentArg;
             fn.memoize || (fn.memoize = {});
         }
-        return hash in fn.memoize ? fn.memoize[hash] : (fn.memoize[hash] = fn.apply(this, args));
+        return hash in fn.memoize ? fn.memoize[hash] : (fn.memoize[hash] = fn(...args));
     };
 }
 

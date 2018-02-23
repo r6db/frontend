@@ -31,7 +31,9 @@ export default function(player) {
             return acc;
         }, []);
     if (player.progressions) {
-        player.progressions = player.progressions.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+        player.progressions = player.progressions.sort(
+            (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+        );
     }
     player.pastRanks = allRanks
         .map(x => {
@@ -67,8 +69,8 @@ export default function(player) {
     player.name = player.aliases[0].name;
 
     if (player.updateAvailableAt && player.serverTime) {
-        const offset = new Date() - new Date(player.serverTime);
-        const available = new Date(player.updateAvailableAt) - offset;
+        const offset = new Date().getTime() - new Date(player.serverTime).getTime();
+        const available = new Date(player.updateAvailableAt).getTime() - offset;
         player.updateAvailableAt = new Date(available);
     }
 

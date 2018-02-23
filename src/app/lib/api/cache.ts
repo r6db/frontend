@@ -1,4 +1,4 @@
-export default function(duration) {
+export default function Cache(duration) {
     const cache = {};
 
     function get(key) {

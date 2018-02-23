@@ -128,7 +128,7 @@ class Leaderboard extends React.Component<any, any> {
                         <Link id="chanky" to={toChanka(this.props.platform)}>
                             <img src={chanka} />
                         </Link>
-                        { this.props.loading ? <Loading /> : null}
+                        {this.props.loading ? <Loading /> : null}
                     </div>
                 </PageContent>
             </Page>
@@ -137,12 +137,16 @@ class Leaderboard extends React.Component<any, any> {
 }
 
 const mapStateToProps = state => {
-    const { loading, platform, leaderboard, location: { payload: { board } } } = state;
-    console.log(board, leaderboard);
+    const { loading, platform, leaderboard, community, location: { payload: { board } } } = state;
+
+    //TODO: remove this log
+    console.log("community stats:", community);
+
     return {
         platform,
         loading,
         board,
+        community,
         entries: leaderboard[board] || [],
     };
 };
