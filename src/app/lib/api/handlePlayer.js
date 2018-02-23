@@ -37,9 +37,11 @@ export default function(player) {
         .map(x => {
             const sortedRanks = [x.ncsa, x.emea, x.apac]
                 .map(y => ({
-                    rank: y.max_rank,
+                    rank: y.rank,
+                    max_rank: y.max_rank,
                     season: x.season,
-                    mmr: y.max_mmr.toFixed(2),
+                    mmr: +y.mmr.toFixed(2),
+                    max_mmr: +y.max_mmr.toFixed(2),
                 }))
                 .sort((a, b) => (b.rank != a.rank ? b.rank - a.rank : b.mmr - a.mmr));
             return sortedRanks[0];
