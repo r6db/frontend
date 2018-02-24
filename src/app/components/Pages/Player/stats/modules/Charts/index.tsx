@@ -155,7 +155,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                 <div className="row half">
                     <div className="wlratio">
                         <div className="chart__header">Win Rate (%)</div>
-                        <ResponsiveContainer height={125}>
+                        <ResponsiveContainer height={145}>
                             <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorCasualWR" x1="0" y1="0" x2="0" y2="1">
@@ -195,7 +195,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                     </div>
                     <div className="kdratio">
                         <div className="chart__header">K/D Ratio</div>
-                        <ResponsiveContainer height={125}>
+                        <ResponsiveContainer height={145}>
                             <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorCasual" x1="0" y1="0" x2="0" y2="1">
@@ -277,7 +277,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                 <div className="row half">
                     <div className="gamesplayed">
                         <div className="chart__header">Games by Queue</div>
-                        <ResponsiveContainer height={125}>
+                        <ResponsiveContainer height={145}>
                             <BarChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorCasual" x1="0" y1="0" x2="0" y2="1">
@@ -313,7 +313,7 @@ export default class PlayerCharts extends React.Component<any, any> {
                     </div>
                     <div className="modes">
                         <div className="chart__header">Games by Mode</div>
-                        <ResponsiveContainer height={125}>
+                        <ResponsiveContainer height={145}>
                             <BarChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorBomb" x1="0" y1="0" x2="0" y2="1">
