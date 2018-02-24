@@ -2,6 +2,8 @@ import * as React from "react";
 import {
     AreaChart,
     Area,
+    BarChart,
+    Bar,
     CartesianGrid,
     ResponsiveContainer,
     Legend,
@@ -25,6 +27,7 @@ const colors = {
     orange: "#FF3924",
     teal: "#17ead9",
     aqua: "#3069cc",
+    lightgreen: "#30FF6C",
 };
 
 export default class PlayerCharts extends React.Component<any, any> {
@@ -60,6 +63,15 @@ export default class PlayerCharts extends React.Component<any, any> {
                         bulletsHit: diff("stats.general.bulletsHit", 0),
                         headshot: diff("stats.general.headshot", 0),
                     },
+                    hostage: {
+                        played: diff("stats.hostage.played", 0),
+                    },
+                    bomb: {
+                        played: diff("stats.bomb.played", 0),
+                    },
+                    secure: {
+                        played: diff("stats.secure.played", 0),
+                    },
                 },
             };
             return acc.concat({
@@ -68,11 +80,14 @@ export default class PlayerCharts extends React.Component<any, any> {
                 kd_ranked: round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
                 wl_casual: round(stats.getWinChanceRaw(delta.stats.casual) * 100) || null,
                 wl_ranked: round(stats.getWinChanceRaw(delta.stats.ranked) * 100) || null,
+                games_bomb: delta.stats.bomb.played,
+                games_hostage: delta.stats.hostage.played,
+                games_secure: delta.stats.secure.played,
+                games_ranked: delta.stats.ranked.played,
+                games_casual: delta.stats.casual.played,
                 mmr_apac: round(current.ranks.apac.mmr),
                 mmr_emea: round(current.ranks.emea.mmr),
                 mmr_ncsa: round(current.ranks.ncsa.mmr),
-                games_casual: delta.stats.casual.played,
-                games_ranked: delta.stats.ranked.played,
                 accu: round(delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1)) * 100,
                 hs_chance: round(delta.stats.general.headshot / (delta.stats.general.bulletsHit || 1)) * 100,
             });
@@ -239,14 +254,14 @@ export default class PlayerCharts extends React.Component<any, any> {
                             <Tooltip cursor={{ stroke: "#6f7376" }} />
                             <Legend align="right" verticalAlign="bottom" />
                             {/** <Area
-                                type="monotone"
-                                dot={true}
-                                connectNulls={true}
-                                name="Accuracy (%)"
-                                dataKey="accu"
-                                stroke={colors.red}
-                                fill="url(#colorAccuracy)"
-                            /> */}
+                                    type="monotone"
+                                    dot={true}
+                                    connectNulls={true}
+                                    name="Accuracy (%)"
+                                    dataKey="accu"
+                                    stroke={colors.red}
+                                    fill="url(#colorAccuracy)"
+                                /> */}
                             <Area
                                 type="monotone"
                                 dot={true}
@@ -258,6 +273,92 @@ export default class PlayerCharts extends React.Component<any, any> {
                             />
                         </AreaChart>
                     </ResponsiveContainer>
+                </div>
+                <div className="row half">
+                    <div className="gamesplayed">
+                        <div className="chart__header">Games by Queue</div>
+                        <ResponsiveContainer height={125}>
+                            <BarChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                                <defs>
+                                    <linearGradient id="colorCasual" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.teal} stopOpacity={0} />
+                                    </linearGradient>
+                                    <linearGradient id="colorRanked" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
+                                    </linearGradient>
+                                </defs>
+                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
+                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
+                                <Tooltip cursor={{ stroke: "#6f7376" }} />
+                                <Legend align="right" verticalAlign="bottom" />
+                                <Bar
+                                    name="Casual"
+                                    dataKey="games_casual"
+                                    stackId="queue"
+                                    fill="url(#colorCasual)"
+                                    stroke={colors.teal}
+                                />
+                                <Bar
+                                    name="Ranked"
+                                    dataKey="games_ranked"
+                                    stackId="queue"
+                                    fill="url(#colorRanked)"
+                                    stroke={colors.aqua}
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                    <div className="modes">
+                        <div className="chart__header">Games by Mode</div>
+                        <ResponsiveContainer height={125}>
+                            <BarChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                                <defs>
+                                    <linearGradient id="colorBomb" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.teal} stopOpacity={0} />
+                                    </linearGradient>
+                                    <linearGradient id="colorSecure" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
+                                    </linearGradient>
+                                    <linearGradient id="colorHostage" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor={colors.green} stopOpacity={0.6} />
+                                        <stop offset="95%" stopColor={colors.green} stopOpacity={0} />
+                                    </linearGradient>
+                                </defs>
+                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
+                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
+                                <Tooltip cursor={{ stroke: "#6f7376" }} />
+                                <Legend align="right" verticalAlign="bottom" />
+                                <Bar
+                                    stackId="mode"
+                                    name="Bomb"
+                                    dataKey="games_bomb"
+                                    fill="url(#colorBomb)"
+                                    stroke={colors.teal}
+                                />
+                                <Bar
+                                    stackId="mode"
+                                    name="Secure"
+                                    dataKey="games_secure"
+                                    fill="url(#colorSecure)"
+                                    stroke={colors.aqua}
+                                />
+                                <Bar
+                                    stackId="mode"
+                                    connectNulls={true}
+                                    name="Hostage"
+                                    dataKey="games_hostage"
+                                    fill="url(#colorHostage)"
+                                    stroke={colors.green}
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
             </div>
         ) : null;
