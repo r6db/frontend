@@ -2,7 +2,7 @@ import * as React from "react";
 import { RANKS } from "lib/constants";
 
 export default function SimpleSeason(props) {
-    return props.season != null ? (
+    return (
         <div className="profile-rankedstats card">
             <header className="card__header">Ranked Season ({props.region})</header>
             <div className="card__content">
@@ -50,5 +50,5 @@ export default function SimpleSeason(props) {
                 </div>
             </div>
         </div>
-    ) : null;
+    );
 }

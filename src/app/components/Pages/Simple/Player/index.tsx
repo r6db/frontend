@@ -40,11 +40,13 @@ export default function SimplePlayer(props) {
                                 {props.pastRanks
                                     .slice()
                                     .sort((a, b) => a.season - b.season)
-                                    .map(x => <Rank rank={x} />)}
+                                    .map(x => <Rank key={x.season} rank={x} />)}
                             </div>
                         </div>
                         {props.aliases && props.aliases.length > 1 ? (
-                            <div className="profile-aliases">{props.aliases.map(x => <Alias alias={x} />)}</div>
+                            <div className="profile-aliases">
+                                {props.aliases.map(x => <Alias key={x.name + x.created_at} alias={x} />)}
+                            </div>
                         ) : null}
                     </div>
                 </div>
@@ -54,17 +56,17 @@ export default function SimplePlayer(props) {
                     <div className="profile-content">
                         <div className="profile-stats">
                             <Timedata player={props} />
-                            <SimpleCard player={props.stats.general} />
-                            <SimpleCard player={props.stats.casual} />
-                            <SimpleCard player={props.stats.ranked} />
+                            <SimpleCard title="General" {...props.stats.general} />
+                            <SimpleCard title="Casual" {...props.stats.casual} />
+                            <SimpleCard title="Ranked" {...props.stats.ranked} />
                             {get(props, "rank.ncsa.rank", null) ? (
-                                <RankedSeason region={getRegionName("ncsa")} stats={props.rank.ncsa} />
+                                <RankedSeason region={getRegionName("ncsa")} season={props.rank.ncsa} />
                             ) : null}
                             {get(props, "rank.emea.rank", null) ? (
-                                <RankedSeason region={getRegionName("emea")} stats={props.rank.emea} />
+                                <RankedSeason region={getRegionName("emea")} season={props.rank.emea} />
                             ) : null}
                             {get(props, "rank.apac.rank", null) ? (
-                                <RankedSeason region={getRegionName("apac")} stats={props.rank.apac} />
+                                <RankedSeason region={getRegionName("apac")} season={props.rank.apac} />
                             ) : null}
                         </div>
                     </div>
