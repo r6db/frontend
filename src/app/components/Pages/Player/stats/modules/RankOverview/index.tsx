@@ -108,14 +108,14 @@ export default function PlayerRankOverview(props) {
             <CurrentSeason {...props} />
             <div className="playermodule__divider" />
             <div className="rankoverview__pastseason">
-                {props.pastRanks.filter(x => x.season === props.rank.season || x.rank !== 0).map(rank => (
+                {props.pastRanks.filter(x => x.season === props.rank.season || x.max_rank !== 0).map(rank => (
                     <div className={`pastrank season-${rank.season}`} key={rank.season}>
                         <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.max_rank]} />
                         <div className="pastrank__text">
                             <div className="pastrank__season">{SEASONS[rank.season].name}</div>
                             <div className="pastrank__rank">
                                 {RANKS[rank.max_rank]}
-                                <span className="pastrank__mmr">{rank.mmr} MMR</span>
+                                <span className="pastrank__mmr">{rank.max_mmr} MMR</span>
                             </div>
                         </div>
                     </div>
