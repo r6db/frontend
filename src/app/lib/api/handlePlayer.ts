@@ -45,7 +45,7 @@ export default function(player) {
                     mmr: +y.mmr.toFixed(2),
                     max_mmr: +y.max_mmr.toFixed(2),
                 }))
-                .sort((a, b) => (b.rank != a.rank ? b.rank - a.rank : b.mmr - a.mmr));
+                .sort((a, b) => (b.max_rank != a.max_rank ? b.max_rank - a.max_rank : b.max_mmr - a.max_mmr));
             return sortedRanks[0];
         })
         .sort((a, b) => b.season - a.season);

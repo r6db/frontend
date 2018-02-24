@@ -30,26 +30,26 @@ function CurrentSeason(props) {
         <div className="rankoverview__currentseason">
             <CurrentRank
                 key="rank-global"
-                rank={get(props, "pastRanks.0.rank", 0)}
+                rank={get(props, "pastRanks.0.max_rank", 0)}
                 show={true}
                 placement={get(props, "placements.global", "-")}
                 region="Global"
             />
             <CurrentRank
                 key="rank-emea"
-                rank={get(props, "rank.emea.rank", 0)}
+                rank={get(props, "rank.emea.max_rank", 0)}
                 placement={get(props, "placements.emea", "-")}
                 region="Europe"
             />
             <CurrentRank
                 key="rank-ncsa"
-                rank={get(props, "rank.ncsa.rank", 0)}
+                rank={get(props, "rank.ncsa.max_rank", 0)}
                 placement={get(props, "placements.ncsa", "-")}
                 region="America"
             />
             <CurrentRank
                 key="rank-apac"
-                rank={get(props, "rank.apac.rank", 0)}
+                rank={get(props, "rank.apac.max_rank", 0)}
                 placement={get(props, "placements.apac", "-")}
                 region="Asia"
             />
@@ -63,14 +63,14 @@ export default function PlayerRankOverview(props) {
             <CurrentSeason {...props} />
             <div className="playermodule__divider" />
             <div className="rankoverview__pastseason">
-                {props.pastRanks.filter(x => x.season === props.rank.season || x.rank !== 0).map(rank => (
+                {props.pastRanks.filter(x => x.season === props.rank.season || x.max_rank !== 0).map(rank => (
                     <div className={`pastrank season-${rank.season}`} key={rank.season}>
                         <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.max_rank]} />
                         <div className="pastrank__text">
                             <div className="pastrank__season">{SEASONS[rank.season].name}</div>
                             <div className="pastrank__rank">
                                 {RANKS[rank.max_rank]}
-                                <span className="pastrank__mmr">{rank.mmr} MMR</span>
+                                <span className="pastrank__mmr">{rank.max_mmr} MMR</span>
                             </div>
                         </div>
                     </div>
