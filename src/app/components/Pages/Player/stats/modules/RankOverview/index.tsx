@@ -35,6 +35,28 @@ function CurrentRank(props) {
         );
     }
 }
+
+function GlobalRanking(props) {
+    return (
+        <div className={`globalrank ${props.className || ""}`}>
+            <div className="globalrank__icon">
+                <Icon glyph={GLYPHS["RANK" + props.rank]} />
+            </div>
+            <div className="globalrank__box">
+                <div className="globalrank__rank">{RANKS[props.rank]}</div>
+                <div className="globalrank__placement">
+                    {props.rank === 0
+                        ? "N/A"
+                        : typeof props.placement === "number"
+                            ? "#" + (props.placement + 1)
+                            : ""
+                    } Global
+                </div>
+                <div className="globalrank__toppercentage">TODO: Calculate position</div>
+            </div>
+        </div>
+    );
+}
 function CurrentSeason(props) {
     if (props.level < 100) {
         return <div className="rankoverview__currentseason is-underage">rankings unlock at level 100</div>;
@@ -44,7 +66,7 @@ function CurrentSeason(props) {
     return (
         <div className="rankoverview__currentseason">
             <div className="rankoverview__global">
-                <CurrentRank
+                <GlobalRanking
                     key="rank-global"
                     rank={get(props, "pastRanks.0.rank", 0)}
                     show={true}

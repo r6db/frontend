@@ -17,6 +17,11 @@
     &__global {
         display: flex;
         flex: 1;
+        justify-content: center;
+
+        @include medium {
+            justify-content: flex-start;
+        }
         .currentrank {
             margin-bottom: 0;
         }
@@ -57,6 +62,30 @@
             text-align: center;
             line-height: 1.4em;
         }
+    }
+}
+.globalrank {
+    display: flex;
+    flex-direction: row;
+
+    @include large {
+        align-items: center;
+    }
+    &__icon {
+        margin-right: $l;
+        svg {
+            height: $l*7.5;
+            width: $l*7.5;
+        }
+    }
+    &__rank {
+        font-size: $font-large;
+        margin-bottom: $l*0.5;
+    }
+    &__placement,
+    &__toppercentage {
+        line-height: 1.5;
+        color: $font-subtle-color;
     }
 }
 .currentrank {
