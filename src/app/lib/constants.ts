@@ -13,9 +13,10 @@ const s6Cover = require("assets/backgrounds/ophealth1.jpg?sizes[]=300&sizes[]=60
 import s6Logo from "assets/seasonlogos/R6-OPHealth-Horizontal.svg";
 const s7Cover = require("assets/backgrounds/bloodorchid1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s7Logo from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
-
-const s8Cover = require("assets/backgrounds/whitenoise1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
-import s8Logo from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
+const s8Cover = require("assets/backgrounds/bloodorchid1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
+import s8Logo from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
+const s9Cover = require("assets/backgrounds/whitenoise1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
+import s9Logo from "assets/seasonlogos/R6-OPChimera-Horizontal.svg";
 
 export const appname = "r6db";
 export const appid = "5e23d930-edd3-4240-b9a9-723c673fb649";
@@ -175,8 +176,8 @@ export const SEASONS: ISeason[] = [
         name: "Chimera",
         dateStart: null,
         dateEnd: null,
-        cover: "",
-        logo: null,
+        cover: s9Cover,
+        logo: s9Logo,
     },
 ];
 
