@@ -94,9 +94,9 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                 games_secure: delta.stats.secure.played,
                 games_ranked: delta.stats.ranked.played,
                 games_casual: delta.stats.casual.played,
-                mmr_apac: round(current.ranks.apac.mmr),
-                mmr_emea: round(current.ranks.emea.mmr),
-                mmr_ncsa: round(current.ranks.ncsa.mmr),
+                mmr_apac: round(get(current, "ranks.apac.mmr", null)),
+                mmr_emea: round(get(current, "ranks.emea.mmr", null)),
+                mmr_ncsa: round(get(current, "ranks.ncsa.mmr", null)),
                 accu: round(delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1)) * 100,
                 hs_chance: round(delta.stats.general.headshot / (delta.stats.general.bulletsHit || 1)) * 100,
             });
