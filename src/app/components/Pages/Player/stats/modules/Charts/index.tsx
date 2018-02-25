@@ -17,7 +17,7 @@ import * as stats from "lib/stats";
 import * as get from "lodash/get";
 import "./charts.scss";
 
-const round = (val: number, decimals = 2) => Number.parseFloat(val.toFixed(decimals));
+const round = (val: number, decimals = 2) => (val ? Number.parseFloat(val.toFixed(decimals)) : null);
 
 const colors = {
     red: "#a22229",
