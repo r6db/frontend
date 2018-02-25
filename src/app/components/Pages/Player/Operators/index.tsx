@@ -51,6 +51,7 @@ const filters = {
     GROM: op => op.unit === "GROM",
     SDU: op => op.unit === "SDU",
     SMB: op => op.unit === "SMB",
+    CBRN: op => op.unit === "CBRN",
 };
 
 export default class OperatorTab extends React.Component<any, any> {

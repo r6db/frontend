@@ -217,6 +217,8 @@ export const OPERATORS = {
     dokkaebi: { name: "Dokkaebi", side: "Attack", unit: "SMB" },
     vigil: { name: "Vigil", side: "Defense", unit: "SMB" },
     zofia: { name: "Zofia", side: "Attack", unit: "GROM" },
+    lion: { name: "Lion", side: "Attack", unit: "CBRN" },
+    finka: { name: "Finka", side: "Attack", unit: "CBRN" },
 };
 
 export const REGIONS = {
