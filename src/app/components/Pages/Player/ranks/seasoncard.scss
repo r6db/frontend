@@ -11,7 +11,8 @@
     cursor: pointer;
 
     @include large {
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             transform: scale(1.015) translateZ(0);
         }
         &__content {
@@ -113,6 +114,9 @@
         justify-content: space-between;
         align-items: center;
     }
+    &__headertext {
+        flex: 1;
+    }
     &__region {
         font-size: $font-bigger;
         line-height: 1.5;
@@ -124,6 +128,23 @@
     &__rankicon {
         flex-basis: 3rem;
         height: 3rem;
+        width: 3rem;
+        flex: none;
+    }
+    &__ranks {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        span {
+            margin-left: $l;
+            color: $font-subtle-color;
+        }
+    }
+    &__maxrankicon {
+        height: 2.5rem;
+        width: 2.5rem;
+        flex-basis: 2.5rem;
+        flex: none;
     }
     &__stats {
         flex: 1;
