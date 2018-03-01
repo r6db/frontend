@@ -13,7 +13,7 @@ import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./player.scss";
 
-import background from "./RB6_WhiteNoise_Teaser1.jpg";
+import background from "assets/backgrounds/outbreak2.jpg";
 
 const dummyPlayer = {
     id: "0",
