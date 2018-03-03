@@ -6,13 +6,11 @@
                 "modules": false,
                 "loose": true,
                 "targets": {
-                    "uglify": true,
-                    "browsers": [">5%"]
+                    "browsers": [">1%", "Chrome 41"]
                 },
                 "useBuiltIns": true
             }
-        ],
-        "minify"
+        ]
     ],
     "plugins": [
         "syntax-dynamic-import",
