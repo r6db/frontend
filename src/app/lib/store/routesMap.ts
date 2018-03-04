@@ -42,7 +42,7 @@ export default {
                 .then(result => {
                     setMeta({
                         title: `Search ${platform} for ${query}`,
-                        description: `Find ${query} in the community database for Rainbow Six: Siege`,
+                        description: `Find stats for ${query} (${platform}) in the community database for Rainbow Six: Siege`,
                     });
                     analytics.pageView("Search");
                     dispatch({
@@ -71,7 +71,7 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: "LMG kills leaderboard",
-                        description: "top 100 Tachanka players in our database",
+                        description: "Top 100 Tachanka players in our database",
                         type: "website",
                     });
                     analytics.pageView("Leaderboard");
@@ -111,7 +111,7 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
-                        description: `find the top 100 players (${lbConfig.label}) in our Database`,
+                        description: `Find the top 100 players (${lbConfig.label}) in our Database`,
                         type: "website",
                     });
                     analytics.pageView("Leaderboard");
@@ -196,10 +196,35 @@ async function playerThunk(dispatch, getState) {
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             analytics.pageView("Player");
-            if (player.flags.noAliases === false) {
+            if (!player.flags.noAliases) {
+                let description = `Rainbow 6: Siege stats for ${player.name} (${player.platform})`;
+                let extra = '';
+                const placements = [{
+                    region: 'the world',
+                    place: player.placements.global
+                }, {
+                    region: LEADERBOARDS.APAC.label,
+                    place: player.placements.apac
+                }, {
+                    region: LEADERBOARDS.EMEA.label,
+                    place: player.placements.emea
+                }, {
+                    region: LEADERBOARDS.NCSA.label,
+                    place: player.placements.ncsa
+                }];
+                const highestRegion = placements
+                    .filter(x => Number.isInteger(x.place))
+                    .filter(x => x.place < 100)
+                    .sort((a, b) => {
+                        return a.place - b.place > 0 ? 1 : a.place - b.place < 0 ? -1 : 0;
+                    })[0];
+                if (highestRegion) {
+                    description += `. #${highestRegion.place + 1} in ${highestRegion.region}.`;
+                }
                 setMeta({
                     title: `${player.name}`,
                     type: "profile",
+                    description,
                 });
             } else {
                 setMeta({
