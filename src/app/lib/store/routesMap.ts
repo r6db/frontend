@@ -214,6 +214,7 @@ async function playerThunk(dispatch, getState) {
                 }];
                 const highestRegion = placements
                     .filter(x => Number.isInteger(x.place))
+                    .filter(x => x !== null)
                     .filter(x => x.place < 100)
                     .sort((a, b) => {
                         return a.place - b.place > 0 ? 1 : a.place - b.place < 0 ? -1 : 0;
