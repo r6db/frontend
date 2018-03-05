@@ -71,7 +71,7 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: "LMG kills leaderboard",
-                        description: "Top 100 Tachanka players in our database",
+                        description: "See the top 100 Tachanka players in our database in order of most kills",
                         type: "website",
                     });
                     analytics.pageView("Leaderboard");
@@ -111,7 +111,7 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
-                        description: `Find the top 100 players (${lbConfig.label}) in our Database`,
+                        description: `See the top 100 players in Rainbow Six: Siege (${lbConfig.label})  in order of skill rating`,
                         type: "website",
                     });
                     analytics.pageView("Leaderboard");
@@ -197,7 +197,7 @@ async function playerThunk(dispatch, getState) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             analytics.pageView("Player");
             if (!player.flags.noAliases) {
-                let description = `Rainbow 6: Siege stats for ${player.name} (${player.platform})`;
+                let description = `Rainbow Six: Siege stats for ${player.name} (${player.platform})`;
                 let extra = '';
                 const placements = [{
                     region: 'the world',
