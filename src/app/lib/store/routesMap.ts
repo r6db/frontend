@@ -11,7 +11,6 @@ export default {
             setMeta({
                 title: `Home`,
                 description: `Find any player in Rainbow Six: Siege`,
-                type: "website",
             });
         },
     },
@@ -22,7 +21,6 @@ export default {
             setMeta({
                 title: `About`,
                 description: `About R6DB`,
-                type: "website",
             });
         },
     },
@@ -72,7 +70,6 @@ export default {
                     setMeta({
                         title: "LMG kills leaderboard",
                         description: "See the top 100 Tachanka players in our database in order of most kills",
-                        type: "website",
                     });
                     analytics.pageView("Leaderboard");
                     dispatch({
@@ -112,7 +109,6 @@ export default {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
                         description: `See the top 100 players in Rainbow Six: Siege (${lbConfig.label})  in order of skill rating`,
-                        type: "website",
                     });
                     analytics.pageView("Leaderboard");
                     dispatch({
@@ -136,8 +132,7 @@ export default {
         thunk: (dispatch, getState) => {
             setMeta({
                 title: `FAQ`,
-                description: ``,
-                type: "website",
+                description: `view ansers to frequently asked questions`,
             });
             analytics.pageView("FAQ");
         },
@@ -224,7 +219,6 @@ async function playerThunk(dispatch, getState) {
                 }
                 setMeta({
                     title: `${player.name}`,
-                    type: "profile",
                     description,
                 });
             } else {
