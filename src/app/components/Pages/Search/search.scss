@@ -2,10 +2,14 @@
 
 .app.SEARCH {
     .page__headcontent {
-        padding-bottom: $l*2;
+        padding-bottom: $l * 2;
     }
     .page__content {
-        padding: ($l*3) $l $l;
+        padding: ($l * 3) $l $l;
+    }
+    .adsbygoogle {
+        height: $l * 8;
+        margin-bottom: $l * 2;
     }
 }
 
@@ -24,7 +28,7 @@
             margin-top: 0;
         }
     }
-    &__resultcount{
+    &__resultcount {
         margin-left: $l;
     }
     &__result {
@@ -34,7 +38,7 @@
 
 .result {
     display: block;
-    margin-bottom: $l*2;
+    margin-bottom: $l * 2;
     &__span {
         color: $font-subtle-color;
     }
