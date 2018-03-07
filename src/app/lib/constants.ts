@@ -227,3 +227,9 @@ export const REGIONS = {
     ncsa: "America",
     apac: "Asia",
 };
+
+export const ADCONFIG = {
+    client: "ca-pub-4708879883364551",
+    defaultSlot: "6650835115",
+    defaultFormat: "auto",
+};
