@@ -146,7 +146,8 @@ module.exports = {
         new CopyWebpackPlugin([
             // { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },
-            { from: "src/maintenance.html", to: "maintenance.html" },
+            { from: "src/*.html", to: "[name].html" },
+            { from: "src/*.txt", to: "[name].txt" },
         ]),
         new webpack.LoaderOptionsPlugin({
             options: {
