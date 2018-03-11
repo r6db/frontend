@@ -188,7 +188,8 @@
     &__icon {
         height: $l*5;
         width: $l*5;
-        margin-right: $l;
+        margin-left: $l*0.5;
+        margin-right: $l*1.5;
     }
     &__text {
         display: flex;

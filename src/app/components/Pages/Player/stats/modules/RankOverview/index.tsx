@@ -5,35 +5,22 @@ import { RANKS, SEASONS } from "lib/constants";
 import "./rankoverview.scss";
 
 function CurrentRank(props) {
-    if (props.region === "Global") {
-        return (
-            <div className="currentrank">
-                <div className="currentrank__icon">
-                    <Icon glyph={GLYPHS["RANK0"]} />
-                </div>
-                <div className="currentrank__placement">FUCK</div>
-                <div className="currentrank__region">{props.region}</div>
+    return (
+        <div className={`currentrank ${props.className || ""}`}>
+            <div className="currentrank__icon">
+                <Icon glyph={GLYPHS["RANK" + props.rank]} />
             </div>
-        );
-    }
-    else {
-        return (
-            <div className={`currentrank ${props.className || ""}`}>
-                <div className="currentrank__icon">
-                    <Icon glyph={GLYPHS["RANK" + props.rank]} />
-                </div>
-                <div className="currentrank__placement">
-                    {props.rank === 0
-                        ? "N/A"
-                        : typeof props.placement === "number"
-                            ? "#" + (props.placement + 1)
-                            : ""
-                    }
-                </div>
-                <div className="currentrank__region">{props.region}</div>
+            <div className="currentrank__placement">
+                {props.rank === 0
+                    ? "N/A"
+                    : typeof props.placement === "number"
+                        ? "#" + (props.placement + 1)
+                        : ""
+                }
             </div>
-        );
-    }
+            <div className="currentrank__region">{props.region}</div>
+        </div>
+    );
 }
 
 function GlobalRanking(props) {
@@ -52,7 +39,7 @@ function GlobalRanking(props) {
                             : ""
                     } Global
                 </div>
-                <div className="globalrank__toppercentage">TODO: Calculate position</div>
+                {/* <div className="globalrank__toppercentage">TODO: Calculate position</div> */}
             </div>
         </div>
     );
