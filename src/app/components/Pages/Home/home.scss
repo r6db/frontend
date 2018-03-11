@@ -25,10 +25,17 @@
         opacity: 0.2;
         filter: none;
     }
+
+    .ad {
+        width: 100%;
+        min-width: 800px;
+        min-height: 80px;
+        margin: 0 auto;
+    }
     .searchbar {
         width: 90%;
         max-width: 600px;
-        height: $l*5;
+        height: $l * 5;
         background: $gray-dark;
 
         @include large {
