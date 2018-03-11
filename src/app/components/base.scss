@@ -6,7 +6,7 @@ html {
     font-size: 14px;
 }
 body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     position: relative;
     color: $font-color;
@@ -16,7 +16,6 @@ body {
     width: 100vw;
     overflow-x: hidden;
     font-weight: 400;
-    letter-spacing: -0.02em;
 }
 .content {
     flex: 1 0 500px;

@@ -30,7 +30,8 @@
         color: rgba($white, 0.6);
         padding: ($l*2) $l*1.25;
         margin: 0;
-        font-weight: 400;
+        font-weight: 500;
+        font-size: $font-default;
         cursor: pointer;
         transition: 100ms linear color;
         letter-spacing: 0.02em;
