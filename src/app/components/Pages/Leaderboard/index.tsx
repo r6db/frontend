@@ -10,10 +10,19 @@ import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
 import chanka from "./chanky.png";
+import Charts from './Charts';
+import * as get from 'lodash/get';
 
 import background from "assets/backgrounds/leaderboard.jpg";
 
+
 const isSelected = (expected, value) => expected === value;
+
+const getCommunityRanks = (data, region) => {
+    region = region === 'ALL' ? 'global' : region.toLowerCase();
+    console.log(region);
+    return get(data, `ranks.${region}`);
+};
 
 class Leaderboard extends React.Component<any, any> {
     constructor(props) {
@@ -92,6 +101,7 @@ class Leaderboard extends React.Component<any, any> {
                                 <button className="button button--primary">GO</button>
                             </p>
                         </form>
+                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
                         <table className="container container-small leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
@@ -138,10 +148,6 @@ class Leaderboard extends React.Component<any, any> {
 
 const mapStateToProps = state => {
     const { loading, platform, leaderboard, community, location: { payload: { board } } } = state;
-
-    //TODO: remove this log
-    console.log("community stats:", community);
-
     return {
         platform,
         loading,
