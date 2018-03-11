@@ -48,7 +48,8 @@
             flex-direction: column;
         }
     }
-    &__ubipls{
+
+    &__ubipls {
         display: block;
         color: $font-subtle-color;
         flex: none;
@@ -57,7 +58,7 @@
             margin-top: $l;
         }
 
-        span{
+        span {
             display: block;
             text-align: center;
             line-height: 1.4em;
@@ -175,6 +176,12 @@
         border-left: 3px solid $white-noise;
         .pastrank__season {
             color: $white-noise;
+        }
+    }
+    &.season-9 {
+        border-left: 3px solid $chimera;
+        .pastrank__season {
+            color: $chimera;
         }
     }
 

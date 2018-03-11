@@ -1,7 +1,8 @@
 import * as React from "react";
 import Result from "./Result";
 import Media from "components/misc/Media";
-import Loading from "components/misc/Loading"
+import Loading from "components/misc/Loading";
+import Ad from "components/misc/Ad";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { connect } from "react-redux";
 import "./search.scss";
@@ -22,15 +23,16 @@ function Search(props) {
             <PageContent>
                 <div className="container container--small">
                     <div className="search_results">
-                        {props.loading
-                            ? <Loading />
-                            : props.result.length > 0
-                                ? props.result.map(player => <Result key={player.id} player={player} />)
-                                : (
-                                    <Media title="No results">we could not find any players matching that query.</Media>
-                                )
-                        }    
-                        
+                        {props.loading ? (
+                            <Loading />
+                        ) : props.result.length > 0 ? (
+                            <div>
+                                <Ad />
+                                {props.result.map(player => <Result key={player.id} player={player} />)}
+                            </div>
+                        ) : (
+                            <Media title="No results">we could not find any players matching that query.</Media>
+                        )}
                     </div>
                 </div>
             </PageContent>

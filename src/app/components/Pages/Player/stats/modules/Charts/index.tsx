@@ -17,7 +17,7 @@ import * as stats from "lib/stats";
 import * as get from "lodash/get";
 import "./charts.scss";
 
-const round = (val: number, decimals = 2) => Number.parseFloat(val.toFixed(decimals));
+const round = (val: number, decimals = 2) => (val ? Number.parseFloat(val.toFixed(decimals)) : null);
 
 const colors = {
     red: "#a22229",
@@ -30,7 +30,16 @@ const colors = {
     lightgreen: "#30FF6C",
 };
 
-export default class PlayerCharts extends React.Component<any, any> {
+export default class PlayerCharts extends React.PureComponent<any, any> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            show: false,
+        };
+    }
+    componentDidMount() {
+        setTimeout(() => this.setState({ show: true }), 500);
+    }
     getData() {
         const progs = this.props.progressions || [];
 
@@ -85,9 +94,9 @@ export default class PlayerCharts extends React.Component<any, any> {
                 games_secure: delta.stats.secure.played,
                 games_ranked: delta.stats.ranked.played,
                 games_casual: delta.stats.casual.played,
-                mmr_apac: round(current.ranks.apac.mmr),
-                mmr_emea: round(current.ranks.emea.mmr),
-                mmr_ncsa: round(current.ranks.ncsa.mmr),
+                mmr_apac: round(get(current, "ranks.apac.mmr", null)),
+                mmr_emea: round(get(current, "ranks.emea.mmr", null)),
+                mmr_ncsa: round(get(current, "ranks.ncsa.mmr", null)),
                 accu: round(delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1)) * 100,
                 hs_chance: round(delta.stats.general.headshot / (delta.stats.general.bulletsHit || 1)) * 100,
             });
@@ -95,8 +104,10 @@ export default class PlayerCharts extends React.Component<any, any> {
     }
 
     render() {
+        if (!this.state.show) {
+            return <div className="playermodule charts" />;
+        }
         const data = this.getData();
-
         return this.props.progressions ? (
             <div className="playermodule charts">
                 <div className="row">

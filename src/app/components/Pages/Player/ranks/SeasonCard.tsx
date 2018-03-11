@@ -114,9 +114,13 @@ function RegionStats(region: RegionStatsProps) {
             <header className="regionstats__header">
                 <div className="regionstats__headertext">
                     <div className="regionstats__region">{region.label}</div>
-                    <div className="regionstats__rank">{RANKS[region.rank]}</div>
+                    <div className="regionstats__rank">{RANKS[region.max_rank]}</div>
                 </div>
-                <Icon className="regionstats__rankicon" glyph={GLYPHS["RANK" + region.rank]} />
+                <div className="regionstats__ranks">
+                    <Icon className="regionstats__rankicon" glyph={GLYPHS["RANK" + region.rank]} />
+                    <span>max</span>
+                    <Icon className="regionstats__maxrankicon" glyph={GLYPHS["RANK" + region.max_rank]} />
+                </div>
             </header>
             <div className="regionstats__stats">
                 {/*

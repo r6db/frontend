@@ -9,8 +9,9 @@
 
     @include large {
         flex-direction: row;
-        &-sidebar {
-            width: 30*$l;
+        &__sidebar {
+            width: 25 * $l;
+            flex: auto;
         }
     }
     &__statarea {
@@ -26,8 +27,8 @@
                 flex: 1 1 auto;
             }
             .statstab__aside {
-                width: 20*$l;
-                flex: none;
+                width: 30 * $l;
+                flex: auto;
                 margin-left: $l;
             }
         }

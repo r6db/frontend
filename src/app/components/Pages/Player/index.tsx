@@ -9,11 +9,12 @@ import NoData from "../Errors/NoData";
 import Header from "./Header";
 import { connect } from "react-redux";
 import { updatePlayer } from "lib/store/actions";
+import { getImageLink } from "lib/domain";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./player.scss";
 
-import background from "assets/backgrounds/landing.jpg";
+import background from "assets/backgrounds/outbreak2.jpg";
 
 const dummyPlayer = {
     id: "0",
@@ -22,6 +23,17 @@ const dummyPlayer = {
     platform: "",
     level: 0,
     placements: { global: null }
+}
+
+function getPlayerSchema(player) {
+    return JSON.stringify({
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": player.name,
+        "url": `https://r6db.com/player/${player.id}`,
+        "identifier": `https://r6db.com/player/${player.id}`,
+        "image": getImageLink(player.userId || player.id , player.platform)
+    }, null, 4);
 }
 
 
@@ -62,6 +74,9 @@ function Player(props) {
                     />
                 </PageHead>
                 <PageContent>
+                    <script type="application/ld+json">
+                    {getPlayerSchema(props.data)}
+                    </script>
                     <div className="container player__tab">
                         {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
                         {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}

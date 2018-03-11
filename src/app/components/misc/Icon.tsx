@@ -69,6 +69,8 @@ import YING from "assets/operators/ying.svg";
 import DOKKAEBI from "assets/operators/dokkaebi.svg";
 import VIGIL from "assets/operators/vigil.svg";
 import ZOFIA from "assets/operators/zofia.svg";
+import LION from "assets/operators/lion.svg";
+import FINKA from "assets/operators/finka.svg";
 
 import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg"
 import LOGOS1 from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
@@ -138,6 +140,7 @@ export const GLYPHS = {
     DOC,
     ECHO,
     ELA,
+    FINKA,
     FROST,
     FUZE,
     GLAZ,
@@ -147,6 +150,7 @@ export const GLYPHS = {
     JAGER,
     KAPKAN,
     LESION,
+    LION,
     MIRA,
     MONTAGNE,
     MUTE,

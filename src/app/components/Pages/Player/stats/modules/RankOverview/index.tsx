@@ -68,7 +68,7 @@ function CurrentSeason(props) {
             <div className="rankoverview__global">
                 <GlobalRanking
                     key="rank-global"
-                    rank={get(props, "pastRanks.0.rank", 0)}
+                    rank={get(props, "pastRanks.0.max_rank", 0)}
                     show={true}
                     className="currentrank--global"
                     placement={get(props, "placements.global", "-")}
@@ -79,21 +79,21 @@ function CurrentSeason(props) {
             <div className="rankoverview__regional">
                 <CurrentRank
                     key="rank-emea"
-                    rank={get(props, "rank.emea.rank", 0)}
+                    rank={get(props, "rank.emea.max_rank", 0)}
                     placement={get(props, "placements.emea", "-")}
                     region="Europe"
                 />
                 <div className="rankoverview__vertdivider"></div>
                 <CurrentRank
                     key="rank-ncsa"
-                    rank={get(props, "rank.ncsa.rank", 0)}
+                    rank={get(props, "rank.ncsa.max_rank", 0)}
                     placement={get(props, "placements.ncsa", "-")}
                     region="America"
                 />
                 <div className="rankoverview__vertdivider"></div>
                 <CurrentRank
                     key="rank-apac"
-                    rank={get(props, "rank.apac.rank", 0)}
+                    rank={get(props, "rank.apac.max_rank", 0)}
                     placement={get(props, "placements.apac", "-")}
                     region="Asia"
                 />

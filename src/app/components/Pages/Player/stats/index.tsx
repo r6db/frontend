@@ -5,6 +5,7 @@ import Aliases from "./modules/Aliases";
 import GameModes from "./modules/GameModes";
 import StatOverview from "./modules/StatOverview";
 import Charts from "./modules/Charts";
+import Ad from "components/misc/Ad";
 
 import "./statstab.scss";
 
@@ -22,7 +23,10 @@ export default function StatsTab(props) {
                     <SeasonOverview {...props} />
                     {props.stats ? <Charts {...props} /> : null}
                 </div>
-                <div className="statstab__aside">{props.stats ? <GameModes {...props} /> : null}</div>
+                <div className="statstab__aside">
+                    {props.stats ? <GameModes {...props} /> : null}
+                    <Ad />
+                </div>
             </div>
         </div>
     );

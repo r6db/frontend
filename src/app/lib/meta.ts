@@ -16,8 +16,6 @@ const setMeta = function(desc, content) {
 interface IMetaOptions {
     title?: string;
     description?: string;
-    image?: string;
-    type?: string;
 }
 
 export default function(meta: IMetaOptions = {}) {
@@ -27,7 +25,5 @@ export default function(meta: IMetaOptions = {}) {
 
     setMeta("description", description);
     setMeta("og:title", title);
-    setMeta("og:image", meta.image);
-    setMeta("og:type", meta.type);
     document.title = title;
 }
