@@ -17,9 +17,12 @@
     &__global {
         display: flex;
         flex: 1;
+        position: relative;
+        left: -1rem;
         justify-content: center;
 
-        @include medium {
+        @include large {
+            left: 0;
             justify-content: flex-start;
         }
         .currentrank {
@@ -43,8 +46,10 @@
         -webkit-overflow-scrolling: touch;
         flex-direction: row;
         justify-content: flex-start;
+        align-items: center;
 
         @include large {
+            align-items: inherit;
             flex-direction: column;
         }
     }
@@ -53,8 +58,12 @@
         display: block;
         color: $font-subtle-color;
         flex: none;
+        border-left: 1px solid $font-subtle-color;
+        padding: $l $l*2;
 
         @include large{
+            padding: 0;
+            border-left: none;
             margin-top: $l;
         }
 
@@ -68,10 +77,8 @@
 .globalrank {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
-    @include large {
-        align-items: center;
-    }
     &__icon {
         margin-right: $l;
         svg {
@@ -128,7 +135,12 @@
     display: flex;
     align-items: center;
     padding: $l;
+    margin-right: $l;
     flex: 0 0 auto;
+
+    @include large {
+        margin-right: 0;
+    }
 
     &.season-1 {
         border-left: 3px solid $black-ice;

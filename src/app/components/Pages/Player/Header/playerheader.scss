@@ -38,13 +38,14 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: baseline;
+        align-items: center;
 
         @include medium {
             margin-top: 0!important;
-            margin-bottom: $l*0.5 !important;
+            margin-bottom: $l*0.75 !important;
             justify-content: flex-start;
-            align-items: baseline;
+            flex-wrap: nowrap;
+            flex-direction: row;
         }
     }
     &__name {
@@ -60,8 +61,7 @@
         align-items: baseline;
 
         @include medium {
-            display: flex;
-            flex: 1;
+            flex: none;
         }
     }
     &__level {
@@ -95,10 +95,7 @@
         margin-top: $l;
 
         @include medium {
-            top: -0.55rem;
-            margin-top: 0;
             margin-left: $l*2;
-            position: relative;
         }
     }
     &__ranking {
@@ -141,7 +138,10 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-left: $l;
+
+        @include medium {
+            margin-left: $l;
+        }
     }
     &__link {
         display: inline-flex;
@@ -161,9 +161,13 @@
         }
     }
     &__tabs {
-        margin: ($l*5) $l 0 $l;
+        margin: ($l*2.5) $l 0 $l;
         display: flex;
         justify-content:center;
+
+        @include medium {
+            margin: ($l*5) $l 0 $l;
+        }
 
         .container {
             display: flex;
