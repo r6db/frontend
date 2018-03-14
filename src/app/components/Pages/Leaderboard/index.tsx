@@ -59,9 +59,7 @@ class Leaderboard extends React.Component<any, any> {
                                 includes queueing with coppers or hackers, hacking themselves or playing exclusively
                                 imbalanced gamemodes (<a href="https://medium.com/@r6db/on-excluding-accounts-from-the-leaderboard-596cc217b2af">
                                     details and reasoning
-                                </a>). If you have questions, please contact us per{" "}
-                                <a href="mailto:info@r6db.com">email</a> or{" "}
-                                <a href="https://twitter.com/Rainbow6_DB">Twitter</a> for help.
+                                </a>). You can report players <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">here</a>.
                             </p>
                         </div>
                         <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
