@@ -4,6 +4,28 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 import { RANKS, SEASONS } from "lib/constants";
 import "./rankoverview.scss";
 
+function GlobalRank(props) {
+    return (
+        <div className="globalrank global">
+            <div className="globalrank__icon">
+                <Icon glyph={GLYPHS["RANK" + get(props, "pastRanks.0.max_rank", 0)]} />
+            </div>
+            <div className="globalrank__box">
+                <div className="globalrank__rank">{RANKS[get(props, "pastRanks.0.max_rank", 0)]}</div>
+                <div className="globalrank__placement">
+                    {get(props, "pastRanks.0.max_rank", 0) === 0
+                        ? "N/A"
+                        : typeof get(props, "placements.global", "-") === "number"
+                            ? "#" + (get(props, "placements.global", "-") + 1)
+                            : ""
+                    } Global
+                </div>
+                {/* <div className="globalrank__toppercentage">TODO: Calculate position</div> */}
+            </div>
+        </div>
+    );
+}
+
 function CurrentRank(props) {
     return (
         <div className={`currentrank ${props.className || ""}`}>
@@ -23,44 +45,16 @@ function CurrentRank(props) {
     );
 }
 
-function GlobalRanking(props) {
-    return (
-        <div className={`globalrank ${props.className || ""}`}>
-            <div className="globalrank__icon">
-                <Icon glyph={GLYPHS["RANK" + props.rank]} />
-            </div>
-            <div className="globalrank__box">
-                <div className="globalrank__rank">{RANKS[props.rank]}</div>
-                <div className="globalrank__placement">
-                    {props.rank === 0
-                        ? "N/A"
-                        : typeof props.placement === "number"
-                            ? "#" + (props.placement + 1)
-                            : ""
-                    } Global
-                </div>
-                {/* <div className="globalrank__toppercentage">TODO: Calculate position</div> */}
-            </div>
-        </div>
-    );
-}
-function CurrentSeason(props) {
+export default function RankOverview(props) {
     if (props.level < 100) {
-        return <div className="rankoverview__currentseason is-underage">rankings unlock at level 100</div>;
+        return <div className="rankoverview__isunderage">rankings unlock at level 100</div>;
     } else if (get(props, "placements.global", null) === null) {
         return null;
     }
     return (
-        <div className="rankoverview__currentseason">
+        <div className="playermodule rankoverview">
             <div className="rankoverview__global">
-                <GlobalRanking
-                    key="rank-global"
-                    rank={get(props, "pastRanks.0.max_rank", 0)}
-                    show={true}
-                    className="currentrank--global"
-                    placement={get(props, "placements.global", "-")}
-                    region="Global"
-                />
+                <GlobalRank {...props} />
             </div>
             <div className="playermodule__divider"></div>
             <div className="rankoverview__regional">
@@ -84,33 +78,6 @@ function CurrentSeason(props) {
                     placement={get(props, "placements.apac", "-")}
                     region="Asia"
                 />
-            </div>
-        </div>
-    );
-}
-
-export default function PlayerRankOverview(props) {
-    return (
-        <div className="playermodule rankoverview">
-            <CurrentSeason {...props} />
-            <div className="playermodule__divider" />
-            <div className="rankoverview__pastseason">
-                {props.pastRanks.filter(x => x.season === props.rank.season || x.max_rank !== 0).map(rank => (
-                    <div className={`pastrank season-${rank.season}`} key={rank.season}>
-                        <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.max_rank]} />
-                        <div className="pastrank__text">
-                            <div className="pastrank__season">{SEASONS[rank.season].name}</div>
-                            <div className="pastrank__rank">
-                                {RANKS[rank.max_rank]}
-                                <span className="pastrank__mmr">{rank.max_mmr} MMR</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-                <div className="rankoverview__ubipls">
-                    <span>¯\_(ツ)_/¯</span>
-                    <span>waiting for UBI to fix old seasons</span>
-                </div>
             </div>
         </div>
     );

@@ -51,9 +51,9 @@
         opacity: 1;
         top: -40px;
         height: calc(100% + 35px);
-        opacity: 0.4;
+        opacity: 0.3;
         position: absolute;
-        filter: saturate(120%) blur(1px);
+        filter: saturate(130%) contrast(120%);
 
         @include medium {
             top: -80px;

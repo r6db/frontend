@@ -33,7 +33,7 @@
     width: 100%;
     .page__image {
         opacity: 0.2;
-        filter: none;
+        filter: saturate(120%) contrast(120%);
     }
 
     .ad {

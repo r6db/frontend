@@ -1,43 +1,28 @@
 import * as React from "react";
-import Stat from "components/misc/Stat";
 import * as get from "lodash/get";
-import { getRankWinChance } from "lib/stats";
-import { RANKS } from "lib/constants";
-import "./rankseason.scss";
+import Icon, { GLYPHS } from "components/misc/Icon";
+import { RANKS, SEASONS } from "lib/constants";
+import "./seasonoverview.scss";
 
-function RankedSeason(props) {
-    if (!props || props.wins + props.losses + props.abandons === 0) {
-        return null;
-    }
+export default function SeasonOverview(props) {
     return (
-        <div className="rankedseason">
-            <div className="playermodule__header">{props.title}</div>
-            <div className="row">
-                <div className="col">
-                    <Stat label="wins">{get(props, "wins", 0)}</Stat>
-                    <Stat label="losses">{get(props, "losses", 0)}</Stat>
-                    <Stat label="abandons">{get(props, "abandons", 0)}</Stat>
-                    <Stat label="win rate">{getRankWinChance(props)}</Stat>
+        <div className="playermodule seasonoverview">
+            {props.pastRanks.filter(x => x.season === props.rank.season || x.max_rank !== 0).map(rank => (
+                <div className={`pastrank season-${rank.season}`} key={rank.season}>
+                    <Icon className="pastrank__icon" glyph={GLYPHS["RANK" + rank.max_rank]} />
+                    <div className="pastrank__text">
+                        <div className="pastrank__season">{SEASONS[rank.season].name}</div>
+                        <div className="pastrank__rank">
+                            {RANKS[rank.max_rank]}
+                            <span className="pastrank__mmr">{rank.max_mmr} MMR</span>
+                        </div>
+                    </div>
                 </div>
-                <div className="col">
-                    <Stat label="Rank">{RANKS[get(props, "rank", 0)]}</Stat>
-                    <Stat label="max. Rank">{RANKS[get(props, "max_rank", 0)]}</Stat>
-                    <Stat label="MMR">{get(props, "mmr", 0).toFixed(2)}</Stat>
-                    <Stat label="Skill ± Uncertainty" tooltip="numerical value of your performance in ranked">
-                        {get(props, "skill_mean", 0).toFixed(2)} ± {get(props, "skill_stdev", 0).toFixed(2)}
-                    </Stat>
-                </div>
+            ))}
+            <div className="seasonoverview__ubipls">
+                <span>¯\_(ツ)_/¯</span>
+                <span>waiting for UBI to fix old seasons</span>
             </div>
-        </div>
-    );
-}
-
-export default function PlayerSeason(props) {
-    return (
-        <div className="playermodule rankseason">
-            <RankedSeason {...props.rank.emea} title="Europe, Africa & middle East" />
-            <RankedSeason {...props.rank.ncsa} title="North, Central & South America" />
-            <RankedSeason {...props.rank.apac} title="Asia & Pacific Area" />
         </div>
     );
 }

@@ -2,6 +2,7 @@ import * as React from "react";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";
+import RankedStats from "./modules/RankedStats";
 import GameModes from "./modules/GameModes";
 import StatOverview from "./modules/StatOverview";
 import Charts from "./modules/Charts";
@@ -15,12 +16,16 @@ export default function StatsTab(props) {
             <div className="statstab__sidebar">
                 <RankOverview {...props} />
                 <div className="playermodule__divider"></div>
-                {props.aliases && props.aliases.length > 1 ? <Aliases {...props} /> : null}
+                <SeasonOverview {...props} />
+                <div className="playermodule__divider"></div>
+                {props.aliases && props.aliases.length > 1
+                    ? <Aliases {...props} />
+                    : null }
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">
                     {props.stats ? <StatOverview {...props} /> : null}
-                    <SeasonOverview {...props} />
+                    <RankedStats {...props} />
                     <div className="playermodule__divider"></div>
                     {props.stats ? <Charts {...props} /> : null}
                 </div>
