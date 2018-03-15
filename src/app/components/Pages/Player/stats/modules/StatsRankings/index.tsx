@@ -3,7 +3,7 @@ import Stat from "components/misc/Stat";
 import * as get from "lodash/get";
 import { getRankWinChance } from "lib/stats";
 import { RANKS } from "lib/constants";
-import "./rankedstats.scss";
+import "./rankings.scss";
 
 function RankedSeason(props) {
     if (!props || props.wins + props.losses + props.abandons === 0) {
@@ -32,7 +32,7 @@ function RankedSeason(props) {
     );
 }
 
-export default function RankedStats(props) {
+export default function StatsRankings(props) {
     return (
         <div className="playermodule rankedstats">
             <RankedSeason {...props.rank.emea} title="Europe, Africa & middle East" />

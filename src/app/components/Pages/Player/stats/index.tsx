@@ -2,10 +2,10 @@ import * as React from "react";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";
-import RankedStats from "./modules/RankedStats";
-import GameModes from "./modules/GameModes";
-import StatOverview from "./modules/StatOverview";
-import Charts from "./modules/Charts";
+import StatsGeneral from "./modules/StatsGeneral";
+import StatsRankings from "./modules/StatsRankings";
+import StatsGameModes from "./modules/StatsGameModes";
+import StatsCharts from "./modules/StatsCharts";
 import Ad from "components/misc/Ad";
 
 import "./statstab.scss";
@@ -24,13 +24,13 @@ export default function StatsTab(props) {
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">
-                    {props.stats ? <StatOverview {...props} /> : null}
-                    <RankedStats {...props} />
+                    {props.stats ? <StatsGeneral {...props} /> : null}
+                    <StatsRankings {...props} />
                     <div className="playermodule__divider"></div>
-                    {props.stats ? <Charts {...props} /> : null}
+                    {props.stats ? <StatsCharts {...props} /> : null}
                 </div>
                 <div className="statstab__aside">
-                    {props.stats ? <GameModes {...props} /> : null}
+                    {props.stats ? <StatsGameModes {...props} /> : null}
                     <div className="playermodule__divider"></div>
                     <Ad />
                 </div>

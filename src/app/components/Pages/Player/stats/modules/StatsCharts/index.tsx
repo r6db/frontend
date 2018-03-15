@@ -30,7 +30,7 @@ const colors = {
     lightgreen: "#30FF6C",
 };
 
-export default class PlayerCharts extends React.PureComponent<any, any> {
+export default class StatsCharts extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
