@@ -1,6 +1,11 @@
 @import "scss/styles";
 
 .rankstab {
+    padding: $l;
+
+    @include large {
+        padding: 0;
+    }
     &__controls {
         margin: $l 0;
 
