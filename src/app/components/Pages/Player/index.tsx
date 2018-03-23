@@ -22,7 +22,8 @@ const dummyPlayer = {
     name: "",
     platform: "",
     level: 0,
-    placements: { global: null }
+    placements: { global: null },
+    isFavorite: null,
 }
 
 function getPlayerSchema(player) {
@@ -89,18 +90,20 @@ function Player(props) {
 }
 
 const mapStateToProps = state => {
-    const { platform, loading, players, location: { payload } } = state;
+    const { platform, isFavorite, favorites, loading, players, location: { payload } } = state;
 
     return {
         data: players[payload.id],
         tab: payload.tab || "summary",
         loading,
         platform,
+        isFavorite: favorites.includes(payload.id),
+        favorites
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
-        updatePlayer: id => dispatch(updatePlayer(id)),
+        updatePlayer: id => dispatch(updatePlayer(id))
     };
 };
 export default connect(mapStateToProps, mapDispatchtoProps)(Player);

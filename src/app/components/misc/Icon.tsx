@@ -10,6 +10,8 @@ import UBI from "assets/ubi.svg";
 import ESL from "assets/esl.svg";
 import DISCORD from "assets/discord.svg";
 import NOAVATAR from "assets/noavatar.svg";
+import STAR from "assets/star.svg";
+import REFRESH from "assets/refresh.svg";
 
 import RANK0 from "assets/ranks/0.svg";
 import RANK1 from "assets/ranks/1.svg";
@@ -108,6 +110,8 @@ export const GLYPHS = {
     EMAIL,
     DISCORD,
     NOAVATAR,
+    STAR,
+    REFRESH,
     RANK0,
     RANK1,
     RANK2,

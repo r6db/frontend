@@ -16,7 +16,7 @@ export default history => {
 
     const rootReducer = combineReducers({ ...reducers, location: reducer });
     const middlewares = applyMiddleware(thunkMiddleware, middleware);
-    const enhancers = composeEnhancers(enhancer, persistState(["platform"]), middlewares);
+    const enhancers = composeEnhancers(enhancer, persistState(["platform","favorites"]), middlewares);
 
     const store = createStore(rootReducer, undefined, enhancers);
 

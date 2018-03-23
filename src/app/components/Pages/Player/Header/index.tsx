@@ -2,6 +2,7 @@ import * as React from "react";
 import { FadeImage } from "components/misc/FadeImage";
 import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
+import { connect } from "react-redux";
 import { toSimple, toPlayerTab } from "lib/store/actions";
 import { formatDuration, getWinChance, getKillRatio } from "lib/stats";
 import * as domain from "lib/domain";
@@ -80,9 +81,23 @@ class PlayerHeader extends React.Component<any, any> {
                                 onClick={() => this.props.updatePlayer(this.props.id)}
                                 className="button playerheader__button button--accent"
                             >
-                                update
+                                <Icon glyph={GLYPHS.REFRESH} /> update
                             </button>
                         )}
+                        {this.props.isFavorite
+                            ? <button
+                                  onClick={() => this.props.unfavoritePlayer(this.props.id)}
+                                  className="button playerheader__button button--outline--primary active"
+                              >
+                                <Icon glyph={GLYPHS.STAR} /> favorite
+                              </button>
+                            : <button
+                                  onClick={() => this.props.favoritePlayer(this.props.id)}
+                                  className="button playerheader__button button--outline--subtile"
+                              >
+                                <Icon glyph={GLYPHS.STAR} /> favorite
+                              </button>
+                        }
                     </div>
                 </div>
                 <div className="playerheader__tabs">
@@ -112,4 +127,20 @@ class PlayerHeader extends React.Component<any, any> {
     }
 }
 
-export default PlayerHeader;
+const mapStateToProps = state => {
+    const { isFavorite, favorites, loading, location: { payload } } = state;
+
+    return {
+        loading,
+        isFavorite: favorites.includes(payload.id),
+        favorites
+    };
+};
+const mapDispatchtoProps = (dispatch, state) => {
+    return {
+        favoritePlayer: id => dispatch({ type: "FAV_PLAYER", payload: id }),
+        unfavoritePlayer: id => dispatch({ type: "UNFAV_PLAYER", payload: id })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchtoProps)(PlayerHeader);
