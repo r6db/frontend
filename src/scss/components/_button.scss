@@ -30,9 +30,29 @@
         background: $primary;
         color: $white;
     }
+    &--outline--primary {
+        border-color: lighten($primary, 10%);
+        background: none;
+        color: lighten($primary, 10%);
+    }
     &--accent {
         border-color: darken($accent, 15%);
         background: $accent;
         color: $white;
+    }
+    &--outline--accent {
+        border-color: darken($accent, 15%);
+        background: none;
+        color: $accent;
+    }
+    &--subtile {
+        border-color: darken($accent, 15%);
+        background: $accent;
+        color: $white;
+    }
+    &--outline--subtile {
+        border-color: lighten($font-subtle-color, 20%);
+        background: none;
+        color: lighten($font-subtle-color, 20%);
     }
 }
