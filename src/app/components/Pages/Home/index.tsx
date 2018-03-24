@@ -18,7 +18,7 @@ export default function(props) {
         <Page className="home">
             <PageHead image={backgrounds} position="50% 0%">
                 <div className="container">
-                    <Searchbar className="home__search" search={props.search} />
+                    <Searchbar className="home__search" search={props.search} focused={true}/>
                     <Ad slot="7116683052" />
                     {/* <div className="home__disclaimer">
                     </div> */}
