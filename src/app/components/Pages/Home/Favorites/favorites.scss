@@ -1,0 +1,48 @@
+@import "scss/styles";
+
+.favorites {
+  &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+  &__header {
+      font-size: $font-big;
+      font-weight: 600;
+      margin-bottom: $l*1.5;
+  }
+}
+
+.favorite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: fade-out(black, 0.25);
+    border-radius: $l*2;
+    margin-left: $l;
+    margin-bottom: $l*0.5;
+    color: rgba($white, 0.85);
+    overflow: hidden;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:hover {
+        color: $font-color;
+    }
+
+    &__image {
+        width: $l*3;
+        height: $l*3;
+        border-radius: $l*2;
+        overflow: hidden;
+        background-color: rgba(black, 0.2)
+    }
+    &__name {
+        padding-left: $l;
+        padding-right: $l*1.5;
+        font-weight: 600;
+    }
+}

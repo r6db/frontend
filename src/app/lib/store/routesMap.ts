@@ -7,11 +7,24 @@ export default {
     HOME: {
         path: "/",
         thunk: (dispatch, getState) => {
+            const { location, favorites } = getState()
             analytics.pageView("Home");
             setMeta({
                 title: `Home`,
                 description: `Find any player in Rainbow Six: Siege`,
             });
+            api
+               .getPlayers(favorites)
+               .then(x => dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) }))
+               .catch(err => {
+                   if (err.message === "SERVERFAULT") {
+                       return dispatch(redirect({ type: "SERVERFAULT" }));
+                   }
+                   dispatch({
+                       type: "PLAYERS_FAILED",
+                   });
+                   throw err;
+               });
         },
     },
     ABOUT: {

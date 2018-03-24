@@ -1,6 +1,7 @@
 import * as React from "react";
 import Searchbar from "components/misc/Searchbar";
 import Page, { PageHead, PageContent } from "components/misc/Page";
+import Favorites from "./Favorites";
 import Ad from "components/misc/Ad";
 import "./home.scss";
 
@@ -19,6 +20,7 @@ export default function(props) {
             <PageHead image={backgrounds} position="50% 0%">
                 <div className="container">
                     <Searchbar className="home__search" search={props.search} />
+                    <Favorites />
                     <Ad slot="7116683052" />
                     {/* <div className="home__disclaimer">
                     </div> */}
