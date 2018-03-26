@@ -10,5 +10,6 @@ module.exports = merge(base, {
                 NODE_ENV: JSON.stringify("production"),
             },
         }),
+        new webpack.optimize.UglifyJsPlugin()
     ],
 });
