@@ -24,7 +24,7 @@ const getCommunityRanks = (data, region) => {
     return get(data, `ranks.${region}`);
 };
 
-class Leaderboard extends React.Component<any, any> {
+class Leaderboard extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {

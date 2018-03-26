@@ -10,7 +10,7 @@ function didPlay(region) {
     return region.rank > 0;
 }
 
-export default class RanksTab extends React.Component<any, any> {
+export default class RanksTab extends React.PureComponent<any, any> {
     getRanks(props) {
         return []
             .concat(props.rank)

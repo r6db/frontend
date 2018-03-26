@@ -2,7 +2,7 @@
     "name": "r6db-frontend",
     "scripts": {
         "start": "webpack-dev-server --hot --inline --config webpack/dev.js",
-        "build": "webpack --env.NODE_ENV production --config webpack/base.js",
+        "build": "webpack --env.NODE_ENV production --config webpack/prod.js",
         "build:dev": "webpack --config webpack/dev.js",
         "dash:start": "webpack-dashboard -- webpack-dev-server --hot --inline --config webpack/dev.js",
         "dash:build": "webpack-dashboard -- webpack --config webpack/prod.js",
@@ -10,8 +10,6 @@
         "stats": "webpack --config webpack/prod.js --profile --json > stats.json",
         "stats:dev": "webpack --config webpack/dev.js --profile --json > stats.json",
         "test": "exit 0",
-        "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
     },
     "license": "MIT",
     "dependencies": {
@@ -33,11 +31,6 @@
         "responsive-loader": "^1.1.0"
     },
     "devDependencies": {
-        "@storybook/addon-actions": "^3.3.11",
-        "@storybook/addon-links": "^3.3.11",
-        "@storybook/addons": "^3.3.11",
-        "@storybook/cli": "^3.3.11",
-        "@storybook/react": "^3.3.11",
         "@types/history": "^4.6.2",
         "@types/react": "^16.0.34",
         "@types/redux": "^3.6.0",
