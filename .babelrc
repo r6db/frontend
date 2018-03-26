@@ -15,7 +15,6 @@
     "plugins": [
         "syntax-dynamic-import",
         "transform-object-rest-spread",
-        "transform-react-jsx",
-        "transform-react-display-name"
+        "transform-react-jsx"
     ]
 }

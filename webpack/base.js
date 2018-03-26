@@ -5,7 +5,6 @@ const util = require("util");
 const NameAllModulesPlugin = require("name-all-modules-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const CleanPlugin = require("clean-webpack-plugin");
-const { CheckerPlugin, TsConfigPathsPlugin } = require("awesome-typescript-loader");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -21,17 +20,6 @@ const DIST = path.join(__dirname, "../build");
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
-        vendor: [
-            "react",
-            "react-dom",
-            "redux",
-            "redux-first-router",
-            "redux-first-router-link",
-            "redux-localstorage",
-            "redux-thunk",
-            "history",
-            "isomorphic-fetch",
-        ],
         app: ["./src/app/index.ts"],
     },
     output: {
@@ -52,7 +40,7 @@ module.exports = {
     node: {
         __filename: true,
     },
-    stats: "minimal",
+    stats: "errors-only",
     devtool: "source-map",
     module: {
         rules: [
@@ -128,10 +116,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new CleanPlugin(["build/*"]),
-        new DashboardPlugin(),
-        new TsConfigPathsPlugin(),
-        new CheckerPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
