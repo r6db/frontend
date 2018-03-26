@@ -2,12 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const util = require("util");
 
-const NameAllModulesPlugin = require("name-all-modules-plugin");
-const DashboardPlugin = require("webpack-dashboard/plugin");
-const CleanPlugin = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 const autoprefixer = require("autoprefixer");
@@ -42,6 +38,27 @@ module.exports = {
     },
     stats: "errors-only",
     devtool: "source-map",
+    performance: {
+        hints: "warning"
+    },
+    optimization: {
+        removeEmptyChunks: true,
+        splitChunks: {
+            chunks: "all",
+            name: true,
+            cacheGroups: {
+                commons: {
+                    name: "commons",
+                    chunks: "initial",
+                },
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all"
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
@@ -69,16 +86,27 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        { loader: "css-loader" },
-                        { loader: "postcss-loader" },
-                        {
-                            loader: "sass-loader",
-                            options: { includePaths: [path.resolve(__dirname, "../src")] },
-                        },
-                    ],
-                }),
+                use: [
+                    MiniExtractPlugin.loader,
+                    { loader: "css-loader" },
+                    { 
+                        loader: "postcss-loader" , 
+                        options: {
+                            plugins: [
+                                autoprefixer(),
+                                mqpacker(),
+                                cssdedupe(),
+                                nano({
+                                    reduceIdents: false,
+                                    zindex: false,
+                                }),
+                            ],
+                        }
+                    }, {
+                        loader: "sass-loader",
+                        options: { includePaths: [path.resolve(__dirname, "../src")] },
+                    },
+                ],
             },
             {
                 test: /.svg$/,
@@ -119,37 +147,16 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "vendor",
-            minChunks: Infinity,
-            children: true,
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "app",
-        }),
         new CopyWebpackPlugin([
             // { from: "src/assets", to: "assets" },
             { from: "src/favicons/*", to: "[name].[ext]" },
             { from: "src/*.html", to: "[name].html" },
             { from: "src/*.txt", to: "[name].txt" },
         ]),
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: [
-                    autoprefixer(),
-                    mqpacker(),
-                    cssdedupe(),
-                    nano({
-                        reduceIdents: false,
-                        zindex: false,
-                    }),
-                ],
-            },
-        }),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new ExtractTextPlugin({ filename: "styles.[contenthash].css", allChunks: true }),
+        new MiniExtractPlugin({ filename: "[name].[contenthash].css", allChunks: true }),
     ],
 };
