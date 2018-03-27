@@ -226,7 +226,7 @@ async function playerThunk(dispatch, getState) {
         .getPlayer(id, { platform })
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            analytics.pageView("Player");
+            analytics.pageView("Player", `/player/:id/${tab || ''}`);
             if (!player.flags.noAliases) {
                 let description = `Rainbow Six: Siege stats for ${player.name} (${player.platform})`;
                 let extra = '';

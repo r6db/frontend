@@ -1,21 +1,20 @@
 {
     "presets": [
         [
-            "env",
+            "@babel/env",
             {
                 "modules": false,
                 "loose": true,
                 "targets": {
                     "browsers": [">1%", "Chrome 41"]
                 },
-                "useBuiltIns": true
+                "useBuiltIns": "entry"
             }
         ]
     ],
     "plugins": [
-        "syntax-dynamic-import",
-        "transform-object-rest-spread",
-        "transform-react-jsx",
-        "transform-react-display-name"
+        "@babel/syntax-dynamic-import",
+        "@babel/transform-react-jsx",
+        "babel-plugin-lodash"
     ]
 }
