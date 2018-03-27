@@ -104,7 +104,7 @@ const getKnifeAttrs = players =>
 
 const getOpsAttrs = players =>
     players.map(p => {
-        const ops = Object.values(get(p, "stats.operator", {}));
+        const ops = Object.values(get(p, "stats.operator", {})) as any[];
         return {
             label: p.name,
             value: {

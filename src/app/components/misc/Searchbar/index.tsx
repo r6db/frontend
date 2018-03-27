@@ -6,6 +6,7 @@ import { toSearch } from "lib/store/actions";
 interface ISearchbarProps {
     query: string;
     platform: string;
+    focused: boolean;
     goSearch(query: string): any;
     goHome(): any;
     updateSearch(query: string): any;
@@ -16,6 +17,7 @@ interface ISearchbarState {
 }
 
 class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
+    searchbar: HTMLInputElement;
     constructor(props) {
         super(props);
         this.state = {
@@ -33,6 +35,11 @@ class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
             this.props.goHome();
         }
     }
+    componentDidMount(){
+        if(this.props.focused) {
+            this.searchbar.focus(); 
+        }
+    }
 
     render() {
         return (
@@ -43,6 +50,7 @@ class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
                     value={this.props.query}
                     placeholder="Search for players..."
                     onChange={e => this.props.updateSearch(e.target.value)}
+                    ref={(input) => { this.searchbar = input; }} 
                 />
                 <select
                     className="searchbar__platform"

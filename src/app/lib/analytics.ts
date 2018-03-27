@@ -6,17 +6,16 @@ let store;
 export function setStore(s) {
     store = s;
 }
-
 /* eslint-disable camelcase */
-export function pageView(title) {
+export function pageView(title: string, path?: string) {
     if (!store) {
         return;
     }
-    const path = store.getState().location.pathname;
     if (gtag) {
+        const p = path || store.getState().location.pathname;
         gtag("config", TRACKING_ID, {
             //eslint-ignore
-            page_path: path,
+            page_path: p,
             page_title: title,
         });
         // gtag("event", "page_view");
