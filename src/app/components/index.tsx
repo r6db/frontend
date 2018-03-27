@@ -26,6 +26,7 @@ const pageMap = {
     SIMPLE: makeAsync(() => import("./Pages/Simple")),
     PLAYERTABS: makeAsync(() => import("./Pages/Player")),
     COMPARISON: makeAsync(() => import("./Pages/Comparison")),
+    FAVORITES: makeAsync(() => import("./Pages/Favorites")),
     ABOUT: makeAsync(() => import("./Pages/About")),
     SERVERFAULT: makeAsync(() => import("./Pages/Errors/ServerFault")),
     [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound")),

@@ -194,6 +194,29 @@ export default {
                 });
         },
     },
+    FAVORITES: {
+        path: "/favorites",
+        thunk: (dispatch, getState) => {
+            const { location, favorites } = getState()
+            analytics.pageView("Favorites");
+            setMeta({
+                title: `Favorites`,
+                description: `Easy access to your favorite players`,
+            });
+            api
+               .getPlayers(favorites)
+               .then(x => dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) }))
+               .catch(err => {
+                   if (err.message === "SERVERFAULT") {
+                       return dispatch(redirect({ type: "SERVERFAULT" }));
+                   }
+                   dispatch({
+                       type: "PLAYERS_FAILED",
+                   });
+                   throw err;
+               });
+        },
+    },
 };
 
 async function playerThunk(dispatch, getState) {

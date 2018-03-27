@@ -1,0 +1,64 @@
+@import "scss/styles";
+
+.app.FAVORITES {
+    .page__headcontent {
+        padding-bottom: $l * 2;
+    }
+    .page__content {
+        padding: ($l * 3) $l $l;
+    }
+    .adsbygoogle {
+        height: $l * 8;
+        margin-bottom: $l * 2;
+    }
+}
+
+.favorites {
+    &__resultcount {
+        display: block;
+
+        @include medium {
+            display: inline-block;
+        }
+    }
+    &__list {
+        width: 100%;
+
+        *:first-child {
+            margin-top: 0;
+        }
+    }
+    &__resultcount {
+        margin-left: $l;
+    }
+    &__result {
+        color: $font-color;
+    }
+}
+
+.result {
+    display: block;
+    margin-bottom: $l * 2;
+    &__span {
+        color: $font-subtle-color;
+    }
+    &__aliases {
+    }
+    .media__label {
+        color: $primary;
+        border-color: $primary;
+    }
+    &__info {
+        display: none;
+    }
+    @include medium {
+        .media__text {
+            display: flex;
+            justify-content: space-between;
+        }
+        .result__info {
+            display: block;
+            text-align: right;
+        }
+    }
+}

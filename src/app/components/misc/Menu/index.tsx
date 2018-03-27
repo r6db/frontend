@@ -21,9 +21,11 @@ const Menu = props => (
                 <Link to={`/leaderboard/${props.platform}/ALL`} className="menu__item">
                     Leaderboard
                 </Link>
-
                 <Link to={`/compare`} className="menu__item">
                     Compare (beta)
+                </Link>
+                <Link to={`/favorites`} className="menu__item">
+                    Favorites
                 </Link>
                 <Link to="/faq" className="menu__item">
                     FAQ
