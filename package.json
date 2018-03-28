@@ -1,7 +1,7 @@
 {
     "name": "r6db-frontend",
     "scripts": {
-        "start": "webpack-dev-server --mode development --hot --inline --config webpack/dev.js",
+        "start": "webpack-dev-server --mode development --config webpack/dev.js",
         "build": "webpack --mode production --config webpack/prod.js",
         "build:dev": "webpack --mode development --config webpack/dev.js",
         "stats": "webpack --mode production --config webpack/prod.js --profile --json > stats.json",
