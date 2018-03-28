@@ -27,7 +27,7 @@ function initAnalytics() {
             "anonymize_ip": true
         });
     }
-    el.onerror = console.error;
+    el.onerror = function () { console.log('analytics blocked'); };
     document.head.appendChild(el);
 }
 function initAds() {
@@ -39,7 +39,7 @@ function initAds() {
             google_ad_client: "ca-pub-4708879883364551"
         });
     }
-    el.onerror = console.error;
+    el.onerror = function(){ console.log('ads blocked'); };
     document.head.appendChild(el);
 }
 
