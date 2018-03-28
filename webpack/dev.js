@@ -13,6 +13,7 @@ module.exports = merge(base, {
         noInfo: true,
         lazy: false,
         port: 9000,
+        stats: "errors-only",
         disableHostCheck: true,
         proxy: [
             {
@@ -27,7 +28,6 @@ module.exports = merge(base, {
             poll: 500,
         },
     },
-    stats: "errors-only",
     devtool: "source-map",
     output: {
         path: path.join(__dirname, "../build"),

@@ -38,23 +38,23 @@ module.exports = {
     },
     stats: "errors-only",
     devtool: "source-map",
-    performance: {
-        hints: "warning"
-    },
     optimization: {
         removeEmptyChunks: true,
+        runtimeChunk: true,
         splitChunks: {
-            chunks: "all",
+            chunks: "async",
             name: true,
             cacheGroups: {
-                commons: {
-                    name: "commons",
-                    chunks: "initial",
-                },
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
-                    chunks: "all"
+                    name: "vendor",
+                    chunks: "initial"
+                },
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
                 }
             }
         }
@@ -157,6 +157,6 @@ module.exports = {
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new MiniExtractPlugin({ filename: "[name].[contenthash].css", allChunks: true }),
+        new MiniExtractPlugin({ filename: "[name].[chunkhash].css", allChunks: true }),
     ],
 };

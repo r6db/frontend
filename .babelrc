@@ -15,6 +15,7 @@
     "plugins": [
         "@babel/syntax-dynamic-import",
         "@babel/transform-react-jsx",
-        "babel-plugin-lodash"
+        "lodash",
+        "recharts"
     ]
 }
