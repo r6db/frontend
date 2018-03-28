@@ -37,7 +37,7 @@ export default class LeaderboardChart extends React.PureComponent<any, any> {
             <div className="leaderboard charts">
                 <div className="row">
                     <ResponsiveContainer width="100%" height={150}>
-                        <BarChart height={150} data={data} align="top" margin={{ top: 10, right: 0, left: 0, bottom: 20 }}>
+                        <BarChart height={150} data={data} align="top" margin={{ top: 20, right: 60, left: 0, bottom: 20 }}>
                             <defs>
                                 <linearGradient id="colorCopper" x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="5%" stopColor={colors.copper} stopOpacity={0.6} />
@@ -65,7 +65,7 @@ export default class LeaderboardChart extends React.PureComponent<any, any> {
                                 </linearGradient>
                             </defs>
                             <XAxis hide dataKey="name" orientation="top" tick={false}/>
-                            <YAxis hide reversed />
+                            <YAxis />
                             <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                             <Bar name="Amount" dataKey="value" stackId="queue" fill="url(#colorEMEA)">
                                 {data.map((entry, index) => {

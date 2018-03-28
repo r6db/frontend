@@ -52,7 +52,6 @@ class Leaderboard extends React.PureComponent<any, any> {
                 </PageHead>
                 <PageContent>
                     <div className="container">
-                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
                         <div className="leaderboard__description">
                             <p className="is-highlight">
                                 Any accounts proven to abuse the system will be removed from the leaderboard. This
@@ -99,6 +98,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 <button className="button button--primary">GO</button>
                             </p>
                         </form>
+                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
                         <table className="container container-small leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
