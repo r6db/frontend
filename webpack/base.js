@@ -49,12 +49,6 @@ module.exports = {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendor",
                     chunks: "initial"
-                },
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true
                 }
             }
         }
