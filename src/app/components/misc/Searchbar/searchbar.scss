@@ -17,7 +17,8 @@
         background: none;
         color: $font-color;
         padding: $l $l*1.25;
-        width: calc(100% - 4rem);
+        width: 50px;
+        flex: auto;
         height: 100%;
         @include placeholder-color(darken($gray-light, 20%));
 
