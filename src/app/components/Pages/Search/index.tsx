@@ -27,7 +27,7 @@ function Search(props) {
                             <Loading />
                         ) : props.result.length > 0 ? (
                             <div>
-                                <Ad />
+                                {props.result.length > 3 ? <Ad /> : null}
                                 {props.result.map(player => <Result key={player.id} player={player} />)}
                             </div>
                         ) : (
