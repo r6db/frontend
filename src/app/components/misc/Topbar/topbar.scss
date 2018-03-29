@@ -1,0 +1,50 @@
+@import "scss/styles";
+
+.topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: $l 0;
+    background: darken($bg-color, 5%);
+
+    @include openmenu{
+        left: $menu-width;
+        background: none;
+        position: absolute;
+        
+        &__container{
+            justify-content: flex-end;
+        }
+        &__burger{
+            display: none;
+        }
+        &__search{
+            background: lighten($bg-color, 10%);
+            max-width: 300px;
+        }
+    }
+
+    &__container{
+        display: flex;
+        width: 100%;
+        max-width: $screen-large;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    &__burger{
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 2rem;
+        flex: none;
+        background: $font-color;
+    }
+    &__search{
+        margin: 0;
+        background: none;
+    }
+}

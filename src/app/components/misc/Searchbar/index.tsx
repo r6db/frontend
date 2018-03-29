@@ -4,6 +4,7 @@ import "./searchbar.scss";
 import { toSearch } from "lib/store/actions";
 
 interface ISearchbarProps {
+    className?: string;
     query: string;
     platform: string;
     focused: boolean;
@@ -43,7 +44,7 @@ class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
 
     render() {
         return (
-            <form className="searchbar" action="" onSubmit={e => this.onSearch(e)}>
+            <form className={`searchbar ${this.props.className || ''}`} action="" onSubmit={e => this.onSearch(e)}>
                 <input
                     className="searchbar__name"
                     type="text"

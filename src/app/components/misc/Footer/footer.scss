@@ -6,37 +6,23 @@
         padding: $l;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        max-width: 1024px;
+        margin: 0 auto;
         @include medium {
-            padding: $l*3 0;
+            padding: $l*2 0;
             flex-direction: row;
+            justify-content: space-between;
         }
     }
-    &__column {
+    &__section {
         display: flex;
-        flex-direction: column;
-        flex: auto;
-    }
-    &__notice {
-        order: 2;
-        padding: $l;
-        margin-top: $l*2;
-        @include medium {
-            padding-top: 0;
-            margin-top: 0;
-            order: 0;
-        }
+        flex: none;
     }
     &__logo {
         width: 85px;
         height: 65px;
         margin-bottom: $l*0.75;
-    }
-    &__copyright {
-        opacity: 0.4;
-        font-size: $font-small;
-        @include medium {
-            margin-right: 75px;
-        }
     }
     &__link {
         padding: $l*0.75 $l;

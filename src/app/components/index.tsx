@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { NOT_FOUND } from "redux-first-router";
 import Loadable from "react-loadable";
 import Loading from "components/misc/Loading";
-import Searchbar from "components/misc/Searchbar";
+import Topbar from "components/misc/Topbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
 import Page, { PageHead, PageContent } from "components/misc/Page";
@@ -41,6 +41,7 @@ function App(props) {
                 <Menu platform={props.platform} />
             </Drawer>
             <div className="app__page">
+                <Topbar onBurgerClick={props.toggleMenu} />
                 <props.Component />
             </div>
         </div>
@@ -57,4 +58,10 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch, state) {
+    return {
+        toggleMenu: () => dispatch({ type: "MENU_TOGGLE" }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

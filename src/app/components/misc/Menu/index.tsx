@@ -10,9 +10,6 @@ const Menu = props => (
         <Link to="/" className="menu__logo">
             <Icon glyph={GLYPHS.LOGO} />
         </Link>
-        <div className="menu__section menu__search">
-            <Searchbar />
-        </div>
         <div className="menu__section menu__links">
             <Link to="/" className="menu__item">
                 Home
