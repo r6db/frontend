@@ -2,6 +2,9 @@ const base = require("./base");
 const webpack = require("webpack");
 const path = require("path");
 const merge = require("webpack-merge");
+const autoprefixer = require("autoprefixer");
+const mqpacker = require("css-mqpacker");
+const cssdedupe = require("postcss-discard-duplicates");
 
 module.exports = merge(base, {
     devServer: {
@@ -33,6 +36,30 @@ module.exports = merge(base, {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
         filename: "[name].js",
+    },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { 
+                        loader: "postcss-loader" , 
+                        options: {
+                            plugins: [
+                                autoprefixer(),
+                                mqpacker(),
+                                cssdedupe()
+                            ],
+                        }
+                    }, {
+                        loader: "sass-loader",
+                        options: { includePaths: [path.resolve(__dirname, "../src")] },
+                    },
+                ],
+            },
+        ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

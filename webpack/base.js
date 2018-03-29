@@ -2,14 +2,9 @@ const webpack = require("webpack");
 const path = require("path");
 const util = require("util");
 
-const MiniExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
-const autoprefixer = require("autoprefixer");
-const mqpacker = require("css-mqpacker");
-const nano = require("cssnano");
-const cssdedupe = require("postcss-discard-duplicates");
 
 const DIST = path.join(__dirname, "../build");
 
@@ -79,30 +74,6 @@ module.exports = {
                 ],
             },
             {
-                test: /\.scss$/,
-                use: [
-                    MiniExtractPlugin.loader,
-                    { loader: "css-loader" },
-                    { 
-                        loader: "postcss-loader" , 
-                        options: {
-                            plugins: [
-                                autoprefixer(),
-                                mqpacker(),
-                                cssdedupe(),
-                                nano({
-                                    reduceIdents: false,
-                                    zindex: false,
-                                }),
-                            ],
-                        }
-                    }, {
-                        loader: "sass-loader",
-                        options: { includePaths: [path.resolve(__dirname, "../src")] },
-                    },
-                ],
-            },
-            {
                 test: /.svg$/,
                 use: {
                     loader: "svg-sprite-loader",
@@ -151,6 +122,5 @@ module.exports = {
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new MiniExtractPlugin({ filename: "[name].[chunkhash].css", allChunks: true }),
     ],
 };
