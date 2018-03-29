@@ -5,12 +5,9 @@ import "./drawer.scss";
 
 const Drawer = props => (
     <div className={`drawer ${props.isOpen ? "drawer--open" : ""}`}>
-        <button onClick={props.toggleMenu} className="drawer__burger">
-            <span />
-        </button>
         <div className="drawer__background" onClick={props.closeMenu} />
         <div className="drawer__container">
-            <div className="drawer__menu">{props.children}</div>
+            {props.children}
         </div>
     </div>
 );

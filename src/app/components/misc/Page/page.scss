@@ -5,7 +5,6 @@
     flex-direction: column;
     position: relative;
     background: $bg-color;
-    padding-top: 40px;
     min-height: 100vh;
 
     &--empty {
@@ -16,7 +15,6 @@
     }
 
     @include medium {
-        padding-top: 80px;
         display: flex;
     }
     &__head {

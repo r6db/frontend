@@ -37,13 +37,11 @@ pageMap.PLAYER.preload();
 function App(props) {
     return (
         <div className={"app " + props.location}>
-            <div className="app__content">
-                <Drawer>
-                    <Menu platform={props.platform} />
-                </Drawer>
-                <div className="app__page">
-                    <props.Component />
-                </div>
+            <Drawer>
+                <Menu platform={props.platform} />
+            </Drawer>
+            <div className="app__page">
+                <props.Component />
             </div>
         </div>
     );

@@ -1,24 +1,23 @@
 @import "scss/styles";
+
 .menu {
-    width: 100%;
-    height: $menu-height;
+    width: $menu-width;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: $l*0.5;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: $l;
+    min-height: 100%;
+    background: $menu-background;
 
     &__logo {
-        flex: 0 1 auto;
+        height: 100px;
+        width: 150px;
         display: flex;
+        flex: 0 1 auto;
         align-items: center;
         justify-content: center;
+        margin: $l auto;
         color: $white;
-        left: -12px;
-        position: relative;
-    }
-    &__container {
-        display: flex;
-        justify-content: space-between;
     }
     &__section {
         display: flex;
@@ -55,11 +54,10 @@
         .searchbar {
             margin: 0;
         }
-        @include medium {
-            order: 2;
-        }
     }
     &__links {
+        flex-direction: column;
+        align-items: stretch;
         order: 2;
         @include medium {
             order: 1;

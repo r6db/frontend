@@ -46,13 +46,13 @@ $font-huge: 2.5rem;
 
 $menu-height: 80px;
 $menu-width: 280px;
-$menu-background: $gray-dark;
-$menuMaxWidth: 280px;
+$menu-background: darken($bg-color, 2%);
 $menuMaxOpacity: 0.8;
 $menu-hover-color: rgba(227, 214, 148, 1);
 
 $screen-medium: 800px;
 $screen-large: 1024px;
+$screen-openmenu: $screen-large + $menu-width;
 
 $operator-multiplyer: 0.5;
 $operator-size: 128px * $operator-multiplyer;
