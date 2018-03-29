@@ -10,7 +10,6 @@
     "license": "MIT",
     "dependencies": {
         "@babel/polyfill": "^7.0.0-beta.42",
-        "@types/storybook__react": "^3.0.6",
         "feather-icons": "^4.5.0",
         "history": "^4.7.2",
         "isomorphic-fetch": "^2.2.1",
