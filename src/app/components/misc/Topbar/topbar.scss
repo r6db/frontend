@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.topbar{
+.topbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,24 +9,24 @@
     padding: $l 0;
     background: darken($bg-color, 5%);
 
-    @include openmenu{
+    @include openmenu {
         left: $menu-width;
         background: none;
         position: absolute;
-        
-        &__container{
+
+        &__container {
             justify-content: flex-end;
         }
-        &__burger{
+        &__burger {
             display: none;
         }
-        &__search{
+        &__search {
             background: lighten($bg-color, 10%);
             max-width: 300px;
         }
     }
 
-    &__container{
+    &__container {
         display: flex;
         width: 100%;
         max-width: $screen-large;
@@ -34,8 +34,8 @@
         align-items: center;
         justify-content: space-between;
     }
-    
-    &__burger{
+
+    &__burger {
         width: 50px;
         height: 50px;
         line-height: 50px;
@@ -43,7 +43,7 @@
         flex: none;
         background: $font-color;
     }
-    &__search{
+    &__search {
         margin: 0;
         background: none;
     }

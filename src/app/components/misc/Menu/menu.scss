@@ -10,14 +10,17 @@
     background: $menu-background;
 
     &__logo {
-        height: 100px;
-        width: 150px;
         display: flex;
         flex: 0 1 auto;
         align-items: center;
         justify-content: center;
         margin: $l auto;
         color: $white;
+
+        svg {
+            height: 100px;
+            width: 150px;
+        }
     }
     &__section {
         display: flex;
@@ -27,7 +30,7 @@
     }
     &__item {
         color: rgba($white, 0.8);
-        padding: ($l*2) $l*1.25;
+        padding: ($l * 2) $l * 1.25;
         margin: 0;
         font-weight: 400;
         font-size: $font-default;
