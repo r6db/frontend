@@ -8,7 +8,7 @@ import FadeImage from "components/misc/FadeImage";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 
-import seductive from "./seductive.jpg";
+import background from "assets/backgrounds/chankaboard.jpg";
 
 const isSelected = (expected, value) => expected === value;
 
@@ -23,7 +23,7 @@ class Chankaboard extends React.Component<any, any> {
     render() {
         return (
             <Page className="leaderboard">
-                <PageHead image={seductive} position="50% 60%">
+                <PageHead image={background} position="50% 60%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">Most kills with Tachanka LMG</h1>
                     </div>

@@ -20,8 +20,8 @@ const colors = {
     bronze: "#CD7F32",
     silver: "#999",
     gold: "#F2C649",
-    platinum: "#FBE7B2",
-    diamond: "#95E0E8",
+    platinum: "#95E0E8",
+    diamond: "#0CBF9D",
 };
 export default class LeaderboardChart extends React.PureComponent<any, any> {
     render() {
@@ -40,33 +40,34 @@ export default class LeaderboardChart extends React.PureComponent<any, any> {
                         <BarChart height={150} data={data} align="top" margin={{ top: 20, right: 60, left: 0, bottom: 20 }}>
                             <defs>
                                 <linearGradient id="colorCopper" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.copper} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.copper} stopOpacity={0} />
+                                    <stop offset="5%" stopColor={colors.copper} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={colors.copper} stopOpacity={0.2} />
                                 </linearGradient>
                                 <linearGradient id="colorBronze" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.bronze} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.bronze} stopOpacity={0} />
+                                    <stop offset="5%" stopColor={colors.bronze} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={colors.bronze} stopOpacity={0.2} />
                                 </linearGradient>
                                 <linearGradient id="colorSilver" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.silver} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.silver} stopOpacity={0} />
+                                    <stop offset="5%" stopColor={colors.silver} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={colors.silver} stopOpacity={0.2} />
                                 </linearGradient>
                                 <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.gold} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.gold} stopOpacity={0} />
+                                    <stop offset="5%" stopColor={colors.gold} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={colors.gold} stopOpacity={0.2} />
                                 </linearGradient>
                                 <linearGradient id="colorPlatinum" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.platinum} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.platinum} stopOpacity={0} />
+                                    <stop offset="5%" stopColor={colors.platinum} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={colors.platinum} stopOpacity={0.2} />
                                 </linearGradient>
                                 <linearGradient id="colorDiamond" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.diamond} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.diamond} stopOpacity={0} />
+                                    <stop offset="5%" stopColor={colors.diamond} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={colors.diamond} stopOpacity={0.2} />
                                 </linearGradient>
                             </defs>
-                            <XAxis hide dataKey="name" orientation="top" tick={false}/>
-                            <YAxis />
-                            <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
+                            <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
+                            <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                            <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
+                            <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)"  }} />
                             <Bar name="Amount" dataKey="value" stackId="queue" fill="url(#colorEMEA)">
                                 {data.map((entry, index) => {
                                     const base = entry.name.replace(/^([a-z]+).*$/i, "$1");

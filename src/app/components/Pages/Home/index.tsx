@@ -4,7 +4,7 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import Ad from "components/misc/Ad";
 import "./home.scss";
 
-import backgrounds from "assets/backgrounds/outbreak1.jpg";
+import background from "assets/backgrounds/outbreak1.jpg";
 
 const oncreate = () => {
     const search = document.querySelector(".home .searchbar__name") as HTMLInputElement;
@@ -16,7 +16,7 @@ const oncreate = () => {
 export default function(props) {
     return (
         <Page className="home">
-            <PageHead image={backgrounds} position="50% 0%">
+            <PageHead image={background} position="50% 0%">
                 <div className="container">
                     <Searchbar className="home__search" search={props.search} focused={true}/>
                     <Ad slot="7116683052" />

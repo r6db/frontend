@@ -1,6 +1,8 @@
 @import "scss/styles";
 
 .playermodule.charts {
+    padding: 0 $l;
+    
     .chart {
         margin-top: $l;
     }

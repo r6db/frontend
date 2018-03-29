@@ -1,0 +1,128 @@
+@import "scss/styles";
+
+.seasonoverview {
+    display: flex;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include large {
+        align-items: inherit;
+        flex-direction: column;
+    }
+
+    &__ubipls {
+        display: block;
+        color: $font-subtle-color;
+        flex: none;
+        border-left: 1px solid $font-subtle-color;
+        padding: $l $l*2;
+
+        @include large{
+            padding: 0;
+            border-left: none;
+            margin-top: $l;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+            line-height: 1.4em;
+        }
+    }
+}
+
+.pastrank {
+    display: flex;
+    align-items: center;
+    padding: $l;
+    margin-right: $l;
+    flex: 0 0 auto;
+
+    @include large {
+        margin-right: 0;
+    }
+
+    &.season-1 {
+        border-left: 3px solid $black-ice;
+        .pastrank__season {
+            color: $black-ice;
+        }
+    }
+    &.season-2 {
+        border-left: 3px solid $dust-line;
+        .pastrank__season {
+            color: $dust-line;
+        }
+    }
+    &.season-3 {
+        border-left: 3px solid $skull-rain;
+        .pastrank__season {
+            color: $skull-rain;
+        }
+    }
+    &.season-4 {
+        border-left: 3px solid $red-crow;
+        .pastrank__season {
+            color: $red-crow;
+        }
+    }
+    &.season-5 {
+        border-left: 3px solid $velvet-shell;
+        .pastrank__season {
+            color: $velvet-shell;
+        }
+    }
+    &.season-6 {
+        border-left: 3px solid $operation-health;
+        .pastrank__season {
+            color: $operation-health;
+        }
+    }
+    &.season-7 {
+        border-left: 3px solid $blood-orchid;
+        .pastrank__season {
+            color: $blood-orchid;
+        }
+    }
+    &.season-8 {
+        border-left: 3px solid $white-noise;
+        .pastrank__season {
+            color: $white-noise;
+        }
+    }
+    &.season-9 {
+        border-left: 3px solid $chimera;
+        .pastrank__season {
+            color: $chimera;
+        }
+    }
+
+    &__icon {
+        height: $l*5;
+        width: $l*5;
+        margin-left: $l*0.5;
+        margin-right: $l*1.5;
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    &__season {
+        margin-right: $l;
+        font-size: 0.8em;
+        line-height: 1.4;
+    }
+
+    &__rank {
+        font-size: 1.125em;
+    }
+    &__mmr {
+        margin-left: $l;
+        color: $gray;
+        font-size: 0.8em;
+    }
+}

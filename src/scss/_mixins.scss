@@ -12,10 +12,10 @@
     padding: $l;
 }
 @mixin card-divider {
-    width: 80%;
+    width: 100%;
     height: 1px;
     background: lighten($gray-dark, 15%);
-    margin: $l 10%;
+    margin: $l*2 0;
 }
 
 @mixin clearfix {

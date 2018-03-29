@@ -14,7 +14,7 @@ const exportButton = player => {
     const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`;
     return (
         <a className="playerheader__link" download={`${player.name}.json`} href={href}>
-            <Icon glyph={GLYPHS.DOWNLOAD} /> Export
+            <Icon glyph={GLYPHS.DOWNLOAD} /> Download as JSON
         </a>
     );
 };
@@ -44,8 +44,10 @@ class PlayerHeader extends React.Component<any, any> {
                     </div>
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">
-                            <span className="playerheader__name">{this.props.name}</span>
-                            <span className="playerheader__platform">{this.props.platform}</span>
+                            <div className="playerheader__namewrapper">
+                              <span className="playerheader__name">{this.props.name}</span>
+                              <span className="playerheader__platform">{this.props.platform}</span>
+                            </div>
                             {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
@@ -64,10 +66,10 @@ class PlayerHeader extends React.Component<any, any> {
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
                             {exportButton(this.props)}
-                            <span className="playerheader__divider">|</span>
+                            {/* <span className="playerheader__divider">|</span>
                             <Link className="playerheader__link" to={toSimple(this.props.id)}>
                                 Simple View
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                     <div className="playerheader__buttons">
@@ -78,7 +80,7 @@ class PlayerHeader extends React.Component<any, any> {
                         ) : (
                             <button
                                 onClick={() => this.props.updatePlayer(this.props.id)}
-                                className="button playerheader__button button--accent"
+                                className="button playerheader__button button--outline--accent"
                             >
                                 update
                             </button>

@@ -10,11 +10,11 @@ import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
 import chanka from "./chanky.png";
-
 import Charts from './Charts';
 import * as get from 'lodash/get';
 
-import bg from "./SixInvitational_KeyArt_Teaser02.jpg";
+import background from "assets/backgrounds/leaderboard.jpg";
+
 
 const isSelected = (expected, value) => expected === value;
 
@@ -45,7 +45,7 @@ class Leaderboard extends React.PureComponent<any, any> {
     render() {
         return (
             <Page className="leaderboard">
-                <PageHead image={bg} position="50% 20%">
+                <PageHead image={background} position="50% 20%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">Leaderboard</h1>
                     </div>

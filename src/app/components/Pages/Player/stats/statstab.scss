@@ -3,39 +3,49 @@
 .statstab {
     display: flex;
     flex-direction: column;
-    margin-top: 0;
-    padding-top: 0;
-    width: 100%;
+    padding: 0 $l;
 
     @include large {
         flex-direction: row;
+        padding: 0;
+
         &__sidebar {
-            width: 25 * $l;
-            flex: auto;
+            flex: 1.4;
+            margin-right: $l;
+            min-width: 0px;
+        }
+        &__content {
+            flex: 4.5;
+            margin-left: $l;
+            min-width: 0px;
         }
     }
-    &__statarea {
+
+    &__content {
         display: flex;
         flex-direction: column;
-        flex: auto;
 
-        @include medium {
-            flex-direction: row;
-
-            .statstab__center {
-                width: 66%;
-                flex: 1 1 auto;
-            }
-            .statstab__aside {
-                width: 30 * $l;
-                flex: auto;
-                margin-left: $l;
-            }
+        .statstab__center {
+            order: 2;
+        }
+        .statstab__aside {
+            order: 1;
         }
 
         @include large {
+            flex-direction: row;
+
             .statstab__center {
+                flex: 3;
+                margin-right: $l;
+                min-width: 0px;
+                order: 1;
+            }
+            .statstab__aside {
+                flex: 1;
                 margin-left: $l;
+                min-width: 0px;
+                order: 2;
             }
         }
     }

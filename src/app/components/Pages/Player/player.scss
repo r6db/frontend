@@ -28,7 +28,6 @@
 
     &module {
         @include card;
-        margin: $l 0;
 
         &__header {
             @include card-header;
