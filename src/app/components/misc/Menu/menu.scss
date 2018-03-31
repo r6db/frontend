@@ -1,37 +1,41 @@
 @import "scss/styles";
 
 .menu {
-    width: $menu-width;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: $l;
+    width: $menu-width;
     min-height: 100%;
+    padding: $l;
     background: $menu-background;
 
     &__logo {
         display: flex;
-        flex: 0 1 auto;
-        align-items: center;
-        justify-content: center;
-        margin: $l auto;
         color: $white;
+        margin: $l*1.25;
 
         svg {
-            height: 100px;
-            width: 150px;
+          height: 50px;
+          width: 75px;
+
+          @include medium {
+              height: 75px;
+              width: 115px;
+          }
+
         }
     }
     &__section {
         display: flex;
+        flex: 0 0 auto;
         justify-content: flex-start;
         align-items: center;
-        flex: 0 0 auto;
     }
     &__item {
+        display: flex;
+        align-items: center;
+        padding: $l;
         color: rgba($white, 0.8);
-        padding: ($l * 2) $l * 1.25;
-        margin: 0;
         font-weight: 400;
         font-size: $font-default;
         cursor: pointer;
@@ -51,14 +55,47 @@
         &:hover {
             color: $white;
         }
+
+        @include medium {
+            font-size: $font-big;
+            padding: $l*1.25;
+        }
     }
     &__links {
         flex-direction: column;
         align-items: stretch;
-        order: 2;
+    }
+    &__icon {
+        width: $l*2.25;
+        height: $l*2.25;
+        margin-right: $l*2;
+        fill: $font-color;
+    }
+    &__divider {
+        height: 1px;
+        background-color: $font-subtle-color;
+        opacity: 0.2;
+        margin: $l*0.75;
+
         @include medium {
-            order: 1;
-            flex: 1;
+            margin: $l*1.2;
         }
+    }
+    &__sublinks {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-end;
+        .menu__icon {
+            margin: 0;
+        }
+
+        @include medium {
+            flex-grow: 1;
+        }
+    }
+    &__copyright {
+        color: $font-subtle-color;
+        margin: $l;
+        text-align: center;
     }
 }
