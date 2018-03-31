@@ -5,9 +5,9 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 5;
     padding: $l 0;
-    background: darken($bg-color, 5%);
+    background: darken($bg-color, 2%);
 
     @include openmenu {
         left: $menu-width;
@@ -21,9 +21,14 @@
             display: none;
         }
         &__search {
-            background: lighten($bg-color, 10%);
-            max-width: 300px;
+            background: rgba(darken($bg-color, 4%), 0.85);
+            max-width: 350px;
         }
+    }
+
+    @include large {
+        padding: $l*2 0;
+
     }
 
     &__container {
@@ -36,15 +41,38 @@
     }
 
     &__burger {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        font-size: 2rem;
-        flex: none;
-        background: $font-color;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    &__icon {
+        width: $l*2.5;
+        height:  $l*2.5;
+        color: $font-subtle-color;
+        margin: 0 $l*1.5;
     }
     &__search {
         margin: 0;
-        background: none;
+        margin-right: $l*1;
+        background: rgba(darken($bg-color, 5%), 0.9);
+        flex: 0 auto;
+        max-width: none;
+
+        @include medium {
+            margin-left: $l*2;
+        }
+
+        .searchbar__platform {
+          width: 55px;
+          padding-top: 0.6rem;
+          padding-bottom: 0.5rem;
+          font-size: $font-default;
+
+          @include medium {
+              width: 55px;
+              padding-top: 0.5rem;
+              font-size: $font-default;
+          }
+        }
     }
 }

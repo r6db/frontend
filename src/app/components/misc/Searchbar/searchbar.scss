@@ -27,21 +27,16 @@
         }
     }
     &__platform {
-        width: 5rem;
+        width: 55px;
         background: none;
-        margin: 0;
-        box-shadow: none;
-        padding-right: $l*1.5;
-        -moz-appearance: none;
-        font-size: $font-smaller;
+        font-size: $font-default;
         font-weight: 700;
-        text-align: center;
-        text-align-last: center;
         cursor: pointer;
+        text-align-last:center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-right: 1rem;
 
-        @include large {
-            font-size: $font-default;
-        }
         option {
             color: $black;
         }

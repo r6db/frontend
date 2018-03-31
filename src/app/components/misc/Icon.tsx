@@ -11,6 +11,7 @@ import LIST from "feather-icons/dist/icons/list.svg";
 import HELP from "feather-icons/dist/icons/help-circle.svg";
 import STAR from "feather-icons/dist/icons/star.svg";
 import SETTINGS from "feather-icons/dist/icons/settings.svg";
+import MENU from "feather-icons/dist/icons/menu.svg";
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -121,6 +122,7 @@ export const GLYPHS = {
     HELP,
     STAR,
     SETTINGS,
+    MENU,
     RANK0,
     RANK1,
     RANK2,
