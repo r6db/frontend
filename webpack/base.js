@@ -99,12 +99,6 @@ module.exports = {
                         loader: "file-loader",
                         options: {},
                     },
-                    {
-                        loader: "image-webpack-loader",
-                        options: {
-                            bypassOnDebug: true,
-                        },
-                    },
                 ],
             },
         ],
