@@ -1,14 +1,9 @@
-FROM node:8.9-alpine as sources
+FROM node:8.9 as sources
 
-RUN apk add --update \
-    bash \
-    lcms2-dev \
-    libpng-dev \
-    gcc \
-    g++ \
-    make \
-    autoconf \
-    automake
+RUN apt-get update && apt-get install build-essential wget libpng-dev -y
+
+RUN ldconfig
+
 
 RUN mkdir /frontend
 WORKDIR /app
@@ -22,4 +17,5 @@ FROM nginx:1.13-alpine
 RUN mkdir /frontend
 WORKDIR /frontend
 
-COPY --from=sources build/* .
+COPY --from=sources /app/build/* ./
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
