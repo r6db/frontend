@@ -12,17 +12,16 @@
     &__logo {
         display: flex;
         color: $white;
-        margin: $l*1.25;
+        margin: $l * 1.25;
 
         svg {
-          height: 50px;
-          width: 75px;
+            height: 50px;
+            width: 75px;
 
-          @include medium {
-              height: 75px;
-              width: 115px;
-          }
-
+            @include medium {
+                height: 75px;
+                width: 115px;
+            }
         }
     }
     &__section {
@@ -30,6 +29,10 @@
         flex: 0 0 auto;
         justify-content: flex-start;
         align-items: center;
+
+        &--primary {
+            flex: auto;
+        }
     }
     &__item {
         display: flex;
@@ -58,7 +61,7 @@
 
         @include medium {
             font-size: $font-big;
-            padding: $l*1.25;
+            padding: $l * 1.25;
         }
     }
     &__links {
@@ -66,19 +69,19 @@
         align-items: stretch;
     }
     &__icon {
-        width: $l*2.25;
-        height: $l*2.25;
-        margin-right: $l*2;
+        width: $l * 2.25;
+        height: $l * 2.25;
+        margin-right: $l * 2;
         fill: $font-color;
     }
     &__divider {
         height: 1px;
         background-color: $font-subtle-color;
         opacity: 0.2;
-        margin: $l*0.75;
+        margin: $l * 0.75;
 
         @include medium {
-            margin: $l*1.2;
+            margin: $l * 1.2;
         }
     }
     &__sublinks {

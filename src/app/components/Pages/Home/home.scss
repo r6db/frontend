@@ -21,6 +21,10 @@
         }
     }
 
+    .topbar__search {
+        display: none;
+    }
+
     @include medium {
         .page__headcontent {
             padding-bottom: 100px;

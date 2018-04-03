@@ -6,8 +6,7 @@
     left: 0;
     right: 0;
     z-index: 5;
-    padding: $l 0;
-    background: darken($bg-color, 2%);
+    padding: $l * 0.5 0;
 
     @include openmenu {
         left: $menu-width;
@@ -27,8 +26,7 @@
     }
 
     @include large {
-        padding: $l*2 0;
-
+        padding: $l * 2 0;
     }
 
     &__container {
@@ -44,35 +42,38 @@
         display: flex;
         justify-content: center;
         align-content: center;
+        width: 50px;
+        height: 50px;
     }
     &__icon {
-        width: $l*2.5;
-        height:  $l*2.5;
-        color: $font-subtle-color;
-        margin: 0 $l*1.5;
+        width: $l * 2.5;
+        height: $l * 2.5;
+        color: $font-color;
+        margin: 0 auto;
     }
     &__search {
         margin: 0;
-        margin-right: $l*1;
+        margin-right: $l * 1;
         background: rgba(darken($bg-color, 5%), 0.9);
         flex: 0 auto;
         max-width: none;
 
         @include medium {
-            margin-left: $l*2;
+            margin-left: $l * 2;
+            max-width: 300px;
         }
 
         .searchbar__platform {
-          width: 55px;
-          padding-top: 0.6rem;
-          padding-bottom: 0.5rem;
-          font-size: $font-default;
+            width: 55px;
+            padding-top: 0.6rem;
+            padding-bottom: 0.5rem;
+            font-size: $font-default;
 
-          @include medium {
-              width: 55px;
-              padding-top: 0.5rem;
-              font-size: $font-default;
-          }
+            @include medium {
+                width: 55px;
+                padding-top: 0.5rem;
+                font-size: $font-default;
+            }
         }
     }
 }

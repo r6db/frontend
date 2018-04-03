@@ -9,12 +9,19 @@ import * as get from "lodash/get";
 
 const getAliases = player => {
     const shown = player.aliases
-        .slice(0, 5)
+        .slice(0, 2)
         .map(alias => alias.name)
         .join(", ");
 
     const rest =
-        player.aliases.length > 2 ? <span key={player.id} className="result__span"> and {player.aliases.length - 2} more</span> : "";
+        player.aliases.length > 2 ? (
+            <span key={player.id} className="result__span">
+                {" "}
+                and {player.aliases.length - 2} more
+            </span>
+        ) : (
+            ""
+        );
     return [shown, rest];
 };
 
