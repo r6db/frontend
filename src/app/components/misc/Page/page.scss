@@ -6,7 +6,7 @@
     position: relative;
     background: $bg-color;
     min-height: 100vh;
-    padding-top: 80px;
+    padding-top: 60px;
 
     &--empty {
         .page__content {
@@ -18,7 +18,7 @@
     @include medium {
         display: flex;
     }
-    
+
     &__head {
         flex: none;
         width: 100%;
@@ -36,7 +36,7 @@
             background: linear-gradient(rgba($bg-color, 0), rgba($bg-color, 1) 98%);
 
             @include medium {
-                padding: $l*4 0;
+                padding: $l * 2 0;
             }
         }
     }
@@ -49,8 +49,8 @@
         height: 100%;
         left: 0;
         opacity: 1;
-        top: -40px;
-        height: calc(100% + 35px);
+        top: -60px;
+        height: calc(100% + 60px);
         opacity: 0.3;
         position: absolute;
         filter: saturate(130%) contrast(120%);
@@ -63,6 +63,6 @@
 
     &__content {
         flex: 1 1 100%;
-        padding: $l*3 0;
+        padding: $l * 3 0;
     }
 }

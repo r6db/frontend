@@ -45,8 +45,8 @@ class PlayerHeader extends React.Component<any, any> {
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">
                             <div className="playerheader__namewrapper">
-                              <span className="playerheader__name">{this.props.name}</span>
-                              <span className="playerheader__platform">{this.props.platform}</span>
+                                <span className="playerheader__name">{this.props.name}</span>
+                                <span className="playerheader__platform">{this.props.platform}</span>
                             </div>
                             {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
                         </header>
@@ -89,24 +89,24 @@ class PlayerHeader extends React.Component<any, any> {
                 </div>
                 <div className="playerheader__tabs">
                     <div className="container">
-                      <Link
-                          className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
-                          to={toPlayerTab(this.props.id, "summary")}
-                      >
-                          Summary
-                      </Link>
-                      <Link
-                          className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
-                          to={toPlayerTab(this.props.id, "ops")}
-                      >
-                          Operators
-                      </Link>
-                      <Link
-                          className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
-                          to={toPlayerTab(this.props.id, "ranks")}
-                      >
-                          Ranks
-                      </Link>
+                        <Link
+                            className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
+                            to={toPlayerTab(this.props.id, "summary")}
+                        >
+                            Summary
+                        </Link>
+                        <Link
+                            className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
+                            to={toPlayerTab(this.props.id, "ops")}
+                        >
+                            Operators
+                        </Link>
+                        <Link
+                            className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
+                            to={toPlayerTab(this.props.id, "ranks")}
+                        >
+                            Ranks
+                        </Link>
                     </div>
                 </div>
             </div>

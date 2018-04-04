@@ -16,7 +16,7 @@ const oncreate = () => {
 export default function(props) {
     return (
         <Page className="home">
-            <PageHead image={background} position="50% 0%">
+            <PageHead image={background} position="75% 0%">
                 <div className="container">
                     <Searchbar className="home__search" search={props.search} focused={true}/>
                     <Ad slot="7116683052" />

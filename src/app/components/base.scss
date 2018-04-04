@@ -69,12 +69,12 @@ label {
 }
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: $screen-large;
     margin: 0 auto;
     padding: 0 $l;
 
     &--small {
-        max-width: 1024px;
+        max-width: $screen-large*0.85;
     }
 }
 

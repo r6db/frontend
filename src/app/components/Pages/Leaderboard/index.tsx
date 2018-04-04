@@ -99,7 +99,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                             </p>
                         </form>
                         <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
-                        <table className="container container-small leaderboard__entries">
+                        <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
                                     <th>Rank</th>

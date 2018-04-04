@@ -1,32 +1,35 @@
 @import "scss/styles";
 
-.topbar{
+.topbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
-    padding: $l 0;
-    background: darken($bg-color, 5%);
+    z-index: 5;
+    padding: $l * 0.5 0;
 
-    @include openmenu{
+    @include openmenu {
         left: $menu-width;
         background: none;
         position: absolute;
-        
-        &__container{
+
+        &__container {
             justify-content: flex-end;
         }
-        &__burger{
+        &__burger {
             display: none;
         }
-        &__search{
-            background: lighten($bg-color, 10%);
-            max-width: 300px;
+        &__search {
+            background: rgba(darken($bg-color, 4%), 0.85);
+            max-width: 350px;
         }
     }
 
-    &__container{
+    @include large {
+        padding: $l * 2 0;
+    }
+
+    &__container {
         display: flex;
         width: 100%;
         max-width: $screen-large;
@@ -34,17 +37,43 @@
         align-items: center;
         justify-content: space-between;
     }
-    
-    &__burger{
+
+    &__burger {
+        display: flex;
+        justify-content: center;
+        align-content: center;
         width: 50px;
         height: 50px;
-        line-height: 50px;
-        font-size: 2rem;
-        flex: none;
-        background: $font-color;
     }
-    &__search{
+    &__icon {
+        width: $l * 2.5;
+        height: $l * 2.5;
+        color: $font-color;
+        margin: 0 auto;
+    }
+    &__search {
         margin: 0;
-        background: none;
+        margin-right: $l * 1;
+        background: rgba(darken($bg-color, 5%), 0.9);
+        flex: 0 auto;
+        max-width: none;
+
+        @include medium {
+            margin-left: $l * 2;
+            max-width: 300px;
+        }
+
+        .searchbar__platform {
+            width: 55px;
+            padding-top: 0.6rem;
+            padding-bottom: 0.5rem;
+            font-size: $font-default;
+
+            @include medium {
+                width: 55px;
+                padding-top: 0.5rem;
+                font-size: $font-default;
+            }
+        }
     }
 }
