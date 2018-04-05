@@ -7,6 +7,7 @@ export function setStore(s) {
 }
 /* eslint-disable camelcase */
 export function pageView(title: string, path?: string) {
+    if (process.env.NODE_ENV !== 'production') { return; }
     console.debug('pageView', { title, path });
     if (!store) {
         return;
@@ -22,12 +23,14 @@ export function pageView(title: string, path?: string) {
     }
 }
 export function search(query) {
+    if (process.env.NODE_ENV !== 'production') { return; }
     if ((window as any).gtag) {
         (window as any).gtag("event", "search", { search_term: query });
     }
 }
 
 export function event(name, opts) {
+    if (process.env.NODE_ENV !== 'production') { return; }
     if ((window as any).gtag) {
         (window as any).gtag("event", name, opts);
     }

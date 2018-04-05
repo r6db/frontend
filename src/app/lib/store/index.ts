@@ -21,12 +21,10 @@ export default history => {
     const store = createStore(rootReducer, undefined, enhancers);
 
     if (module.hot && process.env.NODE_ENV === "development") {
-        module.hot.accept("./reducers/index", () => {
-            const reducers = require("./reducers/index");
+        module.hot.accept(() => {
             const rootReducer = combineReducers({ ...reducers, location: reducer });
             store.replaceReducer(rootReducer);
         });
     }
-
-    return { store, thunk };
+    return store;
 };

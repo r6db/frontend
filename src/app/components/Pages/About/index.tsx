@@ -1,7 +1,8 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 
-export default function About(props) {
+function About(props) {
     return (
         <Page>
             <PageHead>
@@ -13,3 +14,4 @@ export default function About(props) {
         </Page>
     );
 }
+export default hot(module)(About);

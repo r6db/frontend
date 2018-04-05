@@ -11,7 +11,7 @@ const DIST = path.join(__dirname, "../build");
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
-        app: ["./src/app/index.ts"],
+        app: ["./src/app/index.tsx"],
     },
     output: {
         path: DIST,
@@ -33,21 +33,20 @@ module.exports = {
     },
     stats: "errors-only",
     devtool: "source-map",
-    optimization: {
-        removeEmptyChunks: true,
-        runtimeChunk: true,
-        splitChunks: {
-            chunks: "async",
-            name: true,
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    chunks: "initial"
-                }
-            }
-        }
-    },
+    // optimization: {
+    //     removeEmptyChunks: true,
+    //     splitChunks: {
+    //         chunks: "async",
+    //         name: true,
+    //         cacheGroups: {
+    //             vendor: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: "vendor",
+    //                 chunks: "initial"
+    //             }
+    //         }
+    //     }
+    // },
     module: {
         rules: [
             {

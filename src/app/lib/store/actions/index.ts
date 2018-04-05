@@ -1,8 +1,6 @@
 import * as api from "lib/api";
 import { event } from "lib/analytics";
 
-export const init = (dispatch, getState) => {};
-
 export const toPlayer = id => ({ type: "PLAYER", payload: { id } });
 export const toPlayerTab = (id, tab) => ({ type: "PLAYERTABS", payload: { id, tab } });
 export const toSimple = id => ({ type: "SIMPLE", payload: { id } });
