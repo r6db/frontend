@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import StatsTab from "./stats";
 import OperatorsTab from "./Operators";
 import RanksTab from "./ranks";
@@ -103,4 +104,4 @@ const mapDispatchtoProps = (dispatch, state) => {
         updatePlayer: id => dispatch(updatePlayer(id)),
     };
 };
-export default connect(mapStateToProps, mapDispatchtoProps)(Player);
+export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Player));

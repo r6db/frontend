@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import * as get from "lodash/get";
 import { connect } from "react-redux";
 import * as stats from "lib/stats";
@@ -447,4 +448,4 @@ const mapDispatch = dispatch => ({
         }),
 });
 
-export default connect(mapState, mapDispatch)(Compare);
+export default hot(module)(connect(mapState, mapDispatch)(Compare));

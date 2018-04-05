@@ -19,20 +19,23 @@ const exportButton = player => {
     );
 };
 
-class PlayerHeader extends React.Component<any, any> {
+class PlayerHeader extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            timeout: null,
+            interval: null,
         };
     }
     componentDidMount() {
         this.setState({
-            timeout: setTimeout(() => this.rerender(), this.props.updateAvailableAt - Date.now() + 1000),
+            interval: setInterval(() => this.rerender(),  30 * 1000),
         });
     }
     rerender() {
-        this.setState({ timeout: null });
+        if (Date.now() >= this.props.updateAvailableAt.getTime()) {
+            clearInterval(this.state.interval);
+            this.setState({ interval: null });
+        }
     }
 
     render() {

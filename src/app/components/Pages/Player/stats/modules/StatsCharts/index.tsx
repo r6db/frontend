@@ -38,7 +38,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
         };
     }
     componentDidMount() {
-        setTimeout(() => this.setState({ show: true }), 500);
+        setTimeout(() => this.setState({ show: true }), 250);
     }
     getData() {
         const progs = this.props.progressions || [];

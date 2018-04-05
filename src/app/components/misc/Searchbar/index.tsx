@@ -17,7 +17,7 @@ interface ISearchbarState {
     didEdit: boolean;
 }
 
-class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
+class Searchbar extends React.PureComponent<ISearchbarProps, ISearchbarState> {
     searchbar: HTMLInputElement;
     constructor(props) {
         super(props);

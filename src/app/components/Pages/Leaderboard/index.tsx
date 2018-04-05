@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import { redirect } from "redux-first-router";
 import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
@@ -159,4 +160,4 @@ const mapDispatchToProps = dispatch => ({
     chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Leaderboard));

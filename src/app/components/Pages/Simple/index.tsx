@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Player from "./Player";
 import NotFound from "../Errors/NotFound";
 import NoPlaytime from "../Errors/NoPlaytime";
@@ -28,4 +29,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default hot(module)(connect(mapStateToProps)(Profile));

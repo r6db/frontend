@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { hot } from 'react-hot-loader';
 import { NOT_FOUND } from "redux-first-router";
 import Loadable from "react-loadable";
 import Loading from "components/misc/Loading";
@@ -64,4 +65,4 @@ function mapDispatchToProps(dispatch, state) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));

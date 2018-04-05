@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toPlayer } from "lib/store/actions";
@@ -97,4 +98,4 @@ const mapDispatchToProps = dispatch => ({
     load: platform => dispatch({ type: "CHANKABOARD", payload: { platform } }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chankaboard);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Chankaboard));

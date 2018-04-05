@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Searchbar from "components/misc/Searchbar";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import Ad from "components/misc/Ad";
@@ -13,7 +14,7 @@ const oncreate = () => {
     }
 };
 
-export default function(props) {
+function Home(props) {
     return (
         <Page className="home">
             <PageHead image={background} position="75% 0%">
@@ -27,3 +28,5 @@ export default function(props) {
         </Page>
     );
 }
+
+export default hot(module)(Home);

@@ -54,7 +54,7 @@ const filters = {
     CBRN: op => op.unit === "CBRN",
 };
 
-export default class OperatorTab extends React.Component<any, any> {
+export default class OperatorTab extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
 
