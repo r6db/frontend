@@ -5,6 +5,7 @@ const util = require("util");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const DIST = path.join(__dirname, "../build");
 
@@ -33,56 +34,52 @@ module.exports = {
     },
     stats: "errors-only",
     devtool: "source-map",
-    // optimization: {
-    //     removeEmptyChunks: true,
-    //     splitChunks: {
-    //         chunks: "async",
-    //         name: true,
-    //         cacheGroups: {
-    //             vendor: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: "vendor",
-    //                 chunks: "initial"
-    //             }
-    //         }
-    //     }
-    // },
+    optimization: {
+        removeEmptyChunks: true,
+        splitChunks: {
+            chunks: "async",
+            name: true,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "initial"
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(j|t)sx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        cacheDirectory: "./.cache",
-                    },
-                },
-            },
-            {
-                test: /\.tsx?$/,
                 use: [
+                    { loader: "cache-loader" },
+                    { loader: "thread-loader" },
                     {
                         loader: "babel-loader",
                         options: {
                             cacheDirectory: "./.cache",
                         },
                     },
-                    { loader: "ts-loader" },
-                ],
+                ]
             },
             {
                 test: /.svg$/,
-                use: {
-                    loader: "svg-sprite-loader",
-                    options: {
-                        extract: true,
-                    },
-                },
+                use: [
+                    {
+                        loader: "svg-sprite-loader",
+                        options: {
+                            extract: true,
+                        },
+                    }, 
+                    { loader: "svgo-loader" }
+                ],
             },
             {
                 test: /\.(png|jpg)$/,
                 use: [
+                    { loader: "cache-loader" },
                     {
                         loader: "responsive-loader",
                         options: {
@@ -115,5 +112,8 @@ module.exports = {
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            checkSyntacticErrors: true
+        }),
     ],
 };

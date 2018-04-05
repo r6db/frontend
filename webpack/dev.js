@@ -31,7 +31,7 @@ module.exports = merge(base, {
             poll: 500,
         },
     },
-    devtool: "source-map",
+    devtool: "cheap-eval-source-map",
     output: {
         path: path.join(__dirname, "../build"),
         publicPath: "/",
@@ -43,6 +43,7 @@ module.exports = merge(base, {
                 test: /\.scss$/,
                 use: [
                     { loader: "style-loader" },
+                    { loader: "cache-loader" },
                     { loader: "css-loader" },
                     {
                         loader: "postcss-loader" ,

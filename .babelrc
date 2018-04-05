@@ -10,12 +10,14 @@
                 },
                 "useBuiltIns": "entry"
             }
-        ]
+        ],
+        "@babel/typescript"
     ],
     "plugins": [
         "@babel/syntax-dynamic-import",
         "@babel/transform-react-jsx",
         "transform-react-display-name",
+        ["transform-class-properties", { "spec": true }],
         "react-hot-loader/babel",
         "lodash",
         "recharts"

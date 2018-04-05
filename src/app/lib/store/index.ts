@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { connectRoutes } from "redux-first-router";
 import thunkMiddleware from "redux-thunk";
 import * as persistState from "redux-localstorage";
-import queryString from "querystring";
+import * as queryString from "querystring";
 
 import routesMap from "./routesMap";
 import * as reducers from "./reducers";
