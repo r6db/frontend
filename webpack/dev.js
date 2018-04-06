@@ -9,7 +9,7 @@ const cssdedupe = require("postcss-discard-duplicates");
 module.exports = merge(base, {
     devServer: {
         contentBase: path.resolve("./build"),
-        host: "0.0.0.0",
+        host: "localhost",
         compress: true,
         inline: true,
         hot: true,

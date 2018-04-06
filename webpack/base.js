@@ -6,6 +6,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const ManifestPlugin = require("webpack-manifest-plugin");
+// const ManifestPlugin = require("webpack-assets-manifest");
 
 const DIST = path.join(__dirname, "../build");
 
@@ -79,11 +81,10 @@ module.exports = {
             {
                 test: /\.(png|jpg)$/,
                 use: [
-                    { loader: "cache-loader" },
                     {
                         loader: "responsive-loader",
                         options: {
-                            sizes: [320, 640, 1200, 2000],
+                            sizes: [320, 640, 1200, 1600, 1920, 2440],
                             placeholder: true,
                             placeholderSize: 40,
                             quality: 85,
@@ -99,6 +100,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new ManifestPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
@@ -107,6 +109,7 @@ module.exports = {
             { from: "src/favicons/*", to: "[name].[ext]" },
             { from: "src/*.html", to: "[name].html" },
             { from: "src/*.txt", to: "[name].txt" },
+            { from: "src/app/sw.js", to: "[name].js"}
         ]),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",

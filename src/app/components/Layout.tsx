@@ -7,6 +7,10 @@ import Loading from "components/misc/Loading";
 import Topbar from "components/misc/Topbar";
 import Menu from "components/misc/Menu";
 import Drawer from "components/misc/Drawer";
+
+import HOME from "./Pages/Home";
+import SEARCH from "./Pages/Search";
+
 import "./layout.scss";
 import "./base.scss";
 
@@ -19,8 +23,8 @@ const makeAsync = loader => Loadable({
 });
 
 const pageMap = {
-    HOME: makeAsync(() => import("./Pages/Home")),
-    SEARCH: makeAsync(() => import("./Pages/Search")),
+    HOME,
+    SEARCH,
     FAQ: makeAsync(() => import("./Pages/Faq")),
     LEADERBOARD: makeAsync(() => import("./Pages/Leaderboard")),
     CHANKABOARD: makeAsync(() => import("./Pages/Leaderboard/Chankaboard")),
@@ -33,7 +37,6 @@ const pageMap = {
     [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound")),
 };
 
-pageMap.SEARCH.preload();
 pageMap.PLAYER.preload();
 
 

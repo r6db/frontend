@@ -14,6 +14,10 @@ import RootComponent from "./components";
 import configureStore from "lib/store";
 import { setStore } from "lib/analytics";
 
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+
 const history = createHistory();
 const store = configureStore(history);
 // pass store to analytics
@@ -33,7 +37,9 @@ function initAds() {
     el.onerror = function(){ console.log('ads blocked'); };
     document.head.appendChild(el);
 }
-initAds();
+if (process.env.NODE_ENV === 'production') {
+    initAds();
+}    
 
 const mount = document.querySelector("#mount");
 console.log("mounting app");
