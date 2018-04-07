@@ -17,6 +17,7 @@
         "@babel/syntax-dynamic-import",
         "@babel/transform-react-jsx",
         "transform-react-display-name",
+        "transform-object-rest-spread",
         ["transform-class-properties", { "spec": true }],
         "react-hot-loader/babel",
         "lodash",
