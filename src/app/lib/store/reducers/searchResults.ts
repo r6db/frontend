@@ -3,9 +3,8 @@ interface ISearchresultState {
 }
 export default (state: ISearchresultState = {}, action) => {
     return action.type === "SEARCH_FETCHED"
-        ? {
-              ...state,
+        ? Object.assign({}, state, {
               [action.payload.query]: action.payload.result,
-          }
+          })
         : state;
 };
