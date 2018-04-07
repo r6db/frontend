@@ -117,6 +117,7 @@ module.exports = {
             { from: "src/*.html", to: "[name].html" },
             { from: "src/*.txt", to: "[name].txt" },
             { from: "src/app/sw.js", to: "[name].js" },
+            { from: "src/app.json", to: "[name].json" },
         ]),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",
