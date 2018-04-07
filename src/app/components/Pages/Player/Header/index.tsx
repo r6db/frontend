@@ -69,10 +69,12 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
                             {exportButton(this.props)}
-                            {/* <span className="playerheader__divider">|</span>
-                            <Link className="playerheader__link" to={toSimple(this.props.id)}>
-                                Simple View
-                            </Link> */}
+                            <div className="hidden-small">
+                                <span className="playerheader__divider">|</span>
+                                <Link className="playerheader__link" to={toSimple(this.props.id)}>
+                                    Simple View
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="playerheader__buttons">
