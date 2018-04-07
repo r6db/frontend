@@ -74,5 +74,16 @@ self.addEventListener("activate", function(event) {
 });
 
 self.addEventListener("fetch", function(event) {
-    event.respondWith(caches.match(event.request).then(res => (res ? res : fetch(event.request))));
+    if (/r6db\.com/.test(event.request.url)) {
+        event.respondWith(
+            caches.match(event.request).then(res => {
+                if (res) {
+                    console.debug(`[sw] cached response for '${event.request.url}'`);
+                    return res;
+                } else {
+                    return fetch(event.request);
+                }
+            }),
+        );
+    }
 });
