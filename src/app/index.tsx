@@ -14,8 +14,9 @@ import RootComponent from "./components";
 import configureStore from "lib/store";
 import { setStore } from "lib/analytics";
 
-if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+if ("serviceWorker" in navigator) {
+    console.debug("[sw] supported");
+    navigator.serviceWorker.register("/sw.js");
 }
 
 const history = createHistory();
@@ -31,20 +32,22 @@ function initAds() {
     const el: HTMLScriptElement = document.createElement("script");
     el.id = "ads";
     el.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    el.onload = function () {
+    el.onload = function() {
         (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-    }
-    el.onerror = function(){ console.log('ads blocked'); };
+    };
+    el.onerror = function() {
+        console.log("ads blocked");
+    };
     document.head.appendChild(el);
 }
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
     initAds();
-}    
+}
 
 const mount = document.querySelector("#mount");
 console.log("mounting app");
 const render = Node => ReactDOM.render(Node, mount);
-render(<RootComponent store={store}/>);
+render(<RootComponent store={store} />);
 
 if (module.hot) {
     module.hot.accept();

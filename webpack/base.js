@@ -45,10 +45,10 @@ module.exports = {
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendor",
-                    chunks: "initial"
-                }
-            }
-        }
+                    chunks: "initial",
+                },
+            },
+        },
     },
     module: {
         rules: [
@@ -64,7 +64,7 @@ module.exports = {
                             cacheDirectory: "./.cache",
                         },
                     },
-                ]
+                ],
             },
             {
                 test: /.svg$/,
@@ -74,8 +74,11 @@ module.exports = {
                         options: {
                             extract: true,
                         },
-                    }, 
-                    { loader: "svgo-loader" }
+                    },
+                    {
+                        loader: "svgo-loader",
+                        options: { convertShapeToPath: false },
+                    },
                 ],
             },
             {
@@ -88,7 +91,7 @@ module.exports = {
                             placeholder: true,
                             placeholderSize: 40,
                             quality: 85,
-                            adapter: require('responsive-loader/sharp')
+                            adapter: require("responsive-loader/sharp"),
                         },
                     },
                     {
@@ -109,14 +112,14 @@ module.exports = {
             { from: "src/favicons/*", to: "[name].[ext]" },
             { from: "src/*.html", to: "[name].html" },
             { from: "src/*.txt", to: "[name].txt" },
-            { from: "src/app/sw.js", to: "[name].js"}
+            { from: "src/app/sw.js", to: "[name].js" },
         ]),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
         new ForkTsCheckerWebpackPlugin({
-            checkSyntacticErrors: true
+            checkSyntacticErrors: true,
         }),
     ],
 };
