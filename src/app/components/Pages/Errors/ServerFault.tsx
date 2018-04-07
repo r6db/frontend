@@ -1,8 +1,9 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import DetailError from "./DetailError";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
-export default function Maintenance(props) {
+function ServerFault(props) {
     return (
         <DetailError title="Server Error">
             <p className="paragraph">
@@ -11,3 +12,5 @@ export default function Maintenance(props) {
         </DetailError>
     );
 }
+export default hot(module)(ServerFault);
+

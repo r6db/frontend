@@ -5,20 +5,20 @@
     flex-direction: column;
     position: relative;
     background: $bg-color;
-    padding-top: 40px;
     min-height: 100vh;
+    padding-top: 60px;
 
     &--empty {
         .page__content {
-            height: calc(100vh - 100px);
+            height: calc(100% - 100px);
             flex: 0 0 auto;
         }
     }
 
     @include medium {
-        padding-top: 80px;
         display: flex;
     }
+
     &__head {
         flex: none;
         width: 100%;
@@ -33,7 +33,11 @@
         &content {
             z-index: 1;
             width: 100%;
-            padding: 50px 0;
+            background: linear-gradient(rgba($bg-color, 0), rgba($bg-color, 1) 98%);
+
+            @include medium {
+                padding: $l * 2 0;
+            }
         }
     }
     &__image {
@@ -45,20 +49,20 @@
         height: 100%;
         left: 0;
         opacity: 1;
-        top: -40px;
-        height: calc(100% + 40px);
-        opacity: 0.25;
+        top: -60px;
+        height: calc(100% + 60px);
+        opacity: 0.3;
         position: absolute;
-        filter: saturate(150%) contrast(110%);
+        filter: saturate(130%) contrast(120%);
 
         @include medium {
             top: -80px;
-            height: calc(100% + 80px);
+            height: calc(100% + 75px);
         }
     }
 
     &__content {
         flex: 1 1 100%;
-        padding: ($l*3) $l $l;
+        padding: $l * 3 0;
     }
 }

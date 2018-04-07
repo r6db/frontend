@@ -30,7 +30,7 @@ const colors = {
     lightgreen: "#30FF6C",
 };
 
-export default class PlayerCharts extends React.PureComponent<any, any> {
+export default class StatsCharts extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +38,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
         };
     }
     componentDidMount() {
-        setTimeout(() => this.setState({ show: true }), 500);
+        setTimeout(() => this.setState({ show: true }), 250);
     }
     getData() {
         const progs = this.props.progressions || [];
@@ -131,9 +131,10 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                             <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                             <YAxis tick={{ dx: -3 }} tickSize={8} domain={[0, "dataMax"]} />
                             <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                            <Tooltip cursor={{ stroke: "#6f7376" }} />
+                            <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                             <Legend align="right" verticalAlign="bottom" />
                             <Area
+                                isAnimationActive={false}    
                                 type="monotone"
                                 connectNulls
                                 name="Europe"
@@ -143,6 +144,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                 stroke={colors.red}
                             />
                             <Area
+                                isAnimationActive={false} 
                                 type="monotone"
                                 connectNulls
                                 name="America"
@@ -152,6 +154,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                 stroke={colors.blue}
                             />
                             <Area
+                                isAnimationActive={false} 
                                 type="monotone"
                                 connectNulls
                                 name="Asia"
@@ -181,9 +184,10 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                 <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                                 <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376" }} />
+                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Area
+                                    isAnimationActive={false} 
                                     type="monotone"
                                     connectNulls={true}
                                     name="Casual"
@@ -193,6 +197,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                     stroke={colors.yellow}
                                 />
                                 <Area
+                                    isAnimationActive={false} 
                                     type="monotone"
                                     connectNulls={true}
                                     name="Ranked"
@@ -221,9 +226,10 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                 <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                                 <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376" }} />
+                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Area
+                                    isAnimationActive={false} 
                                     type="monotone"
                                     connectNulls={true}
                                     name="Casual"
@@ -233,6 +239,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                     stroke={colors.teal}
                                 />
                                 <Area
+                                    isAnimationActive={false} 
                                     type="monotone"
                                     connectNulls={true}
                                     name="Ranked"
@@ -262,9 +269,10 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                             <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                             <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                             <CartesianGrid stroke="inherit" vertical={false} />
-                            <Tooltip cursor={{ stroke: "#6f7376" }} />
+                            <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                             <Legend align="right" verticalAlign="bottom" />
                             {/** <Area
+                                    isAnimationActive={false} 
                                     type="monotone"
                                     dot={true}
                                     connectNulls={true}
@@ -274,6 +282,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                     fill="url(#colorAccuracy)"
                                 /> */}
                             <Area
+                                isAnimationActive={false} 
                                 type="monotone"
                                 dot={true}
                                 connectNulls={true}
@@ -303,9 +312,10 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                 <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                                 <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376" }} />
+                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Bar
+                                    isAnimationActive={false} 
                                     name="Casual"
                                     dataKey="games_casual"
                                     stackId="queue"
@@ -313,6 +323,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                     stroke={colors.teal}
                                 />
                                 <Bar
+                                    isAnimationActive={false} 
                                     name="Ranked"
                                     dataKey="games_ranked"
                                     stackId="queue"
@@ -343,9 +354,10 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                 <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
                                 <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                 <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376" }} />
+                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Bar
+                                    isAnimationActive={false} 
                                     stackId="mode"
                                     name="Bomb"
                                     dataKey="games_bomb"
@@ -353,6 +365,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                     stroke={colors.teal}
                                 />
                                 <Bar
+                                    isAnimationActive={false} 
                                     stackId="mode"
                                     name="Secure"
                                     dataKey="games_secure"
@@ -360,6 +373,7 @@ export default class PlayerCharts extends React.PureComponent<any, any> {
                                     stroke={colors.aqua}
                                 />
                                 <Bar
+                                    isAnimationActive={false} 
                                     stackId="mode"
                                     connectNulls={true}
                                     name="Hostage"

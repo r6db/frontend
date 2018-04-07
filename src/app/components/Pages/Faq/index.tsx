@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./faq.scss";
 
@@ -22,7 +23,7 @@ class Question extends React.Component<any, any> {
     }
 }
 
-export default function FAQ(props){
+function FAQ(props){
     return (
         <Page className="faq">
             <PageHead>
@@ -106,3 +107,6 @@ export default function FAQ(props){
         </Page>
     );
 };
+
+
+export default hot(module)(FAQ);

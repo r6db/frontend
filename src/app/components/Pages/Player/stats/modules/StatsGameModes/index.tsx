@@ -4,7 +4,7 @@ import "./gamemodes.scss";
 import Stat from "components/misc/Stat";
 import { getWinChance } from "lib/stats";
 
-export default function PlayerGamemodes(props) {
+export default function StatsGameModes(props) {
     return (
         <div className="playermodule gamemodes">
             <div className="playermodule__header">Bomb</div>

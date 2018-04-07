@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import { redirect } from "redux-first-router";
 import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
@@ -10,17 +11,16 @@ import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
 import chanka from "./chanky.png";
-
 import Charts from './Charts';
 import * as get from 'lodash/get';
 
-import bg from "./SixInvitational_KeyArt_Teaser02.jpg";
+import background from "assets/backgrounds/leaderboard.jpg";
+
 
 const isSelected = (expected, value) => expected === value;
 
 const getCommunityRanks = (data, region) => {
     region = region === 'ALL' ? 'global' : region.toLowerCase();
-    console.log(region);
     return get(data, `ranks.${region}`);
 };
 
@@ -46,7 +46,7 @@ class Leaderboard extends React.PureComponent<any, any> {
     render() {
         return (
             <Page className="leaderboard">
-                <PageHead image={bg} position="50% 20%">
+                <PageHead image={background} position="50% 20%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">Leaderboard</h1>
                     </div>
@@ -100,7 +100,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                             </p>
                         </form>
                         <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
-                        <table className="container container-small leaderboard__entries">
+                        <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
                                     <th>Rank</th>
@@ -160,4 +160,4 @@ const mapDispatchToProps = dispatch => ({
     chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Leaderboard));

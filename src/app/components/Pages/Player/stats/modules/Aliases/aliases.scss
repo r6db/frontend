@@ -2,15 +2,12 @@
 
 .aliases {
     padding-bottom: $l;
-
+    
     &__list {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-        margin-top: $l;
-
+        flex: none;
         @include large {
             flex-direction: column;
             overflow-y: auto;
@@ -21,6 +18,22 @@
 
         .alias {
             text-align: center;
+        }
+    }
+    &__expand{
+        color: $font-color;
+        width: 100%;
+        text-align: center;
+    }
+
+    .playermodule__content{
+        margin-top: $l;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        @include large {
+            flex-direction: column;
         }
     }
 }

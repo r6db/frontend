@@ -6,15 +6,21 @@
                 "modules": false,
                 "loose": true,
                 "targets": {
-                    "browsers": [">1%", "Chrome 41"]
+                    "browsers": [">1%", "Safari >= 10", "Chrome 41"]
                 },
                 "useBuiltIns": "entry"
             }
-        ]
+        ],
+        "@babel/typescript"
     ],
     "plugins": [
         "@babel/syntax-dynamic-import",
         "@babel/transform-react-jsx",
-        "babel-plugin-lodash"
+        "transform-react-display-name",
+        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        ["transform-class-properties", { "spec": true }],
+        "react-hot-loader/babel",
+        "lodash",
+        "recharts"
     ]
 }

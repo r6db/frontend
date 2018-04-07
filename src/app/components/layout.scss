@@ -4,14 +4,7 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    // background: linear-gradient(90deg, lighten($bg-color, 5%) 0%, $black 100%);
 
-    &__content {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        min-height: 100vh;
-    }
     &__page {
         width: 100vw;
         flex: 1;
@@ -50,5 +43,19 @@
             object-position: center center;
             object-fit: cover;
         }
+    }
+}
+
+@media screen and (min-width: $screen-openmenu){
+    .drawer{
+        &__background{
+            display: none;
+        }
+        &__container{
+            transform: none;
+        }
+    }
+    .app__page{
+        padding-left: $menu-width;
     }
 }

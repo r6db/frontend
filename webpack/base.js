@@ -2,21 +2,19 @@ const webpack = require("webpack");
 const path = require("path");
 const util = require("util");
 
-const MiniExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
-const autoprefixer = require("autoprefixer");
-const mqpacker = require("css-mqpacker");
-const nano = require("cssnano");
-const cssdedupe = require("postcss-discard-duplicates");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const ManifestPlugin = require("webpack-manifest-plugin");
+// const ManifestPlugin = require("webpack-assets-manifest");
 
 const DIST = path.join(__dirname, "../build");
 
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
-        app: ["./src/app/index.ts"],
+        app: ["./src/app/index.tsx"],
     },
     output: {
         path: DIST,
@@ -38,84 +36,54 @@ module.exports = {
     },
     stats: "errors-only",
     devtool: "source-map",
-    performance: {
-        hints: "warning"
-    },
     optimization: {
         removeEmptyChunks: true,
         splitChunks: {
-            chunks: "all",
+            chunks: "async",
             name: true,
             cacheGroups: {
-                commons: {
-                    name: "commons",
-                    chunks: "initial",
-                },
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
-                    chunks: "all"
-                }
-            }
-        }
+                    name: "vendor",
+                    chunks: "initial",
+                },
+            },
+        },
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(j|t)sx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        cacheDirectory: "./.cache",
-                    },
-                },
-            },
-            {
-                test: /\.tsx?$/,
                 use: [
-                    { loader: "react-hot-loader/webpack" },
+                    { loader: "cache-loader" },
+                    { loader: "thread-loader" },
                     {
                         loader: "babel-loader",
                         options: {
                             cacheDirectory: "./.cache",
                         },
                     },
-                    { loader: "ts-loader" },
-                ],
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    MiniExtractPlugin.loader,
-                    { loader: "css-loader" },
-                    { 
-                        loader: "postcss-loader" , 
-                        options: {
-                            plugins: [
-                                autoprefixer(),
-                                mqpacker(),
-                                cssdedupe(),
-                                nano({
-                                    reduceIdents: false,
-                                    zindex: false,
-                                }),
-                            ],
-                        }
-                    }, {
-                        loader: "sass-loader",
-                        options: { includePaths: [path.resolve(__dirname, "../src")] },
-                    },
                 ],
             },
             {
                 test: /.svg$/,
-                use: {
-                    loader: "svg-sprite-loader",
-                    options: {
-                        extract: true,
+                use: [
+                    {
+                        loader: "svg-sprite-loader",
+                        options: {
+                            extract: true,
+                        },
                     },
-                },
+                    {
+                        loader: "svgo-loader",
+                        options: {
+                          plugins: [
+                            {convertShapeToPath: false},
+                          ]
+                        }
+                    },
+                ],
             },
             {
                 test: /\.(png|jpg)$/,
@@ -123,27 +91,23 @@ module.exports = {
                     {
                         loader: "responsive-loader",
                         options: {
-                            sizes: [320, 640, 1200, 2000],
+                            sizes: [320, 640, 1200, 1600, 1920, 2440],
                             placeholder: true,
                             placeholderSize: 40,
                             quality: 85,
+                            adapter: require("responsive-loader/sharp"),
                         },
                     },
                     {
                         loader: "file-loader",
                         options: {},
                     },
-                    {
-                        loader: "image-webpack-loader",
-                        options: {
-                            bypassOnDebug: true,
-                        },
-                    },
                 ],
             },
         ],
     },
     plugins: [
+        new ManifestPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
@@ -152,11 +116,15 @@ module.exports = {
             { from: "src/favicons/*", to: "[name].[ext]" },
             { from: "src/*.html", to: "[name].html" },
             { from: "src/*.txt", to: "[name].txt" },
+            { from: "src/app/sw.js", to: "[name].js" },
+            { from: "src/app.json", to: "[name].json" },
         ]),
         new HtmlWebpackPlugin({
             template: "./src/index.ejs",
         }),
         new SpriteLoaderPlugin(),
-        new MiniExtractPlugin({ filename: "[name].[contenthash].css", allChunks: true }),
+        new ForkTsCheckerWebpackPlugin({
+            checkSyntacticErrors: true,
+        }),
     ],
 };

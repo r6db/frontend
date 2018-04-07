@@ -1,6 +1,6 @@
 .cache
-.happypack
-.awcache
+.cache-loader
 npm-debug.log
+yarn-error.log
 build
 node_modules

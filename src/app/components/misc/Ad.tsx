@@ -11,14 +11,18 @@ export default class Ad extends React.Component<IAdProps, {}> {
         if (window) ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
     }
     render() {
-        return (
-            <ins
-                className="ad adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-client="ca-pub-4708879883364551"
-                data-ad-slot={this.props.slot || ADCONFIG.defaultSlot}
-                data-ad-format={this.props.format || ADCONFIG.defaultFormat}
-            />
-        );
+        if (process.env.NODE_ENV === 'production') {
+            return (
+                <ins
+                    className="ad adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-4708879883364551"
+                    data-ad-slot={this.props.slot || ADCONFIG.defaultSlot}
+                    data-ad-format={this.props.format || ADCONFIG.defaultFormat}
+                />
+            );
+        } else {
+            return <ins className="ad adsbygoogle" style={{display: "block"}} />
+        }
     }
 }

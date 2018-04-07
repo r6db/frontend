@@ -7,31 +7,69 @@ import "./menu.scss";
 
 const Menu = props => (
     <div className="menu">
-        <div className="container menu__container">
-            <Link to="/" className="menu__logo">
-                <Icon glyph={GLYPHS.LOGO} />
+        <Link to="/" className="menu__logo">
+            <Icon glyph={GLYPHS.LOGO} />
+        </Link>
+
+        <div className="menu__divider"></div>
+
+        <div className="menu__section menu__links menu__section--primary">
+            <Link to="/" className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.HOME} />
+                Home
             </Link>
-            <div className="menu__section menu__search">
-                <Searchbar />
-            </div>
-            <div className="menu__section menu__links">
-                <Link to="/" className="menu__item">
-                    Home
-                </Link>
-                <Link to={`/leaderboard/${props.platform}/ALL`} className="menu__item">
-                    Leaderboard
-                </Link>
-                <Link to={`/compare`} className="menu__item">
-                    Compare (beta)
-                </Link>
-                <Link to={`/favorites`} className="menu__item">
-                    Favorites
-                </Link>
-                <Link to="/faq" className="menu__item">
-                    FAQ
-                </Link>
-            </div>
+            <Link to={`/leaderboard/${props.platform}/ALL`} className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.LIST} />
+                Leaderboard
+            </Link>
+
+            <Link to={`/favorites`} className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.STAR} />
+                Favorites
+            </Link>
+
+            <Link to={`/compare`} className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.USERS} />
+                Compare (beta)
+            </Link>
         </div>
+
+        <div className="menu__divider"></div>
+
+        <div className="menu__section menu__links menu__section--secondary">
+          <Link to="/faq" className="menu__item">
+              <Icon className="menu__icon" glyph={GLYPHS.HELP} />
+              FAQ
+          </Link>
+          <a href="http://apidocs.r6db.com/" rel="noopener" target="_BLANK" className="menu__item">
+              <Icon className="menu__icon" glyph={GLYPHS.SETTINGS} />
+              API
+          </a>
+        </div>
+
+        <div className="menu__divider"></div>
+
+        <div className="menu__section menu__sublinks">
+          <a href="https://twitter.com/Rainbow6_DB" rel="noopener" target="_BLANK" className="menu__item">
+              <Icon className="menu__icon" glyph={GLYPHS.TWITTER} />
+          </a>
+          <a href="mailto:info@r6db.com" rel="noopener" target="_BLANK" className="menu__item">
+              <Icon className="menu__icon" glyph={GLYPHS.EMAIL} />
+          </a>
+          <a href="https://discord.gg/xyMTkXm" rel="noopener" target="_BLANK" className="menu__item">
+              <Icon className="menu__icon" glyph={GLYPHS.DISCORD} />
+          </a>
+          <a href="https://github.com/r6db" rel="noopener" target="_BLANK" className="menu__item">
+              <Icon className="menu__icon" glyph={GLYPHS.GITHUB} />
+          </a>
+        </div>
+
+        <div className="menu__divider"></div>
+
+        <div className="menu__copyright">
+            This site is not affiliated with Ubisoft Entertainment.
+        </div>
+
     </div>
 );
 

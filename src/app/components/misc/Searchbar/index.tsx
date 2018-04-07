@@ -4,6 +4,7 @@ import "./searchbar.scss";
 import { toSearch } from "lib/store/actions";
 
 interface ISearchbarProps {
+    className?: string;
     query: string;
     platform: string;
     focused: boolean;
@@ -16,7 +17,7 @@ interface ISearchbarState {
     didEdit: boolean;
 }
 
-class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
+class Searchbar extends React.PureComponent<ISearchbarProps, ISearchbarState> {
     searchbar: HTMLInputElement;
     constructor(props) {
         super(props);
@@ -43,12 +44,12 @@ class Searchbar extends React.Component<ISearchbarProps, ISearchbarState> {
 
     render() {
         return (
-            <form className="searchbar" action="" onSubmit={e => this.onSearch(e)}>
+            <form className={`searchbar ${this.props.className || ''}`} action="" onSubmit={e => this.onSearch(e)}>
                 <input
                     className="searchbar__name"
                     type="text"
                     value={this.props.query}
-                    placeholder="enter player name"
+                    placeholder="Search for players..."
                     onChange={e => this.props.updateSearch(e.target.value)}
                     ref={(input) => { this.searchbar = input; }} 
                 />

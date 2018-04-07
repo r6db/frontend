@@ -1,14 +1,28 @@
 @import "scss/styles";
 
 .app.HOME {
-    .menu {
-        background: fade-out($gray-dark, 0.6);
-    }
     .page {
         padding-top: 0;
     }
     .page__head {
         height: 100vh;
+    }
+    .page__headcontent {
+        background: transparent;
+    }
+
+    .page__image {
+        top: -40px;
+        height: calc(100% + 40px);
+
+        @include medium {
+            top: -80px;
+            height: calc(100% + 80px);
+        }
+    }
+
+    .topbar__search {
+        display: none;
     }
 
     @include medium {
@@ -23,7 +37,7 @@
     width: 100%;
     .page__image {
         opacity: 0.2;
-        filter: none;
+        filter: saturate(120%) contrast(120%);
     }
 
     .ad {

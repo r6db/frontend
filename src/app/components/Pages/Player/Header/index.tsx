@@ -15,25 +15,28 @@ const exportButton = player => {
     const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`;
     return (
         <a className="playerheader__link" download={`${player.name}.json`} href={href}>
-            <Icon glyph={GLYPHS.DOWNLOAD} /> Export
+            <Icon glyph={GLYPHS.DOWNLOAD} /> Download as JSON
         </a>
     );
 };
 
-class PlayerHeader extends React.Component<any, any> {
+class PlayerHeader extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            timeout: null,
+            interval: null,
         };
     }
     componentDidMount() {
         this.setState({
-            timeout: setTimeout(() => this.rerender(), this.props.updateAvailableAt - Date.now() + 1000),
+            interval: setInterval(() => this.rerender(),  30 * 1000),
         });
     }
     rerender() {
-        this.setState({ timeout: null });
+        if (Date.now() >= this.props.updateAvailableAt.getTime()) {
+            clearInterval(this.state.interval);
+            this.setState({ interval: null });
+        }
     }
 
     render() {
@@ -45,8 +48,10 @@ class PlayerHeader extends React.Component<any, any> {
                     </div>
                     <div className="playerheader__info">
                         <header className="header playerheader__namebox">
-                            <span className="playerheader__name">{this.props.name}</span>
-                            <span className="playerheader__platform">{this.props.platform}</span>
+                            <div className="playerheader__namewrapper">
+                                <span className="playerheader__name">{this.props.name}</span>
+                                <span className="playerheader__platform">{this.props.platform}</span>
+                            </div>
                             {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
                         </header>
                         <div className="playerheader__level">
@@ -65,10 +70,12 @@ class PlayerHeader extends React.Component<any, any> {
                                 <Icon glyph={GLYPHS.ESL} /> ESL
                             </a>
                             {exportButton(this.props)}
-                            <span className="playerheader__divider">|</span>
-                            <Link className="playerheader__link" to={toSimple(this.props.id)}>
-                                Simple View
-                            </Link>
+                            <div className="hidden-small">
+                                <span className="playerheader__divider">|</span>
+                                <Link className="playerheader__link" to={toSimple(this.props.id)}>
+                                    Simple View
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="playerheader__buttons">
@@ -79,7 +86,7 @@ class PlayerHeader extends React.Component<any, any> {
                         ) : (
                             <button
                                 onClick={() => this.props.updatePlayer(this.props.id)}
-                                className="button playerheader__button button--accent"
+                                className="button playerheader__button button--outline--accent"
                             >
                                 <Icon glyph={GLYPHS.REFRESH} /> update
                             </button>
@@ -102,24 +109,24 @@ class PlayerHeader extends React.Component<any, any> {
                 </div>
                 <div className="playerheader__tabs">
                     <div className="container">
-                      <Link
-                          className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
-                          to={toPlayerTab(this.props.id, "summary")}
-                      >
-                          Summary
-                      </Link>
-                      <Link
-                          className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
-                          to={toPlayerTab(this.props.id, "ops")}
-                      >
-                          Operators
-                      </Link>
-                      <Link
-                          className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
-                          to={toPlayerTab(this.props.id, "ranks")}
-                      >
-                          Ranks
-                      </Link>
+                        <Link
+                            className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
+                            to={toPlayerTab(this.props.id, "summary")}
+                        >
+                            Summary
+                        </Link>
+                        <Link
+                            className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
+                            to={toPlayerTab(this.props.id, "ops")}
+                        >
+                            Operators
+                        </Link>
+                        <Link
+                            className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
+                            to={toPlayerTab(this.props.id, "ranks")}
+                        >
+                            Ranks
+                        </Link>
                     </div>
                 </div>
             </div>

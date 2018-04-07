@@ -1,6 +1,6 @@
 import * as React from "react";
 import Page, { PageHead, PageContent } from "components/misc/Page";
-import * as rip from "./rip.jpg";
+import * as rip from "assets/backgrounds/rip.jpg";
 
 export default function DetailError(props) {
     return (

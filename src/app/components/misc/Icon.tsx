@@ -5,13 +5,20 @@ import TWITTER from "feather-icons/dist/icons/twitter.svg";
 import GITHUB from "feather-icons/dist/icons/github.svg";
 import DOWNLOAD from "feather-icons/dist/icons/download.svg";
 
+import HOME from "feather-icons/dist/icons/home.svg";
+import USERS from "feather-icons/dist/icons/users.svg";
+import LIST from "feather-icons/dist/icons/list.svg";
+import HELP from "feather-icons/dist/icons/help-circle.svg";
+import STAR from "feather-icons/dist/icons/star.svg";
+import REFRESH from "assets/refresh.svg";
+import SETTINGS from "feather-icons/dist/icons/settings.svg";
+import MENU from "feather-icons/dist/icons/menu.svg";
+
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
 import ESL from "assets/esl.svg";
 import DISCORD from "assets/discord.svg";
 import NOAVATAR from "assets/noavatar.svg";
-import STAR from "assets/star.svg";
-import REFRESH from "assets/refresh.svg";
 
 import RANK0 from "assets/ranks/0.svg";
 import RANK1 from "assets/ranks/1.svg";
@@ -110,8 +117,14 @@ export const GLYPHS = {
     EMAIL,
     DISCORD,
     NOAVATAR,
+    HOME,
+    USERS,
+    LIST,
+    HELP,
     STAR,
     REFRESH,
+    SETTINGS,
+    MENU,
     RANK0,
     RANK1,
     RANK2,

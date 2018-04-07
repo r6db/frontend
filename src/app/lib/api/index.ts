@@ -15,7 +15,6 @@ const cachifyMethod = function(apiCall, cacheDuration) {
         const cacheKey = JSON.stringify(params);
         const payload = cache.get(cacheKey);
         if (payload) {
-            console.debug("cache hit: %s", cacheKey);
             return Promise.resolve(payload);
         } else {
             return apiCall(...params).then(function(res) {

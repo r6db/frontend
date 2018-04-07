@@ -5,7 +5,7 @@
         padding-bottom: $l * 2;
     }
     .page__content {
-        padding: ($l * 3) $l $l;
+        padding: ($l * 3) 0 $l;
     }
     .adsbygoogle {
         height: $l * 8;
@@ -38,7 +38,8 @@
 
 .result {
     display: block;
-    margin-bottom: $l * 2;
+    margin-bottom: $l;
+
     &__span {
         color: $font-subtle-color;
     }
@@ -52,6 +53,7 @@
         display: none;
     }
     @include medium {
+        margin-bottom: $l * 2;
         .media__text {
             display: flex;
             justify-content: space-between;

@@ -4,9 +4,8 @@ interface ILeaderboardReducerState {
 
 export default (state: ILeaderboardReducerState = {}, action) => {
     return action.type === "LEADERBOARD_FETCHED"
-        ? {
-              ...state,
+        ? Object.assign({}, state, {
               [action.payload.board]: action.payload.entries,
-          }
+          })
         : state;
 };

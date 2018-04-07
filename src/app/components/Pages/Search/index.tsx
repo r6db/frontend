@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Result from "./Result";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
@@ -27,7 +28,7 @@ function Search(props) {
                             <Loading />
                         ) : props.result.length > 0 ? (
                             <div>
-                                <Ad />
+                                {props.result.length > 3 ? <Ad /> : null}
                                 {props.result.map(player => <Result key={player.id} player={player} />)}
                             </div>
                         ) : (
@@ -51,4 +52,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Search);
+export default hot(module)(connect(mapStateToProps)(Search));

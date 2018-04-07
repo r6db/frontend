@@ -1,5 +1,7 @@
 {
-    "name": "R6DB",
+    "short_name": "R6DB",
+    "name": "Rainbow Six Database",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png?v=QEMej3pWj3",
@@ -12,8 +14,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#191919",
-    "background_color": "#191919",
-    "start_url": "https://r6db.com",
+    "theme_color": "#181b1f",
+    "background_color": "#181b1f",
     "display": "standalone"
 }
