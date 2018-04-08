@@ -5,6 +5,9 @@ import { RANKS, SEASONS } from "lib/constants";
 import "./rankoverview.scss";
 
 function GlobalRank(props) {
+    if (get(props, "placements.global", null) === null) {
+        return null;
+    }
     return (
         <div className="globalrank global">
             <div className="globalrank__icon">
@@ -48,15 +51,16 @@ function CurrentRank(props) {
 export default function RankOverview(props) {
     if (props.level < 100) {
         return <div className="rankoverview__isunderage">rankings unlock at level 100</div>;
-    } else if (get(props, "placements.global", null) === null) {
-        return null;
     }
     return (
         <div className="playermodule rankoverview">
             <div className="rankoverview__global">
                 <GlobalRank {...props} />
             </div>
-            <div className="playermodule__divider"></div>
+            {(get(props, "placements.global", null) === null)
+                ? null
+                : <div className="playermodule__divider"></div>
+            }
             <div className="rankoverview__regional">
                 <CurrentRank
                     key="rank-emea"
