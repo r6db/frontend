@@ -14,7 +14,7 @@ export default history => {
 
     const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    const rootReducer = combineReducers({ ...reducers, location: reducer });
+    const rootReducer = combineReducers(Object.assign({}, reducers, { location: reducer }));
     const middlewares = applyMiddleware(thunkMiddleware, middleware);
     const enhancers = composeEnhancers(enhancer, persistState(["platform"]), middlewares);
 
@@ -22,7 +22,7 @@ export default history => {
 
     if (module.hot && process.env.NODE_ENV === "development") {
         module.hot.accept(() => {
-            const rootReducer = combineReducers({ ...reducers, location: reducer });
+            const rootReducer = combineReducers(Object.assign({}, reducers, { location: reducer }));
             store.replaceReducer(rootReducer);
         });
     }

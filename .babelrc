@@ -6,7 +6,7 @@
                 "modules": false,
                 "loose": true,
                 "targets": {
-                    "browsers": [">1%", "Chrome 41"]
+                    "browsers": [">1%", "Safari >= 10", "Chrome 41"]
                 },
                 "useBuiltIns": "entry"
             }
@@ -17,6 +17,7 @@
         "@babel/syntax-dynamic-import",
         "@babel/transform-react-jsx",
         "transform-react-display-name",
+        ["transform-object-rest-spread", { "useBuiltIns": true }],
         ["transform-class-properties", { "spec": true }],
         "react-hot-loader/babel",
         "lodash",

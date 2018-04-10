@@ -1,4 +1,4 @@
-const CACHE_NAME = "r6db-v1.1";
+const CACHE_NAME = "r6db-v1.3";
 
 self.addEventListener("install", function(event) {
     console.debug("[sw] install");

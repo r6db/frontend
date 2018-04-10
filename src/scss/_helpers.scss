@@ -1,0 +1,27 @@
+.hidden- {
+  &small {
+      display: none;
+      visibility: hidden;
+
+      @include medium {
+          display: inherit;
+          visibility: visible;
+      }
+  }
+  &medium {
+      @include medium {
+          display: none;
+          visibility: hidden;
+      }
+      @include large {
+          display: inherit;
+          visibility: visible;
+      }
+  }
+  &large {
+      @include large {
+          display: none;
+          visibility: hidden;
+      }
+  }
+}
