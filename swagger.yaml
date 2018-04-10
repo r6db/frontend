@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: This is the API we use at R6DB.com
+  description: This is the API we use at R6DB. Contact us at info@r6db.com to get your x-app-id.
   version: 2.0.0
   title: R6DB
   contact:
@@ -98,7 +98,7 @@ parameters:
   CommonAppIdHeader:
     name: x-app-id
     in: header
-    description: Identifier for your app
+    description: Identifier for your app. Contact us to get one
     type: string
     required: true
     format: string
