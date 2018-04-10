@@ -13,6 +13,7 @@ import { updatePlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
+import Ad from "components/misc/Ad";
 import "./player.scss";
 
 import background from "assets/backgrounds/outbreak2.jpg";
@@ -79,6 +80,7 @@ function Player(props) {
                     {getPlayerSchema(props.data)}
                     </script>
                     <div className="container player__tab">
+                        <Ad />
                         {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
                         {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
                         {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}

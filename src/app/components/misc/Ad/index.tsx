@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ADCONFIG } from "lib/constants";
+import "./ad.scss";
 
 interface IAdProps {
     slot?: string;
@@ -21,8 +22,10 @@ export default class Ad extends React.Component<IAdProps, {}> {
                     data-ad-format={this.props.format || ADCONFIG.defaultFormat}
                 />
             );
+        } else if (process.env.NODE_ENV === 'development') {
+                return <ins className="ad adsbyfake" style={{display: "block"}} />
         } else {
-            return <ins className="ad adsbygoogle" style={{display: "block"}} />
+            return null;
         }
     }
 }
