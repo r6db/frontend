@@ -17,8 +17,10 @@
         "@babel/syntax-dynamic-import",
         "@babel/transform-react-jsx",
         "transform-react-display-name",
-        ["transform-object-rest-spread", { "useBuiltIns": true }],
-        ["transform-class-properties", { "spec": true }],
+        "@babel/plugin-syntax-object-rest-spread",
+        "@babel/plugin-syntax-class-properties",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
         "react-hot-loader/babel",
         "lodash",
         "recharts"
