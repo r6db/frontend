@@ -58,24 +58,7 @@
             }
         }
     }
-    &__disclaimer {
-        width: 360px;
-        max-width: 100%;
-        text-align: center;
-        margin: 0 auto;
-        border-left: 5px solid $accent;
-        border-right: 5px solid $accent;
-        line-height: 1.5;
-        padding: $l;
-        background: fade-out($gray-dark, 0.2);
-        font-weight: 600;
-        border-radius: $borderradius;
-        a {
-            color: $accent;
-
-            &:visited {
-                color: $white;
-            }
-        }
+    .blocker{
+        max-width: 300px;
     }
 }
