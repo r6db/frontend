@@ -55,7 +55,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                     <div className="container">
                         <div className="leaderboard__description">
                             <div className="blocker">
-                                Any accounts abusing the ranked system will be removed from the leaderboard. Our ban policy can be found <a href="https://pages.r6db.com/ban-policy/">here</a>. You can report players <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">here</a>.
+                                Any accounts abusing the ranked system will be removed from the leaderboard. Our ban policy can be found <a href="https://pages.r6db.com/ban-policy/">here</a>. Reports can be submitted over <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">this form</a>.
                             </div>
                         </div>
                         <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
