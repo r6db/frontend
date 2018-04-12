@@ -40,7 +40,7 @@ function CurrentRank(props) {
                     ? null
                     : typeof props.placement === "number"
                         ? "#" + (props.placement + 1)
-                        : "--"
+                        : ""
                 }
             </div>
             <div className="currentrank__region">{props.region}</div>
