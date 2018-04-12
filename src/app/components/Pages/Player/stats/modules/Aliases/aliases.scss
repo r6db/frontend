@@ -52,10 +52,14 @@
     }
 }
 .player .alias {
-    padding: (0.5*$l) 0;
+    padding: (0.5*$l) $l;
     position: relative;
     margin-bottom: $l;
     flex: none;
+
+    @include medium {
+        padding-left: 0;
+    }
 
     &-time {
         color: $gray;
