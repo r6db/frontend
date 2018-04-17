@@ -3,6 +3,7 @@ import Link from "redux-first-router-link";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
 import Ad from "components/misc/Ad";
+import Result from "components/misc/Playercard";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { FadeImage } from "components/misc/FadeImage";
 import { connect } from "react-redux";
@@ -13,48 +14,9 @@ import * as get from "lodash/get";
 import * as api from "lib/api";
 
 import "./favorites.scss";
-import "./playercard.scss";
 
 import background from "assets/backgrounds/landing.jpg";
-
-const getAliases = player => {
-    const shown = player.aliases
-        .slice(0, 5)
-        .map(alias => alias.name)
-        .join(", ");
-
-    const rest =
-        player.aliases.length > 2 ? <span key={player.id} className="result__span"> and {player.aliases.length - 2} more</span> : "";
-    return [shown, rest];
-};
-
-function Result(props) {
-    const timePlayed = get(props, "lastPlayed.ranked", 0) + get(props, "lastPlayed.casual", 0);
-    return (
-        <div>
-        <Link key={props.id} to={toPlayer(props.id)} className="favorites__result result">
-            <div className="media">
-                <div className="media__image">
-                    <FadeImage src={getImageLink(props.userId || props.id, props.platform)} />
-                </div>
-                <div className="media__content">
-                    <div className="media__contentheader">
-                        <header className="media__header">{props.name}</header>
-                        {props.flair ? <span className="media__label">{props.flair}</span> : ""}
-                    </div>
-                    <div className="media__text">
-                        <div className="result__aliases">{getAliases(props)}</div>
-                        <div className="result__info">
-                            <div>level {props.level}</div>
-                            <div>{formatDuration(timePlayed)} played</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Link>
-      </div>
-    );
-}
+import { GLYPHS } from "components/misc/Icon";
 
 function Favorites(props) {
     return (
@@ -71,7 +33,18 @@ function Favorites(props) {
                             <Loading />
                         ) : props.favorites.length > 0 ? (
                             <div>
-                                {props.favorites.map(player => <Result key={player.id} {...player} />)}
+                                {props.favorites.map(player => (
+                                    <Result
+                                        key={player.id}
+                                        player={player}
+                                        action={{
+                                            icon: GLYPHS.STAR,
+                                            callback() {
+                                                props.unfavoritePlayer(player.id);
+                                            },
+                                        }}
+                                    />
+                                ))}
                             </div>
                         ) : (
                             <Media title="It's empty here!">You haven't saved any players to your favorites yet.</Media>
@@ -88,15 +61,15 @@ const mapStateToProps = state => {
 
     return {
         loading,
-        favorites:  favorites.map(id => players[id]).filter(id => !!id),
+        favorites: favorites.map(id => players[id]).filter(id => !!id),
         platform,
-        players
+        players,
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
         favoritePlayer: id => dispatch({ type: "FAV_PLAYER", payload: id }),
-        unfavoritePlayer: id => dispatch({ type: "UNFAV_PLAYER", payload: id })
+        unfavoritePlayer: id => dispatch({ type: "UNFAV_PLAYER", payload: id }),
     };
 };
 

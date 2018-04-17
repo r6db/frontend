@@ -1,0 +1,40 @@
+@import "scss/styles";
+
+.playercard {
+    display: block;
+    margin-bottom: $l;
+
+    @include medium {
+        margin-bottom: $l * 2;
+        .media__text {
+            display: flex;
+            justify-content: space-between;
+        }
+        .result__info {
+            display: block;
+            text-align: right;
+        }
+    }
+
+    &__span {
+        color: $font-subtle-color;
+    }
+    .media__label {
+        color: $primary;
+        border-color: $primary;
+    }
+    &__info {
+        display: none;
+    }
+    &__action {
+        margin-left: $l;
+        padding: 0.25em;
+        float: right;
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            fill: $primary;
+        }
+    }
+}
