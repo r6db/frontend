@@ -1,11 +1,11 @@
 @import "scss/styles";
 
-.app.SEARCH {
+.app.FAVORITES {
     .page__headcontent {
         padding-bottom: $l * 2;
     }
     .page__content {
-        padding: ($l * 3) 0 $l;
+        padding: ($l * 3) $l $l;
     }
     .ad {
         max-height: $l * 15;
@@ -13,7 +13,7 @@
     }
 }
 
-.search {
+.favorites {
     &__resultcount {
         display: block;
 
@@ -21,7 +21,7 @@
             display: inline-block;
         }
     }
-    &__results {
+    &__list {
         width: 100%;
 
         *:first-child {
@@ -38,8 +38,7 @@
 
 .result {
     display: block;
-    margin-bottom: $l;
-
+    margin-bottom: $l * 2;
     &__span {
         color: $font-subtle-color;
     }
@@ -53,7 +52,6 @@
         display: none;
     }
     @include medium {
-        margin-bottom: $l * 2;
         .media__text {
             display: flex;
             justify-content: space-between;
