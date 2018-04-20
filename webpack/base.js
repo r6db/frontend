@@ -78,8 +78,10 @@ module.exports = {
                     {
                         loader: "svgo-loader",
                         options: {
-                            plugins: [{}],
-                        },
+                          plugins: [
+                            {convertShapeToPath: false},
+                          ]
+                        }
                     },
                 ],
             },

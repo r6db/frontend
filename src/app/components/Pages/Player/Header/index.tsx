@@ -96,7 +96,7 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                   onClick={() => this.props.unfavoritePlayer(this.props.id)}
                                   className="button playerheader__button button--outline--primary active"
                               >
-                                <Icon glyph={GLYPHS.STAR} /> favorite
+                                <Icon glyph={GLYPHS.STARFULL} /> favorite
                               </button>
                             : <button
                                   onClick={() => this.props.favoritePlayer(this.props.id)}

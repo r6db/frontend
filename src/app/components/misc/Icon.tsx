@@ -9,13 +9,14 @@ import HOME from "feather-icons/dist/icons/home.svg";
 import USERS from "feather-icons/dist/icons/users.svg";
 import LIST from "feather-icons/dist/icons/list.svg";
 import HELP from "feather-icons/dist/icons/help-circle.svg";
-import STAR from "assets/star.svg";
+import STAR from "feather-icons/dist/icons/star.svg";
 import REFRESH from "assets/refresh.svg";
 import SETTINGS from "feather-icons/dist/icons/settings.svg";
 import MENU from "feather-icons/dist/icons/menu.svg";
 import CHEVRONUP from "feather-icons/dist/icons/chevron-up.svg";
 import CHEVRONDOWN from "feather-icons/dist/icons/chevron-down.svg";
 import CLOSE from "feather-icons/dist/icons/x.svg";
+import STARFULL from "assets/starfull.svg"
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -125,6 +126,7 @@ export const GLYPHS = {
     LIST,
     HELP,
     STAR,
+    STARFULL,
     REFRESH,
     SETTINGS,
     MENU,
