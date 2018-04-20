@@ -22,8 +22,8 @@ function Favorites(props) {
     return (
         <Page className="favorites">
             <PageHead image={background} position="50% 20%">
-                <div className="container leaderboard__header">
-                    <h1 className="header leaderboard__title">Favorites</h1>
+                <div className="container container--small">
+                    <h1 className="header">Favorites</h1>
                 </div>
             </PageHead>
             <PageContent>
@@ -38,13 +38,14 @@ function Favorites(props) {
                                         key={player.id}
                                         player={player}
                                         action={{
-                                            icon: GLYPHS.STAR,
+                                            icon: GLYPHS.CLOSE,
                                             callback() {
                                                 props.unfavoritePlayer(player.id);
                                             },
                                         }}
                                     />
                                 ))}
+                                <div className="favorites__subtletext">You can add more people by clicking the "Favorite" button on the player page!</div>
                             </div>
                         ) : (
                             <Media title="It's empty here!">You haven't saved any players to your favorites yet.</Media>

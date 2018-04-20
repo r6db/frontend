@@ -14,7 +14,7 @@ function Search(props) {
     return (
         <Page className="search">
             <PageHead>
-                <div className="container">
+                <div className="container container--small">
                     <div className="header">
                         Search {props.search}
                         <span className="search__resultcount header header--small header--subtle">
