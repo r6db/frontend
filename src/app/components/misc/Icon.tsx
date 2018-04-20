@@ -9,7 +9,7 @@ import HOME from "feather-icons/dist/icons/home.svg";
 import USERS from "feather-icons/dist/icons/users.svg";
 import LIST from "feather-icons/dist/icons/list.svg";
 import HELP from "feather-icons/dist/icons/help-circle.svg";
-import STAR from "feather-icons/dist/icons/star.svg";
+import STAR from "assets/star.svg";
 import REFRESH from "assets/refresh.svg";
 import SETTINGS from "feather-icons/dist/icons/settings.svg";
 import MENU from "feather-icons/dist/icons/menu.svg";
@@ -84,7 +84,7 @@ import ZOFIA from "assets/operators/zofia.svg";
 import LION from "assets/operators/lion.svg";
 import FINKA from "assets/operators/finka.svg";
 
-import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg"
+import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg";
 import LOGOS1 from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
 import LOGOS2 from "assets/seasonlogos/R6-OPDustLine-Horizontal.svg";
 import LOGOS3 from "assets/seasonlogos/R6-OPSkullRain-Horizontal.svg";
