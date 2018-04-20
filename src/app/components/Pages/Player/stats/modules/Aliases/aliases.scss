@@ -2,7 +2,7 @@
 
 .aliases {
     padding-bottom: $l;
-    
+
     &__list {
         display: flex;
         flex-direction: row;
@@ -21,9 +21,23 @@
         }
     }
     &__expand{
-        color: $font-color;
+        display: flex;
+        color: $font-subtle-color;
         width: 100%;
-        text-align: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+
+        .icon {
+            width: $l*2;
+            height: $l*2;
+            margin-top: 2px;
+            margin-right: $l;
+        }
     }
 
     .playermodule__content{
@@ -42,6 +56,10 @@
     position: relative;
     margin-bottom: $l;
     flex: none;
+
+    @include medium {
+        padding-left: 0;
+    }
 
     &-time {
         color: $gray;

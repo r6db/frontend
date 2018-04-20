@@ -40,7 +40,7 @@ function initAds() {
     };
     document.head.appendChild(el);
 }
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production' && location.host === "r6db.com" ) {
     initAds();
 }
 

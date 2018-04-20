@@ -37,7 +37,7 @@ function CurrentRank(props) {
             </div>
             <div className="currentrank__placement">
                 {props.rank === 0
-                    ? "N/A"
+                    ? null
                     : typeof props.placement === "number"
                         ? "#" + (props.placement + 1)
                         : ""

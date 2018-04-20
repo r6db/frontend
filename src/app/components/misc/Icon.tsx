@@ -13,6 +13,8 @@ import STAR from "feather-icons/dist/icons/star.svg";
 import REFRESH from "assets/refresh.svg";
 import SETTINGS from "feather-icons/dist/icons/settings.svg";
 import MENU from "feather-icons/dist/icons/menu.svg";
+import CHEVRONUP from "feather-icons/dist/icons/chevron-up.svg";
+import CHEVRONDOWN from "feather-icons/dist/icons/chevron-down.svg";
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -125,6 +127,8 @@ export const GLYPHS = {
     REFRESH,
     SETTINGS,
     MENU,
+    CHEVRONUP,
+    CHEVRONDOWN,
     RANK0,
     RANK1,
     RANK2,

@@ -6,7 +6,6 @@ import StatsGeneral from "./modules/StatsGeneral";
 import StatsRankings from "./modules/StatsRankings";
 import StatsGameModes from "./modules/StatsGameModes";
 import StatsCharts from "./modules/StatsCharts";
-import Ad from "components/misc/Ad";
 
 import "./statstab.scss";
 
@@ -31,8 +30,6 @@ export default function StatsTab(props) {
                 </div>
                 <div className="statstab__aside">
                     {props.stats ? <StatsGameModes {...props} /> : null}
-                    <div className="playermodule__divider"></div>
-                    <Ad />
                 </div>
             </div>
         </div>

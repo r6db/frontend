@@ -21,7 +21,7 @@ function Home(props) {
                 <div className="container">
                     <Searchbar className="home__search" search={props.search} focused={true}/>
                     <Ad slot="7116683052" />
-                    {/* <div className="home__disclaimer" /> */}
+                    {/* <div className="blocker" /> */}
                 </div>
             </PageHead>
         </Page>

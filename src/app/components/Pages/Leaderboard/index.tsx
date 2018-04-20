@@ -54,13 +54,9 @@ class Leaderboard extends React.PureComponent<any, any> {
                 <PageContent>
                     <div className="container">
                         <div className="leaderboard__description">
-                            <p className="is-highlight">
-                                Any accounts proven to abuse the system will be removed from the leaderboard. This
-                                includes queueing with coppers or hackers, hacking themselves or playing exclusively
-                                imbalanced gamemodes (<a href="https://medium.com/@r6db/on-excluding-accounts-from-the-leaderboard-596cc217b2af">
-                                    details and reasoning
-                                </a>). You can report players <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">here</a>.
-                            </p>
+                            <div className="blocker">
+                                Any accounts abusing the ranked system will be removed from the leaderboard. Our ban policy can be found <a href="https://pages.r6db.com/ban-policy/">here</a>. Reports can be submitted over <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">this form</a>.
+                            </div>
                         </div>
                         <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
                             <p className="leaderboard__platform">
