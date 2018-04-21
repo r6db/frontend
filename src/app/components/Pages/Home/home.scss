@@ -39,7 +39,16 @@
         opacity: 0.2;
         filter: saturate(120%) contrast(120%);
     }
+    &__logo {
+        display: flex;
+        width: 10rem;
+        margin: 0 auto;
 
+        @include large {
+            display: none;
+            visibility: hidden;
+        }
+    }
     .ad {
         width: 100%;
         max-width: 800px;
