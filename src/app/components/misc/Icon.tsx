@@ -104,6 +104,8 @@ export default props =>
             preserveAspectRatio={props.preserveAspectRatio}
             fill={props.fill}
             stroke={props.stroke}
+            width={props.width}
+            height={props.height}
         >
             <use xlinkHref={props.glyph} />
         </svg>
