@@ -107,8 +107,8 @@
         align-items: center;
         justify-content: center;
         font-size: $font-default;
-        flex: 1;
         margin: $l 0;
+        flex-wrap: wrap;
 
         @include medium {
             margin-top: 0;
@@ -137,11 +137,26 @@
     &__button {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        margin-left: $l;
+        align-items: center;
+        height: 40px;
 
-        @include medium {
-            margin-left: $l;
+        &:first-child {
+            margin-left: 0;
         }
+        &.active {
+            .icon {
+                fill: currentColor;
+            }
+        }
+        .icon {
+            width: 1.2rem;
+            height: 1.2rem;
+            fill: transparent;
+            stroke: currentColor;
+            margin-right: $l*0.75;
+        }
+
     }
     &__link {
         display: inline-flex;
@@ -158,6 +173,16 @@
             height: $l*2;
             fill: $font-color;
             margin-right: 0.5rem;
+        }
+
+        &.download {
+            display: none;
+            visibility: hidden;
+
+            @include medium {
+                display: flex;
+                visibility: visible;
+            }
         }
     }
     &__tabs {

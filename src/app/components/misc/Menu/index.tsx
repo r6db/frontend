@@ -23,10 +23,10 @@ const Menu = props => (
                 Leaderboard
             </Link>
 
-            {/* <Link to={`/favorites`} className="menu__item">
+            <Link to={`/favorites`} className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.STAR} />
                 Favorites
-            </Link> */}
+            </Link>
 
             <Link to={`/compare`} className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.USERS} />

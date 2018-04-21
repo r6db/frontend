@@ -29,6 +29,7 @@ const pageMap = {
     LEADERBOARD: makeAsync(() => import("./Pages/Leaderboard")),
     CHANKABOARD: makeAsync(() => import("./Pages/Leaderboard/Chankaboard")),
     PLAYER: makeAsync(() => import("./Pages/Player")),
+    FAVORITES: makeAsync(() => import("./Pages/Favorites")),
     SIMPLE: makeAsync(() => import("./Pages/Simple")),
     PLAYERTABS: makeAsync(() => import("./Pages/Player")),
     COMPARISON: makeAsync(() => import("./Pages/Comparison")),

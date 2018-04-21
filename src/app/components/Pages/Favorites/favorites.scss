@@ -5,7 +5,7 @@
         padding-bottom: $l * 2;
     }
     .page__content {
-        padding: ($l * 3) $l $l;
+        padding: ($l * 3) 0;
     }
     .ad {
         max-height: $l * 15;
@@ -14,13 +14,6 @@
 }
 
 .favorites {
-    &__resultcount {
-        display: block;
-
-        @include medium {
-            display: inline-block;
-        }
-    }
     &__list {
         width: 100%;
 
@@ -28,37 +21,23 @@
             margin-top: 0;
         }
     }
-    &__resultcount {
-        margin-left: $l;
-    }
-    &__result {
-        color: $font-color;
+    &__subtletext {
+      color: $font-subtle-color;
+      text-align: center;
+      margin-top: $l*2;
+      margin-bottom: ($l*2);
+      opacity: 0.6;
     }
 }
 
-.result {
-    display: block;
-    margin-bottom: $l * 2;
-    &__span {
-        color: $font-subtle-color;
-    }
-    &__aliases {
-    }
-    .media__label {
-        color: $primary;
-        border-color: $primary;
-    }
-    &__info {
-        display: none;
-    }
-    @include medium {
-        .media__text {
-            display: flex;
-            justify-content: space-between;
-        }
-        .result__info {
-            display: block;
-            text-align: right;
-        }
-    }
+.playercard {
+  &__flair {
+      display: none;
+      visibility: hidden;
+
+      @include medium {
+          display: inherit;
+          visibility: visible;
+      }
+  }
 }
