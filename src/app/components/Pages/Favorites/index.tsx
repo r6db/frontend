@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Link from "redux-first-router-link";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
@@ -74,4 +75,4 @@ const mapDispatchtoProps = (dispatch, state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchtoProps)(Favorites);
+export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Favorites));
