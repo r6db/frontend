@@ -69,6 +69,19 @@
             }
         }
         &.xAxis {
+            .recharts-cartesian-axis-tick {
+                visibility: hidden;
+                &:first-child {
+                    visibility: visible;
+                }
+                &:last-child {
+                    visibility: visible;
+                }
+
+                @include medium {
+                    visibility: visible;
+                }
+            }
             tspan {
                 font-size: 11px;
                 margin-top: 50px;
