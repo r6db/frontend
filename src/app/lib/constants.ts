@@ -15,7 +15,7 @@ const s7Cover = require("assets/backgrounds/bloodorchid1.jpg?sizes[]=300&sizes[]
 import s7Logo from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
 const s8Cover = require("assets/backgrounds/whitenoise1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s8Logo from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
-const s9Cover = require("assets/backgrounds/outbreak1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
+const s9Cover = require("assets/backgrounds/chimera2.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s9Logo from "assets/seasonlogos/R6-OPChimera-Horizontal.svg";
 
 export const appname = "r6db";

@@ -16,7 +16,7 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import Ad from "components/misc/Ad";
 import "./player.scss";
 
-import background from "assets/backgrounds/outbreak2.jpg";
+import background from "assets/backgrounds/chimera1.jpg";
 
 const dummyPlayer = {
     id: "0",
