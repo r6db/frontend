@@ -1,0 +1,43 @@
+@import "scss/styles";
+
+.app.FAVORITES {
+    .page__headcontent {
+        padding-bottom: $l * 2;
+    }
+    .page__content {
+        padding: ($l * 3) 0;
+    }
+    .ad {
+        max-height: $l * 15;
+        margin-bottom: $l * 2;
+    }
+}
+
+.favorites {
+    &__list {
+        width: 100%;
+
+        *:first-child {
+            margin-top: 0;
+        }
+    }
+    &__subtletext {
+      color: $font-subtle-color;
+      text-align: center;
+      margin-top: $l*2;
+      margin-bottom: ($l*2);
+      opacity: 0.6;
+    }
+}
+
+.playercard {
+  &__flair {
+      display: none;
+      visibility: hidden;
+
+      @include medium {
+          display: inherit;
+          visibility: visible;
+      }
+  }
+}

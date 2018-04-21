@@ -11,6 +11,7 @@ export default (state = false, action) => {
         case "PLAYER":
         case "FAQ":
         case "COMPARISON":
+        case "FAVORITES":
         case "MENU_CLOSE":
             return false;
         default:

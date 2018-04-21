@@ -8,7 +8,7 @@
         padding: ($l * 3) 0 $l;
     }
     .ad {
-        height: $l * 10;
+        max-height: $l * 15;
         margin-bottom: $l * 2;
     }
 }
@@ -33,34 +33,5 @@
     }
     &__result {
         color: $font-color;
-    }
-}
-
-.result {
-    display: block;
-    margin-bottom: $l;
-
-    &__span {
-        color: $font-subtle-color;
-    }
-    &__aliases {
-    }
-    .media__label {
-        color: $primary;
-        border-color: $primary;
-    }
-    &__info {
-        display: none;
-    }
-    @include medium {
-        margin-bottom: $l * 2;
-        .media__text {
-            display: flex;
-            justify-content: space-between;
-        }
-        .result__info {
-            display: block;
-            text-align: right;
-        }
     }
 }

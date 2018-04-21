@@ -16,7 +16,7 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import Ad from "components/misc/Ad";
 import "./player.scss";
 
-import background from "assets/backgrounds/outbreak2.jpg";
+import background from "assets/backgrounds/chimera1.jpg";
 
 const dummyPlayer = {
     id: "0",
@@ -24,7 +24,8 @@ const dummyPlayer = {
     name: "",
     platform: "",
     level: 0,
-    placements: { global: null }
+    placements: { global: null },
+    isFavorite: null,
 }
 
 function getPlayerSchema(player) {
@@ -92,18 +93,20 @@ function Player(props) {
 }
 
 const mapStateToProps = state => {
-    const { platform, loading, players, location: { payload } } = state;
+    const { platform, isFavorite, favorites, loading, players, location: { payload } } = state;
 
     return {
         data: players[payload.id],
         tab: payload.tab || "summary",
         loading,
         platform,
+        isFavorite: favorites.includes(payload.id),
+        favorites
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
-        updatePlayer: id => dispatch(updatePlayer(id)),
+        updatePlayer: id => dispatch(updatePlayer(id))
     };
 };
 export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Player));

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import Result from "./Result";
+import Result from "components/misc/Playercard";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
 import Ad from "components/misc/Ad";
@@ -8,11 +8,13 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import { connect } from "react-redux";
 import "./search.scss";
 
+import { GLYPHS } from "components/misc/Icon";
+
 function Search(props) {
     return (
         <Page className="search">
             <PageHead>
-                <div className="container">
+                <div className="container container--small">
                     <div className="header">
                         Search {props.search}
                         <span className="search__resultcount header header--small header--subtle">

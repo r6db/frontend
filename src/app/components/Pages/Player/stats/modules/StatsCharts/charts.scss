@@ -2,9 +2,15 @@
 
 .playermodule.charts {
     padding: 0 $l;
-    
+
     .chart {
         margin-top: $l;
+
+        &__header {
+            @include card-header;
+            padding-left: 0;
+            margin-bottom: $l;
+        }
     }
     .row {
         flex-direction: column;

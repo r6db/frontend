@@ -10,8 +10,13 @@ import USERS from "feather-icons/dist/icons/users.svg";
 import LIST from "feather-icons/dist/icons/list.svg";
 import HELP from "feather-icons/dist/icons/help-circle.svg";
 import STAR from "feather-icons/dist/icons/star.svg";
+import REFRESH from "assets/refresh.svg";
 import SETTINGS from "feather-icons/dist/icons/settings.svg";
 import MENU from "feather-icons/dist/icons/menu.svg";
+import CHEVRONUP from "feather-icons/dist/icons/chevron-up.svg";
+import CHEVRONDOWN from "feather-icons/dist/icons/chevron-down.svg";
+import CLOSE from "feather-icons/dist/icons/x.svg";
+import STARFULL from "assets/starfull.svg"
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -80,7 +85,7 @@ import ZOFIA from "assets/operators/zofia.svg";
 import LION from "assets/operators/lion.svg";
 import FINKA from "assets/operators/finka.svg";
 
-import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg"
+import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg";
 import LOGOS1 from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
 import LOGOS2 from "assets/seasonlogos/R6-OPDustLine-Horizontal.svg";
 import LOGOS3 from "assets/seasonlogos/R6-OPSkullRain-Horizontal.svg";
@@ -99,6 +104,8 @@ export default props =>
             preserveAspectRatio={props.preserveAspectRatio}
             fill={props.fill}
             stroke={props.stroke}
+            width={props.width}
+            height={props.height}
         >
             <use xlinkHref={props.glyph} />
         </svg>
@@ -121,8 +128,13 @@ export const GLYPHS = {
     LIST,
     HELP,
     STAR,
+    STARFULL,
+    REFRESH,
     SETTINGS,
     MENU,
+    CHEVRONUP,
+    CHEVRONDOWN,
+    CLOSE,
     RANK0,
     RANK1,
     RANK2,

@@ -18,6 +18,25 @@
             flex-direction: column;
         }
     }
+    .tooltip {
+        background-color: darken($bg-color, 2%);
+        padding: $l;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        &__box {
+            margin-left: $l;
+        }
+        &__name {
+            font-size: $font-bigger;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        &__value,
+        &__percentage {
+            color: $font-subtle-color;
+        }
+    }
     .recharts-default-tooltip {
         background: lighten($bg-color, 5%) !important;
         border: lighten($bg-color, 2%) !important;

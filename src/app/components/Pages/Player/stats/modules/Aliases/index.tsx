@@ -1,5 +1,6 @@
 import * as React from "react";
 import Alias from "./Alias";
+import Icon, { GLYPHS } from "components/misc/Icon";
 import "./aliases.scss";
 
 const NUM_VISIBLE_ALIASES = 5;
@@ -27,13 +28,19 @@ export default class Aliases extends React.Component<any, any> {
                         {aliases.map(x => <Alias key={x.name + x.created_at} alias={x} />)}
                     </div>
                     { canExpand
-                        ? (
-                            <button
-                                className="aliases__expand"    
-                                onClick={() => this.toggleExpand()}
-                            >
-                                {this.state.expanded ? 'less' : 'more'}
-                            </button>
+                        ? ( this.state.expanded
+                                ?  <button
+                                    className="aliases__expand"
+                                    onClick={() => this.toggleExpand()}
+                                   >
+                                      <Icon glyph={GLYPHS.CHEVRONUP} /> Show less
+                                  </button>
+                                : <button
+                                    className="aliases__expand"
+                                    onClick={() => this.toggleExpand()}
+                                   >
+                                      <Icon glyph={GLYPHS.CHEVRONDOWN} /> Show more
+                                  </button>
                         )
                         : null}
                 </div>
