@@ -32,7 +32,8 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
-        &__value {
+        &__value,
+        &__percentage {
             color: $font-subtle-color;
         }
     }

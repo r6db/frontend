@@ -48,7 +48,7 @@ class CustomizedTooltip extends React.Component<any, any> {
                 <Icon width="50" height="50" glyph={GLYPHS["RANK" + label]} />
                 <div className="tooltip__box">
                     <div className="tooltip__name">{RANKS[label]}</div>
-                    <div className="tooltip__value">{payload[0].value} players</div>
+                    <div className="tooltip__value">{payload[0].value} players ({payload[0].payload.perc.toFixed(2)}%)</div>
                 </div>
             </div>
             );
@@ -63,11 +63,18 @@ export default class LeaderboardChart extends React.PureComponent<any, any> {
         if (!this.props.data) {
             return <div className="leaderboard charts" />;
         }
+
+        const total = this.props.data
+            .reduce((acc, curr)=> acc + curr.amount , 0);
+
         const data = this.props.data
-            .map(datum => {
-                return { name: datum.rank, value: datum.amount };
-            })
+            .map(datum  =>
+                  ({ name: datum.rank,
+                    value: datum.amount,
+                     perc: (datum.amount*100)/total}
+                  ))
             .filter(x => x.name !== 0);
+
         return (
             <div className="leaderboard charts">
                 <div className="row">
