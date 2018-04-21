@@ -68,7 +68,7 @@ export default function Result(props: IResultProps) {
             <div className="playercard__user">
                 <div className="playercard__namebox">
                     <span className="playercard__name">{props.player.name}</span>
-                    {props.player.flair ? <span className="playercard__flair hidden-small">{props.player.flair}</span> : ""}
+                    {props.player.flair ? <span className="playercard__flair">{props.player.flair}</span> : ""}
                 </div>
                 <div className="playercard__aliases">{getAliases(props.player)}</div>
             </div>
