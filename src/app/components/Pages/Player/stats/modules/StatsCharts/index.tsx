@@ -133,7 +133,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                             <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                             <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
                             <Legend align="right" verticalAlign="bottom" />
-                            <Area
+                            {this.props.rank.emea.rank ? <Area
                                 isAnimationActive={false}    
                                 type="monotone"
                                 connectNulls
@@ -142,8 +142,8 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                 fill="url(#colorEMEA)"
                                 dot={true}
                                 stroke={colors.red}
-                            />
-                            <Area
+                            /> : null}
+                            {this.props.rank.ncsa.rank ? <Area
                                 isAnimationActive={false} 
                                 type="monotone"
                                 connectNulls
@@ -152,8 +152,8 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                 fill="url(#colorNCSA)"
                                 dot={true}
                                 stroke={colors.blue}
-                            />
-                            <Area
+                            /> : null}
+                            {this.props.rank.apac.rank ? <Area
                                 isAnimationActive={false} 
                                 type="monotone"
                                 connectNulls
@@ -162,7 +162,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                 fill="url(#colorAPAC)"
                                 dot={true}
                                 stroke={colors.green}
-                            />
+                            /> : null}
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
