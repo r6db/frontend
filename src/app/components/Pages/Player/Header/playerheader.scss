@@ -186,24 +186,9 @@
         }
     }
     &__tabs {
-        margin: ($l*2.5) $l 0 $l;
         display: flex;
-        justify-content:center;
-
-        @include medium {
-            margin: ($l*5) $l 0 $l;
-        }
-
-        .container {
-            display: flex;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-            flex-direction: row;
-            justify-content: flex-start;
-            padding-left: 0;
-            padding-right: 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05s);
-        }
+        margin-top: $l*3;
+        border-bottom: 1px solid rgba(255,255,255,0.05s);
     }
     &__tab {
         flex: 1;

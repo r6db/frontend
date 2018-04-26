@@ -6,7 +6,7 @@ import "./topbar.scss";
 export default function Topbar(props) {
     return (
         <div className="topbar">
-            <div className="topbar__container">
+            <div className="topbar__container container">
                 <button onClick={props.onBurgerClick} className="topbar__burger">
                     <Icon className="topbar__icon" glyph={GLYPHS.MENU} />
                 </button>
