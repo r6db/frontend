@@ -41,15 +41,8 @@
         font-weight: 600;
     }
     &__flair {
-        padding: 0.25rem 0.75rem;
-        border-radius: $l*2;
-        border: 1px solid $primary;
-        color: $primary;
+        @include flair;
         font-size: 0.75rem;
-        font-weight: 700;
-        vertical-align: middle;
-        line-height: 1.3;
-        margin-left: $l;
     }
     &__aliases {
         opacity: 0.75;

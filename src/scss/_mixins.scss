@@ -49,6 +49,17 @@
     box-shadow: 0 2px 4px $gray-dark;
 }
 
+@mixin flair {
+    padding: 0.25rem 0.85rem;
+    border-radius: $l*2;
+    border: 1px solid $primary;
+    color: $primary;
+    font-weight: 700;
+    vertical-align: middle;
+    line-height: 1.3;
+    margin-left: $l;
+}
+
 @mixin small {
     @content;
 }
