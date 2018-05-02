@@ -36,6 +36,7 @@
         margin: 0 auto;
         align-items: center;
         justify-content: space-between;
+        padding-left: 0 !important;
     }
 
     &__burger {
@@ -53,7 +54,6 @@
     }
     &__search {
         margin: 0;
-        margin-right: $l * 1;
         background: rgba(darken($bg-color, 5%), 0.9);
         flex: 0 auto;
         max-width: none;

@@ -3,11 +3,9 @@
 .statstab {
     display: flex;
     flex-direction: column;
-    padding: 0 $l;
 
     @include large {
         flex-direction: row;
-        padding: 0;
 
         &__sidebar {
             flex: 1.4;

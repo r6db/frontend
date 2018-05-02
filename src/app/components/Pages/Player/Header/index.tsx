@@ -42,73 +42,73 @@ class PlayerHeader extends React.PureComponent<any, any> {
     render() {
         return (
             <div className="playerheader">
-                <div className="playerheader__content container">
-                    <div className="playerheader__image">
-                        <FadeImage src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)} />
-                    </div>
-                    <div className="playerheader__info">
-                        <header className="header playerheader__namebox">
-                            <div className="playerheader__namewrapper">
-                                <span className="playerheader__name">{this.props.name}</span>
-                                <span className="playerheader__platform">{this.props.platform}</span>
-                            </div>
-                            {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
-                        </header>
-                        <div className="playerheader__level">
-                            {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) : "-"}{" "}
-                            global / lvl {this.props.level}
+                <div className="playerheader__container container">
+                    <div className="playerheader__content">
+                        <div className="playerheader__image">
+                            <FadeImage src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)} />
                         </div>
-                        <div className="playerheader__links">
-                            <a
-                                className="playerheader__link"
-                                href={domain.getUbiLink(this.props.userId || this.props.id, this.props.platform)}
-                                target="_BLANK"
-                            >
-                                <Icon glyph={GLYPHS.UBI} /> Ubisoft
-                            </a>
-                            <a className="playerheader__link" href={domain.getEslLink(this.props.name)} target="_BLANK">
-                                <Icon glyph={GLYPHS.ESL} /> ESL
-                            </a>
-                            {exportButton(this.props)}
-                            <div className="hidden-small">
-                                <span className="playerheader__divider">|</span>
-                                <Link className="playerheader__link" to={toSimple(this.props.id)}>
-                                    Simple View
-                                </Link>
+                        <div className="playerheader__info">
+                            <header className="header playerheader__namebox">
+                                <div className="playerheader__namewrapper">
+                                    <span className="playerheader__name">{this.props.name}</span>
+                                    <span className="playerheader__platform">{this.props.platform}</span>
+                                </div>
+                                {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
+                            </header>
+                            <div className="playerheader__level">
+                                {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) : "-"}{" "}
+                                global / lvl {this.props.level}
+                            </div>
+                            <div className="playerheader__links">
+                                <a
+                                    className="playerheader__link"
+                                    href={domain.getUbiLink(this.props.userId || this.props.id, this.props.platform)}
+                                    target="_BLANK"
+                                >
+                                    <Icon glyph={GLYPHS.UBI} /> Ubisoft
+                                </a>
+                                <a className="playerheader__link" href={domain.getEslLink(this.props.name)} target="_BLANK">
+                                    <Icon glyph={GLYPHS.ESL} /> ESL
+                                </a>
+                                {exportButton(this.props)}
+                                <div className="hidden-small">
+                                    <span className="playerheader__divider">|</span>
+                                    <Link className="playerheader__link" to={toSimple(this.props.id)}>
+                                        Simple View
+                                    </Link>
+                                </div>
                             </div>
                         </div>
+                        <div className="playerheader__buttons">
+                            {this.props.updateAvailableAt > new Date() ? (
+                                <button className="button playerheader__button button--outline" disabled>
+                                    available {this.props.updateAvailableAt.toLocaleTimeString()}
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => this.props.updatePlayer(this.props.id)}
+                                    className="button playerheader__button button--outline--accent"
+                                >
+                                    <Icon glyph={GLYPHS.REFRESH} /> update
+                                </button>
+                            )}
+                            {this.props.isFavorite
+                                ? <button
+                                      onClick={() => this.props.unfavoritePlayer(this.props.id)}
+                                      className="button playerheader__button button--outline--primary active"
+                                  >
+                                    <Icon glyph={GLYPHS.STARFULL} /> favorite
+                                  </button>
+                                : <button
+                                      onClick={() => this.props.favoritePlayer(this.props.id)}
+                                      className="button playerheader__button button--outline--subtile"
+                                  >
+                                    <Icon glyph={GLYPHS.STAR} /> favorite
+                                  </button>
+                            }
+                        </div>
                     </div>
-                    <div className="playerheader__buttons">
-                        {this.props.updateAvailableAt > new Date() ? (
-                            <button className="button playerheader__button button--outline" disabled>
-                                available {this.props.updateAvailableAt.toLocaleTimeString()}
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => this.props.updatePlayer(this.props.id)}
-                                className="button playerheader__button button--outline--accent"
-                            >
-                                <Icon glyph={GLYPHS.REFRESH} /> update
-                            </button>
-                        )}
-                        {this.props.isFavorite
-                            ? <button
-                                  onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                  className="button playerheader__button button--outline--primary active"
-                              >
-                                <Icon glyph={GLYPHS.STARFULL} /> favorite
-                              </button>
-                            : <button
-                                  onClick={() => this.props.favoritePlayer(this.props.id)}
-                                  className="button playerheader__button button--outline--subtile"
-                              >
-                                <Icon glyph={GLYPHS.STAR} /> favorite
-                              </button>
-                        }
-                    </div>
-                </div>
-                <div className="playerheader__tabs">
-                    <div className="container">
+                    <div className="playerheader__tabs">
                         <Link
                             className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
                             to={toPlayerTab(this.props.id, "summary")}
