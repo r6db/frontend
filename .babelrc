@@ -6,7 +6,12 @@
                 "modules": false,
                 "loose": true,
                 "targets": {
-                    "browsers": [">1%", "Safari >= 10", "Chrome 41"]
+                    "browsers": [
+                        "last 2 versions",
+                        "not < 1%",
+                        "Safari >= 10",
+                        "Chrome 41"
+                    ]
                 },
                 "useBuiltIns": "entry"
             }
