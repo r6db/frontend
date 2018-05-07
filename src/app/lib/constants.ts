@@ -17,6 +17,8 @@ const s8Cover = require("assets/backgrounds/whitenoise1.jpg?sizes[]=300&sizes[]=
 import s8Logo from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
 const s9Cover = require("assets/backgrounds/chimera2.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s9Logo from "assets/seasonlogos/R6-OPChimera-Horizontal.svg";
+const s10Cover = require("assets/backgrounds/landing.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w"); //needs background images
+import s10Logo from "assets/seasonlogos/R6-OPParaBellum-Horizontal.svg";
 
 export const appname = "r6db";
 export const appid = "5e23d930-edd3-4240-b9a9-723c673fb649";
@@ -178,6 +180,15 @@ export const SEASONS: ISeason[] = [
         dateEnd: null,
         cover: s9Cover,
         logo: s9Logo,
+    },
+    {
+        id: 10,
+        fullId: "Y3S2",
+        name: "Para Bellum",
+        dateStart: null,
+        dateEnd: null,
+        cover: s10Cover,
+        logo: s10Logo,
     },
 ];
 
