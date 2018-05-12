@@ -1,0 +1,44 @@
+@import "scss/styles";
+
+.delete {
+    color: $white;
+
+    &--initial {
+        canvas {
+            height: 0;
+            margin: 0;
+        }
+    }
+    &__step {
+        margin-bottom: $l * 2;
+        line-height: 2;
+    }
+
+    &__intro {
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0.06em;
+        margin-bottom: $l * 4;
+        border-left: 2px solid $primary;
+        padding: $l;
+    }
+    &__input {
+        width: 100%;
+        color: $white;
+        background: rgba(darken($bg-color, 4%), 0.85);
+        margin: $l 0;
+        border-radius: $borderradius;
+    }
+    canvas {
+        margin-bottom: $l * 2;
+    }
+    &__postqr {
+        a {
+            color: $accent;
+        }
+    }
+    &__check {
+        margin-left: $l;
+        color: $white;
+    }
+}

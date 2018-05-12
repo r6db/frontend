@@ -1,13 +1,15 @@
 .button {
     padding: 0.75em 1.25em;
     background: $gray;
-    color: $white;
+    width: auto;
     border: 1px solid $gray;
     border-radius: $borderradius;
+    color: $white;
+    text-align: center;
     font-size: $font-default;
     font-weight: 600;
     cursor: pointer;
-    width: auto;
+
     &[disabled] {
         color: $gray;
         cursor: default;

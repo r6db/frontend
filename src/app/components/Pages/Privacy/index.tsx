@@ -109,8 +109,7 @@ function Privacy(props) {
                         Identifiable Information from children under the age of
                         13. If you think that your child provided this kind of
                         information on our website, we strongly encourage you to
-                        contact us immediately and we will promptly remove all
-                        information and blacklist the account.
+                        <a href="/delete">delete and blacklist the Account</a>
                     </p>
                     <h2>Online Privacy Policy Only</h2>
                     <p>

@@ -17,7 +17,7 @@ import "./base.scss";
 const makeAsync = loader =>
     Loadable({
         loader,
-        loading: Loading,
+        loading: Loading
     });
 
 const pageMap = {
@@ -34,8 +34,9 @@ const pageMap = {
     ABOUT: makeAsync(() => import("./Pages/About")),
     SETTINGS: makeAsync(() => import("./Pages/Settings")),
     PRIVACY: makeAsync(() => import("./Pages/Privacy")),
+    DELETE: makeAsync(() => import("./Pages/Delete")),
     SERVERFAULT: makeAsync(() => import("./Pages/Errors/ServerFault")),
-    [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound")),
+    [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound"))
 };
 
 pageMap.PLAYER.preload();
@@ -62,13 +63,13 @@ function mapStateToProps(state) {
         location: location.type,
         Component: pageMap[location.type],
         loading,
-        platform,
+        platform
     };
 }
 
 function mapDispatchToProps(dispatch, state) {
     return {
-        toggleMenu: () => dispatch({ type: "MENU_TOGGLE" }),
+        toggleMenu: () => dispatch({ type: "MENU_TOGGLE" })
     };
 }
 const Comp = connect(mapStateToProps, mapDispatchToProps)(Layout);

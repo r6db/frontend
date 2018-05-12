@@ -51,6 +51,9 @@ export default {
     PRIVACY: {
         path: "/privacy"
     },
+    DELETE: {
+        path: "/delete"
+    },
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
