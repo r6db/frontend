@@ -1,4 +1,33 @@
 @import "scss/styles";
 
 .settings {
+    &__list {
+        max-width: $screen-medium;
+        margin: 0 auto;
+    }
+}
+
+.setting {
+    margin-bottom: $l * 2;
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+
+        @include medium {
+            flex-direction: row;
+        }
+    }
+
+    &__input {
+        flex: 0 0 auto;
+    }
+    &__title {
+        flex: 1 1 auto;
+        font-size: 1.25em;
+    }
+    &__description {
+        margin-top: $l;
+        line-height: 1.4;
+    }
 }

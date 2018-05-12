@@ -39,18 +39,18 @@ export const LEADERBOARDS = {
     APAC: {
         id: "APAC",
         board: "apac_skill_adjusted",
-        label: "Asia & Pacific Area",
+        label: "Asia & Pacific Area"
     },
     EMEA: {
         id: "EMEA",
         board: "emea_skill_adjusted",
-        label: "Europe, Africa & Middle East",
+        label: "Europe, Africa & Middle East"
     },
     NCSA: {
         id: "NCSA",
         board: "ncsa_skill_adjusted",
-        label: "North, Central and South America",
-    },
+        label: "North, Central and South America"
+    }
 };
 
 /**
@@ -78,7 +78,7 @@ export const RANKS = [
     "Platinum 3",
     "Platinum 2",
     "Platinum 1",
-    "Diamond",
+    "Diamond"
 ];
 
 interface ISeason {
@@ -98,7 +98,7 @@ export const SEASONS: ISeason[] = [
         dateStart: new Date("2016-12-01"),
         dateEnd: new Date("2017-02-01"),
         cover: null,
-        logo: s0Logo,
+        logo: s0Logo
     },
     {
         id: 1,
@@ -107,7 +107,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s1Cover,
-        logo: s1Logo,
+        logo: s1Logo
     },
     {
         id: 2,
@@ -116,7 +116,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s2Cover,
-        logo: s2Logo,
+        logo: s2Logo
     },
     {
         id: 3,
@@ -125,7 +125,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s3Cover,
-        logo: s3Logo,
+        logo: s3Logo
     },
     {
         id: 4,
@@ -134,7 +134,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s4Cover,
-        logo: s4Logo,
+        logo: s4Logo
     },
     {
         id: 5,
@@ -143,7 +143,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s5Cover,
-        logo: s5Logo,
+        logo: s5Logo
     },
     {
         id: 6,
@@ -152,7 +152,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s6Cover,
-        logo: s6Logo,
+        logo: s6Logo
     },
     {
         id: 7,
@@ -161,7 +161,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s7Cover,
-        logo: s7Logo,
+        logo: s7Logo
     },
     {
         id: 8,
@@ -170,7 +170,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s8Cover,
-        logo: s8Logo,
+        logo: s8Logo
     },
     {
         id: 9,
@@ -179,7 +179,7 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s9Cover,
-        logo: s9Logo,
+        logo: s9Logo
     },
     {
         id: 10,
@@ -188,8 +188,8 @@ export const SEASONS: ISeason[] = [
         dateStart: null,
         dateEnd: null,
         cover: s10Cover,
-        logo: s10Logo,
-    },
+        logo: s10Logo
+    }
 ];
 
 export const OPERATORS = {
@@ -230,17 +230,17 @@ export const OPERATORS = {
     vigil: { name: "Vigil", side: "Defense", unit: "SMB" },
     zofia: { name: "Zofia", side: "Attack", unit: "GROM" },
     lion: { name: "Lion", side: "Attack", unit: "CBRN" },
-    finka: { name: "Finka", side: "Attack", unit: "CBRN" },
+    finka: { name: "Finka", side: "Attack", unit: "CBRN" }
 };
 
 export const REGIONS = {
     emea: "Europe",
     ncsa: "America",
-    apac: "Asia",
+    apac: "Asia"
 };
 
 export const ADCONFIG = {
     client: "ca-pub-4708879883364551",
     defaultSlot: "6650835115",
-    defaultFormat: "auto",
+    defaultFormat: "auto"
 };

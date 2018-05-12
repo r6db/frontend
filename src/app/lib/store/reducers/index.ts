@@ -9,3 +9,4 @@ export { default as platform } from "./platform";
 export { default as menu } from "./menu";
 export { default as community } from "./community";
 export { default as favorites } from "./favorites";
+export { default as settings } from "./settings";
