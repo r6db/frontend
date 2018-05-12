@@ -7,24 +7,24 @@ export default {
     HOME: {
         path: "/",
         thunk: (dispatch, getState) => {
-            const { location, favorites } = getState()
+            const { location, favorites } = getState();
             analytics.pageView("Home");
             setMeta({
                 title: `Home`,
                 description: `Find any player in Rainbow Six: Siege`,
             });
             api
-               .getPlayers(favorites)
-               .then(x => dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) }))
-               .catch(err => {
-                   if (err.message === "SERVERFAULT") {
-                       return dispatch(redirect({ type: "SERVERFAULT" }));
-                   }
-                   dispatch({
-                       type: "PLAYERS_FAILED",
-                   });
-                   throw err;
-               });
+                .getPlayers(favorites)
+                .then(x => dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) }))
+                .catch(err => {
+                    if (err.message === "SERVERFAULT") {
+                        return dispatch(redirect({ type: "SERVERFAULT" }));
+                    }
+                    dispatch({
+                        type: "PLAYERS_FAILED",
+                    });
+                    throw err;
+                });
         },
     },
     ABOUT: {
@@ -39,6 +39,12 @@ export default {
     },
     SERVERFAULT: {
         path: "/rip",
+    },
+    SETTINGS: {
+        path: "/settings",
+    },
+    PRIVACY: {
+        path: "/privacy",
     },
     SEARCH: {
         path: "/search/:platform/:query",
@@ -121,7 +127,9 @@ export default {
                 .then(entries => {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
-                        description: `See the top 100 players in Rainbow Six: Siege (${lbConfig.label})  in order of skill rating`,
+                        description: `See the top 100 players in Rainbow Six: Siege (${
+                            lbConfig.label
+                        })  in order of skill rating`,
                     });
                     analytics.pageView("Leaderboard");
                     dispatch({
@@ -197,24 +205,24 @@ export default {
     FAVORITES: {
         path: "/favorites",
         thunk: (dispatch, getState) => {
-            const { location, favorites } = getState()
+            const { location, favorites } = getState();
             analytics.pageView("Favorites");
             setMeta({
                 title: `Favorites`,
                 description: `Easy access to your favorite players`,
             });
             api
-               .getPlayers(favorites)
-               .then(x => dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) }))
-               .catch(err => {
-                   if (err.message === "SERVERFAULT") {
-                       return dispatch(redirect({ type: "SERVERFAULT" }));
-                   }
-                   dispatch({
-                       type: "PLAYERS_FAILED",
-                   });
-                   throw err;
-               });
+                .getPlayers(favorites)
+                .then(x => dispatch({ type: "PLAYERS_FETCHED", payload: x.map(p => ({ id: p.id, player: p })) }))
+                .catch(err => {
+                    if (err.message === "SERVERFAULT") {
+                        return dispatch(redirect({ type: "SERVERFAULT" }));
+                    }
+                    dispatch({
+                        type: "PLAYERS_FAILED",
+                    });
+                    throw err;
+                });
         },
     },
 };
@@ -226,23 +234,28 @@ async function playerThunk(dispatch, getState) {
         .getPlayer(id, { platform })
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
-            analytics.pageView("Player", `/player/:id/${tab || ''}`);
+            analytics.pageView("Player", `/player/:id/${tab || ""}`);
             if (!player.flags.noAliases) {
                 let description = `Rainbow Six: Siege stats for ${player.name} (${player.platform})`;
-                let extra = '';
-                const placements = [{
-                    region: 'the world',
-                    place: player.placements.global
-                }, {
-                    region: LEADERBOARDS.APAC.label,
-                    place: player.placements.apac
-                }, {
-                    region: LEADERBOARDS.EMEA.label,
-                    place: player.placements.emea
-                }, {
-                    region: LEADERBOARDS.NCSA.label,
-                    place: player.placements.ncsa
-                }];
+                let extra = "";
+                const placements = [
+                    {
+                        region: "the world",
+                        place: player.placements.global,
+                    },
+                    {
+                        region: LEADERBOARDS.APAC.label,
+                        place: player.placements.apac,
+                    },
+                    {
+                        region: LEADERBOARDS.EMEA.label,
+                        place: player.placements.emea,
+                    },
+                    {
+                        region: LEADERBOARDS.NCSA.label,
+                        place: player.placements.ncsa,
+                    },
+                ];
                 const highestRegion = placements
                     .filter(x => Number.isInteger(x.place))
                     .filter(x => x !== null)

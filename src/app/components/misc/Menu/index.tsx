@@ -11,7 +11,7 @@ const Menu = props => (
             <Icon glyph={GLYPHS.LOGO} />
         </Link>
 
-        <div className="menu__divider"></div>
+        <div className="menu__divider" />
 
         <div className="menu__section menu__links menu__section--primary">
             <Link to="/" className="menu__item">
@@ -34,42 +34,43 @@ const Menu = props => (
             </Link>
         </div>
 
-        <div className="menu__divider"></div>
+        <div className="menu__divider" />
 
         <div className="menu__section menu__links menu__section--secondary">
-          <Link to="/faq" className="menu__item">
-              <Icon className="menu__icon" glyph={GLYPHS.HELP} />
-              FAQ
-          </Link>
-          <a href="http://apidocs.r6db.com/" rel="noopener" target="_BLANK" className="menu__item">
-              <Icon className="menu__icon" glyph={GLYPHS.SETTINGS} />
-              API
-          </a>
+            <Link to="/faq" className="menu__item">
+                FAQ
+            </Link>
+            <a href="http://apidocs.r6db.com/" rel="noopener" target="_BLANK" className="menu__item">
+                API
+            </a>
+            <Link to="/settings" className="menu__item">
+                Settings
+            </Link>
+            <Link to="/privacy" className="menu__item">
+                Privacy policy
+            </Link>
         </div>
 
-        <div className="menu__divider"></div>
+        <div className="menu__divider" />
 
         <div className="menu__section menu__sublinks">
-          <a href="https://twitter.com/Rainbow6_DB" rel="noopener" target="_BLANK" className="menu__item">
-              <Icon className="menu__icon" glyph={GLYPHS.TWITTER} />
-          </a>
-          <a href="mailto:info@r6db.com" rel="noopener" target="_BLANK" className="menu__item">
-              <Icon className="menu__icon" glyph={GLYPHS.EMAIL} />
-          </a>
-          <a href="https://discord.gg/xyMTkXm" rel="noopener" target="_BLANK" className="menu__item">
-              <Icon className="menu__icon" glyph={GLYPHS.DISCORD} />
-          </a>
-          <a href="https://github.com/r6db" rel="noopener" target="_BLANK" className="menu__item">
-              <Icon className="menu__icon" glyph={GLYPHS.GITHUB} />
-          </a>
+            <a href="https://twitter.com/Rainbow6_DB" rel="noopener" target="_BLANK" className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.TWITTER} />
+            </a>
+            <a href="mailto:info@r6db.com" rel="noopener" target="_BLANK" className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.EMAIL} />
+            </a>
+            <a href="https://discord.gg/xyMTkXm" rel="noopener" target="_BLANK" className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.DISCORD} />
+            </a>
+            <a href="https://github.com/r6db" rel="noopener" target="_BLANK" className="menu__item">
+                <Icon className="menu__icon" glyph={GLYPHS.GITHUB} />
+            </a>
         </div>
 
-        <div className="menu__divider"></div>
+        <div className="menu__divider" />
 
-        <div className="menu__copyright">
-            This site is not affiliated with Ubisoft Entertainment.
-        </div>
-
+        <div className="menu__copyright">This site is not affiliated with Ubisoft Entertainment.</div>
     </div>
 );
 
