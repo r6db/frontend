@@ -25,20 +25,23 @@ const dummyPlayer = {
     platform: "",
     level: 0,
     placements: { global: null },
-    isFavorite: null,
-}
+    isFavorite: null
+};
 
 function getPlayerSchema(player) {
-    return JSON.stringify({
-        "@context": "http://schema.org",
-        "@type": "Person",
-        "name": player.name,
-        "url": `https://r6db.com/player/${player.id}`,
-        "identifier": `https://r6db.com/player/${player.id}`,
-        "image": getImageLink(player.userId || player.id , player.platform)
-    }, null, 4);
+    return JSON.stringify(
+        {
+            "@context": "http://schema.org",
+            "@type": "Person",
+            name: player.name,
+            url: `https://r6db.com/player/${player.id}`,
+            identifier: `https://r6db.com/player/${player.id}`,
+            image: getImageLink(player.userId || player.id, player.platform)
+        },
+        null,
+        4
+    );
 }
-
 
 function Player(props) {
     if (props.loading) {
@@ -78,13 +81,19 @@ function Player(props) {
                 </PageHead>
                 <PageContent>
                     <script type="application/ld+json">
-                    {getPlayerSchema(props.data)}
+                        {getPlayerSchema(props.data)}
                     </script>
                     <div className="container player__tab">
-                        <Ad />
-                        {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
-                        {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
-                        {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}
+                        <Ad hidden={window.innerWidth < 800} />
+                        {props.tab === "summary" ? (
+                            <StatsTab key="summary" {...props.data} />
+                        ) : null}
+                        {props.tab === "ops" ? (
+                            <OperatorsTab key="ops" {...props.data} />
+                        ) : null}
+                        {props.tab === "ranks" ? (
+                            <RanksTab key="ranks" {...props.data} />
+                        ) : null}
                     </div>
                 </PageContent>
             </Page>
@@ -93,7 +102,14 @@ function Player(props) {
 }
 
 const mapStateToProps = state => {
-    const { platform, isFavorite, favorites, loading, players, location: { payload } } = state;
+    const {
+        platform,
+        isFavorite,
+        favorites,
+        loading,
+        players,
+        location: { payload }
+    } = state;
 
     return {
         data: players[payload.id],
@@ -109,4 +125,6 @@ const mapDispatchtoProps = (dispatch, state) => {
         updatePlayer: id => dispatch(updatePlayer(id))
     };
 };
-export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Player));
+export default hot(module)(
+    connect(mapStateToProps, mapDispatchtoProps)(Player)
+);
