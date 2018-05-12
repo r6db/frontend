@@ -73,9 +73,13 @@ class Delete extends React.Component<{}, IDeleteState> {
                     <div className="container container--small">
                         <p className="delete__intro">
                             We need to make sure that only the account owner can
-                            delete his data. <br />
-                            Please follow the steps below to validate ownership
-                            and trigger deletion.
+                            delete his data. Please follow the steps below to
+                            validate ownership and trigger deletion. Do note,
+                            that the deletion process is final and irreversible.
+                            <em>
+                                We do *not* support re-adding a profile that has
+                                been blacklisted.
+                            </em>
                         </p>
                         <div className="delete__step">
                             <p>1. enter the link to your r6db profile</p>
@@ -96,10 +100,12 @@ class Delete extends React.Component<{}, IDeleteState> {
                                     visiting the{" "}
                                     <a href="https://club.ubisoft.com">
                                         Ubisoft Club
-                                    </a>. After that, please click the button
-                                    below. Once the code is validated, the
-                                    server will delete the profile and blacklist
-                                    it from re-indexing.
+                                    </a>. Console users might need to connect
+                                    their account on the{" "}
+                                    <a href="https://account.ubisoft.com">
+                                        Ubisoft Accounts
+                                    </a>{" "}
+                                    page first.
                                 </p>
                                 <p className="delete__step">
                                     3. check the code:
@@ -111,6 +117,10 @@ class Delete extends React.Component<{}, IDeleteState> {
                                     >
                                         check
                                     </button>
+                                </p>
+                                <p className="delete__step">
+                                    4. once the profile is gone, you can change
+                                    your avatar back so your desired picture.
                                 </p>
                             </>
                         ) : null}

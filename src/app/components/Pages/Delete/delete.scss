@@ -19,8 +19,8 @@
         line-height: 1.4;
         letter-spacing: 0.06em;
         margin-bottom: $l * 4;
-        border-left: 2px solid $primary;
         padding: $l;
+        white-space: pre-line;
     }
     &__input {
         width: 100%;
