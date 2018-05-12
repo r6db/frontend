@@ -10,10 +10,25 @@
         }
     }
     &__step {
-        margin-bottom: $l * 2;
-        line-height: 2;
+        padding: 1em;
+        margin-bottom: 1.5em;
+        color: rgba($white, 0.6);
     }
-
+    &__title {
+        color: $white;
+        border-left: 2px solid $accent;
+        padding-left: 1em;
+        line-height: 2;
+        span {
+            display: block;
+            color: $accent;
+            font-size: $font-big;
+        }
+    }
+    &__qrcode {
+        display: flex;
+        align-items: center;
+    }
     &__intro {
         font-weight: 600;
         line-height: 1.4;
@@ -26,11 +41,13 @@
         width: 100%;
         color: $white;
         background: rgba(darken($bg-color, 4%), 0.85);
-        margin: $l 0;
+        margin: 1em 0;
+        padding: 1em 1em;
         border-radius: $borderradius;
     }
     canvas {
-        margin-bottom: $l * 2;
+        width: 150px;
+        margin-right: 2em;
     }
     &__postqr {
         a {
@@ -38,7 +55,24 @@
         }
     }
     &__check {
-        margin-left: $l;
-        color: $white;
+        display: flex;
+        align-items: center;
+        margin: 1em 0em;
+    }
+    &__status {
+        display: flex;
+        align-items: center;
+        margin-left: 1.5em;
+        svg {
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: 0.5em;
+        }
+        &.success {
+            color: green;
+        }
+        &.error {
+            color: red;
+        }
     }
 }

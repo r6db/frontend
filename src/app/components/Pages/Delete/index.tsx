@@ -2,6 +2,7 @@ import * as React from "react";
 import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
 import * as qrious from "qrious";
+import Icon, { GLYPHS } from "components/misc/Icon";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./delete.scss";
 
@@ -11,6 +12,7 @@ const uuidMatch = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
 
 interface IDeleteState {
     player: string | null;
+    downloadURL: string;
 }
 
 class Delete extends React.Component<{}, IDeleteState> {
@@ -20,7 +22,8 @@ class Delete extends React.Component<{}, IDeleteState> {
         super(props);
 
         this.state = {
-            player: null
+            player: null,
+            downloadURL: null
         };
         this.handleInput = this.handleInput.bind(this);
     }
@@ -47,10 +50,11 @@ class Delete extends React.Component<{}, IDeleteState> {
                 size: 500
             });
             this.setState({
-                player: id
+                player: id,
+                downloadURL: qr.toDataURL(),
             });
         } else {
-            this.setState({ player: null });
+            this.setState({ player: null, downloadURL: null });
         }
     }
     check(id: string) {
@@ -65,7 +69,7 @@ class Delete extends React.Component<{}, IDeleteState> {
                 }`}
             >
                 <PageHead>
-                    <div className="container">
+                    <div className="container container--small">
                         <div className="header">Delete Account</div>
                     </div>
                 </PageHead>
@@ -81,8 +85,9 @@ class Delete extends React.Component<{}, IDeleteState> {
                                 been blacklisted.
                             </em>
                         </p>
+                        <div className="delete__title"><span>Step 1</span> Enter the link to your R6DB profile</div>
                         <div className="delete__step">
-                            <p>1. enter the link to your r6db profile</p>
+                            <p>To start the deletion progress, please enter your full R6DB profile URL down below.</p>
                             <input
                                 type="text"
                                 onChange={this.handleInput}
@@ -90,13 +95,23 @@ class Delete extends React.Component<{}, IDeleteState> {
                                 pattern="https:\/\/r6db\.com\/player\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
                                 className="delete__input"
                             />
+                            <div className="delete__qrcode">
+                                <canvas ref={el => (this.canvas = el)} />
+                                {this.state.player ? (  
+                                    <a  download={this.state.player}
+                                        className="button button--accent"
+                                        href={this.state.downloadURL}                      
+                                    >
+                                        Download QR Code
+                                    </a> 
+                                ) : null }
+                            </div>
                         </div>
-                        <canvas ref={el => (this.canvas = el)} />
                         {this.state.player ? (
                             <>
-                                <p className="delete__step delete__postqr">
-                                    2. Please change your uplay avatar to the qr
-                                    code shown above. You can do this by
+                                <div className="delete__title"><span>Step 2</span> Change your UPlay avatar to the QR Code above</div>
+                                <div className="delete__step delete__postqr">
+                                    <p>You can do this by
                                     visiting the{" "}
                                     <a href="https://club.ubisoft.com">
                                         Ubisoft Club
@@ -105,23 +120,37 @@ class Delete extends React.Component<{}, IDeleteState> {
                                     <a href="https://account.ubisoft.com">
                                         Ubisoft Accounts
                                     </a>{" "}
-                                    page first.
-                                </p>
-                                <p className="delete__step">
-                                    3. check the code:
-                                    <button
-                                        className="button button--accent  delete__check"
-                                        onClick={() =>
-                                            this.check(this.state.player)
-                                        }
-                                    >
-                                        check
-                                    </button>
-                                </p>
-                                <p className="delete__step">
-                                    4. once the profile is gone, you can change
-                                    your avatar back so your desired picture.
-                                </p>
+                                    page first.</p>
+                                </div>
+                                <div className="delete__title"><span>Step 3</span> Verify your account</div>
+                                <div className="delete__step">
+                                    <p>Click the button down below if you have changed your avatar to the QR code and to verify that the account belongs to you.</p>
+                                    <div className="delete__check">
+                                        <button
+                                            className="button button--accent"
+                                            onClick={() =>
+                                                this.check(this.state.player)
+                                            }
+                                        >
+                                            Check for changes
+                                        </button>
+                                        <div className="delete__status success"><Icon glyph={GLYPHS.SUCCESS} /> Success</div>
+                                        {/* <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div> */}
+                                    </div>
+                                </div>
+                                <div className="delete__title"><span>Step 4</span> Confirm deletion of your account</div>
+                                <div className="delete__step">
+                                <p>After you click the button below, your account will be deleted from our servers and will be added to a blacklist
+                                   to disable future fetching of data. This step is irreversible and final so proceed with caution.</p>                  
+                                    <div className="delete__check">
+                                        <button
+                                            className="button button--red"
+                                            >
+                                                Confirm deletion
+                                        </button>
+                                        <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div>
+                                    </div>
+                                </div>
                             </>
                         ) : null}
                     </div>

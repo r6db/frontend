@@ -57,4 +57,9 @@
         background: none;
         color: lighten($font-subtle-color, 20%);
     }
+    &--red {
+        border-color: darken(red, 15%);
+        background: red;
+        color: $white;
+    }
 }
