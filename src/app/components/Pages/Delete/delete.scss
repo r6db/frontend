@@ -9,6 +9,10 @@
             margin: 0;
         }
     }
+    b {
+        font-weight: 600;
+        color: red;
+    }
     &__step {
         padding: 1em;
         margin-bottom: 1.5em;
@@ -33,7 +37,7 @@
         font-weight: 600;
         line-height: 1.4;
         letter-spacing: 0.06em;
-        margin-bottom: $l * 4;
+        margin-bottom: $l * 2;
         padding: $l;
         white-space: pre-line;
     }
@@ -46,7 +50,8 @@
         border-radius: $borderradius;
     }
     canvas {
-        width: 150px;
+        width: 100px;
+        height: 100px;
         margin-right: 2em;
     }
     &__postqr {
@@ -57,7 +62,11 @@
     &__check {
         display: flex;
         align-items: center;
-        margin: 1em 0em;
+        margin: 2em 0em;
+        span {
+            font-weight: 600;
+            margin-left: 1em;
+        }
     }
     &__status {
         display: flex;
@@ -67,12 +76,21 @@
             width: 1.5em;
             height: 1.5em;
             margin-right: 0.5em;
+            position: relative;
+            top: 1px;
         }
         &.success {
             color: green;
         }
         &.error {
             color: red;
+        }
+    }
+    &__list {
+        list-style: inside;
+        margin: 1em;
+        li {
+            padding: 0.2em;
         }
     }
 }

@@ -13,6 +13,7 @@ const uuidMatch = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
 interface IDeleteState {
     player: string | null;
     downloadURL: string;
+    isChecked: boolean;
 }
 
 class Delete extends React.Component<{}, IDeleteState> {
@@ -23,10 +24,17 @@ class Delete extends React.Component<{}, IDeleteState> {
 
         this.state = {
             player: null,
-            downloadURL: null
+            downloadURL: null,
+            isChecked: false,
         };
         this.handleInput = this.handleInput.bind(this);
+        this.handleCheckbox = this.handleCheckbox.bind(this);
     }
+    handleCheckbox() {
+        this.setState({
+            isChecked: !this.state.isChecked
+        })
+      }
     handleInput(e) {
         if (e.target.value && e.target.validity.valid) {
             this._handleInput(e.target.value.toString());
@@ -122,34 +130,39 @@ class Delete extends React.Component<{}, IDeleteState> {
                                     </a>{" "}
                                     page first.</p>
                                 </div>
-                                <div className="delete__title"><span>Step 3</span> Verify your account</div>
+                                <div className="delete__title"><span>Step 3</span> Confirm deletion of your account</div>
                                 <div className="delete__step">
-                                    <p>Click the button down below if you have changed your avatar to the QR code and to verify that the account belongs to you.</p>
+                                    <p>Before you deactivate your account, know this:</p>
+                                    <ul className="delete__list">
+                                        <li>All actions down are <b>FINAL</b> and <b>CANNOT</b> be undone.</li>
+                                        <li>We will delete all your userdata from our servers, including historical data like seasonal rankings and aliases.</li>
+                                        <li>Your account will be added to a blacklist to prevent future fetching of your data.</li>
+                                        <li>Your account will not show up in the leaderboards and is not included in global/regional rankings.</li>
+                                    </ul>
                                     <div className="delete__check">
-                                        <button
-                                            className="button button--accent"
-                                            onClick={() =>
-                                                this.check(this.state.player)
-                                            }
-                                        >
-                                            Check for changes
-                                        </button>
-                                        <div className="delete__status success"><Icon glyph={GLYPHS.SUCCESS} /> Success</div>
-                                        {/* <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div> */}
+                                    <input 
+                                        type="checkbox" 
+                                        checked={ this.state.isChecked } 
+                                        onChange={ this.handleCheckbox }
+                                    />
+                                    <span>Yes, I want to delete my data permanently from R6DB.</span>
                                     </div>
-                                </div>
-                                <div className="delete__title"><span>Step 4</span> Confirm deletion of your account</div>
-                                <div className="delete__step">
-                                <p>After you click the button below, your account will be deleted from our servers and will be added to a blacklist
-                                   to disable future fetching of data. This step is irreversible and final so proceed with caution.</p>                  
-                                    <div className="delete__check">
-                                        <button
-                                            className="button button--red"
-                                            >
-                                                Confirm deletion
-                                        </button>
-                                        <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div>
-                                    </div>
+                                    {this.state.isChecked ? (
+                                        <>
+                                            <div className="delete__check">
+                                                <button
+                                                    className="button button--red"
+                                                    onClick={() =>
+                                                        this.check(this.state.player)
+                                                    }
+                                                    >
+                                                        Confirm deletion
+                                                </button>
+                                                <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div>
+                                                <div className="delete__status success"><Icon glyph={GLYPHS.SUCCESS} /> Success</div>
+                                            </div>
+                                        </>
+                                    ) : null}
                                 </div>
                             </>
                         ) : null}
