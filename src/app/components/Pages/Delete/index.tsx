@@ -98,7 +98,7 @@ class Delete extends React.Component<{}, IDeleteState> {
                             <div className="delete__qrcode">
                                 <canvas ref={el => (this.canvas = el)} />
                                 {this.state.player ? (  
-                                    <a  download={this.state.player}
+                                    <a  download={this.state.player + ".png"}
                                         className="button button--accent"
                                         href={this.state.downloadURL}                      
                                     >
