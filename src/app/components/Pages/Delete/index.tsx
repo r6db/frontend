@@ -140,29 +140,26 @@ class Delete extends React.Component<{}, IDeleteState> {
                                         <li>Your account will not show up in the leaderboards and is not included in global/regional rankings.</li>
                                     </ul>
                                     <div className="delete__check">
-                                    <input 
-                                        type="checkbox" 
-                                        checked={ this.state.isChecked } 
-                                        onChange={ this.handleCheckbox }
-                                    />
-                                    <span>Yes, I want to delete my data permanently from R6DB.</span>
+                                        <input 
+                                            type="checkbox" 
+                                            checked={ this.state.isChecked } 
+                                            onChange={ this.handleCheckbox }
+                                        />
+                                        <span>Yes, I want to delete my data permanently from R6DB.</span>
                                     </div>
-                                    {this.state.isChecked ? (
-                                        <>
-                                            <div className="delete__check">
-                                                <button
-                                                    className="button button--red"
-                                                    onClick={() =>
-                                                        this.check(this.state.player)
-                                                    }
-                                                    >
-                                                        Confirm deletion
-                                                </button>
-                                                <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div>
-                                                <div className="delete__status success"><Icon glyph={GLYPHS.SUCCESS} /> Success</div>
-                                            </div>
-                                        </>
-                                    ) : null}
+                                    <div className="delete__check">
+                                        <button
+                                            className="button button--red"
+                                            onClick={() =>
+                                                this.check(this.state.player)
+                                            }
+                                            disabled={!this.state.isChecked}
+                                            >
+                                                Confirm deletion
+                                            </button>
+                                            <div className="delete__status error"><Icon glyph={GLYPHS.CLOSE} /> Error</div>
+                                            <div className="delete__status success"><Icon glyph={GLYPHS.SUCCESS} /> Success</div>
+                                    </div>
                                 </div>
                             </>
                         ) : null}

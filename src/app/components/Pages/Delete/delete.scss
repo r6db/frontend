@@ -1,6 +1,7 @@
 @import "scss/styles";
 
 .delete {
+    line-height: 1.2;
     color: $white;
 
     &--initial {
@@ -66,6 +67,10 @@
         span {
             font-weight: 600;
             margin-left: 1em;
+        }
+        button[disabled] {
+            background: transparent;
+            border: 1px solid $gray;
         }
     }
     &__status {
