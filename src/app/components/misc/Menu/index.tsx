@@ -40,12 +40,14 @@ const Menu = props => (
             <Link to="/faq" className="menu__item">
                 FAQ
             </Link>
+            {/* 
             <a href="http://apidocs.r6db.com/" rel="noopener" target="_BLANK" className="menu__item">
                 API
             </a>
             <Link to="/settings" className="menu__item">
                 Settings
-            </Link>
+            </Link> 
+            */}
             <Link to="/privacy" className="menu__item">
                 Privacy policy
             </Link>
@@ -54,13 +56,23 @@ const Menu = props => (
         <div className="menu__divider" />
 
         <div className="menu__section menu__sublinks">
-            <a href="https://twitter.com/Rainbow6_DB" rel="noopener" target="_BLANK" className="menu__item">
+            <a
+                href="https://twitter.com/Rainbow6_DB"
+                rel="noopener"
+                target="_BLANK"
+                className="menu__item"
+            >
                 <Icon className="menu__icon" glyph={GLYPHS.TWITTER} />
             </a>
             <a href="mailto:info@r6db.com" rel="noopener" target="_BLANK" className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.EMAIL} />
             </a>
-            <a href="https://discord.gg/xyMTkXm" rel="noopener" target="_BLANK" className="menu__item">
+            <a
+                href="https://discord.gg/xyMTkXm"
+                rel="noopener"
+                target="_BLANK"
+                className="menu__item"
+            >
                 <Icon className="menu__icon" glyph={GLYPHS.DISCORD} />
             </a>
             <a href="https://github.com/r6db" rel="noopener" target="_BLANK" className="menu__item">
@@ -70,7 +82,9 @@ const Menu = props => (
 
         <div className="menu__divider" />
 
-        <div className="menu__copyright">This site is not affiliated with Ubisoft Entertainment.</div>
+        <div className="menu__copyright">
+            This site is not affiliated with Ubisoft Entertainment.
+        </div>
     </div>
 );
 
