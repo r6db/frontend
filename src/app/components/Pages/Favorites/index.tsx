@@ -3,7 +3,6 @@ import { hot } from "react-hot-loader";
 import Link from "redux-first-router-link";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
-import Ad from "components/misc/Ad";
 import Result from "components/misc/Playercard";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { FadeImage } from "components/misc/FadeImage";
@@ -42,14 +41,19 @@ function Favorites(props) {
                                             icon: GLYPHS.CLOSE,
                                             callback() {
                                                 props.unfavoritePlayer(player.id);
-                                            },
+                                            }
                                         }}
                                     />
                                 ))}
-                                <div className="favorites__subtletext">You can add more people by clicking the "Favorite" button on the player page!</div>
+                                <div className="favorites__subtletext">
+                                    You can add more people by clicking the "Favorite" button on the
+                                    player page!
+                                </div>
                             </div>
                         ) : (
-                            <Media title="It's empty here!">You haven't saved any players to your favorites yet.</Media>
+                            <Media title="It's empty here!">
+                                You haven't saved any players to your favorites yet.
+                            </Media>
                         )}
                     </div>
                 </div>
@@ -59,19 +63,25 @@ function Favorites(props) {
 }
 
 const mapStateToProps = state => {
-    const { favorites, loading, platform, players, location: { payload } } = state;
+    const {
+        favorites,
+        loading,
+        platform,
+        players,
+        location: { payload }
+    } = state;
 
     return {
         loading,
         favorites: favorites.map(id => players[id]).filter(id => !!id),
         platform,
-        players,
+        players
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
         favoritePlayer: id => dispatch({ type: "FAV_PLAYER", payload: id }),
-        unfavoritePlayer: id => dispatch({ type: "UNFAV_PLAYER", payload: id }),
+        unfavoritePlayer: id => dispatch({ type: "UNFAV_PLAYER", payload: id })
     };
 };
 

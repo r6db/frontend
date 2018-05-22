@@ -13,7 +13,6 @@ import { updatePlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
-import Ad from "components/misc/Ad";
 import "./player.scss";
 
 import background from "assets/backgrounds/chimera1.jpg";
@@ -25,20 +24,23 @@ const dummyPlayer = {
     platform: "",
     level: 0,
     placements: { global: null },
-    isFavorite: null,
-}
+    isFavorite: null
+};
 
 function getPlayerSchema(player) {
-    return JSON.stringify({
-        "@context": "http://schema.org",
-        "@type": "Person",
-        "name": player.name,
-        "url": `https://r6db.com/player/${player.id}`,
-        "identifier": `https://r6db.com/player/${player.id}`,
-        "image": getImageLink(player.userId || player.id , player.platform)
-    }, null, 4);
+    return JSON.stringify(
+        {
+            "@context": "http://schema.org",
+            "@type": "Person",
+            name: player.name,
+            url: `https://r6db.com/player/${player.id}`,
+            identifier: `https://r6db.com/player/${player.id}`,
+            image: getImageLink(player.userId || player.id, player.platform)
+        },
+        null,
+        4
+    );
 }
-
 
 function Player(props) {
     if (props.loading) {
@@ -77,12 +79,11 @@ function Player(props) {
                     />
                 </PageHead>
                 <PageContent>
-                    <script type="application/ld+json">
-                    {getPlayerSchema(props.data)}
-                    </script>
+                    <script type="application/ld+json">{getPlayerSchema(props.data)}</script>
                     <div className="container player__tab">
-                        <Ad />
-                        {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
+                        {props.tab === "summary" ? (
+                            <StatsTab key="summary" {...props.data} />
+                        ) : null}
                         {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
                         {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}
                     </div>
@@ -93,7 +94,14 @@ function Player(props) {
 }
 
 const mapStateToProps = state => {
-    const { platform, isFavorite, favorites, loading, players, location: { payload } } = state;
+    const {
+        platform,
+        isFavorite,
+        favorites,
+        loading,
+        players,
+        location: { payload }
+    } = state;
 
     return {
         data: players[payload.id],

@@ -3,7 +3,6 @@ import { hot } from "react-hot-loader";
 import Result from "components/misc/Playercard";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
-import Ad from "components/misc/Ad";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { connect } from "react-redux";
 import "./search.scss";
@@ -30,11 +29,14 @@ function Search(props) {
                             <Loading />
                         ) : props.result.length > 0 ? (
                             <div>
-                                {props.result.length > 3 ? <Ad /> : null}
-                                {props.result.map(player => <Result key={player.id} player={player} />)}
+                                {props.result.map(player => (
+                                    <Result key={player.id} player={player} />
+                                ))}
                             </div>
                         ) : (
-                            <Media title="No results">we could not find any players matching that query.</Media>
+                            <Media title="No results">
+                                we could not find any players matching that query.
+                            </Media>
                         )}
                     </div>
                 </div>
@@ -50,7 +52,7 @@ const mapStateToProps = state => {
         loading,
         result: searchResults[query] || [],
         search: query,
-        platform,
+        platform
     };
 };
 

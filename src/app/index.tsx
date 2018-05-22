@@ -24,26 +24,6 @@ const store = configureStore(history);
 // pass store to analytics
 setStore(store);
 
-function initAds() {
-    if ((window as any).ads) {
-        console.log("ads already loaded");
-        return;
-    }
-    const el: HTMLScriptElement = document.createElement("script");
-    el.id = "ads";
-    el.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    el.onload = function() {
-        (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-    };
-    el.onerror = function() {
-        console.log("ads blocked");
-    };
-    document.head.appendChild(el);
-}
-if (process.env.NODE_ENV === 'production' && location.host === "r6db.com" ) {
-    initAds();
-}
-
 const mount = document.querySelector("#mount");
 console.log("mounting app");
 const render = Node => ReactDOM.render(Node, mount);
