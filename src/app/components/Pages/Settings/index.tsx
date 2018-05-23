@@ -4,6 +4,22 @@ import { connect } from "react-redux";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./settings.scss";
 
+interface IToggleProps {
+    isChecked: boolean;
+    action: any;
+}
+function Toggle(props: IToggleProps) {
+    return (
+        <div className="setting__toggle">
+            <label>
+                <input type="checkbox" checked={props.isChecked} onChange={props.action} />
+                <div className="setting__toggle slider"></div>
+            </label>
+            <div className="setting__toggletext">{props.isChecked ? "ON" : "OFF"}</div>
+        </div>
+    );
+}
+
 interface ISettingProps {
     title: string;
     description: string;
@@ -12,7 +28,7 @@ interface ISettingProps {
 function Setting(props: ISettingProps) {
     return (
         <div className="setting">
-            <div className="setting__head">
+            <div className="setting__box">
                 <header className="setting__title">{props.title}</header>
                 <div className="setting__input">{props.children}</div>
             </div>
@@ -30,7 +46,7 @@ function Settings(props: ISettingsProps) {
     return (
         <Page className="settings">
             <PageHead>
-                <div className="container">
+                <div className="container container--small">
                     <div className="header">Settings</div>
                 </div>
             </PageHead>
@@ -38,12 +54,12 @@ function Settings(props: ISettingsProps) {
                 <div className="container container--small settings__list">
                     <Setting
                         title="Analytics"
-                        description="collecting anonymous browser stats allows us to optimize the site better, as well as get an overview over popular pages, etc"
+                        description="Enabling this will allow us to collect anonymous data about your browser (including user-agent, your browser + version, device resolution, website size and language) to improve/optimize the experience on our site."
                     >
-                        <input
-                            type="checkbox"
-                            onChange={e =>
-                                props.change("analytics", e.target.value)
+                        <Toggle
+                            isChecked={props.analytics} 
+                            action={e =>
+                                props.change("analytics", e.target.checked)
                             }
                         />
                     </Setting>
