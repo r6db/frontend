@@ -6,7 +6,7 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import Ad from "components/misc/Ad";
 import "./home.scss";
 
-import background from "assets/backgrounds/chimera1.jpg";
+import background from "assets/backgrounds/parabellum1.jpg";
 
 const oncreate = () => {
     const search = document.querySelector(".home .searchbar__name") as HTMLInputElement;
