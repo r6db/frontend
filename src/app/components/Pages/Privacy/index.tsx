@@ -1,7 +1,7 @@
-import * as React from "react";
-import { hot } from "react-hot-loader";
-import Page, { PageHead, PageContent } from "components/misc/Page";
-import "./privacy.scss";
+import * as React from 'react';
+import { hot } from 'react-hot-loader';
+import Page, { PageHead, PageContent } from 'components/misc/Page';
+import './privacy.scss';
 
 function Privacy(props) {
     return (
@@ -18,6 +18,15 @@ function Privacy(props) {
                         transfers for the website at r6db.com. If you questions or want more
                         information about our Privacy Policy, please email us at info@r6db.com.
                     </p>
+                    <h2>Personal Data</h2>
+                    <p>
+                        to be able to provide this website, we do process personal data: Your
+                        Profile ID, as well as your Aliases. This processing happens under GDPR Art
+                        6. 1f ('legitimate interest'). If you do not want your data to be processed,
+                        you can <a href="/delete">delete</a> your profile which also blacklists it
+                        form being re-added. We also periodically delete inactive profiles, as well
+                        as profiles which underlying uplay account was decativated.
+                    </p>
                     <h2>Log Files</h2>
                     <p>
                         Like most servers, we store server logs of all requests. These logs include
@@ -25,12 +34,6 @@ function Privacy(props) {
                         useragent and the target url. We need to save the ip address to identify bad
                         requests (such as rogue scripts spamming us). These logs are kept for 14
                         days and deleted afterwards.
-                    </p>
-                    <h2>Database</h2>
-                    <p>
-                        We query and store statistic and playerdata for players of the game 'Rainbow
-                        Six: Siege'. To provide these services, we need to store data such as uplay
-                        profile ids, and names.
                     </p>
                     <h2>Cookies and Web Beacons</h2>
                     <p>
