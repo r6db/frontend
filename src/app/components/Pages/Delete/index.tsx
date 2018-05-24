@@ -93,10 +93,12 @@ class Delete extends React.Component<{}, IDeleteState> {
                         <p className="delete__intro">
                             We need to make sure that only the account owner can delete his data.
                             Please follow the steps below to validate ownership and trigger
-                            deletion. Do note, that the deletion process is final and irreversible.
+                            deletion. Do note, that the deletion process is final and irreversible.{' '}
                             <em>
                                 We do *not* support re-adding a profile that has been blacklisted.
-                            </em>
+                            </em>{' '}
+                            <br />
+                            Please contact us if this site does not work for you.
                         </p>
                         <div className="delete__title">
                             <span>Step 1</span> Enter the link to your R6DB profile

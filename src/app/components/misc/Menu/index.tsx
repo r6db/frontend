@@ -1,11 +1,11 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import Icon, { GLYPHS } from "../Icon";
-import Searchbar from "../Searchbar";
-import Link from "redux-first-router-link";
-import "./menu.scss";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import Icon, { GLYPHS } from '../Icon';
+import Searchbar from '../Searchbar';
+import Link from 'redux-first-router-link';
+import './menu.scss';
 
-const Menu = props => (
+const Menu = (props) => (
     <div className="menu">
         <Link to="/" className="menu__logo">
             <Icon glyph={GLYPHS.LOGO} />
@@ -51,6 +51,9 @@ const Menu = props => (
             <Link to="/privacy" className="menu__item">
                 Privacy policy
             </Link>
+            <Link to="/delete" className="menu__item">
+                Delete profile
+            </Link>
         </div>
 
         <div className="menu__divider" />
@@ -88,5 +91,5 @@ const Menu = props => (
     </div>
 );
 
-const mapStateToProps = state => ({ platform: state.platform });
+const mapStateToProps = (state) => ({ platform: state.platform });
 export default connect(mapStateToProps)(Menu);
