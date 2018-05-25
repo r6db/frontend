@@ -93,15 +93,6 @@ function FAQ(props){
                             leaderboard (see first question)
                         </p>
                     </Question>
-                    <Question question="I want to develop my own stuff with r6db data. Do you guys have an API?">
-                        <p>
-                            The short answer is yes. Shoot us a mail and we'll get you going. Just to make it clear:
-                            <em>
-                                We can and do NOT give any guarantee about uptime and availability for the API.
-                            </em>{" "}
-                            While Muppet does give his best, it <i>is</i> still a hobby project.
-                        </p>
-                    </Question>
                 </div>
             </PageContent>
         </Page>
