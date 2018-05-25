@@ -55,11 +55,11 @@
         min-height: 80px;
         margin: 0 auto;
     }
-    .searchbar {
+    &__search {
         width: 90%;
         max-width: 600px;
         height: $l * 5;
-        background: $gray-dark;
+        margin: 20px auto;
 
         @include large {
             &__name {

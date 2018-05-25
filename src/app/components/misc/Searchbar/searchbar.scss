@@ -2,51 +2,150 @@
 
 .searchbar {
     display: flex;
-    width: 100%;
-    max-width: 90*$l;
-    flex: 0 0 auto;
-    height: 4*$l;
-    margin: $l*2 auto;
-    justify-content: center;
     align-items: stretch;
-    background: fade-out(black, 0.3);
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    max-width: 60vw;
+    margin: 0 auto;
     border-radius: $borderradius;
-    overflow: hidden;
 
-    &__name {
-        background: none;
-        color: $font-color;
-        padding: $l $l*1.25;
-        width: 50px;
+    &__box {
+        display: flex;
+        flex-grow: 1;
+        min-width: 0;
+        background: rgba($gray-dark, 0.90);
+        border-radius: $borderradius;
+        @include boxshadow;
+    }
+
+    &__input {
+        min-width: 0;
         flex: auto;
-        height: 100%;
-        @include placeholder-color(darken($gray-light, 20%));
+        color: $font-color;
+        font-size: $font-big;
+        transition: all 0.2s ease-in-out;
+        -moz-transition: none;
+        /* ::placeholder transition on firefox is bugged, so remove for consistency  */
+
+        &::placeholder {
+            color: $font-subtle-color;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+            text-overflow:ellipsis;
+        }
+
+        &:not(:placeholder-shown) {
+            + .searchbar__submit {
+                cursor: pointer;
+
+                svg {
+                    color: $font-color;
+                }
+            }
+        }
+
+        &:hover {
+            outline: none;
+            color: $font-color;
+
+            &::placeholder {
+                color: $font-color;
+            }
+
+            + .searchbar__submit svg {
+                color: $font-color;
+            }
+        }
+
+        &:focus {
+            outline: none;
+            color: $font-color;
+
+            &::placeholder {
+                color: $font-color;
+            }
+
+            + .searchbar__submit svg {
+                color: $font-color;
+            }
+        }
+    }
+    &__submit {
+        color: $font-subtle-color;
+        padding-left: 1em;
+        padding-right: 1em;
+
+        /* target edge for cursor since it doesnt support :placeholder-shown */
+        @supports (-ms-ime-align: auto) {
+            cursor: pointer
+        }
+
+        svg {
+            height: 1.5em;
+            width: 1.5em;
+            transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.05s ease-in-out; /* firefox is bugged right now and won't show ::placeholder transitions */
+            transform-origin: center center;
+        }
+
+        &:hover {
+            svg {
+                opacity: 1;
+            }
+        }
 
         &:focus {
             outline: none;
         }
     }
     &__platform {
-        width: 55px;
-        background: none;
-        font-size: $font-default;
-        font-weight: 700;
-        cursor: pointer;
-        text-align-last:center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-right: 1rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-left: 1em;
+        border-radius: $borderradius;
+        transition: all 0.1s ease-in-out;
+        @include boxshadow;
 
-        option {
-            color: $black;
+        &.PC {
+            background: #CE5C0F;
         }
-    }
-    &__submit.button {
-        flex: 0 1 auto;
-        padding: 0.5em 1em;
-        border: none;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        cursor: pointer;
+        &.PS4 {
+            background: #003791;
+        }
+        &.XBOX {
+            background: #108710;
+        }
+        &__select {
+            display: flex;
+            width: 6em;
+            padding-left: 1em;
+            padding-right: 0;
+            color: $font-color;
+            background: transparent;
+            font-weight: 600;
+            font-size: $font-big;
+            text-align: left;
+            cursor: pointer;
+
+            & option {
+                color: $black;
+                font-weight: 600;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+        &__arrow {
+            position: absolute;
+            top: auto;
+            right: 0;
+            width: 1.5em;
+            height: 1.5em;
+            margin: 0 1em;
+            pointer-events: none;
+        }
     }
 }
