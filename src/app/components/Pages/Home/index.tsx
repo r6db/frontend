@@ -5,7 +5,7 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./home.scss";
 
-import background from "assets/backgrounds/chimera1.jpg";
+import background from "assets/backgrounds/parabellum1.jpg";
 
 const oncreate = () => {
     const search = document.querySelector(".home .searchbar__name") as HTMLInputElement;

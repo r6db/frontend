@@ -1,4 +1,5 @@
 import * as React from "react";
+import Ad from "components/misc/Ad";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";
@@ -14,18 +15,19 @@ export default function StatsTab(props) {
         <div className="statstab">
             <div className="statstab__sidebar">
                 <RankOverview {...props} />
-                <div className="playermodule__divider"></div>
+                <div className="playermodule__divider" />
                 <SeasonOverview {...props} />
-                <div className="playermodule__divider"></div>
-                {props.aliases && props.aliases.length > 1
-                    ? <Aliases {...props} />
-                    : null }
+                <div className="playermodule__divider" />
+                {props.aliases && props.aliases.length > 1 ? (
+                    <Aliases {...props} />
+                ) : null}
+                <Ad type="largerect" />
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">
                     {props.stats ? <StatsGeneral {...props} /> : null}
                     <StatsRankings {...props} />
-                    <div className="playermodule__divider"></div>
+                    <div className="playermodule__divider" />
                     {props.stats ? <StatsCharts {...props} /> : null}
                 </div>
                 <div className="statstab__aside">

@@ -8,7 +8,8 @@
         flex-direction: row;
 
         &__sidebar {
-            flex: 1.4;
+            flex: 0 0 auto;
+            width: 340px;
             margin-right: $l;
             min-width: 0px;
         }
