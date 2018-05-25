@@ -46,7 +46,7 @@ function Privacy(props) {
                         browsers help on how to do this.
                     </p>
                     <h2>Third Parties</h2>
-                    our privacy policy does not apploy to our used third-party services. We heavily
+                    Our privacy policy does not apploy to our used third-party services. We heavily
                     advise you to read the linked documents.
                     <p>
                         Third-party ad servers or ad networks uses technologies like cookies,
@@ -67,7 +67,7 @@ function Privacy(props) {
                         providing DDoS-protection, caching and DNS for us. They also use server
                         logs, as well as cookies to provide data such as 'unique users' (here the
                         cookie is used as an anonymous id). You can find Cloudsflares privacy policy
-                        here:
+                        here:{" "}
                         <a href="https://www.cloudflare.com/privacypolicy/">
                             https://www.cloudflare.com/privacypolicy/
                         </a>
@@ -81,7 +81,7 @@ function Privacy(props) {
                     <p>
                         R6db.com does not knowingly collect any Personal Identifiable Information
                         from children under the age of 13. If you think that your child provided
-                        this kind of information on our website, we strongly encourage you to
+                        this kind of information on our website, we strongly encourage you to{" "}
                         <a href="/delete">delete and blacklist the Account</a>
                     </p>
                     <h2>Online Privacy Policy Only</h2>
