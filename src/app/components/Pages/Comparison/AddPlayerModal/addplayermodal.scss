@@ -3,7 +3,9 @@
 .addplayermodal {
     &__search {
         background: none;
+        height: 3em;
         margin-top: 0;
+        margin-bottom: 2em;
     }
     &__results {
         max-height: 50vh;
