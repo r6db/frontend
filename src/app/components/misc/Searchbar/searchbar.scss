@@ -103,10 +103,14 @@
         position: relative;
         display: flex;
         align-items: center;
-        margin-left: 1em;
+        margin-left: 0.5em;
         border-radius: $borderradius;
         transition: all 0.1s ease-in-out;
         @include boxshadow;
+
+        @include medium {
+            margin-left: 1em;
+        }
 
         &.PC {
             background: #CE5C0F;

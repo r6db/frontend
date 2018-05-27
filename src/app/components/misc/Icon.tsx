@@ -96,6 +96,7 @@ import LOGOS6 from "assets/seasonlogos/R6-OPHealth-Horizontal.svg";
 import LOGOS7 from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
 import LOGOS8 from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
 import LOGOS9 from "assets/seasonlogos/R6-OPChimera-Horizontal.svg";
+import LOGOS10 from "assets/seasonlogos/R6-OPParaBellum-Horizontal.svg";
 
 export default props =>
     props.glyph ? (
@@ -206,4 +207,5 @@ export const GLYPHS = {
     LOGOS7,
     LOGOS8,
     LOGOS9,
+    LOGOS10,
 };

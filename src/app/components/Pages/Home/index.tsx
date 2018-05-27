@@ -18,12 +18,12 @@ const oncreate = () => {
 function Home(props) {
     return (
         <Page className="home">
-            <PageHead image={background} position="75% 0%">
-                <div className="container">
+            <PageHead image={background} position="75% 25%">
+                <div className="home__content container">
                     <Icon className="home__logo" glyph={GLYPHS.LOGO} />
                     <Searchbar className="home__search" search={props.search} focused={true}/>
-                    <Ad slot="7116683052" />
                     {/* <div className="blocker" /> */}
+                    <Ad slot="7116683052" />
                 </div>
             </PageHead>
         </Page>
