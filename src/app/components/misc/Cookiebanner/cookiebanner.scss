@@ -1,0 +1,26 @@
+@import "scss/styles";
+
+.cookiebanner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: $l;
+    z-index: 100;
+    background: $trans-low;
+
+    &__container {
+        width: 100%;
+        max-width: $screen-medium;
+        margin: 0 auto;
+    }
+    a {
+        color: $accent;
+    }
+
+    button {
+        display: block;
+        @include medium {
+            display: inline-block;
+        }
+    }
+}

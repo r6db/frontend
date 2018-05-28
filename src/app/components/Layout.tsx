@@ -3,6 +3,7 @@ import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
 import { NOT_FOUND } from "redux-first-router";
 import Loadable from "react-loadable";
+import Cookiebanner from "components/misc/Cookiebanner";
 import Loading from "components/misc/Loading";
 import Topbar from "components/misc/Topbar";
 import Menu from "components/misc/Menu";
@@ -52,6 +53,7 @@ class Layout extends React.PureComponent<any, any> {
                     <Topbar onBurgerClick={this.props.toggleMenu} />
                     <this.props.Component />
                 </div>
+                <Cookiebanner />
             </div>
         );
     }
