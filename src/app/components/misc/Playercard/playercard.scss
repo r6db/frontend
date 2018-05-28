@@ -41,7 +41,7 @@
     }
     &__flair {
         @include flair;
-        font-size: 0.75rem;
+        font-size: $font-smaller;
     }
     &__aliases {
         opacity: 0.75;

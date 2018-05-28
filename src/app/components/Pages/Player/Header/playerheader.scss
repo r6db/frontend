@@ -7,7 +7,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: $font-bigger;
         text-align: center;
 
         @include medium {
@@ -46,15 +45,11 @@
             justify-content: flex-start;
             flex-wrap: nowrap;
             flex-direction: row;
+            font-size: 4rem;
         }
     }
     &__name {
         font-weight: 400;
-        font-size: 2rem;
-
-        @include medium {
-            font-size: 3rem;
-        }
     }
     &__namewrapper {
         flex: 1 0 100%;
@@ -72,18 +67,13 @@
     &__platform {
         display: inline-block;
         font-weight: 600;
-        font-size: 1.65rem;
+        font-size: 0.8em;
         color: rgba($white, 0.5);
         margin-left: 1rem;
-
-        @include medium {
-            font-size: 2.25rem;
-            margin-left: 1.25rem;
-        }
     }
     &__flair {
         @include flair;
-        font-size: 0.85rem;
+        font-size: 1.2rem;
         margin-top: 1rem;
 
         @include medium {
@@ -106,7 +96,7 @@
             margin-top: 0;
             margin-right: 0;
             margin-bottom: 0;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             align-items: center;
             justify-content: flex-start;
         }
@@ -142,8 +132,8 @@
             }
         }
         .icon {
-            width: 1.2rem;
-            height: 1.2rem;
+            width: 1.75rem;
+            height: 1.75rem;
             fill: transparent;
             stroke: currentColor;
             margin-right: 0.75rem;
@@ -156,7 +146,6 @@
         padding-left: 3px;
         color: $font-color;
         font-weight: 600;
-        font-size: $font-smaller;
 
         &:first-child {
             margin-left: 0;
@@ -165,7 +154,7 @@
             width: 2rem;
             height: 2rem;
             fill: $font-color;
-            margin-right: 0.5rem;
+            margin-right: 0.5em;
         }
 
         &.download {
