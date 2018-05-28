@@ -1,4 +1,4 @@
-![Build Status](https://build.r6db.com/job/build%20frontend-dev/badge/icon)
+![Build Status](https://build.r6db.com/buildStatus/icon?job=frontend-master)
 # R6DB  
 this is all the code for our frontend at r6db.com  
 we are focusing on keeping the app small in size and quick in loading time.  
