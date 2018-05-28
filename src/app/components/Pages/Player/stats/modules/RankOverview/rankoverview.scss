@@ -19,13 +19,12 @@
     &__regional {
         display: flex;
         flex-direction: row;
-
     }
     &__isunderage {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: $l*3;
+        padding: $l * 3;
         text-align: center;
     }
     &__vertdivider {
@@ -45,13 +44,13 @@
     &__icon {
         margin-right: $l;
         svg {
-            height: $l*7.5;
-            width: $l*7.5;
+            height: $l * 7.5;
+            width: $l * 7.5;
         }
     }
     &__rank {
-        font-size: $font-large;
-        margin-bottom: $l*0.5;
+        font-size: fz(2);
+        margin-bottom: $l * 0.5;
     }
     &__placement,
     &__toppercentage {
@@ -62,8 +61,8 @@
 .currentrank {
     flex: 1;
     position: relative;
-    height: $l*7.5;
-    width: $l*7.5;
+    height: $l * 7.5;
+    width: $l * 7.5;
     margin-bottom: 10px;
     z-index: 0;
 
@@ -74,21 +73,21 @@
         transform: translate(-50%, -50%);
         z-index: -1;
         svg {
-            height: $l*7.5;
-            width: $l*7.5;
+            height: $l * 7.5;
+            width: $l * 7.5;
             opacity: 0.5;
         }
     }
     &__region {
         text-align: center;
-        padding: $l*0.5;
+        padding: $l * 0.5;
         text-shadow: 0 0 10px $black;
         font-weight: bold;
         z-index: 1;
     }
     &__placement {
         text-align: center;
-        margin-top: $l*3;
+        margin-top: $l * 3;
         font-size: 1.5em;
         text-shadow: 0 0 2px $black, 1px 0 2px $black, 1px 1px 2px $black;
         font-weight: bold;

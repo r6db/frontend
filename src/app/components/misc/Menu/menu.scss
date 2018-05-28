@@ -36,7 +36,7 @@
         padding: $l;
         color: rgba($white, 0.8);
         font-weight: 400;
-        font-size: $font-default;
+        font-size: fz(0);
         cursor: pointer;
         transition: 100ms linear color;
         letter-spacing: 0.02em;
@@ -56,7 +56,6 @@
         }
 
         @include medium {
-            font-size: $font-big;
             padding: $l * 1.25;
         }
     }
@@ -95,6 +94,7 @@
     &__copyright {
         color: $font-subtle-color;
         margin: $l;
+        font-size: fz(-1);
         text-align: center;
     }
 }

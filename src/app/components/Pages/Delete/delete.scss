@@ -27,7 +27,7 @@
         span {
             display: block;
             color: $accent;
-            font-size: $font-big;
+            font-size: fz(2);
         }
     }
     &__qrcode {
@@ -40,7 +40,7 @@
         margin-bottom: $l * 2;
         padding: $l;
         white-space: pre-line;
-        em{
+        em {
             font-weight: 600;
             text-decoration: underline;
         }

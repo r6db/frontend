@@ -8,11 +8,11 @@ $blood-orchid: #ca361c;
 $white-noise: #006543;
 $chimera: #ffc113;
 
-$primary: #007BFF;
+$primary: #007bff;
 $black: #1c1c1c;
 $off-white: hsl(hue($primary), 5%, 85%);
 $white: hsl(hue($primary), 5%, 90%);
-$accent: #FF6E09;
+$accent: #ff6e09;
 $link: mix(#2d95cf, $primary, 90%);
 $gray-dark: hsl(hue($primary), 3%, 5%);
 $gray-darkish: lighten($gray-dark, 20%);
@@ -28,21 +28,12 @@ $danger: mix(#b62f23, $primary, 95%);
 
 $font-color: $white;
 $font-subtle-color: $gray;
-$bg-color: #181B1F;
+$bg-color: #181b1f;
 
 $l: 10px;
 $a: 45deg;
 $borderradius: 5px;
 $borderradius-rel: 0.4em;
-
-$font-tiny: 0.5rem;
-$font-smaller: 0.75rem;
-$font-small: 0.9rem;
-$font-default: 1rem;
-$font-big: 1.125em;
-$font-bigger: 1.25rem;
-$font-large: 1.5rem;
-$font-huge: 2.5rem;
 
 $menu-height: 80px;
 $menu-width: 280px;
@@ -64,3 +55,37 @@ $graphcolor-apac: #24a55a;
 $tdur: 200ms;
 
 $loading-indicatorsize: 30px;
+
+/**
+ * font-scale function
+ * fz(0) is the default font-size
+ * fz(1) is slightly larger, fz(-1) smaller, etc
+ */
+
+// set the default sizes. we want to grow by a modifier of 1.2
+$scale: (
+    base: 1em,
+    modifier: 1.2
+);
+@function pow($number, $exponent) {
+    $value: 1;
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    }
+    @return $value;
+}
+// the actual fontsize formula is the following: $base * ($modifier^$ratio)
+// see
+// http://www.modularscale.com/?1&em&1.2
+// for a visualization (click on 'sass' in the sidebar to see the scale
+@function fz($ratio) {
+    $value: 1;
+    @if ($ratio > 0) {
+        $value: pow(map-get($scale, "modifier"), $ratio) * map-get($scale, "base");
+    } @else {
+        $value: pow((1 / map-get($scale, "modifier")), -$ratio) * map-get($scale, "base");
+    }
+    @return $value;
+}

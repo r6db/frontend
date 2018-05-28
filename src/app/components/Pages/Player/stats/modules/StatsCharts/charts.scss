@@ -10,11 +10,12 @@
             @include card-header;
             padding-left: 0;
             margin-bottom: $l;
+            font-size: fz(0);
         }
     }
     .row {
         flex-direction: column;
-        margin-bottom: $l*2;
+        margin-bottom: $l * 2;
 
         @include large {
             &.half {

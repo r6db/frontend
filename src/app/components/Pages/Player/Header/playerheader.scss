@@ -7,7 +7,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: $font-bigger;
+        font-size: fz(1);
         text-align: center;
 
         @include medium {
@@ -17,8 +17,8 @@
         }
     }
     &__image {
-        width: $l*10;
-        height: $l*10;
+        width: $l * 10;
+        height: $l * 10;
         flex: none;
         background-color: $trans-low;
         @include boxshadow;
@@ -29,7 +29,7 @@
     }
     &__info {
         @include medium {
-          margin-left: $l * 2;
+            margin-left: $l * 2;
         }
     }
     &__namebox {
@@ -41,8 +41,8 @@
         align-items: center;
 
         @include medium {
-            margin-top: 0!important;
-            margin-bottom: $l*0.75 !important;
+            margin-top: 0 !important;
+            margin-bottom: $l * 0.75 !important;
             justify-content: flex-start;
             flex-wrap: nowrap;
             flex-direction: row;
@@ -65,7 +65,7 @@
         }
     }
     &__level {
-        font-size: $font-default;
+        font-size: fz(0);
         color: rgba($white, 0.5);
         padding-left: 3px;
     }
@@ -78,7 +78,7 @@
 
         @include medium {
             font-size: 2.25rem;
-            margin-left: $l*1.25;
+            margin-left: $l * 1.25;
         }
     }
     &__flair {
@@ -87,7 +87,7 @@
         margin-top: $l;
 
         @include medium {
-            margin-left: $l*2;
+            margin-left: $l * 2;
         }
     }
     &__ranking {
@@ -98,7 +98,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        font-size: $font-default;
+        font-size: fz(0);
         margin: $l 0;
         flex-wrap: wrap;
 
@@ -112,7 +112,7 @@
         }
     }
     &__divider {
-        margin-left: $l*1.5;
+        margin-left: $l * 1.5;
     }
     &__buttons {
         display: flex;
@@ -120,7 +120,7 @@
         align-items: center;
         justify-content: flex-end;
         flex: 1;
-        margin-top: $l*2;
+        margin-top: $l * 2;
 
         @include medium {
             margin-top: 0;
@@ -131,6 +131,7 @@
         flex-direction: row;
         margin-left: $l;
         align-items: center;
+        font-size: fz(-2);
         height: 40px;
 
         &:first-child {
@@ -146,23 +147,23 @@
             height: 1.2rem;
             fill: transparent;
             stroke: currentColor;
-            margin-right: $l*0.75;
+            margin-right: $l * 0.75;
         }
-
     }
     &__link {
         display: inline-flex;
         align-items: center;
-        margin-left: $l*1.5;
+        margin-left: $l * 1.5;
         padding-left: 3px;
         color: $font-color;
+        font-size: fz(-2);
         font-weight: 600;
         &:first-child {
             margin-left: 0;
         }
         .icon {
-            width: $l*2;
-            height: $l*2;
+            width: $l * 2;
+            height: $l * 2;
             fill: $font-color;
             margin-right: 0.5rem;
         }
@@ -179,16 +180,16 @@
     }
     &__tabs {
         display: flex;
-        margin-top: $l*3;
-        border-bottom: 1px solid rgba(255,255,255,0.05s);
+        margin-top: $l * 3;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05s);
     }
     &__tab {
         flex: 1;
-        padding: ($l*1.5) $l;
+        padding: ($l * 1.5) $l;
         transition: all 100ms ease-out;
         border-bottom: 2px solid transparent;
         text-align: center;
-        font-size: $font-big;
+        font-size: fz(0);
         font-weight: 600;
         color: darken($font-color, 20%);
 
@@ -196,18 +197,18 @@
             outline: none;
         }
         &:hover {
-          color: $font-color;
+            color: $font-color;
         }
         &--active {
             color: $accent;
             border-color: $accent;
             &:hover {
-              color: $accent;
+                color: $accent;
             }
         }
 
         @include large {
-            padding: ($l*1.5) ($l*3);
+            padding: ($l * 1.5) ($l * 3);
             flex: 0;
         }
     }

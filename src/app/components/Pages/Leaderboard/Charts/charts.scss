@@ -6,7 +6,7 @@
     }
     .row {
         flex-direction: column;
-        margin-bottom: $l*2;
+        margin-bottom: $l * 2;
 
         @include large {
             &.half {
@@ -28,7 +28,7 @@
             margin-left: $l;
         }
         &__name {
-            font-size: $font-bigger;
+            font-size: fz(1);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }

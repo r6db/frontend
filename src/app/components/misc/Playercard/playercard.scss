@@ -4,18 +4,17 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #FFF;
-    margin-bottom: $l*2;
+    color: #fff;
+    margin-bottom: $l * 2;
 
     &__image {
         background-color: darken($bg-color, 2%);
-        margin-right: $l*2;
+        margin-right: $l * 2;
 
         img {
-            width: $l*5;
-            height: $l*5;
+            width: $l * 5;
+            height: $l * 5;
         }
-
     }
     &__user {
         flex: 1;
@@ -32,12 +31,12 @@
         color: $font-subtle-color;
     }
     &__namebox {
-        margin-bottom: $l*0.5;
+        margin-bottom: $l * 0.5;
         display: flex;
         align-items: center;
     }
     &__name {
-        font-size: $font-bigger;
+        font-size: fz(1);
         font-weight: 600;
     }
     &__flair {
@@ -49,12 +48,12 @@
     }
 
     &__actions {
-      display: flex;
-      flex-shrink: 0;
-      flex-basis: auto;
-      border-left: 1px solid rgba($font-subtle-color, 0.2);
-      margin-left: $l*2;
-      padding: $l $l $l $l*2;
+        display: flex;
+        flex-shrink: 0;
+        flex-basis: auto;
+        border-left: 1px solid rgba($font-subtle-color, 0.2);
+        margin-left: $l * 2;
+        padding: $l $l $l $l * 2;
 
         .icon {
             width: 1.25em;

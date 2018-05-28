@@ -62,9 +62,9 @@
 
     &__time {
         color: $gray;
-        font-size: 0.9em;
+        font-size: fz(-1);
     }
     &__name {
-        font-size: 1.1em;
+        font-size: fz(0);
     }
 }

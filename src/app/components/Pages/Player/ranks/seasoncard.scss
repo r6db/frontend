@@ -63,7 +63,7 @@
         flex-direction: column;
         position: relative;
         z-index: 2;
-        padding: $l $l*2;
+        padding: $l $l * 2;
     }
 
     &__season {
@@ -118,7 +118,7 @@
         flex: 1;
     }
     &__region {
-        font-size: $font-bigger;
+        font-size: fz(1);
         line-height: 1.5;
     }
     &__rank {
@@ -152,9 +152,9 @@
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
-        margin: ($l*1.5) 0 $l;
+        margin: ($l * 1.5) 0 $l;
         transition: all 200ms ease-in-out;
-        max-height: $l*8;
+        max-height: $l * 8;
         overflow: hidden;
 
         &--empty {
