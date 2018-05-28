@@ -17,11 +17,8 @@ import CHEVRONUP from "feather-icons/dist/icons/chevron-up.svg";
 import CHEVRONDOWN from "feather-icons/dist/icons/chevron-down.svg";
 import CLOSE from "feather-icons/dist/icons/x.svg";
 import STARFULL from "assets/starfull.svg";
-<<<<<<< HEAD
 import ARROWRIGHT from "feather-icons/dist/icons/arrow-right.svg";
-=======
-import SUCCESS from "feather-icons/dist/icons/check-circle.svg"
->>>>>>> master
+import SUCCESS from "feather-icons/dist/icons/check-circle.svg";
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -141,11 +138,8 @@ export const GLYPHS = {
     CHEVRONUP,
     CHEVRONDOWN,
     CLOSE,
-<<<<<<< HEAD
     ARROWRIGHT,
-=======
     SUCCESS,
->>>>>>> master
     RANK0,
     RANK1,
     RANK2,
@@ -215,5 +209,5 @@ export const GLYPHS = {
     LOGOS7,
     LOGOS8,
     LOGOS9,
-    LOGOS10,
+    LOGOS10
 };
