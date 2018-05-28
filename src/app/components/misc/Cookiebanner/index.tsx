@@ -28,11 +28,10 @@ class Cookiebanner extends React.Component<{}, ICookiebannerState> {
         return (
             <div className="cookiebanner">
                 <div className="cookiebanner__container">
-                    <span>
-                        We use cookies to on this site. check our{" "}
-                        <a href="/privacy">privacy policy</a> for details. By continuing to use this
-                        website, you agree to the usage of cookies.
-                    </span>
+                    <p>
+                        This website uses cookies to ensure you get the best experience on our website.
+                        <span className="cookiebanner__subtle">By continuing to use this website or by clicking "Accept", you agree to the usage of cookies on this device. <a href="/privacy">Cookie policy</a></span>
+                    </p>
                     <button onClick={this.accept} className="button button--primary">
                         Accept
                     </button>
