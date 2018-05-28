@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.app.LEADERBOARD .page__content{
+.app.LEADERBOARD .page__content {
     position: relative;
     padding-top: 0;
 }
@@ -30,7 +30,7 @@
     &__filters {
         display: flex;
         flex-direction: column;
-        margin-top: $l*2;
+        margin-top: $l * 2;
 
         @include medium {
             flex-direction: row;
@@ -38,13 +38,13 @@
         p {
             display: flex;
             align-items: center;
-            margin-bottom: $l*0.5;
+            margin-bottom: $l * 0.5;
         }
         label {
             display: inline;
             color: $white;
             font-size: 1rem;
-            margin-right: $l*1.5;
+            margin-right: $l * 1.5;
             width: 4rem;
 
             @include medium {
@@ -56,7 +56,7 @@
 
             @include medium {
                 flex: none;
-                margin-right: $l*2;
+                margin-right: $l * 2;
             }
         }
         .button {
@@ -70,7 +70,7 @@
         }
     }
     &__entries {
-        margin: $l*2 auto 0;
+        margin: $l * 2 auto 0;
 
         th {
             text-align: left;
@@ -126,19 +126,9 @@
     }
 }
 
-.entry.is-top {
-    .playercard-name {
-        font-size: $font-bigger;
-    }
-    .playercard-image {
-        width: $l*8;
-        height: $l*8;
-    }
-}
-
 #chanky {
-    width: $l*3;
+    width: $l * 3;
     position: absolute;
-    left: $l*3;
+    left: $l * 3;
     bottom: 0;
 }

@@ -1,8 +1,8 @@
 @import "scss/styles";
 
-$searchbar-height: $l*5.4;
+$searchbar-height: $l * 5.4;
 $profile-image-height: 146px;
-$profile-header-height: $profile-image-height + (5*$l);
+$profile-header-height: $profile-image-height + (5 * $l);
 
 .profile {
     color: $white;
@@ -14,17 +14,17 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
 
     .card {
-        margin: $l*0.5;
+        margin: $l * 0.5;
 
         @include medium {
-            margin: $l*0.5;
+            margin: $l * 0.5;
             flex: 1 1 40%;
             display: inline-block;
         }
         .row {
             display: flex;
             flex-direction: row;
-            padding: ($l*0.5) 0;
+            padding: ($l * 0.5) 0;
         }
         .label {
             flex: 1 1 35%;
@@ -36,17 +36,17 @@ $profile-header-height: $profile-image-height + (5*$l);
         }
     }
 
-    &-player {
+    &__player {
         display: flex;
         flex-direction: column;
         flex: 1;
     }
-    &-identification {
+    &__identification {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    &-header {
+    &__header {
         @include card;
         margin: 0 auto;
         width: 100%;
@@ -55,7 +55,7 @@ $profile-header-height: $profile-image-height + (5*$l);
             flex-direction: row;
         }
     }
-    &-info {
+    &__info {
         display: flex;
         flex-direction: column;
         flex: 0 0 auto;
@@ -68,10 +68,10 @@ $profile-header-height: $profile-image-height + (5*$l);
         }
     }
 
-    &-headerimage {
+    &__headerimage {
         position: relative;
-        width: 10*$l;
-        height: 10*$l;
+        width: 10 * $l;
+        height: 10 * $l;
 
         img {
             width: 100%;
@@ -82,7 +82,7 @@ $profile-header-height: $profile-image-height + (5*$l);
             height: $profile-image-height;
         }
     }
-    &-level {
+    &__level {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -94,11 +94,11 @@ $profile-header-height: $profile-image-height + (5*$l);
         text-align: center;
     }
 
-    &-headertext {
+    &__headertext {
         padding: $l 0 0 $l;
         flex: 1;
     }
-    &-name {
+    &__name {
         width: 100%;
         font-size: 1.5rem;
         font-weight: bold;
@@ -114,16 +114,16 @@ $profile-header-height: $profile-image-height + (5*$l);
             font-size: 3rem;
         }
     }
-    &-flair {
+    &__flair {
         color: $gray-light;
         margin-bottom: $l;
     }
-    &-global-rank {
+    &__global-rank {
         span {
             font-weight: 800;
         }
     }
-    &-seasonranks {
+    &__seasonranks {
         display: flex;
         padding: 0 $l;
         flex-direction: row;
@@ -135,16 +135,16 @@ $profile-header-height: $profile-image-height + (5*$l);
             justify-content: space-between;
         }
     }
-    &-id {
+    &__id {
         color: $accent;
     }
-    &-extended {
+    &__extended {
         color: $accent;
-        margin-top: $l*0.5;
+        margin-top: $l * 0.5;
         display: block;
     }
 
-    &-aliases {
+    &__aliases {
         // height is profile-content height - all the paddings;
         display: flex;
         flex-direction: row;
@@ -165,11 +165,11 @@ $profile-header-height: $profile-image-height + (5*$l);
         }
     }
 
-    &-stats {
+    &__stats {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin: ($l*0.5) (-$l*0.5);
+        margin: ($l * 0.5) (-$l * 0.5);
     }
 }
 
@@ -179,7 +179,7 @@ $profile-header-height: $profile-image-height + (5*$l);
 .rank {
     margin: 0 $l;
 
-    &-image {
+    &_image {
         width: 6 * $l;
         height: 6 * $l;
     }
@@ -200,7 +200,7 @@ $profile-header-height: $profile-image-height + (5*$l);
     width: 100%;
     max-width: $screen-large;
     margin: 0 auto;
-    padding: (2*$l) 0 (3*$l) (2*$l);
+    padding: (2 * $l) 0 (3 * $l) (2 * $l);
     background: $trans-med;
     font-size: 3rem;
     line-height: 106px;
@@ -216,6 +216,6 @@ $profile-header-height: $profile-image-height + (5*$l);
 }
 
 .profileerror-message {
-    padding: $l*2;
+    padding: $l * 2;
     line-height: 1.4;
 }

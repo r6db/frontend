@@ -20,7 +20,7 @@
             text-align: center;
         }
     }
-    &__expand{
+    &__expand {
         display: flex;
         color: $font-subtle-color;
         width: 100%;
@@ -31,16 +31,15 @@
             outline: none;
         }
 
-
         .icon {
-            width: $l*2;
-            height: $l*2;
+            width: $l * 2;
+            height: $l * 2;
             margin-top: 2px;
             margin-right: $l;
         }
     }
 
-    .playermodule__content{
+    .playermodule__content {
         margin-top: $l;
         display: flex;
         flex-direction: row;
@@ -52,7 +51,7 @@
     }
 }
 .player .alias {
-    padding: (0.5*$l) $l;
+    padding: (0.5 * $l) $l;
     position: relative;
     margin-bottom: $l;
     flex: none;
@@ -61,11 +60,11 @@
         padding-left: 0;
     }
 
-    &-time {
+    &__time {
         color: $gray;
         font-size: 0.9em;
     }
-    &-name {
+    &__name {
         font-size: 1.1em;
     }
 }

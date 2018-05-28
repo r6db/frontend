@@ -9,13 +9,13 @@
             flex: 1 1 100px;
         }
     }
-    &-value {
+    &__value {
         @include medium {
             flex: 1 0 4em;
             text-align: right;
         }
     }
-    &-stat {
+    &__stat {
         @include medium {
             flex: 0 0 10em;
         }
@@ -24,13 +24,13 @@
         @include medium {
             display: flex;
         }
-        margin: 0 (-0.5*$l);
+        margin: 0 (-0.5 * $l);
     }
     &__module {
         flex: 1 1 1px;
         // box-shadow: 1px 1px 3px fade-out($gray-dark, 0.6);
         // background: $bg-color;
-        margin: (0.5*$l);
+        margin: (0.5 * $l);
         position: relative;
 
         &__header {
@@ -127,8 +127,8 @@
         }
     }
     .icon {
-        width: $l*3;
-        height: $l*3;
+        width: $l * 3;
+        height: $l * 3;
 
         // @include medium {
         //     width: $l*4;
@@ -140,9 +140,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: $l*0.5;
+        margin: $l * 0.5;
 
-        width: $l*5;
+        width: $l * 5;
 
         span {
             font-size: $font-smaller;
@@ -164,7 +164,7 @@
     }
     &__defenders {
         @include medium {
-            margin-left: $l*2;
+            margin-left: $l * 2;
         }
     }
 }
@@ -173,7 +173,7 @@
     padding: $l;
     background: $bg-color;
     &__remove {
-        margin-left: $l*2;
+        margin-left: $l * 2;
         cursor: pointer;
     }
 }
