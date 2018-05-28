@@ -3,11 +3,11 @@
 @import "scss/components/typo";
 
 html {
-    font-size: 14px;
+    font-size: percentage(10/16);
 }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     position: relative;
     color: $font-color;
     display: flex;
@@ -16,6 +16,7 @@ body {
     width: 100vw;
     overflow-x: hidden;
     font-weight: 400;
+    font-size: 1.4em;
 }
 .content {
     flex: 1 0 500px;
@@ -50,7 +51,7 @@ input {
 }
 
 select {
-    padding: $l;
+    padding: 1rem;
     background: $gray-dark;
     color: $font-color;
     display: inline-block;
@@ -65,16 +66,16 @@ label {
     font-size: 0.7em;
     font-weight: normal;
     height: 1em;
-    margin-bottom: 0.5 * $l;
+    margin-bottom: 0.5rem;
 }
 .container {
     width: 100%;
     max-width: $screen-large;
     margin: 0 auto;
-    padding: 0 $l;
+    padding: 0 1rem;
 
     &--small {
-        max-width: $screen-large*0.85;
+        max-width: $screen-large * 0.85;
     }
 }
 
@@ -88,16 +89,16 @@ label {
 }
 .col {
     flex: 0 1 100%;
-    margin: $l;
+    margin: 1rem;
     min-width: 0;
 }
 .card {
     background: $bg-color;
-    padding: $l;
+    padding: 1rem;
 
     &__header {
         display: block;
-        margin-bottom: $l;
+        margin-bottom: 1rem;
         font-weight: bold;
     }
 }
@@ -119,11 +120,11 @@ input {
     border-left: 5px solid $accent;
     border-right: 5px solid $accent;
     line-height: 1.5;
-    padding: $l;
+    padding: 1rem;
     background: fade-out($gray-dark, 0.2);
     font-weight: 600;
     border-radius: $borderradius;
-    margin: $l 0;
+    margin: 1rem 0;
     a {
         color: $accent;
     }

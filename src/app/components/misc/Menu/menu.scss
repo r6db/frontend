@@ -6,13 +6,13 @@
     justify-content: flex-start;
     width: $menu-width;
     min-height: 100%;
-    padding: $l;
+    padding: 1rem;
     background: $menu-background;
 
     &__logo {
         display: flex;
         color: $white;
-        margin: $l * 1.25;
+        margin: 1.25rem;
 
         svg {
             height: 50px;
@@ -33,7 +33,7 @@
     &__item {
         display: flex;
         align-items: center;
-        padding: $l;
+        padding: 1rem;
         color: rgba($white, 0.8);
         font-weight: 400;
         font-size: $font-default;
@@ -57,7 +57,7 @@
 
         @include medium {
             font-size: $font-big;
-            padding: $l * 1.25;
+            padding: 1.25rem;
         }
     }
     &__links {
@@ -65,19 +65,19 @@
         align-items: stretch;
     }
     &__icon {
-        width: $l * 2.25;
-        height: $l * 2.25;
-        margin-right: $l * 2;
+        width: 2.25rem;
+        height: 2.25rem;
+        margin-right: 2rem;
         fill: $font-color;
     }
     &__divider {
         height: 1px;
         background-color: $font-subtle-color;
         opacity: 0.2;
-        margin: $l * 0.75;
+        margin: 0.75rem;
 
         @include medium {
-            margin: $l * 1.2;
+            margin: 1.2rem;
         }
     }
     &__sublinks {
@@ -94,7 +94,7 @@
     }
     &__copyright {
         color: $font-subtle-color;
-        margin: $l;
+        margin: 1rem;
         text-align: center;
     }
 }

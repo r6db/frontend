@@ -1,8 +1,8 @@
 @import "scss/styles";
 
-$searchbar-height: $l*5.4;
-$profile-image-height: 146px;
-$profile-header-height: $profile-image-height + (5*$l);
+$searchbar-height: 5.4rem;
+$profile-image-height: 14.6rem;
+$profile-header-height: $profile-image-height + 5rem;
 
 .profile {
     color: $white;
@@ -14,17 +14,17 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
 
     .card {
-        margin: $l*0.5;
+        margin: 0.5rem;
 
         @include medium {
-            margin: $l*0.5;
+            margin: 0.5rem;
             flex: 1 1 40%;
             display: inline-block;
         }
         .row {
             display: flex;
             flex-direction: row;
-            padding: ($l*0.5) 0;
+            padding: 0.5rem 0;
         }
         .label {
             flex: 1 1 35%;
@@ -61,7 +61,7 @@ $profile-header-height: $profile-image-height + (5*$l);
         flex: 0 0 auto;
         align-items: flex-start;
         justify-content: space-between;
-        padding-bottom: $l;
+        padding-bottom: 1rem;
 
         @include large {
             flex-direction: row;
@@ -70,8 +70,8 @@ $profile-header-height: $profile-image-height + (5*$l);
 
     &-headerimage {
         position: relative;
-        width: 10*$l;
-        height: 10*$l;
+        width: 10rem;
+        height: 10rem;
 
         img {
             width: 100%;
@@ -95,7 +95,7 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
 
     &-headertext {
-        padding: $l 0 0 $l;
+        padding: 1rem 0 0 1rem;
         flex: 1;
     }
     &-name {
@@ -116,7 +116,7 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
     &-flair {
         color: $gray-light;
-        margin-bottom: $l;
+        margin-bottom: 1rem;
     }
     &-global-rank {
         span {
@@ -125,7 +125,7 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
     &-seasonranks {
         display: flex;
-        padding: 0 $l;
+        padding: 0 1rem;
         flex-direction: row;
         align-self: center;
         flex-wrap: wrap;
@@ -140,7 +140,7 @@ $profile-header-height: $profile-image-height + (5*$l);
     }
     &-extended {
         color: $accent;
-        margin-top: $l*0.5;
+        margin-top: 0.5rem;
         display: block;
     }
 
@@ -169,7 +169,7 @@ $profile-header-height: $profile-image-height + (5*$l);
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin: ($l*0.5) (-$l*0.5);
+        margin: 0.5rem (-0.5rem);
     }
 }
 
@@ -177,11 +177,11 @@ $profile-header-height: $profile-image-height + (5*$l);
     color: #666;
 }
 .rank {
-    margin: 0 $l;
+    margin: 0 1rem;
 
     &-image {
-        width: 6 * $l;
-        height: 6 * $l;
+        width: 6rem;
+        height: 6rem;
     }
     &:last-child {
         margin: 0;
@@ -200,7 +200,7 @@ $profile-header-height: $profile-image-height + (5*$l);
     width: 100%;
     max-width: $screen-large;
     margin: 0 auto;
-    padding: (2*$l) 0 (3*$l) (2*$l);
+    padding: 2rem 0 3rem 2rem;
     background: $trans-med;
     font-size: 3rem;
     line-height: 106px;
@@ -216,6 +216,6 @@ $profile-header-height: $profile-image-height + (5*$l);
 }
 
 .profileerror-message {
-    padding: $l*2;
+    padding: 2rem;
     line-height: 1.4;
 }

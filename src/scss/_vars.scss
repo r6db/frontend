@@ -8,11 +8,11 @@ $blood-orchid: #ca361c;
 $white-noise: #006543;
 $chimera: #ffc113;
 
-$primary: #007BFF;
+$primary: #007bff;
 $black: #1c1c1c;
 $off-white: hsl(hue($primary), 5%, 85%);
 $white: hsl(hue($primary), 5%, 90%);
-$accent: #FF6E09;
+$accent: #ff6e09;
 $link: mix(#2d95cf, $primary, 90%);
 $gray-dark: hsl(hue($primary), 3%, 5%);
 $gray-darkish: lighten($gray-dark, 20%);
@@ -28,21 +28,20 @@ $danger: mix(#b62f23, $primary, 95%);
 
 $font-color: $white;
 $font-subtle-color: $gray;
-$bg-color: #181B1F;
+$bg-color: #181b1f;
 
-$l: 10px;
 $a: 45deg;
 $borderradius: 5px;
 $borderradius-rel: 0.4em;
 
-$font-tiny: 0.5rem;
-$font-smaller: 0.75rem;
-$font-small: 0.9rem;
-$font-default: 1rem;
+$font-tiny: 0.5em;
+$font-smaller: 0.75em;
+$font-small: 0.9em;
+$font-default: 1em;
 $font-big: 1.125em;
-$font-bigger: 1.25rem;
-$font-large: 1.5rem;
-$font-huge: 2.5rem;
+$font-bigger: 1.25em;
+$font-large: 1.5em;
+$font-huge: 2.5em;
 
 $menu-height: 80px;
 $menu-width: 280px;

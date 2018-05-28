@@ -30,14 +30,14 @@
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
-        &:hover{
+        &:hover {
             background: rgba(200, 200, 200, 0.1);
         }
     }
 
     &__heading,
     &__cell {
-        padding: $l;
+        padding: 1rem;
     }
     &__heading {
         font-weight: bold;
@@ -66,7 +66,7 @@
         }
         &__cell,
         &__heading {
-            padding: ($l*1.5);
+            padding: 1.5rem;
         }
     }
 }
