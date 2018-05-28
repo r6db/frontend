@@ -14,13 +14,11 @@ import SEARCH from "./Pages/Search";
 import "./layout.scss";
 import "./base.scss";
 
-
-
-
-const makeAsync = loader => Loadable({
-    loader,
-    loading: Loading
-});
+const makeAsync = loader =>
+    Loadable({
+        loader,
+        loading: Loading
+    });
 
 const pageMap = {
     HOME,
@@ -34,15 +32,16 @@ const pageMap = {
     PLAYERTABS: makeAsync(() => import("./Pages/Player")),
     COMPARISON: makeAsync(() => import("./Pages/Comparison")),
     ABOUT: makeAsync(() => import("./Pages/About")),
+    SETTINGS: makeAsync(() => import("./Pages/Settings")),
+    PRIVACY: makeAsync(() => import("./Pages/Privacy")),
+    DELETE: makeAsync(() => import("./Pages/Delete")),
     SERVERFAULT: makeAsync(() => import("./Pages/Errors/ServerFault")),
-    [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound")),
+    [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound"))
 };
 
 pageMap.PLAYER.preload();
 
-
-class Layout extends React.PureComponent<any, any>{
-
+class Layout extends React.PureComponent<any, any> {
     render() {
         return (
             <div className={"app s " + this.props.location}>
@@ -58,21 +57,20 @@ class Layout extends React.PureComponent<any, any>{
     }
 }
 
-
 function mapStateToProps(state) {
     const { platform, search, location, loading } = state;
     return {
         location: location.type,
         Component: pageMap[location.type],
         loading,
-        platform,
+        platform
     };
 }
 
 function mapDispatchToProps(dispatch, state) {
     return {
-        toggleMenu: () => dispatch({ type: "MENU_TOGGLE" }),
-    }
+        toggleMenu: () => dispatch({ type: "MENU_TOGGLE" })
+    };
 }
 const Comp = connect(mapStateToProps, mapDispatchToProps)(Layout);
 export default hot(module)(Comp);

@@ -1,38 +1,50 @@
-export const TRACKING_ID = "UA-86120096-1";
+import uuid from "lib/uuid";
 
+// generate an id for this session
+// => find popular page sequences
+const sessionId = uuid();
+const analyticsUrl = false;
 let store;
 
+// collect stats to push to analytics
+const browserStats = {
+    // this sessions id
+    id: sessionId,
+    // the useragent => browser + version  (+ is iphone)
+    ua: navigator.userAgent,
+    // size of the browser window
+    res: `${window.outerWidth}x${window.outerHeight}`,
+    // siye of the content area
+    ires: `${window.innerWidth}x${window.innerHeight}`,
+    // prefered language
+    l: navigator.language,
+    // prefill the path
+    p: ""
+};
+
+// expose a function for the init file to set the store
 export function setStore(s) {
     store = s;
 }
-/* eslint-disable camelcase */
+
+/**
+ * send a page view to the analytics server
+ */
 export function pageView(title: string, path?: string) {
-    if (process.env.NODE_ENV !== 'production') { return; }
-    console.debug('pageView', { title, path });
-    if (!store) {
+    // return early if we're in dev, or no url is set
+    if (process.env.NODE_ENV !== "production" || !analyticsUrl) {
         return;
     }
-    if ((window as any).gtag) {
-        const p = path || store.getState().location.pathname;
-        (window as any).gtag("config", TRACKING_ID, {
-            //eslint-ignore
-            page_path: p,
-            page_title: title,
-        });
-        // (window as any).gtag("event", "page_view");
+    // also return early if the user didn't opt in
+    if (!store || !store.settings || !store.settings.analytics) {
+        return;
     }
-}
-export function search(query) {
-    if (process.env.NODE_ENV !== 'production') { return; }
-    if ((window as any).gtag) {
-        (window as any).gtag("event", "search", { search_term: query });
-    }
-}
+    const p = path || store.getState().location.pathname;
+    console.debug("pageView", { ...browserStats, p });
 
-export function event(name, opts) {
-    if (process.env.NODE_ENV !== 'production') { return; }
-    if ((window as any).gtag) {
-        (window as any).gtag("event", name, opts);
-    }
+    fetch(analyticsUrl, {
+        method: "POST",
+        // send the browser stats + the route we're on
+        body: JSON.stringify({ ...browserStats, p })
+    });
 }
-/* eslint-enable camelcase */

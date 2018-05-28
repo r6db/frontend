@@ -8,21 +8,34 @@ import routesMap from "./routesMap";
 import * as reducers from "./reducers";
 
 export default history => {
-    const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap, {
-        querySerializer: queryString,
-    });
+    const { reducer, middleware, enhancer, thunk } = connectRoutes(
+        history,
+        routesMap,
+        {
+            querySerializer: queryString
+        }
+    );
 
-    const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const composeEnhancers =
+        (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    const rootReducer = combineReducers(Object.assign({}, reducers, { location: reducer }));
+    const rootReducer = combineReducers(
+        Object.assign({}, reducers, { location: reducer })
+    );
     const middlewares = applyMiddleware(thunkMiddleware, middleware);
-    const enhancers = composeEnhancers(enhancer, persistState(["platform","favorites"]), middlewares);
+    const enhancers = composeEnhancers(
+        enhancer,
+        persistState(["platform", "favorites", "settings"]),
+        middlewares
+    );
 
     const store = createStore(rootReducer, undefined, enhancers);
 
     if (module.hot && process.env.NODE_ENV === "development") {
         module.hot.accept(() => {
-            const rootReducer = combineReducers(Object.assign({}, reducers, { location: reducer }));
+            const rootReducer = combineReducers(
+                Object.assign({}, reducers, { location: reducer })
+            );
             store.replaceReducer(rootReducer);
         });
     }

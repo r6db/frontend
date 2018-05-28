@@ -1,13 +1,16 @@
 .button {
     padding: 0.75em 1.25em;
     background: $gray;
-    color: $white;
+    width: auto;
     border: 1px solid $gray;
     border-radius: $borderradius;
+    color: $white;
+    text-align: center;
     font-size: $font-default;
     font-weight: 600;
     cursor: pointer;
-    width: auto;
+    transition: all 100ms ease-in-out;
+
     &[disabled] {
         color: $gray;
         cursor: default;
@@ -54,5 +57,10 @@
         border-color: lighten($font-subtle-color, 20%);
         background: none;
         color: lighten($font-subtle-color, 20%);
+    }
+    &--red {
+        border-color: darken(red, 15%);
+        background: red;
+        color: $white;
     }
 }

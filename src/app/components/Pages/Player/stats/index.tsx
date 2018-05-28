@@ -1,14 +1,13 @@
-import * as React from "react";
-import Ad from "components/misc/Ad";
-import RankOverview from "./modules/RankOverview";
-import SeasonOverview from "./modules/SeasonOverview";
-import Aliases from "./modules/Aliases";
-import StatsGeneral from "./modules/StatsGeneral";
-import StatsRankings from "./modules/StatsRankings";
-import StatsGameModes from "./modules/StatsGameModes";
-import StatsCharts from "./modules/StatsCharts";
+import * as React from 'react';
+import RankOverview from './modules/RankOverview';
+import SeasonOverview from './modules/SeasonOverview';
+import Aliases from './modules/Aliases';
+import StatsGeneral from './modules/StatsGeneral';
+import StatsRankings from './modules/StatsRankings';
+import StatsGameModes from './modules/StatsGameModes';
+import StatsCharts from './modules/StatsCharts';
 
-import "./statstab.scss";
+import './statstab.scss';
 
 export default function StatsTab(props) {
     return (
@@ -18,10 +17,7 @@ export default function StatsTab(props) {
                 <div className="playermodule__divider" />
                 <SeasonOverview {...props} />
                 <div className="playermodule__divider" />
-                {props.aliases && props.aliases.length > 1 ? (
-                    <Aliases {...props} />
-                ) : null}
-                <Ad type="largerect" />
+                {props.aliases && props.aliases.length > 1 ? <Aliases {...props} /> : null}
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">

@@ -1,0 +1,104 @@
+@import "scss/styles";
+
+.delete {
+    line-height: 1.2;
+    color: $white;
+
+    &--initial {
+        canvas {
+            height: 0;
+            margin: 0;
+        }
+    }
+    b {
+        font-weight: 600;
+        color: red;
+    }
+    &__step {
+        padding: 1em;
+        margin-bottom: 1.5em;
+        color: rgba($white, 0.6);
+    }
+    &__title {
+        color: $white;
+        border-left: 2px solid $accent;
+        padding-left: 1em;
+        line-height: 2;
+        span {
+            display: block;
+            color: $accent;
+            font-size: $font-big;
+        }
+    }
+    &__qrcode {
+        display: flex;
+        align-items: center;
+    }
+    &__intro {
+        line-height: 1.4;
+        letter-spacing: 0.06em;
+        margin-bottom: $l * 2;
+        padding: $l;
+        white-space: pre-line;
+        em{
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+    &__input {
+        width: 100%;
+        color: $white;
+        background: rgba(darken($bg-color, 4%), 0.85);
+        margin: 1em 0;
+        padding: 1em 1em;
+        border-radius: $borderradius;
+    }
+    canvas {
+        width: 100px;
+        height: 100px;
+        margin-right: 2em;
+    }
+    &__postqr {
+        a {
+            color: $accent;
+        }
+    }
+    &__check {
+        display: flex;
+        align-items: center;
+        margin: 2em 0em;
+        span {
+            font-weight: 600;
+            margin-left: 1em;
+        }
+        button[disabled] {
+            background: transparent;
+            border: 1px solid $gray;
+        }
+    }
+    &__status {
+        display: flex;
+        align-items: center;
+        margin-left: 1.5em;
+        svg {
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: 0.5em;
+            position: relative;
+            top: 1px;
+        }
+        &.success {
+            color: green;
+        }
+        &.error {
+            color: red;
+        }
+    }
+    &__list {
+        list-style: inside;
+        margin: 1em;
+        li {
+            padding: 0.2em;
+        }
+    }
+}

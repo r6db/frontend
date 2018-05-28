@@ -1,0 +1,26 @@
+@import "scss/styles";
+
+.privacy {
+    line-height: 1.4;
+
+    p {
+        margin: $l * 2 0;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin: $l * 3 0 $l;
+    }
+    h3 {
+        font-size: 1.25em;
+        margin: $l 0 0;
+    }
+    a {
+        color: $accent;
+    }
+    ul {
+        margin: $l * 2 0;
+        padding-left: $l * 3;
+        list-style-type: initial;
+    }
+}
