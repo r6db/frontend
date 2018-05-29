@@ -54,6 +54,9 @@ export default {
     DELETE: {
         path: "/delete"
     },
+    DEMO: {
+        path: "/demo"
+    },
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
@@ -194,9 +197,7 @@ export default {
 
             const ids = [].concat(query.ids || []);
 
-            let idList = ids
-                .map(x => x.toLowerCase().trim())
-                .filter(x => players[x] == undefined);
+            let idList = ids.map(x => x.toLowerCase().trim()).filter(x => players[x] == undefined);
             api
                 .getPlayers(idList)
                 .then(x => {
@@ -260,9 +261,9 @@ async function playerThunk(dispatch, getState) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             analytics.pageView("Player", `/player/:id/${tab || ""}`);
             if (!player.flags.noAliases) {
-                let description = `Rainbow Six: Siege stats for ${
-                    player.name
-                } (${player.platform})`;
+                let description = `Rainbow Six: Siege stats for ${player.name} (${
+                    player.platform
+                })`;
                 let extra = "";
                 const placements = [
                     {
@@ -287,16 +288,10 @@ async function playerThunk(dispatch, getState) {
                     .filter(x => x !== null)
                     .filter(x => x.place < 100)
                     .sort((a, b) => {
-                        return a.place - b.place > 0
-                            ? 1
-                            : a.place - b.place < 0
-                                ? -1
-                                : 0;
+                        return a.place - b.place > 0 ? 1 : a.place - b.place < 0 ? -1 : 0;
                     })[0];
                 if (highestRegion) {
-                    description += `. #${highestRegion.place + 1} in ${
-                        highestRegion.region
-                    }.`;
+                    description += `. #${highestRegion.place + 1} in ${highestRegion.region}.`;
                 }
                 setMeta({
                     title: `${player.name}`,

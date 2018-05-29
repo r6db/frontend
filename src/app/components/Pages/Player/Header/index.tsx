@@ -24,12 +24,12 @@ class PlayerHeader extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            interval: null,
+            interval: null
         };
     }
     componentDidMount() {
         this.setState({
-            interval: setInterval(() => this.rerender(),  30 * 1000),
+            interval: setInterval(() => this.rerender(), 30 * 1000)
         });
     }
     rerender() {
@@ -45,35 +45,56 @@ class PlayerHeader extends React.PureComponent<any, any> {
                 <div className="playerheader__container container">
                     <div className="playerheader__content">
                         <div className="playerheader__image">
-                            <FadeImage src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)} />
+                            <FadeImage
+                                src={domain.getImageLink(
+                                    this.props.userId || this.props.id,
+                                    this.props.platform
+                                )}
+                            />
                         </div>
                         <div className="playerheader__info">
                             <header className="header playerheader__namebox">
                                 <div className="playerheader__namewrapper">
                                     <span className="playerheader__name">{this.props.name}</span>
-                                    <span className="playerheader__platform">{this.props.platform}</span>
+                                    <span className="playerheader__platform">
+                                        {this.props.platform}
+                                    </span>
                                 </div>
-                                {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
+                                {this.props.flair ? (
+                                    <div className="playerheader__flair">{this.props.flair}</div>
+                                ) : null}
                             </header>
                             <div className="playerheader__level">
-                                {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) : "-"}{" "}
+                                {this.props.placements.global != null
+                                    ? "#" + (this.props.placements.global + 1)
+                                    : "-"}{" "}
                                 global / lvl {this.props.level}
                             </div>
                             <div className="playerheader__links">
                                 <a
                                     className="playerheader__link"
-                                    href={domain.getUbiLink(this.props.userId || this.props.id, this.props.platform)}
+                                    href={domain.getUbiLink(
+                                        this.props.userId || this.props.id,
+                                        this.props.platform
+                                    )}
                                     target="_BLANK"
                                 >
                                     <Icon glyph={GLYPHS.UBI} /> Ubisoft
                                 </a>
-                                <a className="playerheader__link" href={domain.getEslLink(this.props.name)} target="_BLANK">
+                                <a
+                                    className="playerheader__link"
+                                    href={domain.getEslLink(this.props.name)}
+                                    target="_BLANK"
+                                >
                                     <Icon glyph={GLYPHS.ESL} /> ESL
                                 </a>
                                 {exportButton(this.props)}
                                 <div className="hidden-small">
                                     <span className="playerheader__divider">|</span>
-                                    <Link className="playerheader__link" to={toSimple(this.props.id)}>
+                                    <Link
+                                        className="playerheader__link"
+                                        to={toSimple(this.props.id)}
+                                    >
                                         Simple View
                                     </Link>
                                 </div>
@@ -81,7 +102,10 @@ class PlayerHeader extends React.PureComponent<any, any> {
                         </div>
                         <div className="playerheader__buttons">
                             {this.props.updateAvailableAt > new Date() ? (
-                                <button className="button playerheader__button button--outline" disabled>
+                                <button
+                                    className="button playerheader__button button--outline"
+                                    disabled
+                                >
                                     available {this.props.updateAvailableAt.toLocaleTimeString()}
                                 </button>
                             ) : (
@@ -92,20 +116,21 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                     <Icon glyph={GLYPHS.REFRESH} /> update
                                 </button>
                             )}
-                            {this.props.isFavorite
-                                ? <button
-                                      onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                      className="button playerheader__button button--outline--primary active"
-                                  >
+                            {this.props.isFavorite ? (
+                                <button
+                                    onClick={() => this.props.unfavoritePlayer(this.props.id)}
+                                    className="button playerheader__button button--outline--primary active"
+                                >
                                     <Icon glyph={GLYPHS.STARFULL} /> favorite
-                                  </button>
-                                : <button
-                                      onClick={() => this.props.favoritePlayer(this.props.id)}
-                                      className="button playerheader__button button--outline--subtile"
-                                  >
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => this.props.favoritePlayer(this.props.id)}
+                                    className="button playerheader__button button--outline--default"
+                                >
                                     <Icon glyph={GLYPHS.STAR} /> favorite
-                                  </button>
-                            }
+                                </button>
+                            )}
                         </div>
                     </div>
                     <div className="playerheader__tabs">
@@ -135,7 +160,12 @@ class PlayerHeader extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = state => {
-    const { isFavorite, favorites, loading, location: { payload } } = state;
+    const {
+        isFavorite,
+        favorites,
+        loading,
+        location: { payload }
+    } = state;
 
     return {
         loading,

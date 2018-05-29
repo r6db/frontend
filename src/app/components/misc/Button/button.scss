@@ -1,18 +1,37 @@
+@import "scss/styles";
+
 .button {
     padding: 0.75em 1.25em;
-    background: $gray;
     width: auto;
-    border: 1px solid $gray;
+    border: 1px solid transparent;
     border-radius: $borderradius;
-    color: $white;
+    @include boxshadow;
     text-align: center;
     font-size: $font-default;
     font-weight: 600;
+    margin: 0.5em;
     cursor: pointer;
     transition: all 100ms ease-in-out;
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+
+    &__icon {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: transparent;
+        stroke: currentColor;
+        margin-right: 0.25em;
+        position: absolute;
+        left: 1.5em;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     &[disabled] {
-        color: $gray;
+        opacity: 0.5;
+    }
+    &[disabled]:hover {
         cursor: default;
     }
     &:focus {
@@ -25,8 +44,26 @@
     &--block {
         display: block;
     }
-    &--outline {
+    &--small {
+        padding: 0.5em 0.75em;
+    }
+    &--large {
+        padding: 1em 2em;
+    }
+    &--iconed {
+        position: relative;
+        padding-left: 2.5em;
+    }
+
+    &--default {
+        border-color: $gray;
+        background: $gray;
+        color: $white;
+    }
+    &--outline--default {
+        border-color: $gray;
         background: none;
+        color: $white;
     }
     &--primary {
         border-color: $primary;
@@ -48,19 +85,14 @@
         background: none;
         color: $accent;
     }
-    &--subtile {
-        border-color: darken($accent, 15%);
-        background: $accent;
-        color: $white;
-    }
-    &--outline--subtile {
-        border-color: lighten($font-subtle-color, 20%);
-        background: none;
-        color: lighten($font-subtle-color, 20%);
-    }
-    &--red {
+    &--error {
         border-color: darken(red, 15%);
         background: red;
         color: $white;
+    }
+    &--outline--subtle {
+        border-color: darken(red, 5%);
+        background: none;
+        color: darken(red, 5%);
     }
 }
