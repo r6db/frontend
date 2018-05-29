@@ -56,6 +56,7 @@ select {
     display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     border-radius: $borderradius;
 }
 
