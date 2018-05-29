@@ -17,7 +17,8 @@ import CHEVRONUP from "feather-icons/dist/icons/chevron-up.svg";
 import CHEVRONDOWN from "feather-icons/dist/icons/chevron-down.svg";
 import CLOSE from "feather-icons/dist/icons/x.svg";
 import STARFULL from "assets/starfull.svg";
-import SUCCESS from "feather-icons/dist/icons/check-circle.svg"
+import ARROWRIGHT from "feather-icons/dist/icons/arrow-right.svg";
+import SUCCESS from "feather-icons/dist/icons/check-circle.svg";
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -96,6 +97,7 @@ import LOGOS6 from "assets/seasonlogos/R6-OPHealth-Horizontal.svg";
 import LOGOS7 from "assets/seasonlogos/R6-OPBloodOrchid-Horizontal.svg";
 import LOGOS8 from "assets/seasonlogos/R6-OPWhiteNoise-Horizontal.svg";
 import LOGOS9 from "assets/seasonlogos/R6-OPChimera-Horizontal.svg";
+import LOGOS10 from "assets/seasonlogos/R6-OPParaBellum-Horizontal.svg";
 
 export default props =>
     props.glyph ? (
@@ -136,6 +138,7 @@ export const GLYPHS = {
     CHEVRONUP,
     CHEVRONDOWN,
     CLOSE,
+    ARROWRIGHT,
     SUCCESS,
     RANK0,
     RANK1,
@@ -206,4 +209,5 @@ export const GLYPHS = {
     LOGOS7,
     LOGOS8,
     LOGOS9,
+    LOGOS10
 };

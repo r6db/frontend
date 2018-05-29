@@ -1,71 +1,72 @@
 @import "scss/styles";
 
-.app.HOME {
-    .page {
-        padding-top: 0;
-    }
-    .page__head {
-        height: 100vh;
-    }
-    .page__headcontent {
-        background: transparent;
-    }
+@mixin chrome-mobile-fix {
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        height: calc(100vh - 56px) !important;
+        min-height: calc(100vh - 56px) !important;
+    }  
+}
 
-    .page__image {
-        top: -40px;
-        height: calc(100% + 40px);
-
-        @include medium {
-            top: -80px;
-            height: calc(100% + 80px);
+.app {
+    &__page {
+        min-height: 100vh;
+        @include chrome-mobile-fix;
+    }
+    &.HOME {
+        .page {
+            height: 100vh;
+            padding: 0;
+            @include chrome-mobile-fix;
         }
-    }
-
-    .topbar__search {
-        display: none;
-    }
-
-    @include medium {
+        .page__head {
+            height: 100vh;
+            @include chrome-mobile-fix; 
+        }
         .page__headcontent {
-            padding-bottom: 100px;
+            background: transparent;
+        }
+        .page__image {
+            top: 0;
+            height: 100%;
+            opacity: 0.2;
+        }
+        .topbar__search {
+            display: none;
+            visibility: hidden;
         }
     }
 }
 
 .home {
-    height: 100%;
-    width: 100%;
-    .page__image {
-        opacity: 0.2;
-        filter: saturate(120%) contrast(120%);
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     &__logo {
-        display: flex;
         width: 10rem;
-        margin: 0 auto;
+        margin-bottom: 2rem;
 
-        @include large {
+        @include medium {
+            width: 15rem;
+        }
+
+        @include openmenu {
             display: none;
             visibility: hidden;
         }
+    }
+    &__search {
+        height: 50px;
+        max-width: 600px;
+        margin-bottom: 1rem;
     }
     .ad {
         width: 100%;
         max-width: 800px;
         min-height: 80px;
         margin: 0 auto;
-    }
-    .searchbar {
-        width: 90%;
-        max-width: 600px;
-        height: $l * 5;
-        background: $gray-dark;
-
-        @include large {
-            &__name {
-                font-size: $font-bigger;
-            }
-        }
     }
     .blocker{
         max-width: 300px;

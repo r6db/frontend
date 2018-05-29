@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import Modal from "components/misc/Modal";
 import FadeImage from "components/misc/FadeImage";
+import Icon, { GLYPHS } from "components/misc/Icon";
 import { findPlayer } from "lib/api";
 import { formatDuration } from "lib/stats";
 import { getImageLink } from "lib/domain";
@@ -41,26 +42,32 @@ class AddPlayerModal extends React.Component<any, any> {
         return (
             <Modal className="addplayermodal" title="Add player" onclose={this.props.onclose}>
                 <form className="searchbar addplayermodal__search" action="" onSubmit={this.onSearch}>
-                    <input
-                        className="searchbar__name"
-                        type="text"
-                        value={this.state.query}
-                        placeholder="enter player name"
-                        onKeyPress={e => this.onQueryChange((e.target as any).value)}
-                        onChange={e => this.onQueryChange((e.target as any).value)}
-                    />
-                    <select
-                        className="searchbar__platform"
-                        value={this.props.platform}
-                        onChange={e => this.onPlatformChange((e.target as any).value)}
-                    >
-                        <option value="PC">PC</option>
-                        <option value="PS4">PS4</option>
-                        <option value="XBOX">XB1</option>
-                    </select>
-                    <button onSubmit={this.onSearch} className="button button--primary searchbar__submit">
-                        Search
-                    </button>
+                    <div className="searchbar__box">
+                        <input
+                            className="searchbar__input"
+                            type="text"
+                            value={this.state.query}
+                            placeholder="Enter user name..."
+                            onKeyPress={e => this.onQueryChange((e.target as any).value)}
+                            onChange={e => this.onQueryChange((e.target as any).value)}
+                        />
+                        <button onSubmit={this.onSearch} className="searchbar__submit">
+                            <Icon glyph={GLYPHS.ARROWRIGHT} />
+                        </button>
+                    </div>
+                    {/* <div className={`searchbar__platform ${this.props.platform || ''}`}>
+                        <select
+                            className="searchbar__platform__select"
+                            value={this.props.platform}
+                            onChange={e => this.onPlatformChange((e.target as any).value)}
+                        >
+                            <option value="PC">PC</option>
+                            <option value="PS4">PS4</option>
+                            <option value="XBOX">XB1</option>
+                        </select>
+                        <div className="searchbar__platform__arrow"><Icon glyph={GLYPHS.CHEVRONDOWN} /></div>
+                    </div> */}
+                    {/* Platform select broken, needs fixing */}
                 </form>
                 <div className="addplayermodal__results">
                     {this.state.results.length > 0 ? (

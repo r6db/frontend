@@ -46,7 +46,7 @@
     text-shadow: 0 0 10px rgba(30, 30, 30, 0.8);
 }
 @mixin boxshadow {
-    box-shadow: 0 2px 4px $gray-dark;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08);
 }
 
 @mixin flair {
