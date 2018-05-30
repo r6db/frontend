@@ -15,7 +15,7 @@ If you want to suggest a feature or submit a bug, please head over to the [main 
 ```
 |
 | - build    -> target directory when running a full build
-| - weboack   -> webpack configs
+| - webpack  -> webpack configs
 | - src      -> contains app src
 |   |
 |   | - app             -> app code
@@ -40,9 +40,9 @@ If you want to suggest a feature or submit a bug, please head over to the [main 
 
 ## local installation
 
-you need to have [node](https://nodejs.org/en/) and npm (or yarn) installed locally.
-after installing the dependencies with `npm install`, you have following commands available
+you need to have [node](https://nodejs.org/en/) and [yarn](https://nodejs.org/en/) (or npm) installed locally.
+after installing the dependencies with `yarn install`, you have following commands available
 
  - `yarn start` to run the dev-server
- - `yarnn build` to build the app in production mode
+ - `yarn build` to build the app in production mode
  - `yarn build:dev` to build the app in development mode
