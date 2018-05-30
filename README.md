@@ -1,18 +1,22 @@
 ![Build Status](https://build.r6db.com/buildStatus/icon?job=frontend-master)
 # R6DB  
-this is all the code for our frontend at r6db.com  
-we are focusing on keeping the app small in size and quick in loading time.  
-If you want to suggest a feature or submit a bug, please head over to the [main repository](https://github.com/r6db/r6db/issues) and submit an issue there. Only internal issues are tracked here.
+React&Redux based SPA.
+Routing is handled by `redux-first-router`.  
 
-## generate swagger client
-`curl -X POST -H "content-type:application/json" -d '{"swaggerUrl":"https://apidocs.r6db.com/r6db.yaml"}' https://generator.swagger.io/api/gen/clients/typescript-fetch`
+If you want to suggest a feature or submit a bug, please head over to the [main repository](https://github.com/r6db/r6db/issues) and submit an issue there.
+
+## Deployment
+
+- master is autodeployed to https://dev.r6db.com
+- deploy is autodeployed to https://r6db.com
+
 
 ## Structure
 
 ```
 |
 | - build    -> target directory when running a full build
-| - config   -> webpack configs
+| - webpack  -> webpack configs
 | - src      -> contains app src
 |   |
 |   | - app             -> app code
@@ -24,8 +28,9 @@ If you want to suggest a feature or submit a bug, please head over to the [main 
 |   |   |   | - api     -> calls to r6db api
 |   |   |   | - store   -> redux stuff, routes
 |   |   |   | ...
-|   |   | - app.js      -> app mount
-|   |   | - index.js    -> root imports
+|   |   | - app.ts      -> app mount
+|   |   | - index.ts    -> root imports
+|   |   | - sw.js       -> serviceworker code
 |   | - assets          -> contains images/fonts, etc
 |   | - favicons        -> generated favicons
 |   | - scss            -> holds variables and mixins
@@ -36,9 +41,9 @@ If you want to suggest a feature or submit a bug, please head over to the [main 
 
 ## local installation
 
-you need to have [node](https://nodejs.org/en/) and npm (or yarn) installed locally.
-after installing the dependencies with `npm install`, you have following commands available
+you need to have [node](https://nodejs.org/en/) and [yarn](https://nodejs.org/en/) (or npm) installed locally.
+after installing the dependencies with `yarn install`, you have following commands available
 
- - `npm start` to run the dev-server
- - `npm run build` to build the app in production mode
- - `npm run build:dev` to build the app in development mode
+ - `yarn start` to run the dev-server
+ - `yarn build` to build the app in production mode
+ - `yarn build:dev` to build the app in development mode
