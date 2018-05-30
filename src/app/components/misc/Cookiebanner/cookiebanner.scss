@@ -29,7 +29,7 @@
         }
     }
     p {
-        flex: 1;
+        flex: 100%;
         line-height: 1.2;
         font-size: $font-default;
         margin-bottom: 1rem;
@@ -37,6 +37,7 @@
         @include medium {
             font-size: $font-big;
             margin-bottom: 0;
+            flex: 1;
         }
     }
     span {

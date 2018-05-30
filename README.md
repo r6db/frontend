@@ -1,3 +1,4 @@
+![Build Status](https://build.r6db.com/buildStatus/icon?job=frontend-master)
 # R6DB  
 React&Redux based SPA.
 Routing is handled by `redux-first-router`.  
