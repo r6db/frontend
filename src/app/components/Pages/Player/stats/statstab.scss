@@ -10,12 +10,12 @@
         &__sidebar {
             flex: 0 0 auto;
             width: 340px;
-            margin-right: $l;
+            margin-right: 1rem;
             min-width: 0px;
         }
         &__content {
             flex: 4.5;
-            margin-left: $l;
+            margin-left: 1rem;
             min-width: 0px;
         }
     }
@@ -36,13 +36,13 @@
 
             .statstab__center {
                 flex: 3;
-                margin-right: $l;
+                margin-right: 1rem;
                 min-width: 0px;
                 order: 1;
             }
             .statstab__aside {
                 flex: 1;
-                margin-left: $l;
+                margin-left: 1rem;
                 min-width: 0px;
                 order: 2;
             }

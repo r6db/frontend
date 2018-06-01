@@ -1,12 +1,12 @@
 @import "scss/styles";
 
-.profile .alias{
-    padding: $l;
+.profile .alias {
+    padding: 1rem;
     text-align: center;
     position: relative;
     flex: 1 0 200px;
 
-    &:after{
+    &:after {
         content: "";
         position: absolute;
         left: 50%;
@@ -19,7 +19,7 @@
         z-index: 1;
         transform: translate(-50%, -50%);
     }
-    &:before{
+    &:before {
         content: "";
         position: absolute;
         left: 50%;
@@ -30,22 +30,22 @@
         transform: translate(-50%, -50%);
     }
 
-    &:first-child{
-        &:before{
+    &:first-child {
+        &:before {
             width: 50%;
             transform: translate(0, -50%);
         }
-        &:after{
+        &:after {
             background: $primary;
         }
     }
-    &:last-child{
-        &:before{
-            background: linear-gradient(to right,$white,$white 50%, rgba(255, 255, 255, 0) 80%);
+    &:last-child {
+        &:before {
+            background: linear-gradient(to right, $white, $white 50%, rgba(255, 255, 255, 0) 80%);
         }
     }
 }
-.profile .alias-name{
+.profile .alias-name {
     font-weight: bold;
     font-size: 1.5em;
     padding-top: 10px;

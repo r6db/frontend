@@ -10,7 +10,7 @@
 .setting {
     display: flex;
     flex-direction: column;
-    margin-bottom: $l * 4;
+    margin-bottom: 4rem;
     border-left: 1px solid $font-subtle-color;
 
     &__box {
@@ -18,7 +18,7 @@
         flex-direction: row;
         align-items: strech;
         width: 100%;
-        padding-left: $l*2.5;
+        padding-left: 2.5rem;
     }
 
     &__input {
@@ -29,10 +29,10 @@
         flex-grow: 1;
     }
     &__description {
-        margin-top: $l*1.5;
+        margin-top: 1.5rem;
         line-height: 1.4;
         color: $font-subtle-color;
-        padding-left: $l*2.5;
+        padding-left: 2.5rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
         text-align: justify;
@@ -57,9 +57,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0,0,0,0.2);
-            -webkit-transition: .4s;
-            transition: .4s;
+            background-color: rgba(0, 0, 0, 0.2);
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
             border-radius: 1.75em;
 
             &:before {
@@ -70,14 +70,14 @@
                 left: 0.75em;
                 bottom: 0.5em;
                 background-color: white;
-                -webkit-transition: .4s;
-                transition: .4s;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
                 border-radius: 50%;
             }
         }
 
         input {
-            display:none;
+            display: none;
 
             &:checked + .slider {
                 background-color: $accent;
@@ -93,7 +93,7 @@
         &text {
             font-size: 1.25em;
             font-weight: 600;
-            margin-left: $l*2.5;
+            margin-left: 2.5rem;
             width: 2em;
             text-align: right;
         }

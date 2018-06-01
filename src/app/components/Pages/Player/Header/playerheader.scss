@@ -7,7 +7,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: $font-bigger;
         text-align: center;
 
         @include medium {
@@ -17,23 +16,23 @@
         }
     }
     &__image {
-        width: $l*10;
-        height: $l*10;
+        width: 10rem;
+        height: 10rem;
         flex: none;
         background-color: $trans-low;
         @include boxshadow;
 
         @include medium {
-            margin-right: $l;
+            margin-right: 1rem;
         }
     }
     &__info {
         @include medium {
-          margin-left: $l * 2;
+            margin-left: 2rem;
         }
     }
     &__namebox {
-        margin: $l 0 !important;
+        margin: 1rem 0 !important;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -41,20 +40,16 @@
         align-items: center;
 
         @include medium {
-            margin-top: 0!important;
-            margin-bottom: $l*0.75 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0.75rem !important;
             justify-content: flex-start;
             flex-wrap: nowrap;
             flex-direction: row;
+            font-size: 4rem;
         }
     }
     &__name {
         font-weight: 400;
-        font-size: 2rem;
-
-        @include medium {
-            font-size: 3rem;
-        }
     }
     &__namewrapper {
         flex: 1 0 100%;
@@ -72,26 +67,21 @@
     &__platform {
         display: inline-block;
         font-weight: 600;
-        font-size: 1.65rem;
+        font-size: 0.8em;
         color: rgba($white, 0.5);
-        margin-left: $l;
-
-        @include medium {
-            font-size: 2.25rem;
-            margin-left: $l*1.25;
-        }
+        margin-left: 1rem;
     }
     &__flair {
         @include flair;
-        font-size: 0.85rem;
-        margin-top: $l;
+        font-size: 1.2rem;
+        margin-top: 1rem;
 
         @include medium {
-            margin-left: $l*2;
+            margin-left: 2rem;
         }
     }
     &__ranking {
-        margin-top: $l;
+        margin-top: 1rem;
     }
     &__links {
         display: flex;
@@ -99,20 +89,20 @@
         align-items: center;
         justify-content: center;
         font-size: $font-default;
-        margin: $l 0;
+        margin: 1rem 0;
         flex-wrap: wrap;
 
         @include medium {
             margin-top: 0;
             margin-right: 0;
             margin-bottom: 0;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             align-items: center;
             justify-content: flex-start;
         }
     }
     &__divider {
-        margin-left: $l*1.5;
+        margin-left: 1.5rem;
     }
     &__buttons {
         display: flex;
@@ -120,7 +110,7 @@
         align-items: center;
         justify-content: flex-end;
         flex: 1;
-        margin-top: $l*2;
+        margin-top: 2rem;
 
         @include medium {
             margin-top: 0;
@@ -129,7 +119,7 @@
     &__button {
         display: flex;
         flex-direction: row;
-        margin-left: $l;
+        margin-left: 1rem;
         align-items: center;
         height: 40px;
 
@@ -142,29 +132,29 @@
             }
         }
         .icon {
-            width: 1.2rem;
-            height: 1.2rem;
+            width: 1.75rem;
+            height: 1.75rem;
             fill: transparent;
             stroke: currentColor;
-            margin-right: $l*0.75;
+            margin-right: 0.75rem;
         }
-
     }
     &__link {
         display: inline-flex;
         align-items: center;
-        margin-left: $l*1.5;
+        margin-left: 1.5rem;
         padding-left: 3px;
         color: $font-color;
         font-weight: 600;
+
         &:first-child {
             margin-left: 0;
         }
         .icon {
-            width: $l*2;
-            height: $l*2;
+            width: 2rem;
+            height: 2rem;
             fill: $font-color;
-            margin-right: 0.5rem;
+            margin-right: 0.5em;
         }
 
         &.download {
@@ -179,12 +169,12 @@
     }
     &__tabs {
         display: flex;
-        margin-top: $l*3;
-        border-bottom: 1px solid rgba(255,255,255,0.05s);
+        margin-top: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05s);
     }
     &__tab {
         flex: 1;
-        padding: ($l*1.5) $l;
+        padding: 1.5rem 1rem;
         transition: all 100ms ease-out;
         border-bottom: 2px solid transparent;
         text-align: center;
@@ -196,18 +186,18 @@
             outline: none;
         }
         &:hover {
-          color: $font-color;
+            color: $font-color;
         }
         &--active {
             color: $accent;
             border-color: $accent;
             &:hover {
-              color: $accent;
+                color: $accent;
             }
         }
 
         @include large {
-            padding: ($l*1.5) ($l*3);
+            padding: 1.5rem 3rem;
             flex: 0;
         }
     }
