@@ -23,7 +23,7 @@
         min-width: 0;
         flex: auto;
         color: $font-color;
-        font-size: fz(0);
+        font-size: 1.125em;
         transition: all 0.2s ease-in-out;
         -moz-transition: none;
         /* ::placeholder transition on firefox is bugged, so remove for consistency  */
@@ -129,7 +129,7 @@
             color: $font-color;
             background: transparent;
             font-weight: 600;
-            font-size: fz(0);
+            font-size: 1.125em;
             text-align: left;
             cursor: pointer;
 
@@ -144,7 +144,7 @@
         }
         &__arrow {
             position: absolute;
-            top: auto;
+            top: calc(50% - 0.75em);
             right: 0;
             width: 1.5em;
             height: 1.5em;

@@ -2,14 +2,14 @@
 
 .app.SEARCH {
     .page__headcontent {
-        padding-bottom: $l * 2;
+        padding-bottom: 2rem;
     }
     .page__content {
-        padding: ($l * 3) 0 $l;
+        padding: 3rem 0 1rem;
     }
     .ad {
-        max-height: $l * 15;
-        margin-bottom: $l * 2;
+        max-height: 15rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -31,7 +31,7 @@
         }
     }
     &__resultcount {
-        margin-left: $l;
+        margin-left: 1rem;
     }
     &__result {
         color: $font-color;

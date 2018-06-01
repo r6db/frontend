@@ -1,7 +1,7 @@
 @import "scss/styles";
 
 .aliases {
-    padding-bottom: $l;
+    padding-bottom: 1rem;
 
     &__list {
         display: flex;
@@ -32,15 +32,15 @@
         }
 
         .icon {
-            width: $l * 2;
-            height: $l * 2;
+            width: 2rem;
+            height: 2rem;
             margin-top: 2px;
-            margin-right: $l;
+            margin-right: 1rem;
         }
     }
 
     .playermodule__content {
-        margin-top: $l;
+        margin-top: 1rem;
         display: flex;
         flex-direction: row;
         overflow: auto;
@@ -51,9 +51,9 @@
     }
 }
 .player .alias {
-    padding: (0.5 * $l) $l;
+    padding: 0.5rem 1rem;
     position: relative;
-    margin-bottom: $l;
+    margin-bottom: 1rem;
     flex: none;
 
     @include medium {

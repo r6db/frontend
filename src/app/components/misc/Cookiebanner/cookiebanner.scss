@@ -1,0 +1,65 @@
+@import "scss/styles";
+
+.cookiebanner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1.5rem;
+    z-index: 100;
+    background: lighten($bg-color, 2%);
+    @include boxshadow;
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0 auto;
+        text-align: justify;
+
+        @include medium {
+            text-align: left;
+        }
+    }
+    a {
+        display: inline-flex;
+        color: $accent;
+        
+        @include medium {
+            padding-left: 1rem;
+        }
+    }
+    p {
+        flex: 100%;
+        line-height: 1.2;
+        font-size: fz(0);
+        margin-bottom: 1rem;
+
+        @include medium {
+            font-size: fz(1);
+            margin-bottom: 0;
+            flex: 1;
+        }
+    }
+    span {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0;
+        color: $font-subtle-color;
+        
+        @include medium {
+            flex-direction: row;
+            padding-bottom: 0;
+        }
+    }
+
+    button {
+        justify-self: flex-end;
+        display: block;
+        flex: 100%;
+
+        @include medium {
+            flex: 0 0 10rem;
+            display: inline-block;
+        }
+    }
+}

@@ -1,21 +1,21 @@
 @import "scss/styles";
 
 .playermodule.charts {
-    padding: 0 $l;
+    padding: 0 1rem;
 
     .chart {
-        margin-top: $l;
+        margin-top: 1rem;
 
         &__header {
             @include card-header;
             padding-left: 0;
-            margin-bottom: $l;
+            margin-bottom: 1rem;
             font-size: fz(0);
         }
     }
     .row {
         flex-direction: column;
-        margin-bottom: $l * 2;
+        margin-bottom: 2rem;
 
         @include large {
             &.half {

@@ -41,7 +41,7 @@
     &__head {
         display: flex;
         justify-content: space-between;
-        padding: $l;
+        padding: 1rem;
         align-items: center;
     }
     &__title {
@@ -54,6 +54,6 @@
         color: $font-color;
     }
     &__body {
-        padding: $l;
+        padding: 1rem;
     }
 }

@@ -5,15 +5,15 @@
     flex-direction: row;
     align-items: center;
     color: #fff;
-    margin-bottom: $l * 2;
+    margin-bottom: 2rem;
 
     &__image {
         background-color: darken($bg-color, 2%);
-        margin-right: $l * 2;
+        margin-right: 2rem;
 
         img {
-            width: $l * 5;
-            height: $l * 5;
+            width: 5rem;
+            height: 5rem;
         }
     }
     &__user {
@@ -31,7 +31,7 @@
         color: $font-subtle-color;
     }
     &__namebox {
-        margin-bottom: $l * 0.5;
+        margin-bottom: 0.5rem;
         display: flex;
         align-items: center;
     }
@@ -41,7 +41,7 @@
     }
     &__flair {
         @include flair;
-        font-size: 0.75rem;
+        font-size: fz(-2);
     }
     &__aliases {
         opacity: 0.75;
@@ -52,8 +52,8 @@
         flex-shrink: 0;
         flex-basis: auto;
         border-left: 1px solid rgba($font-subtle-color, 0.2);
-        margin-left: $l * 2;
-        padding: $l $l $l $l * 2;
+        margin-left: 2rem;
+        padding: 1rem 1rem 1rem 2rem;
 
         .icon {
             width: 1.25em;

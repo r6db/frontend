@@ -3,12 +3,12 @@
 .stat {
     display: flex;
     align-items: baseline;
-    margin-bottom: 0.5 * $l;
+    margin-bottom: 0.5rem;
 
     // keeep the &- variants for the simpleview
     &-label {
         color: $gray;
-        margin-right: $l * 0.5;
+        margin-right: 0.5rem;
     }
     &-value {
         white-space: pre;
@@ -18,7 +18,7 @@
         font-weight: 300;
     }
     &__label {
-        margin-left: $l;
+        margin-left: 1rem;
         font-weight: 600;
         color: $font-subtle-color;
         font-size: fz(-1);

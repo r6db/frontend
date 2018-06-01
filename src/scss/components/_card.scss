@@ -1,7 +1,7 @@
 .card {
     @include card;
     width: 100%;
-    margin: $l;
+    margin: 1rem;
     display: block;
 
     &__header {
