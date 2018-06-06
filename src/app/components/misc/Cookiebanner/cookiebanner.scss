@@ -31,11 +31,11 @@
     p {
         flex: 100%;
         line-height: 1.2;
-        font-size: $font-default;
+        font-size: fz(0);
         margin-bottom: 1rem;
 
         @include medium {
-            font-size: $font-big;
+            font-size: fz(1);
             margin-bottom: 0;
             flex: 1;
         }

@@ -14,8 +14,10 @@
 }
 
 .search {
-    &__resultcount {
+    &__resultcount.header {
         display: block;
+        margin-left: 1rem;
+        font-size: fz(-1);
 
         @include medium {
             display: inline-block;

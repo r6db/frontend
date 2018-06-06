@@ -14,7 +14,7 @@
         display: flex;
         flex-grow: 1;
         min-width: 0;
-        background: rgba($gray-dark, 0.90);
+        background: rgba($gray-dark, 0.9);
         border-radius: $borderradius;
         @include boxshadow;
     }
@@ -23,7 +23,7 @@
         min-width: 0;
         flex: auto;
         color: $font-color;
-        font-size: $font-big;
+        font-size: 1.125em;
         transition: all 0.2s ease-in-out;
         -moz-transition: none;
         /* ::placeholder transition on firefox is bugged, so remove for consistency  */
@@ -32,7 +32,7 @@
             color: $font-subtle-color;
             opacity: 1;
             transition: all 0.3s ease-in-out;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
         }
 
         &:not(:placeholder-shown) {
@@ -78,7 +78,7 @@
 
         /* target edge for cursor since it doesnt support :placeholder-shown */
         @supports (-ms-ime-align: auto) {
-            cursor: pointer
+            cursor: pointer;
         }
 
         svg {
@@ -113,7 +113,7 @@
         }
 
         &.PC {
-            background: #CE5C0F;
+            background: #ce5c0f;
         }
         &.PS4 {
             background: #003791;
@@ -129,7 +129,7 @@
             color: $font-color;
             background: transparent;
             font-weight: 600;
-            font-size: $font-big;
+            font-size: 1.125em;
             text-align: left;
             cursor: pointer;
 

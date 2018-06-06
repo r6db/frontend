@@ -33,7 +33,7 @@
     &__label {
         flex: none;
         color: $font-subtle-color;
-        font-size: 0.8em;
+        font-size: fz(-1);
         margin-left: 1em;
         padding: 0.25rem 0.5rem;
         border-radius: 1rem;
@@ -43,7 +43,7 @@
         flex: none;
         font-weight: bold;
         line-height: 1.5em;
-        font-size: $font-big;
+        font-size: fz(2);
     }
     &__text {
         flex: 1 1 50%;

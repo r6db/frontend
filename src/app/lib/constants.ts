@@ -230,7 +230,9 @@ export const OPERATORS = {
     vigil: { name: "Vigil", side: "Defense", unit: "SMB" },
     zofia: { name: "Zofia", side: "Attack", unit: "GROM" },
     lion: { name: "Lion", side: "Attack", unit: "CBRN" },
-    finka: { name: "Finka", side: "Attack", unit: "CBRN" }
+    finka: { name: "Finka", side: "Attack", unit: "CBRN" },
+    alibi: { name: "Alibi", side: "Defense", unit: "GIS" },
+    maestro: { name: "Maestro", side: "Defense", unit: "GIS" }
 };
 
 export const REGIONS = {

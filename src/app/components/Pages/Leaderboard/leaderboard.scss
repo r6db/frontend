@@ -15,6 +15,8 @@
     &__description {
         color: $gray-light;
         line-height: 1.4;
+        font-size: fz(-1);
+        font-weight: 500;
 
         p {
             margin-bottom: 1rem;
@@ -111,23 +113,26 @@
         color: $font-color;
     }
     &__name {
-        font-size: $font-big;
         display: block;
         line-height: 1;
         flex: auto;
+        font-size: fz(0);
+        @include large {
+            font-size: fz(1);
+        }
     }
     &__rating {
-        font-size: $font-large;
+        font-size: fz(2);
         flex: none;
         @include medium {
-            font-size: $font-huge;
+            font-size: fz(4);
         }
     }
 }
 
 .entry.is-top {
     .playercard-name {
-        font-size: $font-bigger;
+        font-size: fz(1);
     }
     .playercard-image {
         width: 8rem;

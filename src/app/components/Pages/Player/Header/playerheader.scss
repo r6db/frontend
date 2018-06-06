@@ -7,6 +7,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-size: fz(0);
         text-align: center;
 
         @include medium {
@@ -60,7 +61,7 @@
         }
     }
     &__level {
-        font-size: $font-default;
+        font-size: fz(0);
         color: rgba($white, 0.5);
         padding-left: 3px;
     }
@@ -88,7 +89,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        font-size: $font-default;
+        font-size: fz(1);
         margin: 1rem 0;
         flex-wrap: wrap;
 
@@ -121,6 +122,7 @@
         flex-direction: row;
         margin-left: 1rem;
         align-items: center;
+        font-size: fz(0);
         height: 40px;
 
         &:first-child {
@@ -145,6 +147,7 @@
         margin-left: 1.5rem;
         padding-left: 3px;
         color: $font-color;
+        font-size: fz(-1);
         font-weight: 600;
 
         &:first-child {
@@ -178,7 +181,7 @@
         transition: all 100ms ease-out;
         border-bottom: 2px solid transparent;
         text-align: center;
-        font-size: $font-big;
+        font-size: 1.125em;
         font-weight: 600;
         color: darken($font-color, 20%);
 

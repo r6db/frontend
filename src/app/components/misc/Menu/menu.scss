@@ -36,7 +36,7 @@
         padding: 1rem;
         color: rgba($white, 0.8);
         font-weight: 400;
-        font-size: $font-default;
+        font-size: 1.125em;
         cursor: pointer;
         transition: 100ms linear color;
         letter-spacing: 0.02em;
@@ -56,7 +56,6 @@
         }
 
         @include medium {
-            font-size: $font-big;
             padding: 1.25rem;
         }
     }
@@ -95,6 +94,7 @@
     &__copyright {
         color: $font-subtle-color;
         margin: 1rem;
+        font-size: fz(0);
         text-align: center;
     }
 }

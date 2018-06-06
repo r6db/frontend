@@ -3,12 +3,14 @@ import { formatDuration } from "lib/stats";
 
 export default function SimpleTime(props) {
     return (
-        <div className="profile-timestamps card">
+        <div className="profile__timestamps card">
             <header className="card__header">Timestamps</header>
             <div className="card__content">
                 <div className="row">
                     <div className="label">First added</div>
-                    <div className="value">{new Date(props.player.created_at).toLocaleDateString()}</div>
+                    <div className="value">
+                        {new Date(props.player.created_at).toLocaleDateString()}
+                    </div>
                 </div>
                 {props.player.lastPlayed ? (
                     <div className="row">
@@ -33,7 +35,9 @@ export default function SimpleTime(props) {
                 <div className="row">
                     <div className="label">Total</div>
                     <div className="value">
-                        {formatDuration(props.player.lastPlayed.casual + props.player.lastPlayed.ranked)}
+                        {formatDuration(
+                            props.player.lastPlayed.casual + props.player.lastPlayed.ranked
+                        )}
                     </div>
                 </div>
             </div>
