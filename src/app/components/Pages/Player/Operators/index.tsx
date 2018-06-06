@@ -52,6 +52,7 @@ const filters = {
     SDU: op => op.unit === "SDU",
     SMB: op => op.unit === "SMB",
     CBRN: op => op.unit === "CBRN",
+    GIS: op => op.unit === "GIS",
 };
 
 export default class OperatorTab extends React.PureComponent<any, any> {

@@ -86,6 +86,8 @@ import VIGIL from "assets/operators/vigil.svg";
 import ZOFIA from "assets/operators/zofia.svg";
 import LION from "assets/operators/lion.svg";
 import FINKA from "assets/operators/finka.svg";
+import ALIBI from "assets/operators/alibi.svg";
+import MAESTRO from "assets/operators/maestro.svg";
 
 import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg";
 import LOGOS1 from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
@@ -161,6 +163,7 @@ export const GLYPHS = {
     RANK18,
     RANK19,
     RANK20,
+    ALIBI,
     ASH,
     BANDIT,
     BLACKBEARD,
@@ -183,6 +186,7 @@ export const GLYPHS = {
     KAPKAN,
     LESION,
     LION,
+    MAESTRO,
     MIRA,
     MONTAGNE,
     MUTE,
