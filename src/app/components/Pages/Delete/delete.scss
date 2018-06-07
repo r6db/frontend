@@ -37,10 +37,10 @@
     &__intro {
         line-height: 1.4;
         letter-spacing: 0.06em;
-        margin-bottom: $l * 2;
-        padding: $l;
+        margin-bottom: 2rem;
+        padding: 1rem;
         white-space: pre-line;
-        em{
+        em {
             font-weight: 600;
             text-decoration: underline;
         }

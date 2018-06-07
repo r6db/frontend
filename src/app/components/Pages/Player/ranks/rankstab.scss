@@ -1,26 +1,26 @@
 @import "scss/styles";
 
 .rankstab {
-    padding: $l;
+    padding: 1rem;
 
     @include large {
         padding: 0;
     }
     &__controls {
-        margin: $l 0;
+        margin: 1rem 0;
 
         p {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 $l;
+            margin: 0 1rem;
 
             @include medium {
                 flex-direction: row;
             }
         }
         label {
-            margin: 0 $l 0 $l;
+            margin: 0 1rem 0 1rem;
             font-size: 0.9em;
         }
     }
@@ -43,7 +43,7 @@
         }
         .fauxtable__heading,
         .fauxtable__cell {
-            padding: ($l) ($l*1.5);
+            padding: 1rem 1.5rem;
         }
         .fauxtable__row {
             overflow: hidden;
@@ -80,9 +80,9 @@
                 padding: 0;
                 .rank-image {
                     display: inline-block;
-                    width: $l*4;
-                    height: $l*4;
-                    margin-right: $l*0.5;
+                    width: 4rem;
+                    height: 4rem;
+                    margin-right: 0.5rem;
                 }
             }
             .season {
@@ -134,10 +134,10 @@
     }
 
     &__subtletext {
-      color: $font-subtle-color;
-      text-align: center;
-      margin-top: $l*2;
-      margin-bottom: ($l*2);
-      opacity: 0.6;
+        color: $font-subtle-color;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        opacity: 0.6;
     }
 }
