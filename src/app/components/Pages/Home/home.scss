@@ -1,7 +1,7 @@
 @import "scss/styles";
 
 @mixin chrome-mobile-fix {
-    @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @media screen and (max-width: $screen-medium) and (-webkit-min-device-pixel-ratio:0) {
         height: calc(100vh - 56px) !important;
         min-height: calc(100vh - 56px) !important;
     }  
