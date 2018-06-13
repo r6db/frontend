@@ -105,7 +105,7 @@ class Delete extends React.Component<{}, IDeleteState> {
                         </div>
                         <div className="delete__step">
                             <p>
-                                To start the deletion progress, please enter your full R6DB profile
+                                To start the deletion process, please enter your full R6DB profile
                                 URL down below.
                             </p>
                             <input

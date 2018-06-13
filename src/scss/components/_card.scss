@@ -1,11 +1,16 @@
-
-.card{
+.card {
     @include card;
     width: 100%;
-    margin: $l;
+    margin: 1rem;
     display: block;
 
-    &-header{ @include card-header; }
-    &-content{ @include card-content; }
-    &-divider{ @include card-divider; }
+    &-header {
+        @include card-header;
+    }
+    &-content {
+        @include card-content;
+    }
+    &-divider {
+        @include card-divider;
+    }
 }

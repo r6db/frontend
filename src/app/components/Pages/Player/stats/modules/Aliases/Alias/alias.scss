@@ -1,7 +1,7 @@
 @import "scss/styles";
 
 .profile .alias {
-    padding: $l;
+    padding: 1rem;
     text-align: center;
     position: relative;
     flex: 1 0 200px;
@@ -41,7 +41,12 @@
     }
     &:last-child {
         &:before {
-            background: linear-gradient(to right, $white 0%, $white 50%, rgba(255, 255, 255, 0) 80%);
+            background: linear-gradient(
+                to right,
+                $white 0%,
+                $white 50%,
+                rgba(255, 255, 255, 0) 80%
+            );
         }
     }
 }
