@@ -13,7 +13,7 @@
         @include card;
     }
     &__description {
-        color: $gray-light;
+        color: $color-gray-light;
         line-height: 1.4;
 
         p {
@@ -21,10 +21,10 @@
         }
         .is-highlight {
             padding-left: 1rem;
-            border-left: 2px solid $accent;
+            border-left: 2px solid $color-accent;
         }
         a {
-            color: $accent;
+            color: $color-accent;
         }
     }
     &__filters {
@@ -42,7 +42,7 @@
         }
         label {
             display: inline;
-            color: $white;
+            color: $color-white;
             margin-right: 1.5rem;
             width: 4rem;
 
@@ -97,7 +97,7 @@
         width: 32px;
         height: 32px;
         margin-right: 20px;
-        background-color: $trans-med;
+        background-color: $trans-low;
 
         @include medium {
             width: 48px;

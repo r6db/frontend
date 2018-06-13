@@ -16,7 +16,7 @@
     }
     &__answer {
         padding: 1rem 2rem;
-        border-left: 1px solid $font-subtle-color;
+        border-left: 1px solid $font-color-subtle;
 
         .is-closed & {
             display: none;
@@ -28,13 +28,13 @@
         }
 
         blockquote {
-            border-left: 5px solid $primary;
+            border-left: 5px solid $color-primary;
             padding-left: 1rem;
             margin: 1rem 0;
         }
 
         em {
-            color: $accent;
+            color: $color-accent;
             font-weight: bold;
             padding: 3px;
             border-radius: 3px;
@@ -51,7 +51,7 @@
             margin: 1rem 0;
         }
         a {
-            color: $accent;
+            color: $color-accent;
         }
     }
 }

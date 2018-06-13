@@ -61,14 +61,14 @@
     }
     &__level {
         font-size: $font-default;
-        color: rgba($white, 0.5);
+        color: rgba($color-white, 0.5);
         padding-left: 3px;
     }
     &__platform {
         display: inline-block;
         font-weight: 600;
         font-size: 0.8em;
-        color: rgba($white, 0.5);
+        color: rgba($color-white, 0.5);
         margin-left: 1rem;
     }
     &__flair {
@@ -189,10 +189,10 @@
             color: $font-color;
         }
         &--active {
-            color: $accent;
-            border-color: $accent;
+            color: $color-accent;
+            border-color: $color-accent;
             &:hover {
-                color: $accent;
+                color: $color-accent;
             }
         }
 

@@ -42,7 +42,7 @@ a,
 button,
 input {
     &:focus {
-        outline: 1px solid $primary;
+        outline: 1px solid $color-primary;
     }
 }
 
@@ -52,7 +52,7 @@ input {
 
 select {
     padding: 1rem;
-    background: $gray-dark;
+    background: $color-gray-dark;
     color: $font-color;
     display: inline-block;
     -webkit-appearance: none;
@@ -63,7 +63,7 @@ select {
 
 label {
     display: block;
-    color: $font-subtle-color;
+    color: $font-color-subtle;
     font-size: $font-small;
     font-weight: normal;
     height: 1em;
@@ -118,16 +118,16 @@ input {
     max-width: 100%;
     text-align: center;
     margin: 0 auto;
-    border-left: 5px solid $accent;
-    border-right: 5px solid $accent;
+    border-left: 5px solid $color-accent;
+    border-right: 5px solid $color-accent;
     line-height: 1.5;
     padding: 1rem;
-    background: fade-out($gray-dark, 0.2);
+    background: fade-out($color-gray-dark, 0.2);
     font-weight: 600;
     border-radius: $borderradius;
     margin: 1rem 0;
     a {
-        color: $accent;
+        color: $color-accent;
     }
 }
 

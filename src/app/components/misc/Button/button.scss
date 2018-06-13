@@ -39,7 +39,7 @@
     }
     &:active {
         outline: none;
-        box-shadow: 1px 1px 5px fade-out($gray-dark, 0.6);
+        box-shadow: 1px 1px 5px fade-out($color-gray-dark, 0.6);
     }
     &--block {
         display: block;
@@ -56,41 +56,46 @@
     }
 
     &--default {
-        border-color: $gray;
-        background: $gray;
-        color: $white;
+        background: $color-gray;
+        color: $color-white;
     }
     &--outline--default {
-        border-color: $gray;
+        border-color: $color-gray;
         background: none;
-        color: $white;
+        color: $color-white;
     }
     &--primary {
-        border-color: $primary;
-        background: $primary;
-        color: $white;
+        background: $color-primary;
+        color: $color-white;
     }
     &--outline--primary {
-        border-color: lighten($primary, 10%);
+        border-color: lighten($color-primary, 10%);
         background: none;
-        color: lighten($primary, 10%);
+        color: lighten($color-primary, 10%);
     }
     &--accent {
-        border-color: darken($accent, 15%);
-        background: $accent;
-        color: $white;
+        background: $color-accent;
+        color: $color-white;
     }
     &--outline--accent {
-        border-color: darken($accent, 15%);
+        border-color: darken($color-accent, 15%);
         background: none;
-        color: $accent;
+        color: $color-accent;
     }
     &--error {
-        border-color: darken(red, 15%);
         background: red;
-        color: $white;
+        color: $color-white;
     }
     &--outline--subtle {
+        border-color: darken(red, 5%);
+        background: none;
+        color: darken(red, 5%);
+    }
+    &--success {
+        background: red;
+        color: $color-white;
+    }
+    &--outline--success {
         border-color: darken(red, 5%);
         background: none;
         color: darken(red, 5%);

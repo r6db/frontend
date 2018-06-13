@@ -31,7 +31,7 @@
         display: flex;
         flex: 1px 0 auto;
         width: 1px;
-        background: lighten($gray-dark, 15%);
+        background: lighten($color-gray-dark, 15%);
         margin: 0 1rem;
     }
 }
@@ -55,7 +55,7 @@
     &__placement,
     &__toppercentage {
         line-height: 1.5;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
     }
 }
 .currentrank {
@@ -81,7 +81,7 @@
     &__region {
         text-align: center;
         padding: 0.5rem;
-        text-shadow: 0 0 10px $black;
+        text-shadow: 0 0 10px $color-black;
         font-weight: bold;
         z-index: 1;
     }
@@ -89,7 +89,7 @@
         text-align: center;
         margin-top: 3rem;
         font-size: 1.5em;
-        text-shadow: 0 0 2px $black, 1px 0 2px $black, 1px 1px 2px $black;
+        text-shadow: 0 0 2px $color-black, 1px 0 2px $color-black, 1px 1px 2px $color-black;
         font-weight: bold;
         z-index: 2;
     }

@@ -2,7 +2,7 @@
 
 .delete {
     line-height: 1.2;
-    color: $white;
+    color: $color-white;
 
     &--initial {
         canvas {
@@ -17,16 +17,16 @@
     &__step {
         padding: 1em;
         margin-bottom: 1.5em;
-        color: rgba($white, 0.6);
+        color: rgba($color-white, 0.6);
     }
     &__title {
-        color: $white;
-        border-left: 2px solid $accent;
+        color: $color-white;
+        border-left: 2px solid $color-accent;
         padding-left: 1em;
         line-height: 2;
         span {
             display: block;
-            color: $accent;
+            color: $color-accent;
             font-size: $font-big;
         }
     }
@@ -47,7 +47,7 @@
     }
     &__input {
         width: 100%;
-        color: $white;
+        color: $color-white;
         background: rgba(darken($bg-color, 4%), 0.85);
         margin: 1em 0;
         padding: 1em 1em;
@@ -60,7 +60,7 @@
     }
     &__postqr {
         a {
-            color: $accent;
+            color: $color-accent;
         }
     }
     &__check {
@@ -73,7 +73,7 @@
         }
         button[disabled] {
             background: transparent;
-            border: 1px solid $gray;
+            border: 1px solid $color-gray;
         }
     }
     &__status {
