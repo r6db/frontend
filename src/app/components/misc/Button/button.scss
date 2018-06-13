@@ -37,7 +37,7 @@
     &:focus {
         outline: none;
     }
-    &:active {
+    &:active, &--active {
         outline: none;
         box-shadow: 1px 1px 5px fade-out($color-gray-dark, 0.6);
     }
@@ -45,9 +45,11 @@
         display: block;
     }
     &--small {
+        font-size: $font-small;
         padding: 0.5em 0.75em;
     }
     &--large {
+        font-size: $font-big;
         padding: 1em 2em;
     }
     &--iconed {
@@ -83,21 +85,39 @@
         color: $color-accent;
     }
     &--error {
-        background: red;
+        background: $color-error;
         color: $color-white;
     }
-    &--outline--subtle {
-        border-color: darken(red, 5%);
+    &--outline--error {
+        border-color: darken($color-error, 5%);
         background: none;
-        color: darken(red, 5%);
+        color: darken($color-error, 5%);
+    }
+    &--warning {
+        background: $color-warning;
+        color: $color-white;
+    }
+    &--outline--warning {
+        border-color: darken($color-warning, 5%);
+        background: none;
+        color: darken($color-warning, 5%);
     }
     &--success {
-        background: red;
+        background: $color-success;
         color: $color-white;
     }
     &--outline--success {
-        border-color: darken(red, 5%);
+        border-color: darken($color-success, 5%);
         background: none;
-        color: darken(red, 5%);
+        color: darken($color-success, 5%);
+    }
+    &--info {
+        background: $color-info;
+        color: $color-white;
+    }
+    &--outline--info {
+        border-color: darken($color-info, 5%);
+        background: none;
+        color: darken($color-info, 5%);
     }
 }

@@ -11,9 +11,10 @@ interface IButtonProps
         > {
     label: string;
     icon?: any;
-    type?: "primary" | "accent" | "error";
+    type?: "primary" | "accent" | "error" | "warning" | "success" | "info" ;
     size?: "small" | "large";
     outline?: boolean;
+    active?: boolean;
 }
 
 class Button extends React.PureComponent<IButtonProps, {}> {
@@ -27,7 +28,7 @@ class Button extends React.PureComponent<IButtonProps, {}> {
                     button--${this.props.outline ? "outline--" : ""}${this.props.type || "default"}
                     ${this.props.disabled ? "button--disabled" : ""}
                     ${this.props.icon ? "button--iconed" : ""}
-                    ${this.props.className || ""}
+                    ${this.props.active ? "button--active" : ""}
                 `)}
             >
                 {this.props.icon ? <Icon className="button__icon" glyph={this.props.icon} /> : null}
