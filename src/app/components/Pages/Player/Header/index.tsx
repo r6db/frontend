@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FadeImage } from "components/misc/FadeImage";
+import Button from "components/misc/Button";
 import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { connect } from "react-redux";
@@ -102,34 +103,48 @@ class PlayerHeader extends React.PureComponent<any, any> {
                         </div>
                         <div className="playerheader__buttons">
                             {this.props.updateAvailableAt > new Date() ? (
-                                <button
-                                    className="button playerheader__button button--outline"
+                                <Button
+                                    label={`available ${this.props.updateAvailableAt.toLocaleTimeString()}`}
                                     disabled
-                                >
-                                    available {this.props.updateAvailableAt.toLocaleTimeString()}
-                                </button>
+                                    outline
+                                />
                             ) : (
-                                <button
+                                <Button
+                                    label="update"
+                                    icon={GLYPHS.REFRESH}
+                                    type="accent"
                                     onClick={() => this.props.updatePlayer(this.props.id)}
-                                    className="button playerheader__button button--outline--accent"
-                                >
-                                    <Icon glyph={GLYPHS.REFRESH} /> update
-                                </button>
+                                    outline
+                                />
                             )}
                             {this.props.isFavorite ? (
-                                <button
+                                // <Button
+                                //     onClick={() => this.props.unfavoritePlayer(this.props.id)}
+                                //     className="button playerheader__button button--outline--primary active"
+                                // >
+                                //     <Icon glyph={GLYPHS.STARFULL} /> favorite
+                                // </Button>
+                                <Button
+                                    label="favorite"
+                                    icon={GLYPHS.STARFULL}
+                                    type="primary"
                                     onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                    className="button playerheader__button button--outline--primary active"
-                                >
-                                    <Icon glyph={GLYPHS.STARFULL} /> favorite
-                                </button>
+                                    outline
+                                    active
+                                />
                             ) : (
-                                <button
+                                // <Button
+                                //     onClick={() => this.props.favoritePlayer(this.props.id)}
+                                //     className="button playerheader__button button--outline--default"
+                                // >
+                                //     <Icon glyph={GLYPHS.STAR} /> favorite
+                                // </Button>
+                                <Button
+                                    label="favorite"
+                                    icon={GLYPHS.STAR}
                                     onClick={() => this.props.favoritePlayer(this.props.id)}
-                                    className="button playerheader__button button--outline--default"
-                                >
-                                    <Icon glyph={GLYPHS.STAR} /> favorite
-                                </button>
+                                    outline
+                                />
                             )}
                         </div>
                     </div>

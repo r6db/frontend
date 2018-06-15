@@ -71,6 +71,14 @@
             font-weight: 600;
             margin-left: 1em;
         }
+    }
+    &__confirm {
+        display: flex;
+        align-items: center;
+
+        button {
+            margin-left: 0;
+        }
         button[disabled] {
             background: transparent;
             border: 1px solid $color-gray;

@@ -8,6 +8,7 @@ import "./comparison.scss";
 import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";
 import AddPlayerModal from "./AddPlayerModal";
+import Button from "components/misc/Button";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import Scale, { SCALES } from "components/misc/Scale";
 import Stat from "components/misc/Stat";
@@ -245,9 +246,11 @@ class Compare extends React.Component<any, any> {
                                         {...player}
                                     />
                                 ))}
-                                <button className="button button--primary" onClick={this.onAddPlayer}>
-                                    add player
-                                </button>
+                                <Button
+                                    label="add player"
+                                    type="primary"
+                                    onClick={this.onAddPlayer}
+                                />
                             </div>
                         </div>
                     </div>

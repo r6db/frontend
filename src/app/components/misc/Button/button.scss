@@ -17,8 +17,8 @@
     flex-direction: row;
 
     &__icon {
-        width: 1.2rem;
-        height: 1.2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         fill: transparent;
         stroke: currentColor;
         margin-right: 0.25em;
@@ -54,7 +54,7 @@
     }
     &--iconed {
         position: relative;
-        padding-left: 2.5em;
+        padding-left: 2.75em;
     }
 
     &--default {
@@ -62,9 +62,9 @@
         color: $color-white;
     }
     &--outline--default {
-        border-color: $color-gray;
+        border-color: $color-gray-light;
         background: none;
-        color: $color-white;
+        color: $color-gray-light;
     }
     &--primary {
         background: $color-primary;

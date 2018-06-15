@@ -7,6 +7,7 @@ import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
+import Button from "components/misc/Button";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
@@ -92,7 +93,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 </select>
                             </p>
                             <p>
-                                <button className="button button--primary">GO</button>
+                                <Button label="GO" type="primary" />
                             </p>
                         </form>
                         <Charts data={getCommunityRanks(this.props.community, this.state.board)} />

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import Modal from "components/misc/Modal";
+import Button from "components/misc/Button";
 import FadeImage from "components/misc/FadeImage";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { findPlayer } from "lib/api";
@@ -104,9 +105,11 @@ class AddPlayerModal extends React.Component<any, any> {
                     )}
                 </div>
                 <div className="addplayermodal__close">
-                    <button className="button button--primary" onClick={this.props.onclose}>
-                        done
-                    </button>
+                    <Button 
+                        label="done"
+                        type="primary"
+                        onClick={this.props.onclose}
+                    />
                 </div>
             </Modal>
         );

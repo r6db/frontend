@@ -1,4 +1,5 @@
 import * as React from "react";
+import Button from "components/misc/Button";
 import { hot } from "react-hot-loader";
 import "./cookiebanner.scss";
 
@@ -32,9 +33,11 @@ class Cookiebanner extends React.Component<{}, ICookiebannerState> {
                         This website uses cookies to ensure you get the best experience on our website.
                         <span className="cookiebanner__subtle">By continuing to use this website or by clicking "Accept", you agree to the usage of cookies on this device. <a href="/privacy">Cookie policy</a></span>
                     </p>
-                    <button onClick={this.accept} className="button button--primary">
-                        Accept
-                    </button>
+                    <Button
+                        label="Accept"
+                        type="primary"
+                        onClick={this.accept}
+                    />
                 </div>
             </div>
         );
