@@ -13,7 +13,7 @@ export default function StatsTab(props) {
     return (
         <div className="statstab">
             <div className="statstab__sidebar">
-                {props.ranks ? (
+                {props.rank ? (
                     <>
                         <RankOverview {...props} />
                         <div className="playermodule__divider" />

@@ -82,7 +82,7 @@ function Player(props) {
                         {getPlayerSchema(props.data)}
                     </script>
                     <div className="container player__tab">
-                        {!props.stats && !props.rank ? (
+                        {!props.data.stats && !props.data.rank ? (
                             <>Data not yet loaded...</>
                         ) : (
                             <>
