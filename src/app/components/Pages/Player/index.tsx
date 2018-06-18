@@ -65,8 +65,8 @@ function Player(props) {
         return <NoPlaytime {...props.data} />;
     } else if (props.data.flags && props.data.flags.noAliases) {
         return <NoAliases {...props.data} />;
-    } else if (!props.data.stats || !props.data.rank) {
-        return <NoData {...props.data} />;
+        // } else if (!props.data.stats || !props.data.rank) {
+        //     return <NoData {...props.data} />;
     } else {
         return (
             <Page className={'player ' + props.data.id}>
@@ -81,11 +81,21 @@ function Player(props) {
                 <PageContent>
                     <script type="application/ld+json">{getPlayerSchema(props.data)}</script>
                     <div className="container player__tab">
-                        {props.tab === 'summary' ? (
-                            <StatsTab key="summary" {...props.data} />
-                        ) : null}
-                        {props.tab === 'ops' ? <OperatorsTab key="ops" {...props.data} /> : null}
-                        {props.tab === 'ranks' ? <RanksTab key="ranks" {...props.data} /> : null}
+                        {!props.stats && !props.rank ? (
+                            <>Data not yet loaded...</>
+                        ) : (
+                            <>
+                                {props.tab === 'summary' ? (
+                                    <StatsTab key="summary" {...props.data} />
+                                ) : null}
+                                {props.tab === 'ops' ? (
+                                    <OperatorsTab key="ops" {...props.data} />
+                                ) : null}
+                                {props.tab === 'ranks' ? (
+                                    <RanksTab key="ranks" {...props.data} />
+                                ) : null}
+                            </>
+                        )}
                     </div>
                 </PageContent>
             </Page>
@@ -117,4 +127,9 @@ const mapDispatchtoProps = (dispatch, state) => {
         updatePlayer: (id) => dispatch(updatePlayer(id)),
     };
 };
-export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Player));
+export default hot(module)(
+    connect(
+        mapStateToProps,
+        mapDispatchtoProps
+    )(Player)
+);

@@ -110,7 +110,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
         const data = this.getData();
         return this.props.progressions ? (
             <div className="playermodule charts">
-                <div className="row">
+                {this.props.rank && <div className="row">
                     <div className="chart__header">MMR</div>
                     <ResponsiveContainer height={175}>
                         <AreaChart syncId="charts" data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
@@ -165,7 +165,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                             /> : null}
                         </AreaChart>
                     </ResponsiveContainer>
-                </div>
+                </div>}
                 <div className="row half">
                     <div className="wlratio">
                         <div className="chart__header">Win Rate (%)</div>
