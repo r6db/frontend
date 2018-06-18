@@ -21,10 +21,16 @@ function RankedSeason(props) {
                 </div>
                 <div className="col">
                     <Stat label="Rank">{RANKS[get(props, "rank", 0)]}</Stat>
-                    <Stat label="max. Rank">{RANKS[get(props, "max_rank", 0)]}</Stat>
+                    <Stat label="max. Rank">
+                        {RANKS[get(props, "max_rank", 0)]}
+                    </Stat>
                     <Stat label="MMR">{get(props, "mmr", 0).toFixed(2)}</Stat>
-                    <Stat label="Skill ± Uncertainty" tooltip="numerical value of your performance in ranked">
-                        {get(props, "skill_mean", 0).toFixed(2)} ± {get(props, "skill_stdev", 0).toFixed(2)}
+                    <Stat
+                        label="Skill ± Uncertainty"
+                        tooltip="numerical value of your performance in ranked"
+                    >
+                        {get(props, "skill_mean", 0).toFixed(2)} ±{" "}
+                        {get(props, "skill_stdev", 0).toFixed(2)}
                     </Stat>
                 </div>
             </div>
@@ -33,10 +39,20 @@ function RankedSeason(props) {
 }
 
 export default function StatsRankings(props) {
+    // show placeholder card if we don't have ranks yet
+    if (!props.rank || !props.rank.apac) {
+        return <RankedSeason wins={0} title="Ranks not yet fetched" />;
+    }
     return (
         <div className="playermodule rankedstats">
-            <RankedSeason {...props.rank.emea} title="Europe, Africa & middle East" />
-            <RankedSeason {...props.rank.ncsa} title="North, Central & South America" />
+            <RankedSeason
+                {...props.rank.emea}
+                title="Europe, Africa & middle East"
+            />
+            <RankedSeason
+                {...props.rank.ncsa}
+                title="North, Central & South America"
+            />
             <RankedSeason {...props.rank.apac} title="Asia & Pacific Area" />
         </div>
     );
