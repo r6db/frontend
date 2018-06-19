@@ -1,41 +1,40 @@
-import * as React from 'react';
-import { hot } from 'react-hot-loader';
-import StatsTab from './stats';
-import OperatorsTab from './Operators';
-import RanksTab from './ranks';
-import NotFound from '../Errors/NotFound';
-import NoPlaytime from '../Errors/NoPlaytime';
-import NoAliases from '../Errors/NoAliases';
-import NoData from '../Errors/NoData';
-import Header from './Header';
-import { connect } from 'react-redux';
-import { updatePlayer } from 'lib/store/actions';
-import { getImageLink } from 'lib/domain';
-import Loading from 'components/misc/Loading';
-import Page, { PageHead, PageContent } from 'components/misc/Page';
-import './player.scss';
+import * as React from "react";
+import { hot } from "react-hot-loader";
+import StatsTab from "./stats";
+import OperatorsTab from "./Operators";
+import RanksTab from "./ranks";
+import NotFound from "../Errors/NotFound";
+import NoPlaytime from "../Errors/NoPlaytime";
+import NoAliases from "../Errors/NoAliases";
+import Header from "./Header";
+import { connect } from "react-redux";
+import { updatePlayer } from "lib/store/actions";
+import { getImageLink } from "lib/domain";
+import Loading from "components/misc/Loading";
+import Page, { PageHead, PageContent } from "components/misc/Page";
+import "./player.scss";
 
-import background from 'assets/backgrounds/parabellum1.jpg';
+import background from "assets/backgrounds/parabellum1.jpg";
 
 const dummyPlayer = {
-    id: '0',
-    userid: '0',
-    name: '',
-    platform: '',
+    id: "0",
+    userid: "0",
+    name: "",
+    platform: "",
     level: 0,
     placements: { global: null },
-    isFavorite: null,
+    isFavorite: null
 };
 
 function getPlayerSchema(player) {
     return JSON.stringify(
         {
-            '@context': 'http://schema.org',
-            '@type': 'Person',
+            "@context": "http://schema.org",
+            "@type": "Person",
             name: player.name,
             url: `https://r6db.com/player/${player.id}`,
             identifier: `https://r6db.com/player/${player.id}`,
-            image: getImageLink(player.userId || player.id, player.platform),
+            image: getImageLink(player.userId || player.id, player.platform)
         },
         null,
         4
@@ -65,11 +64,11 @@ function Player(props) {
         return <NoPlaytime {...props.data} />;
     } else if (props.data.flags && props.data.flags.noAliases) {
         return <NoAliases {...props.data} />;
-    } else if (!props.data.stats || !props.data.rank) {
-        return <NoData {...props.data} />;
+        // } else if (!props.data.stats || !props.data.rank) {
+        //     return <NoData {...props.data} />;
     } else {
         return (
-            <Page className={'player ' + props.data.id}>
+            <Page className={"player " + props.data.id}>
                 <PageHead image={background}>
                     <Header
                         tab={props.tab}
@@ -79,13 +78,25 @@ function Player(props) {
                     />
                 </PageHead>
                 <PageContent>
-                    <script type="application/ld+json">{getPlayerSchema(props.data)}</script>
+                    <script type="application/ld+json">
+                        {getPlayerSchema(props.data)}
+                    </script>
                     <div className="container player__tab">
-                        {props.tab === 'summary' ? (
-                            <StatsTab key="summary" {...props.data} />
-                        ) : null}
-                        {props.tab === 'ops' ? <OperatorsTab key="ops" {...props.data} /> : null}
-                        {props.tab === 'ranks' ? <RanksTab key="ranks" {...props.data} /> : null}
+                        {!props.data.stats && !props.data.rank ? (
+                            <>Data not yet loaded...</>
+                        ) : (
+                            <>
+                                {props.tab === "summary" ? (
+                                    <StatsTab key="summary" {...props.data} />
+                                ) : null}
+                                {props.tab === "ops" ? (
+                                    <OperatorsTab key="ops" {...props.data} />
+                                ) : null}
+                                {props.tab === "ranks" ? (
+                                    <RanksTab key="ranks" {...props.data} />
+                                ) : null}
+                            </>
+                        )}
                     </div>
                 </PageContent>
             </Page>
@@ -93,28 +104,33 @@ function Player(props) {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     const {
         platform,
         isFavorite,
         favorites,
         loading,
         players,
-        location: { payload },
+        location: { payload }
     } = state;
 
     return {
         data: players[payload.id],
-        tab: payload.tab || 'summary',
+        tab: payload.tab || "summary",
         loading,
         platform,
         isFavorite: favorites.includes(payload.id),
-        favorites,
+        favorites
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
-        updatePlayer: (id) => dispatch(updatePlayer(id)),
+        updatePlayer: id => dispatch(updatePlayer(id))
     };
 };
-export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Player));
+export default hot(module)(
+    connect(
+        mapStateToProps,
+        mapDispatchtoProps
+    )(Player)
+);

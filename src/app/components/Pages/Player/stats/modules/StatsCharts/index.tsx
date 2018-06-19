@@ -11,13 +11,14 @@ import {
     Line,
     Tooltip,
     YAxis,
-    XAxis,
+    XAxis
 } from "recharts";
 import * as stats from "lib/stats";
 import * as get from "lodash/get";
 import "./charts.scss";
 
-const round = (val: number, decimals = 2) => (val ? Number.parseFloat(val.toFixed(decimals)) : null);
+const round = (val: number, decimals = 2) =>
+    val ? Number.parseFloat(val.toFixed(decimals)) : null;
 
 const colors = {
     red: "#a22229",
@@ -27,14 +28,14 @@ const colors = {
     orange: "#FF3924",
     teal: "#17ead9",
     aqua: "#3069cc",
-    lightgreen: "#30FF6C",
+    lightgreen: "#30FF6C"
 };
 
 export default class StatsCharts extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            show: false,
+            show: false
         };
     }
     componentDidMount() {
@@ -48,7 +49,10 @@ export default class StatsCharts extends React.PureComponent<any, any> {
             const previous = progs[i];
 
             function diff(key, defaultValue) {
-                return get(current, key, defaultValue) - get(previous, key, defaultValue);
+                return (
+                    get(current, key, defaultValue) -
+                    get(previous, key, defaultValue)
+                );
             }
 
             const delta = {
@@ -58,37 +62,43 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                         deaths: diff("stats.casual.deaths", 0),
                         won: diff("stats.casual.won", 0),
                         lost: diff("stats.casual.lost", 0),
-                        played: diff("stats.casual.played", 0),
+                        played: diff("stats.casual.played", 0)
                     },
                     ranked: {
                         kills: diff("stats.ranked.kills", 0),
                         deaths: diff("stats.ranked.deaths", 0),
                         won: diff("stats.ranked.won", 0),
                         lost: diff("stats.ranked.lost", 0),
-                        played: diff("stats.ranked.played", 0),
+                        played: diff("stats.ranked.played", 0)
                     },
                     general: {
                         bulletsFired: diff("stats.general.bulletsFired", 0),
                         bulletsHit: diff("stats.general.bulletsHit", 0),
-                        headshot: diff("stats.general.headshot", 0),
+                        headshot: diff("stats.general.headshot", 0)
                     },
                     hostage: {
-                        played: diff("stats.hostage.played", 0),
+                        played: diff("stats.hostage.played", 0)
                     },
                     bomb: {
-                        played: diff("stats.bomb.played", 0),
+                        played: diff("stats.bomb.played", 0)
                     },
                     secure: {
-                        played: diff("stats.secure.played", 0),
-                    },
-                },
+                        played: diff("stats.secure.played", 0)
+                    }
+                }
             };
             return acc.concat({
                 name: new Date(current.created_at).toLocaleDateString(),
-                kd_casual: round(stats.getKillRatioRaw(delta.stats.casual)) || null,
-                kd_ranked: round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
-                wl_casual: round(stats.getWinChanceRaw(delta.stats.casual) * 100) || null,
-                wl_ranked: round(stats.getWinChanceRaw(delta.stats.ranked) * 100) || null,
+                kd_casual:
+                    round(stats.getKillRatioRaw(delta.stats.casual)) || null,
+                kd_ranked:
+                    round(stats.getKillRatioRaw(delta.stats.ranked)) || null,
+                wl_casual:
+                    round(stats.getWinChanceRaw(delta.stats.casual) * 100) ||
+                    null,
+                wl_ranked:
+                    round(stats.getWinChanceRaw(delta.stats.ranked) * 100) ||
+                    null,
                 games_bomb: delta.stats.bomb.played,
                 games_hostage: delta.stats.hostage.played,
                 games_secure: delta.stats.secure.played,
@@ -97,8 +107,16 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                 mmr_apac: round(get(current, "ranks.apac.mmr", null)),
                 mmr_emea: round(get(current, "ranks.emea.mmr", null)),
                 mmr_ncsa: round(get(current, "ranks.ncsa.mmr", null)),
-                accu: round(delta.stats.general.bulletsHit / (delta.stats.general.bulletsFired || 1)) * 100,
-                hs_chance: round(delta.stats.general.headshot / (delta.stats.general.bulletsHit || 1)) * 100,
+                accu:
+                    round(
+                        delta.stats.general.bulletsHit /
+                            (delta.stats.general.bulletsFired || 1)
+                    ) * 100,
+                hs_chance:
+                    round(
+                        delta.stats.general.headshot /
+                            (delta.stats.general.bulletsHit || 1)
+                    ) * 100
             });
         }, []);
     }
@@ -110,84 +128,215 @@ export default class StatsCharts extends React.PureComponent<any, any> {
         const data = this.getData();
         return this.props.progressions ? (
             <div className="playermodule charts">
-                <div className="row">
-                    <div className="chart__header">MMR</div>
-                    <ResponsiveContainer height={175}>
-                        <AreaChart syncId="charts" data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                            <defs>
-                                <linearGradient id="colorEMEA" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.red} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.red} stopOpacity={0} />
-                                </linearGradient>
-                                <linearGradient id="colorNCSA" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.blue} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.blue} stopOpacity={0} />
-                                </linearGradient>
-                                <linearGradient id="colorAPAC" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="10%" stopColor={colors.green} stopOpacity={0.8} />
-                                    <stop offset="90%" stopColor={colors.green} stopOpacity={0} />
-                                </linearGradient>
-                            </defs>
-                            <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                            <YAxis tick={{ dx: -3 }} tickSize={8} domain={[0, "dataMax"]} />
-                            <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                            <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
-                            <Legend align="right" verticalAlign="bottom" />
-                            {this.props.rank.emea.rank ? <Area
-                                isAnimationActive={false}    
-                                type="monotone"
-                                connectNulls
-                                name="Europe"
-                                dataKey="mmr_emea"
-                                fill="url(#colorEMEA)"
-                                dot={true}
-                                stroke={colors.red}
-                            /> : null}
-                            {this.props.rank.ncsa.rank ? <Area
-                                isAnimationActive={false} 
-                                type="monotone"
-                                connectNulls
-                                name="America"
-                                dataKey="mmr_ncsa"
-                                fill="url(#colorNCSA)"
-                                dot={true}
-                                stroke={colors.blue}
-                            /> : null}
-                            {this.props.rank.apac.rank ? <Area
-                                isAnimationActive={false} 
-                                type="monotone"
-                                connectNulls
-                                name="Asia"
-                                dataKey="mmr_apac"
-                                fill="url(#colorAPAC)"
-                                dot={true}
-                                stroke={colors.green}
-                            /> : null}
-                        </AreaChart>
-                    </ResponsiveContainer>
-                </div>
+                {this.props.rank && (
+                    <div className="row">
+                        <div className="chart__header">MMR</div>
+                        <ResponsiveContainer height={175}>
+                            <AreaChart
+                                syncId="charts"
+                                data={data}
+                                margin={{
+                                    top: 10,
+                                    right: 10,
+                                    left: 0,
+                                    bottom: 0
+                                }}
+                            >
+                                <defs>
+                                    <linearGradient
+                                        id="colorEMEA"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.red}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.red}
+                                            stopOpacity={0}
+                                        />
+                                    </linearGradient>
+                                    <linearGradient
+                                        id="colorNCSA"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.blue}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.blue}
+                                            stopOpacity={0}
+                                        />
+                                    </linearGradient>
+                                    <linearGradient
+                                        id="colorAPAC"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="10%"
+                                            stopColor={colors.green}
+                                            stopOpacity={0.8}
+                                        />
+                                        <stop
+                                            offset="90%"
+                                            stopColor={colors.green}
+                                            stopOpacity={0}
+                                        />
+                                    </linearGradient>
+                                </defs>
+                                <XAxis
+                                    tick={{ dy: +3 }}
+                                    tickSize={8}
+                                    dataKey="name"
+                                />
+                                <YAxis
+                                    tick={{ dx: -3 }}
+                                    tickSize={8}
+                                    domain={[0, "dataMax"]}
+                                />
+                                <CartesianGrid
+                                    stroke="inherit"
+                                    vertical={false}
+                                    strokeDasharray="3 3"
+                                />
+                                <Tooltip
+                                    cursor={{
+                                        stroke: "#6f7376",
+                                        fill: "rgba(70, 70, 70, 0.2)"
+                                    }}
+                                />
+                                <Legend align="right" verticalAlign="bottom" />
+                                {this.props.rank.emea.rank ? (
+                                    <Area
+                                        isAnimationActive={false}
+                                        type="monotone"
+                                        connectNulls
+                                        name="Europe"
+                                        dataKey="mmr_emea"
+                                        fill="url(#colorEMEA)"
+                                        dot={true}
+                                        stroke={colors.red}
+                                    />
+                                ) : null}
+                                {this.props.rank.ncsa.rank ? (
+                                    <Area
+                                        isAnimationActive={false}
+                                        type="monotone"
+                                        connectNulls
+                                        name="America"
+                                        dataKey="mmr_ncsa"
+                                        fill="url(#colorNCSA)"
+                                        dot={true}
+                                        stroke={colors.blue}
+                                    />
+                                ) : null}
+                                {this.props.rank.apac.rank ? (
+                                    <Area
+                                        isAnimationActive={false}
+                                        type="monotone"
+                                        connectNulls
+                                        name="Asia"
+                                        dataKey="mmr_apac"
+                                        fill="url(#colorAPAC)"
+                                        dot={true}
+                                        stroke={colors.green}
+                                    />
+                                ) : null}
+                            </AreaChart>
+                        </ResponsiveContainer>
+                    </div>
+                )}
                 <div className="row half">
                     <div className="wlratio">
                         <div className="chart__header">Win Rate (%)</div>
                         <ResponsiveContainer height={145}>
-                            <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <AreaChart
+                                syncId="charts"
+                                data={data}
+                                margin={{
+                                    top: 20,
+                                    right: 10,
+                                    left: 0,
+                                    bottom: 0
+                                }}
+                            >
                                 <defs>
-                                    <linearGradient id="colorCasualWR" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.yellow} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.yellow} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorCasualWR"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.yellow}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.yellow}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
-                                    <linearGradient id="colorRankedWR" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.orange} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.orange} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorRankedWR"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.orange}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.orange}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
                                 </defs>
-                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
-                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
+                                <XAxis
+                                    tick={{ dy: +3 }}
+                                    tickSize={8}
+                                    dataKey="name"
+                                />
+                                <YAxis
+                                    tick={{ dx: -3 }}
+                                    tickSize={8}
+                                    scale="linear"
+                                    domain={[0, "dataMax"]}
+                                />
+                                <CartesianGrid
+                                    stroke="inherit"
+                                    vertical={false}
+                                    strokeDasharray="3 3"
+                                />
+                                <Tooltip
+                                    cursor={{
+                                        stroke: "#6f7376",
+                                        fill: "rgba(70, 70, 70, 0.2)"
+                                    }}
+                                />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Area
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     type="monotone"
                                     connectNulls={true}
                                     name="Casual"
@@ -197,7 +346,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                     stroke={colors.yellow}
                                 />
                                 <Area
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     type="monotone"
                                     connectNulls={true}
                                     name="Ranked"
@@ -212,24 +361,79 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                     <div className="kdratio">
                         <div className="chart__header">K/D Ratio</div>
                         <ResponsiveContainer height={145}>
-                            <AreaChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <AreaChart
+                                syncId="charts"
+                                data={data}
+                                margin={{
+                                    top: 20,
+                                    right: 10,
+                                    left: 0,
+                                    bottom: 0
+                                }}
+                            >
                                 <defs>
-                                    <linearGradient id="colorCasual" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.teal} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorCasual"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.teal}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.teal}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
-                                    <linearGradient id="colorRanked" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorRanked"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.aqua}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.aqua}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
                                 </defs>
-                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
-                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
+                                <XAxis
+                                    tick={{ dy: +3 }}
+                                    tickSize={8}
+                                    dataKey="name"
+                                />
+                                <YAxis
+                                    tick={{ dx: -3 }}
+                                    tickSize={8}
+                                    scale="linear"
+                                    domain={[0, "dataMax"]}
+                                />
+                                <CartesianGrid
+                                    stroke="inherit"
+                                    vertical={false}
+                                    strokeDasharray="3 3"
+                                />
+                                <Tooltip
+                                    cursor={{
+                                        stroke: "#6f7376",
+                                        fill: "rgba(70, 70, 70, 0.2)"
+                                    }}
+                                />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Area
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     type="monotone"
                                     connectNulls={true}
                                     name="Casual"
@@ -239,7 +443,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                     stroke={colors.teal}
                                 />
                                 <Area
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     type="monotone"
                                     connectNulls={true}
                                     name="Ranked"
@@ -253,23 +457,71 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="chart__header">Accuracy & Headshots per hit (%)</div>
+                    <div className="chart__header">
+                        Accuracy & Headshots per hit (%)
+                    </div>
                     <ResponsiveContainer height={175}>
-                        <AreaChart syncId="charts" data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <AreaChart
+                            syncId="charts"
+                            data={data}
+                            margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+                        >
                             <defs>
-                                <linearGradient id="colorAccuracy" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.red} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.red} stopOpacity={0} />
+                                <linearGradient
+                                    id="colorAccuracy"
+                                    x1="0"
+                                    y1="0"
+                                    x2="0"
+                                    y2="1"
+                                >
+                                    <stop
+                                        offset="5%"
+                                        stopColor={colors.red}
+                                        stopOpacity={0.6}
+                                    />
+                                    <stop
+                                        offset="95%"
+                                        stopColor={colors.red}
+                                        stopOpacity={0}
+                                    />
                                 </linearGradient>
-                                <linearGradient id="colorHSChance" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor={colors.blue} stopOpacity={0.6} />
-                                    <stop offset="95%" stopColor={colors.blue} stopOpacity={0} />
+                                <linearGradient
+                                    id="colorHSChance"
+                                    x1="0"
+                                    y1="0"
+                                    x2="0"
+                                    y2="1"
+                                >
+                                    <stop
+                                        offset="5%"
+                                        stopColor={colors.blue}
+                                        stopOpacity={0.6}
+                                    />
+                                    <stop
+                                        offset="95%"
+                                        stopColor={colors.blue}
+                                        stopOpacity={0}
+                                    />
                                 </linearGradient>
                             </defs>
-                            <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                            <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                            <XAxis
+                                tick={{ dy: +3 }}
+                                tickSize={8}
+                                dataKey="name"
+                            />
+                            <YAxis
+                                tick={{ dx: -3 }}
+                                tickSize={8}
+                                scale="linear"
+                                domain={[0, "dataMax"]}
+                            />
                             <CartesianGrid stroke="inherit" vertical={false} />
-                            <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
+                            <Tooltip
+                                cursor={{
+                                    stroke: "#6f7376",
+                                    fill: "rgba(70, 70, 70, 0.2)"
+                                }}
+                            />
                             <Legend align="right" verticalAlign="bottom" />
                             {/** <Area
                                     isAnimationActive={false} 
@@ -282,7 +534,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                     fill="url(#colorAccuracy)"
                                 /> */}
                             <Area
-                                isAnimationActive={false} 
+                                isAnimationActive={false}
                                 type="monotone"
                                 dot={true}
                                 connectNulls={true}
@@ -298,24 +550,79 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                     <div className="gamesplayed">
                         <div className="chart__header">Games by Queue</div>
                         <ResponsiveContainer height={145}>
-                            <BarChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <BarChart
+                                syncId="charts"
+                                data={data}
+                                margin={{
+                                    top: 20,
+                                    right: 10,
+                                    left: 0,
+                                    bottom: 0
+                                }}
+                            >
                                 <defs>
-                                    <linearGradient id="colorCasual" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.teal} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorCasual"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.teal}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.teal}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
-                                    <linearGradient id="colorRanked" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorRanked"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.aqua}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.aqua}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
                                 </defs>
-                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
-                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
+                                <XAxis
+                                    tick={{ dy: +3 }}
+                                    tickSize={8}
+                                    dataKey="name"
+                                />
+                                <YAxis
+                                    tick={{ dx: -3 }}
+                                    tickSize={8}
+                                    scale="linear"
+                                    domain={[0, "dataMax"]}
+                                />
+                                <CartesianGrid
+                                    stroke="inherit"
+                                    vertical={false}
+                                    strokeDasharray="3 3"
+                                />
+                                <Tooltip
+                                    cursor={{
+                                        stroke: "#6f7376",
+                                        fill: "rgba(70, 70, 70, 0.2)"
+                                    }}
+                                />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Bar
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     name="Casual"
                                     dataKey="games_casual"
                                     stackId="queue"
@@ -323,7 +630,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                     stroke={colors.teal}
                                 />
                                 <Bar
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     name="Ranked"
                                     dataKey="games_ranked"
                                     stackId="queue"
@@ -336,28 +643,97 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                     <div className="modes">
                         <div className="chart__header">Games by Mode</div>
                         <ResponsiveContainer height={145}>
-                            <BarChart syncId="charts" data={data} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <BarChart
+                                syncId="charts"
+                                data={data}
+                                margin={{
+                                    top: 20,
+                                    right: 10,
+                                    left: 0,
+                                    bottom: 0
+                                }}
+                            >
                                 <defs>
-                                    <linearGradient id="colorBomb" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.teal} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.teal} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorBomb"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.teal}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.teal}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
-                                    <linearGradient id="colorSecure" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.aqua} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.aqua} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorSecure"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.aqua}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.aqua}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
-                                    <linearGradient id="colorHostage" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor={colors.green} stopOpacity={0.6} />
-                                        <stop offset="95%" stopColor={colors.green} stopOpacity={0} />
+                                    <linearGradient
+                                        id="colorHostage"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="5%"
+                                            stopColor={colors.green}
+                                            stopOpacity={0.6}
+                                        />
+                                        <stop
+                                            offset="95%"
+                                            stopColor={colors.green}
+                                            stopOpacity={0}
+                                        />
                                     </linearGradient>
                                 </defs>
-                                <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
-                                <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
-                                <Tooltip cursor={{ stroke: "#6f7376", fill: "rgba(70, 70, 70, 0.2)" }} />
+                                <XAxis
+                                    tick={{ dy: +3 }}
+                                    tickSize={8}
+                                    dataKey="name"
+                                />
+                                <YAxis
+                                    tick={{ dx: -3 }}
+                                    tickSize={8}
+                                    scale="linear"
+                                    domain={[0, "dataMax"]}
+                                />
+                                <CartesianGrid
+                                    stroke="inherit"
+                                    vertical={false}
+                                    strokeDasharray="3 3"
+                                />
+                                <Tooltip
+                                    cursor={{
+                                        stroke: "#6f7376",
+                                        fill: "rgba(70, 70, 70, 0.2)"
+                                    }}
+                                />
                                 <Legend align="right" verticalAlign="bottom" />
                                 <Bar
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     stackId="mode"
                                     name="Bomb"
                                     dataKey="games_bomb"
@@ -365,7 +741,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                     stroke={colors.teal}
                                 />
                                 <Bar
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     stackId="mode"
                                     name="Secure"
                                     dataKey="games_secure"
@@ -373,7 +749,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                     stroke={colors.aqua}
                                 />
                                 <Bar
-                                    isAnimationActive={false} 
+                                    isAnimationActive={false}
                                     stackId="mode"
                                     connectNulls={true}
                                     name="Hostage"
