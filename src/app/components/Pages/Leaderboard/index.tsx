@@ -13,25 +13,29 @@ import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
 import chanka from "./chanky.png";
-import Charts from './Charts';
-import * as get from 'lodash/get';
+import Charts from "./Charts";
+import * as get from "lodash/get";
 
 import background from "assets/backgrounds/leaderboard.jpg";
-
 
 const isSelected = (expected, value) => expected === value;
 
 const getCommunityRanks = (data, region) => {
-    region = region === 'ALL' ? 'global' : region.toLowerCase();
+    region = region === "ALL" ? "global" : region.toLowerCase();
     return get(data, `ranks.${region}`);
 };
+
+const boardOptions = Object.values(LEADERBOARDS).map(board => ({
+    value: board.id,
+    label: board.label
+}));
 
 class Leaderboard extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
             board: props.board,
-            platform: props.platform,
+            platform: props.platform
         };
 
         this.changePlatform = this.changePlatform.bind(this);
@@ -53,32 +57,55 @@ class Leaderboard extends React.PureComponent<any, any> {
             <Page className="leaderboard">
                 <PageHead image={background} position="50% 20%">
                     <div className="container leaderboard__header">
-                        <h1 className="header leaderboard__title">Leaderboard</h1>
+                        <h1 className="header leaderboard__title">
+                            Leaderboard
+                        </h1>
                     </div>
                 </PageHead>
                 <PageContent>
                     <div className="container">
                         <div className="leaderboard__description">
                             <div className="blocker">
-                                Any accounts abusing the ranked system will be removed from the leaderboard. Our ban policy can be found <a href="https://pages.r6db.com/ban-policy/">here</a>. Reports can be submitted over <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">this form</a>.
+                                Any accounts abusing the ranked system will be
+                                removed from the leaderboard. Our ban policy can
+                                be found{" "}
+                                <a href="https://pages.r6db.com/ban-policy/">
+                                    here
+                                </a>. Reports can be submitted over{" "}
+                                <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">
+                                    this form
+                                </a>.
                             </div>
                         </div>
-                        <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
+                        <form
+                            className="leaderboard__filters"
+                            action=""
+                            onSubmit={e => this.loadLeaderboard(e)}
+                        >
                             <Dropdown
                                 label="Platform"
                                 setValue={this.state.platform}
-                                options={['PC', 'PS4', 'XBOX']}
+                                options={[
+                                    { value: "PC" },
+                                    { value: "PS4" },
+                                    { value: "XBOX" }
+                                ]}
                                 action={this.changePlatform}
                             />
                             <Dropdown
                                 label="Board"
                                 value={this.state.board}
-                                options={Object.keys(LEADERBOARDS)}
+                                options={boardOptions}
                                 action={this.changeBoard}
                             />
                             <Button label="GO" type="primary" />
                         </form>
-                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
+                        <Charts
+                            data={getCommunityRanks(
+                                this.props.community,
+                                this.state.board
+                            )}
+                        />
                         <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
@@ -91,23 +118,33 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 {this.props.entries.map((entry, i) => (
                                     <tr className="entry" key={entry.id}>
                                         <td>
-                                            <span className="entry__placement">{entry.placement}</span>
+                                            <span className="entry__placement">
+                                                {entry.placement}
+                                            </span>
                                             <span className="entry__medal" />
                                         </td>
                                         <td>
-                                            <Link to={toPlayer(entry.id)} className="entry__info">
+                                            <Link
+                                                to={toPlayer(entry.id)}
+                                                className="entry__info"
+                                            >
                                                 <div className="entry__image">
                                                     <FadeImage
                                                         src={getImageLink(
-                                                            entry.userId || entry.id,
-                                                            this.props.platform,
+                                                            entry.userId ||
+                                                                entry.id,
+                                                            this.props.platform
                                                         )}
                                                     />
                                                 </div>
-                                                <span className="entry__name">{entry.name}</span>
+                                                <span className="entry__name">
+                                                    {entry.name}
+                                                </span>
                                             </Link>
                                         </td>
-                                        <td className="entry__rating">{entry.value}</td>
+                                        <td className="entry__rating">
+                                            {entry.value}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -124,19 +161,33 @@ class Leaderboard extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = state => {
-    const { loading, platform, leaderboard, community, location: { payload: { board } } } = state;
+    const {
+        loading,
+        platform,
+        leaderboard,
+        community,
+        location: {
+            payload: { board }
+        }
+    } = state;
     return {
         platform,
         loading,
         board,
         community,
-        entries: leaderboard[board] || [],
+        entries: leaderboard[board] || []
     };
 };
 const mapDispatchToProps = dispatch => ({
     changePlatform: pf => dispatch({ type: "PLATFORM", payload: pf }),
-    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
-    chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } }),
+    load: (board, platform) =>
+        dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
+    chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } })
 });
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Leaderboard));
+export default hot(module)(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Leaderboard)
+);

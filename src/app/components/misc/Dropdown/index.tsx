@@ -10,7 +10,7 @@ interface IDropdownProps
             React.SelectHTMLAttributes<HTMLSelectElement>,
             HTMLSelectElement
         > {
-    options: Array<string>;
+    options: Array<{ value: string; label?: string }>;
     setValue?: string;
     label?: string;
     role?: "primary" | "accent" | "error" | "warning" | "success" | "info";
@@ -27,10 +27,9 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.state = { value: this.props.setValue };
-
     }
     handleChange(e) {
-        this.setState ({ value: e.target.value})
+        this.setState({ value: e.target.value });
         e.preventDefault();
         e.stopPropagation();
         this.props.action(e.target.value);
@@ -39,7 +38,8 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
         return (
             <div
                 className={trim(`dropdown
-                    dropdown--${this.props.outline ? "outline--" : ""}${this.props.role || "default"}
+                    dropdown--${this.props.outline ? "outline--" : ""}${this
+                    .props.role || "default"}
                     ${this.props.disabled ? "dropdown--disabled" : ""}
                 `)}
             >
@@ -52,13 +52,16 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
                     >
                         {this.props.options.map(x => {
                             return (
-                                <option value={x} key={x}>
-                                    {x}
+                                <option value={x.value} key={x.value}>
+                                    {x.label || x.value}
                                 </option>
                             );
                         })}
                     </select>
-                    <Icon className="dropdown__arrow" glyph={GLYPHS.CHEVRONDOWN} />
+                    <Icon
+                        className="dropdown__arrow"
+                        glyph={GLYPHS.CHEVRONDOWN}
+                    />
                 </div>
             </div>
         );
