@@ -8,6 +8,7 @@ import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
 import Button from "components/misc/Button";
+import Dropdown from "components/misc/Dropdown";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
@@ -32,6 +33,9 @@ class Leaderboard extends React.PureComponent<any, any> {
             board: props.board,
             platform: props.platform,
         };
+
+        this.changePlatform = this.changePlatform.bind(this);
+        this.changeBoard = this.changeBoard.bind(this);
     }
     changeBoard(board) {
         this.setState({ board });
@@ -60,41 +64,19 @@ class Leaderboard extends React.PureComponent<any, any> {
                             </div>
                         </div>
                         <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
-                            <p className="leaderboard__platform">
-                                <label htmlFor="platformselect">Platform</label>
-                                <select
-                                    id="platformselect"
-                                    value={this.state.platform}
-                                    onChange={e => this.changePlatform(e.target.value)}
-                                >
-                                    <option value="PC">PC</option>
-                                    <option value="PS4">PS4</option>
-                                    <option value="XBOX">XBOX</option>
-                                </select>
-                            </p>
-                            <p className="leaderboard__board">
-                                <label className="leaderboard__boardlabel" htmlFor="boardselect">
-                                    Board
-                                </label>
-                                <select
-                                    id="boardselect"
-                                    className="leaderboard__boardselect"
-                                    value={this.state.board}
-                                    onChange={e => this.changeBoard(e.target.value)}
-                                >
-                                    {Object.keys(LEADERBOARDS).map(l => {
-                                        const lb = LEADERBOARDS[l];
-                                        return (
-                                            <option key={lb.id} value={lb.id}>
-                                                {lb.label}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                            </p>
-                            <p>
-                                <Button label="GO" type="primary" />
-                            </p>
+                            <Dropdown
+                                label="Platform"
+                                setValue={this.state.platform}
+                                options={['PC', 'PS4', 'XBOX']}
+                                action={this.changePlatform}
+                            />
+                            <Dropdown
+                                label="Board"
+                                value={this.state.board}
+                                options={Object.keys(LEADERBOARDS)}
+                                action={this.changeBoard}
+                            />
+                            <Button label="GO" type="primary" />
                         </form>
                         <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
                         <table className="container leaderboard__entries">

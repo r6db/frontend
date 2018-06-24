@@ -30,44 +30,38 @@
     &__filters {
         display: flex;
         flex-direction: column;
-        margin-top: 2rem;
+        align-items: center;
+        margin: 2rem 0;
 
         @include medium {
             flex-direction: row;
         }
-        p {
+
+        .dropdown {
             display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
+            flex: 1;
+            width: 100%;
+
+            @include medium {
+                flex: none;
+                width: auto;
+            }
         }
         label {
-            display: inline;
-            color: $color-white;
-            margin-right: 1.5rem;
-            width: 4rem;
+            width: 8rem;
 
             @include medium {
                 width: auto;
             }
         }
-        select {
-            flex: 1;
+
+        button {
+            width: 100%;
+            margin-top: 2rem;
 
             @include medium {
-                flex: none;
-                margin-right: 2rem;
-            }
-        }
-        .button {
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 1rem;
-            margin-bottom: 0;
-            flex: 1;
-
-            @include medium {
-                margin-top: 0;
-                flex: none;
+                width: auto;
+                margin: 0 1em;
             }
         }
     }

@@ -1,13 +1,15 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
+import Dropdown from "components/misc/Dropdown";
 import FadeImage from "components/misc/FadeImage";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
+
+import "./leaderboard.scss";
 
 import background from "assets/backgrounds/chankaboard.jpg";
 
@@ -16,6 +18,11 @@ const isSelected = (expected, value) => expected === value;
 class Chankaboard extends React.Component<any, any> {
     constructor(props) {
         super(props);
+        this.state = {
+            platform: props.platform,
+        };
+
+        this.changePlatform = this.changePlatform.bind(this);
     }
     changePlatform(pf) {
         this.props.changePlatform(pf);
@@ -32,18 +39,11 @@ class Chankaboard extends React.Component<any, any> {
                 <PageContent>
                     <div className="container">
                         <div className="leaderboard__filters">
-                            <p className="leaderboard__platform">
-                                <label htmlFor="platformselect">Platform</label>
-                                <select
-                                    id="platformselect"
-                                    value={this.props.platform}
-                                    onChange={e => this.changePlatform(e.target.value)}
-                                >
-                                    <option value="PC">PC</option>
-                                    <option value="PS4">PS4</option>
-                                    <option value="XBOX">XBOX</option>
-                                </select>
-                            </p>
+                            <Dropdown
+                                label="Platform"
+                                options={['PC', 'PS4', 'XBOX']}
+                                action={this.changePlatform}
+                            />
                         </div>
                         <table className="container container-small leaderboard__entries">
                             <thead className="leaderboard__entriesheader">

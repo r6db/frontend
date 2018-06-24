@@ -5,13 +5,17 @@
     flex-direction: row;
     align-items: center;
     margin: 0.5em;
+    transition: all 100ms ease-in-out;
 
     label {
         color: $font-color-subtle;
         margin-right: 1em;
     }
     select {
+        width: 100%;
         color: $font-color;
+        font-size: $font-default;
+        font-weight: 600;
         font-weight: 600;
         padding-top: 0.75em;
         padding-bottom: 0.75em;
@@ -28,6 +32,8 @@
     }
     &__box {
         display: flex;
+        flex: 1;
+        width: 100%;
         align-items: center;
         position: relative;
         background: $trans-med;

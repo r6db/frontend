@@ -10,7 +10,8 @@ interface IDropdownProps
             React.SelectHTMLAttributes<HTMLSelectElement>,
             HTMLSelectElement
         > {
-    options: Array<string | number>;
+    options: Array<string>;
+    setValue?: string;
     label?: string;
     role?: "primary" | "accent" | "error" | "warning" | "success" | "info";
     outline?: boolean;
@@ -18,15 +19,20 @@ interface IDropdownProps
 }
 
 interface IDropdownState {
-    value: number | string;
+    value: string;
 }
 
 class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.state = { value: this.props.setValue };
+
     }
     handleChange(e) {
+        this.setState ({ value: e.target.value})
+        e.preventDefault();
+        e.stopPropagation();
         this.props.action(e.target.value);
     }
     render() {
@@ -40,7 +46,7 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
                 {this.props.label ? <label>{this.props.label}</label> : ""}
                 <div className="dropdown__box">
                     <select
-                        value={this.props.value}
+                        value={this.state.value}
                         onChange={this.handleChange}
                         disabled={this.props.disabled}
                     >

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { OPERATORS } from "lib/constants";
 import * as stats from "lib/stats";
+import Dropdown from "components/misc/Dropdown";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import Scale, { SCALES } from "components/misc/Scale";
 import Fauxtable from "components/misc/Fauxtable";
@@ -122,6 +123,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
 
         this.sort = this.sort.bind(this);
         this.filter = this.filter.bind(this);
+        this.setFilter = this.setFilter.bind(this);
     }
 
     getSorterClass(tester) {
@@ -154,10 +156,8 @@ export default class OperatorTab extends React.PureComponent<any, any> {
         this.setState({ operatorsShowMap: opsMap });
     }
 
-    onFilter(filterProp) {
-        if (filterProp in filters) {
-            this.setState({ filterProp });
-        }
+    setFilter(filterProp) {
+        this.setState({ filterProp });
     }
 
     render() {
@@ -165,16 +165,11 @@ export default class OperatorTab extends React.PureComponent<any, any> {
             <div className="opstab">
                 <div className="opstab__controls card">
                     <div className="card-content">
-                        <p>
-                            <label htmlFor="filter">filter by</label>
-                            <select name="filter" onChange={e => this.onFilter(e.target.value)}>
-                                {Object.keys(filters).map(x => (
-                                    <option key={x} value={x}>
-                                        {x}
-                                    </option>
-                                ))}
-                            </select>
-                        </p>
+                        <Dropdown
+                            label="filter by"
+                            options={Object.keys(filters)}
+                            action={this.setFilter}
+                        />
                     </div>
                 </div>
                 <Fauxtable.Table className="opstab__table">
