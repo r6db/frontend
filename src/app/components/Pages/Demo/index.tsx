@@ -9,7 +9,9 @@ import "./demo.scss";
 function Demo(props) {
 
     const dropdownOptions = [
-        'one', 'two', 'three'
+        { value: "one" },
+        { value: "two" },
+        { value: "three" }
     ]
 
     return (
