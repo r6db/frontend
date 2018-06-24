@@ -51,23 +51,9 @@ input {
 }
 
 select {
-    padding: 1rem;
-    background: $color-gray-dark;
-    color: $font-color;
-    display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-radius: $borderradius;
-}
-
-label {
-    display: block;
-    color: $font-color-subtle;
-    font-size: $font-small;
-    font-weight: normal;
-    height: 1em;
-    margin-bottom: 0.5rem;
 }
 .container {
     width: 100%;

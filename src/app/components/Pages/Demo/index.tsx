@@ -3,9 +3,15 @@ import { hot } from "react-hot-loader";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { GLYPHS } from "components/misc/Icon";
 import Button from "components/misc/Button";
+import Dropdown from "components/misc/Dropdown";
 import "./demo.scss";
 
 function Demo(props) {
+
+    const dropdownOptions = [
+        'one', 'two', 'three'
+    ]
+
     return (
         <Page>
             <PageHead>
@@ -52,6 +58,28 @@ function Demo(props) {
                         <Button label="disabled" icon={GLYPHS.STAR} />
                         <Button label="outline" outline />
                         <Button label="disabled" disabled />
+                    </section>
+                    <section>
+                        <Dropdown label="with label" options={dropdownOptions} />
+                        <Dropdown options={dropdownOptions} />
+                    </section>
+                    <section>
+                        <Dropdown options={dropdownOptions} />
+                        <Dropdown role="primary" options={dropdownOptions} />
+                        <Dropdown role="accent" options={dropdownOptions} />
+                        <Dropdown role="error" options={dropdownOptions} />
+                        <Dropdown role="warning" options={dropdownOptions} />
+                        <Dropdown role="success" options={dropdownOptions} />
+                        <Dropdown role="info" options={dropdownOptions} />
+                    </section>
+                    <section>
+                        <Dropdown options={dropdownOptions} outline />
+                        <Dropdown role="primary" options={dropdownOptions} outline />
+                        <Dropdown role="accent" options={dropdownOptions} outline />
+                        <Dropdown role="error" options={dropdownOptions} outline />
+                        <Dropdown role="warning" options={dropdownOptions} outline />
+                        <Dropdown role="success" options={dropdownOptions} outline />
+                        <Dropdown role="info" options={dropdownOptions} outline />
                     </section>
                 </div>
             </PageContent>
