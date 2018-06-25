@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { NOT_FOUND } from "redux-first-router";
 import { IntlProvider } from "react-intl";
 import Loadable from "react-loadable";
+import { languages } from "lib/constants";
 import Cookiebanner from "components/misc/Cookiebanner";
 import Loading from "components/misc/Loading";
 import Topbar from "components/misc/Topbar";
@@ -43,10 +44,6 @@ const pageMap = {
     [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound"))
 };
 
-const languageMap = {
-    en: () => import("i18n/en")
-};
-
 pageMap.PLAYER.preload();
 
 class Layout extends React.PureComponent<any, any> {
@@ -56,8 +53,9 @@ class Layout extends React.PureComponent<any, any> {
     }
     loadLocale(locale: string) {
         console.log('attempting to load locale "%s"', locale);
-        if (locale in languageMap) {
-            languageMap[locale]()
+        if (locale in languages) {
+            languages[locale]
+                .messageFn()
                 .then(mod => {
                     if (process.env.NODE_ENV === "development") {
                         (window as any).i18n = {
