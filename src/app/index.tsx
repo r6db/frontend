@@ -13,12 +13,11 @@ import ReactDOM from "react-dom";
 import RootComponent from "./components";
 import configureStore from "lib/store";
 import { setStore } from "lib/analytics";
+import Raven from "raven-js";
 
-if (Raven) {
-    Raven.config(
-        "https://9bf8160273c04484a3b5ced1cf1d61cf@sentry.r6db.com/2"
-    ).install();
-}
+Raven.config(
+    "https://9bf8160273c04484a3b5ced1cf1d61cf@sentry.r6db.com/2"
+).install();
 
 if ("serviceWorker" in navigator) {
     console.debug("[sw] supported");
