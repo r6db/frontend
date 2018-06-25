@@ -1,5 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
 import Link from "redux-first-router-link";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
@@ -23,7 +24,9 @@ function Favorites(props) {
         <Page className="favorites">
             <PageHead image={background} position="50% 20%">
                 <div className="container container--small">
-                    <h1 className="header">Favorites</h1>
+                    <h1 className="header">
+                        <FormattedMessage id="favorites/title" />
+                    </h1>
                 </div>
             </PageHead>
             <PageContent>
@@ -40,20 +43,25 @@ function Favorites(props) {
                                         action={{
                                             icon: GLYPHS.CLOSE,
                                             callback() {
-                                                props.unfavoritePlayer(player.id);
+                                                props.unfavoritePlayer(
+                                                    player.id
+                                                );
                                             }
                                         }}
                                     />
                                 ))}
                                 <div className="favorites__subtletext">
-                                    You can add more people by clicking the "Favorite" button on the
-                                    player page!
+                                    <FormattedMessage id="favorites/addmore" />
                                 </div>
                             </div>
                         ) : (
-                            <Media title="It's empty here!">
-                                You haven't saved any players to your favorites yet.
-                            </Media>
+                            <FormattedMessage id="favorites/empty_header">
+                                {message => (
+                                    <Media title={message}>
+                                        <FormattedMessage id="favorites/empty_text" />
+                                    </Media>
+                                )}
+                            </FormattedMessage>
                         )}
                     </div>
                 </div>
@@ -85,4 +93,9 @@ const mapDispatchtoProps = (dispatch, state) => {
     };
 };
 
-export default hot(module)(connect(mapStateToProps, mapDispatchtoProps)(Favorites));
+export default hot(module)(
+    connect(
+        mapStateToProps,
+        mapDispatchtoProps
+    )(Favorites)
+);

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { injectIntl } from "react-intl";
 import { toSearch } from "lib/store/actions";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
@@ -14,6 +15,7 @@ interface ISearchbarProps {
     goHome(): any;
     updateSearch(query: string): any;
     setPlatform(platform: string): any;
+    intl: any;
 }
 interface ISearchbarState {
     didEdit: boolean;
@@ -38,53 +40,78 @@ class Searchbar extends React.PureComponent<ISearchbarProps, ISearchbarState> {
             this.props.goHome();
         }
     }
-    componentDidMount(){
-        if(this.props.focused) {
-            this.searchbar.focus(); 
+    componentDidMount() {
+        if (this.props.focused) {
+            this.searchbar.focus();
         }
     }
 
     render() {
         return (
-            <form className={`searchbar ${this.props.className || ''}`} action="" onSubmit={e => this.onSearch(e)}>
+            <form
+                className={`searchbar ${this.props.className || ""}`}
+                action=""
+                onSubmit={e => this.onSearch(e)}
+            >
                 <div className="searchbar__box">
                     <input
                         className="searchbar__input"
                         type="text"
                         value={this.props.query}
-                        placeholder="Search for players..."
+                        placeholder={this.props.intl.formatMessage({
+                            id: "home/search_placeholder"
+                        })}
                         onChange={e => this.props.updateSearch(e.target.value)}
-                        ref={(input) => { this.searchbar = input; }} 
+                        ref={input => {
+                            this.searchbar = input;
+                        }}
                     />
-                    <button onSubmit={this.onSearch} className="searchbar__submit">
+
+                    <button
+                        onSubmit={this.onSearch}
+                        className="searchbar__submit"
+                    >
                         <Icon glyph={GLYPHS.ARROWRIGHT} />
                     </button>
                 </div>
-                <div className={`searchbar__platform ${this.props.platform || ''}`}>
+                <div
+                    className={`searchbar__platform ${this.props.platform ||
+                        ""}`}
+                >
                     <select
                         className="searchbar__platform__select"
                         value={this.props.platform}
-                        onChange={e => this.props.setPlatform((e.target as any).value)}
+                        onChange={e =>
+                            this.props.setPlatform((e.target as any).value)
+                        }
                     >
                         <option value="PC">PC</option>
                         <option value="PS4">PS4</option>
                         <option value="XBOX">XB1</option>
                     </select>
-                    <div className="searchbar__platform__arrow"><Icon glyph={GLYPHS.CHEVRONDOWN} /></div>
+                    <div className="searchbar__platform__arrow">
+                        <Icon glyph={GLYPHS.CHEVRONDOWN} />
+                    </div>
                 </div>
             </form>
         );
     }
 }
 
-const mapStateToProps = state => ({ platform: state.platform, query: state.search });
+const mapStateToProps = state => ({
+    platform: state.platform,
+    query: state.search
+});
 const mapDispatchToProps = dispatch => {
     return {
         goSearch: name => dispatch(toSearch(name)),
         goHome: () => dispatch({ type: "HOME" }),
-        updateSearch: query => dispatch({ type: "QUERY", payload: query}),
-        setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl }),
+        updateSearch: query => dispatch({ type: "QUERY", payload: query }),
+        setPlatform: pl => dispatch({ type: "PLATFORM", payload: pl })
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(injectIntl(Searchbar));

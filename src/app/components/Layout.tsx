@@ -2,6 +2,7 @@ import * as React from "react";
 import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
 import { NOT_FOUND } from "redux-first-router";
+import { IntlProvider } from "react-intl";
 import Loadable from "react-loadable";
 import Cookiebanner from "components/misc/Cookiebanner";
 import Loading from "components/misc/Loading";
@@ -11,6 +12,8 @@ import Drawer from "components/misc/Drawer";
 
 import HOME from "./Pages/Home";
 import SEARCH from "./Pages/Search";
+
+import langEn from "i18n/en";
 
 import "./layout.scss";
 import "./base.scss";
@@ -40,39 +43,87 @@ const pageMap = {
     [NOT_FOUND]: makeAsync(() => import("./Pages/Errors/NotFound"))
 };
 
+const languageMap = {
+    en: () => import("i18n/en")
+};
+
 pageMap.PLAYER.preload();
 
 class Layout extends React.PureComponent<any, any> {
+    constructor(props) {
+        super(props);
+        this.state = { locale: props.locale, messages: langEn };
+    }
+    loadLocale(locale: string) {
+        console.log('attempting to load locale "%s"', locale);
+        if (locale in languageMap) {
+            languageMap[locale]()
+                .then(mod => {
+                    if (process.env.NODE_ENV === "development") {
+                        (window as any).i18n = {
+                            messages: mod.default,
+                            locale
+                        };
+                    }
+                    this.setState({ messages: mod.default, locale: locale });
+                })
+                .catch(err => {
+                    console.warn("error getting locale", err);
+                });
+        } else {
+            console.warn("locale not known: %s", locale);
+        }
+    }
+    componentWillMount() {
+        this.loadLocale(this.state.locale);
+    }
+    componentWillReceiveProps() {
+        if (this.props.locale !== this.state.locale) {
+            this.loadLocale(this.props.locale);
+        }
+    }
     render() {
+        if (!this.state.messages) {
+            return null;
+        }
         return (
-            <div className={"app s " + this.props.location}>
-                <Drawer>
-                    <Menu platform={this.props.platform} />
-                </Drawer>
-                <div className="app__page">
-                    <Topbar onBurgerClick={this.props.toggleMenu} />
-                    <this.props.Component />
+            <IntlProvider
+                locale={this.props.locale}
+                messages={this.state.messages}
+            >
+                <div className={"app s " + this.props.location}>
+                    <Drawer>
+                        <Menu platform={this.props.platform} />
+                    </Drawer>
+                    <div className="app__page">
+                        <Topbar onBurgerClick={this.props.toggleMenu} />
+                        <this.props.Component />
+                    </div>
+                    <Cookiebanner />
                 </div>
-                <Cookiebanner />
-            </div>
+            </IntlProvider>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { platform, search, location, loading } = state;
+    const { platform, settings, location, loading } = state;
     return {
         location: location.type,
         Component: pageMap[location.type],
         loading,
-        platform
+        platform,
+        locale: settings.locale || "en"
     };
 }
 
-function mapDispatchToProps(dispatch, state) {
+function mapDispatchToProps(dispatch) {
     return {
         toggleMenu: () => dispatch({ type: "MENU_TOGGLE" })
     };
 }
-const Comp = connect(mapStateToProps, mapDispatchToProps)(Layout);
+const Comp = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Layout);
 export default hot(module)(Comp);

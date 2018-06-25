@@ -29,7 +29,7 @@ module.exports = merge(base, {
             },
         },
     },
-    stats: true,
+    stats: "errors-only",
     module: {
         rules: [
             {

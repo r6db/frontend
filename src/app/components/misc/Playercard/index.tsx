@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as get from "lodash/get";
+import { FormattedMessage } from "react-intl";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { RANKS, SEASONS } from "lib/constants";
 import { FadeImage } from "components/misc/FadeImage";
@@ -19,7 +20,10 @@ const getAliases = player => {
         player.aliases.length > 2 ? (
             <span key={player.id} className="playercard__span">
                 {" "}
-                and {player.aliases.length - 2} more
+                <FormattedMessage
+                    id="search/result/aliascount"
+                    values={{ count: player.aliases.length - 2 }}
+                />
             </span>
         ) : (
             ""
@@ -59,27 +63,54 @@ function ResultAction(action: IResultProps["action"]) {
 }
 
 export default function Result(props: IResultProps) {
-    const timePlayed = get(props, "player.lastPlayed.ranked", 0) + get(props, "player.lastPlayed.casual", 0);
+    const timePlayed =
+        get(props, "player.lastPlayed.ranked", 0) +
+        get(props, "player.lastPlayed.casual", 0);
     return (
-        <Link key={props.player.id} to={toPlayer(props.player.id)} className="playercard">
+        <Link
+            key={props.player.id}
+            to={toPlayer(props.player.id)}
+            className="playercard"
+        >
             <div className="playercard__image">
-                <FadeImage src={getImageLink(props.player.userId || props.player.id, props.player.platform)} />
+                <FadeImage
+                    src={getImageLink(
+                        props.player.userId || props.player.id,
+                        props.player.platform
+                    )}
+                />
             </div>
             <div className="playercard__user">
                 <div className="playercard__namebox">
-                    <span className="playercard__name">{props.player.name}</span>
-                    {props.player.flair ? <span className="playercard__flair">{props.player.flair}</span> : ""}
+                    <span className="playercard__name">
+                        {props.player.name}
+                    </span>
+                    {props.player.flair ? (
+                        <span className="playercard__flair">
+                            {props.player.flair}
+                        </span>
+                    ) : (
+                        ""
+                    )}
                 </div>
-                <div className="playercard__aliases">{getAliases(props.player)}</div>
+                <div className="playercard__aliases">
+                    {getAliases(props.player)}
+                </div>
             </div>
             <div className="playercard__info hidden-small">
                 <div>level {props.player.level}</div>
-                <div>{formatDuration(timePlayed)} played</div>
+                <div>
+                    <FormattedMessage
+                        id="search/result/timeplayed"
+                        values={{ playtime: formatDuration(timePlayed) }}
+                    />
+                </div>
             </div>
-            {props.action ?
-            <div className="playercard__actions">
-                <ResultAction {...props.action} />
-            </div> : null }
+            {props.action ? (
+                <div className="playercard__actions">
+                    <ResultAction {...props.action} />
+                </div>
+            ) : null}
         </Link>
     );
 }
