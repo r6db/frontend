@@ -56,8 +56,8 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                 {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
                             </header>
                             <div className="playerheader__level">
-                                {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) : "-"}{" "}
-                                global / lvl {this.props.level}
+                                {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) + " global / " : ""}{" "}
+                                level {this.props.level}
                             </div>
                             <div className="playerheader__links">
                                 <a
