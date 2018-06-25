@@ -25,27 +25,27 @@ function Demo(props) {
                 <div className="container">
                     <section>
                         <Button label="default" />
-                        <Button label="primary" type="primary" />
-                        <Button label="subtle" type="accent" />
-                        <Button label="error" type="error" />
-                        <Button label="warning" type="warning" />
-                        <Button label="success" type="success" />
-                        <Button label="info" type="info" />
+                        <Button label="primary" role="primary" />
+                        <Button label="subtle" role="accent" />
+                        <Button label="error" role="error" />
+                        <Button label="warning" role="warning" />
+                        <Button label="success" role="success" />
+                        <Button label="info" role="info" />
                     </section>
                     <section>
                         <Button label="default" outline />
-                        <Button label="primary" type="primary" outline />
-                        <Button label="subtle" type="accent" outline />
-                        <Button label="error" type="error" outline />
-                        <Button label="warning" type="warning" outline />
-                        <Button label="success" type="success" outline />
-                        <Button label="info" type="info" outline />
+                        <Button label="primary" role="primary" outline />
+                        <Button label="subtle" role="accent" outline />
+                        <Button label="error" role="error" outline />
+                        <Button label="warning" role="warning" outline />
+                        <Button label="success" role="success" outline />
+                        <Button label="info" role="info" outline />
                     </section>
                     <section>
                         <Button label="default" icon={GLYPHS.STAR} />
-                        <Button label="color" type="primary" icon={GLYPHS.STAR} />
+                        <Button label="color" role="primary" icon={GLYPHS.STAR} />
                         <Button label="outline" icon={GLYPHS.STAR} outline />
-                        <Button label="outline color" type="primary" icon={GLYPHS.STAR} outline />
+                        <Button label="outline color" role="primary" icon={GLYPHS.STAR} outline />
                         <Button label="active" icon={GLYPHS.STAR} active />
                         <Button label="disabled" icon={GLYPHS.STAR} disabled />
                     </section>

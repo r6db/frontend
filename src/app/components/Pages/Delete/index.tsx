@@ -181,7 +181,7 @@ class Delete extends React.Component<{}, IDeleteState> {
                                     <div className="delete__confirm">
                                         <Button
                                             label="Confirm deletion"
-                                            type="error"
+                                            role="error"
                                             onClick={() => this.check(this.state.player)}
                                             disabled={!this.state.isChecked}
                                         />

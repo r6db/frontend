@@ -248,7 +248,7 @@ class Compare extends React.Component<any, any> {
                                 ))}
                                 <Button
                                     label="add player"
-                                    type="primary"
+                                    role="primary"
                                     onClick={this.onAddPlayer}
                                 />
                             </div>

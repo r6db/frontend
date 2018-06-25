@@ -98,7 +98,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 options={boardOptions}
                                 action={this.changeBoard}
                             />
-                            <Button label="GO" type="primary" />
+                            <Button label="GO" role="primary" />
                         </form>
                         <Charts
                             data={getCommunityRanks(

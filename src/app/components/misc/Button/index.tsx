@@ -11,7 +11,7 @@ interface IButtonProps
         > {
     label: string;
     icon?: any;
-    type?: "primary" | "accent" | "error" | "warning" | "success" | "info" ;
+    role?: "primary" | "accent" | "error" | "warning" | "success" | "info" ;
     size?: "small" | "large";
     outline?: boolean;
     active?: boolean;
@@ -25,7 +25,7 @@ class Button extends React.PureComponent<IButtonProps, {}> {
                 onClick={this.props.onClick}
                 className={trim(`button
                     button--${this.props.size || "default"}
-                    button--${this.props.outline ? "outline--" : ""}${this.props.type || "default"}
+                    button--${this.props.outline ? "outline--" : ""}${this.props.role || "default"}
                     ${this.props.disabled ? "button--disabled" : ""}
                     ${this.props.icon ? "button--iconed" : ""}
                     ${this.props.active ? "button--active" : ""}

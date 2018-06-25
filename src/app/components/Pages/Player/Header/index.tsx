@@ -112,33 +112,21 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                 <Button
                                     label="update"
                                     icon={GLYPHS.REFRESH}
-                                    type="accent"
+                                    role="accent"
                                     onClick={() => this.props.updatePlayer(this.props.id)}
                                     outline
                                 />
                             )}
                             {this.props.isFavorite ? (
-                                // <Button
-                                //     onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                //     className="button playerheader__button button--outline--primary active"
-                                // >
-                                //     <Icon glyph={GLYPHS.STARFULL} /> favorite
-                                // </Button>
                                 <Button
                                     label="favorite"
                                     icon={GLYPHS.STARFULL}
-                                    type="primary"
+                                    role="primary"
                                     onClick={() => this.props.unfavoritePlayer(this.props.id)}
                                     outline
                                     active
                                 />
                             ) : (
-                                // <Button
-                                //     onClick={() => this.props.favoritePlayer(this.props.id)}
-                                //     className="button playerheader__button button--outline--default"
-                                // >
-                                //     <Icon glyph={GLYPHS.STAR} /> favorite
-                                // </Button>
                                 <Button
                                     label="favorite"
                                     icon={GLYPHS.STAR}

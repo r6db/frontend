@@ -35,7 +35,7 @@ class Cookiebanner extends React.Component<{}, ICookiebannerState> {
                     </p>
                     <Button
                         label="Accept"
-                        type="primary"
+                        role="primary"
                         onClick={this.accept}
                     />
                 </div>

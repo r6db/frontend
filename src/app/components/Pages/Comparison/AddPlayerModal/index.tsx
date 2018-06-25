@@ -107,7 +107,7 @@ class AddPlayerModal extends React.Component<any, any> {
                 <div className="addplayermodal__close">
                     <Button 
                         label="done"
-                        type="primary"
+                        role="primary"
                         onClick={this.props.onclose}
                     />
                 </div>
