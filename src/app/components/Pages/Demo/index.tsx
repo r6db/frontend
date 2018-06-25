@@ -2,8 +2,11 @@ import * as React from "react";
 import { hot } from "react-hot-loader";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import { GLYPHS } from "components/misc/Icon";
+
 import Button from "components/misc/Button";
 import Dropdown from "components/misc/Dropdown";
+import Alert from "components/misc/Alert";
+
 import "./demo.scss";
 
 function Demo(props) {
@@ -82,6 +85,26 @@ function Demo(props) {
                         <Dropdown role="warning" options={dropdownOptions} outline />
                         <Dropdown role="success" options={dropdownOptions} outline />
                         <Dropdown role="info" options={dropdownOptions} outline />
+                    </section>
+                    <section className="demo__alert">
+                        <div className="demo__alert__row">
+                            <Alert>This is a default alert — check it out! </Alert>
+                            <Alert role="primary">This is a primary alert — check it out! </Alert>
+                            <Alert role="accent">This is a accent alert — check it out! </Alert>
+                            <Alert role="error">This is a error alert — check it out! </Alert>
+                            <Alert role="warning">This is a warning alert — check it out! </Alert>
+                            <Alert role="success">This is a success alert — check it out! </Alert>
+                            <Alert role="info">This is a info alert — check it out! </Alert>
+                        </div>
+                        <div className="demo__alert__row">
+                            <Alert isCloseable >Default</Alert>
+                            <Alert role="primary" isCloseable >Primary</Alert>
+                            <Alert role="accent" isCloseable >Accent</Alert>
+                            <Alert role="error" isCloseable >Error</Alert>
+                            <Alert role="warning" isCloseable >warning</Alert>
+                            <Alert role="success" isCloseable >success</Alert>
+                            <Alert role="info" isCloseable >info</Alert>
+                        </div>
                     </section>
                 </div>
             </PageContent>

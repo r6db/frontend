@@ -3,3 +3,14 @@
         margin: 2rem 0;
     }
 }
+
+.demo {
+
+    &__alert {
+        display: flex;
+        flex-direction: row;
+        &__row {
+            flex: 1;
+        }
+    }
+}
