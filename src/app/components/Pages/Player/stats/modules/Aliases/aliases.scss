@@ -60,11 +60,11 @@
         padding-left: 0;
     }
 
-    &-time {
+    &__time {
         color: $gray;
-        font-size: 0.9em;
+        font-size: fz(-1);
     }
-    &-name {
-        font-size: 1.1em;
+    &__name {
+        font-size: fz(0);
     }
 }

@@ -5,6 +5,7 @@
     align-items: baseline;
     margin-bottom: 0.5rem;
 
+    // keeep the &- variants for the simpleview
     &-label {
         color: $gray;
         margin-right: 0.5rem;
@@ -13,13 +14,13 @@
         white-space: pre;
     }
     &__value {
-        font-size: $font-bigger;
+        font-size: fz(1);
         font-weight: 300;
     }
     &__label {
         margin-left: 1rem;
         font-weight: 600;
         color: $font-subtle-color;
-        font-size: $font-small;
+        font-size: fz(-1);
     }
 }

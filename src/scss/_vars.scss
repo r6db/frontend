@@ -35,15 +35,6 @@ $a: 45deg;
 $borderradius: 5px;
 $borderradius-rel: 0.4em;
 
-$font-tiny: 0.5em;
-$font-smaller: 0.75em;
-$font-small: 0.9em;
-$font-default: 1em;
-$font-big: 1.125em;
-$font-bigger: 1.25em;
-$font-large: 1.5em;
-$font-huge: 2.5em;
-
 $menu-height: 80px;
 $menu-width: 280px;
 $menu-background: darken($bg-color, 2%);
@@ -64,3 +55,37 @@ $graphcolor-apac: #24a55a;
 $tdur: 200ms;
 
 $loading-indicatorsize: 30px;
+
+/**
+ * font-scale function
+ * fz(0) is the default font-size
+ * fz(1) is slightly larger, fz(-1) smaller, etc
+ */
+
+// set the default sizes. we want to grow by a modifier of 1.2
+$scale: (
+    base: 1em,
+    modifier: 1.2
+);
+@function pow($number, $exponent) {
+    $value: 1;
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    }
+    @return $value;
+}
+// the actual fontsize formula is the following: $base * ($modifier^$ratio)
+// see
+// http://www.modularscale.com/?1&em&1.2
+// for a visualization (click on 'sass' in the sidebar to see the scale
+@function fz($ratio) {
+    $value: 1;
+    @if ($ratio > 0) {
+        $value: pow(map-get($scale, "modifier"), $ratio) * map-get($scale, "base");
+    } @else {
+        $value: pow((1 / map-get($scale, "modifier")), -$ratio) * map-get($scale, "base");
+    }
+    @return $value;
+}

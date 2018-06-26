@@ -63,7 +63,7 @@ select {
 label {
     display: block;
     color: $font-subtle-color;
-    font-size: $font-small;
+    font-size: fz(0);
     font-weight: normal;
     height: 1em;
     margin-bottom: 0.5rem;
@@ -107,10 +107,7 @@ label {
 select,
 textarea,
 input {
-    font-size: 16px;
-    @include medium {
-        font-size: $font-default;
-    }
+    font-size: fz(0);
 }
 
 .blocker {
@@ -122,6 +119,7 @@ input {
     line-height: 1.5;
     padding: 1rem;
     background: fade-out($gray-dark, 0.2);
+    font-size: fz(1);
     font-weight: 600;
     border-radius: $borderradius;
     margin: 1rem 0;

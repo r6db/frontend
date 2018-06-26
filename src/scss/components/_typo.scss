@@ -1,10 +1,10 @@
 .header {
     font-weight: bold;
     margin: 5rem auto 2rem;
-    font-size: $font-huge;
+    font-size: fz(5);
 
     &--small {
-        font-size: $font-tiny;
+        font-size: fz(3);
     }
     &--subtle {
         color: $font-subtle-color;

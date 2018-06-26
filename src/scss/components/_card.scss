@@ -4,13 +4,13 @@
     margin: 1rem;
     display: block;
 
-    &-header {
+    &__header {
         @include card-header;
     }
-    &-content {
+    &__content {
         @include card-content;
     }
-    &-divider {
+    &__divider {
         @include card-divider;
     }
 }

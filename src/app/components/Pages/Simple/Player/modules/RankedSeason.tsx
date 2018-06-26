@@ -3,7 +3,7 @@ import { RANKS } from "lib/constants";
 
 export default function SimpleSeason(props) {
     return (
-        <div className="profile-rankedstats card">
+        <div className="profile__rankedstats card">
             <header className="card__header">Ranked Season ({props.region})</header>
             <div className="card__content">
                 <div className="row">

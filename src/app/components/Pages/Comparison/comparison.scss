@@ -9,13 +9,13 @@
             flex: 1 1 100px;
         }
     }
-    &-value {
+    &__value {
         @include medium {
             flex: 1 0 4em;
             text-align: right;
         }
     }
-    &-stat {
+    &__stat {
         @include medium {
             flex: 0 0 10em;
         }
@@ -145,7 +145,7 @@
         width: 5rem;
 
         span {
-            font-size: $font-smaller;
+            font-size: fz(-2);
         }
     }
     &__ops {

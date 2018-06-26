@@ -36,17 +36,17 @@ $profile-header-height: $profile-image-height + 5rem;
         }
     }
 
-    &-player {
+    &__player {
         display: flex;
         flex-direction: column;
         flex: 1;
     }
-    &-identification {
+    &__identification {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    &-header {
+    &__header {
         @include card;
         margin: 0 auto;
         width: 100%;
@@ -55,7 +55,7 @@ $profile-header-height: $profile-image-height + 5rem;
             flex-direction: row;
         }
     }
-    &-info {
+    &__info {
         display: flex;
         flex-direction: column;
         flex: 0 0 auto;
@@ -68,7 +68,7 @@ $profile-header-height: $profile-image-height + 5rem;
         }
     }
 
-    &-headerimage {
+    &__headerimage {
         position: relative;
         width: 10rem;
         height: 10rem;
@@ -82,7 +82,7 @@ $profile-header-height: $profile-image-height + 5rem;
             height: $profile-image-height;
         }
     }
-    &-level {
+    &__level {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -98,7 +98,7 @@ $profile-header-height: $profile-image-height + 5rem;
         padding: 1rem 0 0 1rem;
         flex: 1;
     }
-    &-name {
+    &__name {
         width: 100%;
         font-size: 1.5rem;
         font-weight: bold;
@@ -114,16 +114,16 @@ $profile-header-height: $profile-image-height + 5rem;
             font-size: 3rem;
         }
     }
-    &-flair {
+    &__flair {
         color: $gray-light;
         margin-bottom: 1rem;
     }
-    &-global-rank {
+    &__global-rank {
         span {
             font-weight: 800;
         }
     }
-    &-seasonranks {
+    &__seasonranks {
         display: flex;
         padding: 0 1rem;
         flex-direction: row;
@@ -135,16 +135,16 @@ $profile-header-height: $profile-image-height + 5rem;
             justify-content: space-between;
         }
     }
-    &-id {
+    &__id {
         color: $accent;
     }
-    &-extended {
+    &__extended {
         color: $accent;
         margin-top: 0.5rem;
         display: block;
     }
 
-    &-aliases {
+    &__aliases {
         // height is profile-content height - all the paddings;
         display: flex;
         flex-direction: row;
@@ -165,7 +165,7 @@ $profile-header-height: $profile-image-height + 5rem;
         }
     }
 
-    &-stats {
+    &__stats {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;

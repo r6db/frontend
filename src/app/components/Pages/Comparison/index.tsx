@@ -23,14 +23,14 @@ const rows = [
     { label: "lost", prop: x => get(x, "stats.general.lost", 0) },
     {
         label: "wlr",
-        prop: x => stats.getWinChance(get(x, "stats.general")),
+        prop: x => stats.getWinChance(get(x, "stats.general"))
     },
     { label: "kills", prop: x => get(x, "stats.general.kills", 0) },
     { label: "deaths", prop: x => get(x, "stats.general.deaths", 0) },
     { label: "assists", prop: x => get(x, "stats.general.assists", 0) },
     {
         label: "kdr",
-        prop: x => stats.getKillRatio(get(x, "stats.general", {})),
+        prop: x => stats.getKillRatio(get(x, "stats.general", {}))
     },
     { label: "pen kills", prop: x => get(x, "stats.general.penetrationKills") },
     { label: "blindfires", prop: x => get(x, "stats.general.blindKills") },
@@ -38,7 +38,7 @@ const rows = [
     { label: "gadgets destr.", prop: x => get(x, "stats.general.gadgetsDestroyed") },
     { label: "best score bomb", prop: x => get(x, "stats.bomb.bestScore") },
     { label: "best score secure", prop: x => get(x, "stats.secure.bestScore") },
-    { label: "best score hostage", prop: x => get(x, "stats.hostage.bestScore") },
+    { label: "best score hostage", prop: x => get(x, "stats.hostage.bestScore") }
 ];
 
 const getRankingAttrs = players =>
@@ -46,7 +46,7 @@ const getRankingAttrs = players =>
         .filter(p => get(p, "placements.global", null) != null)
         .map(p => ({
             label: p.name,
-            value: get(p, "placements.global", 0) + 1,
+            value: get(p, "placements.global", 0) + 1
         }))
         .sort((a, b) => a.value - b.value)
         .concat(players.filter(p => get(p, "placements.global", null) == null));
@@ -55,14 +55,14 @@ const getWlAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: stats.getWinChanceRaw(p.stats.general) * 100,
+            value: stats.getWinChanceRaw(p.stats.general) * 100
         }))
         .sort((a, b) => b.value - a.value);
 const getRankedWlAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: stats.getWinChanceRaw(p.stats.ranked) * 100,
+            value: stats.getWinChanceRaw(p.stats.ranked) * 100
         }))
         .sort((a, b) => b.value - a.value);
 
@@ -70,28 +70,28 @@ const getKdAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: stats.getKillRatio(p.stats.general),
+            value: stats.getKillRatio(p.stats.general)
         }))
         .sort((a, b) => b.value - a.value);
 const getRankedKdAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: stats.getKillRatio(p.stats.ranked),
+            value: stats.getKillRatio(p.stats.ranked)
         }))
         .sort((a, b) => b.value - a.value);
 const getKdaAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: stats.getKdaRatio(p.stats.general),
+            value: stats.getKdaRatio(p.stats.general)
         }))
         .sort((a, b) => b.value - a.value);
 const getPlaytimeAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: get(p, "stats.general.timePlayed", 0),
+            value: get(p, "stats.general.timePlayed", 0)
         }))
         .sort((a, b) => b.value - a.value);
 
@@ -99,7 +99,7 @@ const getKnifeAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: get(p, "stats.general.meleeKills", null) | 0,
+            value: get(p, "stats.general.meleeKills", null) | 0
         }))
         .sort((a, b) => b.value - a.value);
 
@@ -118,9 +118,9 @@ const getOpsAttrs = players =>
                     .filter(x => x.side === "Defense")
                     .sort((a, b) => b.timePlayed - a.timePlayed)
                     .slice(0, 3)
-                    .map(x => x.id),
+                    .map(x => x.id)
             },
-            meta: get(p, "stats.operator", {}),
+            meta: get(p, "stats.operator", {})
         };
     });
 
@@ -128,7 +128,7 @@ const getAccuAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: get(p, "stats.general.hitChance", null) | 0,
+            value: get(p, "stats.general.hitChance", null) | 0
         }))
         .sort((a, b) => b.value - a.value);
 
@@ -136,7 +136,7 @@ const getHeadshotAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: get(p, "stats.general.headshotRatio", null) | 0,
+            value: get(p, "stats.general.headshotRatio", null) | 0
         }))
         .sort((a, b) => b.value - a.value);
 
@@ -144,14 +144,14 @@ const getDbnoAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: get(p, "stats.general.dbno", null) | 0,
+            value: get(p, "stats.general.dbno", null) | 0
         }))
         .sort((a, b) => b.value - a.value);
 const getAbandonAttrs = players =>
     players
         .map(p => ({
             label: p.name,
-            value: get(p, "stats.ranked.abandons", null) | 0,
+            value: get(p, "stats.ranked.abandons", null) | 0
         }))
         .sort((a, b) => a.value - b.value);
 
@@ -167,7 +167,7 @@ const getMmrChartAttrs = players => ({
                     const data = get(player, ["rank", x], {});
                     return {
                         id: x,
-                        games: (data.wins || 0) + (data.losses || 0) + (data.abandons || 0),
+                        games: (data.wins || 0) + (data.losses || 0) + (data.abandons || 0)
                     };
                 })
                 .sort((a, b) => b.games - a.games)[0].id;
@@ -176,17 +176,17 @@ const getMmrChartAttrs = players => ({
             return {
                 name: player.name,
                 data: player.progressions.map(prog => get(prog, ["ranks", region, "mmr"], null)),
-                className: `player-${i}`,
+                className: `player-${i}`
             };
-        }),
+        })
     },
     options: {
         axisX: {
             offset: 0,
-            showLabel: false,
+            showLabel: false
         },
-        maintainAspectRatio: false,
-    },
+        maintainAspectRatio: false
+    }
 });
 
 //#endregion data mappers
@@ -196,7 +196,7 @@ class Compare extends React.Component<any, any> {
 
         this.state = {
             showPlayerModal: false,
-            ids: props.ids,
+            ids: props.ids
         };
 
         this.onAddPlayer = this.onAddPlayer.bind(this);
@@ -223,7 +223,7 @@ class Compare extends React.Component<any, any> {
     getPlayerRemovalLink(id: string) {
         return {
             type: "COMPARISON",
-            query: { ids: this.props.ids.filter(x => x !== id) },
+            query: { ids: this.props.ids.filter(x => x !== id) }
         };
     }
 
@@ -245,7 +245,10 @@ class Compare extends React.Component<any, any> {
                                         {...player}
                                     />
                                 ))}
-                                <button className="button button--primary" onClick={this.onAddPlayer}>
+                                <button
+                                    className="button button--primary"
+                                    onClick={this.onAddPlayer}
+                                >
                                     add player
                                 </button>
                             </div>
@@ -263,7 +266,9 @@ class Compare extends React.Component<any, any> {
                         ) : null}
                         <div className="comparison__row">
                             <div className="comparison__module comparison__mmr">
-                                <div className="comparison__module__header">MMR (most active region)</div>
+                                <div className="comparison__module__header">
+                                    MMR (most active region)
+                                </div>
                                 <div className="comparison__module__content">{/* mmr chart */}</div>
                             </div>
                             <div className="comparison__module comparison__ranking">
@@ -279,7 +284,9 @@ class Compare extends React.Component<any, any> {
                         </div>
                         <div className="comparison__row">
                             <div className="comparison__module comparison__wlr">
-                                <div className="comparison__module__header">Win Percentage (ranked)</div>
+                                <div className="comparison__module__header">
+                                    Win Percentage (ranked)
+                                </div>
                                 <div className="comparison__module__content">
                                     {getRankedWlAttrs(this.props.players).map(player => (
                                         <Stat label={player.label} key={player.label}>
@@ -291,7 +298,9 @@ class Compare extends React.Component<any, any> {
                                 </div>
                             </div>
                             <div className="comparison__module comparison__ops">
-                                <div className="comparison__module__header">most played Operators</div>
+                                <div className="comparison__module__header">
+                                    most played Operators
+                                </div>
                                 <div className="comparison__module__content">
                                     <OpsChart data={getOpsAttrs(this.props.players)} />
                                 </div>
@@ -397,12 +406,14 @@ class Compare extends React.Component<any, any> {
                         </div>
                         <div className="comparison__row">
                             <div className="comparison__module">
-                                <Fauxtable.Table className="comparison-table">
+                                <Fauxtable.Table className="comparison__table">
                                     <Fauxtable.Head>
                                         <Fauxtable.Row>
-                                            <Fauxtable.Heading className="comparison-stat">Stat</Fauxtable.Heading>
+                                            <Fauxtable.Heading className="comparison__stat">
+                                                Stat
+                                            </Fauxtable.Heading>
                                             {this.props.players.map(x => (
-                                                <Fauxtable.Heading className="comparison-value">
+                                                <Fauxtable.Heading className="comparison__value">
                                                     {x.name}
                                                 </Fauxtable.Heading>
                                             ))}
@@ -411,9 +422,11 @@ class Compare extends React.Component<any, any> {
                                     <Fauxtable.Body>
                                         {rows.map(row => (
                                             <Fauxtable.Row key={row.label}>
-                                                <Fauxtable.Cell className="comparison-stat">{row.label}</Fauxtable.Cell>
+                                                <Fauxtable.Cell className="comparison__stat">
+                                                    {row.label}
+                                                </Fauxtable.Cell>
                                                 {this.props.players.map(x => (
-                                                    <Fauxtable.Cell className="comparison-value">
+                                                    <Fauxtable.Cell className="comparison__value">
                                                         {row.prop(x)}
                                                     </Fauxtable.Cell>
                                                 ))}
@@ -436,7 +449,7 @@ const mapState = state => {
     return {
         players: ids.map(x => players[x]).filter(x => !!x),
         ids,
-        loading,
+        loading
     };
 };
 
@@ -444,8 +457,8 @@ const mapDispatch = dispatch => ({
     compare: ids =>
         dispatch({
             type: "COMPARISON",
-            query: { ids: uniq(ids) },
-        }),
+            query: { ids: uniq(ids) }
+        })
 });
 
 export default hot(module)(connect(mapState, mapDispatch)(Compare));

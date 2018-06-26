@@ -36,12 +36,12 @@
         align-items: center;
     }
     &__name {
-        font-size: $font-bigger;
+        font-size: fz(1);
         font-weight: 600;
     }
     &__flair {
         @include flair;
-        font-size: $font-smaller;
+        font-size: fz(-2);
     }
     &__aliases {
         opacity: 0.75;
