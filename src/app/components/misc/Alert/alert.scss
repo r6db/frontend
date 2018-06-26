@@ -1,0 +1,83 @@
+@import "scss/styles";
+
+.alert {
+    display: flex;
+    align-items: center;
+    margin: 0.5em;
+    opacity: 1;
+    border: 1px solid transparent;
+    border-radius: $borderradius;
+    background: $trans-med;
+    transition: all 100ms ease-in-out;
+    @include boxshadow;
+
+    &__content {
+        flex: 1;
+        line-height: 1.25;
+        padding: 1em 2em;
+    }
+
+    &__close {
+        align-self: flex-start;
+        color: inherit;
+        opacity: 0.75;
+        padding-top: 1em;
+        padding-right: 1em;
+        transition: opacity 100ms ease-in-out;
+        cursor: pointer;
+
+        .icon {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &:not(.alert--open) {
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    &--default {
+        color: $color-white;
+        border-color: darken($color-gray, 20%);
+        background: mix($trans-med, $color-gray, 75%);
+    }
+    &--primary {
+        color: $color-white;
+        border-color: darken($color-primary, 5%);
+        background: mix($trans-med, $color-primary, 55%);
+    }
+    &--accent {
+        color: $color-white;
+        border-color: darken($color-accent, 5%);
+        background: mix($trans-med, $color-accent, 55%);
+    }
+    &--error {
+        color: $color-white;
+        border-color: darken($color-error, 5%);
+        background: mix($trans-med, $color-error, 55%);
+    }
+    &--warning {
+        color: $color-white;
+        border-color: darken($color-warning, 5%);
+        background: mix($trans-med, $color-warning, 55%);
+    }
+    &--success {
+        color: $color-white;
+        border-color: darken($color-success, 5%);
+        background: mix($trans-med, $color-success, 55%);
+    }
+    &--info {
+        color: $color-white;
+        border-color: darken($color-info, 5%);
+        background: mix($trans-med, $color-info, 55%);
+    }
+}

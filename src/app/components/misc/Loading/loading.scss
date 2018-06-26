@@ -19,7 +19,7 @@
         left: 50%;
         width: $loading-indicatorsize;
         height: $loading-indicatorsize;
-        background: $primary;
+        background: $color-primary;
         animation: loadingAnim 1.5s infinite ease-in-out;
     }
     &__message {
@@ -27,7 +27,7 @@
         top: 60%;
         left: 50%;
         transform: translate(-50%, 0);
-        color: $white;
+        color: $color-white;
         text-align: center;
         z-index: 10;
     }

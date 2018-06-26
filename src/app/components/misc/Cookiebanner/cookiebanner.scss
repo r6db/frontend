@@ -22,7 +22,7 @@
     }
     a {
         display: inline-flex;
-        color: $accent;
+        color: $color-accent;
         
         @include medium {
             padding-left: 1rem;
@@ -40,11 +40,11 @@
             flex: 1;
         }
     }
-    span {
+    &__subtle {
         display: flex;
         flex-direction: column;
         padding: 0.5rem 0;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         
         @include medium {
             flex-direction: row;
@@ -56,6 +56,7 @@
         justify-self: flex-end;
         display: block;
         flex: 100%;
+        margin: 0;
 
         @include medium {
             flex: 0 0 10rem;

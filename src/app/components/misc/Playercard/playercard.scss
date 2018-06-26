@@ -28,7 +28,7 @@
         flex-direction: column;
     }
     &__span {
-        color: $font-subtle-color;
+        color: $font-color-subtle;
     }
     &__namebox {
         margin-bottom: 0.5rem;
@@ -51,14 +51,14 @@
         display: flex;
         flex-shrink: 0;
         flex-basis: auto;
-        border-left: 1px solid rgba($font-subtle-color, 0.2);
+        border-left: 1px solid rgba($font-color-subtle, 0.2);
         margin-left: 2rem;
         padding: 1rem 1rem 1rem 2rem;
 
         .icon {
             width: 1.25em;
             height: 1.25em;
-            fill: $primary;
+            fill: $color-primary;
         }
     }
 }

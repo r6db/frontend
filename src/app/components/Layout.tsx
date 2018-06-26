@@ -33,6 +33,7 @@ const pageMap = {
     PLAYERTABS: makeAsync(() => import("./Pages/Player")),
     COMPARISON: makeAsync(() => import("./Pages/Comparison")),
     ABOUT: makeAsync(() => import("./Pages/About")),
+    DEMO: makeAsync(() => import("./Pages/Demo")),
     SETTINGS: makeAsync(() => import("./Pages/Settings")),
     PRIVACY: makeAsync(() => import("./Pages/Privacy")),
     DELETE: makeAsync(() => import("./Pages/Delete")),
@@ -45,7 +46,7 @@ pageMap.PLAYER.preload();
 class Layout extends React.PureComponent<any, any> {
     render() {
         return (
-            <div className={"app s " + this.props.location}>
+            <div className={"app " + this.props.location}>
                 <Drawer>
                     <Menu platform={this.props.platform} />
                 </Drawer>

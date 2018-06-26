@@ -5,7 +5,7 @@ $profile-image-height: 14.6rem;
 $profile-header-height: $profile-image-height + 5rem;
 
 .profile {
-    color: $white;
+    color: $color-white;
     display: flex;
     flex-direction: column;
 
@@ -28,7 +28,7 @@ $profile-header-height: $profile-image-height + 5rem;
         }
         .label {
             flex: 1 1 35%;
-            color: $gray;
+            color: $color-gray;
         }
         .value {
             flex: 1 1 65%;
@@ -105,7 +105,7 @@ $profile-header-height: $profile-image-height + 5rem;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        text-shadow: 0 0 1px $gray-dark;
+        text-shadow: 0 0 1px $color-gray-dark;
 
         @include medium {
             font-size: 2rem;
@@ -115,7 +115,7 @@ $profile-header-height: $profile-image-height + 5rem;
         }
     }
     &-flair {
-        color: $gray-light;
+        color: $color-gray-light;
         margin-bottom: 1rem;
     }
     &-global-rank {
@@ -136,10 +136,10 @@ $profile-header-height: $profile-image-height + 5rem;
         }
     }
     &-id {
-        color: $accent;
+        color: $color-accent;
     }
     &-extended {
-        color: $accent;
+        color: $color-accent;
         margin-top: 0.5rem;
         display: block;
     }
@@ -205,11 +205,11 @@ $profile-header-height: $profile-image-height + 5rem;
     font-size: 3rem;
     line-height: 106px;
     font-weight: bold;
-    text-shadow: 0 0 1px $gray-dark;
+    text-shadow: 0 0 1px $color-gray-dark;
 }
 .profileerror-content {
-    background: $gray-dark;
-    box-shadow: 0 0 5px $gray-dark;
+    background: $color-gray-dark;
+    box-shadow: 0 0 5px $color-gray-dark;
     max-width: $screen-large;
     width: 100%;
     margin: 0 auto;
