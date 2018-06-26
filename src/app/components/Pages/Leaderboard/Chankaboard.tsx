@@ -28,7 +28,7 @@ class Chankaboard extends React.Component<any, any> {
                 <PageHead image={background} position="50% 60%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">
-                            <FormattedMessage id="chankaboard" />
+                            <FormattedMessage id="leaderboard/chankaboard" />
                         </h1>
                     </div>
                 </PageHead>
