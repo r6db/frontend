@@ -104,13 +104,13 @@ class Delete extends React.Component<{}, IDeleteState> {
                             <br />
                             <FormattedMessage id="delete/contactus" />
                         </p>
-                        <FormattedMessage id="delete/step1_title">
-                            {msg => (
-                                <div className="delete__title">
-                                    <FormattedMessage id="delete/step" values={{ step: 1 }} /> {msg}
-                                </div>
-                            )}
-                        </FormattedMessage>
+
+                        <div className="delete__title">
+                            <span>
+                                <FormattedMessage id="delete/step" values={{ step: 1 }} />
+                            </span>
+                            <FormattedMessage id="delete/step1_title" />
+                        </div>
 
                         <div className="delete__step">
                             <p>
@@ -138,13 +138,12 @@ class Delete extends React.Component<{}, IDeleteState> {
                         </div>
                         {this.state.player ? (
                             <>
-                                <FormattedMessage id="delete/step2_title">
-                                    {msg => (
-                                        <div className="delete__title">
-                                            <FormattedMessage id="delete/step" values={{ step: 2 }} /> {msg}
-                                        </div>
-                                    )}
-                                </FormattedMessage>
+                                <div className="delete__title">
+                                    <span>
+                                        <FormattedMessage id="delete/step" values={{ step: 2 }} />
+                                    </span>
+                                    <FormattedMessage id="delete/step2_title" />
+                                </div>
                                 <div className="delete__step delete__postqr">
                                     <p>
                                         <FormattedMessage
@@ -164,13 +163,13 @@ class Delete extends React.Component<{}, IDeleteState> {
                                         />
                                     </p>
                                 </div>
-                                <FormattedMessage id="delete/step3_title">
-                                    {msg => (
-                                        <div className="delete__title">
-                                            <FormattedMessage id="delete/step" values={{ step: 3 }} /> {msg}
-                                        </div>
-                                    )}
-                                </FormattedMessage>
+
+                                <div className="delete__title">
+                                    <span>
+                                        <FormattedMessage id="delete/step" values={{ step: 3 }} />
+                                    </span>
+                                    <FormattedMessage id="delete/step3_title" />
+                                </div>
                                 <div className="delete__step">
                                     <p>
                                         <FormattedMessage id="delete/step3_instruction" />

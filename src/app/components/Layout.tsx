@@ -46,6 +46,11 @@ const pageMap = {
 
 pageMap.PLAYER.preload();
 
+function Fragment(props) {
+    return props.children || <span {...props} /> || null;
+}
+
+
 class Layout extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
@@ -88,6 +93,7 @@ class Layout extends React.PureComponent<any, any> {
             <IntlProvider
                 locale={this.props.locale}
                 messages={this.state.messages}
+                textComponent={Fragment}
             >
                 <div className={"app s " + this.props.location}>
                     <Drawer>
