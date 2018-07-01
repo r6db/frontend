@@ -125,7 +125,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
-        updatePlayer: id => dispatch(updatePlayer(id))
+        updatePlayer: id => dispatch(updatePlayer(id)),
+        changeTime: timeframe =>
+            dispatch({ type: "TIMEFRAME", payload: timeframe })
     };
 };
 export default hot(module)(

@@ -6,6 +6,7 @@ import StatsGeneral from "./modules/StatsGeneral";
 import StatsRankings from "./modules/StatsRankings";
 import StatsGameModes from "./modules/StatsGameModes";
 import StatsCharts from "./modules/StatsCharts";
+import TimeSwitch from "./modules/TimeSwitch";
 
 import "./statstab.scss";
 
@@ -27,6 +28,7 @@ export default function StatsTab(props) {
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">
+                    {props.stats ? <TimeSwitch {...props} /> : null}
                     {props.stats ? <StatsGeneral {...props} /> : null}
                     <StatsRankings {...props} />
                     <div className="playermodule__divider" />
