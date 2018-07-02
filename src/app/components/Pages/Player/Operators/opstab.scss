@@ -41,7 +41,7 @@
             user-select: none;
 
             &.is-active {
-                color: $primary;
+                color: $color-primary;
             }
         }
         .fauxtable__heading,
@@ -65,7 +65,7 @@
             .fauxtable__heading {
                 &.name {
                     text-align: left;
-                    flex-grow: 4;
+                    flex-grow: 5;
                     height: auto;
                     cursor: pointer;
                 }
@@ -121,12 +121,12 @@
     .chart .ct-series,
     .chart .indicator {
         &.opdaily {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: $color-blackice;
+            background-color: $color-blackice;
         }
         &.opavg {
-            stroke: $skull-rain;
-            background-color: $skull-rain;
+            stroke: $color-skullrain;
+            background-color: $color-skullrain;
         }
         &.opavg .ct-point {
             stroke: none;

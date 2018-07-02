@@ -15,9 +15,9 @@
 
     &__ubipls {
         display: block;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         flex: none;
-        border-left: 1px solid $font-subtle-color;
+        border-left: 1px solid $font-color-subtle;
         padding: 1rem 2rem;
 
         @include large {
@@ -46,64 +46,64 @@
     }
 
     &.season-1 {
-        border-left: 3px solid $black-ice;
+        border-left: 3px solid $color-blackice;
         .pastrank__season {
-            color: $black-ice;
+            color: $color-blackice;
         }
     }
     &.season-2 {
-        border-left: 3px solid $dust-line;
+        border-left: 3px solid $color-dustline;
         .pastrank__season {
-            color: $dust-line;
+            color: $color-dustline;
         }
     }
     &.season-3 {
-        border-left: 3px solid $skull-rain;
+        border-left: 3px solid $color-skullrain;
         .pastrank__season {
-            color: $skull-rain;
+            color: $color-skullrain;
         }
     }
     &.season-4 {
-        border-left: 3px solid $red-crow;
+        border-left: 3px solid $color-redcrow;
         .pastrank__season {
-            color: $red-crow;
+            color: $color-redcrow;
         }
     }
     &.season-5 {
-        border-left: 3px solid $velvet-shell;
+        border-left: 3px solid $color-velvetshell;
         .pastrank__season {
-            color: $velvet-shell;
+            color: $color-velvetshell;
         }
     }
     &.season-6 {
-        border-left: 3px solid $operation-health;
+        border-left: 3px solid $color-ophealth;
         .pastrank__season {
-            color: $operation-health;
+            color: $color-ophealth;
         }
     }
     &.season-7 {
-        border-left: 3px solid $blood-orchid;
+        border-left: 3px solid $color-bloodorchid;
         .pastrank__season {
-            color: $blood-orchid;
+            color: $color-bloodorchid;
         }
     }
     &.season-8 {
-        border-left: 3px solid $white-noise;
+        border-left: 3px solid $color-whitenoise;
         .pastrank__season {
-            color: $white-noise;
+            color: $color-whitenoise;
         }
     }
     &.season-9 {
-        border-left: 3px solid $chimera;
+        border-left: 3px solid $color-chimera;
         .pastrank__season {
-            color: $chimera;
+            color: $color-chimera;
         }
     }
 
     &.season-10 {
-        border-left: 3px solid $parabellum;
+        border-left: 3px solid $color-parabellum;
         .pastrank__season {
-            color: $parabellum;
+            color: $color-parabellum;
         }
     }
 
@@ -129,7 +129,7 @@
     }
     &__mmr {
         margin-left: 1rem;
-        color: $gray;
+        color: $color-gray;
         font-size: 0.8em;
     }
 }

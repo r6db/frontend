@@ -22,7 +22,7 @@
     }
     &__expand {
         display: flex;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         width: 100%;
         align-items: center;
         cursor: pointer;
@@ -61,7 +61,7 @@
     }
 
     &-time {
-        color: $gray;
+        color: $color-gray;
         font-size: 0.9em;
     }
     &-name {

@@ -13,23 +13,6 @@ export default {
                 title: `Home`,
                 description: `Find any player in Rainbow Six: Siege`
             });
-            api
-                .getPlayers(favorites)
-                .then(x =>
-                    dispatch({
-                        type: "PLAYERS_FETCHED",
-                        payload: x.map(p => ({ id: p.id, player: p }))
-                    })
-                )
-                .catch(err => {
-                    if (err.message === "SERVERFAULT") {
-                        return dispatch(redirect({ type: "SERVERFAULT" }));
-                    }
-                    dispatch({
-                        type: "PLAYERS_FAILED"
-                    });
-                    throw err;
-                });
         }
     },
     ABOUT: {
@@ -54,6 +37,9 @@ export default {
     DELETE: {
         path: "/delete"
     },
+    DEMO: {
+        path: "/demo"
+    },
     SEARCH: {
         path: "/search/:platform/:query",
         thunk: async (dispatch, getState) => {
@@ -61,8 +47,7 @@ export default {
             const { query, platform } = location.payload;
             dispatch({ type: "QUERY", payload: query });
             dispatch({ type: "PLATFORM", payload: platform });
-            api
-                .findPlayer(query, platform)
+            api.findPlayer(query, platform)
                 .then(result => {
                     setMeta({
                         title: `Search ${platform} for ${query}`,
@@ -90,8 +75,7 @@ export default {
         thunk: async (dispatch, getState) => {
             const { platform } = getState().location.payload;
             dispatch({ type: "PLATFORM", payload: platform });
-            api
-                .getLeaderboard("operatorpvp_tachanka_turretkill", platform)
+            api.getLeaderboard("operatorpvp_tachanka_turretkill", platform)
                 .then(entries => {
                     setMeta({
                         title: "LMG kills leaderboard",
@@ -127,8 +111,7 @@ export default {
             const lbConfig = LEADERBOARDS[board];
             dispatch({ type: "PLATFORM", payload: platform });
             // grab community ranks
-            api
-                .getCommunityRanks(platform)
+            api.getCommunityRanks(platform)
                 .then(ranks => {
                     dispatch({
                         type: "COMMUNITYRANKS_FETCHED",
@@ -136,8 +119,7 @@ export default {
                     });
                 })
                 .catch(console.error);
-            api
-                .getLeaderboard(lbConfig.board, platform)
+            api.getLeaderboard(lbConfig.board, platform)
                 .then(entries => {
                     setMeta({
                         title: `${lbConfig.label} leaderboard`,
@@ -197,8 +179,7 @@ export default {
             let idList = ids
                 .map(x => x.toLowerCase().trim())
                 .filter(x => players[x] == undefined);
-            api
-                .getPlayers(idList)
+            api.getPlayers(idList)
                 .then(x => {
                     dispatch({
                         type: "PLAYERS_FETCHED",
@@ -230,8 +211,7 @@ export default {
                 title: `Favorites`,
                 description: `Easy access to your favorite players`
             });
-            api
-                .getPlayers(favorites)
+            api.getPlayers(favorites)
                 .then(x =>
                     dispatch({
                         type: "PLAYERS_FETCHED",
@@ -254,8 +234,7 @@ export default {
 async function playerThunk(dispatch, getState) {
     const { platform } = getState();
     const { id, tab } = getState().location.payload;
-    api
-        .getPlayer(id, { platform })
+    api.getPlayer(id, { platform })
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             analytics.pageView("Player", `/player/:id/${tab || ""}`);

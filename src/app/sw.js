@@ -1,4 +1,4 @@
-const CACHE_NAME = "r6db-y3s2-1.1.0";
+const CACHE_NAME = "r6db-y3s2-1.2.0";
 
 self.addEventListener("install", function(event) {
     console.debug("[sw] install");
@@ -23,15 +23,21 @@ self.addEventListener("install", function(event) {
                 return toCache;
             })
             // open the cache
-            .then(toCache => caches.open(CACHE_NAME).then(cache => ({ toCache, cache })))
+            .then(toCache =>
+                caches.open(CACHE_NAME).then(cache => ({ toCache, cache }))
+            )
             .then(({ toCache, cache }) =>
                 cache
                     .keys()
                     .then(requests => requests.map(req => req.url))
                     .then(cachedUrls => {
                         // find new and stale keys, and update/delete accordingly
-                        const toDelete = cachedUrls.filter(cached => toCache.includes(cached) === false);
-                        const toAdd = toCache.filter(key => cachedUrls.includes(key) === false);
+                        const toDelete = cachedUrls.filter(
+                            cached => toCache.includes(cached) === false
+                        );
+                        const toAdd = toCache.filter(
+                            key => cachedUrls.includes(key) === false
+                        );
 
                         if (toDelete.length) {
                             console.debug("[sw] deleting items", toDelete);
@@ -41,15 +47,19 @@ self.addEventListener("install", function(event) {
                         }
 
                         const deletedProm = toDelete.length
-                            ? Promise.all(toDelete.map(key => cache.delete(key)))
+                            ? Promise.all(
+                                  toDelete.map(key => cache.delete(key))
+                              )
                             : Promise.resolve();
                         const addedProm = cache.addAll(toAdd);
 
-                        return toAdd.length ? cache.addAll(toAdd) : Promise.resolve();
-                    }),
+                        return toAdd.length
+                            ? cache.addAll(toAdd)
+                            : Promise.resolve();
+                    })
             )
             .then(() => self.skipWaiting())
-            .catch(err => console.error("[sw] error", err)),
+            .catch(err => console.error("[sw] error", err))
     );
 });
 
@@ -67,23 +77,18 @@ self.addEventListener("activate", function(event) {
                     } else {
                         return Promise.resolve();
                     }
-                }),
-            ),
-        ),
+                })
+            )
+        )
     );
 });
 
 self.addEventListener("fetch", function(event) {
     if (/r6db\.com/.test(event.request.url)) {
         event.respondWith(
-            caches.match(event.request).then(res => {
-                if (res) {
-                    console.debug(`[sw] cached response for '${event.request.url}'`);
-                    return res;
-                } else {
-                    return fetch(event.request);
-                }
-            }),
+            caches.match(event.request).then(function(response) {
+                return response || fetch(event.request);
+            })
         );
     }
 });

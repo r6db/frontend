@@ -89,6 +89,12 @@ import FINKA from "assets/operators/finka.svg";
 import ALIBI from "assets/operators/alibi.svg";
 import MAESTRO from "assets/operators/maestro.svg";
 
+import RECRUITSAS from "assets/operators/recruitsas.svg";
+import RECRUITFBI from "assets/operators/recruitfbi.svg";
+import RECRUITGIGN from "assets/operators/recruitgign.svg";
+import RECRUITSPETSNAZ from "assets/operators/recruitspetsnaz.svg";
+import RECRUITGSG9 from "assets/operators/recruitgsg9.svg";
+
 import LOGODEFAULT from "assets/seasonlogos/R6-Default-Horizontal.svg";
 import LOGOS1 from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
 import LOGOS2 from "assets/seasonlogos/R6-OPDustLine-Horizontal.svg";
@@ -203,6 +209,11 @@ export const GLYPHS = {
     DOKKAEBI,
     VIGIL,
     ZOFIA,
+    RECRUITSAS,
+    RECRUITFBI,
+    RECRUITGIGN,
+    RECRUITSPETSNAZ,
+    RECRUITGSG9,
     LOGODEFAULT,
     LOGOS1,
     LOGOS2,
