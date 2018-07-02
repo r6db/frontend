@@ -61,6 +61,7 @@ class Delete extends React.Component<{}, IDeleteState> {
                 background: 'white',
                 foreground: 'black',
                 size: 500,
+                padding: 50,
             });
             this.setState({
                 player: id,
