@@ -49,7 +49,7 @@ const filters = {
     SAS: op => op.unit === "SAS",
     GSG9: op => op.unit === "GSG9",
     FBI: op => op.unit === "FBI",
-    SPETSNAS: op => op.unit === "SPETSNAS",
+    SPETSNAZ: op => op.unit === "SPETSNAZ",
     "JTF-2": op => op.unit === "JTF-2",
     SEALS: op => op.unit === "SEALS",
     BOPE: op => op.unit === "BOPE",
