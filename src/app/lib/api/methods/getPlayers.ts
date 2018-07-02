@@ -13,7 +13,7 @@ const getPlayers = ids => {
 };
 
 export default function(ids) {
-    const proms = chunk(ids, 100).map(chunk => getPlayers(ids));
+    const proms = chunk(ids, 100).map(chunk => getPlayers(chunk));
     return Promise.all(proms)
         .then(flatten)
         .then(x => x.map(handleResponse));
