@@ -21,7 +21,7 @@ const s10Cover = require("assets/backgrounds/parabellum2.jpg?sizes[]=300&sizes[]
 import s10Logo from "assets/seasonlogos/R6-OPParaBellum-Horizontal.svg";
 
 export const appname = "r6db";
-export const appid = "5e23d930-edd3-4240-b9a9-723c673fb649";
+export const appid = "b0815d12-ce26-462f-85ec-b866f24db0f0";
 export const title = "R6DB - Rainbow 6 Player database";
 export const description =
     "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
