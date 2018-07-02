@@ -76,7 +76,6 @@ export default function(player) {
 
     if (player.stats.operator) {
         player.stats.operator = Object.keys(player.stats.operator)
-            .filter(x => /recruit/.test(x) === false) // nope
             .map(id => Object.assign({}, player.stats.operator[id], { id }, OPERATORS[id]))
             .reduce((acc, curr) => Object.assign(acc, { [curr.id]: curr }), {});
     }
