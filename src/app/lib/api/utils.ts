@@ -1,6 +1,9 @@
 import { appid } from "lib/constants";
 
 export const failEarly = function failEarly(res) {
+    if (res.status === 400) {
+        window.location.reload();
+    }
     if (res.status === 502) {
         throw new Error("SERVERFAULT");
     }
