@@ -3,7 +3,7 @@
 .seasoncard {
     position: relative;
     overflow: hidden;
-    margin-bottom: $l;
+    margin-bottom: 1rem;
     border-radius: $borderradius;
     transition: all 200ms ease-in-out;
     backface-visibility: hidden;
@@ -35,7 +35,7 @@
         .regionstats {
             width: 3%;
             flex: auto;
-            padding: 0 $l;
+            padding: 0 1rem;
             border-bottom: 0;
             &__rankicon {
                 flex-basis: 3.5rem;
@@ -63,15 +63,15 @@
         flex-direction: column;
         position: relative;
         z-index: 2;
-        padding: $l $l*2;
+        padding: 1rem 2rem;
     }
 
     &__season {
         display: block;
-        padding-bottom: $l;
+        padding-bottom: 1rem;
 
         svg {
-            height: 4rem;
+            height: 5rem;
             transform-origin: top left;
             transform: scale(1.25);
             transition: transform 200ms ease-out;
@@ -94,16 +94,16 @@
     &__emptyindicator {
         height: 1px;
         width: 80%;
-        background: $gray;
+        background: $color-gray;
     }
 }
 
 .regionstats {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid lighten($gray-dark, 15%);
-    padding-top: $l;
-    padding-bottom: $l;
+    border-bottom: 1px solid lighten($color-gray-dark, 15%);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     &:last-child {
         border-bottom: 0;
@@ -123,7 +123,7 @@
     }
     &__rank {
         font-weight: 600;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
     }
     &__rankicon {
         flex-basis: 3rem;
@@ -136,8 +136,8 @@
         align-items: center;
         justify-content: flex-end;
         span {
-            margin-left: $l;
-            color: $font-subtle-color;
+            margin-left: 1rem;
+            color: $font-color-subtle;
         }
     }
     &__maxrankicon {
@@ -152,9 +152,9 @@
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
-        margin: ($l*1.5) 0 $l;
+        margin: 1.5rem 0 1rem;
         transition: all 200ms ease-in-out;
-        max-height: $l*8;
+        max-height: 8rem;
         overflow: hidden;
 
         &--empty {

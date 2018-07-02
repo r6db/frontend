@@ -21,17 +21,17 @@ function Privacy(props) {
                     <h2>Personal Data</h2>
                     <p>
                         to be able to provide this website, we do process personal data: Your
-                        Profile ID, as well as your Aliases. This processing happens under GDPR Art
-                        6. 1f ('legitimate interest'). If you do not want your data to be processed,
+                        Profile ID, as well as your Aliases. This processing happens under <a href="https://gdpr-info.eu/art-6-gdpr/">GDPR Article
+                        6. 1f ('legitimate interest')</a>. If you do not want your data to be processed,
                         you can <a href="/delete">delete</a> your profile which also blacklists it
                         form being re-added. We also periodically delete inactive profiles, as well
-                        as profiles which underlying uplay account was decativated.
+                        as profiles which underlying uplay account was deactivated.
                     </p>
                     <h2>Log Files</h2>
                     <p>
                         Like most servers, we store server logs of all requests. These logs include
                         information such as the users ip address, a timestamp, the browsers
-                        useragent and the target url. We need to save the ip address to identify bad
+                        user agent and the target url. We need to save the ip address to identify bad
                         requests (such as rogue scripts spamming us). These logs are kept for 14
                         days and deleted afterwards.
                     </p>
@@ -42,12 +42,12 @@ function Privacy(props) {
                         our cdn provider (more info further below).
                     </p>
                     <p>
-                        You can block cookies through your browsers settings. Please consult your
-                        browsers help on how to do this.
+                        You can block cookies through your web browser's settings. Please consult your
+                        browser's "help" guide on how to do this.
                     </p>
                     <h2>Third Parties</h2>
-                    Our privacy policy does not apploy to our used third-party services. We heavily
-                    advise you to read the linked documents.
+                        Our privacy policy does not apply to our used third-party services. We heavily
+                        advise you to read the linked documents.
                     <p>
                         Third-party ad servers or ad networks uses technologies like cookies,
                         JavaScript, or Web Beacons that are used in their respective advertisements
@@ -66,7 +66,7 @@ function Privacy(props) {
                         <a href="https://www.cloudflare.com">Cloudflare</a> is a popular service
                         providing DDoS-protection, caching and DNS for us. They also use server
                         logs, as well as cookies to provide data such as 'unique users' (here the
-                        cookie is used as an anonymous id). You can find Cloudsflares privacy policy
+                        cookie is used as an anonymous id). You can find Cloudflare's privacy policy
                         here:{" "}
                         <a href="https://www.cloudflare.com/privacypolicy/">
                             https://www.cloudflare.com/privacypolicy/

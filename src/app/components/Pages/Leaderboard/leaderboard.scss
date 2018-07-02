@@ -1,6 +1,6 @@
 @import "scss/styles";
 
-.app.LEADERBOARD .page__content{
+.app.LEADERBOARD .page__content {
     position: relative;
     padding-top: 0;
 }
@@ -13,69 +13,65 @@
         @include card;
     }
     &__description {
-        color: $gray-light;
+        color: $color-gray-light;
         line-height: 1.4;
 
         p {
-            margin-bottom: $l;
+            margin-bottom: 1rem;
         }
         .is-highlight {
-            padding-left: $l;
-            border-left: 2px solid $accent;
+            padding-left: 1rem;
+            border-left: 2px solid $color-accent;
         }
         a {
-            color: $accent;
+            color: $color-accent;
         }
     }
     &__filters {
         display: flex;
         flex-direction: column;
-        margin-top: $l*2;
+        align-items: center;
+        margin: 2rem 0;
 
         @include medium {
             flex-direction: row;
         }
-        p {
+
+        .dropdown {
             display: flex;
-            align-items: center;
-            margin-bottom: $l*0.5;
+            flex: 1;
+            width: 100%;
+
+            @include medium {
+                flex: none;
+                width: auto;
+            }
         }
         label {
-            display: inline;
-            color: $white;
-            font-size: 1rem;
-            margin-right: $l*1.5;
-            width: 4rem;
+            width: 8rem;
 
             @include medium {
                 width: auto;
             }
         }
-        select {
-            flex: 1;
+
+        button {
+            width: 100%;
+            margin-top: 2rem;
 
             @include medium {
-                flex: none;
-                margin-right: $l*2;
-            }
-        }
-        .button {
-            margin-top: $l;
-            flex: 1;
-
-            @include medium {
-                margin-top: 0;
-                flex: none;
+                width: auto;
+                margin: 0 1em;
             }
         }
     }
     &__entries {
-        margin: $l*2 auto 0;
+        margin: 2rem auto 0;
 
         th {
             text-align: left;
             font-weight: bold;
-            padding: $l 0;
+            padding: 1rem 0;
 
             &:first-child,
             &:last-child {
@@ -98,7 +94,7 @@
         width: 32px;
         height: 32px;
         margin-right: 20px;
-        background-color: $trans-med;
+        background-color: $trans-low;
 
         @include medium {
             width: 48px;
@@ -108,7 +104,7 @@
     &__info {
         display: flex;
         align-items: center;
-        margin: $l 0;
+        margin: 1rem 0;
         color: $font-color;
     }
     &__name {
@@ -131,14 +127,14 @@
         font-size: $font-bigger;
     }
     .playercard-image {
-        width: $l*8;
-        height: $l*8;
+        width: 8rem;
+        height: 8rem;
     }
 }
 
 #chanky {
-    width: $l*3;
+    width: 3rem;
     position: absolute;
-    left: $l*3;
+    left: 3rem;
     bottom: 0;
 }

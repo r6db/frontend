@@ -1,7 +1,7 @@
 @import "scss/styles";
 
 .aliases {
-    padding-bottom: $l;
+    padding-bottom: 1rem;
 
     &__list {
         display: flex;
@@ -20,9 +20,9 @@
             text-align: center;
         }
     }
-    &__expand{
+    &__expand {
         display: flex;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         width: 100%;
         align-items: center;
         cursor: pointer;
@@ -31,17 +31,16 @@
             outline: none;
         }
 
-
         .icon {
-            width: $l*2;
-            height: $l*2;
+            width: 2rem;
+            height: 2rem;
             margin-top: 2px;
-            margin-right: $l;
+            margin-right: 1rem;
         }
     }
 
-    .playermodule__content{
-        margin-top: $l;
+    .playermodule__content {
+        margin-top: 1rem;
         display: flex;
         flex-direction: row;
         overflow: auto;
@@ -52,9 +51,9 @@
     }
 }
 .player .alias {
-    padding: (0.5*$l) $l;
+    padding: 0.5rem 1rem;
     position: relative;
-    margin-bottom: $l;
+    margin-bottom: 1rem;
     flex: none;
 
     @include medium {
@@ -62,7 +61,7 @@
     }
 
     &-time {
-        color: $gray;
+        color: $color-gray;
         font-size: 0.9em;
     }
     &-name {

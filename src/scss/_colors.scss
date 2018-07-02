@@ -1,0 +1,55 @@
+$color-primary: #007bff;
+$color-secondary: #17bebb;
+$color-accent: #ff6e09;
+$color-white: #e4e5e7;
+$color-black: #080808;
+
+$color-gray: #6f7376;
+$color-gray-dark: darken($color-gray, 40%);
+$color-gray-light: lighten($color-gray, 30%);
+
+$color-error: #f71735;
+$color-warning: #f39237;
+$color-success: #2bc016;
+$color-info: #00557f;
+
+$color-pc: $color-accent;
+$color-ps4: #003791;
+$color-xbox: #108710;
+
+$font-color: $color-white;
+$font-color-subtle: $color-gray;
+$font-color-link: lighten($color-primary, 5%);
+
+$bg-color: #181b1f;
+$bg-color-light: lighten($bg-color, 2%);
+$bg-color-dark: darken($bg-color, 2%);
+
+$menu-background: $bg-color-dark;
+$menu-text: $font-color;
+$menu-text-hover: lighten($font-color, 5%);
+
+$trans-low: rgba($color-black, 0.75);
+$trans-med: rgba($color-black, 0.5);
+$trans-high: rgba($color-black, 0.25);
+
+$color-blackice: #2e93b3;
+$color-dustline: #d0a344;
+$color-skullrain: #47893b;
+$color-redcrow: #bd1e2c;
+$color-velvetshell: #6e3c87;
+$color-ophealth: #4a74a9;
+$color-bloodorchid: #ca361c;
+$color-whitenoise: #006543;
+$color-chimera: #ffc113;
+$color-parabellum: #949937;
+
+$graphcolor-emea: #a22229;
+$graphcolor-ncsa: #0082fb;
+$graphcolor-apac: #24a55a;
+$graphcolor-yellow: #f39237;
+$graphcolor-orange: #FF3924;
+$graphcolor-teal: #17ead9;
+$graphcolor-aqua: #3069cc;
+$graphcolor-default: $color-gray-light;
+$graphcolor-grid: $color-gray-light;

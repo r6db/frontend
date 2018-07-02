@@ -2,19 +2,19 @@
 
 .opstab {
     &__controls {
-        margin: $l 0;
+        margin: 1rem 0;
         p {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 $l;
+            margin: 0 1rem;
 
             @include medium {
                 flex-direction: row;
             }
         }
         label {
-            margin: 0 $l 0 0;
+            margin: 0 1rem 0 0;
             font-size: 0.9em;
         }
     }
@@ -25,12 +25,11 @@
         .icon {
             width: 2em;
             height: 2em;
-            vertical-align: middle;
             display: block;
             margin: 0 auto;
             @include medium {
                 display: inline-block;
-                margin-right: $l*0.5;
+                margin-right: 0.5rem;
             }
         }
 
@@ -42,12 +41,12 @@
             user-select: none;
 
             &.is-active {
-                color: $primary;
+                color: $color-primary;
             }
         }
         .fauxtable__heading,
         .fauxtable__cell {
-            padding: ($l*1.5) ($l*2);
+            padding: 1.5rem 2rem;
         }
         .name {
             height: 4em;
@@ -122,12 +121,12 @@
     .chart .ct-series,
     .chart .indicator {
         &.opdaily {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: $color-blackice;
+            background-color: $color-blackice;
         }
         &.opavg {
-            stroke: $skull-rain;
-            background-color: $skull-rain;
+            stroke: $color-skullrain;
+            background-color: $color-skullrain;
         }
         &.opavg .ct-point {
             stroke: none;

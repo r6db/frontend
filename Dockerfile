@@ -4,13 +4,15 @@ RUN apt-get update && apt-get install build-essential wget libpng-dev -y
 
 RUN ldconfig
 
-
-RUN mkdir /frontend
 WORKDIR /app
+
+COPY ./package.json ./yarn.lock ./
+
+RUN yarn
 
 COPY . .
 
-RUN yarn && yarn build
+RUN yarn build
 
 FROM nginx:1.13-alpine
 

@@ -12,9 +12,9 @@
     flex-wrap: none;
 
     &__image {
-        flex: 0 0 $l*6;
-        margin-right: $l;
-        height: $l*6;
+        flex: 0 0 6rem;
+        margin-right: 1rem;
+        height: 6rem;
         // background-color: $trans-med;
     }
     &__content {
@@ -32,12 +32,12 @@
     }
     &__label {
         flex: none;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         font-size: 0.8em;
         margin-left: 1em;
-        padding: ($l*0.25) ($l*0.5);
-        border-radius: $l;
-        border: 1px solid $font-subtle-color;
+        padding: 0.25rem 0.5rem;
+        border-radius: 1rem;
+        border: 1px solid $font-color-subtle;
     }
     &__header {
         flex: none;
@@ -47,9 +47,5 @@
     }
     &__text {
         flex: 1 1 50%;
-    }
-    &__actions {
-    }
-    &__action {
     }
 }

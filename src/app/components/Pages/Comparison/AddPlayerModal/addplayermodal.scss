@@ -3,7 +3,9 @@
 .addplayermodal {
     &__search {
         background: none;
+        height: 3em;
         margin-top: 0;
+        margin-bottom: 2em;
     }
     &__results {
         max-height: 50vh;
@@ -14,8 +16,8 @@
             max-height: 60vh;
         }
     }
-    &__close{
-        padding: $l 0;
+    &__close {
+        padding: 1rem 0;
         display: flex;
         justify-content: flex-end;
     }
@@ -24,23 +26,23 @@
 
         &--selected:after {
             content: "✓";
-            width: $l*4;
-            height: $l*4;
+            width: 4rem;
+            height: 4rem;
             flex: none;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid $accent;
-            color: $accent;
+            border: 1px solid $color-accent;
+            color: $color-accent;
         }
     }
     .media {
-        margin-bottom: $l;
+        margin-bottom: 1rem;
 
         &__image {
-            flex: 0 0 $l*4;
-            height: $l*4;
+            flex: 0 0 4rem;
+            height: 4rem;
         }
 
         &__info {

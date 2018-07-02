@@ -2,14 +2,14 @@
 
 .app.FAVORITES {
     .page__headcontent {
-        padding-bottom: $l * 2;
+        padding-bottom: 2rem;
     }
     .page__content {
-        padding: ($l * 3) 0;
+        padding: (3rem) 0;
     }
     .ad {
-        max-height: $l * 15;
-        margin-bottom: $l * 2;
+        max-height: 15rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -22,22 +22,22 @@
         }
     }
     &__subtletext {
-      color: $font-subtle-color;
-      text-align: center;
-      margin-top: $l*2;
-      margin-bottom: ($l*2);
-      opacity: 0.6;
+        color: $font-color-subtle;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        opacity: 0.6;
     }
 }
 
 .playercard {
-  &__flair {
-      display: none;
-      visibility: hidden;
+    &__flair {
+        display: none;
+        visibility: hidden;
 
-      @include medium {
-          display: inherit;
-          visibility: visible;
-      }
-  }
+        @include medium {
+            display: inherit;
+            visibility: visible;
+        }
+    }
 }

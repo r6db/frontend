@@ -2,21 +2,21 @@
 
 .faq__item {
     @include card;
-    margin-bottom: $l;
+    margin-bottom: 1rem;
 
     &:last-child .card-divider {
         display: none;
     }
     &__question {
         display: block;
-        padding: $l 0;
+        padding: 1rem 0;
         font-size: 1.25em;
         user-select: none;
         cursor: pointer;
     }
     &__answer {
-        padding: $l ($l*2);
-        border-left: 1px solid $font-subtle-color;
+        padding: 1rem 2rem;
+        border-left: 1px solid $font-color-subtle;
 
         .is-closed & {
             display: none;
@@ -28,13 +28,13 @@
         }
 
         blockquote {
-            border-left: 5px solid $primary;
-            padding-left: $l;
-            margin: $l 0;
+            border-left: 5px solid $color-primary;
+            padding-left: 1rem;
+            margin: 1rem 0;
         }
 
         em {
-            color: $accent;
+            color: $color-accent;
             font-weight: bold;
             padding: 3px;
             border-radius: 3px;
@@ -47,11 +47,11 @@
 
         ul {
             list-style: initial;
-            padding-left: $l*2;
-            margin: $l 0;
+            padding-left: 2rem;
+            margin: 1rem 0;
         }
         a {
-            color: $accent;
+            color: $color-accent;
         }
     }
 }

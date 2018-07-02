@@ -13,19 +13,23 @@ export default function StatsTab(props) {
     return (
         <div className="statstab">
             <div className="statstab__sidebar">
-                <RankOverview {...props} />
-                <div className="playermodule__divider"></div>
-                <SeasonOverview {...props} />
-                <div className="playermodule__divider"></div>
-                {props.aliases && props.aliases.length > 1
-                    ? <Aliases {...props} />
-                    : null }
+                {props.rank ? (
+                    <>
+                        <RankOverview {...props} />
+                        <div className="playermodule__divider" />
+                        <SeasonOverview {...props} />
+                        <div className="playermodule__divider" />
+                    </>
+                ) : null}
+                {props.aliases && props.aliases.length > 1 ? (
+                    <Aliases {...props} />
+                ) : null}
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">
                     {props.stats ? <StatsGeneral {...props} /> : null}
                     <StatsRankings {...props} />
-                    <div className="playermodule__divider"></div>
+                    <div className="playermodule__divider" />
                     {props.stats ? <StatsCharts {...props} /> : null}
                 </div>
                 <div className="statstab__aside">

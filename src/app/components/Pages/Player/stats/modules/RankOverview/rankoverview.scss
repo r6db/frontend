@@ -19,21 +19,20 @@
     &__regional {
         display: flex;
         flex-direction: row;
-
     }
     &__isunderage {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: $l*3;
+        padding: 3rem;
         text-align: center;
     }
     &__vertdivider {
         display: flex;
         flex: 1px 0 auto;
         width: 1px;
-        background: lighten($gray-dark, 15%);
-        margin: 0 $l;
+        background: lighten($color-gray-dark, 15%);
+        margin: 0 1rem;
     }
 }
 
@@ -43,27 +42,27 @@
     align-items: center;
 
     &__icon {
-        margin-right: $l;
+        margin-right: 1rem;
         svg {
-            height: $l*7.5;
-            width: $l*7.5;
+            height: 7.5rem;
+            width: 7.5rem;
         }
     }
     &__rank {
         font-size: $font-large;
-        margin-bottom: $l*0.5;
+        margin-bottom: 0.5rem;
     }
     &__placement,
     &__toppercentage {
         line-height: 1.5;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
     }
 }
 .currentrank {
     flex: 1;
     position: relative;
-    height: $l*7.5;
-    width: $l*7.5;
+    height: 7.5rem;
+    width: 7.5rem;
     margin-bottom: 10px;
     z-index: 0;
 
@@ -74,23 +73,23 @@
         transform: translate(-50%, -50%);
         z-index: -1;
         svg {
-            height: $l*7.5;
-            width: $l*7.5;
+            height: 7.5rem;
+            width: 7.5rem;
             opacity: 0.5;
         }
     }
     &__region {
         text-align: center;
-        padding: $l*0.5;
-        text-shadow: 0 0 10px $black;
+        padding: 0.5rem;
+        text-shadow: 0 0 10px $color-black;
         font-weight: bold;
         z-index: 1;
     }
     &__placement {
         text-align: center;
-        margin-top: $l*3;
+        margin-top: 3rem;
         font-size: 1.5em;
-        text-shadow: 0 0 2px $black, 1px 0 2px $black, 1px 1px 2px $black;
+        text-shadow: 0 0 2px $color-black, 1px 0 2px $color-black, 1px 1px 2px $color-black;
         font-weight: bold;
         z-index: 2;
     }

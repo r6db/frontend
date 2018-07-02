@@ -4,23 +4,23 @@
     line-height: 1.4;
 
     p {
-        margin: $l * 2 0;
+        margin: 2rem 0;
     }
 
     h2 {
         font-size: 1.5em;
-        margin: $l * 3 0 $l;
+        margin: 3rem 0 1rem;
     }
     h3 {
         font-size: 1.25em;
-        margin: $l 0 0;
+        margin: 1rem 0 0;
     }
     a {
-        color: $accent;
+        color: $color-accent;
     }
     ul {
-        margin: $l * 2 0;
-        padding-left: $l * 3;
+        margin: 2rem 0;
+        padding-left: 3rem;
         list-style-type: initial;
     }
 }

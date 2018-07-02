@@ -1,17 +1,17 @@
 .header {
     font-weight: bold;
-    margin: $l*5 auto $l*2;
+    margin: 5rem auto 2rem;
     font-size: $font-huge;
 
     &--small {
-        font-size: $font-large;
+        font-size: $font-tiny;
     }
     &--subtle {
-        color: $font-subtle-color;
+        color: $font-color-subtle;
     }
 }
 
 .paragraph {
     line-height: 1.4em;
-    margin: $l 0;
+    margin: 1rem 0;
 }

@@ -5,7 +5,7 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./home.scss";
 
-import background from "assets/backgrounds/chimera1.jpg";
+import background from "assets/backgrounds/parabellum1.jpg";
 
 const oncreate = () => {
     const search = document.querySelector(".home .searchbar__name") as HTMLInputElement;
@@ -17,8 +17,8 @@ const oncreate = () => {
 function Home(props) {
     return (
         <Page className="home">
-            <PageHead image={background} position="75% 0%">
-                <div className="container">
+            <PageHead image={background} position="75% 25%">
+                <div className="home__content container">
                     <Icon className="home__logo" glyph={GLYPHS.LOGO} />
                     <Searchbar className="home__search" search={props.search} focused={true} />
                     {/* <div className="blocker" /> */}

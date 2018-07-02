@@ -3,11 +3,11 @@
 .stat {
     display: flex;
     align-items: baseline;
-    margin-bottom: 0.5*$l;
+    margin-bottom: 0.5rem;
 
     &-label {
-        color: $gray;
-        margin-right: $l*0.5;
+        color: $color-gray;
+        margin-right: 0.5rem;
     }
     &-value {
         white-space: pre;
@@ -17,9 +17,9 @@
         font-weight: 300;
     }
     &__label {
-        margin-left: $l;
+        margin-left: 1rem;
         font-weight: 600;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         font-size: $font-small;
     }
 }

@@ -36,7 +36,7 @@
             background: linear-gradient(rgba($bg-color, 0), rgba($bg-color, 1) 98%);
 
             @include medium {
-                padding: $l * 2 0;
+                padding: 2rem 0;
             }
         }
     }
@@ -63,6 +63,6 @@
 
     &__content {
         flex: 1 1 100%;
-        padding: $l * 3 0;
+        padding: 3rem 0;
     }
 }

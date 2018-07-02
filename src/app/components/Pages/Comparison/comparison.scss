@@ -24,41 +24,41 @@
         @include medium {
             display: flex;
         }
-        margin: 0 (-0.5*$l);
+        margin: 0 -0.5rem;
     }
     &__module {
         flex: 1 1 1px;
-        // box-shadow: 1px 1px 3px fade-out($gray-dark, 0.6);
+        // box-shadow: 1px 1px 3px fade-out($color-gray-dark, 0.6);
         // background: $bg-color;
-        margin: (0.5*$l);
+        margin: 0.5rem;
         position: relative;
 
         &__header {
-            padding: $l 0;
+            padding: 1rem 0;
             font-weight: bold;
             @include medium {
-                padding: $l;
+                padding: 1rem;
             }
         }
         &__content {
             @include medium {
-                padding: $l;
+                padding: 1rem;
             }
         }
         .stat {
-            margin-bottom: $l;
+            margin-bottom: 1rem;
         }
     }
     .playerlist__header {
         display: inline-block;
-        margin: $l;
+        margin: 1rem;
     }
     &__players {
         display: inline-block;
     }
     &__player {
         display: inline-block;
-        margin-right: $l;
+        margin-right: 1rem;
 
         a {
             color: $font-color;
@@ -78,36 +78,36 @@
     .chart .ct-series,
     .chart .indicator {
         &.player-0 {
-            stroke: $accent;
-            background-color: $accent;
+            stroke: $color-accent;
+            background-color: $color-accent;
         }
         &.player-1 {
-            stroke: $black-ice;
-            background-color: $black-ice;
+            stroke: $color-blackice;
+            background-color: $color-blackice;
         }
         &.player-2 {
-            stroke: $dust-line;
-            background-color: $dust-line;
+            stroke: $color-dustline;
+            background-color: $color-dustline;
         }
         &.player-3 {
-            stroke: $skull-rain;
-            background-color: $skull-rain;
+            stroke: $color-skullrain;
+            background-color: $color-skullrain;
         }
         &.player-4 {
-            stroke: $red-crow;
-            background-color: $red-crow;
+            stroke: $color-redcrow;
+            background-color: $color-redcrow;
         }
         &.player-5 {
-            stroke: $velvet-shell;
-            background-color: $velvet-shell;
+            stroke: $color-velvetshell;
+            background-color: $color-velvetshell;
         }
         &.player-6 {
-            stroke: $operation-health;
-            background-color: $operation-health;
+            stroke: $color-ophealth;
+            background-color: $color-ophealth;
         }
         &.player-7 {
-            stroke: $white-noise;
-            background-color: $skull-rain;
+            stroke: $color-whitenoise;
+            background-color: $color-skullrain;
         }
         &.player-8 {
             stroke: magenta;
@@ -121,18 +121,18 @@
 
     td {
         vertical-align: middle;
-        border-bottom: 1px solid fade-out($white, 0.6);
+        border-bottom: 1px solid fade-out($color-white, 0.6);
         @include medium {
             border: none;
         }
     }
     .icon {
-        width: $l*3;
-        height: $l*3;
+        width: 3rem;
+        height: 3rem;
 
         // @include medium {
-        //     width: $l*4;
-        //     height: $l*4;
+        //     width: 4rem;
+        //     height: 4rem;
         // }
     }
     &__icon {
@@ -140,9 +140,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: $l*0.5;
+        margin: 0.5rem;
 
-        width: $l*5;
+        width: 5rem;
 
         span {
             font-size: $font-smaller;
@@ -150,7 +150,7 @@
     }
     &__ops {
         display: flex;
-        margin-left: $l;
+        margin-left: 1rem;
         flex-direction: column;
         justify-content: flex-end;
 
@@ -164,16 +164,16 @@
     }
     &__defenders {
         @include medium {
-            margin-left: $l*2;
+            margin-left: 2rem;
         }
     }
 }
 
 .playerlabel {
-    padding: $l;
+    padding: 1rem;
     background: $bg-color;
     &__remove {
-        margin-left: $l*2;
+        margin-left: 2rem;
         cursor: pointer;
     }
 }

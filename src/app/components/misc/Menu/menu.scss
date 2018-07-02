@@ -6,13 +6,13 @@
     justify-content: flex-start;
     width: $menu-width;
     min-height: 100%;
-    padding: $l;
+    padding: 1rem;
     background: $menu-background;
 
     &__logo {
         display: flex;
-        color: $white;
-        margin: $l * 1.25;
+        color: $color-white;
+        margin: 1.25rem;
 
         svg {
             height: 50px;
@@ -33,8 +33,8 @@
     &__item {
         display: flex;
         align-items: center;
-        padding: $l;
-        color: rgba($white, 0.8);
+        padding: 1rem;
+        color: rgba($color-white, 0.8);
         font-weight: 400;
         font-size: $font-default;
         cursor: pointer;
@@ -42,22 +42,22 @@
         letter-spacing: 0.02em;
 
         &.active {
-            color: $white;
+            color: $color-white;
             font-weight: 600;
         }
         &:focus {
             outline: none;
             border: none;
-            color: $white;
+            color: $color-white;
             font-weight: 600;
         }
         &:hover {
-            color: $white;
+            color: $color-white;
         }
 
         @include medium {
             font-size: $font-big;
-            padding: $l * 1.25;
+            padding: 1.25rem;
         }
     }
     &__links {
@@ -65,19 +65,19 @@
         align-items: stretch;
     }
     &__icon {
-        width: $l * 2.25;
-        height: $l * 2.25;
-        margin-right: $l * 2;
+        width: 2.25rem;
+        height: 2.25rem;
+        margin-right: 2rem;
         fill: $font-color;
     }
     &__divider {
         height: 1px;
-        background-color: $font-subtle-color;
+        background-color: $font-color-subtle;
         opacity: 0.2;
-        margin: $l * 0.75;
+        margin: 0.75rem;
 
         @include medium {
-            margin: $l * 1.2;
+            margin: 1.2rem;
         }
     }
     &__sublinks {
@@ -93,8 +93,8 @@
         }
     }
     &__copyright {
-        color: $font-subtle-color;
-        margin: $l;
+        color: $font-color-subtle;
+        margin: 1rem;
         text-align: center;
     }
 }

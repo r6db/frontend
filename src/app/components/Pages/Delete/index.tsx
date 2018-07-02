@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 import * as qrious from 'qrious';
 import Icon, { GLYPHS } from 'components/misc/Icon';
+import Button from "components/misc/Button";
 import Page, { PageHead, PageContent } from 'components/misc/Page';
 import './delete.scss';
 
@@ -106,7 +107,7 @@ class Delete extends React.Component<{}, IDeleteState> {
                         </div>
                         <div className="delete__step">
                             <p>
-                                To start the deletion progress, please enter your full R6DB profile
+                                To start the deletion process, please enter your full R6DB profile
                                 URL down below.
                             </p>
                             <input
@@ -178,14 +179,13 @@ class Delete extends React.Component<{}, IDeleteState> {
                                             Yes, I want to delete my data permanently from R6DB.
                                         </span>
                                     </div>
-                                    <div className="delete__check">
-                                        <button
-                                            className="button button--red"
+                                    <div className="delete__confirm">
+                                        <Button
+                                            label="Confirm deletion"
+                                            role="error"
                                             onClick={() => this.check(this.state.player)}
                                             disabled={!this.state.isChecked}
-                                        >
-                                            Confirm deletion
-                                        </button>
+                                        />
                                         {this.state.error ? (
                                             <div className="delete__status error">
                                                 <Icon glyph={GLYPHS.CLOSE} /> {this.state.error}

@@ -15,15 +15,15 @@
 
     &__ubipls {
         display: block;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         flex: none;
-        border-left: 1px solid $font-subtle-color;
-        padding: $l $l*2;
+        border-left: 1px solid $font-color-subtle;
+        padding: 1rem 2rem;
 
-        @include large{
+        @include large {
             padding: 0;
             border-left: none;
-            margin-top: $l;
+            margin-top: 1rem;
         }
 
         span {
@@ -37,8 +37,8 @@
 .pastrank {
     display: flex;
     align-items: center;
-    padding: $l;
-    margin-right: $l;
+    padding: 1rem;
+    margin-right: 1rem;
     flex: 0 0 auto;
 
     @include large {
@@ -46,65 +46,72 @@
     }
 
     &.season-1 {
-        border-left: 3px solid $black-ice;
+        border-left: 3px solid $color-blackice;
         .pastrank__season {
-            color: $black-ice;
+            color: $color-blackice;
         }
     }
     &.season-2 {
-        border-left: 3px solid $dust-line;
+        border-left: 3px solid $color-dustline;
         .pastrank__season {
-            color: $dust-line;
+            color: $color-dustline;
         }
     }
     &.season-3 {
-        border-left: 3px solid $skull-rain;
+        border-left: 3px solid $color-skullrain;
         .pastrank__season {
-            color: $skull-rain;
+            color: $color-skullrain;
         }
     }
     &.season-4 {
-        border-left: 3px solid $red-crow;
+        border-left: 3px solid $color-redcrow;
         .pastrank__season {
-            color: $red-crow;
+            color: $color-redcrow;
         }
     }
     &.season-5 {
-        border-left: 3px solid $velvet-shell;
+        border-left: 3px solid $color-velvetshell;
         .pastrank__season {
-            color: $velvet-shell;
+            color: $color-velvetshell;
         }
     }
     &.season-6 {
-        border-left: 3px solid $operation-health;
+        border-left: 3px solid $color-ophealth;
         .pastrank__season {
-            color: $operation-health;
+            color: $color-ophealth;
         }
     }
     &.season-7 {
-        border-left: 3px solid $blood-orchid;
+        border-left: 3px solid $color-bloodorchid;
         .pastrank__season {
-            color: $blood-orchid;
+            color: $color-bloodorchid;
         }
     }
     &.season-8 {
-        border-left: 3px solid $white-noise;
+        border-left: 3px solid $color-whitenoise;
         .pastrank__season {
-            color: $white-noise;
+            color: $color-whitenoise;
         }
     }
     &.season-9 {
-        border-left: 3px solid $chimera;
+        border-left: 3px solid $color-chimera;
         .pastrank__season {
-            color: $chimera;
+            color: $color-chimera;
+        }
+    }
+
+    &.season-10 {
+        border-left: 3px solid $color-parabellum;
+        .pastrank__season {
+            color: $color-parabellum;
         }
     }
 
     &__icon {
-        height: $l*5;
-        width: $l*5;
-        margin-left: $l*0.5;
-        margin-right: $l*1.5;
+        height: 5rem;
+        width: 5rem;
+        margin-left: 0.5rem;
+        margin-right: 1.5rem;
     }
     &__text {
         display: flex;
@@ -112,7 +119,7 @@
         align-items: flex-start;
     }
     &__season {
-        margin-right: $l;
+        margin-right: 1rem;
         font-size: 0.8em;
         line-height: 1.4;
     }
@@ -121,8 +128,8 @@
         font-size: 1.125em;
     }
     &__mmr {
-        margin-left: $l;
-        color: $gray;
+        margin-left: 1rem;
+        color: $color-gray;
         font-size: 0.8em;
     }
 }
