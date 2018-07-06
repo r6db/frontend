@@ -84,7 +84,9 @@ export default function StatsGeneral(props) {
                         {get(props, "stats.ranked.abandons", 0)}
                     </Stat>
                     <Stat label="playtime">
-                        {formatDuration(get(props, "lastPlayed.ranked", 0))}
+                        {formatDuration(
+                            get(props, "stats.ranked.timePlayed", 0)
+                        )}
                     </Stat>
                 </div>
             </div>
@@ -115,7 +117,9 @@ export default function StatsGeneral(props) {
                 </div>
                 <div className="col">
                     <Stat label="playtime">
-                        {formatDuration(get(props, "lastPlayed.casual", 0))}
+                        {formatDuration(
+                            get(props, "stats.casual.timePlayed", 0)
+                        )}
                     </Stat>
                 </div>
             </div>

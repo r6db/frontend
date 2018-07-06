@@ -11,8 +11,8 @@ import TimeSwitch from "./modules/TimeSwitch";
 import "./statstab.scss";
 
 export default function StatsTab(props) {
-    const stats = props.snapshots.find(x => (x.season = props.season)).stats;
-    const rank = props.pastRanks.find(x => (x.season = props.season));
+    const stats = props.snapshots.find(x => x.season === props.season).stats;
+    const rank = props.pastRanks.find(x => x.season === props.season);
     return (
         <div className="statstab">
             <div className="statstab__sidebar">

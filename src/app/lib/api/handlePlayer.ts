@@ -102,17 +102,24 @@ export default function(player) {
             if (!next) {
                 next = player.stats;
             }
+            const diff = objectDiff(
+                next,
+                player.seasonStats[season],
+                DiffStrategy.KEEP
+            );
+
+            // TODO: diff computed stats
+            // hitChance
+            // headshotChance
+            // headshotRatio
+            // abandons
+
             return {
                 season: SEASONS[season].name,
-                stats: objectDiff(
-                    next,
-                    player.seasonStats[season],
-                    DiffStrategy.KEEP
-                )
+                stats: diff
             };
         })
     );
-
     // map operator stats
     if (player.stats.operator) {
         player.stats.operator = Object.keys(player.stats.operator)

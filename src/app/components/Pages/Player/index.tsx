@@ -8,6 +8,7 @@ import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
 import Header from "./Header";
 import { connect } from "react-redux";
+import { SEASONS } from "lib/constants";
 import { updatePlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Loading from "components/misc/Loading";
@@ -15,6 +16,10 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./player.scss";
 
 import background from "assets/backgrounds/parabellum1.jpg";
+
+const backgroundMap = SEASONS.reduce((acc, curr) => {
+    return { ...acc, [curr.name]: curr.cover };
+}, {});
 
 const dummyPlayer = {
     id: "0",
@@ -69,7 +74,7 @@ function Player(props) {
     } else {
         return (
             <Page className={"player " + props.data.id}>
-                <PageHead image={background}>
+                <PageHead image={backgroundMap[props.season] || background}>
                     <Header
                         tab={props.tab}
                         platform={props.platform}
