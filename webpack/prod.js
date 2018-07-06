@@ -68,6 +68,7 @@ module.exports = merge(base, {
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify("production"),
+                VERSION: process.env.VERSION
             },
         }),
         new MiniExtractPlugin({ filename: "[name].[chunkhash].css", allChunks: true }),
