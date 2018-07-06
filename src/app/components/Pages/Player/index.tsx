@@ -87,7 +87,12 @@ function Player(props) {
                         ) : (
                             <>
                                 {props.tab === "summary" ? (
-                                    <StatsTab key="summary" {...props.data} />
+                                    <StatsTab
+                                        key="summary"
+                                        {...props.data}
+                                        season={props.season}
+                                        changeTime={props.changeTime}
+                                    />
                                 ) : null}
                                 {props.tab === "ops" ? (
                                     <OperatorsTab key="ops" {...props.data} />
@@ -111,8 +116,11 @@ const mapStateToProps = state => {
         favorites,
         loading,
         players,
+        settings,
         location: { payload }
     } = state;
+
+    console.log("Redux Data", (players[payload.id] || {}).snapshots);
 
     return {
         data: players[payload.id],
@@ -120,7 +128,8 @@ const mapStateToProps = state => {
         loading,
         platform,
         isFavorite: favorites.includes(payload.id),
-        favorites
+        favorites,
+        season: settings.season || "all time"
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {

@@ -11,7 +11,7 @@ interface IDropdownProps
             HTMLSelectElement
         > {
     options: Array<{ value: string; label?: string }>;
-    setValue?: string;
+    value?: string;
     label?: string;
     role?: "primary" | "accent" | "error" | "warning" | "success" | "info";
     outline?: boolean;
@@ -26,7 +26,7 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = { value: this.props.setValue };
+        this.state = { value: this.props.value };
     }
     handleChange(e) {
         this.setState({ value: e.target.value });

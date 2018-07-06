@@ -1,4 +1,4 @@
-import { OPERATORS } from "lib/constants";
+import { OPERATORS, SEASONS } from "lib/constants";
 import * as diffInDays from "date-fns/difference_in_days";
 import objectDiff, { DiffStrategy } from "lib/objectDiff";
 
@@ -96,40 +96,22 @@ export default function(player) {
     }
 
     // build seasonstat vars
-    const hasWeekStats = player.progressions.length > 7;
-    const earliestProgression = player.progressions[0].created_at;
-
-    player.seasonStats = {
-        latestProgression: {
-            label: `last ${diffInDays(new Date(), earliestProgression)} days`,
-            value: {
+    player.snapshots = [{ season: "all time", stats: player.stats }].concat(
+        Object.keys(player.seasonStats).map(season => {
+            let next = player.seasonStats[1 + season];
+            if (!next) {
+                next = player.stats;
+            }
+            return {
+                season: SEASONS[season].name,
                 stats: objectDiff(
-                    player.stats,
-                    player.progressions[0].stats,
-                    DiffStrategy.KEEP
-                ),
-                ranks: objectDiff(
-                    player.ranks,
-                    player.progressions[0].ranks,
+                    next,
+                    player.seasonStats[season],
                     DiffStrategy.KEEP
                 )
-            }
-        },
-        parabellum: {
-            label: "Para Bellum",
-            value: null
-        },
-        total: {
-            label: "All time",
-            value: player.stats
-        }
-    };
-    if (hasWeekStats) {
-        player.seasonStats.lastWeek = {
-            label: "last week",
-            value: {}
-        };
-    }
+            };
+        })
+    );
 
     // map operator stats
     if (player.stats.operator) {

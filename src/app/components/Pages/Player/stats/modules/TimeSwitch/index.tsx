@@ -4,9 +4,9 @@ import * as get from "lodash/get";
 import Dropdown from "components/misc/Dropdown";
 
 export default function(props) {
-    const options = Object.keys(props.seasonStats).map(key => ({
-        label: props.seasonStats[key].label,
-        value: key
+    const options = props.snapshots.map(x => ({
+        label: x.season,
+        value: x.season
     }));
     return (
         <div className="timeswitch">
@@ -15,7 +15,8 @@ export default function(props) {
                     <Dropdown
                         label="timeframe"
                         options={options}
-                        action={console.log}
+                        action={props.changeTime}
+                        value={props.season}
                     />
                 </div>
                 <div className="col">
