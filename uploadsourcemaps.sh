@@ -14,13 +14,15 @@ else
 
     echo ""
 
-    for filename in build/*.js.map; do
+    cd build
+
+    for filename in *.js.map; do
         echo "Uploading: $filename"
         curl $SENTRYURL/api/0/projects/r6db/frontend/releases/$VERSION/files/ \
             -X POST \
             -H "Authorization: Bearer $TOKEN" \
             -F file=@$filename \
-            -F name="https://r6db.com/$filename" -s
+            -F name="$filename" -s
     done
     exit 0
 fi
