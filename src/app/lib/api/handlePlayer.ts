@@ -72,6 +72,8 @@ export default function(player) {
         const offset = new Date().getTime() - new Date(player.serverTime).getTime();
         const available = new Date(player.updateAvailableAt).getTime() - offset;
         player.updateAvailableAt = new Date(available);
+    } else {
+        player.updateAvailableAt = new Date();
     }
 
     if (player.stats.operator) {
