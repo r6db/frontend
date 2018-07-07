@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as get from "lodash/get";
+import { FormattedMessage } from "react-intl";
 import FadeImage from "components/misc/FadeImage";
 import Alias from "./Alias";
 import Rank from "./Rank";
@@ -28,11 +29,14 @@ export default function SimplePlayer(props) {
                                     <div className="profile-flair">{props.flair}</div>
                                     {typeof props.placements.global !== "number" ? null : (
                                         <div className="profile-global-rank">
-                                            Global <span>#{props.placements.global + 1}</span>
+                                            <FormattedMessage
+                                                id="player/placement"
+                                                values={{ placement: props.placements.global + 1 }}
+                                            />
                                         </div>
                                     )}
                                     <Link className="profile-extended" to={`/player/${props.id}`}>
-                                        extended view
+                                        <FormattedMessage id="player/extended" />
                                     </Link>
                                 </div>
                             </div>

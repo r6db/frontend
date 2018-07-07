@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import Icon, { GLYPHS } from "components/misc/Icon";
 
 export default function SimpleRank(props) {
@@ -6,7 +7,9 @@ export default function SimpleRank(props) {
     return (
         <div className="rank">
             <Icon className="rank-image" glyph={glyph} />
-            <div className="rank-season">Season {props.rank.season}</div>
+            <div className="rank-season">
+                <FormattedMessage id="player/season" values={{ season: props.rank.season }} />
+            </div>
         </div>
     );
 }
