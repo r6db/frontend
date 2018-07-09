@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { OPERATORS } from "lib/constants";
 import * as stats from "lib/stats";
 import Icon, { GLYPHS } from "components/misc/Icon";
@@ -7,32 +8,32 @@ import Fauxtable from "components/misc/Fauxtable";
 import "./opstab.scss";
 
 const sorters = [
-    { key: "name", label: "name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
-    { key: "won", label: "won", fn: (a, b) => b.won - a.won },
-    { key: "lost", label: "lost", fn: (a, b) => b.lost - a.lost },
+    { key: "name", label: "player/filter/name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
+    { key: "won", label: "player/filter/won", fn: (a, b) => b.won - a.won },
+    { key: "lost", label: "player/filter/lost", fn: (a, b) => b.lost - a.lost },
     {
         key: "wlr",
-        label: "win ratio",
-        fn: (a, b) => stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a),
+        label: "player/filter/wlr",
+        fn: (a, b) => stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a)
     },
-    { key: "kills", label: "kills", fn: (a, b) => b.kills - a.kills },
-    { key: "deaths", label: "deaths", fn: (a, b) => b.deaths - a.deaths },
+    { key: "kills", label: "player/filter/kills", fn: (a, b) => b.kills - a.kills },
+    { key: "deaths", label: "player/filter/deaths", fn: (a, b) => b.deaths - a.deaths },
     {
         key: "kdr",
-        label: "k/d ratio",
-        fn: (a, b) => (stats.getKillRatioRaw(b) - stats.getKillRatioRaw(a)).toFixed(2),
+        label: "player/filter/kdr",
+        fn: (a, b) => (stats.getKillRatioRaw(b) - stats.getKillRatioRaw(a)).toFixed(2)
     },
-    { key: "kpr", label: "kills/round", fn: (a, b) => b.kpr - a.kpr },
+    { key: "kpr", label: "player/filter/kpr", fn: (a, b) => b.kpr - a.kpr },
     {
         key: "survival",
-        label: "rounds survived",
-        fn: (a, b) => b.survivalRate - a.survivalRate,
+        label: "player/filter/survival",
+        fn: (a, b) => b.survivalRate - a.survivalRate
     },
     {
         key: "time",
-        label: "time played",
-        fn: (a, b) => b.timePlayed - a.timePlayed,
-    },
+        label: "player/filter/time",
+        fn: (a, b) => b.timePlayed - a.timePlayed
+    }
 ];
 const filters = {
     None: () => true,
@@ -52,7 +53,7 @@ const filters = {
     SDU: op => op.unit === "SDU",
     SMB: op => op.unit === "SMB",
     CBRN: op => op.unit === "CBRN",
-    GIS: op => op.unit === "GIS",
+    GIS: op => op.unit === "GIS"
 };
 
 export default class OperatorTab extends React.PureComponent<any, any> {
@@ -78,8 +79,8 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                     wlr: stats.getWinChanceRaw(op),
                     kdr: k / (d || 1),
                     kpr: k / p,
-                    survivalRate: svl > 0 ? svl : 0,
-                }),
+                    survivalRate: svl > 0 ? svl : 0
+                })
             );
             return acc;
         }, []);
@@ -88,7 +89,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
         const opProgressions = props.progressions
             .map(prog => ({
                 ops: prog.stats && prog.stats.operator,
-                date: prog.created_at,
+                date: prog.created_at
             }))
             .filter(x => x.ops)
             .reverse()
@@ -97,7 +98,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                     acc[op] = acc[op] || [];
                     acc[op].push({
                         date: stats.formatDate(day.date),
-                        data: day.ops[op],
+                        data: day.ops[op]
                     });
                 });
                 return acc;
@@ -117,7 +118,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
             sorter: sorters[0],
             isSortReversed: false,
             operatorsShowMap,
-            ops,
+            ops
         };
 
         this.sort = this.sort.bind(this);
@@ -140,7 +141,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
         } else {
             this.setState({
                 sorter: newSorter,
-                isSortReversed: false,
+                isSortReversed: false
             });
         }
     }
@@ -166,7 +167,9 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                 <div className="opstab__controls card">
                     <div className="card-content">
                         <p>
-                            <label htmlFor="filter">filter by</label>
+                            <label htmlFor="filter">
+                                <FormattedMessage id="player/filterby" />
+                            </label>
                             <select name="filter" onChange={e => this.onFilter(e.target.value)}>
                                 {Object.keys(filters).map(x => (
                                     <option key={x} value={x}>
@@ -186,7 +189,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                                     className={this.getSorterClass(sorter)}
                                     onClick={() => this.setSort(sorter)}
                                 >
-                                    {sorter.label}
+                                    <FormattedMessage id={sorter.label} />
                                 </Fauxtable.Heading>
                             ))}
                         </Fauxtable.Row>

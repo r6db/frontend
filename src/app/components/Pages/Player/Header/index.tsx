@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { FadeImage } from "components/misc/FadeImage";
 import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
@@ -15,7 +16,8 @@ const exportButton = player => {
     const href = `data:application/json;base64,${btoa(JSON.stringify(player))}`;
     return (
         <a className="playerheader__link" download={`${player.name}.json`} href={href}>
-            <Icon glyph={GLYPHS.DOWNLOAD} /> Download as JSON
+            <Icon glyph={GLYPHS.DOWNLOAD} />
+            <FormattedMessage id="player/downloadJson" />
         </a>
     );
 };
@@ -24,12 +26,12 @@ class PlayerHeader extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            interval: null,
+            interval: null
         };
     }
     componentDidMount() {
         this.setState({
-            interval: setInterval(() => this.rerender(),  30 * 1000),
+            interval: setInterval(() => this.rerender(), 30 * 1000)
         });
     }
     rerender() {
@@ -45,7 +47,9 @@ class PlayerHeader extends React.PureComponent<any, any> {
                 <div className="playerheader__container container">
                     <div className="playerheader__content">
                         <div className="playerheader__image">
-                            <FadeImage src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)} />
+                            <FadeImage
+                                src={domain.getImageLink(this.props.userId || this.props.id, this.props.platform)}
+                            />
                         </div>
                         <div className="playerheader__info">
                             <header className="header playerheader__namebox">
@@ -53,11 +57,21 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                     <span className="playerheader__name">{this.props.name}</span>
                                     <span className="playerheader__platform">{this.props.platform}</span>
                                 </div>
-                                {this.props.flair ? <div className="playerheader__flair">{this.props.flair}</div> : null}
+                                {this.props.flair ? (
+                                    <div className="playerheader__flair">{this.props.flair}</div>
+                                ) : null}
                             </header>
                             <div className="playerheader__level">
-                                {this.props.placements.global != null ? "#" + (this.props.placements.global + 1) : "-"}{" "}
-                                global / lvl {this.props.level}
+                                <FormattedMessage
+                                    id="player/rankingLevel"
+                                    values={{
+                                        placement:
+                                            this.props.placements.global != null
+                                                ? "#" + (this.props.placements.global + 1)
+                                                : "-",
+                                        level: this.props.level
+                                    }}
+                                />
                             </div>
                             <div className="playerheader__links">
                                 <a
@@ -65,16 +79,22 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                     href={domain.getUbiLink(this.props.userId || this.props.id, this.props.platform)}
                                     target="_BLANK"
                                 >
-                                    <Icon glyph={GLYPHS.UBI} /> Ubisoft
+                                    <Icon glyph={GLYPHS.UBI} />
+                                    <FormattedMessage id="player/ubisoft" />
                                 </a>
-                                <a className="playerheader__link" href={domain.getEslLink(this.props.name)} target="_BLANK">
-                                    <Icon glyph={GLYPHS.ESL} /> ESL
+                                <a
+                                    className="playerheader__link"
+                                    href={domain.getEslLink(this.props.name)}
+                                    target="_BLANK"
+                                >
+                                    <Icon glyph={GLYPHS.ESL} />
+                                    <FormattedMessage id="player/esl" />
                                 </a>
                                 {exportButton(this.props)}
                                 <div className="hidden-small">
                                     <span className="playerheader__divider">|</span>
                                     <Link className="playerheader__link" to={toSimple(this.props.id)}>
-                                        Simple View
+                                        <FormattedMessage id="player/simple" />
                                     </Link>
                                 </div>
                             </div>
@@ -82,30 +102,39 @@ class PlayerHeader extends React.PureComponent<any, any> {
                         <div className="playerheader__buttons">
                             {this.props.updateAvailableAt > new Date() ? (
                                 <button className="button playerheader__button button--outline" disabled>
-                                    available {this.props.updateAvailableAt.toLocaleTimeString()}
+                                    <FormattedMessage
+                                        id="player/available"
+                                        values={{
+                                            date: this.props.updateAvailableAt.toLocaleTimeString()
+                                        }}
+                                    />
                                 </button>
                             ) : (
                                 <button
                                     onClick={() => this.props.updatePlayer(this.props.id)}
                                     className="button playerheader__button button--outline--accent"
                                 >
-                                    <Icon glyph={GLYPHS.REFRESH} /> update
+                                    <Icon glyph={GLYPHS.REFRESH} />
+                                    <FormattedMessage id="player/update" />
                                 </button>
                             )}
-                            {this.props.isFavorite
-                                ? <button
-                                      onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                      className="button playerheader__button button--outline--primary active"
-                                  >
-                                    <Icon glyph={GLYPHS.STARFULL} /> favorite
-                                  </button>
-                                : <button
-                                      onClick={() => this.props.favoritePlayer(this.props.id)}
-                                      className="button playerheader__button button--outline--subtile"
-                                  >
-                                    <Icon glyph={GLYPHS.STAR} /> favorite
-                                  </button>
-                            }
+                            {this.props.isFavorite ? (
+                                <button
+                                    onClick={() => this.props.unfavoritePlayer(this.props.id)}
+                                    className="button playerheader__button button--outline--primary active"
+                                >
+                                    <Icon glyph={GLYPHS.STARFULL} />
+                                    <FormattedMessage id="player/favorite" />
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => this.props.favoritePlayer(this.props.id)}
+                                    className="button playerheader__button button--outline--subtile"
+                                >
+                                    <Icon glyph={GLYPHS.STAR} />
+                                    <FormattedMessage id="player/favorite" />
+                                </button>
+                            )}
                         </div>
                     </div>
                     <div className="playerheader__tabs">
@@ -113,19 +142,19 @@ class PlayerHeader extends React.PureComponent<any, any> {
                             className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
                             to={toPlayerTab(this.props.id, "summary")}
                         >
-                            Summary
+                            <FormattedMessage id="player/tab/summary" />
                         </Link>
                         <Link
                             className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
                             to={toPlayerTab(this.props.id, "ops")}
                         >
-                            Operators
+                            <FormattedMessage id="player/tab/operators" />
                         </Link>
                         <Link
                             className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
                             to={toPlayerTab(this.props.id, "ranks")}
                         >
-                            Ranks
+                            <FormattedMessage id="player/tab/ranks" />
                         </Link>
                     </div>
                 </div>
@@ -135,7 +164,12 @@ class PlayerHeader extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = state => {
-    const { isFavorite, favorites, loading, location: { payload } } = state;
+    const {
+        isFavorite,
+        favorites,
+        loading,
+        location: { payload }
+    } = state;
 
     return {
         loading,
@@ -150,4 +184,7 @@ const mapDispatchtoProps = (dispatch, state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchtoProps)(PlayerHeader);
+export default connect(
+    mapStateToProps,
+    mapDispatchtoProps
+)(PlayerHeader);

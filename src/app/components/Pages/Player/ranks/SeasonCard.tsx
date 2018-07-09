@@ -1,19 +1,9 @@
 import * as React from "react";
-import FadeImage from "components/misc/FadeImage";
 import "./seasoncard.scss";
 import { SEASONS, RANKS, REGIONS } from "lib/constants";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import Stat from "components/misc/Stat";
 import { getRankWinChance } from "lib/stats";
-
-import s1 from "assets/backgrounds/blackice1.jpg";
-import s2 from "assets/backgrounds/dustline1.jpg";
-import s3 from "assets/backgrounds/skullrain1.jpg";
-import s4 from "assets/backgrounds/redcrow1.jpg";
-import s5 from "assets/backgrounds/velvetshell1.jpg";
-import s6 from "assets/backgrounds/ophealth1.jpg";
-import s7 from "assets/backgrounds/bloodorchid1.jpg";
-import s8 from "assets/backgrounds/whitenoise1.jpg";
 
 interface SeasonStats {
     wins: number;
@@ -46,14 +36,14 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
     constructor(props) {
         super(props);
         this.state = {
-            collapsed: this.props.collapsed || false,
+            collapsed: this.props.collapsed || false
         };
 
         this.toggle = this.toggle.bind(this);
     }
     toggle() {
         this.setState({
-            collapsed: !this.state.collapsed,
+            collapsed: !this.state.collapsed
         });
     }
     render() {
@@ -69,7 +59,7 @@ export default class SeasonCard extends React.Component<ISeasonCardProps, ISeaso
                     className="seasoncard__image"
                     style={{
                         backgroundSize: "cover",
-                        backgroundImage: 'url("' + img.placeholder + '")',
+                        backgroundImage: 'url("' + img.placeholder + '")'
                     }}
                     src={img.placeholder}
                     srcSet={img.srcSet}

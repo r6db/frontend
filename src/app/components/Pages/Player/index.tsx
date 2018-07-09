@@ -1,5 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
 import StatsTab from "./stats";
 import OperatorsTab from "./Operators";
 import RanksTab from "./ranks";
@@ -78,23 +79,17 @@ function Player(props) {
                     />
                 </PageHead>
                 <PageContent>
-                    <script type="application/ld+json">
-                        {getPlayerSchema(props.data)}
-                    </script>
+                    <script type="application/ld+json">{getPlayerSchema(props.data)}</script>
                     <div className="container player__tab">
                         {!props.data.stats && !props.data.rank ? (
-                            <>Data not yet loaded...</>
+                            <>
+                                <FormattedMessage id="player/notYetLoaded" />.
+                            </>
                         ) : (
                             <>
-                                {props.tab === "summary" ? (
-                                    <StatsTab key="summary" {...props.data} />
-                                ) : null}
-                                {props.tab === "ops" ? (
-                                    <OperatorsTab key="ops" {...props.data} />
-                                ) : null}
-                                {props.tab === "ranks" ? (
-                                    <RanksTab key="ranks" {...props.data} />
-                                ) : null}
+                                {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
+                                {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
+                                {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}
                             </>
                         )}
                     </div>
