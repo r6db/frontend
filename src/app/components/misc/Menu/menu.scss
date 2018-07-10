@@ -6,7 +6,7 @@
     justify-content: flex-start;
     width: $menu-width;
     min-height: 100%;
-    padding: 1rem;
+    padding: 1.5rem;
     background: $menu-background;
 
     &__logo {
@@ -29,6 +29,16 @@
         flex: 0 0 auto;
         justify-content: flex-start;
         align-items: center;
+
+        &--primary {
+            margin-top: 2rem;
+            .menu__icon {
+                color: $color-primary;
+            }
+        }
+        &--secondary {
+            margin-bottom: 2rem;
+        }
     }
     &__item {
         display: flex;
@@ -68,7 +78,7 @@
         width: 2.25rem;
         height: 2.25rem;
         margin-right: 2rem;
-        fill: $font-color;
+        fill: currentColor;
     }
     &__divider {
         height: 1px;
@@ -77,7 +87,7 @@
         margin: 0.75rem;
 
         @include medium {
-            margin: 1.2rem;
+            margin: 2rem 1.2rem;
         }
     }
     &__sublinks {
@@ -86,6 +96,7 @@
         align-items: flex-end;
         .menu__icon {
             margin: 0;
+            color: $font-color-subtle;
         }
 
         @include medium {

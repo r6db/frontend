@@ -25,7 +25,7 @@ $bg-color: #181b1f;
 $bg-color-light: lighten($bg-color, 2%);
 $bg-color-dark: darken($bg-color, 2%);
 
-$menu-background: $bg-color-dark;
+$menu-background: $bg-color-light;
 $menu-text: $font-color;
 $menu-text-hover: lighten($font-color, 5%);
 

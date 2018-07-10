@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import Icon, { GLYPHS } from '../Icon';
-import Searchbar from '../Searchbar';
-import Link from 'redux-first-router-link';
-import './menu.scss';
+import * as React from "react";
+import { connect } from "react-redux";
+import Icon, { GLYPHS } from "../Icon";
+import Link from "redux-first-router-link";
+import "./menu.scss";
 
-const Menu = (props) => (
+const Menu = props => (
     <div className="menu">
         <Link to="/" className="menu__logo">
             <Icon glyph={GLYPHS.LOGO} />
         </Link>
-
-        <div className="menu__divider" />
 
         <div className="menu__section menu__links menu__section--primary">
             <Link to="/" className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.HOME} />
                 Home
             </Link>
-            <Link to={`/leaderboard/${props.platform}/ALL`} className="menu__item">
+            <Link
+                to={`/leaderboard/${props.platform}/ALL`}
+                className="menu__item"
+            >
                 <Icon className="menu__icon" glyph={GLYPHS.LIST} />
                 Leaderboard
             </Link>
@@ -51,12 +51,10 @@ const Menu = (props) => (
             <Link to="/privacy" className="menu__item">
                 Privacy policy
             </Link>
-            <Link to="/delete" className="menu__item">
+            {/* <Link to="/delete" className="menu__item">
                 Delete profile
-            </Link>
+            </Link> */}
         </div>
-
-        <div className="menu__divider" />
 
         <div className="menu__section menu__sublinks">
             <a
@@ -67,7 +65,12 @@ const Menu = (props) => (
             >
                 <Icon className="menu__icon" glyph={GLYPHS.TWITTER} />
             </a>
-            <a href="mailto:info@r6db.com" rel="noopener" target="_BLANK" className="menu__item">
+            <a
+                href="mailto:info@r6db.com"
+                rel="noopener"
+                target="_BLANK"
+                className="menu__item"
+            >
                 <Icon className="menu__icon" glyph={GLYPHS.EMAIL} />
             </a>
             <a
@@ -78,7 +81,12 @@ const Menu = (props) => (
             >
                 <Icon className="menu__icon" glyph={GLYPHS.DISCORD} />
             </a>
-            <a href="https://github.com/r6db" rel="noopener" target="_BLANK" className="menu__item">
+            <a
+                href="https://github.com/r6db"
+                rel="noopener"
+                target="_BLANK"
+                className="menu__item"
+            >
                 <Icon className="menu__icon" glyph={GLYPHS.GITHUB} />
             </a>
         </div>
@@ -91,5 +99,5 @@ const Menu = (props) => (
     </div>
 );
 
-const mapStateToProps = (state) => ({ platform: state.platform });
+const mapStateToProps = state => ({ platform: state.platform });
 export default connect(mapStateToProps)(Menu);

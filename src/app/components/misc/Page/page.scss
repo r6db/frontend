@@ -53,11 +53,11 @@
         height: calc(100% + 60px);
         opacity: 0.3;
         position: absolute;
-        filter: saturate(130%) contrast(120%);
+        filter: saturate(180%) contrast(120%);
 
         @include medium {
             top: -80px;
-            height: calc(100% + 75px);
+            height: calc(100% + 80px);
         }
     }
 
