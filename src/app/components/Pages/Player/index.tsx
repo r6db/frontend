@@ -23,7 +23,8 @@ const dummyPlayer = {
     platform: "",
     level: 0,
     placements: { global: null },
-    isFavorite: null
+    isFavorite: null,
+    updateAvailableAt: new Date()
 };
 
 function getPlayerSchema(player) {

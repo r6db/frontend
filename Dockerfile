@@ -1,6 +1,6 @@
 FROM node:8.9 as sources
 
-RUN apt-get update && apt-get install build-essential wget libpng-dev -y
+RUN apt-get update && apt-get install build-essential wget libpng-dev -y curl
 
 RUN ldconfig
 
@@ -12,7 +12,13 @@ RUN yarn
 
 COPY . .
 
+ARG VERSION
+ARG TOKEN
+ARG SENTRYURL
 RUN yarn build
+
+# Upload sourcemaps
+RUN bash ./uploadsourcemaps.sh
 
 FROM nginx:1.13-alpine
 
