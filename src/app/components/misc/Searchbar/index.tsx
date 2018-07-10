@@ -54,7 +54,8 @@ class Searchbar extends React.PureComponent<ISearchbarProps, ISearchbarState> {
                         value={this.props.query}
                         placeholder="Search for players..."
                         onChange={e => this.props.updateSearch(e.target.value)}
-                        ref={(input) => { this.searchbar = input; }} 
+                        ref={(input) => { this.searchbar = input; }}
+                        minLength={3}
                     />
                     <button onSubmit={this.onSearch} className="searchbar__submit">
                         <Icon glyph={GLYPHS.ARROWRIGHT} />
