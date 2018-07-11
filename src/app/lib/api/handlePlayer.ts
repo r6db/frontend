@@ -1,13 +1,14 @@
 import { OPERATORS } from "lib/constants";
+import { IPlayerResponse } from '../interfaces';
 const earliestDate = new Date("2015-01-01");
-const fixAlias = alias => {
+const fixAlias = (alias) => {
     // eslint-disable-next-line camelcase
     const d = new Date(alias.created_at);
     alias.created_at = alias.created_at && d > earliestDate ? d : null;
     return alias;
 };
 
-export default function(player) {
+export default function(player: IPlayerResponse) {
     if (!player.rank || Object.keys(player.rank).length == 0) {
         player.rank = null;
     }
