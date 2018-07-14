@@ -61,14 +61,16 @@ export interface IRank extends IRankBase {
     mmr: number;
     rank: number;
     max_rank: number;
+    season: number;
     skill_mean: number;
     skill_stdev: number;
 }
 
-export interface ISeasonRankGroup {
-    apac: IRank & { season: number };
-    emea: IRank & { season: number };
-    ncsa: IRank & { season: number };
+export interface IRankGroup {
+    apac: IRank;
+    emea: IRank;
+    ncsa: IRank;
+    season: number;
 }
 
 export interface IOperator {
@@ -84,6 +86,43 @@ export interface IOperators {
     [string: number]: IOperator
 }
 
+export interface IQueueStats {
+        deaths: number;
+        kills: number;
+        lost: number;
+        played: number;
+        timePlayed: number;
+        won: number;
+}
+
+export interface IGeneralStats{
+    assists: number;
+    blindKills: number;
+    bulletsFired: number;
+    bulletsHit: number;
+    dbno: number;
+    dbnoAssists: number;
+    deaths: number;
+    gadgetsDestroyed: number;
+    headshot: number;
+    hostageDefense: number;
+    hostageRescue: number;
+    kills: number;
+    lost: number;
+    meleeKills: number;
+    penetrationKills: number;
+    played: number;
+    rappelBreaches: number;
+    revives: number;
+    revivesDenied: number;
+    serverAggression: number;
+    serverDefender: number;
+    serversHacked: number;
+    suicides: number;
+    timePlayed: number;
+    won: number;
+}
+
 export interface IStats {
     bomb: {
         bestScore: number;
@@ -91,44 +130,11 @@ export interface IStats {
         played: number;
         won: number;
     };
-    casual: {
-        deaths: number;
-        kills: number;
-        lost: number;
-        played: number;
-        timePlayed: number;
-        won: number;
-    };
+    casual: IQueueStats;
     custom: {
         timePlayed: number;
     };
-    general: {
-        assists: number;
-        blindKills: number;
-        bulletsFired: number;
-        bulletsHit: number;
-        dbno: number;
-        dbnoAssists: number;
-        deaths: number;
-        gadgetsDestroyed: number;
-        headshot: number;
-        hostageDefense: number;
-        hostageRescue: number;
-        kills: number;
-        lost: number;
-        meleeKills: number;
-        penetrationKills: number;
-        played: number;
-        rappelBreaches: number;
-        revives: number;
-        revivesDenied: number;
-        serverAggression: number;
-        serverDefender: number;
-        serversHacked: number;
-        suicides: number;
-        timePlayed: number;
-        won: number;
-    };
+    general: IGeneralStats;
     hostage: {
         bestScore: number;
         lost: number;
@@ -136,20 +142,27 @@ export interface IStats {
         won: number;
     };
     operator: IOperators;
-    ranked: {
-        deaths: number;
-        kills: number;
-        lost: number;
-        played: number;
-        timePlayed: number;
-        won: number;
-    };
+    ranked: IQueueStats;
     secure: {
         bestScore: number;
         lost: number;
         played: number;
         won: number;
     };
+}
+
+export interface IAlteredStats extends IStats {
+    ranked: IQueueStats & { abandons?: number };
+    general: IGeneralStats & {
+        hitChance?: number;
+        headshotChance?: number;
+        headshotRatio?: number;
+    };
+}
+
+export interface IAlteredPlayer extends IPlayerResponse {
+    updateAvailableAt: Date;
+    stats: IAlteredStats;
 }
 
 export interface IPlayerResponse {
@@ -166,13 +179,8 @@ export interface IPlayerResponse {
         last_played: string;
     };
     name: string;
-    rank: {
-        apac: IRank;
-        emea: IRank;
-        ncsa: IRank;
-        season: number;
-    };
-    seasonRanks: ISeasonRankGroup[];
+    rank: IRankGroup;
+    seasonRanks: IRankGroup[];
     stats: IStats;
     placements: {
         global: null | number;
@@ -183,7 +191,7 @@ export interface IPlayerResponse {
     progressions: IProgression[];
     aliases: ISearchProfileAlias[];
     serverTime: string;
-    updateAvailableAt: string;
+    updateAvailableAt: string | Date;
 }
 
 export interface IProgressionRank extends IRankBase {
