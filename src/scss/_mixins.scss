@@ -1,24 +1,3 @@
-@mixin card {
-}
-@mixin card-header {
-    padding: 0.5rem 1rem 0;
-    font-size: 1.15em;
-    font-weight: 600;
-
-    &:first-child {
-        padding-top: 1rem;
-    }
-}
-@mixin card-content {
-    padding: 1rem;
-}
-@mixin card-divider {
-    width: 100%;
-    height: 1px;
-    background: lighten($color-gray-dark, 15%);
-    margin: 2rem 0;
-}
-
 @mixin clearfix {
     &:after {
         content: "";
