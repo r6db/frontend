@@ -37,7 +37,7 @@ const Menu = props => (
         <div className="menu__divider" />
 
         <div className="menu__section menu__links menu__section--secondary">
-            <Link to="/faq" className="menu__item">
+            <Link to="/FAQ" className="menu__item">
                 FAQ
             </Link>
             {/* 

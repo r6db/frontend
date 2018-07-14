@@ -1,6 +1,5 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import { redirect } from "redux-first-router";
 import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toChanka, toPlayer } from "lib/store/actions";
@@ -17,6 +16,7 @@ import Charts from "./Charts";
 import * as get from "lodash/get";
 
 import background from "assets/backgrounds/leaderboard.jpg";
+import Alert from "components/misc/Alert";
 
 const isSelected = (expected, value) => expected === value;
 
@@ -55,28 +55,12 @@ class Leaderboard extends React.PureComponent<any, any> {
     render() {
         return (
             <Page className="leaderboard">
-                <PageHead image={background} position="50% 20%">
-                    <div className="container leaderboard__header">
+                <PageHead image={background} position="50% 25%" opacity={0.2}>
+                    <div className="container">
                         <h1 className="header leaderboard__title">
                             Leaderboard
                         </h1>
-                    </div>
-                </PageHead>
-                <PageContent>
-                    <div className="container">
-                        <div className="leaderboard__description">
-                            <div className="blocker">
-                                Any accounts abusing the ranked system will be
-                                removed from the leaderboard. Our ban policy can
-                                be found{" "}
-                                <a href="https://pages.r6db.com/ban-policy/">
-                                    here
-                                </a>. Reports can be submitted over{" "}
-                                <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">
-                                    this form
-                                </a>.
-                            </div>
-                        </div>
+                        <hr/>
                         <form
                             className="leaderboard__filters"
                             action=""
@@ -100,12 +84,33 @@ class Leaderboard extends React.PureComponent<any, any> {
                             />
                             <Button label="GO" role="primary" />
                         </form>
-                        <Charts
-                            data={getCommunityRanks(
-                                this.props.community,
-                                this.state.board
-                            )}
-                        />
+                    </div>
+                </PageHead>
+                <PageContent>
+                    <div className="container">
+                        <div className="leaderboard__description">
+                            <Alert className="leaderboard__alert">
+                                Any accounts abusing the ranked system will be
+                                removed from the leaderboard. Our ban policy can
+                                be found{" "}
+                                <a href="https://pages.r6db.com/ban-policy/">
+                                    here.
+                                </a> Reports can be submitted over{" "}
+                                <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">
+                                    this form.
+                                </a>
+                            </Alert>
+                        </div>
+                        <h3 className="header header--small">Rank distribution</h3>
+                        <div className="leaderboard__chart">
+                            <Charts
+                                data={getCommunityRanks(
+                                    this.props.community,
+                                    this.state.board
+                                )}
+                            />
+                        </div>
+                        <h3 className="header header--small">Leaderboard</h3>
                         <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>

@@ -37,7 +37,6 @@
         width: 100%;
         align-items: center;
         position: relative;
-        background: $trans-med;
         border: 1px solid transparent;
         border-radius: $borderradius;
         @include boxshadow;
@@ -57,7 +56,7 @@
             color: $font-color;
         }
         .dropdown__box {
-            background: $trans-med;
+            background: $trans-low;
         }
         .dropdown__arrow {
             color: $font-color;

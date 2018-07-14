@@ -1,6 +1,4 @@
 import * as React from "react";
-import * as lozad from "lozad";
-import { FadeImage } from "components/misc/FadeImage";
 import "./page.scss";
 
 export function PageHead(props) {
@@ -10,10 +8,12 @@ export function PageHead(props) {
                 <img
                     className="page__image"
                     style={{
+                        opacity: props.opacity || "0.35",
                         objectPosition: props.position || "50% 40%",
                         backgroundPosition: props.position || "50% 40%",
                         backgroundSize: "cover",
-                        backgroundImage: 'url("' + props.image.placeholder + '")',
+                        backgroundImage:
+                            "url(" + props.image.placeholder + ")"
                     }}
                     src={props.image.placeholder}
                     srcSet={props.image.srcSet}
@@ -24,14 +24,10 @@ export function PageHead(props) {
         </div>
     );
 }
-(PageHead as any).defaultHooks = {
-    componentDidMount(node) {
-        const observer = lozad(".fadeimage");
-        setTimeout(() => observer.observe(), 200);
-    },
-};
 
-export const PageContent = props => <div className="page__content">{props.children}</div>;
+export const PageContent = props => (
+    <div className="page__content">{props.children}</div>
+);
 
 export const Page = props => (
     <div {...props} className={`page ${props.className || ""}`}>
