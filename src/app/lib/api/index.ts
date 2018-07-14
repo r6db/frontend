@@ -6,10 +6,11 @@ import getPlayersApi from "./methods/getPlayers";
 import getTweetsApi from "./methods/getTweets";
 import getLeaderboardApi from "./methods/getLeaderboard";
 import getCommunityRanksApi from "./methods/getCommunityRanks";
+import { IAlteredPlayer } from '../interfaces';
 
 const minutesToMs = min => 60 * 1000 * min;
 
-const cachifyMethod = function(apiCall, cacheDuration) {
+const cachifyMethod = function<T>(apiCall, cacheDuration): () => Promise<T> {
     const cache = Cache(cacheDuration);
     return function(...params) {
         const cacheKey = JSON.stringify(params);
@@ -26,7 +27,7 @@ const cachifyMethod = function(apiCall, cacheDuration) {
 };
 
 export const findPlayer = cachifyMethod(findPlayerApi, minutesToMs(15));
-export const getPlayer = cachifyMethod(getPlayerApi, minutesToMs(15));
+export const getPlayer = cachifyMethod<IAlteredPlayer>(getPlayerApi, minutesToMs(15));
 export const getPlayers = cachifyMethod(getPlayersApi, minutesToMs(15));
 export const getLeaderboard = cachifyMethod(getLeaderboardApi, minutesToMs(60));
 export const getTweets = cachifyMethod(getTweetsApi, minutesToMs(2));
