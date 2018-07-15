@@ -9,6 +9,7 @@ import "./comparison.scss";
 import OpsChart from "./OpsChart";
 import PlayerLabel from "./PlayerLabel";
 import AddPlayerModal from "./AddPlayerModal";
+import Button from "components/misc/Button";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import Scale, { SCALES } from "components/misc/Scale";
 import Stat from "components/misc/Stat";
@@ -125,6 +126,11 @@ const getOpsAttrs = players =>
                     .filter(x => x.side === "Defense")
                     .sort((a, b) => b.timePlayed - a.timePlayed)
                     .slice(0, 3)
+                    .map(x => x.id),
+                recruits: ops
+                    .filter(x => x.side === "Recruit")
+                    .sort((a, b) => b.timePlayed - a.timePlayed)
+                    .slice(0, 3)
                     .map(x => x.id)
             },
             meta: get(p, "stats.operator", {})
@@ -174,10 +180,7 @@ const getMmrChartAttrs = players => ({
                     const data = get(player, ["rank", x], {});
                     return {
                         id: x,
-                        games:
-                            (data.wins || 0) +
-                            (data.losses || 0) +
-                            (data.abandons || 0)
+                        games: (data.wins || 0) + (data.losses || 0) + (data.abandons || 0)
                     };
                 })
                 .sort((a, b) => b.games - a.games)[0].id;
@@ -185,9 +188,7 @@ const getMmrChartAttrs = players => ({
             // and return its data
             return {
                 name: player.name,
-                data: player.progressions.map(prog =>
-                    get(prog, ["ranks", region, "mmr"], null)
-                ),
+                data: player.progressions.map(prog => get(prog, ["ranks", region, "mmr"], null)),
                 className: `player-${i}`
             };
         })
@@ -255,18 +256,15 @@ class Compare extends React.Component<any, any> {
                                 {this.props.players.map(player => (
                                     <PlayerLabel
                                         key={player.id}
-                                        removeAction={this.getPlayerRemovalLink(
-                                            player.id
-                                        )}
+                                        removeAction={this.getPlayerRemovalLink(player.id)}
                                         {...player}
                                     />
                                 ))}
-                                <button
-                                    className="button button--primary"
+                                <Button
+                                    label={<FormattedMessage id="compare/add" />}
+                                    role="primary"
                                     onClick={this.onAddPlayer}
-                                >
-                                    <FormattedMessage id="compare/add" />
-                                </button>
+                                />
                             </div>
                         </div>
                     </div>
@@ -285,25 +283,18 @@ class Compare extends React.Component<any, any> {
                                 <div className="comparison__module__header">
                                     <FormattedMessage id="compare/mmr" />
                                 </div>
-                                <div className="comparison__module__content">
-                                    {/* mmr chart */}
-                                </div>
+                                <div className="comparison__module__content">{/* mmr chart */}</div>
                             </div>
                             <div className="comparison__module comparison__ranking">
                                 <div className="comparison__module__header">
                                     <FormattedMessage id="compare/ranking" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getRankingAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                {player.value}
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getRankingAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -313,21 +304,13 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="compare/win" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getRankedWlAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                <Scale
-                                                    value={player.value}
-                                                    scale={SCALES.WL}
-                                                >
-                                                    %
-                                                </Scale>
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getRankedWlAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} scale={SCALES.WL}>
+                                                %
+                                            </Scale>
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module comparison__ops">
@@ -335,9 +318,7 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="compare/ops" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    <OpsChart
-                                        data={getOpsAttrs(this.props.players)}
-                                    />
+                                    <OpsChart data={getOpsAttrs(this.props.players)} />
                                 </div>
                             </div>
                         </div>
@@ -347,19 +328,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="compare/kdranked" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getRankedKdAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                <Scale
-                                                    value={player.value}
-                                                    scale={SCALES.KD}
-                                                />
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getRankedKdAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} scale={SCALES.KD} />
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module">
@@ -367,19 +340,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="compare/kdglobal" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getKdAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                <Scale
-                                                    value={player.value}
-                                                    scale={SCALES.KD}
-                                                />
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getKdAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} scale={SCALES.KD} />
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module">
@@ -387,19 +352,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="compare/kdaglobal" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getKdaAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                <Scale
-                                                    value={player.value}
-                                                    scale={SCALES.KDA}
-                                                />
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getKdaAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} scale={SCALES.KDA} />
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -409,16 +366,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="accuracy" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getAccuAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                {player.value}%
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getAccuAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}%
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module">
@@ -426,21 +378,13 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="headshots" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getHeadshotAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                <Scale
-                                                    value={player.value}
-                                                    scale={SCALES.HS}
-                                                >
-                                                    %
-                                                </Scale>
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getHeadshotAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            <Scale value={player.value} scale={SCALES.HS}>
+                                                %
+                                            </Scale>
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module">
@@ -448,16 +392,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="dbnos" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getDbnoAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                {player.value}
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getDbnoAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -467,18 +406,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="playtime" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getPlaytimeAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                {stats.formatDuration(
-                                                    player.value
-                                                )}
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getPlaytimeAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {stats.formatDuration(player.value)}
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module">
@@ -486,16 +418,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="abandons" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getAbandonAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                {player.value}
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getAbandonAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                             <div className="comparison__module">
@@ -503,16 +430,11 @@ class Compare extends React.Component<any, any> {
                                     <FormattedMessage id="melee" />
                                 </div>
                                 <div className="comparison__module__content">
-                                    {getKnifeAttrs(this.props.players).map(
-                                        player => (
-                                            <Stat
-                                                label={player.label}
-                                                key={player.label}
-                                            >
-                                                {player.value}
-                                            </Stat>
-                                        )
-                                    )}
+                                    {getKnifeAttrs(this.props.players).map(player => (
+                                        <Stat label={player.label} key={player.label}>
+                                            {player.value}
+                                        </Stat>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -521,9 +443,7 @@ class Compare extends React.Component<any, any> {
                                 <Fauxtable.Table className="comparison-table">
                                     <Fauxtable.Head>
                                         <Fauxtable.Row>
-                                            <Fauxtable.Heading className="comparison-stat">
-                                                Stat
-                                            </Fauxtable.Heading>
+                                            <Fauxtable.Heading className="comparison-stat">Stat</Fauxtable.Heading>
                                             {this.props.players.map(x => (
                                                 <Fauxtable.Heading className="comparison-value">
                                                     {x.name}
@@ -534,9 +454,7 @@ class Compare extends React.Component<any, any> {
                                     <Fauxtable.Body>
                                         {rows.map(row => (
                                             <Fauxtable.Row key={row.label}>
-                                                <Fauxtable.Cell className="comparison-stat">
-                                                    {row.label}
-                                                </Fauxtable.Cell>
+                                                <Fauxtable.Cell className="comparison-stat">{row.label}</Fauxtable.Cell>
                                                 {this.props.players.map(x => (
                                                     <Fauxtable.Cell className="comparison-value">
                                                         {row.prop(x)}
@@ -557,9 +475,7 @@ class Compare extends React.Component<any, any> {
 
 const mapState = state => {
     const { players, loading, location } = state;
-    const ids = []
-        .concat(get(location, "query.ids", []))
-        .map(x => x.toLowerCase().trim());
+    const ids = [].concat(get(location, "query.ids", [])).map(x => x.toLowerCase().trim());
     return {
         players: ids.map(x => players[x]).filter(x => !!x),
         ids,

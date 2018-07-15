@@ -14,7 +14,7 @@
         display: flex;
         flex-grow: 1;
         min-width: 0;
-        background: rgba($gray-dark, 0.90);
+        background: rgba($color-gray-dark, 0.90);
         border-radius: $borderradius;
         @include boxshadow;
     }
@@ -29,7 +29,7 @@
         /* ::placeholder transition on firefox is bugged, so remove for consistency  */
 
         &::placeholder {
-            color: $font-subtle-color;
+            color: $font-color-subtle;
             opacity: 1;
             transition: all 0.3s ease-in-out;
             text-overflow:ellipsis;
@@ -72,7 +72,7 @@
         }
     }
     &__submit {
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         padding-left: 1em;
         padding-right: 1em;
 
@@ -113,13 +113,13 @@
         }
 
         &.PC {
-            background: #CE5C0F;
+            background: $color-pc;
         }
         &.PS4 {
-            background: #003791;
+            background: $color-ps4;
         }
         &.XBOX {
-            background: #108710;
+            background: $color-xbox;
         }
         &__select {
             display: flex;
@@ -134,7 +134,7 @@
             cursor: pointer;
 
             & option {
-                color: $black;
+                color: $color-black;
                 font-weight: 600;
             }
 

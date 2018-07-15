@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { FadeImage } from "components/misc/FadeImage";
+import Button from "components/misc/Button";
 import Link from "redux-first-router-link";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { connect } from "react-redux";
@@ -101,39 +102,44 @@ class PlayerHeader extends React.PureComponent<any, any> {
                         </div>
                         <div className="playerheader__buttons">
                             {this.props.updateAvailableAt > new Date() ? (
-                                <button className="button playerheader__button button--outline" disabled>
-                                    <FormattedMessage
-                                        id="player/available"
-                                        values={{
-                                            date: this.props.updateAvailableAt.toLocaleTimeString()
-                                        }}
-                                    />
-                                </button>
+                                <Button
+                                    label={
+                                        <FormattedMessage
+                                            id="player/available"
+                                            values={{
+                                                date: this.props.updateAvailableAt.toLocaleTimeString()
+                                            }}
+                                        />
+                                    }
+                                    disabled
+                                    outline
+                                />
                             ) : (
-                                <button
+                                <Button
+                                    label={<FormattedMessage id="player/update" />}
+                                    icon={GLYPHS.REFRESH}
+                                    role="accent"
                                     onClick={() => this.props.updatePlayer(this.props.id)}
+                                    outline
                                     className="button playerheader__button button--outline--accent"
-                                >
-                                    <Icon glyph={GLYPHS.REFRESH} />
-                                    <FormattedMessage id="player/update" />
-                                </button>
+                                />
                             )}
                             {this.props.isFavorite ? (
-                                <button
+                                <Button
+                                    label={<FormattedMessage id="player/favorite" />}
+                                    icon={GLYPHS.STARFULL}
+                                    role="primary"
                                     onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                    className="button playerheader__button button--outline--primary active"
-                                >
-                                    <Icon glyph={GLYPHS.STARFULL} />
-                                    <FormattedMessage id="player/favorite" />
-                                </button>
+                                    outline
+                                    active
+                                />
                             ) : (
-                                <button
+                                <Button
+                                    label={<FormattedMessage id="player/favorite" />}
+                                    icon={GLYPHS.STAR}
                                     onClick={() => this.props.favoritePlayer(this.props.id)}
-                                    className="button playerheader__button button--outline--subtile"
-                                >
-                                    <Icon glyph={GLYPHS.STAR} />
-                                    <FormattedMessage id="player/favorite" />
-                                </button>
+                                    outline
+                                />
                             )}
                         </div>
                     </div>

@@ -1,0 +1,123 @@
+@import "scss/styles";
+
+.button {
+    padding: 0.75em 1.25em;
+    width: auto;
+    border: 1px solid transparent;
+    border-radius: $borderradius;
+    @include boxshadow;
+    text-align: center;
+    font-size: $font-default;
+    font-weight: 600;
+    margin: 0.5em;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+
+    &__icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: transparent;
+        stroke: currentColor;
+        margin-right: 0.25em;
+        position: absolute;
+        left: 1.5em;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &[disabled] {
+        opacity: 0.5;
+    }
+    &[disabled]:hover {
+        cursor: default;
+    }
+    &:focus {
+        outline: none;
+    }
+    &:active, &--active {
+        outline: none;
+        box-shadow: 1px 1px 5px fade-out($color-gray-dark, 0.6);
+    }
+    &--block {
+        display: block;
+    }
+    &--small {
+        font-size: $font-small;
+        padding: 0.5em 0.75em;
+    }
+    &--large {
+        font-size: $font-big;
+        padding: 1em 2em;
+    }
+    &--iconed {
+        position: relative;
+        padding-left: 2.75em;
+    }
+
+    &--default {
+        background: $color-gray;
+        color: $color-white;
+    }
+    &--outline--default {
+        border-color: $color-gray-light;
+        background: none;
+        color: $color-gray-light;
+    }
+    &--primary {
+        background: $color-primary;
+        color: $color-white;
+    }
+    &--outline--primary {
+        border-color: lighten($color-primary, 10%);
+        background: none;
+        color: lighten($color-primary, 10%);
+    }
+    &--accent {
+        background: $color-accent;
+        color: $color-white;
+    }
+    &--outline--accent {
+        border-color: darken($color-accent, 15%);
+        background: none;
+        color: $color-accent;
+    }
+    &--error {
+        background: $color-error;
+        color: $color-white;
+    }
+    &--outline--error {
+        border-color: darken($color-error, 5%);
+        background: none;
+        color: darken($color-error, 5%);
+    }
+    &--warning {
+        background: $color-warning;
+        color: $color-white;
+    }
+    &--outline--warning {
+        border-color: darken($color-warning, 5%);
+        background: none;
+        color: darken($color-warning, 5%);
+    }
+    &--success {
+        background: $color-success;
+        color: $color-white;
+    }
+    &--outline--success {
+        border-color: darken($color-success, 5%);
+        background: none;
+        color: darken($color-success, 5%);
+    }
+    &--info {
+        background: $color-info;
+        color: $color-white;
+    }
+    &--outline--info {
+        border-color: darken($color-info, 5%);
+        background: none;
+        color: darken($color-info, 5%);
+    }
+}

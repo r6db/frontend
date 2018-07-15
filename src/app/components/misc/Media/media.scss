@@ -32,12 +32,12 @@
     }
     &__label {
         flex: none;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         font-size: 0.8em;
         margin-left: 1em;
         padding: 0.25rem 0.5rem;
         border-radius: 1rem;
-        border: 1px solid $font-subtle-color;
+        border: 1px solid $font-color-subtle;
     }
     &__header {
         flex: none;

@@ -8,6 +8,8 @@ import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
+import Button from "components/misc/Button";
+import Dropdown from "components/misc/Dropdown";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./leaderboard.scss";
@@ -24,6 +26,11 @@ const getCommunityRanks = (data, region) => {
     return get(data, `ranks.${region}`);
 };
 
+const boardOptions = Object.values(LEADERBOARDS).map(board => ({
+    value: board.id,
+    label: board.label
+}));
+
 class Leaderboard extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
@@ -31,6 +38,9 @@ class Leaderboard extends React.PureComponent<any, any> {
             board: props.board,
             platform: props.platform
         };
+
+        this.changePlatform = this.changePlatform.bind(this);
+        this.changeBoard = this.changeBoard.bind(this);
     }
     changeBoard(board) {
         this.setState({ board });
@@ -60,89 +70,48 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 <FormattedMessage
                                     id="leaderboard/disclaimer"
                                     values={{
-                                        linkPolicy: (
-                                            <a href="https://pages.r6db.com/ban-policy/">
-                                                here
-                                            </a>
-                                        ),
-                                        linkReport: (
-                                            <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">
-                                                this form
-                                            </a>
-                                        )
+                                        linkPolicy: <a href="https://pages.r6db.com/ban-policy/">Ban Policy</a>,
+                                        linkReport: <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">Google Form</a>
                                     }}
                                 />
                             </div>
                         </div>
-                        <form
-                            className="leaderboard__filters"
-                            action=""
-                            onSubmit={e => this.loadLeaderboard(e)}
-                        >
+                        <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
                             <p className="leaderboard__platform">
                                 <FormattedMessage id="platform">
                                     {msg => (
-                                        <label
-                                            className="leaderboard__platformlabel"
-                                            htmlFor="platformselect"
-                                        >
+                                        <label className="leaderboard__platformlabel" htmlFor="platformselect">
                                             {msg}
                                         </label>
                                     )}
                                 </FormattedMessage>
-                                <select
-                                    id="platformselect"
-                                    value={this.state.platform}
-                                    onChange={e =>
-                                        this.changePlatform(e.target.value)
-                                    }
-                                >
-                                    <option value="PC">PC</option>
-                                    <option value="PS4">PS4</option>
-                                    <option value="XBOX">XBOX</option>
-                                </select>
+                                <Dropdown
+                                    label="Platform"
+                                    setValue={this.state.platform}
+                                    options={[{ value: "PC" }, { value: "PS4" }, { value: "XBOX" }]}
+                                    action={this.changePlatform}
+                                />
                             </p>
                             <p className="leaderboard__board">
                                 <FormattedMessage id="board">
                                     {msg => (
-                                        <label
-                                            className="leaderboard__boardlabel"
-                                            htmlFor="boardselect"
-                                        >
+                                        <label className="leaderboard__boardlabel" htmlFor="boardselect">
                                             {msg}
                                         </label>
                                     )}
                                 </FormattedMessage>
-                                <select
-                                    id="boardselect"
-                                    className="leaderboard__boardselect"
+                                <Dropdown
+                                    label="Board"
                                     value={this.state.board}
-                                    onChange={e =>
-                                        this.changeBoard(e.target.value)
-                                    }
-                                >
-                                    {Object.keys(LEADERBOARDS).map(l => {
-                                        const lb = LEADERBOARDS[l];
-                                        return (
-                                            <option key={lb.id} value={lb.id}>
-                                                {lb.label}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
+                                    options={boardOptions}
+                                    action={this.changeBoard}
+                                />
                             </p>
                             <p>
-                                <button className="button button--primary">
-                                    GO
-                                </button>
+                                <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
                             </p>
                         </form>
-                        <Charts
-                            data={getCommunityRanks(
-                                this.props.community,
-                                this.state.board
-                            )}
-                        />
+                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
                         <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
@@ -161,33 +130,23 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 {this.props.entries.map((entry, i) => (
                                     <tr className="entry" key={entry.id}>
                                         <td>
-                                            <span className="entry__placement">
-                                                {entry.placement}
-                                            </span>
+                                            <span className="entry__placement">{entry.placement}</span>
                                             <span className="entry__medal" />
                                         </td>
                                         <td>
-                                            <Link
-                                                to={toPlayer(entry.id)}
-                                                className="entry__info"
-                                            >
+                                            <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
                                                     <FadeImage
                                                         src={getImageLink(
-                                                            entry.userId ||
-                                                                entry.id,
+                                                            entry.userId || entry.id,
                                                             this.props.platform
                                                         )}
                                                     />
                                                 </div>
-                                                <span className="entry__name">
-                                                    {entry.name}
-                                                </span>
+                                                <span className="entry__name">{entry.name}</span>
                                             </Link>
                                         </td>
-                                        <td className="entry__rating">
-                                            {entry.value}
-                                        </td>
+                                        <td className="entry__rating">{entry.value}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -223,8 +182,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => ({
     changePlatform: pf => dispatch({ type: "PLATFORM", payload: pf }),
-    load: (board, platform) =>
-        dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
+    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
     chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } })
 });
 

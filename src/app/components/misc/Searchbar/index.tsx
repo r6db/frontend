@@ -48,11 +48,7 @@ class Searchbar extends React.PureComponent<ISearchbarProps, ISearchbarState> {
 
     render() {
         return (
-            <form
-                className={`searchbar ${this.props.className || ""}`}
-                action=""
-                onSubmit={e => this.onSearch(e)}
-            >
+            <form className={`searchbar ${this.props.className || ""}`} action="" onSubmit={e => this.onSearch(e)}>
                 <div className="searchbar__box">
                     <input
                         className="searchbar__input"
@@ -65,25 +61,18 @@ class Searchbar extends React.PureComponent<ISearchbarProps, ISearchbarState> {
                         ref={input => {
                             this.searchbar = input;
                         }}
+                        minLength={3}
                     />
 
-                    <button
-                        onSubmit={this.onSearch}
-                        className="searchbar__submit"
-                    >
+                    <button onSubmit={this.onSearch} className="searchbar__submit">
                         <Icon glyph={GLYPHS.ARROWRIGHT} />
                     </button>
                 </div>
-                <div
-                    className={`searchbar__platform ${this.props.platform ||
-                        ""}`}
-                >
+                <div className={`searchbar__platform ${this.props.platform || ""}`}>
                     <select
                         className="searchbar__platform__select"
                         value={this.props.platform}
-                        onChange={e =>
-                            this.props.setPlatform((e.target as any).value)
-                        }
+                        onChange={e => this.props.setPlatform((e.target as any).value)}
                     >
                         <option value="PC">PC</option>
                         <option value="PS4">PS4</option>

@@ -1,29 +1,32 @@
 import { OPERATORS } from "lib/constants";
+import { IPlayerResponse, IRankGroup, IAlteredStats, IAlteredPlayer } from '../interfaces';
 const earliestDate = new Date("2015-01-01");
-const fixAlias = alias => {
+const fixAlias = (alias) => {
     // eslint-disable-next-line camelcase
     const d = new Date(alias.created_at);
     alias.created_at = alias.created_at && d > earliestDate ? d : null;
     return alias;
 };
 
-export default function(player) {
-    if (!player.rank || Object.keys(player.rank).length == 0) {
-        player.rank = null;
+export default function(player: IPlayerResponse): IAlteredPlayer {
+    let rank = player.rank;
+    let stats: IAlteredStats = player.stats;
+    if (!rank || Object.keys(rank).length == 0) {
+        rank = null;
     }
-    if (!player.stats || Object.keys(player.stats).length == 0) {
-        player.stats = null;
+    if (!stats || Object.keys(stats).length == 0) {
+        stats = null;
     }
 
-    player.flags = {
+    const flags = {
         noAliases: !player.aliases || !player.aliases.length,
         noPlaytime: !player.lastPlayed || (!player.lastPlayed.casual && !player.lastPlayed.ranked),
     };
 
     const allRanks = player.seasonRanks
-        .concat(player.rank)
+        .concat([rank])
         .filter(x => !!x)
-        .reduce((acc, rank) => {
+        .reduce((acc: IRankGroup[], rank) => {
             const alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length;
             if (!alreadyHasSeason) {
                 acc.push(rank);
@@ -31,11 +34,12 @@ export default function(player) {
             return acc;
         }, []);
     if (player.progressions) {
-        player.progressions = player.progressions.sort(
+        // TODO: is this necessary?
+        player.progressions.sort(
             (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
         );
     }
-    player.pastRanks = allRanks
+    const pastRanks = allRanks
         .map(x => {
             const sortedRanks = [x.ncsa, x.emea, x.apac]
                 .map(y => ({
@@ -52,33 +56,40 @@ export default function(player) {
 
     const sum = (x, y) => x + y;
 
-    if (player.stats && player.stats.ranked) {
-        player.stats.ranked.abandons = allRanks
+    if (stats && stats.ranked) {
+        stats.ranked.abandons = allRanks
             .map(x => [x.ncsa, x.emea, x.apac].map(y => y.abandons).reduce(sum, 0))
             .reduce(sum, 0);
     }
 
-    if (player.stats) {
-        player.stats.general.hitChance =
-            player.stats.general.bulletsHit * 100 / (player.stats.general.bulletsFired || 1);
-        player.stats.general.headshotChance =
-            player.stats.general.headshot * 100 / (player.stats.general.bulletsHit || 1);
-        player.stats.general.headshotRatio = player.stats.general.headshot * 100 / (player.stats.general.kills || 1);
+    if (stats) {
+        stats.general.hitChance =
+            stats.general.bulletsHit * 100 / (stats.general.bulletsFired || 1);
+        stats.general.headshotChance =
+            stats.general.headshot * 100 / (stats.general.bulletsHit || 1);
+        stats.general.headshotRatio = stats.general.headshot * 100 / (stats.general.kills || 1);
     }
     player.aliases = player.aliases.map(fixAlias).sort((a, b) => b.created_at - a.created_at);
     player.name = player.aliases[0].name;
 
+
+    let updateAvailableAt: Date;
     if (player.updateAvailableAt && player.serverTime) {
         const offset = new Date().getTime() - new Date(player.serverTime).getTime();
         const available = new Date(player.updateAvailableAt).getTime() - offset;
-        player.updateAvailableAt = new Date(available);
+        updateAvailableAt = new Date(available);
+    } else {
+        updateAvailableAt = new Date();
     }
 
     if (player.stats.operator) {
         player.stats.operator = Object.keys(player.stats.operator)
-            .filter(x => /recruit/.test(x) === false) // nope
             .map(id => Object.assign({}, player.stats.operator[id], { id }, OPERATORS[id]))
             .reduce((acc, curr) => Object.assign(acc, { [curr.id]: curr }), {});
     }
-    return player;
+    return Object.assign({}, player, {
+        stats,
+        pastRanks,
+        updateAvailableAt
+    });
 }

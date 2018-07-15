@@ -1,9 +1,11 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { hot } from "react-hot-loader";
 import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 import * as qrious from "qrious";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import Page, { PageHead, PageContent } from "components/misc/Page";
+import Button from "components/misc/Button";
 import "./delete.scss";
 
 const uuidMatch = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/;
@@ -59,7 +61,8 @@ class Delete extends React.Component<{}, IDeleteState> {
             qr.set({
                 background: "white",
                 foreground: "black",
-                size: 500
+                size: 500,
+                padding: 50
             });
             this.setState({
                 player: id,
@@ -198,14 +201,13 @@ class Delete extends React.Component<{}, IDeleteState> {
                                             <FormattedMessage id="delete/step3_confirm" />
                                         </span>
                                     </div>
-                                    <div className="delete__check">
-                                        <button
-                                            className="button button--red"
+                                    <div className="delete__confirm">
+                                        <Button
+                                            label={<FormattedMessage id="delete/confirm" />}
+                                            role="error"
                                             onClick={() => this.check(this.state.player)}
                                             disabled={!this.state.isChecked}
-                                        >
-                                            <FormattedMessage id="delete/confirm" />
-                                        </button>
+                                        />
                                         {this.state.error ? (
                                             <div className="delete__status error">
                                                 <Icon glyph={GLYPHS.CLOSE} />{" "}

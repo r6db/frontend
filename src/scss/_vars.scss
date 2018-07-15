@@ -1,36 +1,3 @@
-$black-ice: #2e93b3;
-$dust-line: #d0a344;
-$skull-rain: #47893b;
-$red-crow: #bd1e2c;
-$velvet-shell: #6e3c87;
-$operation-health: #4a74a9;
-$blood-orchid: #ca361c;
-$white-noise: #006543;
-$chimera: #ffc113;
-$parabellum: #949937;
-
-$primary: #007bff;
-$black: #1c1c1c;
-$off-white: hsl(hue($primary), 5%, 85%);
-$white: hsl(hue($primary), 5%, 90%);
-$accent: #ff6e09;
-$link: mix(#2d95cf, $primary, 90%);
-$gray-dark: hsl(hue($primary), 3%, 5%);
-$gray-darkish: lighten($gray-dark, 20%);
-$gray: lighten($gray-dark, 40%);
-$gray-light: hsl(hue($primary), 5%, 95%);
-$blue-dark: rgb(16, 26, 36);
-$trans-high: rgba(16, 16, 16, 0.25);
-$trans-med: rgba(16, 16, 16, 0.5);
-$trans-low: rgba(16, 16, 16, 0.75);
-$success: mix(#17bebb, $primary, 95%);
-$warn: mix(#ffc914, $primary, 95%);
-$danger: mix(#b62f23, $primary, 95%);
-
-$font-color: $white;
-$font-subtle-color: $gray;
-$bg-color: #181b1f;
-
 $a: 45deg;
 $borderradius: 5px;
 $borderradius-rel: 0.4em;
@@ -46,9 +13,6 @@ $font-huge: 2.5em;
 
 $menu-height: 80px;
 $menu-width: 280px;
-$menu-background: darken($bg-color, 2%);
-$menuMaxOpacity: 0.8;
-$menu-hover-color: rgba(227, 214, 148, 1);
 
 $screen-medium: 800px;
 $screen-large: 1200px;

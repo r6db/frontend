@@ -1,0 +1,216 @@
+@import "scss/styles";
+
+.dropdown {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.5em;
+    transition: all 100ms ease-in-out;
+
+    label {
+        color: $font-color-subtle;
+        margin-right: 1em;
+    }
+    select {
+        width: 100%;
+        color: $font-color;
+        font-size: $font-default;
+        font-weight: 600;
+        font-weight: 600;
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
+        padding-left: 0.75em;
+        padding-right: 3em;
+        cursor: pointer;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+    option {
+        color: $font-color;
+        background: $bg-color-dark;
+    }
+    &__box {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        align-items: center;
+        position: relative;
+        background: $trans-med;
+        border: 1px solid transparent;
+        border-radius: $borderradius;
+        @include boxshadow;
+    }
+    &__arrow {
+        width: 1.8rem;
+        height: 1.8rem;
+        fill: transparent;
+        position: absolute;
+        right: 0.75em;
+        stroke: currentColor;
+        pointer-events: none
+    }
+
+    &--default {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $trans-med;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--default {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            border-color: $font-color;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--primary {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $color-primary;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--primary {
+        select {
+            color: $color-primary;
+        }
+        .dropdown__box {
+            border-color: $color-primary;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $color-primary;
+        }
+    }
+    &--accent {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $color-accent;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--accent {
+        select {
+            color: $color-accent;
+        }
+        .dropdown__box {
+            border-color: $color-accent;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $color-accent;
+        }
+    }
+    &--error {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $color-error;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--error {
+        select {
+            color: $color-error;
+        }
+        .dropdown__box {
+            border-color: $color-error;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $color-error;
+        }
+    }
+    &--warning {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $color-warning;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--warning {
+        select {
+            color: $color-warning;
+        }
+        .dropdown__box {
+            border-color: $color-warning;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $color-warning;
+        }
+    }
+    &--success {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $color-success;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--success {
+        select {
+            color: $color-success;
+        }
+        .dropdown__box {
+            border-color: $color-success;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $color-success;
+        }
+    }
+    &--info {
+        select {
+            color: $font-color;
+        }
+        .dropdown__box {
+            background: $color-info;
+        }
+        .dropdown__arrow {
+            color: $font-color;
+        }
+    }
+    &--outline--info {
+        select {
+            color: $color-info;
+        }
+        .dropdown__box {
+            border-color: $color-info;
+            background: none;
+        }
+        .dropdown__arrow {
+            color: $color-info;
+        }
+    }
+}

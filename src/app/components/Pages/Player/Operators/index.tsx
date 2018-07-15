@@ -2,6 +2,7 @@ import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { OPERATORS } from "lib/constants";
 import * as stats from "lib/stats";
+import Dropdown from "components/misc/Dropdown";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import Scale, { SCALES } from "components/misc/Scale";
 import Fauxtable from "components/misc/Fauxtable";
@@ -39,11 +40,12 @@ const filters = {
     None: () => true,
     Attackers: op => op.side === "Attack",
     Defenders: op => op.side === "Defense",
+    Recruits: op => op.side === "Recruit",
     GIGN: op => op.unit === "GIGN",
     SAS: op => op.unit === "SAS",
     GSG9: op => op.unit === "GSG9",
     FBI: op => op.unit === "FBI",
-    SPEZNAS: op => op.unit === "SPEZNAS",
+    SPETSNAZ: op => op.unit === "SPETSNAZ",
     "JTF-2": op => op.unit === "JTF-2",
     SEALS: op => op.unit === "SEALS",
     BOPE: op => op.unit === "BOPE",
@@ -123,6 +125,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
 
         this.sort = this.sort.bind(this);
         this.filter = this.filter.bind(this);
+        this.setFilter = this.setFilter.bind(this);
     }
 
     getSorterClass(tester) {
@@ -155,10 +158,8 @@ export default class OperatorTab extends React.PureComponent<any, any> {
         this.setState({ operatorsShowMap: opsMap });
     }
 
-    onFilter(filterProp) {
-        if (filterProp in filters) {
-            this.setState({ filterProp });
-        }
+    setFilter(filterProp) {
+        this.setState({ filterProp });
     }
 
     render() {
@@ -167,16 +168,13 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                 <div className="opstab__controls card">
                     <div className="card-content">
                         <p>
-                            <label htmlFor="filter">
-                                <FormattedMessage id="player/filterby" />
-                            </label>
-                            <select name="filter" onChange={e => this.onFilter(e.target.value)}>
-                                {Object.keys(filters).map(x => (
-                                    <option key={x} value={x}>
-                                        {x}
-                                    </option>
-                                ))}
-                            </select>
+                            <Dropdown
+                                label={<FormattedMessage id="player/filterby" />}
+                                options={Object.keys(filters).map(f => ({
+                                    value: f
+                                }))}
+                                action={this.setFilter}
+                            />
                         </p>
                     </div>
                 </div>

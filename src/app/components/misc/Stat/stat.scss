@@ -6,7 +6,7 @@
     margin-bottom: 0.5rem;
 
     &-label {
-        color: $gray;
+        color: $color-gray;
         margin-right: 0.5rem;
     }
     &-value {
@@ -19,7 +19,7 @@
     &__label {
         margin-left: 1rem;
         font-weight: 600;
-        color: $font-subtle-color;
+        color: $font-color-subtle;
         font-size: $font-small;
     }
 }
