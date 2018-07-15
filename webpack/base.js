@@ -14,13 +14,13 @@ const DIST = path.join(__dirname, "../build");
 module.exports = {
     context: path.resolve(__dirname, "../"),
     entry: {
-        app: ["./src/app/index.tsx"],
+        app: ["./src/app/index.tsx"]
     },
     output: {
         path: DIST,
         publicPath: "/",
         filename: "[name].[chunkhash].js",
-        chunkFilename: "[name].[chunkhash].js",
+        chunkFilename: "[name].[chunkhash].js"
     },
     target: "web",
     resolve: {
@@ -28,11 +28,11 @@ module.exports = {
         alias: {
             components: path.join(__dirname, "../src/app/components"),
             lib: path.join(__dirname, "../src/app/lib"),
-            assets: path.join(__dirname, "../src/assets"),
-        },
+            assets: path.join(__dirname, "../src/assets")
+        }
     },
     node: {
-        __filename: true,
+        __filename: true
     },
     stats: "errors-only",
     devtool: "source-map",
@@ -45,10 +45,10 @@ module.exports = {
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendor",
-                    chunks: "initial",
-                },
-            },
-        },
+                    chunks: "initial"
+                }
+            }
+        }
     },
     module: {
         rules: [
@@ -61,10 +61,10 @@ module.exports = {
                     {
                         loader: "babel-loader",
                         options: {
-                            cacheDirectory: "./.cache",
-                        },
-                    },
-                ],
+                            cacheDirectory: "./.cache"
+                        }
+                    }
+                ]
             },
             {
                 test: /.svg$/,
@@ -72,18 +72,16 @@ module.exports = {
                     {
                         loader: "svg-sprite-loader",
                         options: {
-                            extract: true,
-                        },
+                            extract: true
+                        }
                     },
                     {
                         loader: "svgo-loader",
                         options: {
-                          plugins: [
-                            {convertShapeToPath: false},
-                          ]
+                            plugins: [{ convertShapeToPath: false }]
                         }
-                    },
-                ],
+                    }
+                ]
             },
             {
                 test: /\.(png|jpg)$/,
@@ -94,17 +92,17 @@ module.exports = {
                             sizes: [320, 640, 1200, 1600, 1920, 2440],
                             placeholder: true,
                             placeholderSize: 40,
-                            quality: 85,
-                            adapter: require("responsive-loader/sharp"),
-                        },
+                            quality: 85
+                            // adapter: require("responsive-loader/sharp"),
+                        }
                     },
                     {
                         loader: "file-loader",
-                        options: {},
-                    },
-                ],
-            },
-        ],
+                        options: {}
+                    }
+                ]
+            }
+        ]
     },
     plugins: [
         new ManifestPlugin(),
@@ -117,14 +115,14 @@ module.exports = {
             { from: "src/*.html", to: "[name].html" },
             { from: "src/*.txt", to: "[name].txt" },
             { from: "src/app/sw.js", to: "[name].js" },
-            { from: "src/app.json", to: "[name].json" },
+            { from: "src/app.json", to: "[name].json" }
         ]),
         new HtmlWebpackPlugin({
-            template: "./src/index.ejs",
+            template: "./src/index.ejs"
         }),
         new SpriteLoaderPlugin(),
         new ForkTsCheckerWebpackPlugin({
-            checkSyntacticErrors: true,
-        }),
-    ],
+            checkSyntacticErrors: true
+        })
+    ]
 };

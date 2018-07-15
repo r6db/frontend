@@ -17,6 +17,7 @@
         "lodash": "^4.17.4",
         "lozad": "^1.0.2",
         "qrious": "^4.0.2",
+        "raven-js": "^3.26.3",
         "react": "^16.3.1",
         "react-dom": "^16.2.0",
         "react-loadable": "^5.3.1",

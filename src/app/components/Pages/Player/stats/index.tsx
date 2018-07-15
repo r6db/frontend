@@ -9,10 +9,28 @@ import StatsCharts from "./modules/StatsCharts";
 import TimeSwitch from "./modules/TimeSwitch";
 
 import "./statstab.scss";
+import Button from "components/misc/Button";
 
 export default function StatsTab(props) {
+    if (props.snapshots.find(x => x.season === props.season) === undefined) {
+        return (
+            <div className="statstab statstab--norecord">
+                <span>
+                    we do not have recorded this players stats for this season.
+                </span>
+                <Button
+                    label="show total stats"
+                    role="primary"
+                    onClick={() => props.changeTime(-1)}
+                />
+            </div>
+        );
+    }
     const stats = props.snapshots.find(x => x.season === props.season).stats;
-    const rank = props.pastRanks.find(x => x.season === props.season);
+    const rank =
+        props.season === -1
+            ? props.rank
+            : props.seasonRanks.find(x => x.season === props.season);
     return (
         <div className="statstab">
             <div className="statstab__sidebar">
@@ -36,10 +54,14 @@ export default function StatsTab(props) {
                     ) : null}
                     <StatsRankings {...props} rank={rank} />
                     <div className="playermodule__divider" />
-                    {props.stats ? <StatsCharts {...props} /> : null}
+                    {props.season === -1 && props.stats ? (
+                        <StatsCharts {...props} />
+                    ) : null}
                 </div>
                 <div className="statstab__aside">
-                    {props.stats ? <StatsGameModes {...props} /> : null}
+                    {props.stats ? (
+                        <StatsGameModes {...props} stats={stats} />
+                    ) : null}
                 </div>
             </div>
         </div>

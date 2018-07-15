@@ -3,7 +3,6 @@ import Cache from "./cache";
 import findPlayerApi from "./methods/findPlayer";
 import getPlayerApi from "./methods/getPlayer";
 import getPlayersApi from "./methods/getPlayers";
-import getTweetsApi from "./methods/getTweets";
 import getLeaderboardApi from "./methods/getLeaderboard";
 import getCommunityRanksApi from "./methods/getCommunityRanks";
 
@@ -25,9 +24,8 @@ const cachifyMethod = function(apiCall, cacheDuration) {
     };
 };
 
-export const findPlayer = cachifyMethod(findPlayerApi, minutesToMs(15));
-export const getPlayer = cachifyMethod(getPlayerApi, minutesToMs(15));
-export const getPlayers = cachifyMethod(getPlayersApi, minutesToMs(15));
-export const getLeaderboard = cachifyMethod(getLeaderboardApi, minutesToMs(60));
-export const getTweets = cachifyMethod(getTweetsApi, minutesToMs(2));
-export const getCommunityRanks = cachifyMethod(getCommunityRanksApi, minutesToMs(3600));
+export const findPlayer: typeof findPlayerApi = cachifyMethod(findPlayerApi, minutesToMs(15));
+export const getPlayer: typeof getPlayerApi = cachifyMethod(getPlayerApi, minutesToMs(15));
+export const getPlayers: typeof getPlayersApi = cachifyMethod(getPlayersApi, minutesToMs(15));
+export const getLeaderboard: typeof getLeaderboardApi = cachifyMethod(getLeaderboardApi, minutesToMs(60));
+export const getCommunityRanks: typeof getCommunityRanksApi = cachifyMethod(getCommunityRanksApi, minutesToMs(3600));

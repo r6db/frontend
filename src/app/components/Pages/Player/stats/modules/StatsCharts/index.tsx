@@ -35,7 +35,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            show: true
         };
     }
     componentDidMount() {
@@ -123,11 +123,13 @@ export default class StatsCharts extends React.PureComponent<any, any> {
 
     render() {
         if (!this.state.show) {
-            return <div className="playermodule charts" />;
+            return (
+                <div className="playermodule charts player__charts player__charts--hidden" />
+            );
         }
         const data = this.getData();
         return this.props.progressions ? (
-            <div className="playermodule charts">
+            <div className="playermodule charts player__charts player__charts--visible">
                 {this.props.rank && (
                     <div className="row">
                         <div className="chart__header">MMR</div>

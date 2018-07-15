@@ -28,7 +28,8 @@ const dummyPlayer = {
     platform: "",
     level: 0,
     placements: { global: null },
-    isFavorite: null
+    isFavorite: null,
+    updateAvailableAt: new Date()
 };
 
 function getPlayerSchema(player) {
@@ -125,8 +126,6 @@ const mapStateToProps = state => {
         location: { payload }
     } = state;
 
-    console.log("Redux Data", (players[payload.id] || {}).snapshots);
-
     return {
         data: players[payload.id],
         tab: payload.tab || "summary",
@@ -134,7 +133,7 @@ const mapStateToProps = state => {
         platform,
         isFavorite: favorites.includes(payload.id),
         favorites,
-        season: settings.season || "all time"
+        season: Number.parseInt(settings.season) || -1
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {

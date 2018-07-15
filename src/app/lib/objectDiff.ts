@@ -3,7 +3,7 @@ export enum DiffStrategy {
     KEEP,
     THROW
 }
-export default function diff<T>(a: T, b: any, strategy: DiffStrategy) {
+export default function diff<T>(a: T, b: any, strategy: DiffStrategy): T {
     if (typeof a !== typeof b) {
         switch (strategy) {
             case DiffStrategy.THROW:
@@ -20,7 +20,7 @@ export default function diff<T>(a: T, b: any, strategy: DiffStrategy) {
         }
     } else {
         if (typeof a === "number") {
-            return diffNumber(a, b);
+            return diffNumber(a, b) as any;
         } else if (typeof a === "string") {
             // don't diff strings
             return a;
@@ -37,13 +37,13 @@ function diffObject<T>(
     a: T,
     b: object,
     strat: DiffStrategy = DiffStrategy.THROW
-) {
+): T {
     return Object.keys(a).reduce((target, key) => {
         target[key] = diff(a[key], b[key], strat);
         return target;
-    }, {});
+    }, {}) as T;
 }
-function diffNumber(a: number, b: number) {
+function diffNumber(a: number, b: number): number {
     if (!b) {
         return a;
     } else {

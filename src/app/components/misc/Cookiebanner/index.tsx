@@ -10,15 +10,18 @@ interface ICookiebannerState {
 class Cookiebanner extends React.Component<{}, ICookiebannerState> {
     constructor(props) {
         super(props);
+        if (!localStorage.hasOwnProperty("cookiesAccepted")) {
+            localStorage.setItem("cookiesAccepted", "false");
+        }
         this.state = {
-            hasAccepted: !!localStorage.getItem("cookiesAccepted")
+            hasAccepted: JSON.parse(localStorage.getItem("cookiesAccepted"))
         };
         this.accept = this.accept.bind(this);
     }
     accept() {
         localStorage.setItem("cookiesAccepted", "true");
         this.setState({
-            hasAccepted: !!localStorage.getItem("cookiesAccepted")
+            hasAccepted: JSON.parse(localStorage.getItem("cookiesAccepted"))
         });
     }
 
@@ -30,8 +33,13 @@ class Cookiebanner extends React.Component<{}, ICookiebannerState> {
             <div className="cookiebanner">
                 <div className="cookiebanner__container">
                     <p>
-                        This website uses cookies to ensure you get the best experience on our website.
-                        <span className="cookiebanner__subtle">By continuing to use this website or by clicking "Accept", you agree to the usage of cookies on this device. <a href="/privacy">Cookie policy</a></span>
+                        This website uses cookies to ensure you get the best
+                        experience on our website.
+                        <span className="cookiebanner__subtle">
+                            By continuing to use this website or by clicking
+                            "Accept", you agree to the usage of cookies on this
+                            device. <a href="/privacy">Cookie policy</a>
+                        </span>
                     </p>
                     <Button
                         label="Accept"

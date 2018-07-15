@@ -21,7 +21,7 @@ const s10Cover = require("assets/backgrounds/parabellum2.jpg?sizes[]=300&sizes[]
 import s10Logo from "assets/seasonlogos/R6-OPParaBellum-Horizontal.svg";
 
 export const appname = "r6db";
-export const appid = "5e23d930-edd3-4240-b9a9-723c673fb649";
+export const appid = "b0815d12-ce26-462f-85ec-b866f24db0f0";
 export const title = "R6DB - Rainbow 6 Player database";
 export const description =
     "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
@@ -206,13 +206,13 @@ export const OPERATORS = {
     echo: { name: "Echo", side: "Defense", unit: "SAT" },
     ela: { name: "Ela", side: "Defense", unit: "GROM" },
     frost: { name: "Frost", side: "Defense", unit: "JTF-2" },
-    fuze: { name: "Fuze", side: "Attack", unit: "SPEZNAS" },
-    glaz: { name: "Glaz", side: "Attack", unit: "SPEZNAS" },
+    fuze: { name: "Fuze", side: "Attack", unit: "SPETSNAZ" },
+    glaz: { name: "Glaz", side: "Attack", unit: "SPETSNAZ" },
     hibana: { name: "Hibana", side: "Attack", unit: "SAT" },
     iq: { name: "IQ", side: "Attack", unit: "GSG9" },
     jackal: { name: "Jackal", side: "Attack", unit: "GEO" },
     jager: { name: "Jäger", side: "Defense", unit: "GSG9" },
-    kapkan: { name: "Kapkan", side: "Defense", unit: "SPEZNAS" },
+    kapkan: { name: "Kapkan", side: "Defense", unit: "SPETSNAZ" },
     lesion: { name: "Lesion", side: "Defense", unit: "SDU" },
     mira: { name: "Mira", side: "Defense", unit: "GEO" },
     montagne: { name: "Montagne", side: "Attack", unit: "GIGN" },
@@ -221,7 +221,7 @@ export const OPERATORS = {
     rook: { name: "Rook", side: "Defense", unit: "GIGN" },
     sledge: { name: "Sledge", side: "Attack", unit: "SAS" },
     smoke: { name: "Smoke", side: "Defense", unit: "SAS" },
-    tachanka: { name: "Tachanka", side: "Defense", unit: "SPEZNAS" },
+    tachanka: { name: "Tachanka", side: "Defense", unit: "SPETSNAZ" },
     thatcher: { name: "Thatcher", side: "Attack", unit: "SAS" },
     thermite: { name: "Thermite", side: "Attack", unit: "FBI" },
     twitch: { name: "Twitch", side: "Attack", unit: "GIGN" },
@@ -233,7 +233,12 @@ export const OPERATORS = {
     lion: { name: "Lion", side: "Attack", unit: "CBRN" },
     finka: { name: "Finka", side: "Attack", unit: "CBRN" },
     alibi: { name: "Alibi", side: "Defense", unit: "GIS" },
-    maestro: { name: "Maestro", side: "Defense", unit: "GIS" }
+    maestro: { name: "Maestro", side: "Defense", unit: "GIS" },
+    recruitsas: { name: "Recruit (SAS)", side: "Recruit", unit: "SAS"},
+    recruitfbi: { name: "Recruit (FBI)", side: "Recruit", unit: "FBI"},
+    recruitgign: { name: "Recruit (GIGN)", side: "Recruit", unit: "GIGN"},
+    recruitspetsnaz: { name: "Recruit (SPETSNAZ)", side: "Recruit", unit: "SPETSNAZ"},
+    recruitgsg9: { name: "Recruit (GSG9)", side: "Recruit", unit: "GSG9"},
 };
 
 export const REGIONS = {

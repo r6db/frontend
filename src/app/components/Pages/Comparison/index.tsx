@@ -120,6 +120,11 @@ const getOpsAttrs = players =>
                     .sort((a, b) => b.timePlayed - a.timePlayed)
                     .slice(0, 3)
                     .map(x => x.id),
+                recruits: ops
+                    .filter(x => x.side === "Recruit")
+                    .sort((a, b) => b.timePlayed - a.timePlayed)
+                    .slice(0, 3)
+                    .map(x => x.id),
             },
             meta: get(p, "stats.operator", {}),
         };

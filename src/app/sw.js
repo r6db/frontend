@@ -1,4 +1,4 @@
-const CACHE_NAME = "r6db-y3s2-1.1.0";
+const CACHE_NAME = "r6db-y3s2-1.2.0";
 
 self.addEventListener("install", function(event) {
     console.debug("[sw] install");
@@ -86,18 +86,8 @@ self.addEventListener("activate", function(event) {
 self.addEventListener("fetch", function(event) {
     if (/r6db\.com/.test(event.request.url)) {
         event.respondWith(
-            caches.match(event.request).then(res => {
-                if (res) {
-                    console.debug(
-                        `[sw] cached response for '${event.request.url}'`
-                    );
-                    return res;
-                } else {
-                    return fetch(event.request, {
-                        cache: "default",
-                        referrerPolicy: "origin-only"
-                    });
-                }
+            caches.match(event.request).then(function(response) {
+                return response || fetch(event.request);
             })
         );
     }

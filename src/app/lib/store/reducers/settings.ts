@@ -1,6 +1,6 @@
 const initialSettings = {
     analytics: false,
-    season: "all time"
+    season: -1
 };
 
 export default function settingsReducer(state = initialSettings, action) {
@@ -8,7 +8,7 @@ export default function settingsReducer(state = initialSettings, action) {
         case "CHANGE_SETTING":
             return { ...state, [action.payload.setting]: action.payload.value };
         case "TIMEFRAME":
-            return { ...state, season: action.payload };
+            return { ...state, season: Number.parseInt(action.payload) };
         default:
             return state;
     }
