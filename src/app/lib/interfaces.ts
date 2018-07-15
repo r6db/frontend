@@ -191,7 +191,7 @@ export interface IPlayerResponse {
     progressions: IProgression[];
     aliases: ISearchProfileAlias[];
     serverTime: string;
-    updateAvailableAt: string | Date;
+    updateAvailableAt?: string | Date;
 }
 
 export interface IProgressionRank extends IRankBase {
@@ -211,4 +211,28 @@ export interface IProgression {
         ncsa: IProgressionRank;
     };
     stats: IStats;
+}
+
+export type LeaderboardResponse = ILeaderboardPlacement[];
+
+export interface ILeaderboardPlacement {
+    id: string;
+    userid: string;
+    name: string;
+    placement: number;
+    platform: Platform;
+    value: number | string;
+}
+
+export interface ICommunityRanks {
+    apac: IRegionCommunityRanks[];
+    emea: IRegionCommunityRanks[];
+    ncsa: IRegionCommunityRanks[];
+}
+
+export interface IRegionCommunityRanks {
+    platform: Platform;
+    region: Region;
+    rank: number;
+    amount: number;
 }

@@ -1,5 +1,5 @@
 import { OPERATORS } from "lib/constants";
-import { IPlayerResponse, IRank, IRankGroup, IAlteredStats, IAlteredPlayer } from '../interfaces';
+import { IPlayerResponse, IRankGroup, IAlteredStats, IAlteredPlayer } from '../interfaces';
 const earliestDate = new Date("2015-01-01");
 const fixAlias = (alias) => {
     // eslint-disable-next-line camelcase
