@@ -1,5 +1,7 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
+import { redirect } from "redux-first-router";
 import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toChanka, toPlayer } from "lib/store/actions";
@@ -58,7 +60,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                 <PageHead image={background} position="50% 25%" opacity={0.2}>
                     <div className="container">
                         <h1 className="header leaderboard__title">
-                            Leaderboard
+                            <FormattedMessage id="leaderboard/title" />
                         </h1>
                         <hr/>
                         <form
@@ -67,22 +69,21 @@ class Leaderboard extends React.PureComponent<any, any> {
                             onSubmit={e => this.loadLeaderboard(e)}
                         >
                             <Dropdown
-                                label="Platform"
+                                label={<FormattedMessage id="platform" />}
                                 setValue={this.state.platform}
-                                options={[
-                                    { value: "PC" },
-                                    { value: "PS4" },
-                                    { value: "XBOX" }
-                                ]}
+                                options={[{ value: "PC" }, { value: "PS4" }, { value: "XBOX" }]}
                                 action={this.changePlatform}
                             />
+
                             <Dropdown
-                                label="Board"
+                                label={<FormattedMessage id="board" />}
                                 value={this.state.board}
                                 options={boardOptions}
                                 action={this.changeBoard}
                             />
-                            <Button label="GO" role="primary" />
+                            <p>
+                                <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
+                            </p>
                         </form>
                     </div>
                 </PageHead>
@@ -90,18 +91,16 @@ class Leaderboard extends React.PureComponent<any, any> {
                     <div className="container">
                         <div className="leaderboard__description">
                             <Alert className="leaderboard__alert">
-                                Any accounts abusing the ranked system will be
-                                removed from the leaderboard. Our ban policy can
-                                be found{" "}
-                                <a href="https://pages.r6db.com/ban-policy/">
-                                    here.
-                                </a> Reports can be submitted over{" "}
-                                <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">
-                                    this form.
-                                </a>
+                                <FormattedMessage
+                                    id="leaderboard/disclaimer"
+                                    values={{
+                                        linkPolicy: <a href="https://pages.r6db.com/ban-policy/">Ban Policy</a>,
+                                        linkReport: <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">Google Form</a>
+                                    }}
+                                />
                             </Alert>
                         </div>
-                        <h3 className="header header--small">Rank distribution</h3>
+                        <h3 className="header header--small"><FormattedMessage id="leaderboard/rankdist" /></h3>
                         <div className="leaderboard__chart">
                             <Charts
                                 data={getCommunityRanks(
@@ -110,46 +109,42 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 )}
                             />
                         </div>
-                        <h3 className="header header--small">Leaderboard</h3>
+                        <h3 className="header header--small"><FormattedMessage id="leaderboard/title" /></h3>
                         <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>Player</th>
-                                    <th>Rating</th>
+                                    <th>
+                                        <FormattedMessage id="rank" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="player" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="rating" />
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="leaderboard__entriesbody">
                                 {this.props.entries.map((entry, i) => (
                                     <tr className="entry" key={entry.id}>
                                         <td>
-                                            <span className="entry__placement">
-                                                {entry.placement}
-                                            </span>
+                                            <span className="entry__placement">{entry.placement}</span>
                                             <span className="entry__medal" />
                                         </td>
                                         <td>
-                                            <Link
-                                                to={toPlayer(entry.id)}
-                                                className="entry__info"
-                                            >
+                                            <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
                                                     <FadeImage
                                                         src={getImageLink(
-                                                            entry.userId ||
-                                                                entry.id,
+                                                            entry.userId || entry.id,
                                                             this.props.platform
                                                         )}
                                                     />
                                                 </div>
-                                                <span className="entry__name">
-                                                    {entry.name}
-                                                </span>
+                                                <span className="entry__name">{entry.name}</span>
                                             </Link>
                                         </td>
-                                        <td className="entry__rating">
-                                            {entry.value}
-                                        </td>
+                                        <td className="entry__rating">{entry.value}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -185,8 +180,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => ({
     changePlatform: pf => dispatch({ type: "PLATFORM", payload: pf }),
-    load: (board, platform) =>
-        dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
+    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
     chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } })
 });
 

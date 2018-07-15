@@ -1,3 +1,7 @@
+export const languages = {
+    en: { label: "english", messageFn: () => import("i18n/en") }
+};
+
 import s0Logo from "assets/seasonlogos/R6-Default-Horizontal.svg";
 const s1Cover = require("assets/backgrounds/blackice1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s1Logo from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";
@@ -27,6 +31,7 @@ export const description =
     "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
 export const baseurl = "/";
 export const v2Api = "/api/v2";
+export const v3Api = "/api/v3";
 
 /**
  * define our Leaderboards

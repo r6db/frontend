@@ -10,6 +10,7 @@
     "license": "MIT",
     "dependencies": {
         "@babel/polyfill": "^7.0.0-beta.42",
+        "date-fns": "^1.29.0",
         "feather-icons": "^4.5.0",
         "history": "^4.7.2",
         "isomorphic-fetch": "^2.2.1",
@@ -19,14 +20,15 @@
         "raven-js": "^3.26.3",
         "react": "^16.3.1",
         "react-dom": "^16.2.0",
+        "react-intl": "^2.4.0",
         "react-loadable": "^5.3.1",
         "react-redux": "^5.0.6",
         "recharts": "^1.0.0-beta.10",
-        "redux": "^3.7.2",
+        "redux": "4",
         "redux-first-router": "^1.9.19",
         "redux-first-router-link": "^1.4.2",
         "redux-localstorage": "^0.4.1",
-        "redux-thunk": "^2.2.0",
+        "redux-thunk": "2.3.0",
         "responsive-loader": "^1.1.0"
     },
     "devDependencies": {
@@ -41,6 +43,7 @@
         "@babel/preset-typescript": "^7.0.0-beta.44",
         "@types/history": "^4.6.2",
         "@types/react": "^16.0.34",
+        "@types/react-intl": "^2.3.8",
         "@types/webpack-env": "^1.13.3",
         "autoprefixer": "^6.3.7",
         "babel-loader": "^8.0.0-beta.2",

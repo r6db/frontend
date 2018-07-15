@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
 import Icon, { GLYPHS } from "../Icon";
 import Link from "redux-first-router-link";
 import "./menu.scss";
@@ -13,46 +14,46 @@ const Menu = props => (
         <div className="menu__section menu__links menu__section--primary">
             <Link to="/" className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.HOME} />
-                Home
+                <FormattedMessage id="menu/home" />
             </Link>
             <Link
                 to={`/leaderboard/${props.platform}/ALL`}
                 className="menu__item"
             >
                 <Icon className="menu__icon" glyph={GLYPHS.LIST} />
-                Leaderboard
+                <FormattedMessage id="menu/leaderboard" />
             </Link>
 
             <Link to={`/favorites`} className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.STAR} />
-                Favorites
+                <FormattedMessage id="menu/favorites" />
             </Link>
 
             <Link to={`/compare`} className="menu__item">
                 <Icon className="menu__icon" glyph={GLYPHS.USERS} />
-                Compare (beta)
+                <FormattedMessage id="menu/compare" />
             </Link>
         </div>
 
         <div className="menu__divider" />
 
         <div className="menu__section menu__links menu__section--secondary">
-            <Link to="/FAQ" className="menu__item">
-                FAQ
+            <Link to="/faq" className="menu__item">
+                <FormattedMessage id="menu/faq" />
             </Link>
-            {/* 
+            {/*
             <a href="http://apidocs.r6db.com/" rel="noopener" target="_BLANK" className="menu__item">
                 API
             </a>
             <Link to="/settings" className="menu__item">
                 Settings
-            </Link> 
+            </Link>
             */}
             <Link to="/privacy" className="menu__item">
-                Privacy policy
+                <FormattedMessage id="menu/privacy" />
             </Link>
             {/* <Link to="/delete" className="menu__item">
-                Delete profile
+                <FormattedMessage id="menu/delete" />
             </Link> */}
         </div>
 
@@ -94,7 +95,7 @@ const Menu = props => (
         <div className="menu__divider" />
 
         <div className="menu__copyright">
-            This site is not affiliated with Ubisoft Entertainment.
+            <FormattedMessage id="menu/disclaimer" />
         </div>
     </div>
 );

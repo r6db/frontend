@@ -22,7 +22,8 @@
         "paths": {
             "components/*": ["./src/app/components/*"],
             "lib/*": ["./src/app/lib/*"],
-            "assets/*": ["./src/assets/*"]
+            "assets/*": ["./src/assets/*"],
+            "i18n/*": ["./src/i18n/*"]
         }
     },
     "include": ["src/**/*", "declarations.d.ts"]

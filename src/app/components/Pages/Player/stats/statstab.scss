@@ -20,6 +20,10 @@
         }
     }
 
+    &--norecord {
+        align-items: center;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
