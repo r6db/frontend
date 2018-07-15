@@ -1,12 +1,7 @@
 import { OPERATORS, SEASONS } from "lib/constants";
 import * as diffInDays from "date-fns/difference_in_days";
 import objectDiff, { DiffStrategy } from "lib/objectDiff";
-import {
-    IPlayerResponse,
-    IRankGroup,
-    IAlteredStats,
-    IAlteredPlayer
-} from "../interfaces";
+import { IPlayerResponse, IRankGroup, IAlteredStats, IAlteredPlayer } from "../interfaces";
 
 const earliestDate = new Date("2015-01-01");
 
@@ -47,16 +42,13 @@ export default function(player: IPlayerResponse): IAlteredPlayer {
     p.progressions = p.progressions.reverse();
 
     // build pastRanks
-    const allRanks = p.seasonRanks
-        .filter(x => !!x)
-        .reduce((acc: IRankGroup[], rank) => {
-            const alreadyHasSeason = !!acc.filter(x => x.season === rank.season)
-                .length;
-            if (!alreadyHasSeason) {
-                acc.push(rank);
-            }
-            return acc;
-        }, []);
+    const allRanks = p.seasonRanks.filter(x => !!x).reduce((acc: IRankGroup[], rank) => {
+        const alreadyHasSeason = !!acc.filter(x => x.season === rank.season).length;
+        if (!alreadyHasSeason) {
+            acc.push(rank);
+        }
+        return acc;
+    }, []);
     p.pastRanks = allRanks
         .map(x => {
             const sortedRanks = [x.ncsa, x.emea, x.apac]
@@ -67,12 +59,7 @@ export default function(player: IPlayerResponse): IAlteredPlayer {
                     mmr: Number.parseInt(y.mmr.toFixed(2)),
                     max_mmr: Number.parseInt(y.max_mmr.toFixed(2))
                 }))
-                .sort(
-                    (a, b) =>
-                        b.max_rank != a.max_rank
-                            ? b.max_rank - a.max_rank
-                            : b.max_mmr - a.max_mmr
-                );
+                .sort((a, b) => (b.max_rank != a.max_rank ? b.max_rank - a.max_rank : b.max_mmr - a.max_mmr));
             return sortedRanks[0];
         })
         .sort((a, b) => b.season - a.season);
@@ -84,9 +71,7 @@ export default function(player: IPlayerResponse): IAlteredPlayer {
     if (p.stats) {
         Object.assign(p.stats.general, getComputedStats(p.stats.general));
     }
-    p.aliases = p.aliases
-        .map(fixAlias)
-        .sort((a, b) => b.created_at - a.created_at);
+    p.aliases = p.aliases.map(fixAlias).sort((a, b) => b.created_at - a.created_at);
     p.name = p.aliases[0].name;
 
     // parse update variables
@@ -104,31 +89,22 @@ export default function(player: IPlayerResponse): IAlteredPlayer {
     if (p.seasonStats) {
         p.snapshots = [{ season: -1, stats: p.stats, clean: true }].concat(
             Object.keys(p.seasonStats).map(season => {
-                let next = p.seasonStats[1 + season];
+                const s = Number.parseInt(season);
+                let next = p.seasonStats[1 + s];
                 let cleanDiff = true;
                 if (!next) {
                     next = p.stats;
                     cleanDiff = false;
                 }
-                const diff = objectDiff(
-                    next,
-                    p.seasonStats[season],
-                    DiffStrategy.KEEP
-                );
+                const diff = objectDiff(next, p.seasonStats[season], DiffStrategy.KEEP);
 
                 // TODO: diff computed stats
                 // hitChance
                 // headshotChance
                 // headshotRatio
                 // abandons
-                diff.general = Object.assign(
-                    diff.general,
-                    getComputedStats(diff.general)
-                );
-                diff.ranked.abandons = getAbandons([
-                    allRanks.find(x => x.season == Number.parseInt(season))
-                ]);
-
+                diff.general = Object.assign(diff.general, getComputedStats(diff.general));
+                diff.ranked.abandons = getAbandons([allRanks.find(x => x.season == Number.parseInt(season))]);
                 return {
                     season: Number.parseInt(season),
                     stats: diff as IAlteredStats,
@@ -149,9 +125,7 @@ export default function(player: IPlayerResponse): IAlteredPlayer {
     // map operator stats
     if (p.stats.operator) {
         p.stats.operator = Object.keys(p.stats.operator)
-            .map(id =>
-                Object.assign({}, p.stats.operator[id], { id }, OPERATORS[id])
-            )
+            .map(id => Object.assign({}, p.stats.operator[id], { id }, OPERATORS[id]))
             .reduce((acc, curr) => Object.assign(acc, { [curr.id]: curr }), {});
     }
     return Object.assign({}, p, {
