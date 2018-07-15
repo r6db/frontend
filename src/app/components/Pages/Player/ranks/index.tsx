@@ -13,9 +13,7 @@ function didPlay(region) {
 
 export default class RanksTab extends React.PureComponent<any, any> {
     getRanks(props) {
-        return []
-            .concat(props.rank)
-            .concat(props.seasonRanks)
+        return props.seasonRanks
             .filter(x => didPlay(x.apac) || didPlay(x.emea) || didPlay(x.ncsa))
             .sort((a, b) => b.season - a.season);
     }

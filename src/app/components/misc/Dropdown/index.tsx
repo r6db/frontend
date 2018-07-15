@@ -16,14 +16,14 @@ interface IDropdownProps
 }
 
 interface IDropdownState {
-    value: string;
+    value: any;
 }
 
 class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = { value: this.props.setValue };
+        this.state = { value: this.props.value };
     }
     handleChange(e) {
         this.setState({ value: e.target.value });

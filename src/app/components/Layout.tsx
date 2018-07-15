@@ -14,7 +14,7 @@ import Drawer from "components/misc/Drawer";
 import HOME from "./Pages/Home";
 import SEARCH from "./Pages/Search";
 
-import langEn from "i18n/en";
+import { translations as langEn } from "i18n/en";
 
 import "./layout.scss";
 import "./base.scss";
@@ -64,11 +64,11 @@ class Layout extends React.PureComponent<any, any> {
                 .then(mod => {
                     if (process.env.NODE_ENV === "development") {
                         (window as any).i18n = {
-                            messages: mod.default,
+                            messages: mod.translations,
                             locale
                         };
                     }
-                    this.setState({ messages: mod.default, locale: locale });
+                    this.setState({ messages: mod.translations, locale: locale });
                 })
                 .catch(err => {
                     console.warn("error getting locale", err);

@@ -1,15 +1,15 @@
-import { OPERATORS } from './constants';
+import { OPERATORS } from "./constants";
 
 export enum Platform {
-    PC = 'PC',
-    PS4 = 'PS4',
-    XBOX = 'XBOX'
-};
+    PC = "PC",
+    PS4 = "PS4",
+    XBOX = "XBOX"
+}
 
 export enum Region {
-    APAC = 'apac',
-    EMEA = 'emea',
-    NCSA = 'ncsa'
+    APAC = "apac",
+    EMEA = "emea",
+    NCSA = "ncsa"
 }
 
 export interface IRankBase {
@@ -53,7 +53,7 @@ export interface ISearchProfile extends ISearchResponseProfile {
 }
 
 export interface IRank extends IRankBase {
-    region: Region,
+    region: Region;
     wins: number;
     losses: number;
     abandons: number;
@@ -79,23 +79,27 @@ export interface IOperator {
     kills: number;
     deaths: number;
     timePlayed: number;
-    name: "IQ"
+    name: string;
 }
 
 export interface IOperators {
-    [string: number]: IOperator
+    [string: number]: IOperator;
 }
 
 export interface IQueueStats {
-        deaths: number;
-        kills: number;
-        lost: number;
-        played: number;
-        timePlayed: number;
-        won: number;
+    deaths: number;
+    kills: number;
+    lost: number;
+    played: number;
+    timePlayed: number;
+    won: number;
 }
 
-export interface IGeneralStats{
+export interface IRankedStats extends IQueueStats {
+    abandons: number;
+}
+
+export interface IGeneralStats {
     assists: number;
     blindKills: number;
     bulletsFired: number;
@@ -142,7 +146,7 @@ export interface IStats {
         won: number;
     };
     operator: IOperators;
-    ranked: IQueueStats;
+    ranked: IRankedStats;
     secure: {
         bestScore: number;
         lost: number;
@@ -152,17 +156,25 @@ export interface IStats {
 }
 
 export interface IAlteredStats extends IStats {
-    ranked: IQueueStats & { abandons?: number };
     general: IGeneralStats & {
         hitChance?: number;
         headshotChance?: number;
         headshotRatio?: number;
     };
 }
+export interface IPastRank {
+    rank: number;
+    max_rank: number;
+    season: number;
+    mmr: number;
+    max_mmr: number;
+}
 
 export interface IAlteredPlayer extends IPlayerResponse {
     updateAvailableAt: Date;
+    pastRanks: any;
     stats: IAlteredStats;
+    snapshots: { season: number; stats: IAlteredStats; clean: boolean }[];
 }
 
 export interface IPlayerResponse {
@@ -192,6 +204,9 @@ export interface IPlayerResponse {
     aliases: ISearchProfileAlias[];
     serverTime: string;
     updateAvailableAt?: string | Date;
+    seasonStats: {
+        [season: string]: IStats;
+    };
 }
 
 export interface IProgressionRank extends IRankBase {

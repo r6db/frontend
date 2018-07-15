@@ -235,7 +235,7 @@ async function playerThunk(dispatch, getState) {
         .then(function(player) {
             dispatch({ type: "PLAYER_FETCHED", payload: { id, player } });
             analytics.pageView("Player", `/player/:id/${tab || ""}`);
-            if (!player.aliases || !player.aliases.length) {
+            if (player.aliases && player.aliases.length) {
                 let description = `Rainbow Six: Siege stats for ${player.name} (${player.platform})`;
                 let extra = "";
                 const placements = [
@@ -278,6 +278,7 @@ async function playerThunk(dispatch, getState) {
             }
         })
         .catch(error => {
+            console.error(error);
             if (error.message === "SERVERFAULT") {
                 return dispatch(redirect({ type: "SERVERFAULT" }));
             }

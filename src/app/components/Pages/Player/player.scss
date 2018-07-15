@@ -36,4 +36,14 @@
             @include card-divider;
         }
     }
+
+    &__charts {
+        transition: opacity 200ms ease-out;
+        &--hidden {
+            opacity: 0;
+        }
+        &--visible {
+            opacity: 1;
+        }
+    }
 }

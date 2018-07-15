@@ -10,7 +10,9 @@ export default (state: IPlayerReducerState = {}, action) => {
                 return acc;
             }, s);
         case "PLAYER_FETCHED":
-            return Object.assign({}, state, { [action.payload.id]: action.payload.player });
+            return Object.assign({}, state, {
+                [action.payload.id]: action.payload.player
+            });
         default:
             return state;
     }

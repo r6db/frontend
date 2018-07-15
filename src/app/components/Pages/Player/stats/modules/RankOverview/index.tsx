@@ -3,6 +3,7 @@ import * as get from "lodash/get";
 import Icon, { GLYPHS } from "components/misc/Icon";
 import { RANKS } from "lib/constants";
 import "./rankoverview.scss";
+import { FormattedMessage } from "react-intl";
 
 function GlobalRank(props) {
     if (get(props, "placements.global", null) === null) {
@@ -11,21 +12,14 @@ function GlobalRank(props) {
     return (
         <div className="globalrank global">
             <div className="globalrank__icon">
-                <Icon
-                    glyph={
-                        GLYPHS["RANK" + get(props, "pastRanks.0.max_rank", 0)]
-                    }
-                />
+                <Icon glyph={GLYPHS["RANK" + get(props, "pastRanks.0.max_rank", 0)]} />
             </div>
             <div className="globalrank__box">
-                <div className="globalrank__rank">
-                    {RANKS[get(props, "pastRanks.0.max_rank", 0)]}
-                </div>
+                <div className="globalrank__rank">{RANKS[get(props, "pastRanks.0.max_rank", 0)]}</div>
                 <div className="globalrank__placement">
                     {get(props, "pastRanks.0.max_rank", 0) === 0
                         ? "N/A"
-                        : typeof get(props, "placements.global", "-") ===
-                          "number"
+                        : typeof get(props, "placements.global", "-") === "number"
                             ? "#" + (get(props, "placements.global", "-") + 1)
                             : ""}{" "}
                     Global
@@ -43,11 +37,7 @@ function CurrentRank(props) {
                 <Icon glyph={GLYPHS["RANK" + props.rank]} />
             </div>
             <div className="currentrank__placement">
-                {props.rank === 0
-                    ? null
-                    : typeof props.placement === "number"
-                        ? "#" + (props.placement + 1)
-                        : ""}
+                {props.rank === 0 ? null : typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
             </div>
             <div className="currentrank__region">{props.region}</div>
         </div>
@@ -61,7 +51,7 @@ export default function RankOverview(props) {
     if (props.level < 100) {
         return (
             <div className="rankoverview__isunderage">
-                rankings unlock at level 100
+                <FormattedMessage id="player/rankingsUnlock" />
             </div>
         );
     }
@@ -70,9 +60,7 @@ export default function RankOverview(props) {
             <div className="rankoverview__global">
                 <GlobalRank {...props} />
             </div>
-            {get(props, "placements.global", null) === null ? null : (
-                <div className="playermodule__divider" />
-            )}
+            {get(props, "placements.global", null) === null ? null : <div className="playermodule__divider" />}
             <div className="rankoverview__regional">
                 <CurrentRank
                     key="rank-emea"

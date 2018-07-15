@@ -2,7 +2,7 @@ import * as React from "react";
 import "./media.scss";
 
 interface IMediaProps {
-    title: string;
+    title: string | JSX.Element;
     img?: string;
     label?: string;
     children?: any;

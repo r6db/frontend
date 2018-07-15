@@ -31,6 +31,7 @@ export const description =
     "R6DB is a fan-powered database for Rainbow Six: Siege. Search for Players, check Profiles or view the Leaderboard";
 export const baseurl = "/";
 export const v2Api = "/api/v2";
+export const v3Api = "/api/v3";
 
 /**
  * define our Leaderboards

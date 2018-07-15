@@ -9,30 +9,30 @@ import Fauxtable from "components/misc/Fauxtable";
 import "./opstab.scss";
 
 const sorters = [
-    { key: "name", label: "player/filter/name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
-    { key: "won", label: "player/filter/won", fn: (a, b) => b.won - a.won },
-    { key: "lost", label: "player/filter/lost", fn: (a, b) => b.lost - a.lost },
+    { key: "name", label: "player/sorter/name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
+    { key: "won", label: "player/sorter/won", fn: (a, b) => b.won - a.won },
+    { key: "lost", label: "player/sorter/lost", fn: (a, b) => b.lost - a.lost },
     {
         key: "wlr",
-        label: "player/filter/wlr",
+        label: "player/sorter/wlr",
         fn: (a, b) => stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a)
     },
-    { key: "kills", label: "player/filter/kills", fn: (a, b) => b.kills - a.kills },
-    { key: "deaths", label: "player/filter/deaths", fn: (a, b) => b.deaths - a.deaths },
+    { key: "kills", label: "player/sorter/kills", fn: (a, b) => b.kills - a.kills },
+    { key: "deaths", label: "player/sorter/deaths", fn: (a, b) => b.deaths - a.deaths },
     {
         key: "kdr",
-        label: "player/filter/kdr",
+        label: "player/sorter/kdr",
         fn: (a, b) => (stats.getKillRatioRaw(b) - stats.getKillRatioRaw(a)).toFixed(2)
     },
-    { key: "kpr", label: "player/filter/kpr", fn: (a, b) => b.kpr - a.kpr },
+    { key: "kpr", label: "player/sorter/kpr", fn: (a, b) => b.kpr - a.kpr },
     {
         key: "survival",
-        label: "player/filter/survival",
+        label: "player/sorter/survival",
         fn: (a, b) => b.survivalRate - a.survivalRate
     },
     {
         key: "time",
-        label: "player/filter/time",
+        label: "player/sorter/time",
         fn: (a, b) => b.timePlayed - a.timePlayed
     }
 ];
@@ -167,15 +167,13 @@ export default class OperatorTab extends React.PureComponent<any, any> {
             <div className="opstab">
                 <div className="opstab__controls card">
                     <div className="card-content">
-                        <p>
-                            <Dropdown
-                                label={<FormattedMessage id="player/filterby" />}
-                                options={Object.keys(filters).map(f => ({
-                                    value: f
-                                }))}
-                                action={this.setFilter}
-                            />
-                        </p>
+                        <Dropdown
+                            label={<FormattedMessage id="player/filterby" />}
+                            options={Object.keys(filters).map(f => ({
+                                value: f
+                            }))}
+                            action={this.setFilter}
+                        />
                     </div>
                 </div>
                 <Fauxtable.Table className="opstab__table">
