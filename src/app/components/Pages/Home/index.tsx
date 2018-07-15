@@ -8,7 +8,9 @@ import "./home.scss";
 import background from "assets/backgrounds/parabellum1.jpg";
 
 const oncreate = () => {
-    const search = document.querySelector(".home .searchbar__name") as HTMLInputElement;
+    const search = document.querySelector(
+        ".home .searchbar__name"
+    ) as HTMLInputElement;
     if (search && !window.ontouchstart) {
         search.focus();
     }
@@ -20,7 +22,11 @@ function Home(props) {
             <PageHead image={background} position="75% 25%">
                 <div className="home__content container">
                     <Icon className="home__logo" glyph={GLYPHS.LOGO} />
-                    <Searchbar className="home__search" search={props.search} focused={true} />
+                    <Searchbar
+                        className="home__search"
+                        search={props.search}
+                        focused={true}
+                    />
                     {/* <div className="blocker" /> */}
                 </div>
             </PageHead>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
 import Result from "components/misc/Playercard";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
@@ -7,17 +8,21 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import { connect } from "react-redux";
 import "./search.scss";
 
-import { GLYPHS } from "components/misc/Icon";
-
 function Search(props) {
     return (
         <Page className="search">
             <PageHead>
                 <div className="container container--small">
                     <div className="header">
-                        Search {props.search}
+                        <FormattedMessage
+                            id="search/query"
+                            values={{ name: props.search }}
+                        />
                         <span className="search__resultcount header header--small header--subtle">
-                            {props.result.length} result(s)
+                            <FormattedMessage
+                                id="search/resultcount"
+                                values={{ count: props.result.length }}
+                            />
                         </span>
                     </div>
                 </div>
@@ -35,7 +40,7 @@ function Search(props) {
                             </div>
                         ) : (
                             <Media title="No results">
-                                we could not find any players matching that query.
+                                <FormattedMessage id="search/no_results" />
                             </Media>
                         )}
                     </div>

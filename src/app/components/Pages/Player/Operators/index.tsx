@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { OPERATORS } from "lib/constants";
 import * as stats from "lib/stats";
 import Dropdown from "components/misc/Dropdown";
@@ -8,35 +9,30 @@ import Fauxtable from "components/misc/Fauxtable";
 import "./opstab.scss";
 
 const sorters = [
-    {
-        key: "name",
-        label: "name",
-        fn: (a, b) => (a.name || "").localeCompare(b.name)
-    },
-    { key: "won", label: "won", fn: (a, b) => b.won - a.won },
-    { key: "lost", label: "lost", fn: (a, b) => b.lost - a.lost },
+    { key: "name", label: "player/filter/name", fn: (a, b) => (a.name || "").localeCompare(b.name) },
+    { key: "won", label: "player/filter/won", fn: (a, b) => b.won - a.won },
+    { key: "lost", label: "player/filter/lost", fn: (a, b) => b.lost - a.lost },
     {
         key: "wlr",
-        label: "win ratio",
+        label: "player/filter/wlr",
         fn: (a, b) => stats.getWinChanceRaw(b) - stats.getWinChanceRaw(a)
     },
-    { key: "kills", label: "kills", fn: (a, b) => b.kills - a.kills },
-    { key: "deaths", label: "deaths", fn: (a, b) => b.deaths - a.deaths },
+    { key: "kills", label: "player/filter/kills", fn: (a, b) => b.kills - a.kills },
+    { key: "deaths", label: "player/filter/deaths", fn: (a, b) => b.deaths - a.deaths },
     {
         key: "kdr",
-        label: "k/d ratio",
-        fn: (a, b) =>
-            (stats.getKillRatioRaw(b) - stats.getKillRatioRaw(a)).toFixed(2)
+        label: "player/filter/kdr",
+        fn: (a, b) => (stats.getKillRatioRaw(b) - stats.getKillRatioRaw(a)).toFixed(2)
     },
-    { key: "kpr", label: "kills/round", fn: (a, b) => b.kpr - a.kpr },
+    { key: "kpr", label: "player/filter/kpr", fn: (a, b) => b.kpr - a.kpr },
     {
         key: "survival",
-        label: "rounds survived",
+        label: "player/filter/survival",
         fn: (a, b) => b.survivalRate - a.survivalRate
     },
     {
         key: "time",
-        label: "time played",
+        label: "player/filter/time",
         fn: (a, b) => b.timePlayed - a.timePlayed
     }
 ];
@@ -112,11 +108,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
 
         const getOp = id => opProgressions[id] || [];
 
-        const getDelta = op => cb =>
-            getOp(op).reduce(
-                (acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])),
-                []
-            );
+        const getDelta = op => cb => getOp(op).reduce((acc, curr, i, arr) => acc.concat(cb(curr, arr[i - 1])), []);
 
         const getProgressionAverage = (op, cb) => {
             const series = getOp(op);
@@ -140,9 +132,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
         if (tester !== this.state.sorter) {
             return tester.key;
         }
-        return this.state.isSortReversed
-            ? tester.key + " is-active is-reversed"
-            : tester.key + " is-active";
+        return this.state.isSortReversed ? tester.key + " is-active is-reversed" : tester.key + " is-active";
     }
     sort(a, b) {
         const res = this.state.sorter.fn(a, b);
@@ -177,13 +167,15 @@ export default class OperatorTab extends React.PureComponent<any, any> {
             <div className="opstab">
                 <div className="opstab__controls card">
                     <div className="card-content">
-                        <Dropdown
-                            label="filter by"
-                            options={Object.keys(filters).map(f => ({
-                                value: f
-                            }))}
-                            action={this.setFilter}
-                        />
+                        <p>
+                            <Dropdown
+                                label={<FormattedMessage id="player/filterby" />}
+                                options={Object.keys(filters).map(f => ({
+                                    value: f
+                                }))}
+                                action={this.setFilter}
+                            />
+                        </p>
                     </div>
                 </div>
                 <Fauxtable.Table className="opstab__table">
@@ -195,7 +187,7 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                                     className={this.getSorterClass(sorter)}
                                     onClick={() => this.setSort(sorter)}
                                 >
-                                    {sorter.label}
+                                    <FormattedMessage id={sorter.label} />
                                 </Fauxtable.Heading>
                             ))}
                         </Fauxtable.Row>
@@ -207,73 +199,36 @@ export default class OperatorTab extends React.PureComponent<any, any> {
                             .map(datum => (
                                 <div key={datum.id}>
                                     <Fauxtable.Row className={datum.id}>
-                                        <Fauxtable.Cell
-                                            className="name"
-                                            onClick={() =>
-                                                this.toggleOp(datum.id)
-                                            }
-                                        >
-                                            <Icon
-                                                glyph={
-                                                    GLYPHS[
-                                                        datum.id.toUpperCase()
-                                                    ]
-                                                }
-                                            />
+                                        <Fauxtable.Cell className="name" onClick={() => this.toggleOp(datum.id)}>
+                                            <Icon glyph={GLYPHS[datum.id.toUpperCase()]} />
                                             {datum.name}
                                         </Fauxtable.Cell>
-                                        <Fauxtable.Cell className="won">
-                                            {datum.won || 0}
-                                        </Fauxtable.Cell>
-                                        <Fauxtable.Cell className="lost">
-                                            {datum.lost || 0}
-                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="won">{datum.won || 0}</Fauxtable.Cell>
+                                        <Fauxtable.Cell className="lost">{datum.lost || 0}</Fauxtable.Cell>
                                         <Fauxtable.Cell className="wlr">
-                                            <Scale
-                                                value={datum.wlr * 100}
-                                                scale={SCALES.WL}
-                                            >
+                                            <Scale value={datum.wlr * 100} scale={SCALES.WL}>
                                                 %
                                             </Scale>
                                         </Fauxtable.Cell>
-                                        <Fauxtable.Cell className="kills">
-                                            {datum.kills || 0}
-                                        </Fauxtable.Cell>
-                                        <Fauxtable.Cell className="deaths">
-                                            {datum.deaths || 0}
-                                        </Fauxtable.Cell>
+                                        <Fauxtable.Cell className="kills">{datum.kills || 0}</Fauxtable.Cell>
+                                        <Fauxtable.Cell className="deaths">{datum.deaths || 0}</Fauxtable.Cell>
                                         <Fauxtable.Cell className="kdr">
-                                            <Scale
-                                                value={datum.kdr}
-                                                scale={SCALES.KD}
-                                            />
+                                            <Scale value={datum.kdr} scale={SCALES.KD} />
                                         </Fauxtable.Cell>
                                         <Fauxtable.Cell className="kpr">
-                                            <Scale
-                                                value={datum.kpr}
-                                                scale={SCALES.KPR}
-                                            />
+                                            <Scale value={datum.kpr} scale={SCALES.KPR} />
                                         </Fauxtable.Cell>
                                         <Fauxtable.Cell className="survival">
-                                            <Scale
-                                                value={datum.survivalRate}
-                                                scale={SCALES.SVL}
-                                            >
+                                            <Scale value={datum.survivalRate} scale={SCALES.SVL}>
                                                 %
                                             </Scale>
                                         </Fauxtable.Cell>
                                         <Fauxtable.Cell className="time">
-                                            {stats.formatDuration(
-                                                datum.timePlayed
-                                            )}
+                                            {stats.formatDuration(datum.timePlayed)}
                                         </Fauxtable.Cell>
                                     </Fauxtable.Row>
-                                    {!this.state.operatorsShowMap[
-                                        datum.id
-                                    ] ? null : (
-                                        <div className="opstab__graphs">
-                                            {/* kd/wl/playtime charts */}
-                                        </div>
+                                    {!this.state.operatorsShowMap[datum.id] ? null : (
+                                        <div className="opstab__graphs">{/* kd/wl/playtime charts */}</div>
                                     )}
                                 </div>
                             ))}

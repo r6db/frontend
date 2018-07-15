@@ -28,7 +28,12 @@ module.exports = {
         alias: {
             components: path.join(__dirname, "../src/app/components"),
             lib: path.join(__dirname, "../src/app/lib"),
+<<<<<<< HEAD
             assets: path.join(__dirname, "../src/assets")
+=======
+            assets: path.join(__dirname, "../src/assets"),
+            i18n: path.join(__dirname, "../src/i18n")
+>>>>>>> master
         }
     },
     node: {
@@ -92,8 +97,8 @@ module.exports = {
                             sizes: [320, 640, 1200, 1600, 1920, 2440],
                             placeholder: true,
                             placeholderSize: 40,
-                            quality: 85
-                            // adapter: require("responsive-loader/sharp"),
+                            quality: 85,
+                            adapter: require("responsive-loader/sharp")
                         }
                     },
                     {

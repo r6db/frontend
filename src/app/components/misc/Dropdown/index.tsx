@@ -6,20 +6,17 @@ import Icon, { GLYPHS } from "components/misc/Icon";
 import "./dropdown.scss";
 
 interface IDropdownProps
-    extends React.DetailedHTMLProps<
-            React.SelectHTMLAttributes<HTMLSelectElement>,
-            HTMLSelectElement
-        > {
+    extends React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
     options: Array<{ value: string; label?: string }>;
-    value?: string;
-    label?: string;
+    setValue?: string;
+    label?: string | JSX.Element;
     role?: "primary" | "accent" | "error" | "warning" | "success" | "info";
     outline?: boolean;
     action?(any): any;
 }
 
 interface IDropdownState {
-    value: string;
+    value: any;
 }
 
 class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
@@ -38,18 +35,13 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
         return (
             <div
                 className={trim(`dropdown
-                    dropdown--${this.props.outline ? "outline--" : ""}${this
-                    .props.role || "default"}
+                    dropdown--${this.props.outline ? "outline--" : ""}${this.props.role || "default"}
                     ${this.props.disabled ? "dropdown--disabled" : ""}
                 `)}
             >
                 {this.props.label ? <label>{this.props.label}</label> : ""}
                 <div className="dropdown__box">
-                    <select
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        disabled={this.props.disabled}
-                    >
+                    <select value={this.state.value} onChange={this.handleChange} disabled={this.props.disabled}>
                         {this.props.options.map(x => {
                             return (
                                 <option value={x.value} key={x.value}>
@@ -58,10 +50,7 @@ class Dropdown extends React.PureComponent<IDropdownProps, IDropdownState> {
                             );
                         })}
                     </select>
-                    <Icon
-                        className="dropdown__arrow"
-                        glyph={GLYPHS.CHEVRONDOWN}
-                    />
+                    <Icon className="dropdown__arrow" glyph={GLYPHS.CHEVRONDOWN} />
                 </div>
             </div>
         );
