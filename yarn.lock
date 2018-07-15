@@ -609,6 +609,10 @@
   version "10.5.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.2.tgz#f19f05314d5421fe37e74153254201a7bf00a707"
 
+"@types/react-intl@^2.3.8":
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/@types/react-intl/-/react-intl-2.3.8.tgz#de56b21b67e39df24bc0fc7e67b437976b666919"
+
 "@types/react@^16.0.34":
   version "16.4.6"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.6.tgz#5024957c6bcef4f02823accf5974faba2e54fada"
@@ -7892,7 +7896,6 @@ react-hot-loader@^4.0.1:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
 
-<<<<<<< HEAD
 react-intl@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.4.0.tgz#66c14dc9df9a73b2fbbfbd6021726e80a613eb15"
@@ -7901,11 +7904,10 @@ react-intl@^2.4.0:
     intl-messageformat "^2.1.0"
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
-=======
+
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
->>>>>>> master
 
 react-loadable@^5.3.1:
   version "5.4.0"

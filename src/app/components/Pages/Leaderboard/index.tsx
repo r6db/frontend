@@ -77,36 +77,19 @@ class Leaderboard extends React.PureComponent<any, any> {
                             </div>
                         </div>
                         <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
-                            <p className="leaderboard__platform">
-                                <FormattedMessage id="platform">
-                                    {msg => (
-                                        <label className="leaderboard__platformlabel" htmlFor="platformselect">
-                                            {msg}
-                                        </label>
-                                    )}
-                                </FormattedMessage>
-                                <Dropdown
-                                    label="Platform"
-                                    setValue={this.state.platform}
-                                    options={[{ value: "PC" }, { value: "PS4" }, { value: "XBOX" }]}
-                                    action={this.changePlatform}
-                                />
-                            </p>
-                            <p className="leaderboard__board">
-                                <FormattedMessage id="board">
-                                    {msg => (
-                                        <label className="leaderboard__boardlabel" htmlFor="boardselect">
-                                            {msg}
-                                        </label>
-                                    )}
-                                </FormattedMessage>
-                                <Dropdown
-                                    label="Board"
-                                    value={this.state.board}
-                                    options={boardOptions}
-                                    action={this.changeBoard}
-                                />
-                            </p>
+                            <Dropdown
+                                label={<FormattedMessage id="platform" />}
+                                setValue={this.state.platform}
+                                options={[{ value: "PC" }, { value: "PS4" }, { value: "XBOX" }]}
+                                action={this.changePlatform}
+                            />
+
+                            <Dropdown
+                                label={<FormattedMessage id="board" />}
+                                value={this.state.board}
+                                options={boardOptions}
+                                action={this.changeBoard}
+                            />
                             <p>
                                 <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
                             </p>

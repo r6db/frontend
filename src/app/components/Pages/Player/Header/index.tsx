@@ -32,7 +32,7 @@ class PlayerHeader extends React.PureComponent<any, any> {
     }
     componentDidMount() {
         this.setState({
-            interval: setInterval(() => this.rerender(), 30 * 1000)
+            interval: setInterval(() => this.rerender(), 5 * 1000)
         });
     }
     rerender() {
@@ -40,6 +40,10 @@ class PlayerHeader extends React.PureComponent<any, any> {
             clearInterval(this.state.interval);
             this.setState({ interval: null });
         }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.interval);
     }
 
     render() {
