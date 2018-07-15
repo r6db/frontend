@@ -9,45 +9,45 @@ export default function SimpleCard(props) {
             <div className="card__content">
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/wins" />
+                        <FormattedMessage id="wins" />
                     </div>
                     <div className="value">{props.wins || props.won}</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/losses" />
+                        <FormattedMessage id="losses" />
                     </div>
                     <div className="value">{props.losses || props.lost}</div>
                 </div>
                 {props.abandons ? (
                     <div className="row">
                         <div className="label">
-                            <FormattedMessage id="player/abandons" />
+                            <FormattedMessage id="abandons" />
                         </div>
                         <div className="value">{props.abandons}</div>
                     </div>
                 ) : null}
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/winRate" />
+                        <FormattedMessage id="winRate" />
                     </div>
                     <div className="value">{getWinChance(props)}%</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/kills" />
+                        <FormattedMessage id="kills" />
                     </div>
                     <div className="value">{props.kills}</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/deaths" />
+                        <FormattedMessage id="deaths" />
                     </div>
                     <div className="value">{props.deaths}</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/kdRatio" />
+                        <FormattedMessage id="kdRatio" />
                     </div>
                     <div className="value">{getKillRatio(props)}</div>
                 </div>

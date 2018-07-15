@@ -19,32 +19,36 @@ import * as uniq from "lodash/uniq";
 //#region data mappers
 
 const rows = [
-    { label: "platform", prop: x => get(x, "platform", "-") },
-    { label: "global rank", prop: x => get(x, "placements.global", "-") },
-    { label: "won", prop: x => get(x, "stats.general.won", 0) },
-    { label: "lost", prop: x => get(x, "stats.general.lost", 0) },
+    { key: "platform", label: <FormattedMessage id="platform" />, prop: x => get(x, "platform", "-") },
+    { key: "ranking", label: <FormattedMessage id="compare/ranking" />, prop: x => get(x, "placements.global", "-") },
+    { key: "wins", label: <FormattedMessage id="wins" />, prop: x => get(x, "stats.general.won", 0) },
+    { key: "losses", label: <FormattedMessage id="losses" />, prop: x => get(x, "stats.general.lost", 0) },
     {
-        label: "wlr",
+        key: "wlr",
+        label: <FormattedMessage id="winRate" />,
         prop: x => stats.getWinChance(get(x, "stats.general"))
     },
-    { label: "kills", prop: x => get(x, "stats.general.kills", 0) },
-    { label: "deaths", prop: x => get(x, "stats.general.deaths", 0) },
-    { label: "assists", prop: x => get(x, "stats.general.assists", 0) },
+    { key: "kills", label: <FormattedMessage id="kills" />, prop: x => get(x, "stats.general.kills", 0) },
+    { key: "deaths", label: <FormattedMessage id="deaths" />, prop: x => get(x, "stats.general.deaths", 0) },
+    { key: "assists", label: <FormattedMessage id="assists" />, prop: x => get(x, "stats.general.assists", 0) },
     {
-        label: "kdr",
+        key: "kdr",
+        label: <FormattedMessage id="kdRatio" />,
         prop: x => stats.getKillRatio(get(x, "stats.general", {}))
     },
-    { label: "pen kills", prop: x => get(x, "stats.general.penetrationKills") },
-    { label: "blindfires", prop: x => get(x, "stats.general.blindKills") },
-    { label: "suicides", prop: x => get(x, "stats.general.suicides") },
+    { key: "pen", label: <FormattedMessage id="penKills" />, prop: x => get(x, "stats.general.penetrationKills") },
+    { key: "blind", label: <FormattedMessage id="blindKills" />, prop: x => get(x, "stats.general.blindKills") },
+    { key: "suicides", label: <FormattedMessage id="suicides" />, prop: x => get(x, "stats.general.suicides") },
     {
-        label: "gadgets destr.",
+        key: "gadg",
+        label: <FormattedMessage id="gadgetsDestroyed" />,
         prop: x => get(x, "stats.general.gadgetsDestroyed")
     },
-    { label: "best score bomb", prop: x => get(x, "stats.bomb.bestScore") },
-    { label: "best score secure", prop: x => get(x, "stats.secure.bestScore") },
+    { key: "bomb", label: <FormattedMessage id="mode/bomb" />, prop: x => get(x, "stats.bomb.bestScore") },
+    { key: "secure", label: <FormattedMessage id="mode/secure" />, prop: x => get(x, "stats.secure.bestScore") },
     {
-        label: "best score hostage",
+        key: "hostage",
+        label: <FormattedMessage id="mode/hostage" />,
         prop: x => get(x, "stats.hostage.bestScore")
     }
 ];
@@ -445,7 +449,7 @@ class Compare extends React.Component<any, any> {
                                         <Fauxtable.Row>
                                             <Fauxtable.Heading className="comparison-stat">Stat</Fauxtable.Heading>
                                             {this.props.players.map(x => (
-                                                <Fauxtable.Heading className="comparison-value">
+                                                <Fauxtable.Heading key={x.name} className="comparison-value">
                                                     {x.name}
                                                 </Fauxtable.Heading>
                                             ))}
@@ -453,10 +457,10 @@ class Compare extends React.Component<any, any> {
                                     </Fauxtable.Head>
                                     <Fauxtable.Body>
                                         {rows.map(row => (
-                                            <Fauxtable.Row key={row.label}>
+                                            <Fauxtable.Row key={row.key}>
                                                 <Fauxtable.Cell className="comparison-stat">{row.label}</Fauxtable.Cell>
                                                 {this.props.players.map(x => (
-                                                    <Fauxtable.Cell className="comparison-value">
+                                                    <Fauxtable.Cell key={x.name} className="comparison-value">
                                                         {row.prop(x)}
                                                     </Fauxtable.Cell>
                                                 ))}

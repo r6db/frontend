@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";
@@ -16,21 +17,14 @@ export default function StatsTab(props) {
         return (
             <div className="statstab statstab--norecord">
                 <span>
-                    we do not have recorded this players stats for this season.
+                    <FormattedMessage id="player/norecord" />
                 </span>
-                <Button
-                    label="show total stats"
-                    role="primary"
-                    onClick={() => props.changeTime(-1)}
-                />
+                <Button label="show total stats" role="primary" onClick={() => props.changeTime(-1)} />
             </div>
         );
     }
     const stats = props.snapshots.find(x => x.season === props.season).stats;
-    const rank =
-        props.season === -1
-            ? props.rank
-            : props.seasonRanks.find(x => x.season === props.season);
+    const rank = props.season === -1 ? props.rank : props.seasonRanks.find(x => x.season === props.season);
     return (
         <div className="statstab">
             <div className="statstab__sidebar">
@@ -42,26 +36,18 @@ export default function StatsTab(props) {
                         <div className="playermodule__divider" />
                     </>
                 ) : null}
-                {props.aliases && props.aliases.length > 1 ? (
-                    <Aliases {...props} />
-                ) : null}
+                {props.aliases && props.aliases.length > 1 ? <Aliases {...props} /> : null}
             </div>
             <div className="statstab__content">
                 <div className="statstab__center">
                     {props.stats ? <TimeSwitch {...props} /> : null}
-                    {props.stats ? (
-                        <StatsGeneral {...props} stats={stats} />
-                    ) : null}
+                    {props.stats ? <StatsGeneral {...props} stats={stats} /> : null}
                     <StatsRankings {...props} rank={rank} />
                     <div className="playermodule__divider" />
-                    {props.season === -1 && props.stats ? (
-                        <StatsCharts {...props} />
-                    ) : null}
+                    {props.season === -1 && props.stats ? <StatsCharts {...props} /> : null}
                 </div>
                 <div className="statstab__aside">
-                    {props.stats ? (
-                        <StatsGameModes {...props} stats={stats} />
-                    ) : null}
+                    {props.stats ? <StatsGameModes {...props} stats={stats} /> : null}
                 </div>
             </div>
         </div>

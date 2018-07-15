@@ -11,25 +11,25 @@ export default function SimpleSeason(props) {
             <div className="card__content">
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/wins" />
+                        <FormattedMessage id="wins" />
                     </div>
                     <div className="value">{props.season.wins}</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/losses" />
+                        <FormattedMessage id="losses" />
                     </div>
                     <div className="value">{props.season.losses}</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/abandons" />
+                        <FormattedMessage id="abandons" />
                     </div>
                     <div className="value">{props.season.abandons}</div>
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/winRate" />
+                        <FormattedMessage id="winRate" />
                     </div>
                     <div className="value">
                         {(
@@ -40,7 +40,7 @@ export default function SimpleSeason(props) {
                 </div>
                 <div className="row">
                     <div className="label">
-                        <FormattedMessage id="player/mmr" />
+                        <FormattedMessage id="mmr" />
                     </div>
                     <div className="value">
                         <span className="quiet">(Max: {props.season.max_mmr.toFixed(2)})</span>{" "}

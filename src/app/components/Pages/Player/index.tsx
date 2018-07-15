@@ -93,7 +93,14 @@ function Player(props) {
                             </>
                         ) : (
                             <>
-                                {props.tab === "summary" ? <StatsTab key="summary" {...props.data} /> : null}
+                                {props.tab === "summary" ? (
+                                    <StatsTab
+                                        key="summary"
+                                        {...props.data}
+                                        season={props.season}
+                                        changeTime={props.changeTime}
+                                    />
+                                ) : null}
                                 {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
                                 {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}
                             </>

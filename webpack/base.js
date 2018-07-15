@@ -28,12 +28,8 @@ module.exports = {
         alias: {
             components: path.join(__dirname, "../src/app/components"),
             lib: path.join(__dirname, "../src/app/lib"),
-<<<<<<< HEAD
-            assets: path.join(__dirname, "../src/assets")
-=======
             assets: path.join(__dirname, "../src/assets"),
             i18n: path.join(__dirname, "../src/i18n")
->>>>>>> master
         }
     },
     node: {

@@ -3,10 +3,10 @@ import { failEarly, getHeaders } from "../utils";
 import handleResponse from "../handlePlayer";
 import * as chunk from "lodash/chunk";
 import * as flatten from "lodash/flatten";
-import { IPlayerResponse, IAlteredPlayer } from '../../interfaces';
+import { IPlayerResponse, IAlteredPlayer } from "../../interfaces";
 
 const getPlayers = (ids): Promise<IPlayerResponse> => {
-    return fetch(`${v2Api}/players?(ids)=${ids.join(",")}&platform=PC`, {
+    return fetch(`${v2Api}/players?ids=${ids.join(",")}&platform=PC`, {
         headers: getHeaders()
     })
         .then(failEarly)
