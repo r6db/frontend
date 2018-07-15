@@ -1,3 +1,7 @@
+export const languages = {
+    en: { label: "english", messageFn: () => import("i18n/en") }
+};
+
 import s0Logo from "assets/seasonlogos/R6-Default-Horizontal.svg";
 const s1Cover = require("assets/backgrounds/blackice1.jpg?sizes[]=300&sizes[]=600&sizes[]=1200w");
 import s1Logo from "assets/seasonlogos/R6-OPBlackIce-Horizontal.svg";

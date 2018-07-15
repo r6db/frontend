@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import "./rankstab.scss";
 import { RANKS, REGIONS } from "lib/constants";
 import Icon, { GLYPHS } from "components/misc/Icon";
@@ -23,7 +24,9 @@ export default class RanksTab extends React.PureComponent<any, any> {
         return (
             <div className="rankstab">
                 {ranks.map((rank, i) => <SeasonCard key={rank.season} collapsed={i > 0} {...rank} />)}
-                <div className="rankstab__subtletext">Click to reveal additional data</div>
+                <div className="rankstab__subtletext">
+                    <FormattedMessage id="player/seeMore" />
+                </div>
             </div>
         );
     }
