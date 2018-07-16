@@ -28,7 +28,7 @@ export default function diff<T>(a: T, b: any, strategy: DiffStrategy): T {
             // don't diff arrays
             return a;
         } else {
-            return diffObject(a, b, strategy);
+            return diffObject<T>(a, b, strategy);
         }
     }
 }
@@ -39,7 +39,11 @@ function diffObject<T>(
     strat: DiffStrategy = DiffStrategy.THROW
 ): T {
     return Object.keys(a).reduce((target, key) => {
-        target[key] = diff(a[key], b[key], strat);
+        if (key === 'bestScore') {
+            target[key] = b[key];
+        } else {
+            target[key] = diff(a[key], b[key], strat);
+        }
         return target;
     }, {}) as T;
 }
