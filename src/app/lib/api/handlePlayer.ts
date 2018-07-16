@@ -96,7 +96,7 @@ export default function(player: IPlayerResponse): IAlteredPlayer {
                     next = p.stats;
                     cleanDiff = false;
                 }
-                const diff = objectDiff(next, p.seasonStats[season], DiffStrategy.KEEP);
+                const diff = objectDiff(next, p.seasonStats[season], DiffStrategy.KEEP, ['bestScore']);
 
                 // TODO: diff computed stats
                 // hitChance
