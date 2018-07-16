@@ -154,7 +154,7 @@ export const translations = {
     "player/skill": "Skill",
     "kdRatio": "K/D ratio",
     "player/notYetLoaded": "Data not yet loaded...",
-    "player/downloadJson": "export data",
+    "player/downloadJson": "Save as JSON",
     "player/rankingLevel": "{placement} global / lvl {level, number}",
     "player/ubisoft": "Ubisoft",
     "player/esl": "ESL",
