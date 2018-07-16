@@ -1,5 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
 import { redirect } from "redux-first-router";
 import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
@@ -58,7 +59,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                 <PageHead image={background} position="50% 20%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">
-                            Leaderboard
+                            <FormattedMessage id="leaderboard/title" />
                         </h1>
                     </div>
                 </PageHead>
@@ -66,85 +67,69 @@ class Leaderboard extends React.PureComponent<any, any> {
                     <div className="container">
                         <div className="leaderboard__description">
                             <div className="blocker">
-                                Any accounts abusing the ranked system will be
-                                removed from the leaderboard. Our ban policy can
-                                be found{" "}
-                                <a href="https://pages.r6db.com/ban-policy/">
-                                    here
-                                </a>. Reports can be submitted over{" "}
-                                <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">
-                                    this form
-                                </a>.
+                                <FormattedMessage
+                                    id="leaderboard/disclaimer"
+                                    values={{
+                                        linkPolicy: <a href="https://pages.r6db.com/ban-policy/">Ban Policy</a>,
+                                        linkReport: <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">Google Form</a>
+                                    }}
+                                />
                             </div>
                         </div>
-                        <form
-                            className="leaderboard__filters"
-                            action=""
-                            onSubmit={e => this.loadLeaderboard(e)}
-                        >
+                        <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
                             <Dropdown
-                                label="Platform"
+                                label={<FormattedMessage id="platform" />}
                                 setValue={this.state.platform}
-                                options={[
-                                    { value: "PC" },
-                                    { value: "PS4" },
-                                    { value: "XBOX" }
-                                ]}
+                                options={[{ value: "PC" }, { value: "PS4" }, { value: "XBOX" }]}
                                 action={this.changePlatform}
                             />
+
                             <Dropdown
-                                label="Board"
+                                label={<FormattedMessage id="board" />}
                                 value={this.state.board}
                                 options={boardOptions}
                                 action={this.changeBoard}
                             />
-                            <Button label="GO" role="primary" />
+                            <p>
+                                <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
+                            </p>
                         </form>
-                        <Charts
-                            data={getCommunityRanks(
-                                this.props.community,
-                                this.state.board
-                            )}
-                        />
+                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
                         <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>Player</th>
-                                    <th>Rating</th>
+                                    <th>
+                                        <FormattedMessage id="rank" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="player" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="rating" />
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="leaderboard__entriesbody">
                                 {this.props.entries.map((entry, i) => (
                                     <tr className="entry" key={entry.id}>
                                         <td>
-                                            <span className="entry__placement">
-                                                {entry.placement}
-                                            </span>
+                                            <span className="entry__placement">{entry.placement}</span>
                                             <span className="entry__medal" />
                                         </td>
                                         <td>
-                                            <Link
-                                                to={toPlayer(entry.id)}
-                                                className="entry__info"
-                                            >
+                                            <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
                                                     <FadeImage
                                                         src={getImageLink(
-                                                            entry.userId ||
-                                                                entry.id,
+                                                            entry.userId || entry.id,
                                                             this.props.platform
                                                         )}
                                                     />
                                                 </div>
-                                                <span className="entry__name">
-                                                    {entry.name}
-                                                </span>
+                                                <span className="entry__name">{entry.name}</span>
                                             </Link>
                                         </td>
-                                        <td className="entry__rating">
-                                            {entry.value}
-                                        </td>
+                                        <td className="entry__rating">{entry.value}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -180,8 +165,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => ({
     changePlatform: pf => dispatch({ type: "PLATFORM", payload: pf }),
-    load: (board, platform) =>
-        dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
+    load: (board, platform) => dispatch({ type: "LEADERBOARD", payload: { board, platform } }),
     chanky: platform => dispatch({ type: "CHANKABOARD", payload: { platform } })
 });
 

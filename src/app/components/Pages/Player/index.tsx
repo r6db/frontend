@@ -1,5 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
 import StatsTab from "./stats";
 import OperatorsTab from "./Operators";
 import RanksTab from "./ranks";
@@ -8,6 +9,7 @@ import NoPlaytime from "../Errors/NoPlaytime";
 import NoAliases from "../Errors/NoAliases";
 import Header from "./Header";
 import { connect } from "react-redux";
+import { SEASONS } from "lib/constants";
 import { updatePlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Loading from "components/misc/Loading";
@@ -15,6 +17,10 @@ import Page, { PageHead, PageContent } from "components/misc/Page";
 import "./player.scss";
 
 import background from "assets/backgrounds/parabellum1.jpg";
+
+const backgroundMap = SEASONS.reduce((acc, curr) => {
+    return { ...acc, [curr.name]: curr.cover };
+}, {});
 
 const dummyPlayer = {
     id: "0",
@@ -70,7 +76,7 @@ function Player(props) {
     } else {
         return (
             <Page className={"player " + props.data.id}>
-                <PageHead image={background}>
+                <PageHead image={backgroundMap[props.season] || background}>
                     <Header
                         tab={props.tab}
                         platform={props.platform}
@@ -79,23 +85,24 @@ function Player(props) {
                     />
                 </PageHead>
                 <PageContent>
-                    <script type="application/ld+json">
-                        {getPlayerSchema(props.data)}
-                    </script>
+                    <script type="application/ld+json">{getPlayerSchema(props.data)}</script>
                     <div className="container player__tab">
                         {!props.data.stats && !props.data.rank ? (
-                            <>Data not yet loaded...</>
+                            <>
+                                <FormattedMessage id="player/notYetLoaded" />.
+                            </>
                         ) : (
                             <>
                                 {props.tab === "summary" ? (
-                                    <StatsTab key="summary" {...props.data} />
+                                    <StatsTab
+                                        key="summary"
+                                        {...props.data}
+                                        season={props.season}
+                                        changeTime={props.changeTime}
+                                    />
                                 ) : null}
-                                {props.tab === "ops" ? (
-                                    <OperatorsTab key="ops" {...props.data} />
-                                ) : null}
-                                {props.tab === "ranks" ? (
-                                    <RanksTab key="ranks" {...props.data} />
-                                ) : null}
+                                {props.tab === "ops" ? <OperatorsTab key="ops" {...props.data} /> : null}
+                                {props.tab === "ranks" ? <RanksTab key="ranks" {...props.data} /> : null}
                             </>
                         )}
                     </div>
@@ -112,6 +119,7 @@ const mapStateToProps = state => {
         favorites,
         loading,
         players,
+        settings,
         location: { payload }
     } = state;
 
@@ -121,12 +129,14 @@ const mapStateToProps = state => {
         loading,
         platform,
         isFavorite: favorites.includes(payload.id),
-        favorites
+        favorites,
+        season: Number.parseInt(settings.season) || -1
     };
 };
 const mapDispatchtoProps = (dispatch, state) => {
     return {
-        updatePlayer: id => dispatch(updatePlayer(id))
+        updatePlayer: id => dispatch(updatePlayer(id)),
+        changeTime: timeframe => dispatch({ type: "TIMEFRAME", payload: timeframe })
     };
 };
 export default hot(module)(

@@ -5,13 +5,10 @@ import trim from "lib/trim";
 import "./button.scss";
 
 interface IButtonProps
-    extends React.DetailedHTMLProps<
-            React.ButtonHTMLAttributes<HTMLButtonElement>,
-            HTMLButtonElement
-        > {
-    label: string;
+    extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+    label: string | JSX.Element;
     icon?: any;
-    role?: "primary" | "accent" | "error" | "warning" | "success" | "info" ;
+    role?: "primary" | "accent" | "error" | "warning" | "success" | "info";
     size?: "small" | "large";
     outline?: boolean;
     active?: boolean;

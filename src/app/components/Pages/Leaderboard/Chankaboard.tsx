@@ -1,5 +1,7 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import { FormattedMessage } from "react-intl";
+import { LEADERBOARDS } from "lib/constants";
 import { connect } from "react-redux";
 import { toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
@@ -34,62 +36,63 @@ class Chankaboard extends React.Component<any, any> {
                 <PageHead image={background} position="50% 60%">
                     <div className="container leaderboard__header">
                         <h1 className="header leaderboard__title">
-                            Most kills with Tachanka LMG
+                            <FormattedMessage id="leaderboard/chankaboard" />
                         </h1>
                     </div>
                 </PageHead>
                 <PageContent>
                     <div className="container">
                         <div className="leaderboard__filters">
-                            <Dropdown
-                                label="Platform"
-                                options={[
-                                    { value: "PC" },
-                                    { value: "PS4" },
-                                    { value: "XBOX" }
-                                ]}
-                                action={this.changePlatform}
-                            />
+                            <p className="leaderboard__platform">
+                                <FormattedMessage id="platform">
+                                    {msg => (
+                                        <label className="leaderboard__platformlabel" htmlFor="platformselect">
+                                            {msg}
+                                        </label>
+                                    )}
+                                </FormattedMessage>
+                                <Dropdown
+                                    label="Platform"
+                                    options={[{ value: "PC" }, { value: "PS4" }, { value: "XBOX" }]}
+                                    action={this.changePlatform}
+                                />
+                            </p>
                         </div>
                         <table className="container container-small leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>Player</th>
-                                    <th>Kills</th>
+                                    <th>
+                                        <FormattedMessage id="rank" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="player" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="kills" />
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="leaderboard__entriesbody">
                                 {this.props.entries.map((entry, i) => (
                                     <tr className="entry" key={entry.id}>
                                         <td>
-                                            <span className="entry__placement">
-                                                {i + 1}
-                                            </span>
+                                            <span className="entry__placement">{i + 1}</span>
                                             <span className="entry__medal" />
                                         </td>
                                         <td>
-                                            <Link
-                                                to={toPlayer(entry.id)}
-                                                className="entry__info"
-                                            >
+                                            <Link to={toPlayer(entry.id)} className="entry__info">
                                                 <div className="entry__image">
                                                     <FadeImage
                                                         src={getImageLink(
-                                                            entry.userId ||
-                                                                entry.id,
+                                                            entry.userId || entry.id,
                                                             this.props.platform
                                                         )}
                                                     />
                                                 </div>
-                                                <span className="entry__name">
-                                                    {entry.name}
-                                                </span>
+                                                <span className="entry__name">{entry.name}</span>
                                             </Link>
                                         </td>
-                                        <td className="entry__rating">
-                                            {entry.value | 0}
-                                        </td>
+                                        <td className="entry__rating">{entry.value | 0}</td>
                                     </tr>
                                 ))}
                             </tbody>
