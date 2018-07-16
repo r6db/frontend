@@ -19,7 +19,7 @@ import "./player.scss";
 import background from "assets/backgrounds/parabellum1.jpg";
 
 const backgroundMap = SEASONS.reduce((acc, curr) => {
-    return { ...acc, [curr.name]: curr.cover };
+    return { ...acc, [curr.id]: curr.cover };
 }, {});
 
 const dummyPlayer = {
