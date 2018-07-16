@@ -75,14 +75,16 @@ export const translations = {
     "home/search_placeholder": "Search for players...",
 
     "search/no_results": "We could not find any players matching that query.",
-    "search/query": "Search {name}",
+    "search/query": "Search for \"{name}\"",
     "search/resultcount": `{count, plural,
         0= {# results}
         one {# result}
         other {# results}
     }`,
+    "search/resultplatform": " on {platform}",
     "search/result/aliascount": "and {count, number} more",
     "search/result/timeplayed": "{playtime} played",
+    "search/go": "GO",
 
     "leaderboard/title": "Leaderboard",
     "leaderboard/rankdist": "Rank distribution",

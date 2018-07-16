@@ -1,37 +1,18 @@
 @import "scss/styles";
 
-.app.SEARCH {
-    .page__headcontent {
-        padding-bottom: 2rem;
-    }
-    .page__content {
-        padding: 3rem 0 1rem;
-    }
-    .ad {
-        max-height: 15rem;
-        margin-bottom: 2rem;
-    }
-}
-
 .search {
-    &__resultcount {
-        display: block;
+    &__header {
+        text-align: center;
+        padding: 1rem;
 
         @include medium {
-            display: inline-block;
-        }
-    }
-    &__results {
-        width: 100%;
-
-        *:first-child {
-            margin-top: 0;
+            text-align: left;
+            padding: 0;     
         }
     }
     &__resultcount {
-        margin-left: 1rem;
-    }
-    &__result {
-        color: $font-color;
+        display: block;
+        font-size: $font-smaller;
+        color: $font-color-subtle;
     }
 }

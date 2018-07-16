@@ -8,6 +8,7 @@ import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
+import Alert from "components/misc/Alert";
 import Button from "components/misc/Button";
 import Dropdown from "components/misc/Dropdown";
 import Loading from "components/misc/Loading";
@@ -18,7 +19,6 @@ import Charts from "./Charts";
 import * as get from "lodash/get";
 
 import background from "assets/backgrounds/leaderboard.jpg";
-import Alert from "components/misc/Alert";
 
 const isSelected = (expected, value) => expected === value;
 
