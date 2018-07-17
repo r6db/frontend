@@ -33,13 +33,10 @@ function GlobalRank(props) {
 function CurrentRank(props) {
     return (
         <div className={`currentrank ${props.className || ""}`}>
-            <div className="currentrank__icon">
-                <Icon glyph={GLYPHS["RANK" + props.rank]} />
-            </div>
-            <div className="currentrank__placement">
-                {props.rank === 0 ? null : typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
-            </div>
             <div className="currentrank__region">{props.region}</div>
+            <div className="currentrank__placement">
+                {props.rank === 0 ? "Unranked" : typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
+            </div>
         </div>
     );
 }

@@ -1,11 +1,56 @@
 @import "scss/styles";
 
-.statoverview{
-    .row{
+.statsgeneral {
+    .col {
+        flex: 1 1 33%;
+        margin: 0;
+
+        @include medium {
+            flex: 1;
+            margin: 0 1.5rem;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        .stat {
+            display: flex;
+            align-items: center;
+
+            @include medium {
+                align-items: flex-start;
+            }
+        }
+    }
+    .row {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+    .overview {
+        flex-direction: row;
+    }
+    .misc {
+        margin-top: 2rem;
         flex-direction: column;
 
-        @include large{
+        @include medium {
             flex-direction: row;
         }
+    }
+}
+.bigstat {
+    padding: 1rem 0;
+
+    &__label {
+        font-size: $font-default;
+        color: $font-color-subtle;
+        margin-bottom: 0.5rem;
+    }
+    &__value {
+        font-size: $font-large;
+        color: $font-color;
     }
 }

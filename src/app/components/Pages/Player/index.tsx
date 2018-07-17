@@ -52,7 +52,7 @@ function Player(props) {
     if (props.loading) {
         return (
             <Page className="player">
-                <PageHead image={background}>
+                <PageHead image={background} opacity={0.2}>
                     <Header
                         tab={props.tab}
                         platform={props.platform}
@@ -76,7 +76,7 @@ function Player(props) {
     } else {
         return (
             <Page className={"player " + props.data.id}>
-                <PageHead image={backgroundMap[props.season] || background}>
+                <PageHead image={backgroundMap[props.season] || background} opacity={0.25}>
                     <Header
                         tab={props.tab}
                         platform={props.platform}

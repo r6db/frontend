@@ -19,6 +19,11 @@
         display: flex;
         flex-direction: column;
         flex: 1;
+        align-items: center;
+
+        @include medium {
+            align-items: flex-start;
+        }
     }
     &__image {
         width: 8rem;
@@ -182,11 +187,13 @@
             &--active {
                 color: $color-accent;
                 border-color: $color-accent;
+                cursor: pointer;
             }
         }
         &.favorite {
             color: $font-color;
             border-color: $font-color;
+            cursor: pointer;
 
             &--active {
                 color: $color-primary;

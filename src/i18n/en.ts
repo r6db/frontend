@@ -33,7 +33,7 @@ export const translations = {
     "rappelBreaches": "Rappel breaches",
     "timePlayed": "Time played",
     "seasonname": `{season, select,
-        -1 {All time}
+        -1 {Lifetime}
         0 {Release}
         1 {Black Ice}
         2 {Dust Line}
@@ -131,7 +131,7 @@ export const translations = {
     "delete/confirm": "Confirm deletion",
 
     "player/norecord": "We have not recorded this players stats for this season.",
-    "player/timeframe": "timeframe",
+    "player/timeframe": "Season",
     "player/available": "Update available at {date}",
     "player/season": "Season {season, number}",
     "player/extended": "Extended view",
@@ -143,6 +143,7 @@ export const translations = {
     "player/ranked": "Ranked",
     "player/general": "General",
     "player/total": "Total",
+    "player/matches": "{number} matches",
     "player/rankedseason": "Ranked season ({region})",
     "player/winRatePercentage": "Win Rate (%)",
     "player/accuChart": "Headshots per hit (%)",
