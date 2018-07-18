@@ -109,6 +109,9 @@ export default class StatsGeneral extends React.Component<any, any> {
                             <Stat label={<FormattedMessage id="penKills" />}>
                                 {get(this.props, "stats.general.penetrationKills", 0)}
                             </Stat>
+                            <Stat label={<FormattedMessage id="abandons" />}>
+                                {get(this.props, "stats.ranked.abandons", 0)}
+                            </Stat>
                         </div>
                         <div className="col">
                             <Stat label={<FormattedMessage id="revivesDenied" />}>
@@ -122,6 +125,14 @@ export default class StatsGeneral extends React.Component<any, any> {
                             </Stat>
                             <Stat label={<FormattedMessage id="rappelBreaches" />}>
                                 {get(this.props, "stats.general.rappelBreaches", 0)}
+                            </Stat>
+                            <Stat label={<FormattedMessage id="player/lastPlayed" />}>
+                                {this.props.lastPlayed.last_played
+                                    ? new Date(get(this.props, "lastPlayed.last_played", new Date())).toLocaleDateString()
+                                    : "-"}
+                            </Stat>
+                            <Stat label={<FormattedMessage id="player/firstAdded" />}>
+                                {new Date(this.props.created_at).toLocaleDateString()}
                             </Stat>
                         </div>
                     </div>
