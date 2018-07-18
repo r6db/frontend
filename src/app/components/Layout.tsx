@@ -28,7 +28,7 @@ const makeAsync = loader =>
 const pageMap = {
     HOME,
     SEARCH,
-    FAQ: makeAsync(() => import("./Pages/FAQ")),
+    FAQ: makeAsync(() => import("./Pages/Faq")),
     LEADERBOARD: makeAsync(() => import("./Pages/Leaderboard")),
     CHANKABOARD: makeAsync(() => import("./Pages/Leaderboard/Chankaboard")),
     PLAYER: makeAsync(() => import("./Pages/Player")),
