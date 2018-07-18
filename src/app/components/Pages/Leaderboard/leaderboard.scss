@@ -57,6 +57,7 @@
             width: 100%;
             margin-top: 2rem;
             font-size: $font-big;
+            flex: 1;
 
             @include medium {
                 width: auto;

@@ -46,9 +46,11 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+        font-size: $font-smaller;
 
         @include medium {
             justify-content: flex-start;
+            font-size: $font-default;
         }
     }
     &__namewrapper {

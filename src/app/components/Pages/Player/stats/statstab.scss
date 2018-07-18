@@ -39,7 +39,7 @@
     &__col {
         flex: 0 1 100%;
         min-width: 0;
-        
+
         @include medium {
             margin: 0 1rem;
         }
@@ -75,6 +75,13 @@
             }
             justify-content: flex-end;
             margin: 0;
+            font-size: $font-smaller;
+
+            @include medium {
+                font-size: $font-default;
+            }
+            justify-content: flex-end;
+            margin: 0;
         }
     }
     &__title {
@@ -107,6 +114,47 @@
             justify-content: flex-start;
         }
 
+        &:focus {
+            outline: none;
+        }
+
+        .icon {
+            width: 2rem;
+            height: 2rem;
+            margin-top: 2px;
+            margin-right: 1rem;
+        }
+    }
+    &__title {
+        font-size: $font-large;
+        font-weight: 500;
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        letter-spacing: 0.1rem;
+        flex: 1;
+    }
+    &__subtitle {
+        color: $font-color-subtle;
+    }
+    &__divider {
+        margin: 2rem 0;
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.05s);
+    }
+    &__expand {
+        display: flex;
+        color: $font-color-subtle;
+        width: 100%;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 1rem;
+        justify-content: center;
+
+        @include medium {
+            justify-content: flex-start;
+        }
+        
         &:focus {
             outline: none;
         }
