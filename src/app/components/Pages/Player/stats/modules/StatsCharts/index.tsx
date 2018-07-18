@@ -127,7 +127,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
         const data = this.getData();
         return this.props.progressions ? (
             <div className="playermodule charts player__charts player__charts--visible">
-                {this.props.rank && (
+                {this.props.rank.emea.rank || this.props.rank.ncsa.rank || this.props.rank.apac.rank ? (
                     <div className="chart">
                         <div className="playermodule__header">
                             <div className="playermodule__title">
@@ -213,7 +213,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                             )}
                         </BulkTranslate>
                     </div>
-                )}
+                ) : null }
                 <div className="row">
                     <div className="chart col winrate">
                         <div className="playermodule__header">
@@ -373,7 +373,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                         </linearGradient>
                                     </defs>
                                     <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                    <YAxis width={20} tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                    <YAxis width={30} tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                     <CartesianGrid stroke="inherit" vertical={false} />
                                     <Tooltip
                                         cursor={{

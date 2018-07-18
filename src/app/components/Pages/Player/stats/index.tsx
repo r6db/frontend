@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as get from "lodash/get";
 import { FormattedMessage } from "react-intl";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
@@ -45,7 +46,7 @@ export default function StatsTab(props) {
                 </div>
                 <div className="statstab__row">
                     <div className="statstab__col ranking">
-                        <StatsRankings {...props} rank={rank} />
+                        {props.rank ? <StatsRankings {...props} rank={rank} /> : null }
                         {props.season === -1 && props.stats ? <StatsCharts {...props} /> : null}
                     </div>
                     <div className="statstab__col gamemode">

@@ -9,6 +9,9 @@
     }
     .row {
         padding: 1.5rem 0;
+        &:first-child {
+            padding-top: 0;
+        }
         .chart {
             padding-top: 0;
             padding-bottom: 2rem;

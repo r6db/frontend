@@ -6,9 +6,6 @@ import "./rankoverview.scss";
 import { FormattedMessage } from "react-intl";
 
 function GlobalRank(props) {
-    if (get(props, "placements.global", null) === null) {
-        return null;
-    }
     return (
         <div className="globalrank global">
             <div className="globalrank__icon">
@@ -47,10 +44,15 @@ export default function RankOverview(props) {
     }
     if (props.level < 100) {
         return (
-            <div className="rankoverview__isunderage">
-                <FormattedMessage id="player/rankingsUnlock" />
+            <div className="playermodule rankoverview">
+                <div className="rankoverview__isunderage">
+                    <FormattedMessage id="player/rankingsUnlock" />
+                </div>
             </div>
         );
+    }
+    if (get(props, "placements.global", null) === null) {
+        return null;
     }
     return (
         <div className="playermodule rankoverview">

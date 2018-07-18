@@ -39,9 +39,8 @@ function RankedSeason(props) {
 }
 
 export default function StatsRankings(props) {
-    // show placeholder card if we don't have ranks yet
-    if (!props.rank || !props.rank.apac) {
-        return <RankedSeason wins={0} title="Ranks not yet fetched" />;
+    if (!props.rank || get(props, "rank.emea.max_rank", 0) === 0  && get(props, "rank.ncsa.max_rank", 0) === 0 && get(props, "rank.apac.max_rank", 0) === 0 ) {
+        return null;
     }
     return (
         <div className="playermodule rankedstats">
