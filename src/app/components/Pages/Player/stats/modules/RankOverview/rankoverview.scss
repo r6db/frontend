@@ -18,7 +18,8 @@
     }
     &__regional {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        padding-top: 0.5rem;
     }
     &__isunderage {
         display: flex;
@@ -59,38 +60,18 @@
     }
 }
 .currentrank {
-    flex: 1;
-    position: relative;
-    height: 7.5rem;
-    width: 7.5rem;
-    margin-bottom: 10px;
-    z-index: 0;
+    display: flex;
+    flex-direction: row;
+    font-size: $font-big;
+    margin-bottom: 1rem;
 
-    &__icon {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: -1;
-        svg {
-            height: 7.5rem;
-            width: 7.5rem;
-            opacity: 0.5;
-        }
-    }
     &__region {
-        text-align: center;
-        padding: 0.5rem;
-        text-shadow: 0 0 10px $color-black;
-        font-weight: bold;
-        z-index: 1;
+        color: $font-color-subtle;
     }
     &__placement {
-        text-align: center;
-        margin-top: 3rem;
-        font-size: 1.5em;
-        text-shadow: 0 0 2px $color-black, 1px 0 2px $color-black, 1px 1px 2px $color-black;
-        font-weight: bold;
-        z-index: 2;
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        font-weight: 600;
     }
 }

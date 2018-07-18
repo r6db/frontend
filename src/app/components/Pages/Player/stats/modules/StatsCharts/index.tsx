@@ -127,12 +127,15 @@ export default class StatsCharts extends React.PureComponent<any, any> {
         const data = this.getData();
         return this.props.progressions ? (
             <div className="playermodule charts player__charts player__charts--visible">
-                {this.props.rank && (
-                    <div className="row">
-                        <div className="chart__header">
-                            <FormattedMessage id="mmr" />
+                {this.props.rank.emea.rank || this.props.rank.ncsa.rank || this.props.rank.apac.rank ? (
+                    <div className="chart">
+                        <div className="playermodule__header">
+                            <div className="playermodule__title">
+                                <FormattedMessage id="mmr" />
+                            </div>
                         </div>
-                        <BulkTranslate emea="emea/short" ncsa="ncsa/short" asia="apac/short">
+                        <div className="playermodule__divider" />
+                        <BulkTranslate emea="emea/short" ncsa="ncsa/short" apac="apac/short">
                             {msgs => (
                                 <ResponsiveContainer height={175}>
                                     <AreaChart
@@ -160,7 +163,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                             </linearGradient>
                                         </defs>
                                         <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                        <YAxis tick={{ dx: -3 }} tickSize={8} domain={[0, "dataMax"]} />
+                                        <YAxis width={60} tick={{ dx: -3 }} tickSize={8} domain={[0, "dataMax"]} />
                                         <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                         <Tooltip
                                             cursor={{
@@ -210,15 +213,18 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                             )}
                         </BulkTranslate>
                     </div>
-                )}
-                <div className="row half">
-                    <div className="wlratio">
-                        <div className="chart__header">
-                            <FormattedMessage id="player/winRatePercentage" />
+                ) : null }
+                <div className="row">
+                    <div className="chart col winrate">
+                        <div className="playermodule__header">
+                            <div className="playermodule__title">
+                                <FormattedMessage id="player/winRatePercentage" />
+                            </div>
                         </div>
+                        <div className="playermodule__divider" />
                         <BulkTranslate casual="player/casual" ranked="player/ranked">
                             {msgs => (
-                                <ResponsiveContainer height={145}>
+                                <ResponsiveContainer height={150}>
                                     <AreaChart
                                         syncId="charts"
                                         data={data}
@@ -240,7 +246,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                             </linearGradient>
                                         </defs>
                                         <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                        <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                        <YAxis width={30} tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                         <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                         <Tooltip
                                             cursor={{
@@ -274,14 +280,17 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                             )}
                         </BulkTranslate>
                     </div>
-                    <div className="kdratio">
-                        <div className="chart__header">
-                            <FormattedMessage id="kdRatio" />
+                    <div className="chart col kdratio">
+                        <div className="playermodule__header">
+                            <div className="playermodule__title">
+                                <FormattedMessage id="kdRatio" />
+                            </div>
                         </div>
+                        <div className="playermodule__divider" />
 
                         <BulkTranslate casual="player/casual" ranked="player/ranked">
                             {msgs => (
-                                <ResponsiveContainer height={145}>
+                                <ResponsiveContainer height={150}>
                                     <AreaChart
                                         syncId="charts"
                                         data={data}
@@ -303,7 +312,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                             </linearGradient>
                                         </defs>
                                         <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                        <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                        <YAxis width={30} tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                         <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                         <Tooltip
                                             cursor={{
@@ -338,10 +347,13 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                         </BulkTranslate>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="chart__header">
-                        <FormattedMessage id="player/accuChart" />
+                <div className="chart hsrate">
+                    <div className="playermodule__header">
+                        <div className="playermodule__title">
+                            <FormattedMessage id="player/accuChart" />
+                        </div>
                     </div>
+                    <div className="playermodule__divider" />
                     <BulkTranslate hsRate="player/hsRate" accuracy="accuracy">
                         {msgs => (
                             <ResponsiveContainer height={175}>
@@ -361,7 +373,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                         </linearGradient>
                                     </defs>
                                     <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                    <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                    <YAxis width={30} tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                     <CartesianGrid stroke="inherit" vertical={false} />
                                     <Tooltip
                                         cursor={{
@@ -370,16 +382,6 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                         }}
                                     />
                                     <Legend align="right" verticalAlign="bottom" />
-                                    {/** <Area
-                                        isAnimationActive={false} 
-                                        type="monotone"
-                                        dot={true}
-                                        connectNulls={true}
-                                        name={msgs.accuracy}
-                                        dataKey="accu"
-                                        stroke={colors.red}
-                                        fill="url(#colorAccuracy)"
-                                    /> */}
                                     <Area
                                         isAnimationActive={false}
                                         type="monotone"
@@ -395,14 +397,17 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                         )}
                     </BulkTranslate>
                 </div>
-                <div className="row half">
-                    <div className="gamesplayed">
-                        <div className="chart__header">
-                            <FormattedMessage id="player/queueChart" />
+                <div className="row">
+                    <div className="chart col gamesplayed">
+                        <div className="playermodule__header">
+                            <div className="playermodule__title">
+                                <FormattedMessage id="player/queueChart" />
+                            </div>
                         </div>
+                        <div className="playermodule__divider" />
                         <BulkTranslate casual="player/casual" ranked="player/ranked">
                             {msgs => (
-                                <ResponsiveContainer height={145}>
+                                <ResponsiveContainer height={150}>
                                     <BarChart
                                         syncId="charts"
                                         data={data}
@@ -424,7 +429,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                             </linearGradient>
                                         </defs>
                                         <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                        <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                        <YAxis width={30} tick={{ dx: -5 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                         <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                         <Tooltip
                                             cursor={{
@@ -454,13 +459,16 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                             )}
                         </BulkTranslate>
                     </div>
-                    <div className="modes">
-                        <div className="chart__header">
-                            <FormattedMessage id="player/modeChart" />
+                    <div className="chart col modes">
+                    <div className="playermodule__header">
+                            <div className="playermodule__title">
+                                <FormattedMessage id="player/modeChart" />
+                            </div>
                         </div>
+                        <div className="playermodule__divider" />
                         <BulkTranslate bomb="mode/bomb" secure="mode/secure" hostage="mode/hostage">
                             {msgs => (
-                                <ResponsiveContainer height={145}>
+                                <ResponsiveContainer height={150}>
                                     <BarChart
                                         syncId="charts"
                                         data={data}
@@ -486,7 +494,7 @@ export default class StatsCharts extends React.PureComponent<any, any> {
                                             </linearGradient>
                                         </defs>
                                         <XAxis tick={{ dy: +3 }} tickSize={8} dataKey="name" />
-                                        <YAxis tick={{ dx: -3 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
+                                        <YAxis width={30} tick={{ dx: -5 }} tickSize={8} scale="linear" domain={[0, "dataMax"]} />
                                         <CartesianGrid stroke="inherit" vertical={false} strokeDasharray="3 3" />
                                         <Tooltip
                                             cursor={{

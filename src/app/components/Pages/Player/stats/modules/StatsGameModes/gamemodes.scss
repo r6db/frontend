@@ -1,11 +1,20 @@
 @import "scss/styles";
 
 .gamemodes {
-    padding-bottom: 1rem;
-}
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+    .col {
+        margin: 0;
 
-.mode {
-    header {
-        margin-bottom: 0.5rem;
+        &:last-child {
+            .playermodule__content {
+                padding-bottom: 0;
+            } 
+        }
+    }
+    .playermodule__content {
+        padding-bottom: 2rem;
     }
 }

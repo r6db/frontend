@@ -1,32 +1,43 @@
 @import "scss/styles";
 
-.playermodule.charts {
-    padding: 0 1rem;
-
+.charts {
     .chart {
-        margin-top: 1rem;
-
-        &__header {
-            @include card-header;
-            padding-left: 0;
-            margin-bottom: 1rem;
+        padding: 2rem 0;
+        &:first-child {
+            padding-top: 0;
         }
     }
     .row {
-        flex-direction: column;
-        margin-bottom: 2rem;
+        padding: 1.5rem 0;
+        &:first-child {
+            padding-top: 0;
+        }
+        .chart {
+            padding-top: 0;
+            padding-bottom: 2rem;
 
-        @include large {
-            &.half {
-                flex-direction: row;
+            @include medium {
+                padding-top: 0;
+                padding-bottom: 0;
             }
-            > * {
-                width: 50%;
-            }
-            flex-direction: column;
         }
     }
+    .col {
+        padding-left: 0;
+        padding-right: 0;
 
+        @include medium {
+            padding-left: 1rem;
+            padding-right: 1rem;      
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
     .recharts-dot {
         stroke-width: 2px;
         fill: $bg-color;

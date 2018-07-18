@@ -1,12 +1,8 @@
 @import "scss/styles";
 
 .faq__item {
-    @include card;
     margin-bottom: 1rem;
 
-    &:last-child .card-divider {
-        display: none;
-    }
     &__question {
         display: block;
         padding: 1rem 0;

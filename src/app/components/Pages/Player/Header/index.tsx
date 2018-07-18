@@ -57,15 +57,15 @@ class PlayerHeader extends React.PureComponent<any, any> {
                             />
                         </div>
                         <div className="playerheader__info">
-                            <header className="header playerheader__namebox">
-                                <div className="playerheader__namewrapper">
+                            <div className="playerheader__namebox">
+                                <header className="header playerheader__namewrapper">
                                     <span className="playerheader__name">{this.props.name}</span>
                                     <span className="playerheader__platform">{this.props.platform}</span>
-                                </div>
+                                </header>
                                 {this.props.flair ? (
                                     <div className="playerheader__flair">{this.props.flair}</div>
                                 ) : null}
-                            </header>
+                            </div>
                             <div className="playerheader__level">
                                 <FormattedMessage
                                     id="player/rankingLevel"
@@ -104,10 +104,32 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                 </div>
                             </div>
                         </div>
-                        <div className="playerheader__buttons">
+                    </div>
+                    <div className="playerheader__tabs">
+                        <div className="playerheader__tabs--left">
+                            <Link
+                                className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
+                                to={toPlayerTab(this.props.id, "summary")}
+                            >
+                                <FormattedMessage id="player/tab/summary" />
+                            </Link>
+                            <Link
+                                className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
+                                to={toPlayerTab(this.props.id, "ops")}
+                            >
+                                <FormattedMessage id="player/tab/operators" />
+                            </Link>
+                            <Link
+                                className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
+                                to={toPlayerTab(this.props.id, "ranks")}
+                            >
+                                <FormattedMessage id="player/tab/ranks" />
+                            </Link>
+                        </div>
+                        <div className="playerheader__tabs--right">
                             {this.props.updateAvailableAt > new Date() ? (
-                                <Button
-                                    label={
+                                <button className="playerheader__tab update">
+                                    {
                                         <FormattedMessage
                                             id="player/available"
                                             values={{
@@ -115,57 +137,31 @@ class PlayerHeader extends React.PureComponent<any, any> {
                                             }}
                                         />
                                     }
-                                    disabled
-                                    outline
-                                />
+                                </button>
                             ) : (
-                                <Button
-                                    label={<FormattedMessage id="player/update" />}
-                                    icon={GLYPHS.REFRESH}
-                                    role="accent"
+                                <button
+                                    className="playerheader__tab update update--active"
                                     onClick={() => this.props.updatePlayer(this.props.id)}
-                                    outline
-                                    className="button playerheader__button button--outline--accent"
-                                />
+                                >
+                                    <Icon glyph={GLYPHS.REFRESH} />
+                                </button>
                             )}
                             {this.props.isFavorite ? (
-                                <Button
-                                    label={<FormattedMessage id="player/favorite" />}
-                                    icon={GLYPHS.STARFULL}
-                                    role="primary"
+                                <button
+                                    className="playerheader__tab favorite favorite--active"
                                     onClick={() => this.props.unfavoritePlayer(this.props.id)}
-                                    outline
-                                    active
-                                />
+                                >
+                                    <Icon glyph={GLYPHS.STARFULL} />
+                                </button>
                             ) : (
-                                <Button
-                                    label={<FormattedMessage id="player/favorite" />}
-                                    icon={GLYPHS.STAR}
+                                <button
+                                    className="playerheader__tab favorite"
                                     onClick={() => this.props.favoritePlayer(this.props.id)}
-                                    outline
-                                />
+                                >
+                                    <Icon glyph={GLYPHS.STAR} />
+                                </button>
                             )}
                         </div>
-                    </div>
-                    <div className="playerheader__tabs">
-                        <Link
-                            className={`playerheader__tab ${isActive("summary", this.props.tab)}`}
-                            to={toPlayerTab(this.props.id, "summary")}
-                        >
-                            <FormattedMessage id="player/tab/summary" />
-                        </Link>
-                        <Link
-                            className={`playerheader__tab ${isActive("ops", this.props.tab)}`}
-                            to={toPlayerTab(this.props.id, "ops")}
-                        >
-                            <FormattedMessage id="player/tab/operators" />
-                        </Link>
-                        <Link
-                            className={`playerheader__tab ${isActive("ranks", this.props.tab)}`}
-                            to={toPlayerTab(this.props.id, "ranks")}
-                        >
-                            <FormattedMessage id="player/tab/ranks" />
-                        </Link>
                     </div>
                 </div>
             </div>

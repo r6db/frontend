@@ -1,7 +1,6 @@
 @import "scss/styles";
 
 .fauxtable {
-    @include card;
     display: flex;
     flex-direction: row;
     width: 100%;

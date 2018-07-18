@@ -1,13 +1,15 @@
 import * as React from "react";
+import * as get from "lodash/get";
 import { FormattedMessage } from "react-intl";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";
 import StatsGeneral from "./modules/StatsGeneral";
+import StatsCasual from "./modules/StatsCasual";
+import StatsRanked from "./modules/StatsRanked";
 import StatsRankings from "./modules/StatsRankings";
 import StatsGameModes from "./modules/StatsGameModes";
 import StatsCharts from "./modules/StatsCharts";
-import TimeSwitch from "./modules/TimeSwitch";
 
 import "./statstab.scss";
 import Button from "components/misc/Button";
@@ -31,23 +33,25 @@ export default function StatsTab(props) {
                 {props.rank ? (
                     <>
                         <RankOverview {...props} />
-                        <div className="playermodule__divider" />
                         <SeasonOverview {...props} />
-                        <div className="playermodule__divider" />
                     </>
                 ) : null}
                 {props.aliases && props.aliases.length > 1 ? <Aliases {...props} /> : null}
             </div>
             <div className="statstab__content">
-                <div className="statstab__center">
-                    {props.stats ? <TimeSwitch {...props} /> : null}
-                    {props.stats ? <StatsGeneral {...props} stats={stats} /> : null}
-                    <StatsRankings {...props} rank={rank} />
-                    <div className="playermodule__divider" />
-                    {props.season === -1 && props.stats ? <StatsCharts {...props} /> : null}
+                {props.stats ? <StatsGeneral {...props} stats={stats} /> : null}
+                <div className="statstab__row">
+                    <div className="statstab__col">{props.stats ? <StatsCasual {...props} stats={stats} /> : null}</div>
+                    <div className="statstab__col">{props.stats ? <StatsRanked {...props} stats={stats} /> : null}</div>
                 </div>
-                <div className="statstab__aside">
-                    {props.stats ? <StatsGameModes {...props} stats={stats} /> : null}
+                <div className="statstab__row">
+                    <div className="statstab__col ranking">
+                        {props.rank ? <StatsRankings {...props} rank={rank} /> : null }
+                        {props.stats ? <StatsCharts {...props} /> : null}
+                    </div>
+                    <div className="statstab__col gamemode">
+                        {props.stats ? <StatsGameModes {...props} stats={stats} /> : null}
+                    </div>
                 </div>
             </div>
         </div>

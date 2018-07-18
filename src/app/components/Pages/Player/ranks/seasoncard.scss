@@ -148,7 +148,8 @@
     }
     &__stats {
         flex: 1;
-        align-items: center;
+        align-items: flex-start;
+        align-content: flex-start;
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
@@ -156,6 +157,16 @@
         transition: all 200ms ease-in-out;
         max-height: 8rem;
         overflow: hidden;
+
+        .stat__label {
+            order: 2;
+            font-size: $font-small;
+        }
+        .stat__value {
+            order: 1;
+            flex: none;
+            margin-right: 1rem;
+        }
 
         &--empty {
             margin-bottom: 0;

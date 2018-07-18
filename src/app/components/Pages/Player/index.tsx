@@ -38,10 +38,10 @@ function getPlayerSchema(player) {
         {
             "@context": "http://schema.org",
             "@type": "Person",
-            name: player.name,
-            url: `https://r6db.com/player/${player.id}`,
-            identifier: `https://r6db.com/player/${player.id}`,
-            image: getImageLink(player.userId || player.id, player.platform)
+            "name": player.name,
+            "url": `https://r6db.com/player/${player.id}`,
+            "identifier": `https://r6db.com/player/${player.id}`,
+            "image": getImageLink(player.userId || player.id, player.platform)
         },
         null,
         4
@@ -52,7 +52,7 @@ function Player(props) {
     if (props.loading) {
         return (
             <Page className="player">
-                <PageHead image={background}>
+                <PageHead image={background} opacity={0.2}>
                     <Header
                         tab={props.tab}
                         platform={props.platform}
@@ -76,7 +76,7 @@ function Player(props) {
     } else {
         return (
             <Page className={"player " + props.data.id}>
-                <PageHead image={backgroundMap[props.season] || background}>
+                <PageHead image={backgroundMap[props.season] || background} opacity={0.25}>
                     <Header
                         tab={props.tab}
                         platform={props.platform}

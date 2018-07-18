@@ -17,14 +17,17 @@ export default class Aliases extends React.Component<any, any> {
         this.setState({ expanded: !this.state.expanded });
     }
     render() {
-        let canExpand = this.props.aliases.length > NUM_VISIBLE_ALIASES;
-        let aliases =
+        const canExpand = this.props.aliases.length > NUM_VISIBLE_ALIASES;
+        const aliases =
             canExpand && this.state.expanded ? this.props.aliases : this.props.aliases.slice(0, NUM_VISIBLE_ALIASES);
         return (
             <div className="playermodule aliases">
                 <div className="playermodule__header">
-                    <FormattedMessage id="player/aliasHistory" />
+                    <div className="playermodule__title">
+                        <FormattedMessage id="player/aliasHistory" />
+                    </div>
                 </div>
+                <div className="playermodule__divider" />
                 <div className="playermodule__content">
                     <div className="aliases__list">
                         {aliases.map(x => <Alias key={x.name + x.created_at} alias={x} />)}

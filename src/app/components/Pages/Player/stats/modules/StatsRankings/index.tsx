@@ -12,24 +12,26 @@ function RankedSeason(props) {
     }
     return (
         <div className="rankedseason">
-            <div className="playermodule__header">{props.title}</div>
-            <div className="row">
-                <div className="col">
-                    <Stat label={<FormattedMessage id="wins" />}>{get(props, "wins", 0)}</Stat>
-                    <Stat label={<FormattedMessage id="losses" />}>{get(props, "losses", 0)}</Stat>
-                    <Stat label={<FormattedMessage id="abandons" />}>{get(props, "abandons", 0)}</Stat>
-                    <Stat label={<FormattedMessage id="winRate" />}>{getRankWinChance(props)}</Stat>
-                </div>
-                <div className="col">
-                    <Stat label={<FormattedMessage id="rank" />}>{RANKS[get(props, "rank", 0)]}</Stat>
-                    <Stat label={<FormattedMessage id="maxRank" />}>{RANKS[get(props, "max_rank", 0)]}</Stat>
-                    <Stat label={<FormattedMessage id="mmr" />}>{get(props, "mmr", 0).toFixed(2)}</Stat>
-                    <Stat
-                        label={<FormattedMessage id="skillUncertainty" />}
-                        tooltip="numerical value of your performance in ranked"
-                    >
-                        {get(props, "skill_mean", 0).toFixed(2)} ± {get(props, "skill_stdev", 0).toFixed(2)}
-                    </Stat>
+            <div className="playermodule__header">
+                <div className="playermodule__title">{props.title}</div>
+            </div>
+            <div className="playermodule__divider" />
+            <div className="playermodule__content">
+                <div className="row">
+                    <div className="col">
+                        <Stat label={<FormattedMessage id="wins" />}>{get(props, "wins", 0)}</Stat>
+                        <Stat label={<FormattedMessage id="losses" />}>{get(props, "losses", 0)}</Stat>
+                        <Stat label={<FormattedMessage id="abandons" />}>{get(props, "abandons", 0)}</Stat>
+                        <Stat label={<FormattedMessage id="winRate" />}>{getRankWinChance(props)}</Stat>
+                    </div>
+                    <div className="col">
+                        <Stat label={<FormattedMessage id="rank" />}>{RANKS[get(props, "rank", 0)]}</Stat>
+                        <Stat label={<FormattedMessage id="maxRank" />}>{RANKS[get(props, "max_rank", 0)]}</Stat>
+                        <Stat label={<FormattedMessage id="mmr" />}>{get(props, "mmr", 0).toFixed(2)}</Stat>
+                        <Stat label={<FormattedMessage id="skillUncertainty" />}>
+                            {get(props, "skill_mean", 0).toFixed(2)} ± {get(props, "skill_stdev", 0).toFixed(2)}
+                        </Stat>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,9 +39,8 @@ function RankedSeason(props) {
 }
 
 export default function StatsRankings(props) {
-    // show placeholder card if we don't have ranks yet
-    if (!props.rank || !props.rank.apac) {
-        return <RankedSeason wins={0} title="Ranks not yet fetched" />;
+    if (!props.rank || get(props, "rank.emea.max_rank", 0) === 0  && get(props, "rank.ncsa.max_rank", 0) === 0 && get(props, "rank.apac.max_rank", 0) === 0 ) {
+        return null;
     }
     return (
         <div className="playermodule rankedstats">
