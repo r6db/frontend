@@ -47,15 +47,12 @@ export default function StatsTab(props) {
                 <div className="statstab__row">
                     <div className="statstab__col ranking">
                         {props.rank ? <StatsRankings {...props} rank={rank} /> : null }
-                        {props.season === -1 && props.stats ? <StatsCharts {...props} /> : null}
+                        {props.stats ? <StatsCharts {...props} /> : null}
                     </div>
                     <div className="statstab__col gamemode">
                         {props.stats ? <StatsGameModes {...props} stats={stats} /> : null}
                     </div>
                 </div>
-                {/* <StatsRankings {...props} rank={rank} />
-                {props.season === -1 && props.stats ? <StatsCharts {...props} /> : null}
-                {props.stats ? <StatsGameModes {...props} stats={stats} /> : null} */}
             </div>
         </div>
     );

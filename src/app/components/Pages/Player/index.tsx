@@ -38,10 +38,10 @@ function getPlayerSchema(player) {
         {
             "@context": "http://schema.org",
             "@type": "Person",
-            name: player.name,
-            url: `https://r6db.com/player/${player.id}`,
-            identifier: `https://r6db.com/player/${player.id}`,
-            image: getImageLink(player.userId || player.id, player.platform)
+            "name": player.name,
+            "url": `https://r6db.com/player/${player.id}`,
+            "identifier": `https://r6db.com/player/${player.id}`,
+            "image": getImageLink(player.userId || player.id, player.platform)
         },
         null,
         4
