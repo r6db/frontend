@@ -39,7 +39,7 @@
     &__col {
         flex: 0 1 100%;
         min-width: 0;
-        
+
         @include medium {
             margin: 0 1rem;
         }
@@ -75,6 +75,11 @@
             }
             justify-content: flex-end;
             margin: 0;
+            font-size: $font-smaller;
+
+            @include medium {
+                font-size: $font-default;
+            }
         }
     }
     &__title {

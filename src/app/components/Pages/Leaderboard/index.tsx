@@ -81,9 +81,7 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 options={boardOptions}
                                 action={this.changeBoard}
                             />
-                            <p>
-                                <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
-                            </p>
+                            <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
                         </form>
                     </div>
                 </PageHead>
