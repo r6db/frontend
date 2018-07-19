@@ -12,6 +12,9 @@
         &:first-child {
             padding-top: 0;
         }
+        &:last-child {
+            padding-bottom: 0;
+        }
         .chart {
             padding-top: 0;
             padding-bottom: 2rem;
@@ -23,19 +26,19 @@
         }
     }
     .col {
-        padding-left: 0;
-        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
 
         @include medium {
-            padding-left: 1rem;
-            padding-right: 1rem;      
+            margin-left: 1rem;
+            margin-right: 1rem;      
         }
 
         &:first-child {
-            padding-left: 0;
+            margin-left: 0;
         }
         &:last-child {
-            padding-right: 0;
+            margin-right: 0;
         }
     }
     .recharts-dot {
