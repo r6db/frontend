@@ -62,7 +62,7 @@ export const translations = {
     "mode/secure/denied": "Secure denied",
     "mode/hostage": "Hostage",
     "mode/hostage/extracted": "Extractions",
-    "mode/hostage/denied": "Extranctions denied",
+    "mode/hostage/denied": "Extractions denied",
 
     "menu/home": "Home",
     "menu/leaderboard": "Leaderboard",

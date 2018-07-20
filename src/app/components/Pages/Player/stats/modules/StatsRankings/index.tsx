@@ -39,7 +39,12 @@ function RankedSeason(props) {
 }
 
 export default function StatsRankings(props) {
-    if (!props.rank || get(props, "rank.emea.max_rank", 0) === 0  && get(props, "rank.ncsa.max_rank", 0) === 0 && get(props, "rank.apac.max_rank", 0) === 0 ) {
+    if (
+        !props.rank ||
+        (props.rank.emea.wins + props.rank.emea.losses + props.rank.emea.abandons === 0) &&
+        (props.rank.ncsa.wins + props.rank.ncsa.losses + props.rank.ncsa.abandons === 0) &&
+        (props.rank.apac.wins + props.rank.apac.losses + props.rank.apac.abandons === 0)
+    ) {
         return null;
     }
     return (
