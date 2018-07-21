@@ -1,13 +1,17 @@
 @import "scss/styles";
 
 .rankedstats {
-    .rankedseason:last-child {
-        .playermodule__content {
+    .rankedseason {
+        padding-bottom: 1.5rem;
+        &:last-child {
             padding-bottom: 0;
+            .playermodule__content {
+                padding-bottom: 0;
+            }
         }
     }
     .row {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
     }
     .col {
         margin: 0;

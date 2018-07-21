@@ -82,7 +82,7 @@
             font-size: $font-small;
 
             @include medium {
-                font-size: $font-default;
+                font-size: $font-small;
             }
             justify-content: flex-end;
             margin: 0;
