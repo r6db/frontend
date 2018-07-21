@@ -2,6 +2,7 @@ import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import "./rankstab.scss";
 import Media from "components/misc/Media";
+import Icon, { GLYPHS } from "components/misc/Icon";
 
 import SeasonCard from "./SeasonCard";
 
@@ -22,7 +23,7 @@ export default class RanksTab extends React.PureComponent<any, any> {
                 <div className="rankstab">
                     <FormattedMessage id="favorites/empty_header">
                         {message => (
-                            <Media title={message}>
+                            <Media icon={GLYPHS.ALERT} title={message}>
                                 <FormattedMessage id="player/noOldSeasonData" />
                             </Media>
                         )}

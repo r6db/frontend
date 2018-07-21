@@ -57,7 +57,7 @@ function Favorites(props) {
                         ) : (
                             <FormattedMessage id="favorites/empty_header">
                                 {message => (
-                                    <Media title={message}>
+                                    <Media icon={GLYPHS.STAR} title={message}>
                                         <FormattedMessage id="favorites/empty_text" />
                                     </Media>
                                 )}
