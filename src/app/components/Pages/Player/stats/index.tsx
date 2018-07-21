@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as get from "lodash/get";
 import { FormattedMessage } from "react-intl";
+import Button from "components/misc/Button";
 import RankOverview from "./modules/RankOverview";
 import SeasonOverview from "./modules/SeasonOverview";
 import Aliases from "./modules/Aliases";
@@ -12,7 +12,6 @@ import StatsGameModes from "./modules/StatsGameModes";
 import StatsCharts from "./modules/StatsCharts";
 
 import "./statstab.scss";
-import Button from "components/misc/Button";
 
 export default function StatsTab(props) {
     if (props.snapshots.find(x => x.season === props.season) === undefined) {
@@ -30,13 +29,9 @@ export default function StatsTab(props) {
     return (
         <div className="statstab">
             <div className="statstab__sidebar">
-                {props.rank ? (
-                    <>
-                        <RankOverview {...props} />
-                        <SeasonOverview {...props} />
-                    </>
-                ) : null}
-                {props.aliases && props.aliases.length > 1 ? <Aliases {...props} /> : null}
+                <RankOverview {...props} />
+                <SeasonOverview {...props} />
+                <Aliases {...props} />
             </div>
             <div className="statstab__content">
                 {props.stats ? <StatsGeneral {...props} stats={stats} /> : null}
@@ -46,7 +41,7 @@ export default function StatsTab(props) {
                 </div>
                 <div className="statstab__row">
                     <div className="statstab__col ranking">
-                        {props.rank ? <StatsRankings {...props} rank={rank} /> : null }
+                        <StatsRankings {...props} rank={rank} />
                         {props.stats ? <StatsCharts {...props} /> : null}
                     </div>
                     <div className="statstab__col gamemode">

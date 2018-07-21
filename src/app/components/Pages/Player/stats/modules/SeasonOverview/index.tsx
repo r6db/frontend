@@ -6,11 +6,16 @@ import "./seasonoverview.scss";
 import { FormattedMessage } from "react-intl";
 
 export default function SeasonOverview(props) {
-    if (!props.pastRanks) {
-        return null;
+    if (props.pastRanks.every(x => x.max_rank === 0)) {
+        return (
+            <div className="playermodule seasonoverview">
+                <div className="seasonoverview__noinfo">
+                    <FormattedMessage id="player/noOldSeasonData" />
+                </div>
+            </div>
+        );
     }
     const pr = props.pastRanks.filter(x => x.max_rank !== 0);
-    const ps = props.rank && props.rank.season ? pr.filter(x => x.season === props.rank.season) : pr;
     return (
         <div className="playermodule seasonoverview">
             {pr.map(rank => (
@@ -32,7 +37,7 @@ export default function SeasonOverview(props) {
                     <FormattedMessage id="player/shrug" />
                 </span>
                 <span>
-                    <FormattedMessage id="player/noOldSeasons" />
+                    <FormattedMessage id="player/ubifixpls" />
                 </span>
             </div>
         </div>

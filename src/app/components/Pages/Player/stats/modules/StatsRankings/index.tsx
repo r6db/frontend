@@ -2,6 +2,9 @@ import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import Stat from "components/misc/Stat";
 import * as get from "lodash/get";
+import * as mapValues from "lodash/mapValues";
+import * as omitBy from "lodash/omitBy";
+import * as isUndefined from "lodash/isUndefined";
 import { getRankWinChance } from "lib/stats";
 import { RANKS } from "lib/constants";
 import "./rankings.scss";
@@ -41,9 +44,9 @@ function RankedSeason(props) {
 export default function StatsRankings(props) {
     if (
         !props.rank ||
-        (props.rank.emea.wins + props.rank.emea.losses + props.rank.emea.abandons === 0) &&
-        (props.rank.ncsa.wins + props.rank.ncsa.losses + props.rank.ncsa.abandons === 0) &&
-        (props.rank.apac.wins + props.rank.apac.losses + props.rank.apac.abandons === 0)
+        (Object.values(omitBy(mapValues(props.rank, "wins"), isUndefined)).every(x => x === 0) &&
+            Object.values(omitBy(mapValues(props.rank, "losses"), isUndefined)).every(x => x === 0) &&
+            Object.values(omitBy(mapValues(props.rank, "abandons"), isUndefined)).every(x => x === 0))
     ) {
         return null;
     }

@@ -17,9 +17,8 @@ function GlobalRank(props) {
                     {get(props, "pastRanks.0.max_rank", 0) === 0
                         ? "N/A"
                         : typeof get(props, "placements.global", "-") === "number"
-                            ? "#" + (get(props, "placements.global", "-") + 1)
-                            : ""}{" "}
-                    Global
+                            ? "#" + (get(props, "placements.global", "-") + 1 + " Global")
+                            : ""}
                 </div>
                 {/* <div className="globalrank__toppercentage">TODO: Calculate position</div> */}
             </div>
@@ -39,9 +38,6 @@ function CurrentRank(props) {
 }
 
 export default function RankOverview(props) {
-    if (!props.rank) {
-        return null;
-    }
     if (props.level < 100) {
         return (
             <div className="playermodule rankoverview">
@@ -51,16 +47,15 @@ export default function RankOverview(props) {
             </div>
         );
     }
-    if (get(props, "placements.global", null) === null) {
-        return null;
-    }
+    console.log(props.placement);
     return (
         <div className="playermodule rankoverview">
             <div className="rankoverview__global">
                 <GlobalRank {...props} />
             </div>
-            {get(props, "placements.global", null) === null ? null : <div className="playermodule__divider" />}
+            {get(props, "placements.global", null) !== null ? (
             <div className="rankoverview__regional">
+                <div className="playermodule__divider" />
                 <CurrentRank
                     key="rank-emea"
                     rank={get(props, "rank.emea.max_rank", 0)}
@@ -82,6 +77,7 @@ export default function RankOverview(props) {
                     region="Asia"
                 />
             </div>
+            ) : null }
         </div>
     );
 }

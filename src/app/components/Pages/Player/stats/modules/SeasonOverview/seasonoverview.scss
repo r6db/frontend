@@ -12,7 +12,15 @@
         align-items: inherit;
         flex-direction: column;
     }
-
+    &__noinfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3rem;
+        text-align: center;
+        font-size: $font-big;
+        color: $font-color-subtle;
+    }
     &__ubipls {
         display: block;
         color: $font-color-subtle;
