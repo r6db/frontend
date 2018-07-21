@@ -50,6 +50,8 @@
     flex: 0 0 auto;
 
     @include large {
+        margin: 0.25rem;
+        margin-left: 0;
         margin-right: 0;
     }
 
@@ -128,16 +130,19 @@
     }
     &__season {
         margin-right: 1rem;
-        font-size: 0.8em;
-        line-height: 1.4;
+        font-size: $font-small;
+        font-weight: 600;
+        line-height: 1.5;
     }
 
     &__rank {
-        font-size: 1.125em;
+        font-size: $font-big;
+        font-weight: 600;
     }
     &__mmr {
         margin-left: 1rem;
-        color: $color-gray;
-        font-size: 0.8em;
+        color: $font-color-subtle;
+        font-size: $font-smaller;
+        letter-spacing: 0.02em;
     }
 }
