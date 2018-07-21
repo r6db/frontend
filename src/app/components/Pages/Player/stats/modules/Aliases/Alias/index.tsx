@@ -1,6 +1,5 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
-import "./alias.scss";
 
 const formatTitle = date => (date ? new Date(date).toLocaleString() : "-");
 
