@@ -19,6 +19,7 @@ import CLOSE from "feather-icons/dist/icons/x.svg";
 import STARFULL from "assets/starfull.svg";
 import ARROWRIGHT from "feather-icons/dist/icons/arrow-right.svg";
 import SUCCESS from "feather-icons/dist/icons/check-circle.svg";
+import ALERT from "feather-icons/dist/icons/alert-triangle.svg";
 
 import LOGO from "assets/r6db_logo_new.svg";
 import UBI from "assets/ubi.svg";
@@ -148,6 +149,7 @@ export const GLYPHS = {
     CLOSE,
     ARROWRIGHT,
     SUCCESS,
+    ALERT,
     RANK0,
     RANK1,
     RANK2,

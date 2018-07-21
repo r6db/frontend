@@ -61,10 +61,13 @@
     }
 
     &-time {
-        color: $color-gray;
-        font-size: 0.9em;
+        color: $font-color-subtle;
+        font-size: $font-default;
     }
     &-name {
-        font-size: 1.1em;
+        margin-top: 0.25rem;
+        font-size: $font-big;
+        font-weight: 600;
+        letter-spacing: 0.025em;
     }
 }

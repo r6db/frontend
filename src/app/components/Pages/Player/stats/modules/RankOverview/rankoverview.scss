@@ -27,6 +27,8 @@
         justify-content: center;
         padding: 3rem;
         text-align: center;
+        font-size: $font-big;
+        color: $font-color-subtle;
     }
     &__vertdivider {
         display: flex;

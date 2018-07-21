@@ -5,6 +5,7 @@ import Result from "components/misc/Playercard";
 import Media from "components/misc/Media";
 import Loading from "components/misc/Loading";
 import Page, { PageHead, PageContent } from "components/misc/Page";
+import Icon, { GLYPHS } from "components/misc/Icon";
 import { connect } from "react-redux";
 import "./search.scss";
 
@@ -39,7 +40,7 @@ class Search extends React.PureComponent<any, any> {
                             ) : this.props.result.length > 0 ? (
                                 <div>{this.props.result.map(player => <Result key={player.id} player={player} />)}</div>
                             ) : (
-                                <Media title="No results">
+                                <Media icon={GLYPHS.HELP} title="No results">
                                     <FormattedMessage id="search/no_results" />
                                 </Media>
                             )}

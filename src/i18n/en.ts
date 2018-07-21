@@ -62,7 +62,7 @@ export const translations = {
     "mode/secure/denied": "Secure denied",
     "mode/hostage": "Hostage",
     "mode/hostage/extracted": "Extractions",
-    "mode/hostage/denied": "Extranctions denied",
+    "mode/hostage/denied": "Extractions denied",
 
     "menu/home": "Home",
     "menu/leaderboard": "Leaderboard",
@@ -182,8 +182,9 @@ export const translations = {
     "player/aliasHistory": "Alias History",
     "player/showLess": "Show less",
     "player/showMore": "Show more",
-    "player/rankingsUnlock": "Rankings unlock at level 100",
+    "player/rankingsUnlock": "Rankings unlock at level 100.",
     "player/shrug": "¯\\\\_(ツ)_/¯",
-    "player/noOldSeasons": "Waiting for UBI to fix old seasons",
-    "player/maxScore": "Max score"
+    "player/ubifixpls": "Waiting for UBI to fix old seasons",
+    "player/maxScore": "Max score",
+    "player/noOldSeasonData": "No historical rank data available."
 };

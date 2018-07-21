@@ -10,6 +10,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: none;
+    align-items: center;
+
+    &__icon {
+        width: 12rem;
+        height: 12rem;
+        opacity: 0.25;
+        margin-right: 4rem;
+    }
 
     &__image {
         flex: 0 0 6rem;
@@ -21,17 +29,16 @@
         flex: 1 1 100%;
         display: flex;
         flex-direction: column;
+        justify-items: flex-start;
         height: 100%;
     }
     &__contentheader {
         display: flex;
         flex-direction: row;
         flex: 0 0 auto;
-        align-items: center;
         justify-content: flex-start;
     }
     &__label {
-        flex: none;
         color: $font-color-subtle;
         font-size: 0.8em;
         margin-left: 1em;
@@ -40,12 +47,13 @@
         border: 1px solid $font-color-subtle;
     }
     &__header {
-        flex: none;
-        font-weight: bold;
-        line-height: 1.5em;
-        font-size: $font-big;
+        font-size: $font-large !important;
+        margin-bottom: 0.25rem;
+        padding-top: 0 !important;
     }
     &__text {
+        font-size: $font-big;
+        color: $font-color-subtle;
         flex: 1 1 50%;
     }
 }

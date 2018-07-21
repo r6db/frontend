@@ -79,10 +79,10 @@
             }
             justify-content: flex-end;
             margin: 0;
-            font-size: $font-small;
+            font-size: 0.85em;
 
             @include medium {
-                font-size: $font-default;
+                font-size: $font-small;
             }
             justify-content: flex-end;
             margin: 0;
