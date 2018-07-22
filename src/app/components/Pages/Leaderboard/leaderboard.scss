@@ -1,37 +1,28 @@
 @import "scss/styles";
 
-.app.LEADERBOARD .page__content {
-    position: relative;
-    padding-top: 0;
-}
-
-.leaderboard {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    &__header {
-        @include card;
+.app.LEADERBOARD {
+    .page__content {
+        padding-top: 2rem;
     }
-    &__description {
-        color: $color-gray-light;
-        line-height: 1.4;
+    .page__image {
+        filter: saturate(150%);
+    }
+}
+.leaderboard {
+    &__title {
+        text-align: center;
+        padding: 1rem;
 
-        p {
-            margin-bottom: 1rem;
-        }
-        .is-highlight {
-            padding-left: 1rem;
-            border-left: 2px solid $color-accent;
-        }
-        a {
-            color: $color-accent;
+        @include medium {
+            text-align: left;
+            padding: 0;     
         }
     }
     &__filters {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 2rem 0;
+        margin: 1rem 0;
 
         @include medium {
             flex-direction: row;
@@ -46,32 +37,64 @@
                 flex: none;
                 width: auto;
             }
+
+            &__box {
+                background: rgba($color-black, 0.85);
+            }
         }
         label {
             width: 8rem;
+            color: rgba($font-color, 0.85);
+            font-weight: 600;
+            font-size: $font-big;
+            text-shadow: 1px 1px 1px $trans-med;
 
             @include medium {
                 width: auto;
             }
         }
-
         button {
             width: 100%;
             margin-top: 2rem;
+            font-size: $font-big;
+            flex: 1;
 
             @include medium {
                 width: auto;
                 margin: 0 1em;
+                flex: none;
             }
         }
     }
+    .header--small {
+        padding: 1rem;
+    }
+    &__alert {
+        text-align: center;
+        letter-spacing: 0.02em;
+        margin-bottom: 2rem !important;
+
+        .alert__content a {
+            color: mix($font-color, $color-accent, 20%);
+        }
+    }
+    &__chart {
+        padding: 1rem;
+        min-height: 200px;
+    }
     &__entries {
-        margin: 2rem auto 0;
+        margin: 1rem auto 0;
+        padding: 0;
 
         th {
+            color: $font-color-subtle;
             text-align: left;
-            font-weight: bold;
+            font-weight: 600;
             padding: 1rem 0;
+
+            @include medium {
+                font-size: $font-big;
+            }
 
             &:first-child,
             &:last-child {
@@ -116,9 +139,14 @@
     &__rating {
         font-size: $font-large;
         flex: none;
+        padding: 1rem;
         @include medium {
             font-size: $font-huge;
         }
+    }
+    &__placement {
+        font-size: $font-bigger;
+        padding: 1rem;
     }
 }
 

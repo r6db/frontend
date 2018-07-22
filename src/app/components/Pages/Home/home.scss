@@ -1,26 +1,16 @@
 @import "scss/styles";
 
-@mixin chrome-mobile-fix {
-    @media screen and (max-width: $screen-medium) and (-webkit-min-device-pixel-ratio:0) {
-        height: calc(100vh - 56px) !important;
-        min-height: calc(100vh - 56px) !important;
-    }  
-}
-
 .app {
     &__page {
         min-height: 100vh;
-        @include chrome-mobile-fix;
     }
     &.HOME {
         .page {
             height: 100vh;
             padding: 0;
-            @include chrome-mobile-fix;
         }
         .page__head {
             height: 100vh;
-            @include chrome-mobile-fix; 
         }
         .page__headcontent {
             background: transparent;
@@ -28,7 +18,8 @@
         .page__image {
             top: 0;
             height: 100%;
-            opacity: 0.2;
+            filter: saturate(160%) contrast(105%);
+              
         }
         .topbar__search {
             display: none;

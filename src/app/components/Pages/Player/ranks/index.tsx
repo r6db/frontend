@@ -1,9 +1,8 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import "./rankstab.scss";
-import { RANKS, REGIONS } from "lib/constants";
+import Media from "components/misc/Media";
 import Icon, { GLYPHS } from "components/misc/Icon";
-import Fauxtable from "components/misc/Fauxtable";
 
 import SeasonCard from "./SeasonCard";
 
@@ -19,6 +18,19 @@ export default class RanksTab extends React.PureComponent<any, any> {
     }
     render() {
         const ranks = this.getRanks(this.props);
+        if (this.props.pastRanks.every(x => x.max_rank === 0)) {
+            return (
+                <div className="rankstab">
+                    <FormattedMessage id="favorites/empty_header">
+                        {message => (
+                            <Media icon={GLYPHS.ALERT} title={message}>
+                                <FormattedMessage id="player/noOldSeasonData" />
+                            </Media>
+                        )}
+                    </FormattedMessage>
+                </div>
+            );
+        }
         return (
             <div className="rankstab">
                 {ranks.map((rank, i) => <SeasonCard key={rank.season} collapsed={i > 0} {...rank} />)}

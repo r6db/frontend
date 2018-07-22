@@ -79,16 +79,6 @@ select {
     margin: 1rem;
     min-width: 0;
 }
-.card {
-    background: $bg-color;
-    padding: 1rem;
-
-    &__header {
-        display: block;
-        margin-bottom: 1rem;
-        font-weight: bold;
-    }
-}
 
 /* set 16px for small devices to prevent ios from zooming into inputs */
 select,
@@ -116,5 +106,3 @@ input {
         color: $color-accent;
     }
 }
-
-@import "scss/components/card";

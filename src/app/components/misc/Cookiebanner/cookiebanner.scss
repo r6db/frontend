@@ -6,7 +6,7 @@
     width: 100%;
     padding: 1.5rem;
     z-index: 100;
-    background: lighten($bg-color, 2%);
+    background: lighten($bg-color, 5%);
     @include boxshadow;
 
     &__container {

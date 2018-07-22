@@ -27,29 +27,110 @@
     &__content {
         display: flex;
         flex-direction: column;
+    }
 
-        .statstab__center {
-            order: 2;
-        }
-        .statstab__aside {
-            order: 1;
-        }
-
-        @include large {
+    &__row {
+        display: flex;
+        flex-direction: column;
+        @include medium {
             flex-direction: row;
+        }
+    }
+    &__col {
+        flex: 0 1 100%;
+        min-width: 0;
 
-            .statstab__center {
-                flex: 3;
-                margin-right: 1rem;
-                min-width: 0px;
-                order: 1;
+        @include medium {
+            margin: 0 1rem;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        &.gamemode {
+            flex: 1;
+        }
+        &.ranking {
+            flex: 2;
+        }
+    }
+}
+.playermodule {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: lighten($bg-color, 3%);
+    border-radius: $borderradius;
+
+    @include medium {
+        padding: 2.5rem;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .dropdown {
+            font-size: 1.25rem;
+            label {
+                font-weight: 600;
             }
-            .statstab__aside {
-                flex: 1;
-                margin-left: 1rem;
-                min-width: 0px;
-                order: 2;
+            justify-content: flex-end;
+            margin: 0;
+            font-size: 0.85em;
+
+            @include medium {
+                font-size: $font-small;
             }
+            justify-content: flex-end;
+            margin: 0;
+        }
+    }
+    &__title {
+        font-size: $font-bigger;
+        font-weight: 500;
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        letter-spacing: 0.1rem;
+        flex: 1;
+
+        @include medium {
+            font-size: $font-large;
+        }
+    }
+    &__subtitle {
+        color: $font-color-subtle;
+    }
+    &__divider {
+        margin: 2rem 0;
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.05s);
+    }
+    &__expand {
+        display: flex;
+        color: $font-color-subtle;
+        width: 100%;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 1rem;
+        justify-content: center;
+
+        @include medium {
+            justify-content: flex-start;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        .icon {
+            width: 2rem;
+            height: 2rem;
+            margin-top: 2px;
+            margin-right: 1rem;
         }
     }
 }

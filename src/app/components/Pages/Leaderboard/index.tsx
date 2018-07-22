@@ -8,6 +8,7 @@ import { toChanka, toPlayer } from "lib/store/actions";
 import { getImageLink } from "lib/domain";
 import Link from "redux-first-router-link";
 import { FadeImage } from "components/misc/FadeImage";
+import Alert from "components/misc/Alert";
 import Button from "components/misc/Button";
 import Dropdown from "components/misc/Dropdown";
 import Loading from "components/misc/Loading";
@@ -56,27 +57,17 @@ class Leaderboard extends React.PureComponent<any, any> {
     render() {
         return (
             <Page className="leaderboard">
-                <PageHead image={background} position="50% 20%">
-                    <div className="container leaderboard__header">
+                <PageHead image={background} position="50% 25%" opacity={0.2}>
+                    <div className="container">
                         <h1 className="header leaderboard__title">
                             <FormattedMessage id="leaderboard/title" />
                         </h1>
-                    </div>
-                </PageHead>
-                <PageContent>
-                    <div className="container">
-                        <div className="leaderboard__description">
-                            <div className="blocker">
-                                <FormattedMessage
-                                    id="leaderboard/disclaimer"
-                                    values={{
-                                        linkPolicy: <a href="https://pages.r6db.com/ban-policy/">Ban Policy</a>,
-                                        linkReport: <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">Google Form</a>
-                                    }}
-                                />
-                            </div>
-                        </div>
-                        <form className="leaderboard__filters" action="" onSubmit={e => this.loadLeaderboard(e)}>
+                        <hr/>
+                        <form
+                            className="leaderboard__filters"
+                            action=""
+                            onSubmit={e => this.loadLeaderboard(e)}
+                        >
                             <Dropdown
                                 label={<FormattedMessage id="platform" />}
                                 setValue={this.state.platform}
@@ -90,11 +81,33 @@ class Leaderboard extends React.PureComponent<any, any> {
                                 options={boardOptions}
                                 action={this.changeBoard}
                             />
-                            <p>
-                                <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
-                            </p>
+                            <Button label={<FormattedMessage id="leaderboard/go" />} role="primary" />
                         </form>
-                        <Charts data={getCommunityRanks(this.props.community, this.state.board)} />
+                    </div>
+                </PageHead>
+                <PageContent>
+                    <div className="container">
+                        <div className="leaderboard__description">
+                            <Alert className="leaderboard__alert">
+                                <FormattedMessage
+                                    id="leaderboard/disclaimer"
+                                    values={{
+                                        linkPolicy: <a href="https://pages.r6db.com/ban-policy/">Ban Policy</a>,
+                                        linkReport: <a href="https://goo.gl/forms/sYNyFwI65nCMXGrf2">Google Form</a>
+                                    }}
+                                />
+                            </Alert>
+                        </div>
+                        <h3 className="header header--small"><FormattedMessage id="leaderboard/rankdist" /></h3>
+                        <div className="leaderboard__chart">
+                            <Charts
+                                data={getCommunityRanks(
+                                    this.props.community,
+                                    this.state.board
+                                )}
+                            />
+                        </div>
+                        <h3 className="header header--small"><FormattedMessage id="leaderboard/title" /></h3>
                         <table className="container leaderboard__entries">
                             <thead className="leaderboard__entriesheader">
                                 <tr>

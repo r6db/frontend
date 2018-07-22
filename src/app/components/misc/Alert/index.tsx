@@ -5,7 +5,7 @@ import trim from "lib/trim";
 
 import "./alert.scss";
 
-interface IAlertProps {
+interface IAlertProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: "primary" | "accent" | "error" | "warning" | "success" | "info";
     isOpen?: boolean;
     isCloseable?: boolean;
@@ -37,7 +37,7 @@ class Alert extends React.PureComponent<IAlertProps, IAlertState> {
                 className={trim(`alert
                 alert--${this.props.role || "default"}
                 ${this.state.isOpen ? "alert--open" : ""}
-            `)}
+                ${this.props.className}`)}
             >
                 <div className="alert__content">{this.props.children}</div>
                 {this.props.isCloseable ? (

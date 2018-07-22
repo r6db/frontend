@@ -14,9 +14,8 @@
     select {
         width: 100%;
         color: $font-color;
+        font-weight: 600;
         font-size: $font-default;
-        font-weight: 600;
-        font-weight: 600;
         padding-top: 0.75em;
         padding-bottom: 0.75em;
         padding-left: 0.75em;
@@ -37,7 +36,6 @@
         width: 100%;
         align-items: center;
         position: relative;
-        background: $trans-med;
         border: 1px solid transparent;
         border-radius: $borderradius;
         @include boxshadow;
@@ -57,7 +55,7 @@
             color: $font-color;
         }
         .dropdown__box {
-            background: $trans-med;
+            background: $trans-low;
         }
         .dropdown__arrow {
             color: $font-color;

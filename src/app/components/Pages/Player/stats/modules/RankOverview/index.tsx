@@ -6,9 +6,6 @@ import "./rankoverview.scss";
 import { FormattedMessage } from "react-intl";
 
 function GlobalRank(props) {
-    if (get(props, "placements.global", null) === null) {
-        return null;
-    }
     return (
         <div className="globalrank global">
             <div className="globalrank__icon">
@@ -20,9 +17,8 @@ function GlobalRank(props) {
                     {get(props, "pastRanks.0.max_rank", 0) === 0
                         ? "N/A"
                         : typeof get(props, "placements.global", "-") === "number"
-                            ? "#" + (get(props, "placements.global", "-") + 1)
-                            : ""}{" "}
-                    Global
+                            ? "#" + (get(props, "placements.global", "-") + 1 + " Global")
+                            : ""}
                 </div>
                 {/* <div className="globalrank__toppercentage">TODO: Calculate position</div> */}
             </div>
@@ -33,35 +29,33 @@ function GlobalRank(props) {
 function CurrentRank(props) {
     return (
         <div className={`currentrank ${props.className || ""}`}>
-            <div className="currentrank__icon">
-                <Icon glyph={GLYPHS["RANK" + props.rank]} />
-            </div>
-            <div className="currentrank__placement">
-                {props.rank === 0 ? null : typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
-            </div>
             <div className="currentrank__region">{props.region}</div>
+            <div className="currentrank__placement">
+                {props.rank === 0 ? "Unranked" : typeof props.placement === "number" ? "#" + (props.placement + 1) : ""}
+            </div>
         </div>
     );
 }
 
 export default function RankOverview(props) {
-    if (!props.rank) {
-        return null;
-    }
     if (props.level < 100) {
         return (
-            <div className="rankoverview__isunderage">
-                <FormattedMessage id="player/rankingsUnlock" />
+            <div className="playermodule rankoverview">
+                <div className="rankoverview__isunderage">
+                    <FormattedMessage id="player/rankingsUnlock" />
+                </div>
             </div>
         );
     }
+    console.log(props.placement);
     return (
         <div className="playermodule rankoverview">
             <div className="rankoverview__global">
                 <GlobalRank {...props} />
             </div>
-            {get(props, "placements.global", null) === null ? null : <div className="playermodule__divider" />}
+            {get(props, "placements.global", null) !== null ? (
             <div className="rankoverview__regional">
+                <div className="playermodule__divider" />
                 <CurrentRank
                     key="rank-emea"
                     rank={get(props, "rank.emea.max_rank", 0)}
@@ -83,6 +77,7 @@ export default function RankOverview(props) {
                     region="Asia"
                 />
             </div>
+            ) : null }
         </div>
     );
 }

@@ -1,5 +1,32 @@
 @import "scss/styles";
 
-.rankedstats{
+.rankedstats {
+    .rankedseason {
+        padding-bottom: 1.5rem;
+        &:last-child {
+            padding-bottom: 0;
+            .playermodule__content {
+                padding-bottom: 0;
+            }
+        }
+    }
+    .row {
+        margin-bottom: 0;
+    }
+    .col {
+        margin: 0;
 
+        @include medium {
+            margin: 0 1rem;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .playermodule__content {
+        padding-bottom: 2rem;
+    }
 }

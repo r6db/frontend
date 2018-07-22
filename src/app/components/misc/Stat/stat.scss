@@ -3,23 +3,28 @@
 .stat {
     display: flex;
     align-items: baseline;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: $font-big;
 
-    &-label {
-        color: $color-gray;
-        margin-right: 0.5rem;
+    &--big {
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        .stat__label {
+            margin-bottom: 0.5rem;
+        }
+        .stat__value {
+            font-weight: 400;
+            font-size: $font-large;
+        }
     }
-    &-value {
-        white-space: pre;
-    }
+
     &__value {
-        font-size: $font-bigger;
-        font-weight: 300;
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        font-weight: 600;
     }
     &__label {
-        margin-left: 1rem;
-        font-weight: 600;
         color: $font-color-subtle;
-        font-size: $font-small;
     }
 }

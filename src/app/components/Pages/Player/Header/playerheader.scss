@@ -15,41 +15,43 @@
             text-align: left;
         }
     }
-    &__image {
-        width: 10rem;
-        height: 10rem;
-        flex: none;
-        background-color: $trans-low;
-        @include boxshadow;
-
-        @include medium {
-            margin-right: 1rem;
-        }
-    }
     &__info {
-        @include medium {
-            margin-left: 2rem;
-        }
-    }
-    &__namebox {
-        margin: 1rem 0 !important;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        flex: 1;
         align-items: center;
 
         @include medium {
-            margin-top: 0 !important;
-            margin-bottom: 0.75rem !important;
-            justify-content: flex-start;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            font-size: 4rem;
+            align-items: flex-start;
         }
     }
-    &__name {
-        font-weight: 400;
+    &__image {
+        width: 8rem;
+        height: 8rem;
+        background-color: $bg-color-dark;
+        border-radius: $borderradius;
+        overflow: hidden;
+        flex: none;
+        @include boxshadow;
+
+        @include medium {
+            width: 12rem;
+            height: 12rem;
+            margin-right: 3rem;
+        }
+    }
+    &__namebox {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-smaller;
+
+        @include medium {
+            justify-content: flex-start;
+            font-size: $font-default;
+        }
     }
     &__namewrapper {
         flex: 1 0 100%;
@@ -59,79 +61,51 @@
             flex: none;
         }
     }
-    &__level {
-        font-size: $font-default;
-        color: rgba($color-white, 0.5);
-        padding-left: 3px;
-    }
     &__platform {
-        display: inline-block;
-        font-weight: 600;
-        font-size: 0.8em;
-        color: rgba($color-white, 0.5);
+        opacity: 0.5;
+        font-size: $font-small;
         margin-left: 1rem;
+    }
+    &__level {
+        margin-top: 0.75rem;
+        opacity: 0.5;
+
+        @include medium {
+            margin-top: 0;
+        }
     }
     &__flair {
         @include flair;
         font-size: 1.2rem;
-        margin-top: 1rem;
 
         @include medium {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
         }
-    }
-    &__ranking {
-        margin-top: 1rem;
     }
     &__links {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        font-size: $font-default;
-        margin: 1rem 0;
-        flex-wrap: wrap;
+        margin-top: 1.5rem;
 
-        @include medium {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-top: 1.5rem;
-            align-items: center;
-            justify-content: flex-start;
-        }
-    }
-    &__divider {
-        margin-left: 1.5rem;
-    }
-    &__buttons {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        flex: 1;
-        margin-top: 2rem;
+        .hidden-small {
+            display: none;
+            visibility: hidden;
 
-        @include medium {
-            margin-top: 0;
-        }
-
-        .button {
-            &--active {
-                .button__icon {
-                    fill: currentColor;
-                }
+            @include medium {
+                display: initial;
+                visibility: visible;
             }
         }
     }
     &__link {
         display: inline-flex;
+        flex-direction: row;
         align-items: center;
-        margin-left: 1.5rem;
-        padding-left: 3px;
+        justify-content: center;
         color: $font-color;
         font-weight: 600;
-
+        margin-left: 1.5rem;
         &:first-child {
             margin-left: 0;
         }
@@ -141,32 +115,59 @@
             fill: $font-color;
             margin-right: 0.5em;
         }
-
-        &.download {
-            display: none;
-            visibility: hidden;
-
-            @include medium {
-                display: flex;
-                visibility: visible;
-            }
-        }
+    }
+    &__divider {
+        margin-left: 1.5rem;
     }
     &__tabs {
         display: flex;
-        margin-top: 3rem;
+        flex: 1 0 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1.5rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05s);
+
+        @include medium {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        &--left {
+            display: flex;
+            justify-content: center;
+
+            @include medium {
+                justify-content: flex-start;
+            }
+        }
+        &--right {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+
+            .playerheader__tab {
+                padding: 1.5rem;
+                margin: 0 0.25rem;
+            }
+
+            @include medium {
+                justify-content: flex-end;
+            }
+        }
     }
     &__tab {
-        flex: 1;
-        padding: 1.5rem 1rem;
-        transition: all 100ms ease-out;
-        border-bottom: 2px solid transparent;
-        text-align: center;
+        color: $font-color-subtle;
         font-size: $font-big;
         font-weight: 600;
-        color: darken($font-color, 20%);
+        padding: 1.5rem 3rem;
+        border-bottom: 2px solid transparent;
 
+        .icon {
+            width: 2rem;
+            height: 2rem;
+            stroke: currentColor;
+            fill: currentColor;
+        }
         &:focus {
             outline: none;
         }
@@ -181,9 +182,25 @@
             }
         }
 
-        @include large {
-            padding: 1.5rem 3rem;
-            flex: 0;
+        &.update {
+            color: $font-color-subtle;
+            border-color: $font-color-subtle;
+
+            &--active {
+                color: $color-accent;
+                border-color: $color-accent;
+                cursor: pointer;
+            }
+        }
+        &.favorite {
+            color: $font-color;
+            border-color: $font-color;
+            cursor: pointer;
+
+            &--active {
+                color: $color-primary;
+                border-color: $color-primary;
+            }
         }
     }
 }

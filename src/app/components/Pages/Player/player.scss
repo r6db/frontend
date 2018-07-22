@@ -22,21 +22,6 @@
             flex: auto;
         }
     }
-
-    &module {
-        @include card;
-
-        &__header {
-            @include card-header;
-        }
-        &__content {
-            @include card-content;
-        }
-        &__divider {
-            @include card-divider;
-        }
-    }
-
     &__charts {
         transition: opacity 200ms ease-out;
         &--hidden {

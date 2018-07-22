@@ -25,15 +25,16 @@
         display: flex;
         align-items: center;
         position: relative;
-
+        
         .header {
+            color: #FFFFFF;
             margin-top: 0;
         }
 
         &content {
             z-index: 1;
             width: 100%;
-            background: linear-gradient(rgba($bg-color, 0), rgba($bg-color, 1) 98%);
+            background: linear-gradient(rgba($bg-color, 0) 20%, rgba($bg-color, 1) 100%);
 
             @include medium {
                 padding: 2rem 0;
@@ -51,13 +52,11 @@
         opacity: 1;
         top: -60px;
         height: calc(100% + 60px);
-        opacity: 0.3;
         position: absolute;
-        filter: saturate(130%) contrast(120%);
-
+          
         @include medium {
             top: -80px;
-            height: calc(100% + 75px);
+            height: calc(100% + 80px);
         }
     }
 
