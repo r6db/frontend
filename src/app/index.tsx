@@ -14,12 +14,11 @@ import RootComponent from "./components";
 import configureStore from "lib/store";
 import { setStore } from "lib/analytics";
 import * as Raven from "raven-js";
-if (process.env.NODE_ENV === 'production' && process.env.VERSION) {
-    Raven
-        .config("https://9bf8160273c04484a3b5ced1cf1d61cf@sentry.r6db.com/2", {
-            release: process.env.VERSION
-        })
-        .install();
+
+if (process.env.NODE_ENV === "production" && process.env.VERSION) {
+    Raven.config("https://9bf8160273c04484a3b5ced1cf1d61cf@sentry.r6db.com/2", {
+        release: process.env.VERSION
+    }).install();
 }
 
 if ("serviceWorker" in navigator) {
@@ -32,12 +31,23 @@ const store = configureStore(history);
 // pass store to analytics
 setStore(store);
 
+// mount app
 const mount = document.querySelector("#mount");
 console.log("mounting app");
+
+// render it
 const render = Node => ReactDOM.render(Node, mount);
 render(<RootComponent store={store} />);
 
 if (module.hot) {
     module.hot.accept();
     render(<RootComponent store={store} />);
+}
+
+if (!global.Intl) {
+    console.log("browser doesn't support Internationalization API, require polyfill");
+    require.ensure(["intl", "intl/locale-data/jsonp/en.js"], require => {
+        require("intl");
+        require("intl/locale-data/jsonp/en.js");
+    });
 }

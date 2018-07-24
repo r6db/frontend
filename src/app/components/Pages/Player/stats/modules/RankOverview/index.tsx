@@ -47,7 +47,6 @@ export default function RankOverview(props) {
             </div>
         );
     }
-    console.log(props.placement);
     return (
         <div className="playermodule rankoverview">
             <div className="rankoverview__global">
