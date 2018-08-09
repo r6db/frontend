@@ -33,20 +33,16 @@ setStore(store);
 
 // mount app
 const mount = document.querySelector("#mount");
-console.log("mounting app");
+const render = Node => ReactDOM.render(Node, mount);
 
 if (!global.Intl) {
     console.log("browser doesn't support Internationalization API, require polyfill");
-    import("intl").then(() => import("intl/locale-data/jsonp/en"));
-    // require.ensure(["intl", "intl/locale-data/jsonp/en.js"], require => {
-    //     require("intl");
-    //     require("intl/locale-data/jsonp/en.js");
-    // });
+    import("intl").then(() => import("intl/locale-data/jsonp/en"))
+    .then(() => render(<RootComponent store={store} />));
+} ekse {
+    render(<RootComponent store={store} />)
 }
 
-// render it
-const render = Node => ReactDOM.render(Node, mount);
-render(<RootComponent store={store} />);
 
 if (module.hot) {
     module.hot.accept();
