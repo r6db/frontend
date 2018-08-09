@@ -37,12 +37,12 @@ const render = Node => ReactDOM.render(Node, mount);
 
 if (!global.Intl) {
     console.log("browser doesn't support Internationalization API, require polyfill");
-    import("intl").then(() => import("intl/locale-data/jsonp/en"))
-    .then(() => render(<RootComponent store={store} />));
-} ekse {
-    render(<RootComponent store={store} />)
+    import("intl")
+        .then(() => import("intl/locale-data/jsonp/en"))
+        .then(() => render(<RootComponent store={store} />));
+} else {
+    render(<RootComponent store={store} />);
 }
-
 
 if (module.hot) {
     module.hot.accept();
