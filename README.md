@@ -1,3 +1,7 @@
+
+**r6db has been discontinued due to the inceasing amount of time and effort needed to continue. further development happens on https://github.com/r6db/app**
+
+
 # R6DB  
 React&Redux based SPA.
 Routing is handled by `redux-first-router`.  
